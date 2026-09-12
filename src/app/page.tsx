@@ -8,11 +8,17 @@ interface Message {
   text: string;
 }
 
+interface DiagnosisResult {
+  primaryFault: string;
+  confidenceScore: number;
+  estimatedCost: number;
+}
+
 export default function CustomerHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState<'form' | 'otp'>('form');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   // Müşteri Form Verileri
   const [formData, setFormData] = useState({
     firstName: '',
@@ -26,7 +32,7 @@ export default function CustomerHome() {
 
   const [otpCode, setOtpCode] = useState(['', '', '', '']);
 
-  // Canlı Sohbet Mesajları
+  // Canlı Sohbet Mesajları & Teşhis Durumu
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -36,6 +42,12 @@ export default function CustomerHome() {
   ]);
   const [aiInput, setAiInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  
+  // Teşhis & Güven Skoru Durumları
+  const [confidenceScore, setConfidenceScore] = useState<number>(0);
+  const [diagnosis, setDiagnosis] = useState<DiagnosisResult | null>(null);
+  const [isServiceRequested, setIsServiceRequested] = useState(false);
+
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const categories = [
@@ -49,10 +61,9 @@ export default function CustomerHome() {
     { id: 8, name: 'Çilingir', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&auto=format&fit=crop&q=80' },
   ];
 
-  // Otomatik alt mesaja kaydırma
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+  }, [messages, isTyping, diagnosis]);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,10 +88,10 @@ export default function CustomerHome() {
     setIsModalOpen(false);
   };
 
-  // Dinamik Yapay Zekâ Mesaj Akışı
+  // Teşhis Motoru Sohbet Mantığı
   const handleAiSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!aiInput.trim()) return;
+    if (!aiInput.trim() || diagnosis) return;
 
     const userText = aiInput;
     const userMsg: Message = { id: Date.now(), sender: 'user', text: userText };
@@ -88,20 +99,43 @@ export default function CustomerHome() {
     setAiInput('');
     setIsTyping(true);
 
-    // Yapay Zekâ Cevap Simülasyonu
     setTimeout(() => {
-      let aiResponse = "Anladım, talebinizle ilgili en uygun uzman teknisyenimizi yönlendirmek için kaydınızı alıyorum. Cihazın markasını veya ek detayları paylaşmak ister misiniz?";
-      
-      const lower = userText.toLowerCase();
-      if (lower.includes('kombi') || lower.includes('su') || lower.includes('petek')) {
-        aiResponse = "Kombi / Isıtma sisteminizdeki arıza tespiti için uzman teknisyenimiz hazırlanıyor. Dilerseniz arızanın fotoğrafını çekip gönderebilir veya servis randevusu oluşturabilirsiniz.";
-      } else if (lower.includes('klima') || lower.includes('soğutmuyor')) {
-        aiResponse = "Klima bakım ve arıza servis talebinizi aldım. En yakın lokasyondaki usta iletişime geçecektir.";
+      let currentScore = confidenceScore + 40;
+      let reply = "Detayları inceliyorum. Cihaz ekranda herhangi bir hata kodu gösteriyor mu veya kıvılcım sesi geliyor mu?";
+
+      if (currentScore >= 75) {
+        currentScore = 76;
+        reply = "Gerekli tüm bilgileri doğruladım. Cihazınızdaki arıza teşhisi ve maliyet tahmini netleşmiştir.";
+        setDiagnosis({
+          primaryFault: "Ateşleme Arızası",
+          confidenceScore: 76,
+          estimatedCost: 3400,
+        });
       }
 
-      setMessages((prev) => [...prev, { id: Date.now() + 1, sender: 'ai', text: aiResponse }]);
+      setConfidenceScore(currentScore);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, sender: 'ai', text: reply }]);
       setIsTyping(false);
     }, 1200);
+  };
+
+  // İptal Etme İşlemi
+  const handleCancelDiagnosis = () => {
+    setDiagnosis(null);
+    setConfidenceScore(0);
+    setIsServiceRequested(false);
+    setMessages([
+      {
+        id: Date.now(),
+        sender: 'ai',
+        text: 'Teşhis işlemi iptal edildi. Farklı bir konuda yardımcı olmamı ister misiniz?',
+      },
+    ]);
+  };
+
+  // Servis / Usta Çağırma İşlemi
+  const handleBookService = () => {
+    setIsServiceRequested(true);
   };
 
   return (
@@ -139,7 +173,6 @@ export default function CustomerHome() {
         ))}
       </div>
 
-      {/* KULLANICI GİRİŞ YAPMAMIŞSA */}
       {!isLoggedIn ? (
         <>
           <div className="w-full text-center px-2">
@@ -163,22 +196,34 @@ export default function CustomerHome() {
           </div>
         </>
       ) : (
-        /* CANLI VE DİNAMİK YAPAY ZEKÂ SOHBET ALANI */
+        /* SOHBET VE TEŞHİS MOTORU EKRANI */
         <div className="w-full mt-2 flex-1 flex flex-col justify-end">
-          <div className="bg-white border border-slate-100 rounded-3xl p-4 shadow-xl flex flex-col h-[340px] justify-between">
+          <div className="bg-white border border-slate-100 rounded-3xl p-4 shadow-xl flex flex-col h-[440px] justify-between">
             
-            {/* Sohbet Başlığı */}
-            <div className="flex items-center justify-between border-b pb-2 mb-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span className="text-xs font-bold text-slate-700">Teknik-O AI Asistanı</span>
+            {/* Üst Bar: Güven Skoru İlerleme Çubuğu */}
+            <div className="border-b pb-2 mb-2">
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                  <span className="text-xs font-bold text-slate-700">Teknik-O Teşhis Motoru</span>
+                </div>
+                <span className="text-[11px] font-extrabold text-amber-600">
+                  Güven: %{confidenceScore}
+                </span>
               </div>
-              <span className="text-[10px] bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-full">
-                Canlı Destek
-              </span>
+              
+              {/* Progress Bar */}
+              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-500 ${
+                    confidenceScore >= 75 ? 'bg-emerald-500' : 'bg-amber-500'
+                  }`}
+                  style={{ width: `${Math.min(confidenceScore, 100)}%` }}
+                ></div>
+              </div>
             </div>
 
-            {/* Mesaj Listesi (Akış Alanı) */}
+            {/* Mesaj Akış Alanı */}
             <div className="flex-1 overflow-y-auto space-y-3 pr-1 text-xs">
               {messages.map((msg) => (
                 <div
@@ -197,42 +242,115 @@ export default function CustomerHome() {
                 </div>
               ))}
 
-              {/* AI Yazıyor İndikatörü */}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-slate-100 text-slate-400 p-3 rounded-2xl rounded-bl-none text-xs flex items-center gap-1">
-                    <span>Yapay zekâ yanıt hazırlıyor</span>
+                  <div className="bg-slate-100 text-slate-400 p-2.5 rounded-2xl rounded-bl-none text-xs flex items-center gap-1">
+                    <span>Teşhis analizi yapılıyor</span>
                     <span className="animate-bounce">.</span>
                     <span className="animate-bounce delay-100">.</span>
                     <span className="animate-bounce delay-200">.</span>
                   </div>
                 </div>
               )}
+
+              {/* DURUM 1: GÜVEN SKORU %75 ALTINDA KALDIYSA YERİNDE TEŞHİS SEÇENEĞİ */}
+              {confidenceScore > 0 && confidenceScore < 75 && !isServiceRequested && (
+                <div className="bg-amber-50 border border-amber-200 p-3 rounded-2xl my-2 text-slate-700">
+                  <p className="text-[11px] font-medium text-amber-900 mb-2">
+                    Teşhis güven skoru henüz %75’in altındadır. Uzaktan net fiyat sunulamamaktadır.
+                  </p>
+                  <button
+                    onClick={handleBookService}
+                    className="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs shadow-sm mb-2"
+                  >
+                    🛠️ Yerinde Teşhis İçin Usta Çağır
+                  </button>
+                  <p className="text-[10px] text-amber-800/80 leading-tight text-center">
+                    (Usta geldiğinde sisteme girilen her parça ve fiyat yine sizin onayınıza sunulacak, onaylamadan ücret talep edilmeyecektir.)
+                  </p>
+                </div>
+              )}
+
+              {/* DURUM 2: GÜVEN SKORU %75 VE ÜSTÜNE ÇIKTIYSA NET TEŞHİS VE FİYAT KARTI */}
+              {diagnosis && (
+                <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-lg border border-slate-800 my-2 animate-in fade-in slide-in-from-bottom duration-300">
+                  <div className="flex items-center justify-between border-b border-slate-700 pb-2 mb-2">
+                    <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1">
+                      ✓ Teşhis Doğruluğu: %{diagnosis.confidenceScore}
+                    </span>
+                    <span className="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Net Tahmin</span>
+                  </div>
+
+                  <div className="mb-3">
+                    <div className="text-[11px] text-slate-400">En Olası Arıza:</div>
+                    <div className="text-sm font-bold text-amber-400">{diagnosis.primaryFault}</div>
+                  </div>
+
+                  <div className="mb-4">
+                    <div className="text-[11px] text-slate-400">Tahmini Maliyet:</div>
+                    <div className="text-xl font-black text-white">{diagnosis.estimatedCost.toLocaleString('tr-TR')} TL</div>
+                  </div>
+
+                  {/* Eylem Butonları */}
+                  {!isServiceRequested ? (
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        onClick={handleBookService}
+                        className="py-2.5 bg-amber-600 hover:bg-amber-500 active:scale-95 text-white font-bold rounded-xl text-xs shadow-md transition-all"
+                      >
+                        🛠️ Servis Çağır
+                      </button>
+                      <button
+                        onClick={handleCancelDiagnosis}
+                        className="py-2.5 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 font-semibold rounded-xl text-xs transition-all"
+                      >
+                        ✕ İptal Et
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              )}
+
+              {/* TALEP ALINDI ONAY MESAJI */}
+              {isServiceRequested && (
+                <div className="bg-emerald-950/90 border border-emerald-500/40 p-3 rounded-2xl text-center text-xs font-semibold text-emerald-300 my-2">
+                  ✓ Servis talebiniz alındı! En yakın usta yönlendiriliyor. Usta fiyat girmeden hiçbir işlem onaylanmaz.
+                  <button
+                    onClick={handleCancelDiagnosis}
+                    className="block w-full mt-2 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-[11px]"
+                  >
+                    Talebi İptal Et
+                  </button>
+                </div>
+              )}
+
               <div ref={chatEndRef} />
             </div>
 
-            {/* Mesaj Yazma Formu */}
-            <form onSubmit={handleAiSubmit} className="relative mt-3 pt-2 border-t flex gap-2">
-              <input
-                type="text"
-                value={aiInput}
-                onChange={(e) => setAiInput(e.target.value)}
-                placeholder="Arızanızı veya ihtiyacınızı yazın..."
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-600 font-medium"
-              />
-              <button
-                type="submit"
-                className="bg-amber-600 hover:bg-amber-700 text-white px-4 rounded-xl font-bold text-sm shadow-md transition-transform active:scale-90 flex items-center justify-center"
-              >
-                ➔
-              </button>
-            </form>
+            {/* Mesaj Giriş Kutusu */}
+            {!diagnosis && (
+              <form onSubmit={handleAiSubmit} className="relative mt-2 pt-2 border-t flex gap-2">
+                <input
+                  type="text"
+                  value={aiInput}
+                  onChange={(e) => setAiInput(e.target.value)}
+                  placeholder="Arızanızı anlatmaya devam edin..."
+                  className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-600 font-medium"
+                />
+                <button
+                  type="submit"
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-4 rounded-xl font-bold text-sm shadow-md transition-transform active:scale-90 flex items-center justify-center"
+                >
+                  ➔
+                </button>
+              </form>
+            )}
 
           </div>
         </div>
       )}
 
-      {/* AÇILIR KAYIT MODALI */}
+      {/* Açılır Kayıt Modalı */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 z-50 overflow-y-auto">
           <div className="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -249,7 +367,6 @@ export default function CustomerHome() {
               </button>
             </div>
 
-            {/* ADIM 1: KAYIT FORMU */}
             {step === 'form' && (
               <form onSubmit={handleFormSubmit} className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
@@ -346,7 +463,6 @@ export default function CustomerHome() {
               </form>
             )}
 
-            {/* ADIM 2: SMS DOĞRULAMA */}
             {step === 'otp' && (
               <form onSubmit={handleVerifyOtp} className="py-4 text-center space-y-4">
                 <p className="text-xs text-slate-500">
