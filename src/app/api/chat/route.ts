@@ -1,7 +1,10 @@
 import { GoogleGenAI, Type, Schema } from '@google/genai';
 import { NextResponse } from 'next/server';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({ 
+  apiKey: process.env.GEMINI_API_KEY,
+  vertexAI: true 
+});
 
 const responseSchema: Schema = {
   type: Type.OBJECT,
@@ -53,7 +56,7 @@ KURALLAR:
 `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.6-flash',
       contents: [
         ...history,
         { role: 'user', parts: [{ text: userMessage }] }
