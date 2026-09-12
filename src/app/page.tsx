@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 
 export default function CustomerHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [step, setStep] = useState<'form' | 'otp' | 'success'>('form');
+  const [step, setStep] = useState<'form' | 'otp'>('form');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Müşteri Form Verileri
   const [formData, setFormData] = useState({
@@ -19,6 +20,9 @@ export default function CustomerHome() {
 
   // SMS Doğrulama Kodu (4 haneli test kodu)
   const [otpCode, setOtpCode] = useState(['', '', '', '']);
+
+  // Yapay Zekâ İstemci Mesajı
+  const [aiInput, setAiInput] = useState('');
 
   const categories = [
     { id: 1, name: 'Kombi', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=200&auto=format&fit=crop&q=80' },
@@ -44,38 +48,32 @@ export default function CustomerHome() {
     newOtp[index] = value;
     setOtpCode(newOtp);
 
-    // Otomatik sonraki kutuya odaklanma
     if (value && index < 3) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       nextInput?.focus();
     }
   };
 
-  // SMS Kodunu Doğrulama
+  // SMS Kodunu Doğrulama & Giriş Yapma
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep('success');
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setStep('form');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        city: 'Bursa',
-        district: '',
-        address: '',
-        email: '',
-        phone: '',
-      });
-      setOtpCode(['', '', '', '']);
-    }, 2500);
+    setIsLoggedIn(true);
+    setIsModalOpen(false);
+  };
+
+  // AI Mesaj Gönderimi
+  const handleAiSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!aiInput.trim()) return;
+    alert(`Talebiniz Yapay Zekaya İletildi: "${aiInput}"`);
+    setAiInput('');
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-gray-800 flex flex-col items-center justify-between p-6 max-w-md mx-auto relative">
+    <main className="min-h-screen bg-slate-50 text-gray-800 flex flex-col items-center justify-between p-5 max-w-md mx-auto relative pb-8">
       
       {/* Üst Logo ve Slogan */}
-      <div className="w-full text-center mt-4">
+      <div className="w-full text-center mt-2">
         <h1 className="text-4xl font-black text-amber-600 tracking-tight">
           Teknik-o
         </h1>
@@ -84,12 +82,12 @@ export default function CustomerHome() {
         </p>
       </div>
 
-      {/* Kategori Kartları */}
-      <div className="w-full grid grid-cols-4 gap-3 my-6">
+      {/* Kategori Kartları (2x4 Grid) */}
+      <div className="w-full grid grid-cols-4 gap-2.5 my-4">
         {categories.map((item) => (
           <div
             key={item.id}
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => !isLoggedIn && setIsModalOpen(true)}
             className="group relative aspect-square bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-slate-100 flex flex-col items-center justify-between p-2 cursor-pointer active:scale-95"
           >
             <div className="w-full h-3/4 rounded-xl overflow-hidden bg-slate-100">
@@ -106,48 +104,88 @@ export default function CustomerHome() {
         ))}
       </div>
 
-      {/* Açıklama Metni */}
-      <div className="w-full text-center px-2">
-        <p className="text-xs leading-relaxed text-slate-500 font-medium">
-          Teknik-O, yüzlerce kategorideki ev hizmetlerinden yapay zekâ destekli
-          teşhis sistemiyle sizi doğru çözüme yönlendirir. Sorununuzu anlatın,
-          tahmini maliyeti öğrenin ve güvenle hizmet alın.
-        </p>
-      </div>
+      {/* KULLANICI GİRİŞ YAPMAMIŞSA: AÇIKLAMA METNİ & KAYIT OL BUTONU */}
+      {!isLoggedIn ? (
+        <>
+          <div className="w-full text-center px-2">
+            <p className="text-xs leading-relaxed text-slate-500 font-medium">
+              Teknik-O, yüzlerce kategorideki ev hizmetlerinden yapay zekâ destekli
+              teşhis sistemiyle sizi doğru çözüme yönlendirir. Sorununuzu anlatın,
+              tahmini maliyeti öğrenin ve güvenle hizmet alın.
+            </p>
+          </div>
 
-      {/* Kayıt Ol Butonu */}
-      <div className="w-full mb-6 mt-4">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="w-full py-4 bg-amber-600 hover:bg-amber-700 active:scale-98 transition-all text-white font-bold text-base rounded-2xl shadow-lg shadow-amber-600/25"
-        >
-          Kayıt Ol
-        </button>
-      </div>
+          <div className="w-full mb-4 mt-4">
+            <button
+              onClick={() => {
+                setStep('form');
+                setIsModalOpen(true);
+              }}
+              className="w-full py-4 bg-amber-600 hover:bg-amber-700 active:scale-98 transition-all text-white font-bold text-base rounded-2xl shadow-lg shadow-amber-600/25"
+            >
+              Kayıt Ol
+            </button>
+          </div>
+        </>
+      ) : (
+        /* KULLANICI GİRİŞ YAPTIYSA: YAPAY ZEKÂ SOHBET BALONU & KARŞILAMA */
+        <div className="w-full mt-2 animate-in fade-in slide-in-from-bottom duration-500">
+          <div className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-3xl p-5 text-white shadow-xl shadow-amber-600/20 relative overflow-hidden">
+            
+            {/* AI Rozeti */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
+              <span className="text-[11px] font-bold uppercase tracking-wider bg-black/20 px-2.5 py-1 rounded-full">
+                Teknik-O AI Asistanı
+              </span>
+            </div>
 
-      {/* Açılır Kayıt & Doğrulama Modalı */}
+            {/* Karşılama Mesajı */}
+            <h3 className="text-lg font-extrabold mb-1">
+              Hoş geldiniz{formData.firstName ? `, ${formData.firstName} Bey` : ''}! 👋
+            </h3>
+            <p className="text-xs leading-relaxed opacity-95 mb-4">
+              Yüzlerce kategorideki ev hizmetlerinde hangi alanda destek almak istersiniz? Tüm ihtiyaçlarınızı veya arızanızı bana yazarak anlatabilirsiniz.
+            </p>
+
+            {/* Sohbet / Sorun Yazma Kutusu */}
+            <form onSubmit={handleAiSubmit} className="relative mt-2">
+              <textarea
+                rows={3}
+                value={aiInput}
+                onChange={(e) => setAiInput(e.target.value)}
+                placeholder="Örn: Kombiden su sızıyor ve F76 hatası veriyor, ne yapmalıyım?"
+                className="w-full p-3.5 pr-12 rounded-2xl bg-white text-slate-800 placeholder-slate-400 text-xs focus:outline-none shadow-inner resize-none font-medium"
+              ></textarea>
+              <button
+                type="submit"
+                className="absolute right-2.5 bottom-3.5 bg-amber-600 hover:bg-amber-700 text-white w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-md transition-transform active:scale-90"
+              >
+                ➔
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* AÇILIR KAYIT MODALI */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 z-50 overflow-y-auto">
           <div className="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
             
             <div className="flex justify-between items-center mb-4 border-b pb-3">
               <h2 className="text-lg font-bold text-slate-800">
-                {step === 'form' && 'Müşteri Kayıt Formu'}
-                {step === 'otp' && 'SMS Doğrulama'}
-                {step === 'success' && 'Tebrikler!'}
+                {step === 'form' ? 'Müşteri Kayıt Formu' : 'SMS Doğrulama'}
               </h2>
               <button
-                onClick={() => {
-                  setIsModalOpen(false);
-                  setStep('form');
-                }}
+                onClick={() => setIsModalOpen(false)}
                 className="text-slate-400 hover:text-slate-600 text-2xl font-bold p-1"
               >
                 ✕
               </button>
             </div>
 
-            {/* ADIM 1: DETAYLI KAYIT FORMU */}
+            {/* ADIM 1: KAYIT FORMU */}
             {step === 'form' && (
               <form onSubmit={handleFormSubmit} className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
@@ -244,7 +282,7 @@ export default function CustomerHome() {
               </form>
             )}
 
-            {/* ADIM 2: TELEFON SMS DOĞRULAMA (OTP) */}
+            {/* ADIM 2: SMS DOĞRULAMA */}
             {step === 'otp' && (
               <form onSubmit={handleVerifyOtp} className="py-4 text-center space-y-4">
                 <p className="text-xs text-slate-500">
@@ -269,30 +307,9 @@ export default function CustomerHome() {
                   type="submit"
                   className="w-full py-3.5 bg-amber-600 hover:bg-amber-700 active:scale-98 transition-all text-white font-bold text-base rounded-xl shadow-md"
                 >
-                  Hesabı Doğrula ve Tamamla
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setStep('form')}
-                  className="text-xs text-slate-400 hover:text-slate-600 underline block mx-auto mt-2"
-                >
-                  Bilgileri Düzenle
+                  Hesabı Doğrula ve Giriş Yap
                 </button>
               </form>
-            )}
-
-            {/* ADIM 3: BAŞARILI MESAJI */}
-            {step === 'success' && (
-              <div className="py-8 text-center">
-                <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-3 animate-bounce">
-                  ✓
-                </div>
-                <h3 className="text-xl font-bold text-slate-800">Üyelik Aktif Edildi!</h3>
-                <p className="text-xs text-slate-500 mt-2">
-                  Sayın <span className="font-semibold text-slate-700">{formData.firstName} {formData.lastName}</span>, Teknik-O'ya hoş geldiniz.
-                </p>
-              </div>
             )}
 
           </div>
