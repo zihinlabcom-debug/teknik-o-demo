@@ -2,8 +2,7 @@ import { GoogleGenAI, Type, Schema } from '@google/genai';
 import { NextResponse } from 'next/server';
 
 const ai = new GoogleGenAI({ 
-  apiKey: process.env.GEMINI_API_KEY,
-  vertexAI: true 
+  apiKey: process.env.GEMINI_API_KEY 
 });
 
 const responseSchema: Schema = {
