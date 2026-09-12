@@ -18,6 +18,7 @@ export default function CustomerHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState<'form' | 'otp'>('form');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false); // SSR uyumu için
 
   // Müşteri Form Verileri
   const [formData, setFormData] = useState({
@@ -61,6 +62,20 @@ export default function CustomerHome() {
     { id: 8, name: 'Çilingir', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&auto=format&fit=crop&q=80' },
   ];
 
+  // Sayfa ilk açıldığında oturum kontrolü
+  useEffect(() => {
+    const savedLoginState = localStorage.getItem('tekniko_isLoggedIn');
+    const savedUserData = localStorage.getItem('tekniko_userData');
+
+    if (savedLoginState === 'true') {
+      setIsLoggedIn(true);
+    }
+    if (savedUserData) {
+      setFormData(JSON.parse(savedUserData));
+    }
+    setIsHydrated(true);
+  }, []);
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping, diagnosis]);
@@ -84,8 +99,20 @@ export default function CustomerHome() {
 
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
+    // Oturumu kalıcı olarak kaydet
+    localStorage.setItem('tekniko_isLoggedIn', 'true');
+    localStorage.setItem('tekniko_userData', JSON.stringify(formData));
     setIsLoggedIn(true);
     setIsModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('tekniko_isLoggedIn');
+    localStorage.removeItem('tekniko_userData');
+    setIsLoggedIn(false);
+    setConfidenceScore(0);
+    setDiagnosis(null);
+    setIsServiceRequested(false);
   };
 
   // Teşhis Motoru Sohbet Mantığı
@@ -138,17 +165,29 @@ export default function CustomerHome() {
     setIsServiceRequested(true);
   };
 
+  if (!isHydrated) return null;
+
   return (
     <main className="min-h-screen bg-slate-50 text-gray-800 flex flex-col items-center justify-between p-4 max-w-md mx-auto relative pb-6">
       
       {/* Üst Logo ve Slogan */}
-      <div className="w-full text-center mt-2">
+      <div className="w-full text-center mt-2 relative">
         <h1 className="text-4xl font-black text-amber-600 tracking-tight">
           Teknik-o
         </h1>
         <p className="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">
           Teknik Hizmetin Akıllı Platformu
         </p>
+
+        {/* Giriş yapılmışsa profil/çıkış butonu */}
+        {isLoggedIn && (
+          <button
+            onClick={handleLogout}
+            className="absolute right-0 top-0 text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-2 py-1 rounded-lg transition-all"
+          >
+            Çıkış Yap
+          </button>
+        )}
       </div>
 
       {/* Kategori Kartları */}
@@ -173,6 +212,7 @@ export default function CustomerHome() {
         ))}
       </div>
 
+      {/* KULLANICI GİRİŞ YAPMADIYSA GÖSTERİLECEK HOŞ GELDİNİZ VE KAYIT EKRANI */}
       {!isLoggedIn ? (
         <>
           <div className="w-full text-center px-2">
@@ -191,12 +231,12 @@ export default function CustomerHome() {
               }}
               className="w-full py-4 bg-amber-600 hover:bg-amber-700 active:scale-98 transition-all text-white font-bold text-base rounded-2xl shadow-lg shadow-amber-600/25"
             >
-              Kayıt Ol
+              Kayıt Ol / Giriş Yap
             </button>
           </div>
         </>
       ) : (
-        /* SOHBET VE TEŞHİS MOTORU EKRANI */
+        /* SADECE GİRİŞ YAPMIŞ KULLANICILARA GÖSTERİLECEK SOHBET VE TEŞHİS MOTORU EKRANI */
         <div className="w-full mt-2 flex-1 flex flex-col justify-end">
           <div className="bg-white border border-slate-100 rounded-3xl p-4 shadow-xl flex flex-col h-[440px] justify-between">
             
@@ -205,7 +245,9 @@ export default function CustomerHome() {
               <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                  <span className="text-xs font-bold text-slate-700">Teknik-O Teşhis Motoru</span>
+                  <span className="text-xs font-bold text-slate-700">
+                    Hoş Geldin, {formData.firstName || 'Müşteri'}
+                  </span>
                 </div>
                 <span className="text-[11px] font-extrabold text-amber-600">
                   Güven: %{confidenceScore}
