@@ -1,6 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
+interface Message {
+  id: number;
+  sender: 'ai' | 'user';
+  text: string;
+}
 
 export default function CustomerHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,11 +24,19 @@ export default function CustomerHome() {
     phone: '',
   });
 
-  // SMS Doğrulama Kodu (4 haneli test kodu)
   const [otpCode, setOtpCode] = useState(['', '', '', '']);
 
-  // Yapay Zekâ İstemci Mesajı
+  // Canlı Sohbet Mesajları
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 1,
+      sender: 'ai',
+      text: 'Yüzlerce kategorideki ev hizmetlerinde hangi alanda destek almak istersiniz? Tüm ihtiyaçlarınızı veya arızanızı bana yazarak anlatabilirsiniz.',
+    },
+  ]);
   const [aiInput, setAiInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { id: 1, name: 'Kombi', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=200&auto=format&fit=crop&q=80' },
@@ -35,13 +49,16 @@ export default function CustomerHome() {
     { id: 8, name: 'Çilingir', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&auto=format&fit=crop&q=80' },
   ];
 
-  // Form Gönderimi ➔ SMS Adımına Geçiş
+  // Otomatik alt mesaja kaydırma
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isTyping]);
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStep('otp');
   };
 
-  // OTP Kutuları İçi Değişim
   const handleOtpChange = (index: number, value: string) => {
     if (value.length > 1) return;
     const newOtp = [...otpCode];
@@ -54,23 +71,41 @@ export default function CustomerHome() {
     }
   };
 
-  // SMS Kodunu Doğrulama & Giriş Yapma
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoggedIn(true);
     setIsModalOpen(false);
   };
 
-  // AI Mesaj Gönderimi
+  // Dinamik Yapay Zekâ Mesaj Akışı
   const handleAiSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!aiInput.trim()) return;
-    alert(`Talebiniz Yapay Zekaya İletildi: "${aiInput}"`);
+
+    const userText = aiInput;
+    const userMsg: Message = { id: Date.now(), sender: 'user', text: userText };
+    setMessages((prev) => [...prev, userMsg]);
     setAiInput('');
+    setIsTyping(true);
+
+    // Yapay Zekâ Cevap Simülasyonu
+    setTimeout(() => {
+      let aiResponse = "Anladım, talebinizle ilgili en uygun uzman teknisyenimizi yönlendirmek için kaydınızı alıyorum. Cihazın markasını veya ek detayları paylaşmak ister misiniz?";
+      
+      const lower = userText.toLowerCase();
+      if (lower.includes('kombi') || lower.includes('su') || lower.includes('petek')) {
+        aiResponse = "Kombi / Isıtma sisteminizdeki arıza tespiti için uzman teknisyenimiz hazırlanıyor. Dilerseniz arızanın fotoğrafını çekip gönderebilir veya servis randevusu oluşturabilirsiniz.";
+      } else if (lower.includes('klima') || lower.includes('soğutmuyor')) {
+        aiResponse = "Klima bakım ve arıza servis talebinizi aldım. En yakın lokasyondaki usta iletişime geçecektir.";
+      }
+
+      setMessages((prev) => [...prev, { id: Date.now() + 1, sender: 'ai', text: aiResponse }]);
+      setIsTyping(false);
+    }, 1200);
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-gray-800 flex flex-col items-center justify-between p-5 max-w-md mx-auto relative pb-8">
+    <main className="min-h-screen bg-slate-50 text-gray-800 flex flex-col items-center justify-between p-4 max-w-md mx-auto relative pb-6">
       
       {/* Üst Logo ve Slogan */}
       <div className="w-full text-center mt-2">
@@ -82,8 +117,8 @@ export default function CustomerHome() {
         </p>
       </div>
 
-      {/* Kategori Kartları (2x4 Grid) */}
-      <div className="w-full grid grid-cols-4 gap-2.5 my-4">
+      {/* Kategori Kartları */}
+      <div className="w-full grid grid-cols-4 gap-2.5 my-3">
         {categories.map((item) => (
           <div
             key={item.id}
@@ -104,7 +139,7 @@ export default function CustomerHome() {
         ))}
       </div>
 
-      {/* KULLANICI GİRİŞ YAPMAMIŞSA: AÇIKLAMA METNİ & KAYIT OL BUTONU */}
+      {/* KULLANICI GİRİŞ YAPMAMIŞSA */}
       {!isLoggedIn ? (
         <>
           <div className="w-full text-center px-2">
@@ -128,42 +163,71 @@ export default function CustomerHome() {
           </div>
         </>
       ) : (
-        /* KULLANICI GİRİŞ YAPTIYSA: YAPAY ZEKÂ SOHBET BALONU & KARŞILAMA */
-        <div className="w-full mt-2 animate-in fade-in slide-in-from-bottom duration-500">
-          <div className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-3xl p-5 text-white shadow-xl shadow-amber-600/20 relative overflow-hidden">
+        /* CANLI VE DİNAMİK YAPAY ZEKÂ SOHBET ALANI */
+        <div className="w-full mt-2 flex-1 flex flex-col justify-end">
+          <div className="bg-white border border-slate-100 rounded-3xl p-4 shadow-xl flex flex-col h-[340px] justify-between">
             
-            {/* AI Rozeti */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
-              <span className="text-[11px] font-bold uppercase tracking-wider bg-black/20 px-2.5 py-1 rounded-full">
-                Teknik-O AI Asistanı
+            {/* Sohbet Başlığı */}
+            <div className="flex items-center justify-between border-b pb-2 mb-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                <span className="text-xs font-bold text-slate-700">Teknik-O AI Asistanı</span>
+              </div>
+              <span className="text-[10px] bg-amber-100 text-amber-700 font-bold px-2 py-0.5 rounded-full">
+                Canlı Destek
               </span>
             </div>
 
-            {/* Karşılama Mesajı */}
-            <h3 className="text-lg font-extrabold mb-1">
-              Hoş geldiniz{formData.firstName ? `, ${formData.firstName} Bey` : ''}! 👋
-            </h3>
-            <p className="text-xs leading-relaxed opacity-95 mb-4">
-              Yüzlerce kategorideki ev hizmetlerinde hangi alanda destek almak istersiniz? Tüm ihtiyaçlarınızı veya arızanızı bana yazarak anlatabilirsiniz.
-            </p>
+            {/* Mesaj Listesi (Akış Alanı) */}
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1 text-xs">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[85%] p-3 rounded-2xl leading-relaxed ${
+                      msg.sender === 'user'
+                        ? 'bg-amber-600 text-white rounded-br-none font-medium'
+                        : 'bg-slate-100 text-slate-800 rounded-bl-none font-medium'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
 
-            {/* Sohbet / Sorun Yazma Kutusu */}
-            <form onSubmit={handleAiSubmit} className="relative mt-2">
-              <textarea
-                rows={3}
+              {/* AI Yazıyor İndikatörü */}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-slate-100 text-slate-400 p-3 rounded-2xl rounded-bl-none text-xs flex items-center gap-1">
+                    <span>Yapay zekâ yanıt hazırlıyor</span>
+                    <span className="animate-bounce">.</span>
+                    <span className="animate-bounce delay-100">.</span>
+                    <span className="animate-bounce delay-200">.</span>
+                  </div>
+                </div>
+              )}
+              <div ref={chatEndRef} />
+            </div>
+
+            {/* Mesaj Yazma Formu */}
+            <form onSubmit={handleAiSubmit} className="relative mt-3 pt-2 border-t flex gap-2">
+              <input
+                type="text"
                 value={aiInput}
                 onChange={(e) => setAiInput(e.target.value)}
-                placeholder="Örn: Kombiden su sızıyor ve F76 hatası veriyor, ne yapmalıyım?"
-                className="w-full p-3.5 pr-12 rounded-2xl bg-white text-slate-800 placeholder-slate-400 text-xs focus:outline-none shadow-inner resize-none font-medium"
-              ></textarea>
+                placeholder="Arızanızı veya ihtiyacınızı yazın..."
+                className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs focus:outline-none focus:border-amber-600 font-medium"
+              />
               <button
                 type="submit"
-                className="absolute right-2.5 bottom-3.5 bg-amber-600 hover:bg-amber-700 text-white w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm shadow-md transition-transform active:scale-90"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-4 rounded-xl font-bold text-sm shadow-md transition-transform active:scale-90 flex items-center justify-center"
               >
                 ➔
               </button>
             </form>
+
           </div>
         </div>
       )}
