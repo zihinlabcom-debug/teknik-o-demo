@@ -18,7 +18,7 @@ export default function CustomerHome() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [step, setStep] = useState<'form' | 'otp'>('form');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isHydrated, setIsHydrated] = useState(false); // SSR uyumu için
+  const [isHydrated, setIsHydrated] = useState(false);
 
   // Müşteri Form Verileri
   const [formData, setFormData] = useState({
@@ -99,7 +99,6 @@ export default function CustomerHome() {
 
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    // Oturumu kalıcı olarak kaydet
     localStorage.setItem('tekniko_isLoggedIn', 'true');
     localStorage.setItem('tekniko_userData', JSON.stringify(formData));
     setIsLoggedIn(true);
@@ -115,35 +114,67 @@ export default function CustomerHome() {
     setIsServiceRequested(false);
   };
 
-  // Teşhis Motoru Sohbet Mantığı
-  const handleAiSubmit = (e: React.FormEvent) => {
+  // CANLI GERÇEK GEMINI API SOHBET FONKSİYONU
+  const handleAiSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!aiInput.trim() || diagnosis) return;
+    if (!aiInput.trim() || diagnosis || isTyping) return;
 
     const userText = aiInput;
     const userMsg: Message = { id: Date.now(), sender: 'user', text: userText };
+    
     setMessages((prev) => [...prev, userMsg]);
     setAiInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      let currentScore = confidenceScore + 40;
-      let reply = "Detayları inceliyorum. Cihaz ekranda herhangi bir hata kodu gösteriyor mu veya kıvılcım sesi geliyor mu?";
+    try {
+      const historyForApi = messages.map((m) => ({
+        role: m.sender === 'user' ? 'user' : 'model',
+        parts: [{ text: m.text }],
+      }));
 
-      if (currentScore >= 75) {
-        currentScore = 76;
-        reply = "Gerekli tüm bilgileri doğruladım. Cihazınızdaki arıza teşhisi ve maliyet tahmini netleşmiştir.";
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          history: historyForApi,
+          userMessage: userText,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setConfidenceScore(data.currentConfidenceScore);
+
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, sender: 'ai', text: data.replyMessage },
+      ]);
+
+      if (data.isDiagnosisComplete && data.diagnosisDetails) {
         setDiagnosis({
-          primaryFault: "Ateşleme Arızası",
-          confidenceScore: 76,
-          estimatedCost: 3400,
+          primaryFault: data.diagnosisDetails.primaryFault,
+          confidenceScore: data.currentConfidenceScore,
+          estimatedCost: data.diagnosisDetails.estimatedCost,
         });
       }
 
-      setConfidenceScore(currentScore);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, sender: 'ai', text: reply }]);
+    } catch (error) {
+      console.error(error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          sender: 'ai',
+          text: 'Üzgünüm, şu an bir aksaklık yaşandı. Lütfen tekrar dener misiniz?',
+        },
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 1200);
+    }
   };
 
   // İptal Etme İşlemi
@@ -179,7 +210,6 @@ export default function CustomerHome() {
           Teknik Hizmetin Akıllı Platformu
         </p>
 
-        {/* Giriş yapılmışsa profil/çıkış butonu */}
         {isLoggedIn && (
           <button
             onClick={handleLogout}
@@ -254,7 +284,6 @@ export default function CustomerHome() {
                 </span>
               </div>
               
-              {/* Progress Bar */}
               <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                 <div
                   className={`h-full transition-all duration-500 ${
@@ -333,7 +362,6 @@ export default function CustomerHome() {
                     <div className="text-xl font-black text-white">{diagnosis.estimatedCost.toLocaleString('tr-TR')} TL</div>
                   </div>
 
-                  {/* Eylem Butonları */}
                   {!isServiceRequested ? (
                     <div className="grid grid-cols-2 gap-2">
                       <button
