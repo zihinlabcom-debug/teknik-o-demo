@@ -1,9 +1,8 @@
 import { GoogleGenAI, Type, Schema } from '@google/genai';
 import { NextResponse } from 'next/server';
 
-const ai = new GoogleGenAI({ 
-  apiKey: process.env.GEMINI_API_KEY 
-});
+const apiKey = process.env.GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const responseSchema: Schema = {
   type: Type.OBJECT,
@@ -40,7 +39,21 @@ const responseSchema: Schema = {
 
 export async function POST(req: Request) {
   try {
-    const { history, userMessage } = await req.json();
+    if (!ai) {
+      return NextResponse.json(
+        { error: 'GEMINI_API_KEY ortam değişkeni (env) tanımlı değil.' },
+        { status: 500 }
+      );
+    }
+
+    const { history = [], userMessage } = await req.json();
+
+    if (!userMessage) {
+      return NextResponse.json(
+        { error: 'Mesaj alanı boş olamaz.' },
+        { status: 400 }
+      );
+    }
 
     const systemInstruction = `
 Sen Teknik-O platformunun yapay zekâlı teknik teşhis asistanısın. 
@@ -54,12 +67,26 @@ KURALLAR:
 5. Aşırı genel sorular sorma. Cihazın markası, ekrandaki hata kodları, sesler, sızıntılar veya göstergeler gibi spesifik detayları sorgula.
 `;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
-      contents: [
-        ...history,
-        { role: 'user', parts: [{ text: userMessage }] }
+    // History verisini formatla
+    const formattedHistory = history.map((item: { role: string; text: unknown }) => ({
+      role: item.role === 'assistant' ? 'model' : item.role,
+      parts: [
+        {
+          text: typeof item.text === 'object' ? JSON.stringify(item.text) : String(item.text),
+        },
       ],
+    }));
+
+    // İçerik dizisini oluştur (Son kullanıcı mesajı en sona eklenir)
+    const contents = [
+      ...formattedHistory,
+      { role: 'user', parts: [{ text: userMessage }] },
+    ];
+
+    // Model çağrısı: model ismi 'gemini-1.5-flash' olarak güncellendi
+    const response = await ai.models.generateContent({
+      model: 'gemini-1.5-flash',
+      contents,
       config: {
         systemInstruction,
         responseMimeType: 'application/json',
@@ -76,10 +103,12 @@ KURALLAR:
     const parsedData = JSON.parse(resultText);
     return NextResponse.json(parsedData);
 
-  } catch (error: any) {
-    console.error('Gemini API Hatası:', error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Bilinmeyen bir hata oluştu.';
+    console.error('Teknik-O Teşhis Motoru Hatası:', error);
+
     return NextResponse.json(
-      { error: 'Teşhis motoru yanıt veremedi.', details: error.message },
+      { error: 'Teşhis motoru yanıt veremedi.', details: errorMessage },
       { status: 500 }
     );
   }
