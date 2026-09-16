@@ -53,12 +53,12 @@ export default function UstaPanelFixed() {
         <div className="max-w-3xl mx-auto">
           <header className="flex justify-between items-center mb-6 bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-700/50">
             <div>
-              <h1 className="text-lg font-bold text-[#D97724]">Teknik-O Usta Paneli</h1>
+              <h1 className="text-lg font-bold text-[#D97724]">TEKNİK-O Usta Paneli</h1>
               <p className="text-xs text-slate-400">Bölge: Bursa / Nilüfer</p>
             </div>
             <button 
               onClick={() => { setStep("home"); setJobStatus("pool"); setCustomerApproved(null); setSystemCalculatedPrice(null); }}
-              className="text-xs text-red-400 font-medium hover:bg-red-500/10 px-3 py-1.5 rounded-lg transition"
+              className="text-xs text-red-400 font-medium hover:bg-red-500/10 px-3 py-1.5 rounded-lg transition cursor-pointer"
             >
               Çıkış Yap
             </button>
@@ -82,7 +82,7 @@ export default function UstaPanelFixed() {
                       setSystemCalculatedPrice(null); 
                       setCustomerApproved(null); 
                     }}
-                    className="p-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 transition flex items-center justify-center text-xs font-bold"
+                    className="p-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 transition flex items-center justify-center text-xs font-bold cursor-pointer"
                   >
                     ←
                   </button>
@@ -122,7 +122,7 @@ export default function UstaPanelFixed() {
                       <div className="flex gap-3 pt-2">
                         <button 
                           onClick={() => { setJobStatus("accepted"); setSuccessMessage("İş kabul edildi. Müşteri adresi açıldı."); }}
-                          className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md"
+                          className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md cursor-pointer"
                         >
                           Kabul Et
                         </button>
@@ -131,7 +131,7 @@ export default function UstaPanelFixed() {
                             setPoolJobs(poolJobs.filter(j => j.id !== job.id));
                             setSuccessMessage("İş reddedildi.");
                           }}
-                          className="px-4 py-2.5 border border-slate-700 text-slate-300 hover:bg-slate-800 font-semibold rounded-xl transition text-xs"
+                          className="px-4 py-2.5 border border-slate-700 text-slate-300 hover:bg-slate-800 font-semibold rounded-xl transition text-xs cursor-pointer"
                         >
                           Reddet
                         </button>
@@ -153,7 +153,7 @@ export default function UstaPanelFixed() {
                         }]);
                         setSuccessMessage("Havuz yenilendi.");
                       }}
-                      className="bg-[#D97724] hover:bg-[#c3671c] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm"
+                      className="bg-[#D97724] hover:bg-[#c3671c] text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm cursor-pointer"
                     >
                       Havuzu Yenile
                     </button>
@@ -177,7 +177,7 @@ export default function UstaPanelFixed() {
                       <button
                         key={idx}
                         onClick={() => setSelectedSlot(slot)}
-                        className={`p-2.5 rounded-xl text-xs font-bold border transition ${selectedSlot === slot ? 'bg-[#D97724] text-white border-[#D97724] shadow-md' : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-[#D97724]'}`}
+                        className={`p-2.5 rounded-xl text-xs font-bold border transition cursor-pointer ${selectedSlot === slot ? 'bg-[#D97724] text-white border-[#D97724] shadow-md' : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-[#D97724]'}`}
                       >
                         {slot}
                       </button>
@@ -188,7 +188,7 @@ export default function UstaPanelFixed() {
                 <button
                   disabled={!selectedSlot}
                   onClick={() => { setJobStatus("scheduled"); setSuccessMessage(`Randevu ${selectedSlot} için onaylandı!`); }}
-                  className={`w-full py-3 rounded-xl text-xs font-bold transition shadow-md ${selectedSlot ? 'bg-[#D97724] hover:bg-[#c3671c] text-white' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}
+                  className={`w-full py-3 rounded-xl text-xs font-bold transition shadow-md ${selectedSlot ? 'bg-[#D97724] hover:bg-[#c3671c] text-white cursor-pointer' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}
                 >
                   Randevuyu Onayla ve Müşteriye Bildir
                 </button>
@@ -224,7 +224,7 @@ export default function UstaPanelFixed() {
 
                 <button 
                   onClick={() => { setJobStatus("in_progress"); setSuccessMessage("İş başlama konumu aktif."); }}
-                  className="w-full bg-[#0E7490] hover:bg-[#0b5c73] text-white font-bold py-3 rounded-xl text-xs transition mt-2 shadow-md"
+                  className="w-full bg-[#0E7490] hover:bg-[#0b5c73] text-white font-bold py-3 rounded-xl text-xs transition mt-2 shadow-md cursor-pointer"
                 >
                   Adrese Vardım / İşe Başla
                 </button>
@@ -239,14 +239,14 @@ export default function UstaPanelFixed() {
 
                 <button 
                   onClick={() => setJobStatus("extra_requested")}
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-md"
+                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
                 >
                   ⚠️ Ekstra İş / Parça Talebi Oluştur
                 </button>
 
                 <button 
                   onClick={() => { setJobStatus("completed"); setSuccessMessage("İş başarıyla tamamlandı!"); }}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-md"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
                 >
                   ✅ İşi Sorunsuz Tamamla
                 </button>
@@ -285,7 +285,7 @@ export default function UstaPanelFixed() {
                         }
                         setSystemCalculatedPrice("1.250 TL");
                       }}
-                      className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-2.5 rounded-lg text-xs transition shadow-sm"
+                      className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-2.5 rounded-lg text-xs transition shadow-sm cursor-pointer"
                     >
                       Sisteme Gönder ve Fiyat Analizi Üret
                     </button>
@@ -302,7 +302,7 @@ export default function UstaPanelFixed() {
                             const res = window.confirm("Müşteri ekstra ücreti onaylıyor mu?");
                             setCustomerApproved(res);
                           }}
-                          className="w-full bg-[#0E7490] hover:bg-[#0b5c73] text-white font-bold py-2.5 rounded-lg text-xs transition"
+                          className="w-full bg-[#0E7490] hover:bg-[#0b5c73] text-white font-bold py-2.5 rounded-lg text-xs transition cursor-pointer"
                         >
                           Müşteriye Onay Gönder
                         </button>
@@ -313,7 +313,7 @@ export default function UstaPanelFixed() {
                           <p>🎉 Müşteri onayladı!</p>
                           <button 
                             onClick={() => { setJobStatus("in_progress"); setSuccessMessage("İşe devam edebilirsiniz."); }}
-                            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-xs"
+                            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-xs cursor-pointer"
                           >
                             İşe Geri Dön
                           </button>
@@ -325,7 +325,7 @@ export default function UstaPanelFixed() {
                           <p>❌ İşlem sonlandırıldı.</p>
                           <button 
                             onClick={() => { setJobStatus("pool"); setCustomerApproved(null); setExtraReason(""); setSystemCalculatedPrice(null); }}
-                            className="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded-lg text-xs"
+                            className="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded-lg text-xs cursor-pointer"
                           >
                             Havuza Geri Dön
                           </button>
@@ -343,7 +343,7 @@ export default function UstaPanelFixed() {
                 <h3 className="text-lg font-bold text-white">İş Başarıyla Tamamlandı!</h3>
                 <button 
                   onClick={() => { setJobStatus("pool"); setSuccessMessage(""); setSystemCalculatedPrice(null); }}
-                  className="bg-[#D97724] hover:bg-[#c3671c] text-white font-bold px-6 py-2.5 rounded-xl text-xs shadow-md"
+                  className="bg-[#D97724] hover:bg-[#c3671c] text-white font-bold px-6 py-2.5 rounded-xl text-xs shadow-md cursor-pointer"
                 >
                   Yeni İş Bekle (Havuza Dön)
                 </button>
@@ -357,40 +357,51 @@ export default function UstaPanelFixed() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-900 text-slate-100 flex items-center justify-center p-4 font-sans">
-      <div className="w-full max-w-md bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-700/50 flex flex-col items-center p-6 text-center">
+    <main className="min-h-screen bg-slate-900 text-slate-100 flex items-center justify-center p-4 font-sans relative overflow-x-hidden">
+      <div className="w-full max-w-md bg-slate-800 rounded-3xl shadow-2xl border border-slate-700/50 flex flex-col items-center p-6 text-center my-auto">
         
-        <div className="mt-4 mb-6">
-          <h1 className="text-3xl font-black tracking-tight">
-            <span className="text-[#D97724]">Teknik</span>
+        <div className="mt-2 mb-4">
+          <h1 className="text-5xl font-black tracking-tight uppercase">
+            <span className="text-[#D97724]">TEKNİK</span>
             <span className="text-slate-500">-</span>
-            <span className="text-[#0E7490]">o</span>
+            <span className="text-[#0E7490]">O</span>
           </h1>
-          <p className="text-[11px] font-bold tracking-widest text-slate-400 uppercase mt-1">Usta Paneli</p>
+          <p className="text-sm font-bold tracking-widest text-slate-300 uppercase mt-2">Usta Paneli</p>
+          <p className="text-[11px] text-slate-400 mt-1 px-2">Tüm emekleriniz ve kazancınız TEKNİK-O güvencesi altında</p>
         </div>
 
-        <div className="grid grid-cols-4 gap-3 w-full mb-6">
+        <div className="grid grid-cols-4 gap-2.5 w-full mb-5">
           {categories.map((cat, idx) => (
-            <div key={idx} className="bg-slate-900/60 border border-slate-700/50 rounded-2xl p-3 flex flex-col items-center justify-center hover:border-[#D97724] transition shadow-sm">
-              <span className="text-2xl mb-1">{cat.icon}</span>
-              <span className="text-[11px] font-medium text-slate-300">{cat.name}</span>
+            <div key={idx} className="bg-slate-900/60 border border-slate-700/50 rounded-2xl p-2.5 flex flex-col items-center justify-center hover:border-[#D97724] transition shadow-sm">
+              <span className="text-xl mb-1">{cat.icon}</span>
+              <span className="text-[10px] font-medium text-slate-300">{cat.name}</span>
             </div>
           ))}
         </div>
 
         <button 
+          type="button"
           onClick={() => setShowAuthModal(true)}
-          className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-3.5 rounded-2xl transition shadow-lg text-sm"
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            setShowAuthModal(true);
+          }}
+          className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-3.5 rounded-2xl transition shadow-lg text-sm cursor-pointer select-none touch-manipulation relative z-10"
         >
           Kayıt Ol / Giriş Yap
         </button>
 
         {showAuthModal && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-slate-800 border border-slate-700 w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl text-left relative">
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-[9999] overflow-y-auto">
+            <div className="bg-slate-800 border border-slate-700 w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl p-6 shadow-2xl text-left relative my-auto touch-auto">
               <button 
+                type="button"
                 onClick={() => setShowAuthModal(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold"
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setShowAuthModal(false);
+                }}
+                className="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold p-3 z-[10000] cursor-pointer select-none touch-manipulation"
               >
                 ✕
               </button>
@@ -422,14 +433,14 @@ export default function UstaPanelFixed() {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold uppercase text-slate-400 mb-2">Uzmanlık Alanları</label>
-                      <div className="grid grid-cols-2 gap-2 bg-slate-900 p-3 rounded-xl border border-slate-700">
+                      <div className="grid grid-cols-2 gap-2 bg-slate-900 p-3 rounded-xl border border-slate-700 max-h-36 overflow-y-auto">
                         {availableProfessions.map((prof, i) => (
                           <label key={i} className="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer">
                             <input 
                               type="checkbox" 
                               checked={selectedProfessions.includes(prof)}
                               onChange={() => toggleProfession(prof)}
-                              className="rounded text-[#D97724] w-4 h-4 bg-slate-800 border-slate-700"
+                              className="rounded text-[#D97724] w-4 h-4 bg-slate-800 border-slate-700 cursor-pointer"
                             />
                             <span>{prof}</span>
                           </label>
@@ -448,14 +459,25 @@ export default function UstaPanelFixed() {
                   <input type="password" required className="w-full p-2.5 text-sm bg-slate-900 border border-slate-700 text-white rounded-xl outline-none" placeholder="••••••••" />
                 </div>
 
-                <button type="submit" className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-3 rounded-xl text-sm transition shadow-md mt-2">
+                <button 
+                  type="submit" 
+                  className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-bold py-3 rounded-xl text-sm transition shadow-md mt-2 cursor-pointer select-none touch-manipulation"
+                >
                   {isLogin ? "Giriş Yap" : "Kayıt Ol ve Havuza Katıl"}
                 </button>
               </form>
 
               <div className="mt-4 text-center text-xs text-slate-400">
                 {isLogin ? "Hesabınız yok mu?" : "Zaten üye misiniz?"}
-                <button onClick={() => setIsLogin(!isLogin)} className="ml-1 text-[#D97724] font-bold hover:underline">
+                <button 
+                  type="button" 
+                  onClick={() => setIsLogin(!isLogin)} 
+                  onTouchEnd={(e) => {
+                    e.preventDefault();
+                    setIsLogin(!isLogin);
+                  }}
+                  className="ml-1 text-[#D97724] font-bold hover:underline cursor-pointer select-none touch-manipulation"
+                >
                   {isLogin ? "Kayıt Ol" : "Giriş Yap"}
                 </button>
               </div>
