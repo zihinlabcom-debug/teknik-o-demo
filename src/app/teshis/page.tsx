@@ -40,106 +40,116 @@ export default function TeshisPage() {
 
     const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    setMessages([
+    const initialMessages: Message[] = [
       {
         id: '1',
         sender: 'user',
         text: initialProblem,
         time: now
-      },
-      {
-        id: '2',
-        sender: 'ai',
-        text: `Sorununuzu aldım: "${initialProblem}". Yapay zekâ algoritmamız geçmiş servis verileriyle kıyaslayarak teşhis koyuyor...`,
-        time: now
       }
-    ]);
+    ];
 
-    runAIDiagnostic(initialProblem);
+    setMessages(initialMessages);
+    callGeminiAPI(initialProblem, initialMessages);
   }, []);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isAnalyzing]);
 
-  // AKILLI YAPAY ZEKÂ ANALİZİ
-  const runAIDiagnostic = (problemText: string) => {
+  // GERÇEK GEMINI API BAĞLANTISI
+  const callGeminiAPI = async (userMessageText: string, currentMessages: Message[]) => {
     setIsAnalyzing(true);
-    setAnalysisResult(null);
+    try {
+      // Backend route.ts'in beklediği formatta geçmişi hazırla
+      const history = currentMessages.slice(0, -1).map(msg => ({
+        role: msg.sender === 'ai' ? 'assistant' : 'user',
+        content: msg.text
+      }));
 
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      const lower = problemText.toLowerCase();
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userMessage: userMessageText,
+          history: history
+        }),
+      });
 
-      let result = {
-        possibleCause: 'Genel Arıza Teşhisi ve Bakım İhtiyacı',
-        estimatedCost: '500 TL - 900 TL',
-        urgency: 'Normal',
-        confidence: '%88'
-      };
+      const data = await response.json();
 
-      if (lower.includes('kombi') || lower.includes('su') || lower.includes('basınç') || lower.includes('petek')) {
-        result = {
-          possibleCause: 'Basınç Sensörü Arızası / Doldurma Musluğu veya İç Filtre Tıkanıklığı',
-          estimatedCost: '850 TL - 1.450 TL',
-          urgency: 'Orta (24 saat içinde müdahale önerilir)',
-          confidence: '%94'
-        };
-      } else if (lower.includes('klima') || lower.includes('soğutma') || lower.includes('gaz')) {
-        result = {
-          possibleCause: 'Klima Gaz Eksikliği / Fan Motoru Kondansatör Arızası',
-          estimatedCost: '950 TL - 1.800 TL',
-          urgency: 'Düşük',
-          confidence: '%91'
-        };
-      } else if (lower.includes('boya') || lower.includes('badana') || lower.includes('duvar')) {
-        result = {
-          possibleCause: 'Yüzey Hazırlığı + 2 Kat Silinebilir Plastik/Akrilik Boya Uygulaması',
-          estimatedCost: '2.500 TL - 4.500 TL',
-          urgency: 'Planlı Hizmet',
-          confidence: '%96'
-        };
+      if (!response.ok) {
+        throw new Error(data.details || data.error || 'API yanıt veremedi.');
       }
 
-      setAnalysisResult(result);
+      // Yanıtı işle
+      const aiReplyText = data.replyMessage || 'Detayları aldım, süreci inceliyorum.';
+      const confidenceScore = data.currentConfidenceScore || 50;
 
-      setMessages(prev => [
-        ...prev,
-        {
-          id: Date.now().toString(),
-          sender: 'ai',
-          text: `Teşhis tamamlandı! Tahmini arıza: **${result.possibleCause}**. Bu işlem için garanti edilen maksimum tavan fiyat **${result.estimatedCost}** olarak belirlenmiştir. Onaylı usta yönlendirelim mi?`,
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        }
-      ]);
-    }, 2000);
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const aiMsg: Message = {
+        id: Date.now().toString(),
+        sender: 'ai',
+        text: aiReplyText,
+        time: now
+      };
+
+      setMessages(prev => [...prev, aiMsg]);
+
+      // Eğer teşhis tamamlandıysa veya güven skoru yüksekse sonuç kartını güncelle
+      if (data.isDiagnosisComplete && data.diagnosisDetails) {
+        setAnalysisResult({
+          possibleCause: data.diagnosisDetails.primaryFault || 'Teknik Arıza Tespiti',
+          estimatedCost: `${data.diagnosisDetails.estimatedCost || 1000} TL`,
+          urgency: 'Orta / Müdahale Önerilir',
+          confidence: `%${confidenceScore}`
+        });
+      } else {
+        // Ara güven skoru kartı
+        setAnalysisResult({
+          possibleCause: 'Arıza analizi derinleştiriliyor...',
+          estimatedCost: 'Net fiyat için soru yanıtlanıyor',
+          urgency: 'Analiz Aşamasında',
+          confidence: `%${confidenceScore}`
+        });
+      }
+
+    } catch (error) {
+      console.error('Teşhis Hatası:', error);
+      const errorMsg: Message = {
+        id: Date.now().toString(),
+        sender: 'ai',
+        text: 'Bağlantı sırasında anlık bir sorun oluştu, lütfen sorunuzu tekrar yazın.',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputText.trim()) return;
+    if (!inputText.trim() || isAnalyzing) return;
 
-    const userMsg: Message = {
-      id: Date.now().toString(),
-      sender: 'user',
-      text: inputText,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-
-    setMessages(prev => [...prev, userMsg]);
     const userQuery = inputText;
     setInputText('');
 
-    // Dinamik Cevap
-    setTimeout(() => {
-      const aiReply: Message = {
-        id: (Date.now() + 1).toString(),
-        sender: 'ai',
-        text: `"${userQuery}" notunuz teşhis dosyasına eklendi. Bölgenizdeki en yüksek puana sahip sertifikalı teknisyene iş emri iletiliyor.`,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-      setMessages(prev => [...prev, aiReply]);
-    }, 1000);
+    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const userMsg: Message = {
+      id: Date.now().toString(),
+      sender: 'user',
+      text: userQuery,
+      time: now
+    };
+
+    const updatedMessages = [...messages, userMsg];
+    setMessages(updatedMessages);
+
+    // Gerçek API'ye gönder
+    callGeminiAPI(userQuery, updatedMessages);
   };
 
   return (
@@ -273,7 +283,8 @@ export default function TeshisPage() {
         />
         <button
           type="submit"
-          className="w-10 h-10 bg-[#EE6C13] hover:bg-[#d85e0e] text-white rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all active:scale-95"
+          disabled={isAnalyzing}
+          className="w-10 h-10 bg-[#EE6C13] hover:bg-[#d85e0e] text-white rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all active:scale-95 disabled:opacity-50"
         >
           <Send className="w-4 h-4" />
         </button>

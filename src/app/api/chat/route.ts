@@ -9,11 +9,11 @@ const responseSchema: Schema = {
   properties: {
     replyMessage: {
       type: Type.STRING,
-      description: 'Müşteriye sorulacak yönlendirici soru veya son açıklama mesajı.',
+      description: 'Müşteriye verilecek yanıt, yönlendirici teknik soru veya açıklama. ASLA "Anlayamadım" kelimesini kullanma. Kullanıcının verdiği her kelimeyi (marka, belirti vb.) kabul et ve bir sonraki teknik soruya geç.',
     },
     currentConfidenceScore: {
       type: Type.INTEGER,
-      description: 'Arıza teşhisinin ne kadar netleştiğini belirten %0 - %100 arası güven skoru.',
+      description: 'Arıza teşhisinin netleşme oranı (%0 - %100). Kullanıcı her detay verdiğinde skoru artır (%40, %60, %85 gibi).',
     },
     isDiagnosisComplete: {
       type: Type.BOOLEAN,
@@ -41,12 +41,14 @@ export async function POST(req: Request) {
   try {
     if (!ai) {
       return NextResponse.json(
-        { error: 'GEMINI_API_KEY ortam değişkeni (env) tanımlı değil.' },
+        { error: 'GEMINI_API_KEY ortam değişkeni tanımlı değil.' },
         { status: 500 }
       );
     }
 
-    const { history = [], userMessage } = await req.json();
+    const body = await req.json();
+    const history = body.history || body.messages || [];
+    const userMessage = body.userMessage || body.message;
 
     if (!userMessage) {
       return NextResponse.json(
@@ -56,34 +58,39 @@ export async function POST(req: Request) {
     }
 
     const systemInstruction = `
-Sen Teknik-O platformunun yapay zekâlı teknik teşhis asistanısın. 
-Görevin, kullanıcının evindeki veya iş yerindeki teknik arızayı (Kombi, Klima, Tesisat, Elektrik, Beyaz Eşya vb.) mantıklı, spesifik ve dinamik sorular sorarak teşhis etmektir.
+Sen Teknik-O platformunun uzman yapay zekâlı teknik teşhis asistanısın. 
+Görevin, ev veya işyeri arızalarını (Kombi, Klima, Tesisat vb.) adım adım akıllı sorularla çözmektir.
 
-KURALLAR:
-1. Kullanıcının verdiği her bilgiye göre arızayı daraltacak spesifik ve teknik açıdan mantıklı TEK BİR SORU sor.
-2. Kullanıcının verdiği detaylara göre arıza teşhis güven skorunu (%0 - %100) güncelle.
-3. İlk mesajlarda güven skoru düşük başlasın (%20 - %40). Sorularına yanıt aldıkça ve durum netleştikçe skoru artır.
-4. Güven skoru %75 veya üzerine çıktığında "isDiagnosisComplete": true yap ve "diagnosisDetails" nesnesini (kesinleşen arıza adı ve gerçekçi TL cinsinden maliyeti) doldur.
-5. Aşırı genel sorular sorma. Cihazın markası, ekrandaki hata kodları, sesler, sızıntılar veya göstergeler gibi spesifik detayları sorgula.
+KESİN KURALLAR:
+1. ASLA "Anlayamadım", "Lütfen tekrar edin" veya "Sorunuzu anlamadım" gibi ifadeler KULLANMA. Kullanıcının yazdığı her şeyi (kısa bile olsa) doğru kabul et ve bağlama dahil et.
+2. Kullanıcı marka veya parça ismi verdiyse (Örn: "Demirdöküm nitromix" veya "Kısa süre çalışıyor"), bunu hafızanda tut ve bir sonraki mantıksal teknik soruya geç (Örn: Ekran yanıp sönüyor mu, hata kodu nedir?).
+3. Güven skorunu kullanıcı her mesaj yazdığında artır. %75'e ulaştığında teşhisi tamamla.
 `;
 
-    // History verisini formatla
-    const formattedHistory = history.map((item: { role: string; text: unknown }) => ({
-      role: item.role === 'assistant' ? 'model' : item.role,
-      parts: [
-        {
-          text: typeof item.text === 'object' ? JSON.stringify(item.text) : String(item.text),
-        },
-      ],
-    }));
+    const formattedHistory = history
+      .filter((item: { role: string; content?: string; text?: string }) => {
+        const role = item.role;
+        return (role === 'user' || role === 'assistant' || role === 'model') && (item.content || item.text || (item as any).parts);
+      })
+      .map((item: { role: string; content?: string; text?: string; parts?: any }) => {
+        let textContent = '';
+        if (item.parts && Array.isArray(item.parts)) {
+          textContent = item.parts.map((p: any) => p.text).join(' ');
+        } else {
+          textContent = String(item.content || item.text || '');
+        }
 
-    // İçerik dizisini oluştur (Son kullanıcı mesajı en sona eklenir)
+        return {
+          role: item.role === 'assistant' ? 'model' : item.role,
+          parts: [{ text: textContent }],
+        };
+      });
+
     const contents = [
       ...formattedHistory,
       { role: 'user', parts: [{ text: userMessage }] },
     ];
 
-    // Model çağrısı: model ismi 'gemini-1.5-flash' olarak güncellendi
     const response = await ai.models.generateContent({
       model: 'gemini-1.5-flash',
       contents,
@@ -91,7 +98,7 @@ KURALLAR:
         systemInstruction,
         responseMimeType: 'application/json',
         responseSchema,
-        temperature: 0.2,
+        temperature: 0.5,
       },
     });
 

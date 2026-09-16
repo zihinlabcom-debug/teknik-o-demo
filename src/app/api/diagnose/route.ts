@@ -19,10 +19,11 @@ Sen "Teknik-O" adlı profesyonel, güvenilir ve akıllı bir ev bakım ve arıza
 Kuralların:
 1. Soruları müşteriye kesinlikle tek tek sor, asla birleşik veya birden fazla soru içeren cümleler kurma.
 2. Kombi gibi markanın önemli olduğu kategorilerde ilk olarak cihazın markasını sor.
-3. Her cevapta arıza olasılıklarını güncelleyip belirsizliği en çok azaltacak sonraki tek soruyu seç.
-4. Maksimum soru sınırı 10'dur. Eğer soru sayısı 10'a ulaştıysa ve güven ("confidence") hâlâ %75'in altındaysa, daha fazla soru sorma, teşhiri sonlandır; "belirsizFiyat" alanını true yap, estimatedPrice'ı null yap ve aiText içinde müşteriye ustanın yerinde inceleme yaparak fiyat belirleyeceğini kibarca bildir.
-5. Soru sayısı 10'un altındayken güven %75'in altında kalırsa fiyat verme (estimatedPrice: null), tek bir ek soru sorarak arızayı netleştir.
-6. Güven %75 ve üzerindeyse tahmini tek fiyat sun, belirsizFiyat alanını false yap.
+3. KESİN KURAL: Aşağıdaki "Geçmiş Sohbet" geçmişini incele. Daha önce sorduğun soruları ve kullanıcının verdiği yanıtları kontrol et. Kesinlikle ama kesinlikle daha önce sorduğun bir soruyu bir daha sorma. Kullanıcı hangi bilgiyi verdiyse onu hafızanda tut ve sürekli yeni bir adım veya soru ile ilerle.
+4. Her cevapta arıza olasılıklarını güncelleyip belirsizliği en çok azaltacak sonraki tek soruyu seç.
+5. Maksimum soru sınırı 10'dur. Eğer soru sayısı 10'a ulaştıysa ve güven ("confidence") hâlâ %75'in altındaysa, daha fazla soru sorma, teşhiri sonlandır; "belirsizFiyat" alanını true yap, estimatedPrice'ı null yap ve aiText içinde müşteriye ustanın yerinde inceleme yaparak fiyat belirleyeceğini kibarca bildir.
+6. Soru sayısı 10'un altındayken güven %75'in altında kalırsa fiyat verme (estimatedPrice: null), tek bir ek soru sorarak arızayı netleştir.
+7. Güven %75 ve üzerindeyse tahmini tek fiyat sun, belirsizFiyat alanını false yap.
 
 Geçmiş Sohbet:
 ${JSON.stringify(chatHistory || [])}
@@ -39,7 +40,7 @@ Lütfen sadece geçerli bir JSON objesi döndür. Markdown blokları (\`\`\`json
     `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.5-flash', // Sizin tercih ettiğiniz orijinal isim birebir duruyor
       contents: prompt,
     });
 
@@ -80,7 +81,9 @@ Lütfen sadece geçerli bir JSON objesi döndür. Markdown blokları (\`\`\`json
     });
 
   } catch (error) {
-    console.error('AI Teşhis Hatası:', error);
+    // BURASI ÇOK ÖNEMLİ: Gerçek hatanın ne olduğunu görmek için konsola yazdırıyoruz
+    console.error('AI Teşhis Detaylı Hata:', error);
+    
     return NextResponse.json(
       { 
         aiText: 'Anlayamadım, lütfen cihazınızın markasını ve arızanızı biraz daha açıklar mısınız?', 
