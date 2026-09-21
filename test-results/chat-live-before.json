@@ -1,0 +1,187 @@
+{
+  "testedAt": "2026-09-20T16:01:25.237Z",
+  "results": [
+    {
+      "name": "Nitromix basınç sondası",
+      "route": "diagnose",
+      "expected": "available",
+      "passed": false,
+      "turns": [
+        {
+          "message": "Kombimde basınç göstergesi yanlış değer gösteriyor.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Cihazın marka ve tam model adını etikette yazdığı şekilde paylaşır mısınız?",
+            "confidence": 0,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "missing_identity",
+            "options": []
+          }
+        },
+        {
+          "message": "Marka Demirdöküm, model etikette sadece Nitromix yazıyor.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Basınç göstergesiyle ilgili sorun yaşıyorsanız, basınç sensöründe bir arıza olabilir. Ancak, sorunun kaynağını daha iyi anlamak için, kombinizin basınç değeri ne kadar ve normalde hangi aralıkta olmalı?",
+            "confidence": 0,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        },
+        {
+          "message": "Yetkili servis harici manometreyle 1,5 bar ölçtü; cihaz ekranı 0 bar gösteriyor. Su kaçağı yok.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Cihazın ekranında 0 bar gösterirken manometre ile 1,5 bar ölçülmesi, basınç sensöründe bir arıza olabileceğini gösteriyor. Ancak, bu durumu kesinleştirmek için basınç sensörünün bağlantılarını kontrol ettiniz mi?",
+            "confidence": 75,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        },
+        {
+          "message": "Servis kablo ve soketi sağlam buldu, su basınç sondasının arızalı olduğunu ölçümle doğruladı. Basınç sondası değişimi için fiyat istiyorum.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Basınç sensörünün arızalı olduğu tespit edilmiş. Ancak, fiyat bilgisi veremem. Yetkili servis ile iletişime geçmenizi öneririm.",
+            "confidence": 75,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "Katalog dışı Vaillant",
+      "route": "chat",
+      "expected": "unmapped",
+      "passed": false,
+      "turns": [
+        {
+          "message": "Vaillant ecoTEC plus kombim için elektronik kart değişim fiyatı istiyorum.",
+          "httpStatus": 200,
+          "response": {
+            "replyMessage": "Hata kodu veya belirtiler hakkında bilgi verebilir misiniz? Bu, sorunun doğru teşhis edilmesine yardımcı olacaktır.",
+            "currentConfidenceScore": 0,
+            "isDiagnosisComplete": false,
+            "diagnosisDetails": null,
+            "deterministicOMF": null,
+            "pricingStatus": "diagnosing",
+            "priceSource": null
+          }
+        },
+        {
+          "message": "Cihazın tam modeli ecoTEC plus VUW 246/5-5. Yetkili servis kart arızası tespit etti.",
+          "httpStatus": 200,
+          "response": {
+            "replyMessage": "Kart arızası ile ilgili daha fazla bilgi verebilir misiniz? Cihazda herhangi bir hata kodu veya belirti var mıydı?",
+            "currentConfidenceScore": 70,
+            "isDiagnosisComplete": false,
+            "diagnosisDetails": null,
+            "deterministicOMF": null,
+            "pricingStatus": "diagnosing",
+            "priceSource": null
+          }
+        },
+        {
+          "message": "Servis besleme ve bağlantıları kontrol etti; ana kartın arızalı olduğunu ölçümle doğruladı. Sadece bu kart için teklif istiyorum.",
+          "httpStatus": 200,
+          "response": {
+            "replyMessage": "Teklif isteği için gerekli bilgiler mevcut değil. Ancak, cihazın çalışmasıyla ilgili başka bir sorun veya belirti var mı?",
+            "currentConfidenceScore": 75,
+            "isDiagnosisComplete": false,
+            "diagnosisDetails": null,
+            "deterministicOMF": null,
+            "pricingStatus": "diagnosing",
+            "priceSource": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stokta olmayan Arçelik fan",
+      "route": "diagnose",
+      "expected": "out_of_stock",
+      "passed": false,
+      "turns": [
+        {
+          "message": "Arçelik DGK 26 H LCD kombimin fan motoru çalışmıyor.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Fan motorunun çalışmamasıyla ilgili olarak, kombinizde herhangi bir hata kodu veya uyarı ışığı var mı?",
+            "confidence": 0,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        },
+        {
+          "message": "Yetkili servis fan motorunu kontrol etti. Besleme ve kablo sağlam, fan motoru arızalı.",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Fan motorunun arızalı olduğu belirtiliyor. Ancak, fan motorunun arızalı olduğunu kesin olarak teyit etmek için, fan motorunun dönme hareketi sırasında herhangi bir ses veya titreşim var mıydı?",
+            "confidence": 75,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        },
+        {
+          "message": "Servis motorun arızalı olduğunu ölçümle kesinleştirdi, değişim gerekiyor. Fan motoru değişimi için fiyat verir misiniz?",
+          "httpStatus": 200,
+          "response": {
+            "aiText": "Fiyat bilgisi veremem. Ancak, fan motoru değişimi için yetkili servisten destek almanızı öneririm.",
+            "confidence": 0,
+            "isReadyForPrice": false,
+            "basePartPrice": 0,
+            "riskSum": 0,
+            "faultTitle": "Teşhis Süreci Devam Ediyor",
+            "estimatedPrice": null,
+            "deterministicOMF": null,
+            "priceSource": null,
+            "pricingStatus": "diagnosing",
+            "options": []
+          }
+        }
+      ]
+    }
+  ]
+}

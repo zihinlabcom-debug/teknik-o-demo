@@ -1,7 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import { DiagnosticOutcome } from '@/components/diagnostic-outcome';
+import type { Candidate } from '@/lib/diagnostic-state';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import type { PriceSource } from '@/lib/part-pricing';
 import { 
   ArrowLeft, 
   Send, 
@@ -18,48 +21,44 @@ interface Message {
   sender: 'ai' | 'user';
   text: string;
   time: string;
+  technicalSource?: { url: string; page: number } | null;
 }
 
 export default function TeshisPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
+  const stateToken = useRef<string | undefined>(undefined);
+  const [candidateProbabilities, setCandidateProbabilities] = useState<Candidate[] | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<{
     possibleCause: string;
     estimatedCost: string;
     urgency: string;
     confidence: string;
+    priceSource: PriceSource;
   } | null>(null);
 
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const initialProblem = typeof window !== 'undefined' 
-      ? localStorage.getItem('tekniko_current_problem') || 'Kombi su sızdırıyor ve basınç düşüyor.'
-      : 'Genel kontrol ve bakım';
-
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-    const initialMessages: Message[] = [
-      {
-        id: '1',
-        sender: 'user',
-        text: initialProblem,
-        time: now
-      }
-    ];
-
-    setMessages(initialMessages);
-    callGeminiAPI(initialProblem, initialMessages);
-  }, []);
-
-  useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isAnalyzing]);
 
+  useEffect(() => {
+    if (!analysisResult) return;
+    const timer = window.setTimeout(() => {
+      setAnalysisResult(null);
+      setMessages(prev => [...prev, { id: `expired-${Date.now()}`, sender: 'ai',
+        text: 'Fiyatın geçerlilik süresi doldu. Güncel fiyat için yeniden mesaj gönderin.',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
+    }, Math.max(0, Date.parse(analysisResult.priceSource.expiresAt) - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [analysisResult]);
+
   // GERÇEK GEMINI API BAĞLANTISI
-  const callGeminiAPI = async (userMessageText: string, currentMessages: Message[]) => {
+  const callGeminiAPI = useCallback(async (userMessageText: string, currentMessages: Message[]) => {
     setIsAnalyzing(true);
+    setAnalysisResult(null);
     try {
       // Backend route.ts'in beklediği formatta geçmişi hazırla
       const history = currentMessages.slice(0, -1).map(msg => ({
@@ -74,6 +73,7 @@ export default function TeshisPage() {
         },
         body: JSON.stringify({
           userMessage: userMessageText,
+          stateToken: stateToken.current,
           history: history
         }),
       });
@@ -84,6 +84,8 @@ export default function TeshisPage() {
         throw new Error(data.details || data.error || 'API yanıt veremedi.');
       }
 
+      stateToken.current = data.stateToken;
+      setCandidateProbabilities(data.assessmentComplete ? data.candidateProbabilities ?? [] : null);
       // Yanıtı işle
       const aiReplyText = data.replyMessage || 'Detayları aldım, süreci inceliyorum.';
       const confidenceScore = data.currentConfidenceScore || 50;
@@ -93,27 +95,23 @@ export default function TeshisPage() {
         id: Date.now().toString(),
         sender: 'ai',
         text: aiReplyText,
+        technicalSource: data.technicalSource,
         time: now
       };
 
       setMessages(prev => [...prev, aiMsg]);
 
       // Eğer teşhis tamamlandıysa veya güven skoru yüksekse sonuç kartını güncelle
-      if (data.isDiagnosisComplete && data.diagnosisDetails) {
+      if (data.isDiagnosisComplete && data.diagnosisDetails?.estimatedCost > 0 && data.priceSource) {
         setAnalysisResult({
           possibleCause: data.diagnosisDetails.primaryFault || 'Teknik Arıza Tespiti',
-          estimatedCost: `${data.diagnosisDetails.estimatedCost || 1000} TL`,
+          estimatedCost: `${data.diagnosisDetails.estimatedCost.toLocaleString('tr-TR')} TL`,
           urgency: 'Orta / Müdahale Önerilir',
-          confidence: `%${confidenceScore}`
+          confidence: `%${confidenceScore}`,
+          priceSource: data.priceSource,
         });
       } else {
-        // Ara güven skoru kartı
-        setAnalysisResult({
-          possibleCause: 'Arıza analizi derinleştiriliyor...',
-          estimatedCost: 'Net fiyat için soru yanıtlanıyor',
-          urgency: 'Analiz Aşamasında',
-          confidence: `%${confidenceScore}`
-        });
+        setAnalysisResult(null);
       }
 
     } catch (error) {
@@ -128,7 +126,20 @@ export default function TeshisPage() {
     } finally {
       setIsAnalyzing(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const initialProblem = localStorage.getItem('tekniko_current_problem') || 'Kombi su sızdırıyor ve basınç düşüyor.';
+    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const initialMessages: Message[] = [{ id: '1', sender: 'user', text: initialProblem, time: now }];
+
+    const timer = window.setTimeout(() => {
+      setMessages(initialMessages);
+      void callGeminiAPI(initialProblem, initialMessages);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [callGeminiAPI]);
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -210,6 +221,7 @@ export default function TeshisPage() {
               }`}
             >
               <p>{msg.text}</p>
+
               <span className="text-[9px] block mt-1 text-right text-slate-400">
                 {msg.time}
               </span>
@@ -237,7 +249,7 @@ export default function TeshisPage() {
                 Yapay Zekâ Teşhis Raporu
               </span>
               <span className="text-[10px] bg-orange-100 text-[#EE6C13] font-bold px-2 py-0.5 rounded-full">
-                {analysisResult.confidence} Güven Oranı
+                90 gün garanti
               </span>
             </div>
 
@@ -260,12 +272,18 @@ export default function TeshisPage() {
             </div>
 
             <div className="pt-1 flex items-center gap-2 text-[10px] text-slate-500">
+              <a href={analysisResult.priceSource.url} target="_blank" rel="noopener noreferrer" className="underline">
+                One Yedek Parça · {analysisResult.priceSource.sku} · {new Date(analysisResult.priceSource.checkedAt).toLocaleString('tr-TR')}
+              </a>
+            </div>
+            <div className="pt-1 flex items-center gap-2 text-[10px] text-slate-500">
               <ShieldCheck className="w-3.5 h-3.5 text-[#EE6C13]" />
               <span>Sürpriz yok: Usta bu fiyatın üzerine çıkamaz.</span>
             </div>
           </div>
         )}
 
+        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} />}
         <div ref={chatEndRef} />
       </div>
 

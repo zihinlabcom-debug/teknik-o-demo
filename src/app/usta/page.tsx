@@ -22,19 +22,19 @@ export default function UstaPanelFixed() {
   ]);
 
   const [extraReason, setExtraReason] = useState("");
-  const [uploadedPhoto, setUploadedPhoto] = useState(null);
-  const [customerApproved, setCustomerApproved] = useState(null);
-  const [systemCalculatedPrice, setSystemCalculatedPrice] = useState(null);
+  const [, setUploadedPhoto] = useState<File | null>(null);
+  const [customerApproved, setCustomerApproved] = useState<boolean | null>(null);
+  const [systemCalculatedPrice, setSystemCalculatedPrice] = useState<string | null>(null);
 
   const availableProfessions = [
     "Boya / Badana", "Su Tesisatı", "Elektrik", "Kombi / Isıtma", 
     "Temizlik", "Beyaz Eşya Tamiri", "Bahçe İşleri", "Marangoz", "Klima & Soğutma", "Çilingir"
   ];
-  const [selectedProfessions, setSelectedProfessions] = useState([]);
+  const [selectedProfessions, setSelectedProfessions] = useState<string[]>([]);
 
-  const toggleProfession = (prof) => {
+  const toggleProfession = (prof: string) => {
     if (selectedProfessions.includes(prof)) {
-      setSelectedProfessions(selectedProfessions.filter(p => p !== prof));
+      setSelectedProfessions(selectedProfessions.filter((profession) => profession !== prof));
     } else {
       setSelectedProfessions([...selectedProfessions, prof]);
     }

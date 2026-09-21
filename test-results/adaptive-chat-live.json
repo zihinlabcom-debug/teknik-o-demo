@@ -1,0 +1,367 @@
+[
+  {
+    "scenario": "Nitromix F76",
+    "message": "Demirdöküm Nitromix kombimde F76 yazıyor.",
+    "aiText": "Cihazınızdan olağan dışı ses geliyor mu?",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": []
+    },
+    "diagnosticStatus": "diagnosing",
+    "technicalSource": {
+      "title": "DemirDöküm Nitromix montaj ve bakım kılavuzu",
+      "url": "https://www.demirdokum.com.tr/downloads/products-1/nitromix-mk-0020309469-02-2557204.pdf",
+      "revision": "0020309469_02 / 31.05.2021",
+      "reviewedAt": "2026-09-21",
+      "page": 33
+    },
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 10,
+    "assessmentComplete": false,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W3sibmFtZSI6IkthYmxvIGtlc2ludGlzaSIsInByb2JhYmlsaXR5Ijo1MCwic3VwcG9ydHMiOltdLCJjb250cmFkaWN0cyI6W119LHsibmFtZSI6IlRlcm1payBrYXBhdG1hIGTDvHplbmXEn2kiLCJwcm9iYWJpbGl0eSI6NTAsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfV0sImluZm9ybWF0aW9uIjoxMCwiZmluaXNoZWQiOmZhbHNlLCJhc2tlZCI6WyJub2lzZSJdLCJldmlkZW5jZSI6W3sicXVvdGUiOiJGNzYiLCJxdWVzdGlvbiI6ImluaXRpYWwifV19LCJleHBpcmVzIjoxNzkwMDkzODQ0MTAyfQ._fJPKZB7BEzrscnbfd673E-9jjvkQs9dEJg_uciq1Tc"
+  },
+  {
+    "scenario": "Kod yok, ekran kapalı",
+    "message": "Demirdöküm Nitromix kombim çalışmıyor, hata kodu yok, ekran kapalı.",
+    "aiText": "Kombinin altında veya petek çevresinde su damlaması var mı?",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "Cihazın çalışmaması ve ekranın kapalı olması, elektrik bağlantısı veya iç devre sorununu işaret ediyor olabilir.",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": [
+        "elektrik bağlantısı sorunu",
+        "iç devre arızası"
+      ]
+    },
+    "diagnosticStatus": "diagnosing",
+    "technicalSource": null,
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 0,
+    "assessmentComplete": false,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W10sImluZm9ybWF0aW9uIjowLCJmaW5pc2hlZCI6ZmFsc2UsImFza2VkIjpbImxlYWsiXSwiZXZpZGVuY2UiOltdfSwiZXhwaXJlcyI6MTc5MDA5Mzg0ODE2MX0.JtFQoFiIs-mNjRzIN0PD-Qd1DgOavS7KaP9Kc-i-1Hg"
+  },
+  {
+    "scenario": "Kod yok, ekran kapalı",
+    "message": "Evde elektrik var, diğer cihazlar çalışıyor.",
+    "aiText": "Sorun ilk ne zaman başladı?",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "Kombinin ekranı kapalı olduğu için çalışmadığı anlaşılıyor. Elektrik var, ancak cihazın kendisi çalışmıyor.",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": [
+        "kablo/soket bağlantısı arızası",
+        "cihazın içindeki bir parça arızası"
+      ]
+    },
+    "diagnosticStatus": "diagnosing",
+    "technicalSource": null,
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 0,
+    "assessmentComplete": false,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W10sImluZm9ybWF0aW9uIjowLCJmaW5pc2hlZCI6ZmFsc2UsImFza2VkIjpbImxlYWsiLCJvbnNldCJdLCJldmlkZW5jZSI6W119LCJleHBpcmVzIjoxNzkwMDkzODUyNDE0fQ.2OoNhJEBJrDVnXZ-eOLYd8cRx-M1ctl9f1LHIyiUu70"
+  },
+  {
+    "scenario": "Kod yok, ekran kapalı",
+    "message": "Kombi ekranı hep kapalı, yanık kokusu yok.",
+    "aiText": "En olası arızaya dayalı teklif için henüz yeterli dayanak oluşmadı. Ek teknik denemeler yapmanıza gerek yok; yerinde kontrolle parça ve fiyatın netleştirilmesi gerekiyor.",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "Kombinin ekranının kapalı olması, cihazın çalışmadığını gösteriyor ve bu durum genellikle güç kaynağı veya iç devre arızası ile ilişkilidir.",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": [
+        "güç kaynağı arızası",
+        "iç devre arızası"
+      ]
+    },
+    "diagnosticStatus": "needs_onsite",
+    "technicalSource": null,
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 0,
+    "assessmentComplete": true,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W10sImluZm9ybWF0aW9uIjowLCJmaW5pc2hlZCI6dHJ1ZSwiYXNrZWQiOlsibGVhayIsIm9uc2V0IiwiY29kZSJdLCJldmlkZW5jZSI6W119LCJleHBpcmVzIjoxNzkwMDkzODU2MTM5fQ.SkpbrBlTHALAJho0lfrct1yczVon3sD0iuZ5tuhYf7g"
+  },
+  {
+    "scenario": "F22 gözlemle daraltma",
+    "message": "Demirdöküm Nitromix F22 gösteriyor.",
+    "aiText": "Ekranda görünen basınç değeri kaç bar?",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": []
+    },
+    "diagnosticStatus": "diagnosing",
+    "technicalSource": {
+      "title": "DemirDöküm Nitromix montaj ve bakım kılavuzu",
+      "url": "https://www.demirdokum.com.tr/downloads/products-1/nitromix-mk-0020309469-02-2557204.pdf",
+      "revision": "0020309469_02 / 31.05.2021",
+      "reviewedAt": "2026-09-21",
+      "page": 31
+    },
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 10,
+    "assessmentComplete": false,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W3sibmFtZSI6IlN1IGVrc2lrbGnEn2kiLCJwcm9iYWJpbGl0eSI6MzQsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJCYXPEsW7DpyBzZW5zw7Zyw7wiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJLYWJsbyB2ZXlhIGJhxJ9sYW50xLEiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfV0sImluZm9ybWF0aW9uIjoxMCwiZmluaXNoZWQiOmZhbHNlLCJhc2tlZCI6WyJwcmVzc3VyZSJdLCJldmlkZW5jZSI6W3sicXVvdGUiOiJGMjIiLCJxdWVzdGlvbiI6ImluaXRpYWwifV19LCJleHBpcmVzIjoxNzkwMDkzODU5MzE3fQ.074Fxqw-Jz43xB3u1th7Ko8bRTZnYWhgjlPJ9C6d6EM"
+  },
+  {
+    "scenario": "F22 gözlemle daraltma",
+    "message": "Basınç 0,3 bar.",
+    "aiText": "En olası arızaya dayalı teklif için henüz yeterli dayanak oluşmadı. Ek teknik denemeler yapmanıza gerek yok; yerinde kontrolle parça ve fiyatın netleştirilmesi gerekiyor.",
+    "confidence": 75,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": "basınç sensörü"
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "Düşük tesisat basıncı nedeniyle F22 hata kodu alınıyor. Basınç 0,3 bar olarak gösteriliyor, bu da su eksikliği veya basınç sensöründe bir sorun olabileceğini gösteriyor.",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": [
+        "Basınç sensörü",
+        "Kablo veya bağlantı"
+      ]
+    },
+    "diagnosticStatus": "needs_onsite",
+    "technicalSource": {
+      "title": "DemirDöküm Nitromix montaj ve bakım kılavuzu",
+      "url": "https://www.demirdokum.com.tr/downloads/products-1/nitromix-mk-0020309469-02-2557204.pdf",
+      "revision": "0020309469_02 / 31.05.2021",
+      "reviewedAt": "2026-09-21",
+      "page": 31
+    },
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 10,
+    "assessmentComplete": true,
+    "candidateProbabilities": [
+      {
+        "name": "Su eksikliği",
+        "probability": 34,
+        "supports": [],
+        "contradicts": []
+      },
+      {
+        "name": "Basınç sensörü",
+        "probability": 33,
+        "supports": [],
+        "contradicts": []
+      },
+      {
+        "name": "Kablo veya bağlantı",
+        "probability": 33,
+        "supports": [],
+        "contradicts": []
+      }
+    ],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W3sibmFtZSI6IlN1IGVrc2lrbGnEn2kiLCJwcm9iYWJpbGl0eSI6MzQsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJCYXPEsW7DpyBzZW5zw7Zyw7wiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJLYWJsbyB2ZXlhIGJhxJ9sYW50xLEiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfV0sImluZm9ybWF0aW9uIjoxMCwiZmluaXNoZWQiOnRydWUsImFza2VkIjpbInByZXNzdXJlIl0sImV2aWRlbmNlIjpbeyJxdW90ZSI6IkYyMiIsInF1ZXN0aW9uIjoiaW5pdGlhbCJ9XX0sImV4cGlyZXMiOjE3OTAwOTM4NjM1MDJ9.sPzXV8uv8hdyQX6agwwLXNX68KqWnIxncpcL0G8qquk"
+  },
+  {
+    "scenario": "F22 gözlemle daraltma",
+    "message": "Altında su damlıyor.",
+    "aiText": "Aktardığınız gözlemler: altında su damlıyor. En olası arızaya dayalı teklif için henüz yeterli dayanak oluşmadı. Ek teknik denemeler yapmanıza gerek yok; yerinde kontrolle parça ve fiyatın netleştirilmesi gerekiyor.",
+    "confidence": 75,
+    "identifiedPart": {
+      "brand": "Demirdöküm",
+      "model": "Nitromix",
+      "part": "basınç sensörü"
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "Düşük tesisat basıncı nedeniyle su damlaması, basınç sensörünün arızalı olabileceğini gösteriyor.",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": [
+        "Su eksikliği",
+        "Kablo veya bağlantı"
+      ]
+    },
+    "diagnosticStatus": "needs_onsite",
+    "technicalSource": {
+      "title": "DemirDöküm Nitromix montaj ve bakım kılavuzu",
+      "url": "https://www.demirdokum.com.tr/downloads/products-1/nitromix-mk-0020309469-02-2557204.pdf",
+      "revision": "0020309469_02 / 31.05.2021",
+      "reviewedAt": "2026-09-21",
+      "page": 31
+    },
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 10,
+    "assessmentComplete": true,
+    "candidateProbabilities": [
+      {
+        "name": "Su eksikliği",
+        "probability": 34,
+        "supports": [],
+        "contradicts": []
+      },
+      {
+        "name": "Basınç sensörü",
+        "probability": 33,
+        "supports": [],
+        "contradicts": []
+      },
+      {
+        "name": "Kablo veya bağlantı",
+        "probability": 33,
+        "supports": [],
+        "contradicts": []
+      }
+    ],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W3sibmFtZSI6IlN1IGVrc2lrbGnEn2kiLCJwcm9iYWJpbGl0eSI6MzQsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJCYXPEsW7DpyBzZW5zw7Zyw7wiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfSx7Im5hbWUiOiJLYWJsbyB2ZXlhIGJhxJ9sYW50xLEiLCJwcm9iYWJpbGl0eSI6MzMsInN1cHBvcnRzIjpbXSwiY29udHJhZGljdHMiOltdfV0sImluZm9ybWF0aW9uIjoxMCwiZmluaXNoZWQiOnRydWUsImFza2VkIjpbInByZXNzdXJlIl0sImV2aWRlbmNlIjpbeyJxdW90ZSI6IkYyMiIsInF1ZXN0aW9uIjoiaW5pdGlhbCJ9XX0sImV4cGlyZXMiOjE3OTAwOTM4Njc5NjV9.gq7Kzlt4EM1ktab5svJojYzTC29clbf3k_U86ztHveA"
+  },
+  {
+    "scenario": "Bilinmeyen kod",
+    "message": "Vaillant ecoTEC plus VUW 246/5-5 kombide F76 var.",
+    "aiText": "Cihazınızdan olağan dışı ses geliyor mu?",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "Vaillant",
+      "model": "ecoTEC plus VUW 246/5-5",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": []
+    },
+    "diagnosticStatus": "diagnosing",
+    "technicalSource": null,
+    "pricingStatus": "diagnosing",
+    "options": [],
+    "informationProgress": 0,
+    "assessmentComplete": false,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W10sImluZm9ybWF0aW9uIjowLCJmaW5pc2hlZCI6ZmFsc2UsImFza2VkIjpbIm5vaXNlIl0sImV2aWRlbmNlIjpbXX0sImV4cGlyZXMiOjE3OTAwOTM4NzE2MTh9.4FIHfqK6eImJojdOz8EIYsrSiAr-vvuFwv8jrx4LnSY"
+  },
+  {
+    "scenario": "Gaz kokusu",
+    "message": "Kombinin yanında gaz kokusu var.",
+    "aiText": "Güvenliğiniz için teşhisi durduruyorum. Cihazı denemeyin, elektrik düğmelerine ve fişlere dokunmayın. Güvenli alana çıkın ve dışarıdan acil destek alın.",
+    "confidence": 0,
+    "identifiedPart": {
+      "brand": "",
+      "model": "",
+      "part": ""
+    },
+    "isReadyForPrice": false,
+    "basePartPrice": 0,
+    "riskSum": 0,
+    "faultTitle": "Ön teşhis",
+    "estimatedPrice": null,
+    "deterministicOMF": null,
+    "priceSource": null,
+    "assessment": {
+      "sufficientBasis": false,
+      "mostLikelyReason": "",
+      "supportingEvidence": [],
+      "unresolvedAlternatives": []
+    },
+    "diagnosticStatus": "safety_stop",
+    "technicalSource": null,
+    "pricingStatus": "missing_identity",
+    "options": [],
+    "informationProgress": 0,
+    "assessmentComplete": true,
+    "candidateProbabilities": [],
+    "stateToken": "eyJtZW1vcnkiOnsiY2FuZGlkYXRlcyI6W10sImluZm9ybWF0aW9uIjowLCJmaW5pc2hlZCI6dHJ1ZSwiYXNrZWQiOlsiYnJhbmQiXSwiZXZpZGVuY2UiOltdfSwiZXhwaXJlcyI6MTc5MDA5Mzg3NDc4OH0.8y7PZhEmO5m2Eu9T1JtvgRzAK0BqHRGkI-WmyVghYp0"
+  }
+]
