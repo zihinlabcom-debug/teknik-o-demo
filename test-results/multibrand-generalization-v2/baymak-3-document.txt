@@ -1,0 +1,825 @@
+
+
+-- 1 of 28 --
+
+Sayın Müşteri,
+Ürün, evin dışına bağlanması gereken bir atık gaz borusu sistemine sahiptir.
+Sizin için hazırlanmış olan bu kitapçıkta; kombinizin doğru ve verimli kullanılması ile ilgili olarak çok faydalı bilgi ve açıklamalar
+yer almaktadır.
+Lütfen kombinizi, bu kitapçığı okumadan kullanmamaya özen gösteriniz.
+Baymak, üretici firma, bu ürüne ait yedek parçaları, üzerinde yazılı olan üretim tarihinden itibaren 10 yıl boyunca temin
+etmeyi garanti etmektedir.
+Size bu kitapçıkla birlikte servis hizmeti alabileceğiniz, servis istasyonlarıyla ilgili bilgileri içeren “Yetkili Servis
+Kitapçığı” verilmiştir. Firmamız tarafından dönemsel olarak Yetkili Servis bilgilerinde değişiklikler yapılabilmektedir. Bu
+sebeple güncel Yetkili Servis Bilgilerine firmamızın web sayfasında yer alan ‘’ Yetkili Servisler ‘’ bölümünden
+ulaşabilirsiniz. Bilgi için lütfen internet adresindeki web sayfamızı ziyaret ediniz.
+Cihazın ilk çalıştırma işleminin Yetkili Servis tarafından yapılması zorunludur. Aksi takdirde, cihaz garanti kapsamı
+dışında kalacaktır.
+Üretici Firma
+MAKİNA SANAYİ VE TİCARET A.Ş.
+Orhanlı Beldesi, Orta Mahalle, Akdeniz Caddesi No: 8
+Tuzla / İSTANBUL
+Tel.: (0216) 581 65 00
+Fax: (0216) 304 20 13
+http: // www.baymak.com.tr
+E-mail: musterihizmetleri@baymak.com.tr
+
+-- 2 of 28 --
+
+3
+İçindekiler
+1 	Güvenlik .................................................................................................................................................................... 4
+1.1 	Genel güvenlik talimatları .................................................................................................................................. 4
+1.2 	Montaj Öncesi Talimatlar ................................................................................................................................... 5
+1.3 	Sorumluluklar ..................................................................................................................................................... 6
+2 	Kullanma Kılavuzu Hakkında Bilgiler ......................................................................................................................... 7
+2.1 	Genel.................................................................................................................................................................. 7
+2.2 	Ek Hizmetler ....................................................................................................................................................... 7
+3 	Teknik Özellikler ........................................................................................................................................................ 8
+3.1 Teknik veriler............................................................................................................................................................ 8
+3.2 Boyutlar Bağlantılar ve Tesisat Şeması ................................................................................................................... 9
+3.3 Baca Bağlantısı ...................................................................................................................................................... 10
+4 	Ürün Bilgileri ........................................................................................................................................................... 13
+4.1 	Genel açıklamalar ............................................................................................................................................ 13
+4.2 	Çalışma prensibi .............................................................................................................................................. 13
+4.3 	Kontrol paneli bilgileri ....................................................................................................................................... 14
+5 	Çalıştırma Öncesi Talimatlar .................................................................................................................................... 14
+5.1 Kombinin çalıştırılması ........................................................................................................................................... 14
+5.2 	Sisteme su doldurulması ................................................................................................................................. 15
+5.3 	Cihazın kapatılması ......................................................................................................................................... 15
+5.4 	Donma koruması.............................................................................................................................................. 15
+6 	Bakım ...................................................................................................................................................................... 16
+6.1 	Genel bakım ..................................................................................................................................................... 16
+6.2 	Bakım talimatları .............................................................................................................................................. 16
+6.3 	Ürün Garanti Şartları ile ilgili Tüketicinin Dikkat Etmesi Gereken Hususlar .................................................... 17
+7 	Sorun Giderme ........................................................................................................................................................ 18
+7.1 	Hata kodları ...................................................................................................................................................... 18
+8 	Ek Bölüm ................................................................................................................................................................. 19
+8.1 	Ürün fişi ve teknik parametreler ....................................................................................................................... 19
+9 Elektrik Bağlantısı ....................................................................................................................................................... 20
+9.1 	Elektrik diyagramı ............................................................................................................................................ 20
+9.2 	Klemens bağlantı şeması ................................................................................................................................ 21
+10 Pompa Grafiği ........................................................................................................................................................... 22
+11 Çevresel Değerlendirme ........................................................................................................................................... 22
+11.1 	Enerji tasarrufu ................................................................................................................................................. 22
+12 Paket Etiketi Bilgileri .................................................................................................................................................. 23
+
+-- 3 of 28 --
+
+4
+1 	Güvenlik
+1.1 	Genel güvenlik talimatları
+.
+Tehlike
+Bu cihaz, 8 yaş ve üstü çocuklar ve fiziksel, duyusal, zihinsel
+kabiliyetleri azalmış kişiler yada tecrübe veya bilgisi olmayan
+kişiler tarafından, cihazın güvenli bir şekilde kullanımı ve içerdiği
+tehlikeler hakkında bilgi verilmiş olması durumunda veya
+gözetim altında kullanılabilir. Çocuklar cihaz ile oynamamalıdır.
+Temizlik ve kullanıcı bakımı çocuklar tarafından yapılacaksa
+mutlaka gözetim altında yapılmalıdır.
+Tehlike
+Gaz kokusu alıyorsanız;
+1. Gaz kaynağını kapatın.
+2. Kapı ve pencereleri açın.
+3. Çıplak alev kullanmayın, sigara içmeyin, elektrik düğmelerini
+ve elektrikli cihazları kullanmayın (kapı zili, asansör…)
+4. Olası sızıntıları belirleyin ve acilen kapatın.
+5. Binadaki diğer insanları uyarın.
+6. Eğer sızıntı gaz sayacı üzerindeyse gaz dağıtım şirketini
+bilgilendirin.
+Tehlike
+Baca gazı kokusu alıyorsanız;
+1. Kombiyi kapatın.
+2. Kapı ve pencereleri açın.
+3. Olası sızıntıları belirleyin ve hemen kapatın.
+Not
+Gaz veya su kaçağı meydana gelir veya şüphelenilirse giriş
+vanası çevrilerek kombi kapatılabilir
+Uyarı
+1.Baca borularına dokunmayın. Cihazın ayarlarına bağlı
+olarak baca borularının sıcaklığı 60 °C ye ulaşabilir
+2. Radyatörlere uzun süreli dokunmayın. Cihazın ayarlarına
+bağlı olarak radyatör sıcaklığı 85 °C ye ulaşabilir.
+3. Kullanım suyu sıcaklığı cihazın ayarlarına bağlı olarak 65 °C
+ye ulaşabilir. Kullanmadan önce tedbirinizi alın.
+Dikkat
+Cihazın yıllık bakımını yapmayı ihmal etmeyin.
+Yıllık bakımı mutlaka yetkili servise yaptırın.
+
+-- 4 of 28 --
+
+5
+1.2 	Montaj Öncesi Talimatlar
+Kurulum, bakım veya onarım çalışmalarından sonra, kaçak olmadığından emin olmak için tüm ısıtma tesisatını kontrol edin.
+Kombinin montajı ve bakımı, yetkili bir kişi tarafından yerel ve ulusal yönetmeliklere uygun olarak yapılmalıdır.
+Elektrik şebeke bağlantısı hasarlıysa, tehlikeli durumları önlemek için orijinal üretici veya yetkili kişi tarafından değiştirilmelidir.
+Kombi üzerinde çalışırken daima ana güç kaynağını kesin ve ana gaz musluğunu kapatın.
+Bu cihaz, atmosferik basınçta kaynama sıcaklığının altında su ısıtmak üzere tasarlanmıştır. Performansına ve çıkış gücüne uygun
+bir merkezi ısıtma tesisatına bağlanmalıdır.
+Kombinin montajı mutlaka kalifiye bir montaj elemanı tarafından yapılmalıdır. Montaj öncesi aşağıdaki kontroller mutlaka
+gerçekleştirilmelidir;
+a) Kombinin, gaz tesisatı ile sağlanan mevcut gaz ile kullanılacak şekilde ayarlandığından emin olunuz. Kutu üzerindeki
+işaretlemeler ve cihaz üzerindeki etiketleri kontrol ediniz.
+b) Kanun ve yönetmeliklere uygun olarak, birden fazla cihazdan gelen egzoz gazları toplamak için özellikle dizayn edilmiş bacalar
+dışında, diğer cihazların egzoz gazlarının aynı baca kanalının içinden geçerek çıkmadığını, baca başlığının uygunluğunu ve
+başlığın tıkalı olmadığını kontrol ediniz.
+c) Mevcut bacalara bağlantı yapılması durumunda, bunların çok temiz olduğundan emin olunuz, aksi taktirde bacadan gelen
+kurumlar, çalışma sırasında gaz geçişlerini tıkar ve tehlikeli durumlara neden olabilir.
+d) Tüm tesisat boruları, içinde yabancı madde kalmaması için tamamıyla temizlenmelidir.
+Kombinin verimli bir şekilde çalışması ve garanti kapsamı dışında kalmaması için aşağıdaki uyarıları mutlaka dikkate alınız:
+1.2.1. Kullanım Suyu Devresi
+Su sertliği 20°F’den (1°F = 1 lt. suda 10 mg kalsiyum karbonat) yüksek ise; mevcut sisteme polifosfat karıştırılmalı veya mutlaka
+su arıtması yapılmalıdır.
+Cihazın montajının ardından, kullanımdan önce, kullanım suyunu bir süre akıtarak cihazdan geçen ilk suyun atılmasını
+sağlayınız.
+1.2.1. Isıtma Devresi
+Isıtma tesisatında temiz ve sertliği 15° F’den düşük su kullanılmalıdır. Suyun pH değeri 7 – 8 aralığında olmalıdır. Tesisat suyu
+yılda en az bir kez kontrol edilerek gerekirse temizlenmeli ve/veya şartlandırılmalıdır.Temizleyici veya şartlandırıcı olarak aşağıda
+belirtilen ürünler kullanılmalıdır.
+Yeni Tesisat
+Kombinin montaj işlemi öncesinde, tesisat (sistem), uygun - tescilli ürünler kullanılarak mutlaka temizlenmelidir. Tesisatın ve
+tesisatta bulunan metal, plastik ve kauçuk parçaların zarar görmemesi için; nötr bazlı, asidik ve alkalik olmayan (örneğin:
+SENTINEL X300 veya X400 ve FERNOX Regeneratör) temizleyiciler kullanınız. Bu tip temizleyici ürünler kullanırken, üreticinin
+kullanım talimatlarına mutlaka uyunuz.
+Eski Tesisat
+Kombinin montaj işlemi öncesinde, tesisatı (sistemi) boşaltarak, uygun, tescilli ürünler kullanılarak mutlaka temizleyiniz.
+Tesisatın ve tesisatta bulunan metal, plastik ve kauçuk parçaların zarar görmemesi için; nötr bazlı asidik olmayan ve alkalik
+olmayan (örneğin: SENTINEL X300 veya X400 ve FERNOX Regenerator ) temizleyiciler kullanınız. Bu tip temizleyici ürünler
+kullanırken, üreticinin kullanım talimatlarına mutlaka uyunuz.
+Isıtma devresi tesisatında pislik, tıkanıklık, tesisat kalıntısı, çapak, cüruf vb. partiküllerin bulunması kombinin çalışmasını
+olumsuz yönde etkileyecektir. Bu tip durumlar; kombinin randımansız çalışmasına, aşırı ısınmasına, sesli çalışmasına, vb.
+problemlere neden olabilecektir. Tesisat nedeniyle kombide meydana gelecek arıza ve problemler garanti kapsamı dışındadır.
+Cihaz, bağlantı elemanları cihazın ağırlığını kaldıracak şekilde kuvvetli ve sağlam durumda duvara bağlanmalıdır.
+Cihazla beraber verilen montaj şablonu kullanılarak bağlantı kaidesi ve askı delikleri hassas olarak markalanmalıdır. Cihazın
+terazide olduğu mutlaka kontrol edilmelidir.
+Cihaz EN standartlarına uygun olarak topraklanmalıdır. (Tesisatçınıza mutlaka 2 Amperlik sigorta taktırınız.)
+Soğuk su girişi cihazın teknik etiketi üzerinde belirtilen kullanım suyu işletme basıncını (8 bar) geçmemelidir. Şebeke basıncı
+6,5 bar’dan daha yüksek ise mutlaka basınç düşürücü monte edilmelidir.
+
+-- 5 of 28 --
+
+6
+Cihazınızı 220 - 230 V monofaz - topraklamalı güç beslemesine bağlayınız. Cihazınız standartlara uygun olarak min. 195 V ve
+max. 255 V arasında normal olarak fonksiyonlarını yerine getirebilecek şekilde tasarlanmıştır. Eğer bulunduğunuz yerdeki elektrik
+şebekesinde bu aralık ( 195 V – 255 V ) sağlanamıyorsa; voltaj regulatörü kullanmanız tavsiye edilir.
+Cihazı harici, fiziki veya kimyevi etkenlerden koruyunuz.
+Taşıma ve nakliye işlemini cihazın ambalajı üzerindeki işaretlemeleri dikkate alarak, cihazın orijinal ambalajı ile yapınız.
+Ambalaja ve cihaza zarar verebilecek ( Nem, su, darbe vb. ) etkenlere karşı cihazınızı koruyunuz.
+Cihazın, gaz tesisatı ile sağlanan gaz ile kullanılacak şekilde ayarlandığından emin olunuz. Kutu ve cihaz üzerindeki etiketleri
+kontrol ediniz.
+Cihazın parçaları yalnızca servis tarafından sökülmelidir. Cihaz üzerinde mühürlü bulunan parça ve elemanlara kesinlikle
+müdahale edilmemelidir.
+Montaj sırasında kombi baca seti ve aksesuarları, dışarıdan gelebilecek etki ve darbeler de gözönüne alınarak
+sızdırmazlığı sağlanacak şekilde sabitlenmelidir.Aksi durumda baca bağlantılarından sızacak CO (karbonmonoksit) gazı
+zehirlenmelere neden olarak hayati risk oluşturacaktır.
+Yalnızca üretici firma tarafından sağlanan aksesuarlar kullanılmalıdır; aksi taktirde ürün garanti kapsamı dışında
+kalacaktır.
+İlk çalıştırma sırasında cihaz içinde bulunun sifon mutlaka doldurulmalıdır. Sifon doldurma işlemi sırasında sökülen
+parçaların sağlam ve sızdırmaz bir şekilde yeniden monte edildiğinden emin olunmalıdır.
+Cihazın ilk çalıştırma işlemi mutlaka Yetkili Servis tarafından yapılmalıdır.
+Cihazın tesisatı için mutlaka doğalgaz tesisat projesi hazırlatıp onaylatınız.
+Yukarıdaki koşullara uyulmaması durumunda cihazınız garanti dışı kalacaktır.
+Ambalaj malzemelerini (plastik poşet, naylon, vb.) sağlık açısından bir tehlike oluşturmaması için çocukların ulaşabileceği
+yerlere bırakmayınız.
+Üretici firma, kitapçıkta yer alan bilgileri değiştirme hakkını saklı tutar. Bu sebeple; bu kitapçık teknik özelliklere ilişkin bir
+taahhüt teşkil etmez.
+1.3 	Sorumluluklar
+1.3.1 Kullanıcının Sorumlulukları
+Cihazın verimli ve güvenli çalışmasını sağlamak için aşağıdaki talimatlara
+uyun:
+ Cihazla birlikte verilen kılavuzdaki talimatları okuyun ve uygulayın.
+ Kurulum ve cihazın çalıştırılması için yetkili servisi çağırın.
+ Kullanım hakkında yetkili servisten bilgi alın.
+ Cihazın kontrollerini ve bakımını yetkili kişiler tarafından yapın.
+ Kullanma kılavuzunu muhafaza edin.
+1.3.2 Montörün Sorumlulukları
+Cihazın montajını yapan kişi, aşağıdaki talimatları uygulamalıdır.
+ Cihazla birlikte verilen kılavuzdaki talimatları okumak ve uygulamak.
+ Yönetmelik ve standartlara göre cihazın montajını yapmak.
+ Montaj sonrası gerekli kontrolleri yapmak.
+ Kurulum hakkında kullanıcıyı bilgilendirmek
+1.3.3 Yetkili Servisin Sorumlulukları
+Yetkili servis cihazın kurulumu ve ilk çalıştırılmasını sağlamak için
+aşağıdaki talimatları uygulamalıdır.
+ Cihazla birlikte verilen kılavuzdaki talimatları okumak ve uygulamak.
+ Cihazın ilk çalıştırılmasını yapmak ve gerekli kontrolleri yapmak.
+ Kurulum hakkında kullanıcıyı bilgilendirmek.
+ Bakım gerekliyse kullanıcıyı bakım yükümlülükleri hakkında uyarmak ve
+cihazın gerekli bakımlarını yapmak.
+ Kullanım talimatlarını kullanıcıya bildirmek.
+1.3.4 Üretici Firmanın Sorumlulukları
+Cihazlarımız çeşitli direktiflere uygun olarak üretilmektedir. Gerekli tüm
+belgeler cihazla birlikte teslim edilir. Ürünlerin kalitesini arttırmak için çalışmalar
+yapılmaktadır, bu nedenle belgede verilen özellikleri değiştirme hakkı saklıdır.
+Üretici olarak yükümlülüklerimiz aşağıdaki durumları kapsamamaktadır.
+ Cihazın kurulumuyla ilgili talimatlara uyulmaması.
+ Cihazın kullanımıyla ilgili talimatlara uyulmaması.
+ Cihazın bakımının yetersiz ve hatalı olması.
+
+-- 6 of 28 --
+
+7
+2 	Kullanma Kılavuzu Hakkında Bilgiler
+2.1 	Genel
+Uyarı
+Cihazın bakımı, montajı ve tamiri yetkili kişiler tarafından yapılmalıdır.
+Kullanma kılavuzu Baymak Duotec 42 DHW kullanıcısına yönelik
+hazırlanmıştır. Cihazın satılması veya taşınması durumunda kullanma
+kılavuzu cihazla birlikte muhafaza edilmelidir.
+Cihaz konut yönetmeliğine uygun olarak sadece konutlarda kullanılmak
+üzere üretilmiştir. Cihaz merkezi ısıtma ve sıcak kullanım suyu üretimi
+sağlamaktadır. Kullanım suyu ihtiyacını sağlamak için harici boyler
+bağlantısı yapılmalıdır. Boyler kapasitesinin 300 litreyi geçmemesi tavsiye
+edilmektedir. Kullanılacak boylerin standartlara uygun olduğundan emin
+olunmalıdır.
+Kombi ve boyler seçimi nedeniyle oluşabilecek riskler kullanıcının
+sorumluluğundadır.
+Cihaz merkezi ısıtma ve boyler dışında başka bir devreye bağlanmamalıdır.
+Cihazın belirtilen şartlar ve amaçlar dışında kullanılması sonucunda
+oluşacak kayıp, hasar ve yaralanmalarla ilgili sorumluluklar üreticiye ait
+değildir.
+Cihazın kullanımı, bakımı ve montajı ile ilgili talimatlara uyulmamasından
+kaynaklanan hasar veya yaralanmalar için üreticinin herhangi bir
+sorumluluğu yoktur
+2.2 	Ek Hizmetler
+Çeşitli oda termostatı, harici kontroller vb. isteğe bağlı ekstralar olarak
+mevcuttur. Detaylar için ilgili bayi ya da yetkili servise danışın.
+
+-- 7 of 28 --
+
+8
+3 	Teknik Özellikler
+3.1 Teknik veriler
+BAYMAK Duotec 42 DHW
+Gaz kategorisi 	I2H
+Maksimum Isı Yükü - merkezi ısıtma 	kW 	40
+Minimum Isı Yükü - merkezi ısıtma 	kW 	9,5
+Maksimum Isı Gücü - merkezi ısıtma 80-60°C 	kW 	38,7
+Minimum Isı Gücü - merkezi ısıtma 80-60°C 	kW 	9,1
+Maksimum Isı Gücü - merkezi ısıtma 50-30°C 	kW 	42
+Minimum Isı Gücü - merkezi ısıtma 50-30°C 	kW 	9,8
+Merkezi ısıtma devresi maksimum basıncı 	bar 	3
+Genleşme tankı kapasitesi 	l 	12
+Genleşme tankı ön basıncı 	bar 	0,5
+Baca tipi 	— 	C13 - C13X - C33 - C33X - C43 - C43x - C53-
+C63X - C83 – C93 - B23P
+Eşeksenli atık gaz boru çapı 	mm 	60
+Eşeksenli temiz hava emiş boru çapı 	mm 	100
+İkiz baca atık gaz boru çapı 	mm 	80
+İkiz baca temiz hava emiş boru çapı 	mm 	80
+Maksimum atık gaz sıcaklığı 	°C 	80
+NOx sınıfı 	— 	6
+Maksimum atık gaz kütlesi 	g/s 	18,41
+Maksimum atık gaz sıcaklığı 	°C 	80
+Gaz tipi 	— 	G20
+Doğalgaz besleme basıncı 	mbar 	20
+Besleme gerilimi 	V 	230
+Frekans 	Hz 	50
+Elektrik yükü 	W 	145
+Net ağırlık 	kg 	49
+yüksekllik 	mm 	802
+genişlik 	mm 	450
+Derinlik 	mm 	340
+Elektriksel koruma 	IP X4D
+
+-- 8 of 28 --
+
+9
+3.2 Boyutlar Bağlantılar ve Tesisat Şeması
+Montaj şablonunu kullanarak duvar üzerindeki bağlantı deliklerini açınız ve gaz – su bağlantılarını montaj şablonuna
+göre yapınız.
+A: ¾” Merkezi ısıtma gidiş 	D: ¾” Gaz girişi
+B: Sifon çıkışı 	E: ¾” Boyler serpantin dönüş
+C: ¾” Boyler serpantin gidiş 	F: ¾” Merkezi ısıtma dönüş
+Kolay servis edilebilirlik için montaj sırasında yukarıdaki çizimde gösterilen mesafelerin alt, üst ve yanlardan sağlanması
+gerekmektedir.
+Kombi merkezi ısıtma ve sıcak su tesisat bağlantıları montaj esnasında tesisatta zarar verilmemesi çift
+anahtarla kontra yapılarak gerçekleştirilmelidir.
+
+-- 9 of 28 --
+
+10
+Tesisat Şeması
+Kullanım sıcak suyu kontrolü cihazla birlikte verilen DHW Sıcaklık Sensörü vasıtasıyla gerçekleştirilir.
+Cihazın doğru çalışması için DHW Sıcaklık Sensörü boyler sensör kovanına yerleştirilmelidir.
+3.3 Baca Bağlantısı
+Baca bağlantısı için gerekli parçalar cihazla birlikte sunulmuştur. Cihaz yatay eş eksenli (iç içe geçmiş iki boru ile) baca
+çıkışına bağlanabilecek şekilde dizayn edilmiştir.
+Montaj sırasında kombi baca seti ve aksesuarları, dışardan gelebilecek etki ve darbeler de gözönüne alınarak
+sızdırmazlığını koruyacak şekilde sabitlenmelidir.
+Yalnızca üretici firma tarafından sağlanan aksesuarlar kullanılmalıdır; aksi halde ürününüz garanti kapsamı
+dışında kalacaktır.
+
+-- 10 of 28 --
+
+11
+B23
+Yanma ürünlerinin kurulu olduğu odanın dışına tahliyesi için bir bacaya bağlantısı
+öngörülmüş cihaz. Temiz hava doğrudan odadan alınır.
+B23P 	B23 tipi cihaz pozitif basınçla çalışmak üzere tasarlanmış bir tahliye tesisine bağlantı için
+öngörülmüştür.
+C13x 	Aynı zamanda yatay terminali aracılığıyla brülöre temiz hava verilen ve yanma ürünlerinin
+benzer rüzgar koşullarına maruz kalacak şekilde eşmerkezli veya yeterince yakın delikler
+vasıtasıyla dışarıya boşaltıldığı, boruları aracılığıyla yatay terminaline bağlanmak için
+tasarlanmış cihaz. İkiye ayrık tahliye terminalleri bir kenarı 50 cm’lik bir kare içinde
+bulunmalıdır.
+C33x 	Aynı zamanda brülöre temiz hava veren ve yanma ürünlerini benzer rüzgar koşullarına
+maruz kalacak şekilde eşmerkezli veya yeterince yakın delikler vasıtasıyla dışarıya
+boşaltan, boruları aracılığıyla dikey bir terminale bağlanmak için tasarlanmış cihaz. İkiye
+ayrık tahliye terminalleri bir kenarı 50 cm’lik bir kare içinde bulunmalıdır.
+C43x 	Donatılmış olduğu eş merkezli iki baca aracılığıyla, birden fazla cihaz için ortak bacalı bir
+tesise bağlantı için öngörülen cihaz.Ortak bacalı bu sistem, aynı zamanda brülöre temiz
+havanın girdiği ve yanma ürünlerinin atıldığı iki bacadan oluşur.
+C53x 	Cihaz, ayrı baca boruları vasıtasıyla, temiz havayı almak ve yanma ürünlerini boşaltmak
+için iki ayrı terminale bağlanmıştır. Bu borular farklı basınç altındaki alanlarda sonlanabilir,
+ancak binanın farklı duvarlarında sonlanamaz.
+C63x 	Temiz hava emişi ve yanma ürünlerinin tahliyesi için onaylanmış ve ayrı olarak
+pazarlanan bir tahliye sistemine bağlantı için öngörülmüş cihaz. Boruların maksimum yük
+kaybı 100 Pa’yı geçmemelidir. Borular, özel kullanım ve 100°C’nin üzerindeki bir sıcaklık
+için onaylanmış olmalıdır. Kullanılan baca terminali, EN 1856-1 Standardına göre
+sertifikalandırılmış olmalıdır.
+C83x 	Tahliye borusu vasıtasıyla, ortak veya tek bacalı birsisteme bağlanmış cihaz.Bu baca
+sistemi tek bir doğal çekişli kanaldan oluşmaktadır.Cihaz, ikinci bir baca aracılığıyla mahal
+dışından temiz hava temin edilecek bir terminale bağlanmıştır.
+C93x 	Tahliye borusu aracılığıyla dikey bir terminale ve temiz havası emme borusu aracılığıyla
+mevcut bir bacaya bağlanmış cihaz. Terminal brülöre temiz hava verir ve yanma
+ürünlerini, benzer rüzgar koşullarına maruz kalacak şekilde eşmerkezli veya yeterince
+yakın delikler vasıtasıyla dışarıya boşaltır.
+3.3.1 Yatay baca bağlantısı
+Atık gaz bina dışına çıkarıldığında, baca duvarda en az 18mm dışarı çıkarılmalı ve su sızmasının engellenmesi için etrafı
+sızdırmaz şekilde kapatılmalıdır. Bacanın bina dışına çıkarıldığı tahliye deliği, kapı,pencere ve/veya havalandırma menfezlerinden
+en az 0,7 metre uzağında olmalıdır.
+Cihazdan dışarıya doğru, her bir metrelik boru uzunluğu için, 1 cm.lik yukarı eğim verildiğinden emin olunuz.
+Baca uzunluğu ile ilgili bilgiler aşağıdaki tabloda verilmiştir. Maksimum baca uzunluğunu her 90°lik dirsek için 1m, her
+45°lik dirsek için 0,5m kısaltmaktadır.
+
+-- 11 of 28 --
+
+12
+3.3.2 Dikey baca bağlantısı
+3.3.3 İkiz baca bağlantısı
+Temiz hava baca bağlantısı 15m.’den uzun olmamalıdır.
+3.3.4 Hermetik Baca
+Eş eksenli hermetik bacalar için, kombi üzerinde takılı bulunan baca adaptörü
+mevcuttur. Bu sayede, dikey eş eksenli hermetik baca veya 90° ya da 45° bir eş
+eksenli dirsek yerleştirilmesini ve 360° rotasyon olasılığı sağlar. Baca, su
+sızıntısını önlemek ve sızdırmazlık contalarının uygun şekilde monte edilebilmesi
+için duvardan en az 18 mm dışarıya çıkıntı yapmalıdır.
+Baca dirseği kombi üzerindeki baca adaptörüne, 1 ve 2
+no’ları ile gösterilen vidalar ile sıkılmalıdır. Eğer 2
+konumundaki vidanın sıkılması mümkün olmuyor ise, 3
+konumu ile gösterilen şekilde, yine aynı hizadan vida
+atılmalıdır.
+Dirsek ile baca borusu, yine benzer şekilde 4 ve 5 no’ları ile
+gösterilen noktalardan vidalanmalıdır. Her iki pozisyondan
+vida atılması mümkün değil ise en az bir vida ile
+sabitlenmelidir.
+
+-- 12 of 28 --
+
+13
+Baca uzatmaları da, yandaki resimde gösterilen şekilde 2 adet vida ile
+sabitlenmelidir. 2.vidayı atmak için uygun pozisyon yoksa en az bir vida
+ile sabitlenmelidir.
+Dirsek boru ve baca uzatma bağlantılarında, vidanın atıldığı konuma
+dikkat edilmelidir. Yandaki resimde görüldüğü gibi, vida, geçme
+formunun ucuna yakın şekilde atıldığında, iç kısımda kalan boruyu
+tutmayacağından, aşağıdaki resimde görüldüğü şekilde vidalanmalıdır.
+Bağlantılar için, firma temin edilen 3,9 x 16 mm matkap uçlu vida
+kullanılmalıdır.
+Vidalar sıkılmadan önce bacaların tam olarak yerine oturduğu kontrol
+edilerek emin olunmalıdır.
+Vidalar atıldıktan sonra montaj kontrol edilmeli, baca aksamının yerinden
+çıkmayacağından ve tam olarak monte edildiğinden emin olunmalıdır.
+Vida bağlantıları yapılırken atık gaz borularının zarar görmediğinden ve atık gaz ile temiz havanın birbirine
+karışmadığından emin olunmalıdır. Temiz hava bağlantılarının da sızdırmazlığının bozulmadığından emin olunmalıdır.
+4 	Ürün Bilgileri
+4.1 	Genel açıklamalar
+Baymak Duotec 42 DHW Kombi oda sızdırmazlığı ve fan destekli olup, merkezi ısıtma imkanı sağlar.
+Kombi, sadece Doğal Gazda (G20) kullanılmak üzere ayarlanmıştır.
+Sıcak kullanım suyu önceliklidir.
+Bilgi etiketinde kombi modeli, seri numarası ve gaz tipi gösterilir.
+4.2 	Çalışma prensibi
+4.2.1 Çalışma durumunda
+Kombi çalışırken oluşan atık gazlar baca sistemi ile uzaklaştırılarak dışarıya atılır. Yanma için gerekli olan temiz hava baca
+sistemi vasıtasıyla temin edilir.
+Yoğuşma suyu, kombinin alt kısmında bulunan yoğuşma su çıkışı ile cihaz dışına taşınır. Yoğuşma suyu çıkışı, atık su
+giderine bağlanmalıdır. Yoğuşma sifonu, ilk çalıştırma öncesinde temiz su ile doldurulmalıdır. Bu boru, kalifiye bir uzman haricinde
+asla değiştirilmemelidir.
+
+-- 13 of 28 --
+
+14
+4.3 	Kontrol paneli bilgileri
+5 	Çalıştırma Öncesi Talimatlar
+Kombinin ilk çalıştırma işlemi mutlaka Yetkili Servis tarafından yapılmalıdır. Çalıştırma öncesinde aşağıdaki talimatları
+yerine getirilmelidir:
+a) Cihaz parametreleri ile elektrik, su ve gaz besleme sistemlerinin uygunluğu,
+b) Montajın kanun ve yönetmeliklere uygunluğu,
+c) Cihazın enerji beslemesi ve topraklama bağlantılarının uygunluğu.
+Yukarıdaki şartların sağlanmaması durumunda kombi garanti kapsamı dışında kalacaktır.
+5.1 Kombinin çalıştırılması
+Cihazın doğru olarak çalıştırılması için aşağıdaki adımları uygulayınız:
+1) Enerji beslemesini sağlayınız
+2) Gaz vanasını açınız
+5.1.1 Merkezi ısıtma konumu
+1) ON/OFF tuşuna (K2) basınız ve ekranda radyatör ve musluk sembolünün göründüğünden emin olun.
+2) Kullanım suyu ihtiyacı olmadığında, ekranda merkezi ısıtma devresi çıkış suyu sıcaklığı görüntülenecektir. Merkezi
+ısıtma sıcaklığı değerini arttırmak için K4 azaltmak için K3 tuşuna basın. Tuşlara bastığınızda ekranda ayarlanan sıcaklık değeri
+görüntülenecektir. Kombi devreye girdiğinde ekranda alev sembolü görülecektir. Merkezi ısıtma modunda çalışırken ekrandaki
+radyatör sembolü yanıp sönecektir.
+3) Kullanım suyu sıcaklığını arttırmak için K6, azaltmak için K5 tuşuna basınız. Düğmelere bastığınızda ekranda
+ayarlanan kullanım suyu sıcaklığı gösterilecektir. Kullanım suyu ihtiyacı olduğunda, cihaz kullanım suyu moduna geçecek ve
+ekranda musluk işareti yanıp sönecektir. Kullanım suyu önceliğinden dolayı cihaz merkezi ısıtmada çalışıyorsa bile kullanım suyu
+ihtiyacı olduğunda kullanım suyu moduna geçecektir.
+5.1.2 Yaz konumunda (Sadece kullanım suyu)
+1) Ekranda musluk sembolü görüntüleninceye kadar ON/OFF tuşuna (K2) basınız.
+2) Kullanım suyu sıcaklığını arttırmak için K6, azaltmak için K5 tuşuna basınız. Düğmelere bastığınızda ekranda
+ayarlanan kullanım suyu sıcaklığı gösterilecektir. Kullanım suyu ihtiyacı olduğunda, kombi kullanım suyu modunda devreye
+girecektir.
+
+-- 14 of 28 --
+
+15
+5.2 	Sisteme su doldurulması
+Kombi soğuk iken manometreden okunan basınç değerinin 0,7 – 1,5 bar aralığında olduğunu düzenli olarak kontrol ediniz.
+Yüksek basınç durumunda, boşaltma musluğunu açarak basıncın istenilen basınç aralığı değerine getirilmesini sağlayınız.
+Düşük basınç durumunda, doldurma musluğunu açarak basıncın yükselmesini sağlayınız. Hava yapmaması için, doldurma
+musluğunu çok yavaş açınız.
+Basınç düşmesi sık tekrarlanıyorsa yetkili servise başvurunuz.
+5.3 	Cihazın kapatılması
+Ana güç kaynağını kesin.
+Gaz vanasını kapatın.
+Not
+Kombi kapatıldıktan sonra donmaya karşı korumalı değildir.
+Not
+Kombinin uzun süre kullanılmayacağı veya mülkün boşaltılacağı
+öngörülürse, elektrik ve gaz kaynakları kapatılacaksa sistemin
+boşaltılması tavsiye edilir.
+5.4 	Donma koruması
+Bütün sistemin suyunu değiştirmek, kombi içerisinde ve ısıtma elemanlarında zararlı kireç tortularının oluşmasına yol
+açacağından, su boşaltmalarından kaçınılmalıdır. Kış sezonu boyunca çalıştırılmayan ve bu nedenle donma tehlikesine maruz
+kalmış veya kalabilecek kombilere, özel amaçlı uygun miktarda antifriz eklenmelidir (örneğin; korozyon ve kireç önleyiciler ile
+desteklenmiş Propylene glikol). Kombi işletim sistemindeki donma koruması fonksiyonu, kombi çıkış suyu sıcaklığı 5°C’nin altına
+düşmesi durumunda devreye girerek su sıcaklığı 10°C’ye ulaşıncaya kadar brülörün çalışmasını sağlar. Kombi kullanım suyu
+donma koruması fonksiyonu çıkış suyu sıcaklığı 5°C’nin altına düşmesi durumunda devreye girerek su sıcaklığı 7°C’ye ulaşıncaya
+kadar brülörün çalışmasını sağlar
+Donma koruması fonksiyonunun çalışabilmesi için aşağıdaki şartlar sağlanmalıdır:
+1. Kombi elektrik beslemesi açık olmalıdır.
+2. Gaz vanası açık olmalıdır.
+3. Sistem (su) basıncı doğru değerlerde olmalıdır.
+4. Kombi bloke durumda olmamalıdır.
+Not:
+Merkezi ısıtma tesisatına mutlaka doldurma musluğu montajı yapılmalıdır.
+
+-- 15 of 28 --
+
+16
+6 	Bakım
+6.1 	Genel bakım
+Cihazınızın verimini ve çalışma emniyetini korumak için, her kış sezonu
+sonunda, yetkili servis tarafından yıllık bakım ve kontrol yapılmalıdır.
+Düzenli ve doğru servis hizmeti, sistemin ekonomik kullanımını sağlar
+Dikkat
+Kombinin bakımı sadece yetkili kişiler tarafından yapılmalıdır.
+Sadece Baymak yedek parçaları kullanılmalıdır.
+Boyalı paneller nemli bir bezle silinmeli ve daha sonra tamamen
+kurutulmalıdır. AŞINDIRICI, YANICI TEMİZLİK MADDELERİ
+KULLANMAYIN.
+Cihaz üzerinde bir işlem yapılmadan önce mutlaka elektrik ve gaz
+bağlantısı kesilmelidir.
+Yetkili servis tarafından cihaz üzerinde yapılan kontrol, bakım, parça
+değişim vb işlemler, zorunlu haller dışında mutlaka cihazın normal
+çalışma şartlarında ve cihazın bulunduğu mekanda yapılacaktır.
+6.2 	Bakım talimatları
+Merkezi ısıtma sistemi düzenli olarak kontrol edilmelidir. Aşağıdaki
+talimatları uygulayın.
+1. Merkezi sistem basıncını kontrol edin.
+Not
+Su basıncı 0.7 bar’dan düşükse, sisteme su doldurulmalıdır.
+Bak
+Sistemi tekrar basınçlandırma
+Not
+Su basıncı 0,5 barın altına düşerse kombi çalışmaz.
+2. Radyatörlerdeki pas ve kaçakları (özellikle nemli alanlarda) kontrol edin.
+3. Vanaları kontrol etmek için yılda birkaç defa açıp kapatın.
+Dikkat
+Kombinin bakımı ve temizlenmesi sadece yetkili kişiler tarafından
+yapılmalıdır.
+6.2.1 	Sistemi tekrar basınçlandırma
+Su basıncı çok düşükse, sistem yeniden basınçlandırılmalıdır.
+Normal işletme suyu basıncı 1 ila 2 bar arasındadır. Basınç 3 barı aşarsa,
+3 bar emniyet ventili açılır ve su boşaltılarak basınç düşürülür.
+Sistemin zaman zaman basınçlandırılması gerekebilir (su basıncı 0,7'nin
+altına düştüğünde).
+Kombi sürekli olarak basınçlandırma ihtiyacı gerektiriyorsa su kaçağı
+olabilir. Yetkili servisi bilgilendirin.
+
+-- 16 of 28 --
+
+17
+6.3 	Ürün Garanti Şartları ile ilgili Tüketicinin Dikkat Etmesi Gereken Hususlar
+Değerli Tüketicimiz;
+Öncelikle ürünümüzü tercih ettiğiniz için teşekkür ederiz.
+Baymak A.Ş. teknik özellikleri ve nitelikleri belirtilmiş olan ürününüze üretim kaynaklı hatalar nedeni ile meydana gelebilecek
+arızalara karşı aşağıda belirtilen koşullar dahilinde Gümrük ve Ticaret Bakanlığı Tüketicinin Korunması ve Piyasa Gözetimi Genel
+Müdürlüğü tarafından onaylanan standart garanti süresi kapsamında hizmet verecektir.
+Baymak A.Ş. tarafından verilen standart ürün garantisi, cihazın normal kullanım şartlarında kullanılmamasından doğacak arızaları
+kapsamamakta olup, aşağıda belirtilen koşullar dahilinde meydana gelen ve/veya gelebilecek olan arızalar, sorunlar ve hasarlar
+garanti kapsamı dışında kalacaktır.
+1. Ürününüzü aldığınızda ürününüze ait garanti belgesini yetkili satıcınıza onaylatınız. Ürünün ilk çalıştırmasını mutlaka yetkili
+servise yaptırınız ve garanti belgesini servis personeline onaylatınız.
+2. Garanti belgesi üzerinde bulunması gereken satıcı ve yetkili servis onaylarının bulunmaması halinde, garanti belgesi üzerinde
+silinti, kazıntı yapılarak tahrifat, ürün üzerindeki orijinal seri numarasının silinmesi - tahrif edilmesi halinde garanti kapsamı dışında
+işlem yapılacaktır.
+3. Ürününüzü kullanmadan önce Montaj ve Kullanım Kılavuzunu mutlaka okuyunuz. Ürünün montaj ve Kullanım Kılavuzunda yer
+alan hususlara aykırı kullanılması, kullanım hataları ve cihazın standart kullanım şartları/amaçları haricinde kullanılması halinde
+ürün garanti kapsamı dışında kalacaktır. Yanlış kullanım arızaları ve asılsız servis müracaatları kapsamında yapılan işlemler ücretli
+olarak yapılacaktır.
+4. Ürünün ilk çalıştırma işleminin Yetkili Servis tarafından yapılmaması, Yetkili Servis Teknisyenleri harici yetkisiz 3. şahıslar ( özel
+servis) tarafından cihaza müdahale edilmesi veya tüketici tarafından cihazın servis ayarlarına müdahale edilmesi nedeni ile oluşan
+arızalar ve sorunlar garanti kapsamı dışındadır.
+5. Ürünün müşteriye teslim tarihinden sonra nakliye ve/veya taşıma sırasında oluşabilecek hasarlar garanti kapsamı dışındadır.
+6. Tüketici tarafından yapılan yanlış depolama ve ortam koşulları nedeni ile üründe meydana gelen arızalar ve hasarlar garanti
+kapsamı dışındadır.
+7. Doğal afetler, üründen kaynaklanmayan harici I fiziki dış etkenler, mevsimsel hava şartları ve çevresel etkenler ( deprem,
+yangın, sel, su basması, şiddetli rüzgar, yıldırım düşmesi, kireçlenme, tesisatın aşırı kireçli/çamurlu/pis olması, nem, rutubet, toz,
+nakliye, taşıma, ürünün dona maruz kalması, baca bağlantısının donması, bacadan yağmur suyu girmesi, susuz çalışma v.b.)
+nedeniyle oluşan arıza ve hasarlar garanti kapsamı dışındadır.
+8. Yüksek, düşük veya sabit olmayan voltaj, hatalı elektrik tesisatı, ürüne uygun olmayan voltaj değeri, cihaz üzerinden aşırı akım
+geçmesi, nötr veya toprak hattına faz gelmesi (faz çakışması) sebebiyle oluşabilecek hasar ve arızalar garanti kapsamı dışındadır.
+9. Ürünün standart ve sorunsuz çalışma koşullarının sağlanması için gerekli gerekli I zorunlu alan Montaj ve Kullanım Kılavuzunda
+belirtilen teknik özelliklerin ( su basıncı, voltaj değeri, gaz besleme basıncı, sigorta değeri, topraklama, yakıt cinsi, yakıt kalitesi v.b.
+) uygun olmaması, sabit olmaması, ve/veya değişken olması halinde, cihazda meydana gelebilecek arızalar ve hasarlar garanti
+kapsamı dışında kalacaktır.
+10. Tesisat ve tesisat ekipmanları nedeniyle cihazda meydana gelecek arıza ve problemler garanti kapsamı dışındadır.
+11. Tüketicinin periyodik olarak yapması ve/veya yaptırması gerekli olan / tavsiye edilen bakım ve kontrolleri zamanında
+yapmaması/yaptırmaması nedeni ile üründe meydana gelebilecek arızalar ve hasarlar garanti kapsamı dışındadır.
+12. Ürünün ticari amaçlı kullanımından kaynaklı arızalar ve sorunlar garanti kapsamı dışındadır.
+13. Elektrik - Su - Gaz kesintisi ve üründen kaynaklanmayan kaçaklar garanti kapsam dışındadır.
+14. Elektrik- Su - Gaz tesisatı ve/veya tesisat ekipmanları, tesisat kaçakları, tesisat bağlantıları, baca bağlantıları nedeni ile
+meydana gelebilecek arızalar ve hasarlar garanti kapsamı dışındadır.
+15. Garanti belgesinin tüketiciye tesliminden, malı satın aldığı satıcı, bayi, acenta ya da temsilcilik sorumludur.
+6502 sayılı tüketicinin korunması hakkındaki kanuna göre, malın ayıplı olduğunun anlaşılması durumunda tüketici;
+a) Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme,
+b) Satılanı alıkoyup ayıp oranında satış bedelinden indirim isteme,
+c) Aşırı bir masraf gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere satılanın ücretsiz onarılmasını isteme,
+ç) İmkan varsa, satılanın ayıpsız bir misli ile değiştirilmesini isteme,
+seçimlik haklarından birini kullanabilir. Satıcı, tüketicinin tercih ettiği bu talebi yerine getirmekle yükümlüdür.
+Tüketiciler, şikayet ve itirazları konusundaki başvurularını tüketici mahkemelerine ve tüketici hakem heyetlerine yapabilirler.
+
+-- 17 of 28 --
+
+18
+7 	Sorun Giderme
+7.1 	Hata kodları
+Bir hata oluştuğunda ekranda hata kodu görüntülenecektir (örneğin E01).
+Kombiyi resetlemek için, RESET (K1) tuşuna basınız. Sorun devam ederse mutlaka yetkili servisi arayınız.
+Hata Kodu 	Tanımı
+E01 	Başarısız ateşleme
+E02 	Hatalı alev oluşumu
+E03 	Aşırı ısınma hatası
+E05 	Fan geri besleme hatası
+E09 	Gaz valfi geri besleme hatası
+E12 	EEPROM (yazılım) arızası
+E15 	Sensor sıcaklık değişim hatası
+E16 	Dönüş sıcaklık sensör kilitlenme hatası
+E17 	Çıkış sıcaklık sensör kilitlenme hatası
+E18 	Sensor test hatası
+E21 	Elektronik kart arızası
+E33 	Dönüş sıcaklık sensörü arızası
+E35 	Çıkış sıcaklık sensörü arızası
+Hata Kodu 	Tanımı
+F13 	Reset kilitlenmesi (cihaz elektrik beslemesini açıp kapatınız)
+F34 	Düşük besleme gerilimi
+F37 	Düşük su basıncı
+F39 	Dış hava sensör arızası
+F40 	Yüksek su basıncı
+F47 	Su basınç anahtarı bağlı değil
+F50 	Sıcak su boyler sensör arızası
+F51 	PT1000 sensör arızası
+F52 	Kullanım suyu sensör arızası
+F53 	Ana eşanjör ısı sigortası arızası
+F81 	Sensör test arızası
+
+-- 18 of 28 --
+
+19
+8 	Ek Bölüm
+8.1 	Ürün fişi ve teknik parametreler
+Model 	42 kW
+Mevsimsel mahal ısıtması enerji verimliliği sınıfı 	A
+Yoğuşmalı kombi 	Evet
+Düşük sıcaklıklı kombi (1) 	Hayır
+B1 kombi 	Hayır
+Kojenerasyon mahal ısıtıcı 	Hayır
+Kombine ısıtıcı 	Evet
+Anma ısı çıkışı 	Prated 	kW 	39
+Nominal ısı çıkışında ve yüksek sıcaklıkta faydalı ısı
+çıkışı 	P4 	kW 	38,8
+Nominal ısı çıkışının% 30'unda ve düşük sıcaklıkta
+kullanışlı ısı çıkışı. 	P1 	kW 	13
+Sezonsal alan ısıtma verimliliği 	ηs 	% 	92,7
+Nominal ısı çıkışında ve yüksek sıcaklıkta faydalı verim.
+rejim 	η4 	% 	87,4
+Nominal ısı çıkışının% 30'unda ve düşük sıcaklıkta
+faydalı verim. mode 	η1 	% 	97,6
+Yardımcı güç tüketimi 	-
+Tam yük 	elmax 	kW 	0,036
+Kısmi yük 	elmin 	kW 	0,013
+Bekleme modunda 	PSB 	kW 	0,067
+Diğer veri
+Bekleme ısı kaybı 	Pstby 	kW 	0,069
+Ateşleme brülör güç tüketimi 	Pign 	kW 	0
+Yıllık enerji tüketimi 	Q HE 	GJ 	120
+Ses gücü seviyesi, iç mekanlarda 	L WA 	dB 	53,6
+Azot oksit emisyonları
+NOx (NCV) 	mg/kWh 	47,57
+NOx (GCV) 	mg/kWh 	42,83
+(1) Düşük sıcaklıklı kombiler için 30 ° C, düşük sıcaklıklı cihazlar için 37 ° C ve diğer ısıtıcılar için 50 ° C dönüş sıcaklığı (ısıtıcı girişinde) için
+düşük sıcaklık araçları.
+(2) Yüksek sıcaklık modu ısıtıcı girişinde 60 ° C dönüş sıcaklığı ve ısıtıcı çıkışında 80 ° C besleme sıcaklığı anlamına gelir
+
+-- 19 of 28 --
+
+20
+9 Elektrik Bağlantısı
+9.1 	Elektrik diyagramı
+Konnektör 	Pin No 	Sinyal 	Açıklama
+X1 	1 	Alev 	-
+X2 	1 	Toprak 	Toprak
+2 	Toprak
+X3
+8 	Input 	Dış hava sensörü
+7 	Gnd
+6 	RX-TX 	OpenTherm (3.0)
+	5 	Gnd
+4 	Input 	-
+3 	Gnd
+2 	Input 	Oda termostatı
+1 	Gnd
+X4
+7 	24Vdc 	DC gaz valfi
+	6 	Gnd
+5 	- 	-
+4 	PWM
+Fan modülasyonu	3 	24Vdc
+2 	Tacho
+1 	Gnd
+X5
+9 	- 	-
+8 	Input 	Isıl sigorta
+7 	Gnd
+6 	Input Kullanım suyu sensörü	
+5 	Gnd
+4 	Input 	Çıkış sensörü
+3 	Gnd 	Çıkış sensörü - dönüş sensörü
+2 	Input 	Dönüş sensörü
+1 	24Vdc 	-
+X7
+10 	WPS supply 5Vdc 	Su basınç anahtarı
+9 	WPS input 	Su basınç anahtarı
+8 	WPS gnd 	-
+7 	PWM supply 	PWM pompa
+	6 	PWM output
+5 	Supply 12Vdc
+Kullanım suyu türbin sensörü	4 	Input
+3 	Gnd
+2 	Input Güneş enerji boyleri alt sensörü	
+1 	Gnd
+X10
+3 	Faz merkezi ısıtma
+3 yollu vana	2 	Faz kullanım suyu
+1 	Nötr
+X11
+4 	Faz Fan besleme
+	3 	Nötr
+2 	Faz Pompa besleme
+	1 	Nötr
+X12 2 	Faz Besleme	
+1 	Nötr
+HT 1 	HT Ateşleme / iyonizasyon elektrodu	
+2 	-
+
+-- 20 of 28 --
+
+21
+Cihazın sağlıklı çalışabilmesi ve elektriksel güvenliğin tam olabilmesi için, cihazın bağlı olduğu enerji hattında mutlaka
+topraklama olmalıdır.
+Her iki kutup arasında min. 3 mm mesafe olacak şekilde, çift kutuplu bir anahtar kullanınız. Besleme kablosunu
+değiştirirken, mutlaka max. çapı 8mm olan, HAR H05 VV-F’ 3x0,75 kablo kullanınız.
+Cihaz üzerinde bir işlem yapılmadan önce elektrik bağlantısı mutlaka kesilmelidir.
+9.2 	Klemens bağlantı şeması
+
+-- 21 of 28 --
+
+22
+10 Pompa Grafiği
+11 Çevresel Değerlendirme
+11.1 Enerji tasarrufu
+Enerji tasarrufu ile ilgili ipuçları:
+ 	Radyatörleri örtmeyin. Radyatörlerin önüne gelecek şekilde perde asmayın.
+ 	Isı kaybını önlemek için radyatörlerin arkasına yansıtıcı paneller takın.
+ 	Çatı yalıtımını yapın ve çift cam kullanın.
+ 	Kombinin kontrol ve bakımlarını düzenli yapın.
+ 	Oda termostatlarını 1 °C kısın.
+ 	Kullanılmayan odalarda radyatörleri kapatın.
+ 	Sıcak ve soğuk suyu dikkatli kullanın.
+ 	Oda termostatı kullanın. Termostatı yaklaşık 20 °C'ye indirin. Bu sayede ısıtma maliyetlerini ve enerji tüketimi azalmış
+olur.
+ 	Termostatik radyatör vanaları ile birlikte modülasyonlu bir termostat enerji tasarrufu sağlar ve önemli bir konfor sunar. Bu
+kombinasyon size sıcaklıklarda esneklik sağlar. Termostatik radyatör vanalarını oda termostatının monte edildiği odalarda
+kullanmayın.
+ 	Termostatik vananın tamamen kapanması ve açılması, istenmeyen sıcaklık dalgalanmalarına neden olur. Termostatik
+vanaları küçük adımlarla açıp kapatın.
+ 	Odayı havalandırmak için pencereleri açarsanız oda termostatı sıcaklığını geçici olarak düşürün.
+ 	Oda termostatını saatlik ayarlarken evde olunmayan günleri ve tatil günlerini dikkate alın. Elektrik tüketimi ve enerji
+tasarrufu, programlanmış ve aktif bir zamanlayıcı programı ile optimum seviyelere ulaşır.
+
+-- 22 of 28 --
+
+23
+12 Paket Etiketi Bilgileri
+14.1 Paketin merkezi ısıtma enerji verimliliğini belirten paket bilgi kartı
+14.1.1 Paket bilgileri-Kombi
+Kombinin Sezonsal Enerji Verimliliği
+‘I’:Öncelikli merkezi ısıtıcının sezonsal ısıtma verimliliğinin değeri, % olarak ifade edilir.
+Sıcaklık Kontrolörü
+(Oda termostatı-Dış hava sensörü)
+Sıcaklık kontrol bilgi kartından
+Ek Kombi
+Kombi bilgi kartından
+.
+Güneş Enerjisi Katkısı
+Güneş enerjisi ürününün bilgi kartından.
+‘III’: Matematiksel ifadenin değeri: 294/(11.Prated), burada ‘’Prated’’ tercih edilen ısıtıcıyla ilgilidir.
+‘IV’: Matematiksel ifadenin değeri: 115/(11.Prated), burada ‘’Prated’’ tercih edilen ısıtıcıyla ilgilidir.
+(1) Eğer tank derecesi A’nın üzerindeyse 0,95 kullanınız.
+Isı Pompası Katkısı
+Isı pompası bilgi kartından
+‘II’: Bir paketin tercihli ve ilave ısıtıcılarının ısı çıktısını
+ağırlıklandırmak için tercih edilen faktör aşağıdaki
+tabloda verilmiştir.
+Sınıf I =% 1, Sınıf II =% 2, Sınıf III =% 1.5,
+Sınıf IV =% 2, Sınıf V =% 3, Sınıf VI =% 4,
+VII. Sınıf =% 3,5, Sınıf VIII =% 5
+Merkezi ısıtma sezonsal verimliliği(%)
+Kolektör boyutu(m²) 	Tank hacmi(m²) 	Kolektör verimliliği(%)
+Tank derecelendirmesi
+A * = 0.95, A = 0.91,
+B = 0.86, C = 0.83,
+D- G = 0,81
+Merkezi ısıtma sezonsal enerji verimliliği(in%)
+
+-- 23 of 28 --
+
+24
+Güneş Enerjisi Katkısı ve Ek Isı Pompası
+Küçük değeri seçiniz
+Paketin merkezi ısıtma sezonsal enerji verimliliği sınıfı
+Paketin merkezi ısıtma sezonsal enerji verimliliği sınıfı
+Bu kartta verilen ürün paketinin enerji verimliliği, bir binaya kurulduktan sonra gerçek enerji verimliliğine karşı gelmeyebilir çünkü
+bu verimlilik, dağıtım sistemindeki ısı kaybı ve bina büyüklüğü ve özellikleri ile ilgili olarak ürünlerin boyutlandırılması gibi
+faktörlerden etkilenir.
+Düşük Sıcaklık Uygulaması için Kullanılan Kombi ve Ek Isı Pompası(35ºC)
+Isı pompası bilgi kartından
+Kombilerin ağırlıklandırılması
+
+-- 24 of 28 --
+
+25
+14.1.2 Paket Ürün Kartı-Isıtıcı Kombinleri (Kombiler ya da Isı Pompaları)
+Kombine ısıtıcının su ısıtma enerji verimliliği
+Beyan edilen yük profili
+Güneş Enerjisi Katkısı
+Güneş enerjisi ürününün bilgi kartından
+Ortalama iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği
+Ortalama iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği sınıfı
+Soğuk ve sıcak iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği sınıfı
+Soğuk
+Sıcak
+Elektrik Desteği
+
+-- 25 of 28 --
+
+26
+Bu fişte verilen ürün paketinin enerji verimliliği, bir binaya monte edildikten sonra gerçek enerji verimliliğine karşılık
+gelmeyebilir, çünkü bu verimlilik dağıtım sistemindeki ısı kaybı ve bina büyüklüğü ve özellikleri ile ilişkili olarak ürünlerin
+boyutlandırılması gibi faktörlerden etkilenir.
+I Kombine ısıtıcının kullanım suyu enerjisi verimliliğinin değeri,% cinsinden ifade edilir.
+II Matematiksel ifadenin değeri (220 · Qref) / Qnonsol, kombine ısıtıcısının M, L, XL veya XXL yük profilini beyan etmek
+için , Ek VII, Tablo 15 ve Qnonsol güneş enerjisi ürününün bilgi kartından AB 811/2013 yönetmeliğinden alınmıştır.
+III Matematiksel ifadenin değeri (Qaux · 2,5) / (220 · Qref),% olarak ifade edilir, Qaux beyan edilen yük profili M, L, XL
+veya XXL için güneş enerjisi ürününün bilgi kartından ve Qref AB 811/2013, Ek VII, Tablo 15 den alınır.
+
+-- 26 of 28 --
+
+
+
+-- 27 of 28 --
+
+
+
+-- 28 of 28 --
+

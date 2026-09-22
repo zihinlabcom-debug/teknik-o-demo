@@ -1,0 +1,2889 @@
+EWA 20
+EWA 24
+DUVAR TİPİ GAZ ADAPTİF-PREMİX
+SİSTEMLİ YOĞUŞMALI KOMBİ
+MONTAJ VE KULLANIM KILAVUZU
+
+-- 1 of 36 --
+
+2	i 	warmhaus.com
+İÇİNDEKİLER
+1. 	DEĞERLİ WARMHAUS MÜŞTERİMİZ ................................................................................................................................................ 3
+1.1. 	GENEL UYARILAR .....................................................................................................................................................................................................................3
+1.2. 	GENEL GARANTI KOŞULLARI .................................................................................................................................................................................................3
+1.3. 	GAZ KAÇAKLARI ..................................................................................................................................................................................................................... 4
+2. 	MONTAJ PERSONELİ BÖLÜMÜ ......................................................................................................................................................... 4
+2.1. 	AMBALAJ KOLİSİ İÇERİKLERİ ................................................................................................................................................................................................ 4
+2.2. 	KOMBİ MONTAJ KURALLARI ................................................................................................................................................................................................. 5
+2.2.1. 	Kombinin Montajının Yapılacağı Yerler İçin Genel Kurallar ....................................................................................................................................................................5
+2.2.2. 	Hermetik Kombilerin Montajının Yapılamayacağı Yerler ........................................................................................................................................................................5
+2.2.3. 	Kombinin Duvara Montajı ve Montaj Yeri Seçimi ......................................................................................................................................................................................5
+2.2.4. 	Boyutlar ve Bağlantılar .....................................................................................................................................................................................................................................6
+2.2.5. 	Doğal Gaz ve LPG Bağlantısı (Cihaz Kategorisi I2H, II2H3P) ......................................................................................................................................................................6
+2.2.6. 	Yanıcı Gaz Kalitesi ..............................................................................................................................................................................................................................................6
+2.2.7. 	LPG Tankı Kullanılması Durumunda..............................................................................................................................................................................................................6
+2.2.8. 	Tüp Gaz Kullanımı Durumunda ......................................................................................................................................................................................................................7
+2.2.9. 	Kısmen Korunan Dış Mekânlara Montaj .......................................................................................................................................................................................................7
+2.3. 	HİDROLİK TESİSAT MONTAJ KURALLARI .............................................................................................................................................................................7
+2.3.1. 	Kalorifer ve Sıcak Kullanım Suyu Tesisatları...............................................................................................................................................................................................7
+2.3.2. 	Kalorifer Tesisatının Doldurulması/Boşaltılması .......................................................................................................................................................................................8
+2.3.3. 	Sirkülasyon Pompası .........................................................................................................................................................................................................................................8
+2.3.4. 	Yoğuşma Hattı için Sifonun Doldurulması ................................................................................................................................................................................................ 10
+2.4. 	KOMBİ BACA BAĞLANTILARI ................................................................................................................................................................................................11
+2.4.1. 	Atık Gaz Baca Boru Seti ve Aksesuarları Bağlantısı .............................................................................................................................................................................. 11
+2.4.2. 	Yatay Baca Setleri Ile Montaj ......................................................................................................................................................................................................................... 11
+2.4.3. 	Dikey Baca Setleri ile Montaj (Ø 60/100 mm) ........................................................................................................................................................................................ 13
+2.4.4. 	Ayrık Baca Tipi (Hermetik) Ø 80/80 Kullanım ....................................................................................................................................................................................... 13
+2.4.5. 	Baca Çıkış Bağlantılarının Çevresel Uzaklıklar ......................................................................................................................................................................................... 16
+2.4.6. 	Atık Gaz Tesisatının Yanabilen Yapı Malzemelerinden Uzaklığı...........................................................................................................................................................17
+2.4.7. 	C Tipi Cihazların Atık Gaz Boru Çıkış Ağızları (Yanma Havasının Girdiği ve Atık Gazın Çıktığı Kısım) ....................................................................................17
+2.4.8. 	Bina Çıkıntılarında ve Yanabilen Malzemelerden Olan Yapı Elemanları İçinden Geçen Atık Gaz Boru Çıkış Ağızları .........................................................17
+2.5. 	ELEKTRİKSEL BAĞLANTILAR ............................................................................................................................................................................................... 17
+2.5.1. 	Opsiyonel Kumandalar: Oda Termostatı, Dış Hava Sıcaklık Sensörü Bağlantıları ..........................................................................................................................17
+2.5.2. 	Kontrol Aksesuarları ........................................................................................................................................................................................................................................ 18
+2.5.3. 	Oda Termostatlı Kumandaların Montaj Yeri Seçimi ............................................................................................................................................................................... 18
+3. 	KULLANICI BÖLÜMÜ ........................................................................................................................................................................19
+3.1. 	KULLANICI İÇİN GENEL UYARILAR ......................................................................................................................................................................................19
+3.1.1. 	Kombinin Kullanımı ......................................................................................................................................................................................................................................... 19
+3.2. 	AÇMA / KAPAMA / BEKLEME VE YAZ / KIŞ MODLARININ SEÇİMİ ................................................................................................................................ 20
+3.2.1. 	Açma/Kapama/Bekleme Konumları ......................................................................................................................................................................................................... 20
+3.2.2. 	Kış Konumunda Çalıştırma ........................................................................................................................................................................................................................... 20
+3.2.3. 	Yaz Konumunda Çalıştırma .......................................................................................................................................................................................................................... 20
+3.2.4. 	Kombiyi Resetleme (Yeniden Çalıştırma) ................................................................................................................................................................................................. 21
+3.2.5. 	Kombiyi Kapatma ............................................................................................................................................................................................................................................ 21
+3.2.6. 	Oda Termostatı ile Kullanım (Opsiyonel) .................................................................................................................................................................................................. 21
+3.2.7. 	Dış Hava Sıcaklık Sensörü Kullanımı (Opsiyonel) ...................................................................................................................................................................................22
+3.2.8. 	Kombi Özelliklerini Kişiselleştirme ..............................................................................................................................................................................................................22
+3.3. 	HATA VE ARIZA DURUMLARININ ÇÖZÜMLENMESİ.......................................................................................................................................................... 23
+3.3.1. 	Arıza Kodları Tablosu ......................................................................................................................................................................................................................................23
+3.4. 	KOMBİYİ TASARRUFLU KULLANIM ÖNERİLERİ ................................................................................................................................................................ 27
+3.5. 	GARANTİ ŞARTLARI İÇİN KULLANICILARIN DİKKAT ETMESİ GEREKEN KONULAR ................................................................................................... 27
+4. 	TEKNİK VERİLER ............................................................................................................................................................................. 28
+4.1. 	ÜRÜN BİLGİ FORMU & ERP BİLGİ FÖYÜ ............................................................................................................................................................................. 29
+4.2. 	ENERJİ ETİKETİ ...................................................................................................................................................................................................................... 30
+5. 	KOMBİ İLK ÇALIŞTIRMA ...................................................................................................................................................................31
+5.1. 	KOMBİNİN İLK ÇALIŞTIRILMASI İÇİN KONTROLLER ......................................................................................................................................................... 31
+5.2. 	KOMBİYİ OLUŞTURAN PARÇALAR ...................................................................................................................................................................................... 31
+5.3. 	KOMBİ İLK ÇALIŞTIRMA KONTROL LİSTESİ ..................................................................................................................................................................... 32
+5.4. 	GARANTİ BELGESİ................................................................................................................................................................................................................. 34
+
+-- 2 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	3
+1. 	DEĞERLİ WARMHAUS MÜŞTERİMİZ
+Uzun yıllar ısınma ve sıcak kullanım suyu konforunuzu sağlayacak olan
+Warmhaus kombiyi seçtiğiniz için sizi kutluyor ve güveniniz için teşekkür
+ediyoruz. Avrupa Birliği standartlarına uygun ve ileri teknoloji ile üretilen
+Warmhaus kombiler aynı zamanda bir çok ülkeye de ihraç edilmektedir.
+Yoğun ve titiz çalışmalarla üretilmiş bu ürün için her türlü olağan bakım
+ihtiyaçlarında mesleki yeterlilik sertifikasına sahip Yetkili Teknik Servis
+ağımızdan yararlanabilirsiniz. Yetkili Servislerimiz her zaman orijinal yedek
+parça hizmeti sunacaklarından cihazınızın performansının korunmasını
+garanti ederler. Kombiyi ekonomik, konforlu ve verimli kullanabilmeniz için bu
+kılavuzu dikkatlice okuyunuz ve bir başvuru kaynağı olarak lütfen saklayınız.
+Verimli olarak kullanılabilmesi için öncelikle yerel gaz kuruluşunca onaylı,
+montaj konusunda tecrübeli ve yetkin bir bayiye montaj yaptırmanızı öneririz.
+1.1. GENEL UYARILAR
+Kılavuz kitapçık ürünün ayrılmaz ve bütünleyici bir parçasını oluşturmakta
+olup, cihazın mülkiyet değiştirmesi halinde yeni kullanıcısına teslim
+edilmelidir. Söz konusu kitapçığın özenle korunması ve kullanımın yanı sıra
+montaj konularında da önemli bilgiler içermesinden ötürü gerektiğinde
+başvurulabilir olması gerekmektedir.
+Kalorifer ve Sıcak Kullanım Suyu tesisatları yürürlükteki yasal
+düzenlemeler gözünde tutularak yasal olarak belirlenmiş ölçülere
+uygun olarak yetkin ve onaylı bir mühendislik firması tarafından
+projelendirilmesi ve yapılması gerekmektedir. Projelendirme
+(“Sıhhi Tesisat Proje Hazırlama Esasları” Makine Mühendisleri
+Odası Yayınları, “Kalorifer Tesisatı”, “Gaz Tesisatı Proje Hazırlama
+Esasları”, ve TS 2164 “Kalorifer Tesisatı Projelendirme Kuralları”) yayınlarının
+güncel haline göre yapılmalıdır.
+Montaj ve bakım işlemlerinin, yürürlükteki yasal düzenlemelere
+uygun bir şekilde üretici firma talimatları doğrultusunda tesisat
+sektöründe yeterli teknik bilgiye sahip ve mesleki yeterlilik
+belgesine 	sahip 	uzman 	personel 	tarafından 	yapılması
+gerekmektedir. Yanlış bir montajdan dolayı üretici firmanın sorumlu
+tutulamayacağı ve insanların, diğer canlıların (hayvan, bitki) veya eşyaların da
+zarar görebileceği tehlikeler oluşabilir.
+Doğalgaz tesisat projesi; Şehrinizde bulunan gaz şirketinin
+(BAŞKENTGAZ, İGDAŞ, ESGAZ, BURSAGAZ, İZGAZ, AGDAŞ gibi)
+yetki vermiş olduğu bayilerden birine gidilerek, proje ve etüt
+çalışması yaptırılmalıdır.
+Kombinin LPG tüpleri veya LPG tankları ile kullanılabilmesi için kombinin
+yetkili Warmhaus servisimiz tarafından dönüşümünün yapılması
+gerekmektedir. LPG kullanımında projelendirme ve uygulamanın tankı
+tedarik eden firma tarafından yerel ve yasal kurallara göre yapmalıdır.
+1.2. GENEL GARANTI KOŞULLARI
+Montaj, kullanım veya bakım işlemleri esnasında, yürürlükteki
+yasal düzenlemelere ve standartlar ile işbu kılavuz kitapçıkta
+yer alan bilgilere (ve her durumda üretici tarafından sunulan
+bilgi ve talimatlara) uyulmamasından dolayı oluşabilecek hatalardan
+üretici firmanın ne sözleşme kapsamı ne de sözleşme harici herhangi bir
+sorumluluğu olmayacağı gibi cihazın garanti geçerliliği de sona erer.
+Kombinin elektrik hattına bağlantısını yapmaya ve kombiye
+elektrik 	vermeye 	yalnızca 	Warmhaus 	Yetkili 	Servisi
+yetkilidir.
+Ürünün garanti süresi içerisinde malzeme, üretim ve montaj hatalarından
+dolayı arızalanması sonucu bakım ve onarım işçilik masrafı ve yedek parça
+bedeli alınmaksızın bedelsiz olarak yapılacaktır.
+Kombinizin garanti süresi 2 yıldır ve yetkili servis tarafından ilk çalıştırılma
+işlemi ile başlar. Ürünün garanti süresi içerisinde malzeme, üretim ve montaj
+hatalarından dolayı arızalanması sonucu bakım ve onarım işçilik masrafı ve
+yedek parça bedeli alınmaksızın bedelsiz olarak yapılacaktır.
+(Ayrıca bakınız: 3.5 GARANTI ŞARTLARI IÇIN KULLANICILARIN DIKKAT
+ETMESI GEREKEN KONULAR)
+Bu cihazın yalnızca tasarlanarak üretilmiş olduğu amaçlara
+(kapalı devre kalorifer tesisatında kullanılmak ve açık devre
+sıcak kullanım suyu üretimine) uygun şekilde kullanılması
+gerekir. Bunun dışındaki her türlü kullanım uygun olmamanın yanı sıra
+potansiyel olarak tehlike de oluşturabilir.
+Yetkisiz kişiler tarafından yapılan müdahaleler, yanlış montaj ve ilk çalıştırma
+gibi nedenlerden dolayı oluşan hasarlardan üretici sorumlu değildir ve garanti
+kapsamı dışında kalır. Kombi, kalorifer ısıtma, sıcak kullanım suyu, doğalgaz/
+LPG ve elektrik bağlantıları olan bir cihaz olduğu için yetkili servis dışında
+müdahale ettirmeyiniz ve etmeyiniz.
+ Kombi ile ilgili tüm sorunlarınız için Warmhaus Çağrı Merkezini 850
+225 15 15 arayınız (aramadan önce lütfen kombinin seri numarasını
+veya Müşteri Numaranızı hazırlayınız). Servis hizmetlerinden sonra
+yetkili servis kayıt fişinizi teknisyenden isteyiniz ve saklayınız.
+ Cihazın bakım işlemlerinin yetkili ve uzman teknik personel
+tarafından yürütülmesi gerekmekte olup, Warmhaus Yetkili Teknik
+Servis Merkezleri bu konuda kalite ve profesyonelliği hususunda bir
+teminat teşkil etmektedirler. Üçüncü kişi ve kurum tarafından yapılan tamir,
+parça değiştirme ve bakımlardan dolayı oluşacak hasarlardan WARMHAUS
+sorumlu değildir ve bu böyle durumlarda kombi garanti kapsamı dışındadır.
+ Bu cihaz, teknik sicil etiketinde belirtilmiş olan ülkede kurulmak üzere
+imal edilmiştir. Kurulumun plakada belirtilmiş olan ülkenin dışındaki
+ülkelerde yapılması insan, hayvan ve eşyalara zarar verebilir.
+Kombiler, 	aşağıda 	belirtilen 	direktifler 	doğrultusunda 	CE 	işaretini
+taşımaktadır:
+- Gaz Direktifi 2009/142/EEC
+- Verimlilik Direktifi 92/42/EEC
+- Elektromanyetik Uygunluk Direktifi 2014/30/EU
+- Alçak Gerilim Direktifi 2006/95/EEC
+Gaz yakan cihazların ve bunların donanımları konusundaki yasal düzenlemeler
+hususunda daha detaylı bilgi edinebilmek için aşağıdaki web adresine
+bakabilirsiniz.
+https://resmigazete.gov.tr/eskiler/2018/05/20180505-1.htm
+“Gaz Yakan Cihazlara Dair Yönetmelik”
+Gaz yakan cihazların montaj şartları konusunda bağlı olduğunuz yerel gaz
+firmalarının (BAŞKENTGAZ, İGDAŞ, ESGAZ, BURSAGAZ, İZGAZ, AGDAŞ
+gibi) şartnamelerine bakabilirsiniz.
+Üretici: Warmhaus Isıtma ve Soğutma Sistemleri Tic. A.Ş. Taşpınar Mahallesi,
+TEKNOSAB 1. Cadde No: 12, 16710, Karacabey / Bursa / Türkiye
+WARMHAUS
+1015
+20 kW
+24 kW
+WARMHAUS A.Ş. haber vermeden her türlü teknik ve ticari değişiklik yapma
+hakkını saklı tutarak baskı ve yazım hatalarına bağlı tüm sorumlulukları
+reddeder.
+
+-- 3 of 36 --
+
+4	i 	warmhaus.com
+1.3. GAZ KAÇAKLARI
+DOĞALGAZ KOKUSU DUYULDUĞUNDA NASIL HAREKET ETMELİ?
+2. 	MONTAJ PERSONELİ BÖLÜMÜ
+2.1. AMBALAJ KOLİSİ İÇERİKLERİ
+Warmhaus Kombi ve Baca Seti Kutusu olmak üzere iki kutu olarak satışa
+sunulur. Kombi kutusu içerisinde aşağıda sıralanan malzemeler ve küçük
+kutuda ise atık gaz baca boruları bulunmaktadır.
+I. Montaj Şablonu (Şekil 1)
+II. Kullanma Kılavuzu (Şekil 2)
+III. Bağlantı Aksesuarları (Şekil 3)
+a. 1 adet Kısma Vidası (baca çıkışına
+monte edilmiştir.)
+b. 2 adet Askı Vidası
+c. 2 adet Dübel
+IV. Askı Plakası (Şekil 4)
+V. Atık Gaz Baca Seti (Şekil 5)
+Şekil 1 Montaj şablonu
+Şekil 4 Askı plakası
+Şekil 2 Kullanma kılavuzu
+Şekil 5 Atık gaz baca seti
+471
+1000
+GAS
+G3/4" 	G3/4"	G3/4"
+80 mm 	65 mm 	65 mm 64 mm
+725 mm
+	592 mm
+422 mm
+G1/2"	G1/2"
+75 mm 	73 mm
+Ø110 mm
+114 mm
+(OPTIONAL)
+150.11.606.000028
+Ambalaj malzemelerini (plastik poşet, naylon, vb) sağlık
+açısından 	bir 	tehlike 	oluşturmaması 	için 	çocukların
+ulaşabileceği yerlere bırakmayınız.
+Çakmak - kibrit
+yakmayınız.
+Doğalgaz ile çalışan
+cihazların ve
+sayacınızın vanasını
+kapatınız.
+Gaz kokusu olan
+mahalli herkesin
+boşaltmasını
+sağlayınız
+Komşunuzdan veya
+uygun bir yerden İGDAŞ
+187 Doğalgaz
+Acil Hattı’nı arayınız.
+Tesisata kesinlikle
+müdahale etmeyiniz.
+İGDAŞ ekiplerinin
+gelmesini bekleyiniz.
+Doğalgaz kaçağı
+durumunda gazın
+ortamdan tahliyesini
+sağlayan menfezleri
+asla kapatmayınız.
+Kapı zilini
+kullanmayınız ve
+kullandırmayınız.
+Doğalgaz kaçağı
+durumunda telefon
+kullanmayınız.Telefon
+kıvılcım oluşturabilir
+Lambaları ve diğer
+elektrikli cihazları
+açmayınız, kapamayınız
+veya fişten çekmeyiniz.
+Kapı ve pencereleri
+açarak ortamı
+havalandırınız
+ACİL DURUMLARDA
+BİLGİ: Daha ayrıntılı bilgi için yerel gaz
+kuruluşlarınızın 	internet 	sitelerine 	(web
+sayfaları). 187 DOĞALGAZ ACİL bölümlerine
+bakabilirsiniz.
+187
+DOĞALGAZ
+ACİL
+112
+AMBULANS
+110
+İTFAİYE
+155
+POLİS
+Şekil 3 Bağlantı aksesuarları
+
+-- 4 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	5
+2.2. KOMBİ MONTAJ KURALLARI
+2.2.1. Kombinin Montajının Yapılacağı Yerler İçin Genel Kurallar
+Hermetik (C tipi) kombilerin monte edildiği mekânlar için bir sınırlama yoktur
+(cihazlar odanın hacmi ve havalandırma biçimine bağlı olmaksızın monte
+edilebilir). Ayrıca balkon, teras gibi kısmi korumalı alanlara da koruyucu kabin
+içerisinde olmak şartıyla ve tesisat suyundaki donmaya karşı gerekli tedbirler
+alınması şartıyla monte edilebilirler.
+Kombinin, montajı bina duvarına bağlantısı sağlam olarak yapılmalıdır. Kombi
+ile gaz hattı arasında esnek bağlantı elemanı kullanılmalıdır. A, B ve C tipi
+cihazlarda kullanılacak fleks boyları yerel gaz kuruluşlarının müsaade ettiği
+ölçüleri aşmamalıdır. Hermetik kombilere ait baca çıkışları mutlaka doğrudan
+dış ortama açık, hava sirkülasyonu olan yerlere bağlanmalıdır. Bu cihazların
+atık gaz tesisatı gaz çıkış yeri şartları (boru çıkış ağzının çeşitli formlara göre
+konumları, düşey, yatay asgari mesafeleri, kanallara veriliyorsa kanalların
+kesit alanları vb) TS 12514 standardında belirtilen kurallara uygun olarak
+yapılmalıdır.
+2.2.2. Hermetik Kombilerin Montajının Yapılamayacağı Yerler
+• Binaların merdiven boşluklarına,
+• Genel kullanımına açık koridorlarına, havalandırma boşluklarına ve
+aydınlıklarına, tavan arasına, çatı altına, acil çıkış kapılarına, kiler, hol, gibi
+ortak kullanım alanlarını oluşturan benzeri mekânlara,
+• Binalar arası avlulara,
+• Dar saçak aralıklarına
+• Baca duvarları üzerine,
+• Kapalı balkonlara,
+• Açık balkonlara (kabin içinde olması ve cihaz firmasının müsaade etmesi
+hariç),
+• Atık gaz çıkışını engelleyen çıkıntılı yapı kısımlarının altlarına,
+• Doğrudan rüzgâr direncine maruz kalabilecek yerlere,
+• Başka birimlere temiz hava sağlayan açıklıklara (C tipi) Hermetik kombilerin
+monte edilmesi yasaktır!
+2.2.3. Kombinin Duvara Montajı ve Montaj Yeri Seçimi
+• Kombinin duvara montajının, sağlam ve güvenli olduğu kontrol edilmeli ve
+garantilenmelidir.
+• Kombi ile birlikte standart olarak verilen askı sacı, bağlantı vidaları ve
+montaj şablonuna göre dolu veya yarı dolu tuğlalı bir duvara tekniğine
+uygun şekilde monte edilmelidir ve başka amaçla kullanılmamalıdır.
+• Montaj için farklı malzemelerin kullanılması durumunda kombi garanti
+kapsamından çıkar.
+• Eğer monte edilecek duvar tuğlalı bir duvar değilse öncelikle destek
+sisteminin sağlamlığı kontrol edilmelidir.
+• Kombi ateşe dayanıklı bir duvara monte edilmelidir.
+• Kombi askı sacının yerden yüksekliği 1,8 -2,2 m arasında monte edilmesi
+önerilir.
+• Montaj yerinin kısıtlı olduğu yerlerde servis teknisyeninin de kolay
+müdahale edebilmesi için kombinin yerden minimum 30 cm yukarıda ve
+yanlardan da en az 5 cm boşluk bırakılacak şekilde monte edilmesi gerekir.
+• Patlayıcı, yanıcı madde ve asit buharı bulunan ortamlara kombi montajı
+yapılmaz.
+• Ocak, fırın, radyatör veya ısıtıcı cihazların yanlarına veya üstlerine gelecek
+şekilde montaj yapılmaz.
+• Hermetik kombiler mobilya içene de monte edilebilir ancak yan taraflarında
+en az 5’er cm boşluk bırakılmalıdır.
+• Mutfak tezgâhı veya set üzerine monte edilecekse kombi altından
+minimum 30 cm boşluk bırakılmalıdır.
+• Montaj sonrasında kombinin Emniyet Ventilinden su gelme olasılığına
+karşı çıkışının şeffaf bir hortum ile gider hattına bağlanılması önerilir. Eğer
+bu mümkün değilse; kombinin altına elektronik cihazlar, bozulabilecek,
+paslanabilecek aletler, parçalar ve gereçler koymayınız.
+• Yukarıdaki nedenlerden dolayı kombi altına herhangi bir mobilya
+koymayın/bulundurmayın.
+Kombinin hemen yakınında sıvı veya yanıcı madde bulunmadığından
+emin olun. Cihazın nominal ısı kapasitesinde izin verilen maksimum
+85°C sıcaklık değeri aşılmadığında bile ısıtma cihazı ile yanıcı madde
+içeren yapı malzemesi arasında 1,0 mt mesafe bırakılması gerekir.
+Şekil 6 Kombinin bir kabin veya dolap içerisine konulması durumunda servis hizmeti verilebilmesi için minimum mesafeler.
+
+-- 5 of 36 --
+
+6	i 	warmhaus.com
+2.2.4. Boyutlar ve Bağlantılar
+2.2.5. Doğal Gaz ve LPG Bağlantısı (Cihaz Kategorisi I2H, II2H3P)
+Kombilerimiz metan gazı (G20) ve L.P.G. ile çalışmak üzere üretilmişlerdir. Gaz
+besleme borularının 3/4”G kombi bağlantılarına eşit veya daha büyük olması
+gerekmektedir. Gaz bağlantısını yapmadan önce, olası artıkların kombinin iyi
+çalışmasını ve verimliliğini bozacağından dolayı tüm yakıt besleme tesisatının
+boru döşemelerinin özenli bir iç temizliğinin yapılması gerekir. Ana hattan
+dağıtılan gazın kombi için öngörülen türde olduğu kontrol edilmelidir (kombi
+cihazı üzerinde yer alan etikete bakınız).
+Farklılık olması halinde kombi üzerinde müdahale yapılarak diğer cins gaza
+dönüştürülmesi gerekir (gaz değişimi durumunda yetkili servislerimize
+başvurunuz). Ayrıca yetersiz olması halinde kombinin gücünü etkileyebilecek
+ve kullanıcıya zorluklar yaratabilecek, kombinin beslenmesinde kullanılacak
+ağ dinamik basıncının da (metan veya L.P.G) kontrol edilmesi gerekir. Gaz
+vanası bağlantısının doğru yapıldığından emin olun. Yanıcı gaz besleme
+borusu, kombi maksimum güçte çalışırken brülöre doğru yeterli gaz
+miktarını iletebilecek ve cihazın verimliliğini garantilemek için yürürlükteki
+MMO ile yerel gaz şirketi şartname ve talimatlarına göre projelendirilip
+boyutlandırılmalıdır. Bağlantı sisteminin yasal düzenlemelere uygun olması
+gerekmektedir.
+2.2.6. Yanıcı Gaz Kalitesi
+Kombi içerisinde yabancı madde ihtiva etmeyen saf yakıtla kullanılmak üzere
+tasarlanmıştır; bu nedenle gaz besleme hattında mutlaka (yakıtın saf hale
+getirilmesinin sağlanması amacıyla) gerekli filtre sistemlerinin ilave edilmesi
+gerekmektedir.
+2.2.7. LPG Tankı Kullanılması Durumunda
+24 kW üzerinde ısı ihtiyaçları için LPG tank kullanımı tavsiye edilir. Yeni LPG
+stok tanklarının durgun gaz kalıntısı (azot) ihtiva etmesi hasıl olabilir ki, bu
+cihaza tahsis edilmiş karışımı fakirleştirerek anormal işleyişlere sebep olur.
+- LPG gazının karışım kompozisyonlarına bağlı olarak tanklarda stoklanması
+esnasında muhtelif alaşım katmanlarının oluşması söz konusu olabilir. Bu,
+cihaza tahsis edilen karışımın ısı gücünde değişikliğe sebep olarak cihazın
+verim değişikliklerine sebep olur.
+Şekil 7 Ewa Kombi boyutları ve bağlantıları
+Warmhaus Ewa
+A: Kalorifer sistemi gidiş hattı
+B: Sıcak kullanım suyu gidiş hattı
+C: Gaz bağlantı hattı
+D: Soğuk kullanım suyu (şebeke) giriş hattı
+E: Kalorifer sistemi dönüş hattı
+F: Doldurma Musluğu
+G: Manometre
+H: Emniyet Ventili çıkışı
+I: Boşaltma hattı
+J: Yoğuşma suyu tahliye hattı
+K: Elektrik besleme hattı
+(230V 50Hz AC)
+Şekil 8 Hortum uzunluğunun 125 cm’den az olması durumunda kombi/şofben tüp
+gaz bağlantısı
+
+-- 6 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	7
+2.2.8. Tüp Gaz Kullanımı Durumunda
+Tüp ve donanımları (dedantör, hortum) TSE belgeli olmalıdır.
+• LPG kullanımında mutlaka 300 mmSS basınçlı dedantör kullanılmalıdır,
+• 500 mmSS dedantör kullanılmamalıdır,
+• Propan kullanımında 370 mmSS basınçlı dedantör kullanılmalıdır.
+• Kış aylarında tüp kullanımında tüpün donmaması için soğuk ve karlanma
+riski olan ortamlara koymayın!
+• Tüplerin tehlike yaratmaması için fırın, ocak, şömine gibi sıcak ve alev
+bulunan ortamlara koymayın!
+• Tek tüple bağlantı yapmayın ve ikili, üçlü tüp kullanımlarında mutlaka LPG
+kolektör seti kullanılmalıdır.
+• Kolektör ile tüp arasındaki mesafenin 125 cm’den az veya fazla olması
+durumlarına göre aşağıda belirtilen LPG bağlantı şemalarına uygun tesisat
+bağlantısı yapılmalıdır.
+• 125 cm’den uzun mesafeler için bakır boru tesisatı kullanılmalıdır!
+• Hortumun dedantöre ve şofbene olan bağlantıları kelepçe ile yapılmalı,
+eskiyen, çatlayan, yumuşayan veya sertleşen hortumlar ile imalat
+tarihinden itibaren 3 yıl geçmiş olan hortumlar yenisi ile değiştirilmelidir.
+Dedantörlerde ise değişim süresinin imalat tarihinden itibaren 10 yıl
+olduğu unutulmamalıdır.
+• LPG kullanımı için TS 2179’a uyulmalı, gaz hattı bağlantı yerlerinde
+sızdırmazlık sağlanmalıdır.
+• Kullanılacak LPG tüpleri TS 55’e uygun olmalıdır.
+• LPG tankı ve sanayi tüpü kullanımı ile gaz tesisatı kuralları TSE
+standartlarına göre ve uzman tesisat ekipleri tarafından yapılmalıdır
+ve yapımı üstlenen firma tarafından belgelendirilmelidir. Bu şartların
+sağlanmaması durumunda Warmhaus Yetkili Servisleri tarafından devreye
+alınmaz ve garanti verilmez.
+2.2.9. Kısmen Korunan Dış Mekânlara Montaj
+Kurulum talimatları: Bu kombi, kısmen korunaklı dış mekânlara monte
+edilebilir. Kısmen korunaklı yer, kombinin doğrudan atmosferik etkenlere
+ve yağışlara (yağmur, kar, dolu, vs..) maruz kalmadığı yerlerde bulunması
+anlamına gelir.
+Donmaya Karşı Koruma: Kombi cihazı, içerisindeki suyun 5°C derecenin
+altına inmesi halinde otomatik olarak pompa ve brülörü devreye sokarak
+donmayı önleyen bir sistem ile donatılmıştır.
+Donmaya karşı koruma işlevi ancak aşağıdaki koşullara bağlıdır:
+- Kombi doğru bir biçimde gaz ve elektrik kaynaklarına bağlı ise;
+- Kombi gaz ve elektrik kaynaklarından (ana şalteri açık ise) sabit bir şekilde
+beslenirse;
+- Kombi ateşleme eksikliği nedeni ile arıza durumuna geçmediyse;
+- Tesisat suyunun sirkülasyonun sağlanabilmesi için kombi altında bulunan
+tesisat vanalarının ve radyatör vanalarının açık konumda olması gerekir.
+Bu koşullarda Kombi -5°C ortam sıcaklığına kadar donmaya karşı koruma
+altındadır.
+En düşük sıcaklık -5°C. Kombi cihazının sıcaklığının -5°C’nin altına düştüğü
+bir ortamda monte edilmiş olması halinde ve de gaz girişinin kesilmesi veya
+ateşleme yapılamadığı için arızaya geçmesi durumunda Donmayı Önleyici
+Sistem devreye giremez ve cihazda donma/buzlanma oluşur. Donma riskini
+önlemek için izleyen talimatlara uyulmalıdır:
+- Isıtma devresini, içine donmayı önleyici (ısıtma tertibatları için özel) iyi
+marka bir antifriz üreticinin ısıtıcının saklanmak istendiği minimum sıcaklık
+için gerekli gördüğü yüzde oranında ve talimatların özenle takip edilerek
+konması ile donmaya karşı koruma.
+Kombilerin yapıldıkları malzemeler etilen glikol ve propilen bazlı buzlanma
+karşı sıvılara dayanıklıdırlar. Bunların ömrü ve muhtemel imhaları konusunda
+tedarikçi firma uyarılarına riayet ediniz.
+Kombiyi donmaya/buzlanmaya karşı koruma yalnızca bu şartlarda
+garanti edilir:
+Garantinin etkinliğinde yukarıda sözü edilenlere uymamaktan ve elektrik
+enerjisinin kesintiye uğramasından kaynaklanan hasarlar hariç tutulur.
+Kombi cihazının sıcaklığının 0°C altına düştüğü mekânlara (gerek kullanım
+suyu ve gerekse kalorifer amaçlı) montajı halinde hem kalorifer tesisatının
+ve hem de kullanım suyunun borularının izolasyonlu olması gerekmektedir.
+2.3. HİDROLİK TESİSAT MONTAJ KURALLARI
+2.3.1. Kalorifer ve Sıcak Kullanım Suyu Tesisatları
+Radyatör ve yerden ısıtma tesisatı, TSE ve MMO teknik şartnamelerine uygun
+olarak ısı kaybı hesabına göre yapılmalıdır. Radyatör tipi ve miktarı ile yerden
+ısıtma tesisatı boru miktarı da ısı kaybı hesabına uygun olmalıdır.
+• Kalorifer tesisatı en az 6 bar’a kadar dayanacak basınçta tesis edilmelidir.
+• Şehir şebeke basıncı 6,5 bar'dan daha yüksek ise mutlaka basınç düşürücü
+monte edilmelidir.
+• Kalorifer tesisatının çift hat olarak ve mümkün olduğunca dirsek ile
+eklerden kaçınarak yapılması önerilir.
+• Kalorifer dönüş ve kullanım suyu (şehir şebeke) giriş hattında mutlaka
+pislik tutucu filtre takılmalıdır.
+• Kalorifer devresinin 8 litrelik genleşme tankı yaklaşık hesapla en fazla (
+radyatörlü sistemde 80 ºC) 140 litre ve (yerden ısıtma sisteminde 55
+ºC) 170 litre tesisat suyunun genleşmesini karşılayabileceğinden daha
+büyük tesisat hacimleri için hesaplama yapılarak ilave genleşme tankı
+kullanılmalıdır.
+• Oda termostatı ve termostatik radyatör vanası birlikte kullanılacaksa;
+oda termostatının bulunduğu mekândaki radyatörlere termostatik vana
+takılmaması önerilir.
+• 1,5 m’den daha uzun radyatörlerde verimli çalışma için mutlaka çapraz
+bağlantı yapılmalıdır.
+• Kalorifer ve sıcak kullanım suyu duvarlardan geçişlerinde kılıf kullanılmalı
+ve ısınma nedeniyle genleşmelerde eğim vermemesi için duvar kelepçeleri
+ile sabitlenmelidir.
+• Kombi minimum 0,5 bar kullanım suyu basıncında çalışabilmekle beraber
+Şekil 9 Hortum uzunluğunun 125 cm’den fazla olması durumunda kombi/şofben tüp
+gaz bağlantısı
+
+-- 7 of 36 --
+
+8	i 	warmhaus.com
+bu çok düşük bir debiye karşılık gelir ve bu nedenle istenilen kullanım suyu
+sıcaklığını ayarlamak mümkün olmaz. Bu nedenle kullanım suyu hattı en az
+½” iç çapa sahip borudan ve mümkün olduğunca az dirsek kullanılarak en
+kısa mesafeden döşenmelidir. Sıcak kullanım suyunda istenilen konforun
+alınabilmesi için en az 1 bar basınçta şebeke giriş suyu sağlanmalıdır.
+Bunun için gerekiyorsa hidrofor kullanılmalıdır.
+• Kalorifer tesisatı doldurulmadan önce mutlaka yıkanmalı ve pisliklerden
+arındırılmalıdır.!
+Dikkat: Kombinin bağlantılarını yapmadan önce cihaz garantisinin
+geçerliliğini yitirmemesi için, ana ısı değiştirici eşanjörde (borular,
+ısıtıcı aksam, vs.) oluşması muhtemel kalıntıları çözücü veya emsal
+maddeler kullanarak arındırınız, aksi takdirde kombinin çalışmasına olumsuz
+etki yaparlar. Kalorifer tesisatı içerisinde kireç birikimi oluşmasını ve bundan
+dolayı tesisatın hatalı çalışmasını önlemek amacıyla evsel kullanım suyu ve
+kalorifer tesisatları konusunda standartların öngördükleri kurallara uyunuz.
+Dikkat: Sıcak kullanım suyu ısı değiştiricisinin kullanım ömrünü ve
+verimliliğini koruması için su sertliği 25 Fransız derecesinden fazla
+olan yerlerde kireç katmanları oluşumuna neden olmaması için bir
+Kireç Önleyici Kit monte ettirilmesi önerilir.
+2.3.2. Kalorifer Tesisatının Doldurulması/Boşaltılması
+Kombinin montajı yapıldıktan sonra kapalı devre kalorifer tesisatının
+doldurulması için sayfa 9'da Alt Görünüm resminde F sembolü ile gösterilen
+Doldurma Musluğunu saatin tersi yönünde çevirerek G sembolü ile gösterilen
+Manometre’de basıncın 1-1.5 bar’a kadar ulaşmasını sağlayın ve Doldurma
+Musluğunu saat yönünde çevirerek kapatın ve radyatörlerin hava boşaltma
+valfleriyle havasını yeniden boşaltınız.
+Kombinin emniyet ventili tahliyesinin bir tahliye hunisine bağlanması
+gerekmektedir. Aksi takdirde, emniyet ventili devreye girer ve cihazın
+bulunduğu mekâna su tahliyesinden dolayı üretici sorumlu tutulamaz.
+Şekil 11 Ewa kombiler için kullanılan Otomatik Güç Ayarlı ve Otomatik Hava Purjörlü Pompa Debi/Basınç ve Güç Tüketim Grafikleri 
+0
+3
+	2
+	1
+	0
+3
+	2
+	1
+Basınç 1 - 1,5
+bar 	aralığına
+g e l d i ğ i n d e
+doldurma musluğunu
+sağa doğru çevirerek
+kapatın.
+Şekil 10 Kalorifer tesisat suyunun kombinin doldurma vanası ile doldurulması ve basınç kontrolü.
+2.3.3. Sirkülasyon Pompası
+Ewa kombi modülasyonlu bir
+pompa ile donatılmış olduğundan
+pompanın 	kritik 	hat 	basınç
+kaybına göre gereken debiyi
+sağladığı kontrol edilmelidir.
+Aşağıda 	Ewa 	kombilerde
+kullanılan 	pompaların 	Debi/
+Basınç ve Debi/Güç grafikleri
+verilmiştir.
+
+-- 8 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	9
+Kalorifer
+Gidiş Hattı
+(Sıcak)
+Şehir
+Şebeke
+Suyu Giriş
+Hattı
+Yoğuşma
+Suyu Tahliye
+Hattı 	Kalorifer
+Dönüş Hattı
+(Soğuk)
+Şekil 12 Çift borulu kombi genel tesisat şeması
+Şekil 13 Mobil boru dağıtım sistemli kombi genel tesisat şeması
+Şekil 14 Mobil boru dağıtım sistemli kombi yerden ısıtma genel tesisat şeması
+
+-- 9 of 36 --
+
+10	i 	warmhaus.com
+Şekil 16 Yoğuşma Suyu Drenaj Borusunun Dahili Drenaj ve Havalandırma Borusuna
+Bağlanması
+Şekil 17 Alt Seviyede Banyo Drenajına Yoğuşma Suyu Drenaj Borusunun Bağlantısı
+2.3.4. Yoğuşma Hattı için Sifonun Doldurulması
+Yoğuşmalı kombinin duvara asılma işlemi, elektrik bağlantıları, kalorifer
+hatları, sıcak kullanım suyu bağlantıları ve yoğuşma suyu drenaj hattı
+tamamlandıktan sonra yoğuşma sifonu su ile doldurulmalıdır.
+Yoğuşma suyu hortumunun ve hattının eğimi daima aşağıya doğru olmalıdır.
+Yoğuşma Suyunun Tahliyesinde Dikkat Edilmesi Gerekenler:
+YOĞUŞMA SUYU BOŞALTMA HATTI KURULMAMASI KOMBİNİN
+DOĞRU VE GÜVENİLİR İŞLETİLMESİNİ ETKİLECEKTİR!
+1. Yoğuşma drenajının yürürlükteki ulusal veya yerel düzenlemelere uygun
+olduğundan emin olun.
+2. Tahliye borusu, özel bir tahliye borusu malzemesi olmalıdır. Örn. PVC,
+PVC-U, ABS, PVC-C veya PP.
+3. Metal boru tesisatı, yoğuşma deşarj sistemlerinde kullanılmaya uygun
+DEĞİLDİR.
+4. Binanın dışında ısıtılmayan yerlerde bulunan yoğuşma suyu tahliye boruları
+(örneğin garajın ısıtılmamış bir bölümünde) donmaya karşı korunmalıdır.
+5. Her durumda, yoğuşmanın giderilmesine yardımcı olmak için boşaltma
+borusu takılmalıdır. Yoğuşma tehlikesi riskini azaltmak için, mümkün
+olduğu kadar az dirsek ve bağlantı parçası kullanılmalıdır.
+6. Yoğuşma suyunu bir toprak yığınına veya atık boruya boşaltırken mevcut
+tesisatın etkileri dikkate alınmalıdır. Eğer toprak borular veya atıksu
+boruları, WC'lerin/banyoların yıkandığı veya boşaltıldığı zaman iç basınç
+dalgalanmalarına maruz kalırsa, geri basınç, kombi sifonunda suyu
+zorlayabilir ve geri teperek cihazın tıkanmasına neden olabilir.
+7. Yoğuşma çıkışı her zaman aşağı doğru olmalı ve bloke edilmemelidir.
+Yoğuşma suyu tahliyesi tesisat örnekleri için "Yoğuşma Suyunun Tahliyesi"
+konusuna bakabilirsiniz.
+Şekil 15 Yoğuşma sifonunun doldurulması
+1 litre Yoğuşma 	hattı 	gider
+bağlantısının sızdırmazlığı
+sağlanmalıdır. 	Ancak
+ilk çalıştırmada atık gaz sızma
+ihtimaline karşı kombi içerisindeki
+sifonun baca dirseği montajından
+önce yaklaşık 1 litre suyu iç bacaya
+boşaltın. Böylece sifonda bulunan
+su sayesinde atık gaz sızma ihtimali
+de önlenmiş olacaktır.
+Şekil 18 Yoğuşma Suyu Drenaj Borusunun Dış Bağlantısı 	Şekil 19 Yoğuşma Suyu Drenaj Borusunun Tipik Bağlantı Yöntemi (Pompa üreticisinin
+ayrıntılı talimatlarına bakın)
+Yoğuşma Suyunun Tahliyesi
+Cihaz tarafından üretilen yoğuşma suyu tahliyesi için, içinde en azından Ø24
+mm olan ve asidik yoğuşma sularına dayanıklı borular aracılığı ile atık su
+şebekesine bağlanması gerekir. Cihazın atık su şebekesi ile bağlantısı bağlantı
+tesisatının içerdiği sıvının donmasını engelleyecek şekilde yapılmalıdır. Cihazı
+çalıştırmadan önce yoğuşma suyunun doğru şekilde tahliye edilebilmiş
+olduğundan emin olunmalıdır; sonrasında ilk çalıştırmada sifonun yoğuşma
+ile dolduğunu doğrulayın. Ayrıca, atık suların tahliyesinde yürürlükteki
+talimatnameye, ulusal ve yerel düzenlemelere dikkat etmek gerekir.
+Min Ø 19 mm
+3 kata kadar
+minimum
+bağlantı
+yüksekliği
+Drenaj ve Havalandırma Borusu
+Min Ø 19 mm
+Drenaj ve Havalandırma Borusu
+≥ 100
+Lavabo / kap /
+banyo veya
+duş
+Min Ø 19 mm
+3 kata kadar
+minimum
+bağlantı
+yüksekliği
+Drenaj ve Havalandırma Borusu
+Min Ø 19 mm
+Drenaj ve Havalandırma Borusu
+≥ 100
+Lavabo / kap /
+banyo veya
+duş
+Min Ø 19 mm
+Min Ø 30 mm
+Su ve hava yalıtımlı
+drenaj borusu
+Dış borunun
+maksimum uzunluğu
+3 m'den fazla
+olmamalıdır.
+Açık havada bulunan kanal içine
+drenaj borusunu en az 25 mm
+kadar yerleştirin.
+Çakıl
+≥ 500
+≥ 25
+Dış sifon
+Min Ø 19 mm
+3 kata kadar
+minimum
+bağlantı
+yüksekliği
+Drenaj ve Havalandırma Borusu
+Min Ø 19 mm
+Drenaj ve Havalandırma Borusu
+≥ 100
+Lavabo / kap /
+banyo veya
+duş
+Min Ø 19 mm
+Min Ø 30 mm
+Su ve hava yalıtımlı
+drenaj borusu
+Dış borunun
+maksimum uzunluğu
+3 m'den fazla
+olmamalıdır.
+Açık havada bulunan kanal içine
+drenaj borusunu en az 25 mm
+kadar yerleştirin.
+Çakıl
+≥ 500
+≥ 25
+Dış sifon
+Min Ø 19 mm
+3 kata kadar
+minimum
+bağlantı
+yüksekliği
+Drenaj ve Havalandırma Borusu
+Min Ø 19 mm
+Drenaj ve Havalandırma Borusu
+≥ 100
+Lavabo / kap /
+banyo veya
+duş
+Min Ø 19 mm
+Min Ø 30 mm
+Su ve hava yalıtımlı
+drenaj borusu
+Dış borunun
+maksimum uzunluğu
+3 m'den fazla
+olmamalıdır.
+Açık havada bulunan kanal içine
+drenaj borusunu en az 25 mm
+kadar yerleştirin.
+Çakıl
+≥ 500
+≥ 25
+Dış sifon
+Yoğuşma Suyu Drenaj Pompası
+(Pompa üreticisinin ayrıntılı talimatlarına bakın)
+Min Ø 19 mm
+İç boru
+75
+j ve
+andırma Borusu
+Su / Hava geçirmez
+izolasyon
+
+-- 10 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	11
+Şekil 20 Yoğuşma Drenajının Drenaj ve Havalandırma Borusuna Bağlanması 	Şekil 21 Yoğuşma Drenajının Drenaj ve Havalandırma Borusuna Bağlanması
+Şekil 22 Yoğuşma Drenajının Lavabo, Küvet veya Duş Drenaj Borusu ile Yağmur
+Drenaj Hattına Bağlanması
+2.4. KOMBİ BACA BAĞLANTILARI
+2.4.1. Atık Gaz Baca Boru Seti ve Aksesuarları Bağlantısı
+Hermetik kombilerin atık gaz tesisatında kullanılacak baca aksesuar
+setleri orijinal Warmhaus baca setleri olmalıdır ve bunlar montaj
+talimatlarında verilen ölçü ve sınırlandırmalar dikkate alınarak
+kullanılmalıdır.
+Warmhaus orijinal atık gaz baca boruları ve aksesuarlarından farklı
+atık gaz borusu ve/veya aksesuarları kullanılması halinde kombi
+Yetkili Servis tarafından devreye alınmaz ve dolayısı ile garanti
+verilmez!
+Kombi yalnızca plastik malzemeden orijinal Warmhaus hava emiş ve atık gaz
+tahliyesi cihazı ile birlikte monte edilmelidir.
+Plastik kanallar dış mekânlara, 40 cm'in üzerindeki aralıklara, UV ve hava
+koşullarına karşı uygun koruma olmadan kurulamaz. Her boru notlarda bahsi
+geçen tanıtıcı ve ayırıcı bir Warmhaus 	işareti ile tanınır (Şekil 23).
+Baca ulusal ve yerel direktiflere uygun olarak monte edilmelidir.
+2.4.2. Yatay Baca Setleri Ile Montaj
+Yatay Eş Merkezli Baca Setinin Kombiye Bağlanması (Ø 60/100 mm)
+Kombiniz hermetik model olduğu için kullandığı havayı dış ortamdan alır ve
+yanma sonucu oluşan atık gazları da aynı baca gurubundan dış ortama atar.
+Son derece zararlı olan atık gazların ortalama yayılmaması için baca kullanımı
+ve montajı çok önemlidir, dolayısı ile baca bağlantıları yapılırken uyarılara
+dikkat edilmelidir.
+• Kombinizin monte edildiği yer ile dış ortama yapacağınız baca bağlantısı
+için gerekli baca seçimini yapınız. Standart baca seti yetersiz ise bağlantı
+aksesuarları listemizden kullanma kılavuzumuzda bahsettiğimiz uyarıları
+da dikkate alarak en uygun olan baca aksesuarlarını seçiniz.
+• Şekil 24'de bulunan Flanş Contası Vidasını Gevşetin (11) ve dirsekten
+çıkarın (1)
+• Neopren Sızdırmazlık Contasını (10) flanşın altına yerleştirin ve 4 vidayla
+sabitleyin (11)
+• Baca dirseğini (90°) yerleştirin (1) Baca dirseğini sabitlemek için vidayı (11)
+bastırın ve sıkın
+• Dış ve iç duvar flanşlarını (6-7) terminal borusuna takın (5)
+• Contaları doğru şekilde konumlandırmak için bacaları kombiye bağlayın.
+• Baca delik boşluğunu silikon veya alçı harcı ile doldurun ve birlikte verilen
+İç Duvar Contasıyla örtün.
+• Baca terminalinin 1,5 dereceden az olmayan yatay bir eğime sahip olması
+önemlidir (kombiye doğru metre başına 25 mm). Standart Yatay Baca
+Seti'nin iç bacası (8) kombiye doğru kendiliğinden eğimli olduğundan
+sadece yatay baca seti ile yapılan montajlarda eğim vermeye gerek
+yoktur!
+Ek baca aksesuarları kullanılarak yapılan montajlarda ise belirtilen eğime
+göre monte edilmelidir!
+• Eş merkezli baca uzatma boruları ve dirsekler için geçmeli tip conta
+kullanılır. Atık gaz bacalarına uzatma bacaları bağlanması durumunda
+aşağıdaki talimatlara uyulması ve uygulanması gerekir:
+Eş merkezli baca borusu veya eş merkezli dirseğin erkek tarafından (düz) bir
+önceki parçanın dişi tarafına (contalı taraf) takınız, böylece sıkı geçme ile
+seti oluşturan parçanın birleştirilmesi sağlanmış olacaktır.
+Şekil 23 Baca dirseğinde
+Warmhaus logosu bulunur.
+Yoğuşma Suyu Drenaj Pompası
+(Pompa üreticisinin ayrıntılı talimatlarına bakın)
+Min Ø 19 mm
+İç boru
+75
+Minimum
+3 katlı
+binalar için
+gereken
+mesafe
+Drenaj ve
+	Havalandırma Borusu
+	Min Ø 19 mm
+Su / Hava geçirmez
+izolasyon
+Min Ø 19 mm
+İç boru
+Min Ø 30 mm
+İç boru
+Hava deliği
+Yıkama
+ve yağmur suyu
+drenaj borusu
+43 mm 90º
+erkek/dişi dirsek
+Su / Hava
+geçirmez
+izolasyon
+68 mm Ø PVCU
+Boru bağlantı
+parçası
+45º kesitli
+drenaj borusu çıkışı
+Açık hava sifonu
+Açık sifon
+Min. Ø 19 mm
+İç boru
+75 mm sifonlu
+banyo / duş drenajı
+diğer drenaj hatları
+ile birlikte
+Min. 30 mm
+İç boru
+Su / Hava
+geçirmez
+izolasyon
+≥ 25 Izgara altındaki mesafe
+45º boru
+sonlandırıcı
+75
+≥ 100
+Minimum
+3 katlı
+binalar için
+gereken
+mesafe
+Drena
+	Haval
+	Min Ø 19 mm
+Min Ø 19 mm
+İç boru
+Min Ø 30 mm
+İç boru
+Hava deliği
+Yıkama
+ve yağmur suyu
+drenaj borusu
+43 mm 90º
+erkek/dişi dirsek
+Su / Hava
+geçirmez
+izolasyon
+68 mm Ø PVCU
+Boru bağlantı
+parçası
+45º kesitli
+drenaj borusu çıkışı
+Açık hava sifonu
+Açık sifon
+Min. Ø 19 mm
+İç boru
+75 mm sifonlu
+banyo / duş drenajı
+diğer drenaj hatları
+ile birlikte
+Min. 30 mm
+İç boru
+Su / Hava
+geçirmez
+izolasyon
+≥ 25 Izgara altındaki mesafe
+45º boru
+sonlandırıcı
+75
+≥ 100
+Minimum
+3 katlı
+binalar için
+gereken
+mesafe
+Drena
+	Haval
+	Min Ø 19 mm
+Min Ø 19 mm
+İç boru
+Min Ø 30 mm
+İç boru
+Hava deliği
+Yıkama
+ve yağmur suyu
+drenaj borusu
+43 mm 90º
+erkek/dişi dirsek
+Su / Hava
+geçirmez
+izolasyon
+68 mm Ø PVCU
+Boru bağlantı
+parçası
+45º kesitli
+drenaj borusu çıkışı
+Açık hava sifonu
+Açık sifon
+Min. Ø 19 mm
+İç boru
+75 mm sifonlu
+banyo / duş drenajı
+diğer drenaj hatları
+ile birlikte
+Min. 30 mm
+İç boru
+Su / Hava
+geçirmez
+izolasyon
+≥ 25 Izgara altındaki mesafe
+45º boru
+sonlandırıcı
+75
+≥ 100
+
+-- 11 of 36 --
+
+12	i 	warmhaus.com
+Flue Pipe
+Interior Wall
+Rosette
+Wall
+Flue Therminal
+Exterior Wall
+Rosette
+Şekil 25 Baca seti
+parçalarının montajı
+Şekil 26 Hermetik
+kombi eş merkezli
+baca duvar çıkışı.
+1. 90° Dirsek
+2. Ø 100 mm Conta
+3. Ø 60 mm Conta
+4. Merkezleyici
+5. Dış Boru
+6. İç Duvar Geçiş Contası
+7. Dış Duvar Geçiş Contası
+8. İç Boru
+9. Koruyucu Başlık
+10. Neofren Conta
+11. Vida
+12. Kontrol Kapağı (Hava)
+13. Kontrol Kapağı (Gaz)
+Şekil 24 Hermetik kombi eş merkezli baca seti.
+3 o
+Şekil 27 Yoğuşmalı baca setlerinde, iç baca borusu standart olarak yukarı doğru
+eğimli olduğundan ayrıca eğim verilmesine gerek yoktur!
+A
+L1
+L2
+a
+b 	c
+d
+e
+L3
+f
+Şekil 28 I. Tek 90° dirsekli yoğuşmalı kombi maksimum baca mesafesi
+Atık gaz tahliye bacasının ve/veya uzatmasının kısaltılması gerektiği
+durumda kesme işlemi önerilmez ancak firmamızdan daha kısa baca
+aksesuarı tedarik ederek montajın tamamlanması gerekir.
+Güvenlik amacıyla, kısa süreli ve geçici olsa dahi kombinin emiş /
+tahliye bacasının tıkanmaması gerekmektedir.
+Hermetik baca setinin toplam uzunluğu, yatayda tek dirsekle 10 m'yi
+geçmemelidir. Ayrıca bu toplam uzunluk her 90°lik d irsekle veya
+iki adet 45°lik dirsek kullanımında 1 m azalır. En fazla 3 tane 90°lik
+dirsek kullanılabilir.
+Yatay baca borularının montajı sırasında, her 3 metrede bir tavan
+duvarına dübellenmiş askılı kelepçe veya yan duvara sabitlenmiş
+taşıyıcı elemanlarla desteklenerek kullanılması gerekmektedir.
+a. Standart Baca Seti
+Dirseği (90°)
+b. Baca Uzatma Borusu
+c. Ek 90° Dirsek (eşdeğer
+uzunluk = 1 m)
+d. Standart Baca Seti
+Borusu
+a. Standart Baca Seti
+Dirseği (90°)
+b. Baca Uzatma Borusu
+(L1 )
+c. Ek 45° Dirsek
+d. Standart Baca Seti
+Borusu (L2)
+e. Ek 45° Dirsek
+f. Standart Bacaseti
+Borusu (L3)
+Eşdeğer mesafe, belirtilen
+maksimum mesafeleri aşmadan
+hesaplanmalıdır: Eşmerkezli Baca
+Sisteminde ek dirsek parçaları
+için aşağıdaki eşdeğer uzunluklar
+maksimum baca mesafesinden
+çıkarılarak hesaplanmalıdır.
+EK DİRSEKLER
+(Ø60/100 mm)
+EŞDEĞER
+UZUNLUK
+90° dirsek
+eşdeğer uzunluğu 	1 metre
+45° dirsek
+eşdeğer uzunluğu 	0,5 metre
+Şekil 29 II. İki 90° dirsekli örnek baca tesisatı
+Şekil 30 III. Tek 90° ve iki 45° dirsekli örnek yoğuşmalı kombi baca tesisatı
+c
+(Ø 60/100 mm) L max =10 m)
+b
+d
+(Ø 60/100 mm) L max =10 m)
+b
+d
+1.5°-3° 	1.5°-3° 	1.5°-3°
+A
+L max : Toplam Eşdeğer Uzunluk ≤ 10 m
+Lmax : a (90° Dirsek) + b + c ≤ 10 m
+L1 + L2 +L3 ≤ 9 m
+(a + b + c+ e + f ≤ LMax)
+L2
+L1 + L2 ≤ 9 m
+(a + b + c + d ≤ LMax)
+
+-- 12 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	13
+2.4.3. Dikey Baca Setleri ile Montaj (Ø 60/100 mm)
+Kombiniz monte edeceğiniz ortamın durumuna göre sahip olduğu bağlantı
+aksesuarları vasıtası ile düz ve yatık çatılara dikey olarak bağlanabilme
+imkanına da sahiptir. Düz olarak yapılar bağlantılarda (Ø 60/100 mm) dikey
+baca seti ile 11 m'yi geçmemelidir.
+EK DİRSEKLER (Ø80 mm) 	EŞDEĞER UZUNLUK
+90° dirsek eşdeğer uzunluğu 	2,2 metre
+45° dirsek eşdeğer uzunluğu 	0,5 metre
+Şekil 31 Yoğuşmalı kombi dikey baca montajı
+Şekil 32 Yoğuşmalı kombi dikey baca montaj uygulaması
+Uygulamada
+L1 	= 0.3 m.
+L2 	= 0.5 m. (45° dirsek eşdeğer uzunluk)
+L3 	= 2.0 m.
+L4 	= 0.5 m. (45° dirsek eşdeğer uzunluk)
+L5 	= 2.5 m.
+L6 	= 1.0 m.
+L Toplam = 6.8 m. 	6.8 m. < Lmax = 11 m.
+Uygulamada doğrudur.
+Ø 60/100 mm, L
+ max
+ ≤ 11m
+EWA
+2.4.4. Ayrık Baca Tipi (Hermetik) Ø 80/80 Kullanım
+Bu kit, giriş boruları yoluyla binanın dışından temiz havanın girmesini ve
+çıkış boruları ile de atık gazın tahliyesini sağlar. Yanma için temiz hava temiz
+hava baca borusundan (A) içeri alınır. Yanma ürünleri (yoğuşma suyu asidine
+dayanıklı plastik) atık gaz baca borusundan (B) tahliye edilir. Her iki (A
+ve B) boru ve diğer aksesuar çapları Ø 80 mm'dir. Ø 80 emme ve atık gaz
+boruları için kullanılabilecek maksimum yatay düz uzunluk, giriş veya çıkış
+için kullanılmasından bağımsız olarak 30 metredir.
+Ø 80 giriş ve egzoz boruları için kullanılabilecek maksimum dikey düz uzunluk
+(dirseksiz), giriş veya çıkış için kullanılmasından bağımsız olarak 34 metredir.
+Kombi değişimlerinde montaj sırasında, kombinin orijinal baca
+setinin kullanılması gerektiğinden yeni kombi ile birlikte verilen yeni
+baca setinin kullanılması zorunludur. Mevcut kombi baca tesisatının
+yeniden kullanılması kesinlikle kabul edilemez.
+2 	4 	6 	8 10 12 14 16 18 20 22 24 26 28 30 32 34 36
+Atık Gaz Baca Mesafesi (m)
+Temiz Hava Baca Mesafesi (m)	
+2
+6
+10
+14
+18
+22
+26
+30
+Uygulama Alanı
+Şekil 33 Temiz Hava + Atık Gaz Mesafeleri Grafiği
+Temiz
+Hava
+Giriş
+Baca
+Borusu
+(80 mm)
+Atık Gaz
+Çıkışı
+Baca
+Borusu
+(80 mm)
+A
+TOPLAM YATAY UZUNLUk: A+B = 30 m
+B
+Kombiye doğru
+1,5° eğimli
+olmalıdır!
+Kombiye doğru
+1,5° eğimli
+olmalıdır!
+Şekil 34 Ayrık baca tipi (hermetik) Yatay Montaj Mesafeleri
+Şekil 35 Ayrık baca tipi (hermetik) montaj örneği
+Uygulama
+L1 	= 0,5 m
+L2 	= 2,2 m (90° dirsek eşdeğer uzunluk)
+L3 	= 1,5 m
+L4 	= 2,2 m (90° dirsek eşdeğer uzunluk)
+L5 	= 1,5 m
+L6 	= 0,5 m
+L7 	= 2,2 m (90° dirsek eşdeğer uzunluk)
+L8 	= 0,5 m
+L9 	= 0,5 m (45° dirsek eşdeğer uzunluk)
+L10 	= 1,5 m
+L11 	= 2,2 m (90° dirsek eşdeğer uzunluk)
+L12 	= 1,5 m
+L Total = 16,8 m 16,8 m < Lmax = 30 m
+TOPLAM DİKEY MESAFE: A+B =32 m
+TEMİZ
+HAVA
+BACASI
+A
+	B
+ATIK GAZ
+BACASI
+Şekil 36 Dikey Temiz Hava ve Yatay Atık Gaz Mesafeleri
+Atık gaz dkey çıkış baca set
+Çatı
+Çatı zolasyonu ve baca geçş parçası
+Dikey Baca Seti ve Eğimli Çatı
+Geçiş Aparatı Montajlı Görünüm
+A
+A
+Dikey Baca Seti ve Düz/Teras
+Çatı Geçiş Aparatı Montajı
+
+-- 13 of 36 --
+
+14	i 	warmhaus.com
+Yoğuşmalı Kombiler için Eş Merkezli Baca Aksesuarları (Ø60/100 mm)
+Ürün Adı 	Ürün Kodu
+(Ø60/100) Yoğuşmalı Eş Merkezli Yatay Baca Seti 	15311014000002
+(Ø60-100) Adaptörlü Yoğuşmalı Eş Merkezli
+Dikey Baca Seti,
+L=1533 mm
+Ek Set Parçaları:
+Eş Merkezli Baca Uzatma Borusu, L=500 mm,
+Eş Merkezli Dikey Baca Adaptörü,
+Montajlı Uzunluk = L=120 mm
+15311660600013
+(Ø60/100) Yoğuşmalı Eş Merkezli Baca Uzatma Borusu
+L=500 mm 	15311660600014
+(Ø60/100) Yoğuşmalı Eş Merkezli Baca Uzatma Borusu
+L=1000 mm 	15311660600015
+(Ø60/100) Yoğuşmalı Eş Merkezli Baca Uzatma Borusu
+L=2000 mm 	15311660600016
+(Ø60/100) Yoğuşmalı Eş Merkezli 45° Baca Dirseği 	15311660600017
+(Ø60/100) Yoğuşmalı Eş Merkezli 90° Baca Dirseği
+L=170 mm 	15311660600018
+(Ø60/100) Yoğuşmalı Eş Merkezli Dikey Baca Adaptörü
+Montajlı Uzunluk, L=120 mm 	15311660600019
+Sabit Çatı Geçiş Aparatı
+Ø132,5/Ø129 x 110 mm
+15311660600124
+Eğimli Çatı Geçiş Aparatı
+A = 500 x 500 mm
+15311660600125
+
+-- 14 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	15
+Yoğuşmalı Kombiler için Ayrık Baca Aksesuarları (Ø80/Ø80 mm)
+Product Name 	Product Code
+Ø80 Yoğuşmalı Ayrık Baca Yatay Seti 	15311660600096
+Ø 60- Ø 80 Yoğuşmalı Ayrık Baca Adaptörü 	15311660600102
+Ø80 Yoğuşmalı Ayrık Baca Uzatma Borusu
+L=500 mm 	15311660600091
+Ø80 Yoğuşmalı Ayrık Baca Uzatma Borusu
+L=1000 mm 	15311660600092
+Ø80 Yoğuşmalı Ayrık Baca Uzatma Borusu
+L=2000 mm 	153.11.660.600093
+Ø80 Yoğuşmalı Ayrık Baca 90° Dirseği 	15311660600094
+Ø80 Yoğuşmalı Ayrık Baca 45° Dirseği 	15311660600095
+Ø80 İç Duvar Rozeti 	15311660600099
+Ø80 Dış Duvar Rozeti 	15311660600098
+Ø80 Yoğuşmalı Ayrık Baca Yoğuşma Hazneli Dikey Adaptör 	15311660600100
+Ø80 Yoğuşmalı Ayrık Baca Dikey Seti 	15311660600097
+
+-- 15 of 36 --
+
+16	i 	warmhaus.com
+H
+H
+N	M
+K
+Q
+Q D,E
+A
+B C
+L
+FJ
+P
+G
+I
+I
+Q
+O
+Baca Çıkış Ucunun Minimum Mesafeleri 	(mm)
+A 	Bir pencerenin/açıklığın altında 	300
+B 	Bir pencerenin/açıklığın üstünde 	300
+C 	Yatay olarak bir pencereye/açıklığa 	300
+D 	Olukların, drenaj borularının veya toprak borularının altında 	75
+E 	Saçak Altı 	200
+F 	Balkon veya kabin tavanının altında 	200
+G 	Dikey bir su borusundan veya toprak borusundan 	150
+H 	Bir iç veya dış köşeden veya baca çıkışının yanındaki bir sınıra 	300
+I 	Yerden, çatıdan veya balkon seviyesinden 	300
+J 	Bir yüzeyden veya duvar yüzeyine bakan baca çıkışı 	600
+K 	Karşılıklı baca çıkışları arasında 	1200
+L 	Bir garaj kapısı açılır tarafına olan mesafe 	1200
+M 	Aynı duvardaki bir baca çıkışından dikey olarak mesafe 	1500
+N 	Aynı duvardaki bir baca çıkışından yatay olarak 	300
+P 	Çatıdaki bir bacadan/yapıdan olan mesafe 	N/A
+Q 	Çatı ile en yüksek kesişme noktasının üstünde 	300
+2.4.5. Baca Çıkış Bağlantılarının Çevresel Uzaklıklar
+Baca seti çıkış borusunun konumlandırılması için aşağıdaki şekle ve tabloya
+bakınız.
+Baca, ulusal ve yerel yönetmeliklere uygun olarak monte edilmelidir.
+Çıkış borusunun herhangi bir yeri tıkanmamalı ve başka bağlantılara
+engel olmamalıdır. Çıkış borusu plastik veya boyalı bir oluğun 1000 mm
+yakınından veya boyanmış saçakların 500 mm yakınından geçiyorsa, oluk
+ya da saçağın alt kısmına en az 1000 mm uzunlukta bir alüminyum siper
+konulmalıdır. Çıkış borusu insanların ulaşabildiği yüzeylerin en az 2 m
+üzerinde olmalıdır.
+Kimi hava koşullarında çıkış borusu su buharı yayabilir, bu buharın
+rahatsızlığa sebebiyet verebileceği yerlere montajından kaçınılmalıdır.
+Yanma ürünlerinin (atık gaz) çatı havalandırma boşluklarına girmemesi
+temin edilmelidir.
+Kombinin baca sistemi dış duvardan müdahaleye gerek olmaksızın oda
+içerisinden monte edilebilir. Bunun için, özellikle kalın duvarlarda, çıkış
+borusunun duvardan geçtiği kanalın iç yüzeyini astarlamak için duvara
+biryatak geçirilmelidir.
+Şekil 37 Atık gaz bacasının çevresel konumları ve mesafeleri
+600mm
+0002 mm
+600 mm
+600 mm
+Şekil 38 Atık gaz bacasının açılabilir çatı penceresine olan konumları ve mesafeleri 	Şekil 39 C Tipi cihazların atık gaz çıkış ağızlarının yana ve alta uzaklığı
+
+-- 16 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	17
+A
+B 
+0,5m
+ 	A - Atık Gaz Çıkışı
+B - Temiz Hava Girişi
+2.4.6. Atık Gaz Tesisatının Yanabilen Yapı Malzemelerinden Uzaklığı
+“C” tipi cihazların atık gaz tesisatı, yanabilen yapı malzeme veya elemanlarına
+en az 5 cm uzakta olmalıdır. Tesisat bu malzeme veya elemanların içinden
+geçecekse, yapı elemanlarının kırılması halinde bunların atık gaz tesisatına
+temasını önlemek maksadıyla atık gaz tesisatının (85 °C’den yukarı
+çıkabilecek olması nedeniyle) geçişi bu mesafeyi sağlayacak koruyucu
+borular ile sağlanmalıdır.
+2.4.7. C Tipi Cihazların Atık Gaz Boru Çıkış Ağızları (Yanma Havasının
+Girdiği ve Atık Gazın Çıktığı Kısım)
+“C” tipi cihazların atık gaz borusu çıkış ağızlarının çıkışının yapılamayacağı
+yerler;
+• Geçit ve koridorlar,
+• Dar saçak aralıkları,
+• Binaların havalandırma ve aydınlık boşlukları,
+• Balkonlar (açık veya kapalı),
+• Asansör boşlukları,
+• Atık gaz çıkışını önemli ölçüde engelleyen çıkıntılı yapı kısımlarının altları,
+• İçinde kolay yanan madde veya patlama yapabilen madde işlenen,
+depolanan, imal edilen yahut bulunabilen, yanabilen sıvıların bulunduğu
+yerler.
+2.4.8. Bina Çıkıntılarında ve Yanabilen Malzemelerden Olan Yapı
+Elemanları İçinden Geçen Atık Gaz Boru Çıkış Ağızları
+Atık gaz tesisatı boru çıkış ağzı, yanabilen malzemelerden ve çıkıntılı
+binaların yanlarına ve altlarına göre en az 50 cm, üst kısımlarına göre en az
+50 cm, karşısında yanabilen malzemelerden bina kısımlarına göre en az 1 m
+mesafede olmalıdır. Arka kısmındaki yapı elemanları yanmayan malzemeden
+yapılmış ve aleve karşı korunmuş ise, yanabilen malzemeden çıkıntılı bina
+kısımları için yukarıya göre 50 cm mesafe yeterlidir (Şekil 40).
+Şekil 40 C Tipi cihazların atık gaz çıkış ağızlarının çatıya olan mesafesi
+2.5. ELEKTRİKSEL BAĞLANTILAR
+Kombinin elektrik güvenliği yalnızca yürürlükteki güvenlik talimatlarının
+ön gördüğünce izlenen, etkili bir topraklama tesisatına tamamen bağlı ise
+gerçekleşir. Topraklama olmayan yerlerde priz üzerinde nötr hattından
+topraklama yapılmayacaktır! Gaz ve su bağlantı borularının topraklama için
+kullanılması tehlikelidir ve kabul edilmez.
+WARMHAUS A.Ş. kombinin toprak bağlantısının yapılmamış olması ve yetkin
+bir elektrikçi tarafından yürürlükteki yönetmelik ve standartlara uygun olarak
+yapılmamasından dolayı kişi veya eşyalara gelebilecek her türlü zarar ve
+hasar durumunda hiç bir şekilde sorumlu tutulamaz.
+Ayrıca, elektrik tesisatının, kombi üzerinde bulunan teknik özellikler
+etiketinde belirtilen çekilebilecek maksimum güce uygun olduğunu kontrol
+edin. Kombiler, “X” tipi prizsiz özel güç kaynağı kabloları ile verilmektedir.
+“Warmhaus kombiler IPX5D bir koruma seviyesine sahiptir. Güç kaynağı
+kablosu 230 V +%10; -%15 50Hz bir şebekeye L-N kutuplaşması ve toprak
+bağlantısına sadık kalınarak bağlanmalıdır, aynı şebeke üzerinde yüksek
+gerilim kategorili III. sınıf çoklu kutup bir irtibat kesici ön görülmüş olmalıdır.
+Kablonun değiştirilmesi gerektiğinde mutlaka Yetkili Warmhaus Servisimize
+müracaat ediniz.
+Güç besleme kablosunun belirtilmiş güzergâhı takip etmesi
+gerekmektedir. Ayarlama kartı üzerindeki sigortaların değiştirilmesi
+durumunda 2A veya 3,15A hızlı tip sigorta kullanınız. Cihazın genel
+elektrik şebekesinden beslenmesi için adaptör, çoklu prizler ve uzatma
+kablolarının kullanılmasına izin verilmez.
+2.5.1. Opsiyonel Kumandalar: Oda Termostatı, Dış Hava Sıcaklık Sensörü
+Bağlantıları
+Warmhaus kombilere oda termostatı, Dış Hava Sıcaklık Sensörü vb.,
+kumanda cihazları mutlaka yetkili servis personeli tarafından bağlanmalıdır,
+bağlantıların yetkisiz kişiler tarafından yapılması durumunda kombi garanti
+kapsamı dışına çıkacaktır.
+Warmhaus kombilere oda termostatı, Dış Hava Sıcaklık Sensörü
+vb. kumanda cihazları isteğe bağlı (Opsiyonel) aksesuarlar olarak
+sunulur ve mutlaka Warmhaus onaylı olmalıdır.Dış Hava Sıcaklık
+Sensörünün yerleştirilmesi ile ilgili olarak kullanım talimatlarına bakınız.
+Kombinin elektrik tesisatına direkt olarak bağlanabilen bu sensör, kalorifer
+tesisatına gönderilen sıcaklığı dış hava sıcaklık değişikliklerine uyumlu
+çalışması için dış hava sıcaklığı arttığında tesisattaki maksimum gidiş suyu
+sıcaklığını otomatik olarak azaltır. Dış Hava Sıcaklık Sensörü, kullanılan oda
+termostatının tipolojisinden bağımsız olarak bağlandığında harekete geçer
+ve oda termostatları ile ortaklaşa çalışır. Tesisat giriş sıcaklığı ile dış hava
+sıcaklık arasındaki ilişki, kombinin paneli üzerinde (veya kombiye bağlı ise
+kumanda paneli üzerinde) bulunan düğmenin pozisyonundan diyagramdaki
+eğrilere göre belirlenir (Şekil 43-44).
+Dış Hava Sıcaklık Sensörünün ikili elektrik bağlantı kablosu kombi elektronik
+kartından klemenslere gelen iki beyaz kablonun karşısına yapılmalıdır (Şekil
+41).
+
+-- 17 of 36 --
+
+18	i 	warmhaus.com
+150 cm
+Min.
+30 cm
+Oda termostatı yerden
+1,25 ile 1,5 m mesafeye
+monte edilmelidir. 	Hava akımına açık kapı ve
+pencere kenarlarından en az
+30 cm uzak olmalıdır.
+Montaj Talimatı: Cihazın montajı sadece Warmhaus Yetkili Servisi tarafından
+yapılabilir. Montaj için gerekli ikili kablo bayi/tüketici tarafından sağlanır.
+WI-FI AKILLI ODA TERMOSTAT SETİ
+2.5.2. Kontrol Aksesuarları
+Kablolu Kombi Oda Termostatlı Kumandalar, Kablosuz Oda Termostatları ve Dış Hava Sıcaklık Sensörü
+2.5.3. Oda Termostatlı Kumandaların Montaj Yeri Seçimi
+KOMBİ KUMANDA AKSESUARLARI
+WT-07 Modülasyonlu, Haftalık
+Program Saatli, kablolu oda
+termostatı
+Ürün Sipariş Kodu: 15311800000027
+WDHS-01 Dış Hava Sıcaklık Sensörü
+Ürün Sipariş Kodu: 15311660600001
+WT-01 Geniş Ekranlı,
+Modülasyonlu, Haftalık Program
+Saatli, kablolu oda termostatı
+Ürün Sipariş Kodu: 15311800000021
+WH-260S RF Geniş ekranlı,
+kablosuz oda termostatı
+Ürün Sipariş Kodu: 15311800000037
+WH-100S RF Analog, derece ayarlı
+çevirme düğmeli, ON/OFF oda
+termostatı
+Ürün Sipariş Kodu: 15311800000036
+RECOWA Geniş Ekranlı, Wi-Fi İnternet Erişimli, Kablosuz, Akıllı Oda Termostatı
+Ürün Sipariş Kodu: 15311800000001
+Şekil 41 Kombi oda termostatı ve dış hava sıcaklık sensörünü bağlantıları
+24V AC
+G S M
+TERMOSTAT KÖPRÜSÜ
+OPENTHERM
+	PROTOKOL BAĞLANTISI
+DIŞ HAVA SICAKLIK
+SENSÖRÜ BAĞLANTISI
+BEYAZ
+TURUNCU
+BEYAZ
+YEŞİL
+YEŞİL
+TURUNCU
+OPEN THERM
+BAĞLANTI
+DIŞ HAVA
+SICAKLIK SENSÖRÜ
+A PCB
+PCB
+PCB
+B
+Elektronik karta
+	giden bağlantılar
+TERMİNAL	TURUNCU
+BEYAZ
+A
+DİKKAT: ON-OFF ve OPENTHERM oda termostatı
+bağlantılarında B köprü kablosu çıkartılmalıdır!
+Güncel kombi
+aksesuarlarımız
+için web sitemizi
+ziyaret edebilirsiniz.
+www.warmhaus.com.tr
+Şekil 42 Oda Termostatının yerleşim konumu
+
+-- 18 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	19
+3. 	KULLANICI BÖLÜMÜ
+3.1. KULLANICI İÇİN GENEL UYARILAR
+3.1.1. Kombinin Kullanımı
+Ortamda gaz kokusu varsa öncelikle evinizin giriş hattındaki ve kombinizin
+gaz vanalarını veya dökme gaz kullanıyor iseniz LPG tank vanasını veya
+tüp vananızı kapatınız. Elektrik düğmelerini açma-kapama yapmayınız
+ve kıvılcım çıkarabilecek hiçbir işlem yapmayınız. Gaz şirketini veya Yetkili
+Servisi arayınız. (Bakınız 1.3 GAZ KAÇAKLARI)
+Kombinizin Garanti kapsamından çıkmaması ve güvenliğiniz için ilk kez
+çalıştırılması Warmhaus Yetkili Servisi tarafından yapılmalıdır. Yetkili
+Servisimiz kombinizin ilk kontrollerini yaptıktan ve çalıştırdıktan sonra size
+nasıl kullanacağınız hakkında bilgi verecektir.
+Kullanıma başlamadan önce aşağıdaki kontrolleri yapınız:
+• Kombinizin altında bulunan kalorifer/ısıtma sistemi, kullanım suyu ve gaz
+vanalarının açık,
+• Kombinin altında bulunan manometreden kalorifer tesisat basıncının 1-1,5
+bar arasında olduğunu ve sistem havasının alındığını,
+• Gaz hattınızda gaz olduğunu (gaz ocaklarınızdan birini yakarak kontrol
+edebilirsiniz),
+• Kombi elektrik sigortasının açık olduğunu,
+• Kombinin yanında kolay alev alabilecek malzemeler ve ürünler olmadığını,
+• Atık gaz baca setinin çıkışının kapalı olmadığını,
+• Eğer bir oda termostatı veya kumanda cihazı bağlı ise AÇIK pozisyonda
+olduğunu, kontrol ediniz. Kombiyi uzun bir zaman kapatacaksanız
+aşağıdaki işlemleri yapınız:
+• Antifriz bulunmayan kalorifer tesisat suyunu mutlaka boşaltın,
+• Kombinin elektrik sigortasını, gaz vanasını, kalorifer ve kullanım suyu
+vanalarını kapatın!
+Kombiyi kısa bir zaman kapatacaksanız aşağıdaki işlemleri yapınız:
+• Kombinin elektrik sigortasını, gaz vanasını, kalorifer ve kullanım suyu
+vanalarını kapatmayın!
+• Kombiyi Yaz Konumunda bırakın ve böylece Donmaya Karşı Koruma
+fonksiyonu etkin olsun,
+Atık gaz tahliye bacaları etrafında yapılacak bakım ve onarım işlemleri
+esnasında kombiyi kapatınız. İşlemler bittikten sonra kombiyi çalıştırmadan
+önce Warmhaus Yetkili Servisi’ne kontrol ettiriniz.
+Aşağıdaki temel kurallara uyunuz::
+• Kombinin dış gövdesini temizleme işlemini kombi çalışırken yapmayınız ve
+kolay alev alabilen malzemeler kullanmayınız.
+• Kombiyi el ya da ayaklarınız ıslakken tutmayınız; ayakkabısız ve yalınayak
+da tutmayınız.
+• Elektrik kablolarını çekiştirmeyiniz
+• Kabloların hasar görmesi durumunda, kombiyi ve sigorta şalterlerini
+kapatın ve ve kombiyi kesinlikle kullanmayın.
+• Kombinin ve aksesuarlarının elektrik kablolarını yalnızca Yetkili Servise
+değiştirmelidir.
+• Asılı kombiyi pişirme yerlerinden gelebilecek direkt buhara maruz
+bırakmayın.
+• Kombinin çocuklar ve tecrübesiz kişilerce kullanımını engelleyin.
+BASMA BUTONLARI VE SEMBOLLERİN AÇIKLAMALARI
+1. 	MODE, konum ayar butonu.
+2. 	RESETLEME butonu.
+3. 	Kalorifer (Radyatör) suyu sıcaklığı ayar butonu.
+4. 	Sıcak kullanım suyu sıcaklık ayar butonu.
+5. 	Yazılım bağlantı yuvası.
+6. 	Dijital ekran.
+7. 	Sıcaklık, veri ve arıza kodları göstergesi.
+8. 	Kombi kalorifer konumunda çalışırken radyatör sembolü görülür. Isıtma
+adımlarında veya radyatör sıcaklık ayarı yapıldığında sembol yanıp
+söner.
+9. 	Alev sembolü sadece kombi aktifken görülür (kombide yanma); Sistem
+alev mevcudiyetini tespit ettiğinde. Arıza durumunda 	sembol olarak
+görülür.
+10. 	Kombinin yaz ve/veya kış konumunda sıcak kullanım suyu musluk
+sembolü görülür. Sıcak Kullanım Suyu isteğinde veya ayar yapıldığında
+sembol yanıp söner.
+11. 	Arıza/hata göstergesi.
+12. 	Arıza/hata durumunda RESETleme gereksinimi.
+13. 	Kalorifer devresinde düşük su basıncı.
+14. 	Sıcaklık arttırma butonu.
+15. 	Sıcaklık azaltma butonu
+Kombi ekranda görüntülenen sıcaklık değeri, kombiden kaynaklanmayan
+çevresel koşullara bağlı olarak ± 3 °C toleranslıdır.
+RESET: Kombinin tekrar çalıştırılması ve kombi arızası durumunda arızanın
+giderilmesi için kullanılır.
+MODE: Pozisyon ayarı için Kış / Yaz / KAPALI modu kullanılır.
+ÇALIŞMA KONUMLARI VE İLGİLİ BİLDİRİMLER
+• KAPALI veya OFF (3 basamaklı LCD ekran)
+• KIŞ Kalorifer sıcaklığı + °C + musluk + radyatör görüntülenir.
+• YAZ► Kalorifer sıcaklığı + ° C + musluk görüntülenir.
+• KALORİFER AÇIK► Kalorifer Sıcaklığı + °C + musluk + yanıp sönen
+radyatör (sembol) görüntülenir.
+• SICAK KULLANIM SUYU AÇIK► Sıcak kullanım suyu sıcaklığı + °C + yanıp
+sönen musluk (sembol) görüntülenir.
+• KALORİFER DONMA KORUMASI AÇIK► Kalorifer sıcaklığı
+• °C + yanıp sönen radyatör (sembol) + kombinin tutuşması durumunda
+alev (sembol) görüntülenir.
+• SICAK KULLANIM SUYU DONMA KORUMASI AÇIK► Kalorifer sıcaklık +
+°C yanıp sönen radyatör ve kombi alev aldığında (sembol) + simgesine
+dokunun.
+• KALORİFER / SICAK KULLANIM SUYU AYAR DEĞİŞTİRME► Radyatör
+sembolü hızlı bir şekilde yanıp söndüğünde Kalorifer ayar değişikliği
+etkinleştirilecektir. Sıcak kullanım suyu ayar değişikliği, kademe sembolü
+hızlı bir şekilde yanıp söndüğünde etkinleşir.
+• Servis teknisyeni işlev radyatörü + musluğu görüntülendi. (Sadece yetkili
+servis için, herhangi bir tuşa basmadan ya da düğmeyi döndürmeden
+işlevin bitmesini bekleyin!)
+Ewa Kombinin Kumanda Paneli
+8	1	4	3 	6
+7 	13	12	11 	15	2	5
+9 	10 	14
+Şekil 43 Ewa kombinin kumanda paneli ekranı
+
+-- 19 of 36 --
+
+20	i 	warmhaus.com
+3.2. AÇMA / KAPAMA / BEKLEME VE YAZ / KIŞ MODLARININ SEÇİMİ
+Kombinin elektrik bağlantısını kesmek için V otomat şalteri kullanınız. Cihaza elektrik geldiğinde sıcaklık değeri tesisattaki suyun sıcaklık değeridir.
+3.2.1. Açma/Kapama/Bekleme Konumları
+Kombinin elektrik bağlantısını Açmak/
+Kapamak için V otomat (sigorta)
+şalterini kullanınız.
+3.2.2. Kış Konumunda Çalıştırma
+Kombi bu konumdayken, hem ortamı ısıtmak hem de sıcak kullanma suyu
+elde etmek için çalışır.
+3.2.3. Yaz Konumunda Çalıştırma
+Kombi bu konumdayken sadece sıcak kullanma suyu ısıtması için çalışır.
+Kullanım suyu konumuna geçmek için;
+Kombi ilk defa açıldığında ekranda nG yazısı
+ve ardından cihazın kW gücünü belirten bir
+sayı (örneğin 24) görünür.
+ekran ışığı kapanır. Kombi artık BEKLEME
+konumundadır. Cihaza elektrik geldiğinde
+sıcaklık değeri tesisattaki suyun sıcaklık
+değeridir.
+Daha sonra OFF yazısı görünerek,
+OFF
+OFF
+Kalorifer sıcaklık ayarı düğme (3) ile Sıcak
+Kullanım Suyu sıcaklık ayarı ise her zaman için
+düğme (4) ile ayarlanır ve bu sıcaklık ekran
+üzerinde gösterge (7) tarafından belirtilir.
+Kombiyi açmak için MODE butonuna basılı
+tutun bu esnada ekranda 	bir döngü
+oluşmaya başlar, döngü tamamlandığında
+butona basmayı bırakın.
+Bu durumda kombi önce Kalorifer konumuna
+geçer, ekranın sol üst köşesinde sembolü
+yanıp söner ve ekranda mevcut kalorifer
+tesisat sıcaklığı görünür ardından ekran ışığı
+söner. Bu konumda Kalorifer sıcaklık ayar
+düğmesi (3) le sıcaklığı 25 – 80 °C arasında
+ayarlayabilirsiniz.
+Sıcaklık ayar butonlarıyla sıcaklığı 25 - 80 °C
+arasında artırabilir (14) veya azaltabilirsiniz
+(15) (bkz. Şekil 44). Butonlara basıldığında
+ekranda ışık yanar ve kalorifer sıcaklık
+değerinin yanında °C sembolü yanıp söner.
+{Eğer bir yerden ısıtma sistemine sahipseniz bu durumda Yetkili
+Servisimiz kombinizi “Düşük Sıcaklık İşletimi” için ayarlamış
+olacağından Kalorifer sıcaklık ayar düğmesi (3) ile maksimum
+sıcaklık sınırlandırılmış olacaktır (örneğin en fazla 47 °C)}.
+Kış Konumunda Sıcak Kullanım Suyu
+Ayarı; Önce sıcak su 	butonuna (4) basın.
+Bu konumda, ekranın sağ üst köşesinde
+sembolü yanıp söner ve ekranda mevcut
+Sıcak Kullanım Suyu sıcaklığı görülür ve ekran
+ışığı kapanır. Sıcak kullanım suyu sıcaklığını,
+(14) ve (15) numaralı düğmelerle 35 - 60 ° C
+arasında ayarlayabilirsiniz. Sıcaklık değişimi
+sırasında; ekran ışığı yanar ve sıcak kullanım
+suyu sıcaklığının yanı sıra ° C sembolü de
+yanıp söner. Ayarlamadan sonra ekran ışığı
+söner.
+Eğer kombiyi ilk defa çalıştırıyor iseniz MODE
+butonuna basılı tutup ekranda döngünün
+tamamlanması ardından butona basmayı
+bırakın, kombi önce Kalorifer konumuna
+geçecek, ekranın sol üst köşesinde
+sembolü yanıp sönecek ve ekranda mevcut
+kalorifer tesisat sıcaklığı görünerek ekran
+ışığı sönecektir.
+Kullanım 	suyu 	konumuna 	geçmek 	için
+tekrar MODE butonuna basılı tutup ekranda
+döngünün tamamlanması ardından butona
+basmayı bırakın. Bu konumda ekranın sağ
+üst köşesinde 	sembolü yanıp sönecek
+ve ekranda mevcut kullanım suyu sıcaklığı
+görünerek ekran ışığı sönecektir.
+Bu konumda, Sıcak Kullanım Suyu sıcaklığını
+ayarlamak için sıcaklık ayar 	butonuna (4)
+basınız. Ayarlama sırasında ekran ışığı açık
+olacak, 	ve Sıcak Kullanım Suyu sıcaklık
+değeri ve °C sembolü yanıp söner. Sıcak
+kullanım suyu sıcaklığını ayar butonları (14) ve
+(15) ile 35 - 60 °C arasında ayarlayabilirsiniz.
+Ayarlamadan sonra ekran ışığı söner.
+
+-- 20 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	21
+3.2.4. Kombiyi Resetleme (Yeniden Çalıştırma)
+Cihazın arıza/kilitlenme hatası verdiği durumlarda RESET butonuna 3-4
+saniye basılı tutularak, ekrandaki çevrimin tamamlanması ardından butona
+basmayı bırakın. Cihazın kendisini resetleyip, yeniden çalışma işlemlerini
+tekrarlamasını sağlayabilirsiniz.
+3.2.5. Kombiyi Kapatma
+Kombi YAZ konumunda çalışırken kapalı konuma getirmek için;
+Örnek bir kullanım hatası; cihaz ekranında E81
+veya E06 arıza kodlarından biri göründüğünde
+cihazınızda yanma oluşmadığı için arızaya
+geçmiştir. Bu durumda kombiye bağlı gaz
+hattı vanalarından biri kapalı olabilir, kapalı
+vanayı açıp RESET butonuna bastığınızda
+kombi yeniden çalışmaya başlayacaktır. Eğer
+resetleme ile kombi çalışmıyorsa lütfen Yetkili
+Servisimize başvurunuz.
+MODE butonu basılı tutulduğunda ekran ışığı
+yanarken döngü tamamlandıktan sonra ekranda,
+OFF yazısı belirir ekran ışığı söner, kombiniz artık
+KAPALI konumdadır.
+OFF
+Kombi 	KIŞ 	konumunda 	çalışırken 	kapalı
+konuma getirmek için; MODE butonu basılı
+tutulduğunda ekran ışığı yanarken, döngü
+tamamlandıktan 	sonra 	kombi 	önce 	YAZ
+konumuna geçer.
+Kombi çalıştırıldığında, ekranın orta kısmında alev modülasyonu sembolü
+görülür. Bu konumda, kalorifer sıcaklığı (25 + 80 °C arasında 	ayar
+butonları (3 + 14) ile artırabilir veya (3 + 15) 	butonları ile azaltabilirsiniz,
+(bakınız Şekil 43-44). Butonlara basıldığında ekran ışıkları yanar ve 	°C
+sembolü, kalorifer sıcaklık değerinin yanı sıra yanıp söner.
+Kombiniz artık kapalı (OFF) olarak BEKLEME
+konumdadır.
+OFF
+Ardından aynı işlem tekrarlandığında döngünün
+tamamlanması ardından ekranda yazısı belirir
+ekran ışığı söner.
+Kombinin sağ-alt kenarına yakın Analog manometre bulunur.
+Elektrik olmadığında dahi tesisat basıncını bu manometreden
+görülebilir.
+3.2.6. Oda Termostatı ile Kullanım (Opsiyonel)
+Kombi, Opsiyonel set olarak satılmakta olan ortam termostatları ile uzaktan
+kumanda bağlantısı için ön hazırlığı vardır. Tüm Warmhaus termostatlar çift
+telli kablo ile bağlanabilirler. Aksesuar setinde yer alan kullanım ve montaj
+talimatlarını dikkatlice okuyunuz. Program saatli oda termostatlı kumanda
+üniteleri sayesinde kombiniz montaj yapıldığı yerden (örneğin salondan)
+Önemli: Uzaktan Kumanda herhangi bir termostat On/Off
+kullanılması halinde elektrik tesisatları konusunda yürürlükte
+bulunan yasal düzenlemeler gereğince iki ayrı hat bulundurulması
+zorunluluğu mevcuttur. Kombinin hiçbir boru veya hortumunun elektrik
+veya telefon toprak hattı olarak kullanılmasına müsaade edilemez. Bundan
+kombinin elektrik bağlantıları yapılmadan önce emin olunmalıdır.
+kontrol etme, oda sıcaklığına göre çalıştırma ve aynı zamanda haftanın her
+gününe göre farklı kullanım olanağı sağlarsınız.
+Genel Kullanım Şekli
+• Warmhaus kombiler ile uyumlu oda termostatları için yetkili servislerimize
+danışınız.
+• Çalışırken cihazın parçalarını sökmeyiniz.
+• Doğrudan güneş ışığı alacak şekilde veya ısı kaynaklarının yakınına
+yerleştirmeyiniz.
+• Üretici firma aşağıdaki durumlarda sorumlu tutulamaz:
+a) Hatalı montaj
+b) Yetkili olmayan kişiler tarafından cihaza müdahale edilmesi
+c) Bu kitapçıkta ve oda termostatı kitapçıklarında yazan talimatlara
+uyulmaması
+Montaj Talimatı:
+Cihazın montajı sadece Warmhaus Yetkili Servisi tarafından yapılabilir. Montaj
+için gerekli ikili kablo bayi/tüketici tarafından sağlanır.
+
+-- 21 of 36 --
+
+22	i 	warmhaus.com
+Bakım ve Servis Ömrü: Warmhaus oda termostatı su veya aşırı nem ile
+temas etmemelidir. Harici bir hasar meydana gelmedikçe, oda termostatı
+herhangi bir bakım gerektirmez. Kullanım ömrü 5 yıldır.
+3.2.7. Dış Hava Sıcaklık Sensörü Kullanımı (Opsiyonel)
+Dış Hava Sıcaklık Sensörü (opsiyonel) Yetkili Servisimiz ile kombinize (bakınız:
+Montaj Bölümü; Aksesuar Bağlantıları Şeması) bağlatacağınız bu isteğe bağlı
+aksesuar sayesinde Akıllı ve konforlu işletim ile dış hava sıcaklık değişimlerine
+anında tepki vererek kalorifer sıcaklık ayarının otomatik olarak yapılmasını
+sağlayabilirsiniz. Böylece dış hava sıcaklığı yükselmeye başladığında
+kalorifer suyu sıcaklığını düşüren ve dış hava sıcaklığı azaldığında kalorifer
+suyu sıcaklığını oransal olarak yükselterek hava sıcaklığı değişimlerinde sizi
+sürekli kalorifer sıcaklığı ayarı yapmaktan kurtararak ihtiyaca göre verimli ve
+tasarruflu bir çalışma sağlar. Bu sensör, kullanılan termostatın mevcudiyeti
+veya tipolojisinden bağımsız olarak bağlı olduğunda harekete geçer tesisatın
+gidiş sıcaklığı ve dış sıcaklık arasındaki ilişki, kombinin paneli üzerinde
+bulunan düğmenin/butonun pozisyonuna göre aşağıdaki grafikte sunulan
+eğrilere göre belirlenir.
+Dış Hava Sıcaklık Sensörü bağlandıktan sonra P04 parametresi ile
+bulunduğunuz ilin ortalama dış hava sıcaklığına göre ayar yapılır. Bu ayarı
+montaj esnasında Yetkili Servisimiz yapacaktır.
+3.2.8. Kombi Özelliklerini Kişiselleştirme
+Kombiniz gelişmiş bir elektronik karta sahip olduğundan çalışma koşulları
+ve tercihlerinizle ilgili bazı parametreler Yetkili Servisimiz tarafından
+değiştirilebilir. Aşağıdaki parametrelerde değişiklik yapılması istenildiğinde
+lütfen yetkili servisimize başvurunuz.
+(P07) Kontrollü Güç Artış Süresi.
+Kombi çalışmaya başladığında, ayarlanmış maksimum ısıtma gücene
+ulaşmak için belirlenen kontrollü bir süreyi kullanır. Bu süre standart olarak 3
+dakikaya ayarlıdır ve 10 dakikaya kadar artırılabilir.
+(P08) Kalorifer (Isıtma) Gücü.
+Kombi montaj yapıldığı yerin gerçek ısı ihtiyacına uygun güçte bir elektronik
+modülasyon ile donatılmıştır. Böylece kullanım sürecinde kombi minimum
+güç ile maksimum güç arasında tesisatın ısıl yüküne göre değişken gaz
+debilerinde otomatik olarak çalışır.
+(P21) Düşük sıcaklık bölgesi seçimi.
+Yerden ısıtma veya düşük sıcaklıkla çalışan ısıtma sistemleri için bu parametre
+1 olarak ayarlanmalıdır. Standart olarak yüksek sıcaklıkla çalışacak (radyatörlü
+sistemler) için 0 (sıfır) değeri seçilidir.
+(P40) Kalorifer ateşleme gecikme süresi.
+Kombi cihazı, ısıtma aşamasında kombinin sık ateşleme yapmasını
+engellemek amacıyla elektronik bir zamanlayıcı ile donatılmıştır. Bu süre
+standart olarak 2 dakikaya ayarlıdır ve 10 dakikaya kadar artırılabilir.
+(P42) Hazır Sıcak Su (Ön-ısıtma pasif / aktif).
+Sıcak kullanım suyu talebinizi beklemeden daha hızlı hazırlamak ve bekleme
+sırasında soğuk su tüketimini azaltmak için plakalı eşanjörde şebeke suyunu
+ısıtarak hazır sıcak su olarak tutar.
+Ewa modelinde bu fonksiyonun aktif edilmesi, talebinize göre Yetkili
+Servisimiz tarafından parametrik ayar ile yapılır.
+Hava Tahliye Fonksiyonu
+Hava Tahliye Fonksiyonunu etkinleştirmek için Şekil 44'da gösterildiği gibi ”-“
+ve RESET tuşlarını basılı tutun ve ekranda --- çevrimini tamamlanana kadar
+bekleyin.
+Ekranda “Air” göstergesi etkinleşti.
+Bu fonksiyon sırasında, hidrolik tesisin hava tahliyesi için pompa ve 3 yollu
+vana etkinleştirilir / devre dışı bırakılır.
+Bu fonksiyon başladıktan 12 dakika sonra sona erer , ancak fonksiyonu daha
+erken sonlandırmak (kapatmak) için, "RESET" ve ”-“ tekrar basınız ve ---
+çevriminin tamamlanmasını bekleyiniz.
+Şekil 44 Dış hava sıcaklık sensörü ve kombi bağlantısı
+Şekil 46 Hava Tahliye Fonksiyonunu aktif hale getirmek için RESET ve sıcaklık
+azaltma butonuna basma.	
+Şekil 45 Dış hava sıcaklık sensörü çalışma eğrileri
+Kombi Kalorifer Sıcaklık Ayarı °C
+Dış Hava Sıcaklığı °C
+1
+2
+20,0
+30,0
+40,0
+50,0
+60,0
+70,0
+80,0
+-25	-20	-15	-10	-5	0	5	10	15	20
+K=0,75
+K=1,5
+K=2,2	K=3	K=4,5	K=6	K=9
+
+-- 22 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	23
+3.3. HATA VE ARIZA DURUMLARININ ÇÖZÜMLENMESİ
+3.3.1. Arıza Kodları Tablosu
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 01 	Atık gaz Termostatı
+(Açık Yanma Odalı
+kombi)
+müdahalesi
+Kombi çalışmıyor, ekranda
+E01 hata kodu yanıp
+sönüyor
+• Atık gaz sensörü arızası 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 02 	Sistemde su basıncı
+düşük/sistem
+parametreleri yanlış
+ayarlanmış
+Kombi çalışmıyor, ekranda
+E02 hata kodu yanıp
+sönüyor
+• Kombide su basıncı yeterli değil
+• TsP parametresi yanlış ayarlanmış
+1. Kombiyi kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olarak
+doldurun, problem otomatik olarak ortadan kalkar.
+2. Kombinin sağ altında bulunan manometreden sistem basıncı 1,2 - 1,5
+bar mı kontrol edin
+3. Eğer sorun devam ederse yetkili servisi arayın
+4. RESET butonuna basarak kombiyi yeniden başlatın
+E 03 	Sistemde su basıncı
+yüksek
+Kombi çalışmıyor, ekranda
+E03 hata kodu yanıp
+sönüyor
+• Sistemde yüksek su basıncı 3,8
+• bardan yüksek
+1. Kombiyi kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olana kadar
+boşaltın ve problem otomatik olarak ortadan kalkar
+2. Kombinin sağ altında bulunan manometreden sistem basıncı 1,2 - 1,5
+bar mı kontrol edin
+3. Eğer sorun devam ederse yetkili servisi arayın.
+4. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden Başlatın
+E 04 	Sıcak Kullanım Suyu
+sıcaklık sensörü arızalı
+Kombi Sıcak Kullanım Suyu
+modunda çalışmıyor ancak
+Kalorifer ısıtma modunda
+çalışıyor, E04 hata kodu
+ekranda yanıp sönüyor
+• Sıcak Kullanım Suyu sıcaklık
+• sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 05 	Kalorifer ısıtma Gidiş
+Sıcaklık Sensörü hatalı
+Kombi çalışmıyor, ekranda
+E05 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma Gidiş Sıcaklık
+• Sensörü hatalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 06 	Ateşleme yok 	Kombi çalışmıyor, ekranda
+E06 hata kodu yanıp
+sönüyor
+• Gaz besleme arızası 	1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldüğünü kontrol edin
+2. Diğer gazlı cihazların çalışıp çalışmadığını kontrol edin.
+3. Ana gaz valfi açık mı değil mi kontrol edin.
+4. Kombinin altındaki kombi gaz vanası açık mı değil mi kontrol edin.
+5. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin.
+6. Sorun çözülmediyse yetkili servisi arayın.
+E 07 	Güvenlik/Emniyet
+Termostatı müdahalesi
+Kombi çalışmıyor, ekranda
+E07 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Donanım tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin
+2. Kombinin kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı.
+4. Kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun çözüldü mü
+kontrol edin.
+5. Sorun çözülmediyse yetkili servisi arayın.
+E 08 	Alev devresi arızası 	Yanma ya da elektrottan
+yanlış alev sinyali
+• Elektrotta yıpranma ya da pas
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Sıvı akış borusunda su tıkanması
+• Elektronik kart
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 09 	Sistemde su
+sirkülasyonu
+yok
+Kombi çalışmıyor, ekranda
+E09 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Tesisat tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın)ve sorun
+çözüldü mü kontrol edin.
+2. Kombi kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN ve sorun çözüldü mü kontrol edin
+E 11 	Gaz vanası modülatörü
+bağlı değil
+Kombi çalışmıyor, ekranda
+E11 hata kodu yanıp
+sönüyor
+• Gaz vanası hattı 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 13 	Atık Gaz Sıcaklık
+Sensörü
+aşırı sıcaklık alarmı
+Kombi çalışmıyor, ekranda
+E13 hata kodu yanıp
+sönüyor
+• Bacadaki aşırı gaz sıcaklık çıkış
+• değeri
+• 105 °C
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 14 	Atık Gaz (BACA)
+Sıcaklık
+Sensörü arızası
+Kombi çalışmıyor, ekranda
+E14 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma Atık Gaz Sıcaklık
+• Sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+
+-- 23 of 36 --
+
+24	i 	warmhaus.com
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 15 	Fan arızası (geri
+bildirim/
+tedarik)
+Kombi çalışmıyor, ekranda
+E15 hata kodu yanıp
+sönüyor
+• Fan tesisatı 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 16 	Kalorifer ısıtma
+sıcaklığı
+DÖNÜŞ sensörü arızalı
+Kombi çalışmıyor, ekranda
+E10 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma DÖNÜŞ sıcaklığı
+• sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 17 	GİDİŞ VE LİMİT NTC’si
+arasındaki sıcaklık farkı
+(Çift Isıtma sensörü)
+arızalı
+GİDİŞ VE LİMİT sensörü
+(ÇİFT NTC) arızası
+• GİDİŞ VE LİMİT Sensor (çift NTC)
+arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 19 	Su akış metresi ile su
+akışı
+seçimi girdi okuması
+Talep üzerine dâhili ısıtma
+suyu eksikliği
+• TsP menüsünde yanlış parametreler
+• ayarlanmış
+1. lk olarak yetkili servisi arayın
+2. Yalnızca yetkili servis TsP Parametresini P01=0 varsayılan değeri ile
+ayarlamalı
+E 20 	Kalorifer Aşırı Sıcaklık
+Arızası, Kalorifer
+Isıtma Sıcaklığı, TSP
+81 sıcaklık °C ayar
+değerini aştı
+Kombi çalışmıyor, ekranda
+E81 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Tesisat tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın)ve sorun
+çözüldü mü kontrol edin
+2. Kombi merkezi ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN ve sorun çözüldü mü kontrol edin
+5. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 21 	Kalorifer Gidiş ve
+Dönüş sıcaklık farkı,
+TSP 82 delta sıcaklık
+°C ayar değerini aştı
+Kombi çalışmıyor, ekranda
+E21 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Donanım tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin.
+2. Kombi kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun çözüldü mü
+kontrol edin.
+5. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 28 	İzin verilen maksimum
+art
+arda Resetleme
+(sıfırlama)
+sayısına ulaşıldı
+Kullanılabilir SIFIRLAMA
+sayısına erişildi.
+• Diğer muhtemel sebepler nedeniyle
+• çok fazla art arda kilitleme arızası
+• (ardından sıfırlama)
+1. Kombi sigortasını kapatın ve 1 dakika sonra tekrar açıldığında kombi
+sıfırlanacaktır
+2. Çözmek için Hata kodunun temel nedenini kontrol edin
+3. Eğer hata yine devam ediyorsa yetkili servisi arayın.
+E 37 	Düşük voltajda
+anormallik
+Kombi çalışmıyor, ekranda
+E37 hata kodu yanıp
+sönüyor
+• Düşük voltaj < 165 VAC
+• Elektrik şebekesi işlem modunda
+• +/- %5 YA DA
+• Otomatik kalibrasyon modunda <
+• 182 VAC +/- %5
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 40 	Yanlış ağ frekans
+ölçümü
+Kombi çalışmıyor, ekranda
+E40 hata kodu yanıp
+sönüyor
+• Yanlış frekans ölçümü, tolerans 50
+• Hz'den farklı şebekede +/- %5
+1. Elektrik şebekesini sağlayan firmayı arayın
+2. Eğer gelen frekans 50 Hz +/- %5 ise hata ortadan kalkar
+E 41 	Art arda 6 kereden
+fazla
+ateşleme kaybı
+Kombi çalışmıyor, ekranda
+E41 hata kodu yanıp
+sönüyor
+• Kısa süre içinde çok fazla dâhili
+• ısıtma suyu talebi (1 dakika )
+• Düşük gaz basıncı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 42 	Buton anormalliği 	Kombi çalışmıyor, ekranda
+E42 hata kodu yanıp
+sönüyor
+• TsP menüsünde yanlış parametreler
+• ayarlanmış
+1. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 43 	Oda termostatı
+(Opentherm) iletişim
+hatası
+Kombi çalışmıyor, 1
+dakikalık iletişim hatasının
+ardından ekranda E43 hata
+kodu yanıp sönüyor
+• Oda termostatı (Opentherm) hattı
+• bağlantısı kopuk
+1. Kombi sigortasını kapatın ve yaklaşık 1 dakika sonra tekrar açtığınızda
+E43 ortadan kalkacak ve kombi ve butonlar işlevsel hale gelecek
+2. Oda termostatının pillerini yenileriyle değiştirin ve oda termostatını
+sıfırlayın (RESET butonuna basın).
+3. Kombi ve oda termostatı arasındaki kablolamayı kontrol edin
+ve kopukluk varsa yeniden bağlayın, eğer bağlantı başarılı şekilde
+gerçekleştirilmişse ekranda 19 nolu sembol görünecektir
+4. Oda termostatı (Opentherm) bağlantısını yeniden bağlamak için
+yetkili servisi arayın
+rE 44 	Fazla sayıda aralıklı
+ateşlemeye rağmen
+brülörde yanmanın
+gerçekleşmemesi
+Fazla sayıda aralıklı
+ateşlemeye rağmen
+brülörde yanmanın
+gerçekleşmemesi
+• Kalibrasyon yapılmadı
+• PCB değiştirildi ancak çıkartılan
+• PCB’nin servis anahtarı kullanılmadı
+• Hizmet anahtarı hasarlı ya da bağlı
+• değil
+• Yazılım güncelleniyor (muhtemel)
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+
+-- 24 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	25
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 62 	Kalibrasyon talebi 	Kombi çalışmıyor, ekranda
+E62 hata kodu yanıp
+sönüyor
+• Kalibrasyon yapılmadı
+• PCB değiştirildi ancak çıkartılan
+• PCB’nin servis anahtarı kullanılmadı
+• Hizmet anahtarı hasarlı ya da bağlı
+• değil
+• Yazılım güncelleniyor (muhtemel)
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 72 	Ateşlemede Delta T
+sıcaklık farkı
+gerçekleşmedi
+Kombi çalışmıyor, ekranda
+E72 hata kodu yanıp
+sönüyor
+• GİDİŞ VEYA GERİ DONUŞ Sensorleri
+kontrol edilmeli
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 74 	İkinci Kalorifer sıcaklık
+Sensörü arızalı
+Kombi çalışmıyor, ekranda
+E74 hata kodu yanıp
+sönüyor
+• GİDİŞ VE LİMİT Sensor (çift NTC)
+• arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 77 	Mutlak akım
+değerlerine
+ulaşıldı
+Kombi çalışmıyor, ekranda
+E77 hata kodu yanıp
+sönüyor
+• Gaz giriş basıncı
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Baca ya da yanlış bacada tıkanıklık
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Yanma kalibrasyonu
+• Elektronik pano
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 78 	Maksimum regülasyon
+akım değerine ulaşıldı
+Kombi çalışmıyor, ekranda
+E78 hata kodu yanıp
+sönüyor
+• Gaz giriş basıncı
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Yanma kalibrasyonu
+• Elektronik kart
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 79 	Minimum regülasyon
+akım
+değerine ulaşıldı
+Kombi çalışmıyor, ekranda
+E79 hata kodu yanıp
+sönüyor
+• Gaz giriş basıncı
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Yanma kalibrasyonu
+• Elektronik kart
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 80 	Elektronik gaz valfi
+sürücüsünde sorun
+Kombi çalışmıyor, ekranda
+E80 hata kodu yanıp
+sönüyor
+• Elektronik kart
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 81 	Başlangıçta yanma
+kilitlenmesi/blokaj
+sorunu
+(1)
+Kombi çalışmıyor, ekranda
+E81 hata kodu yanıp
+sönüyor
+• Aşırı baca tıkanıklığı
+• Yanma sorunu
+• Yanlış baca
+• Gaz giriş basıncı
+• Elektrotta yıpranma ya da pas
+• Baca gaz yolunda yeniden dolaşım
+• Elektrot pozisyonu
+• Yanma kalibrasyonu
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 84 	Tespit edilen
+(varsayılan)
+düşük gaz giriş basıncı
+için
+kapasite azaltımı
+Kombi çalışmıyor, ekranda
+E84 hata kodu yanıp
+sönüyor
+• Gaz giriş basıncı
+• Yanma sorunu
+1. Eğer güçlü rüzgâr varsa (örneğin rüzgâr fırtınası) rüzgâr fırtınasının
+durmasını bekleyin ve ardından kombiyi SIFIRLAYIN (RESET butonuna
+basın).
+2. EĞER sorun devam ederse yetkili servisi arayın.
+E 87 	Elektronik gaz valfi
+devresinde sorun
+Kombi çalışmıyor, ekranda
+E87 hata kodu yanıp
+sönüyor
+• Kablolamada kopukluklar
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 88 	Elektronik gaz valfi
+devresinde arıza
+Kombi çalışmıyor, ekranda
+E88 hata kodu yanıp
+sönüyor
+• Kablolamada kopukluklar
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+
+-- 25 of 36 --
+
+26	i 	warmhaus.com
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 89 	Yanma geribildirim
+sinyali
+sorunu
+Kombi çalışmıyor, ekranda
+E89 hata kodu yanıp
+sönüyor
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Baca yanlış ya da boruda tıkanıklık
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Yanma kalibrasyonu
+• Elektronik kart
+• Gaz vanası arızası
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 90 	Yanma düzenlenemedi Kombi çalışmıyor, ekranda
+E90 hata kodu yanıp
+sönüyor
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Yanma kalibrasyonu
+• Elektronik kart
+• Gaz vanası arızası
+1. İlk olarak yetkili servisi arayın.
+2. Yanlış baca YA DA baca gaz tıkanıklığını kontrol edin.
+3. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+4. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 92 	Hava dengelemesi
+aktif
+Kombi çalışmıyor, ekranda
+E91 hata kodu yanıp
+sönüyor
+• Muhtemel rüzgâr varlığı
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrot pozisyonu
+• Yanma kalibrasyonu
+• Minimum güç ayarı
+1. İlk olarak yetkili servisi arayın.
+2. Yanlış baca YA DA baca gaz tıkanıklığını kontrol edin.
+3. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+4. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 93 	Yanma düzenlenemedi
+(geçici)
+Kombi çalışmıyor, ekranda
+E93 hata kodu yanıp
+sönüyor
+• Elektrotta yıpranma ya da pas
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrot pozisyonu
+• Yanma kalibrasyonu
+• Gaz vanası arızası
+• Elektronik pano
+1. İlk olarak yetkili servisi arayın.
+2. Yanlış baca YA DA baca gaz tıkanıklığını kontrol edin.
+3. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+4. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 94 	Muhtemel düşük gaz
+basıncı ya da egzoz
+yenden dolaşımı
+Kombi çalışmıyor, ekranda
+E94 hata kodu yanıp
+sönüyor
+• Gaz giriş basıncı DÜŞÜK
+• Baca gazının taze havaya
+• karışması
+• Bacada tıkanıklık ya da yanlış baca
+• uygulaması
+• Elektrotta yıpranma ya da pas
+• Elektrot pozisyonu
+• Yanma kalibrasyonu
+• Gaz vanası arızası
+• Elektronik pano
+1. İlk olarak yetkili servisi arayın
+2. Yanlış baca YA DA baca gaz tıkanıklığını kontrol edin.
+3. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+4. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 95 	Aralıklı yanma değeri 	Kombi çalışmıyor, ekranda
+E95 hata kodu yanıp
+sönüyor
+• Elektrot ve topraklama donanımı
+• Elektrotta yıpranma ya da pas
+• Elektrot pozisyonu
+• Yanma kalibrasyonu
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 96 	Baca ya da temiz hava
+emiş yolu tıkanıklığı
+Kombi çalışmıyor, ekranda
+E96 hata kodu yanıp
+sönüyor
+• Bacada tıkanıklık
+• Temiz hava emme yolunda
+• tıkanıklık
+1. İlk olarak yetkili servisi arayın.
+2. Yanlış baca YA DA baca gaz tıkanıklığını kontrol edin.
+3. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+4. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 98 	SW hatası, PCB
+başlangıç
+hatası arızası
+Kombi çalışmıyor, ekranda
+E98 hata kodu yanıp
+sönüyor
+• Kombi yazılım sorunu 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 99 	Genel hata 	Kombi çalışmıyor, ekranda
+E99 hata kodu yanıp
+sönüyor
+• Kombi elektronik donanım sorunu 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+(1) 81 nolu arıza, atık gaz borusunda bir tıkanıklık olduğu olmasına karşılık gelir. Bu durumda kombiyi tekrar çalıştırmadan önce yetkili servis teknisyenine
+danışmanız uygun olacaktır.
+
+-- 26 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	27
+3.4. KOMBİYİ TASARRUFLU KULLANIM ÖNERİLERİ
+Kombiniz ekonomik kullanım için ECO moduna ayarlamıştır, değiştirilmemesini
+öneririz.
+Doğru Kapasite Seçimi
+Kombinin kullanılacak mekanın ısı kaybı hesabının doğru yapılıp kombi
+kapasitesinin buna uygun olması gerekir. Yeterli kapasiteye sahip olmayan
+cihazlar ısınma taleplerine daha geç cevap verecek, fazla kapasiteli cihazlar
+ise daha sık devreye girip çıkacağı için konforsuzluğa ve daha fazla yakıt
+sarfiyatına neden olabilirler. Bu nedenle kombi kapasitelerinin kullanılan
+mekana uygun seçilmesi gerekir.
+Izolasyon
+Binanızın yalıtım durumu ısı kaybını engelleyen ve gaz tüketimini azaltan
+en önemli unsurdur. bununla birlikte kombiniz sınıfının en yüksek kalınlıkta
+izolasyonuna sahip olduğundan ısı kaybı minimum düzeye indirilmiştir.
+Radyatörler
+Radyatör vanalarından kısma ayarlarını yaparak ev içindeki kalorifer
+tesisatınızın basınç dağılımının dengelenmesini sağlayın. Radyatörlerin
+önüne mobilya yerleştirilmesi hava dolaşımını engelleyerek konforsuzluğa
+ve daha fazla yakıt tüketimine neden olur. Uzun süre kullanılmayan odaların
+radyatör vanalarının kısılması yada termostatik radyatör vanası kullanılıyor
+ise en düşük konuma getirilmesi ile birlikte oda kapılarının kapatılması
+tasarruf sağlar.
+Sıcak Kullanım Suyu
+Sıcak kullanım suyu sıcaklığını daima olabildiğince (38~42 °C) olarak
+ayarlayın. Sıcaklık ayarlayıcısının düşük olarak ayarlanması büyük oranda
+bir enerji tasarrufu sağlamaktadır. Bunun yanı sıra, yüksek sıcak kullanım
+suyu sıcaklıkları güçlü kireçlenmeye neden olmakta ve bu durumda cihazın
+çalışmasına olumsuz olarak etki etmektedir (örneğin; daha uzun ısıtma
+süreleri, daha düşük akış miktarı).
+Termostatik Radyatör Vanaları
+Termostatik Radyatör Vanaları kullanımı ile ev içindeki mekanlarda ısı
+dağılımının dengelenmesini sağlayarak hem tasarruf hem de konfor elde
+edebilirsiniz.
+Oda Termostatları
+Oda termostatları ile istenilen ortam sıcaklığını konfor ve ekonomi zamanlarına
+göre ayarlama imkanlarınız olacağı için kombiniz daha ekonomik çalışacaktır.
+Böylece hem odanızın sıcaklığını dilediğiniz gibi ayarlayabilir hem de her bir
+derece sıcaklık düşüşü ile yaklaşık %6 enerji tasarrufu elde edersiniz.
+Havalandırma
+Odayı / odaları havalandırmak için pencereleri hafif acık konumda bırakmayın.
+Bu durumda, oda havasında belirgin bir iyileşme olmadığı halde odadan
+sürekli ısı kaybı olacaktır. Pencereleri kısa sureli olarak tam bir şekilde açmak
+daha iyi sonuç vermektedir.
+Odaları havalandırırken termostatik radyatör vanalarını en düşük konuma
+çevirin.
+3.5. GARANTİ ŞARTLARI İÇİN KULLANICILARIN DİKKAT
+ETMESİ GEREKEN KONULAR
+WARMHAUS tarafından verilen bu garanti, mamulün normalin dışında
+kullanılmasından doğacak arızaların giderilmesini kapsamadığı gibi,
+aşağıdaki durumlar da garanti dışıdır:
+1. İlk çalıştırması Warmhaus Yetkili Servisleri tarafından yapılmamış
+cihazlarda oluşan hasar ve arızalar,
+2. Mamulün Kullanma Kılavuzunda yer alan hususlara aykırı ve amaç dışı
+kullanılmasından meydana gelen hasar ve arızalar,
+3. Hatalı tip seçiminden kaynaklanan hasar ve arızalar,
+4. Yetkili Servislerimiz dışında kişiler tarafından yapılan bakım ve onarımlar
+nedeni ile oluşan hasar ve arızalar,
+5. Mamulün tesliminden sonra nakliye, boşaltma, yükleme, depolama, harici
+fiziki (Çarpma, çizme, kırma) ve kimyevi etkenlerle meydana gelen hasar
+ve arızalar,
+6. Yangın ve yıldırım düşmesi ile meydana gelen hasar ve arızalar,
+7. Hatalı yakıt kullanılması ve yakıt özelliklerinden doğan hasar ve arızalar,
+8. Voltaj düşüklüğü veya fazlalığı; topraksız priz kullanılması; hatalı elektrik
+tesisatından meydana gelen hasar ve arızalar,
+9. Yetkili Servislerimize yaptırılacak yıllık bakım ve temizlikler,
+10.Tarif edilen periyodik bakım işlemlerinin zamanında yapılmamasından
+kaynaklanan hasar ve arızalar,
+11. Garanti konusu cihazla birlikte bir sistem içinde kullanılan başkaca ürün
+ve aksesuarlardan dolayı cihazda veya kullanım alanında meydana
+gelebilecek hasar ve arızalar.
+12.Donma/buzlanma sonucu veya atmosfere açık (açık balkon vb.
+mekanlarda kullanım nedeniyle meydana gelen arızalar ve hasarlar.
+13.Sicil Etiketi ve Garanti Belgesinin tahrif edilmesi,
+14.Cihaz kullanım kılavuzunda tanımlanmış olan su değerlerinin dışında, su ile
+kullanılmasından doğan hasar ve arızalar,
+Yukarıda belirtilen arızaların giderilmesi, ücret karşılığında yapılır.
+Garanti, bu belgenin diğer yüzünde belirtilen süre içinde ve yalnızca
+mamulde meydana gelecek arızalar için geçerlidir. Değerli Müşterimiz,
+sizlere iyi ürünler vermek kadar, iyi hizmet vermenin de önemine
+inanıyoruz. Bu nedenle ürünlerimizle ilgili her türlü hizmet ihtiyacınızda;
+• Müşteri İletişim Merkezimizin +850 225 15 15 numaralı telefonunu arayarak,
+• Gerekli ise yetkili servislerimize başvurarak,
+• www.warmhaus.com.tr internet sitemizi ziyaret ederek, bilgi alabilirsiniz ve
+şirketimize ulaşabilirsiniz.
+Uyulması Gereken Öneri ve Bilgiler:
+1. Kombinizin ilk çalıştırma işlemi yapıldığı zaman Yetkili Servis tarafından
+verilen teknik servis belgesini ve cihazın faturasının bir kopyası ile Yetkili
+Satıcınıza onaylattırdığınız Garanti Belgesini saklayınız.
+2. Ürününüzü montaj ve kullanma kılavuzu esaslarına göre kullanınız.
+3. Servise ihtiyacınız olduğunda Müşteri İletişim Merkezimiz için +850 225 15
+15 numaralı telefonu arayınız.
+4. Hizmet için gelen görevli kişiye WARMHAUS tarafından verilmiş Warmhaus
+kimlik kartını sorunuz.
+5. Alınan hizmet sonrasında servis teknisyeninden aldığınız "HiZMET
+BELGESiNi" saklayınız. Alacağınız Hizmet Belgesi, ileride cihazınızda
+meydana gelebilecek herhangi bir sorunda size yarar sağlayacaktır.
+6. Sanayi Bakanlığınca belirtilen, ürün kullanım ömrü 15 yıldır.
+
+-- 27 of 36 --
+
+28	i 	warmhaus.com
+TEKNİK VERİLER 	BİRİM 	Ewa 20 	Ewa 24
+Gaz Devresi 	DG 	LPG 	DG 	DG 	LPG 	LPG
+Gaz Tipi 	G20 	G31 	G20 	G25 	G30 	G31
+Gaz Besleme Basıncı 	20 	37 	20 	25 	30 	37
+Maksimum Gaz Tüketimi 	m³/h 	2,12 	0,81 	2,38 	2,85 	0,73 	0,92
+Minimum Gaz Tüketimi 	m³/h 	0,36 	0,14 	0,37 	0,43 	0,11 	0,11
+Mevsimsel Mahal Isıtma Enerji Sınıfı 	A 	A
+Mevsimsel Mahal Isıtma Enerji Verimliliği (ηs) 	% 	91,2 	90,5 	92 	92 	92 	92
+Nominal Isı Gücünde ve Yüksek Sıcaklık Rejiminde Faydalı Verim(2) (η4) 	% 	87,6 	88,3 	87,6 	87,6 	87,6 	87,6
+Nominal Isı Gücünün ve Düşük Sıcaklık Rejiminin
+% 30’unda (Kısmi Yük) Faydalı Verimlilik (1) (η1) 	% 	96,4 	95,5 	97,5 	97,5 	97,5 	97,5
+Kalorifer Devresi 	G20 	G31 	G20 	G25 	G30 	G31
+Maksimum Isı Yükü Qn 	kW 	20 	20 	24,25 	24,25 	24,25 	24,25
+Minimum Isı Yükü Qn 	kW 	3,5 	3,55 	3,5 	3,5 	3,5 	2,8
+Maksimum Isı Gücü Pn (50/30 °C) 	kW 	21,1 	20,6 	25 	25 	24,7 	25
+Minimum Isı Gücü Pn (50/30 °C) 	kW 	3,68 	3,62 	3,6 	3,6 	3,55 	2,9
+Maksimum Isı Gücü (P4) (80/60 °C) 	kW 	19,4 	19,4 	23,7 	23,7 	23,6 	23,7
+Minimum Isı Gücü (P4) (80/60 °C) 	kW 	3,37 	3,35 	3 	3 	3,2 	2,5
+Sıcaklık Ayar Aralığı (Minimum / Maksimum) Yüksek / Düşük 	°C 	25 ÷ 80 / 25 ÷ 47
+Çalışma Basıncı (Maksimum / Minimum) 	bar 	3 / 0,5 	3 / 0,5
+Genleşme Tankı Hacmi 	bar 	7 / 8 	7 / 8
+Pompa Basıncı (sabit debide) 	mSS 	6,2 (700 l/h) 	6,2 (700 l/h)
+Maksimum Pompa Basıncı (Q = 0 m3/h) 	mH2O 	6,2 	6,2
+Maksimum Pompa Debisi 	m³/h 	2,3 	2,3
+Pompa Enerji Verimlilik Endeksi 	EEI 	≤ 0,20 	≤ 0,20
+Sıcak Kullanım Suyu Enerji Verimliliği Sınıfı / Beyan Edilen Yük Profili 	A / XL 	A / L 	A / XL
+Su Isıtma Enerji Verimliliği 	% 	85 	81 	84
+Maksimum Gaz Tüketimi 	m³/h 	2,469 	0,943 	2,684 	3,074 	0,797 	1,049
+Sıcak Kullanım Suyu Modülasyon Oranı 	15/100 	15/100 	14/100 	14/100 	14/100 	12/100
+Sıcak Kullanım Suyu Devresi (Maksimum) Isı Yükü 	kW 	23,7 	23,2 	25,8
+Sıcak Kullanım Suyu Devresi (Minimum) Isı Yükü 	kW 	3,5 	3,5 	3,5
+Sıcak Kullanım Suyu Debisi
+[Minimum / (Maksimum: Δt: 30 °C / Δt: 35 °C)] 	l/dak. 	1,5 / (11 / 10) 	1,5 / (12 / 11)
+Kullanım Suyu Basıncı (Minimum / Maksimum) 	bar 	0,5 / 10 	0,5 / 10
+Sıcaklık Ayar Aralığı (Min - Max) 	°C 	35 - 60 	35 - 60
+Elektrik Devresi Koruma Endeksi 	IP 	IPX5D 	IPX5D
+Elektrik Tüketim (Min./Max.) [Besleme : 230 V +%10; -%15] 	Watt 	57 / 86 	55 / 95
+Atık Gaz Devresi 	G20 	G31 	G20 	G25 	G30 	G31
+(80/60 °C) Atık Gaz Sıcaklığı (Minimum / Maksimum) 	°C 	55 / 78 	54 / 78 	69 / 71 	65 / 70 	57 / 70 	60 / 70
+(50/30 °C) Atık Gaz Sıcaklığı (Minimum / Maksimum) 	°C 	37 / 57 	41 / 55 	49 / 51 	48 / 49 	43 / 57 	47 / 51
+Maksimum Atık Gaz Sıcaklığı [Maksimum Sıcak Kullanım Suyu Modunda] 	°C 	78 	70
+NOx Ağırlığı (NOx Sınıfı: 6) 	mg/kWh 	33 	38 	20 	19 	42 	31
+Genel / Boyutlar (Yük. x Gen. x Der.) mm 	725 x 420 x 288 	725 x 420 x 288
+Ses Seviyesi 	dB (A) 	52 	52
+Maksimum Baca Mesafesi (Yatay)* / (Dikey)* 	m 	10 / 11 	10 / 11
+Net / Ambalajlı Cihaz Ağırlığı 	kg 	30/31,8 	32,6 / 33,8
+Baca Bağlantı Tipleri 	C 13, C33, C43, C53, C63, C83, B23, B23P
+(1) Yoğuşmalı kombine ısıtıcılar için ; Düşük sıcaklık 30 °C, düşük sıcaklıklı kazanlar 37 °C ve diğer ısıtıcılar için 50 °C dönüş sıcaklığı (ısıtıcı girişinde) anlamına gelir.
+(2) Yüksek sıcaklık rejimi; ısıtıcı girişinde 60 °C dönüş suyu sıcaklığı ve 80 °C çıkış suyu sıcaklığı anlamına gelir.
+* Maksimum baca mesafesinde her 90° dirsek için 1 metre ve her 45° dirsek için 0,5 metre baca boyu azaltılmalıdır.
+4. TEKNİK VERİLER
+
+-- 28 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	29
+ErP Bilgi Föyü & Ürün Bilgi Formu içeriğindeki tüm bilgiler SZU Test / BRNO laboratuarları test sonuçlarına dayanmaktadır.
+Ürün Bilgi Formu (Avrupa Birliği Yönetmelik Numarası No 811/2013 ve 814/2013 uygun olarak)
+Model 	Ewa 20 	Ewa 24
+Alan ısıtma - Sıcaklık uygulaması 	Yüksek / Orta / Düşük
+Su ısıtma - beyan edilen yük profili 	XL 	L 	XL
+Mevsimsel mahal ısıtma enerji verimliliği sınıfı 	A 	A 	A
+Su ısıtma enerji verimliliği sınıfı 	A 	A 	A
+Nominal anma ısı gücü (Prated veya Psup) 	kW 	19 	24 	24
+Alan ısıtma - Yıllık enerji tüketimi 	QHE 	GJ 	34,8 	42 	42
+Su ısıtma - Yıllık enerji tüketimi kWh (*) 	37 	26 	37
+GJ (**) 	17 	11 	18
+Mevsimsel mahal ısıtma enerji verimliliği 	% 	91,17 	92 	92
+Su ısıtma enerji verimliliği 	% 	85 	81 	84
+Ses gücü seviyesi, LWA iç ortamda 	dB 	52 	52 	52
+Yalnızca düşük talep dönemlerinde operasyon seçeneği 	— 	— 	— 	—
+Montaj, kurulum için özel önlemler ve bakım 	Herhangi bir; Montaj, kurulum veya bakım öncesinde kullanıcı ve montaj
+kılavuzunun dikkatlice okunması, yönergelerin takip edilmesi gerekir.
+Ürün bilgilerinde yer alan tüm veriler, ilgili Avrupa direktiflerinin spesifikasyonları uygulanarak belirlenmiştir. Farklı yerlerde listelenen ürün bilgileri farklı test koşullarına neden
+olabilir. Sadece bu ürün bilgisinde yer alan veriler geçerlidir.
+(*) Elektrik
+(**) Yakıt
+ErP Bilgi Föyü (Avrupa Birliği Yönetmelik Numarası No 811/2013 ve 814/2013 uygun olarak)
+Model 	Ewa 20 	Ewa 24
+Su ısıtma - beyan edilen yük profili 	XL 	L 	XL
+Nominal anma ısı gücü 	Prated 	kW 	20 	24 	24
+Nominal ısı gücünde ve yüksek sıcaklık rejiminde faydalı ısı gücü (2) 	P4 	kW 	19,4 	23,7 	23,7
+Nominal ısı çıkışının ve düşük sıcaklık rejiminin % 30'unda (kısmi yük) faydalı ısı
+gücü (1) 	P1 	kW 	3,63 	4,16 	4,16
+Mevsimsel mahal ısıtma enerji verimliliği sınıfı 	ηs 	% 	91 	92 	92
+Nominal ısı gücünde ve yüksek sıcaklık rejiminde faydalı verim (2) 	η4 	% 	88,47 	87,57 	87,57
+Nominal ısı gücünün ve düşük sıcaklık rejiminin % 30'unda (kısmi yük) faydalı
+verimlilik (1) 	η1 	% 	95,51 	97,48 	97,48
+Elektrik tüketimi
+Tam yükte enerji tüketimi 	elmax 	kW 	0,040 	0,43 	0,43
+Kısmi yükte enerji tüketimi 	elmin 	kW 	0,01 	0,11 	0,11
+Hazırda-bekleme konumunda enerji tüketimi 	PSB 	kW 	0,004 	0,005 	0,005
+Diğer
+Hazırda-bekleme ısı kaybı 	PStby 	kW 	0,044 	0,057 	0,057
+Ateşleme brülorü enerji tüketimi 	Pign 	kW 	0,000 	0,000
+Alan ısıtma - Yıllık enerji tüketimi 	QHE 	GJ 	34,8 	42 	42
+Ses gücü seviyesi, LWA iç ortamda 	LWA 	dB 	52 	52 	52
+Azot oksit emisyonları 	NOX 	mg/kWh 	33 	20 	20
+Su ısıtma parametreleri
+Su ısıtma - beyan edilen yük profili 	L 	XL
+Günlük elektrik tüketimi 	Qelec 	kWh 	0,167 	0,117 	0,169
+Yıllık elektrik tüketimi * 	AEC 	kWh 	37 	26 	37
+Su ısıtma enerji verimliliği 	hwh 	% 	85 	81 	84
+Günlük yakıt tüketimi 	Qfuel 	kWh 	22,900 	14,809 	23,152
+Yıllık yakıt tüketimi 	AFC 	GJ 	17 	11 	18
+Yoğuşmalı kombine ısıtıcı 	— 	Evet 	Evet 	Evet
+Düşük sıcaklık uygulaması 	— 	Evet 	Evet 	Evet
+Kombine ısıtıcı 	— 	Evet 	Evet 	Evet
+B1 Baca tipi kombine ısıtıcı 	— 	Hayır 	Hayır 	Hayır
+Hermetik baca tipi kombine ısıtıcı 	— 	Evet 	Evet 	Evet
+Yardımcı kombine ısıtıcı 	— 	Hayır 	Hayır 	Hayır
+Marka 	Warmhaus
+Üretici adresi 	Warmhaus Isıtma ve Sogutma Sistemleri San. Tic. A.Ş.
+Taşpınar Mahallesi, TEKNOSAB 1. Cadde No: 12, 16710, Karacabey / Bursa
+Uyarılar
+Montaj, kurulum ve bakım için tüm özel önlemler işletme ve montaj kılavuzunda
+açıklanmıştır. Kullanım ve kurulum kılavuzunu okuyun ve takip edin.
+Montaj, kurulum, bakım, sökme, geri dönüştürme ve / veya imha ile ilgili kullanım ve montaj
+kılavuzlarını okuyun ve uygulayın.
+* ortalama iklim koşulları için
+(1) Yoğuşmalı kombine ısıtıcılar için ; Düşük sıcaklık 30 °C, düşük sıcaklıklı kombiler 37 °C ve diğer ısıtıcılar için 50 °C dönüş sıcaklığı (ısıtıcı girişinde) anlamına gelir.
+(2) Yüksek sıcaklık rejimi; ısıtıcı girişinde 60 °C dönüş suyu sıcaklığı ve 80 °C çıkış suyu sıcaklığı anlamına gelir.
+4.1. ÜRÜN BİLGİ FORMU & ERP BİLGİ FÖYÜ
+
+-- 29 of 36 --
+
+30	i 	warmhaus.com
+Ewa 24
+2019
+4.2. ENERJİ ETİKETİ
+
+-- 30 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	31
+1. 	Baca Çıkışı
+2. 	Baca Yoğuşma Tavası
+3. 	Yoğuşma Suyu Tahliye Hortumu
+4. 	Ana Eşanjör
+5. 	Ateşleme Elektrotu
+6. 	Hava.Gaz Karışım Ünitesi (AGM)
+7. 	Kalorifer Gidiş NTC Sensörü
+8. 	Yoğuşma Suyu Sifonu
+9. 	Kalorifer Gidiş Borusu
+10. Üç Yollu Motorize Valf
+11. 	Yoğuşma Suyu Tahliye Hortumu
+12. Düşük Su Basınç Anahtarı
+13. Genleşme Tankı Supabı
+14. Baca gazı NTC Sensörü
+15. Genleşme Tankı
+16. Gaz Giriş Borusu
+17. Kalorifer Dönüş NTC Sensor
+18. Pompa (3 Hız kademeli)
+19. Plakalı Eşanjör
+20. 3 Bar Emniyet Ventili
+21. Manometre
+22. Gaz Valfi
+23. Eşanjör Kapağı
+24. Elektronik Fan
+25. Otomatik Hava Purjörü
+26. Kumanda Paneli
+27. Kullanım Suyu Akış Sensörü
+28. Kalorifer Dönüş Borusu
+29. Doldurma Musluğu
+4
+6
+3
+8
+9
+10
+12
+13
+15
+16
+18
+19
+20
+22
+24
+23
+4
+26
+17
+21
+25
+1
+14	2
+5
+7
+11
+27
+28
+29
+Şekil 47 Kombiyi oluşturan parçalar
+5. 	KOMBİ İLK ÇALIŞTIRMA
+5.1. KOMBİNİN İLK ÇALIŞTIRILMASI İÇİN KONTROLLER
+Kombinin garanti kapsamından çıkmaması için; ilk defa çalıştırılması mutlaka
+Warmhaus Yetkili Servisi tarafından yapılması gerekir. Yetkili servis randevu
+talebi öncesinde aşağıdaki ön hazırlıkların yapılmış olması gerekir:
+• Gaz hattınız için yerel gaz kuruluşundan gaz açma onay belgesi alınmış
+olmalıdır,
+• Kombinin 2 veya 3 Amperlik sigorta ile elektrik bağlantısı yapılmış olmalıdır,
+• Evininizde elektrik kesintisi olmadığından emin olunuz,
+• Evininizde şehir şebeke suyu kesintisi olmadığından emin olunuz,
+• Kalorifer tesisatına su verildiğinden ve kombi manometresinde 1,2-1,5 bar
+basınç göründüğünden emin olunuz.
+Bu belgede verilen tüm açıklamalar ve resimler özenle hazırlanmıştır, ancak ürünlerimizde bu broşürde/kitapçıkta yer alan bilgilerin doğruluğunu
+etkileyebilecek değişiklikler ve iyileştirmeler yapma hakkımız saklıdır. Tüm mallar istek üzerine temin edilebilen standart Satış Koşullarımıza tabi olarak
+satılmaktadır.
+5.2. KOMBİYİ OLUŞTURAN PARÇALAR
+
+-- 31 of 36 --
+
+32	i 	warmhaus.com
+5.3. KOMBİ İLK ÇALIŞTIRMA KONTROL LİSTESİ
+Aşağıdaki form Warmhaus Yetkili Servisi tarafından cihazın ilk çalıştırılması sırasında doldurulacak ve uygun görülmesi halinde garanti dahilinde çalıştırılması
+yapılacaktır.
+A 	KOMBİ TESİSATI, KALORİFER VE SICAK SU MONTAJ ŞARTLARI 	Evet 	Hayır
+1 	Kombi montajı ve tesisat bağlantıları "Montaj ve Kullanma Kılavuzunda" belirtilen talimat ve yönetmeliklere uygun mu?
+2 	Kombi, açık balkona montaj yapılmış ise; koruyucu bir kabin içine yerleştirilmelidir.
+3 	Kombi ile kabin arası; (minimum) üstden 5 cm, ön ve yanlardan 3 cm, alt kısımdan 30 cm boşluk bırakılmalıdır.
+4 	Kombi; fırın, ocak vb. (ısı üreten cihazlar) üzerine gelmeyecek şekilde monte edilmelidir.
+5 	Sistem şehir şebeke suyu ile 1,5 mbar doldurulmuş mu?. (Asgari 1 mbar)
+6 	Kombi kalorifer tesisatı dönüş hattına filtreden önce 3/4'' küresel vana takılmış mı?
+7 Kalorifer dönüş hattında boru çapına uygun, pislik tutucu-filtre var mı? (Yerden ısıtma veya Oksijen geçirgenliği olan yerlerde
+magnetik filtre, tortu ayırıcı kullanılmalıdır.Isıtma devresi plakalı eşanjör ile ayrılmalıdır)
+8 	Soğuk su giriş hattına pislik tutucu takılmalıdır.
+9 	Soğuk su giriş hattına pislik tutucudan önce ½” küresel vana takılmalıdır. (Mini küresel olabilir.)
+10 	Şebeke giriş basıncının yüksek (≥ 6,5 bar) olduğu yerlerde basınç düşürücü regülatör, koç vuruşuna karşı çek valf takılmalıdır.
+11 	Tesisat suyunun sertliği kontrol edilip; 10 F sertliğinden büyük ise yumuşatma sistemi var mı?
+12
+Sıcak su tesisatında, şofben varsa soğuk su girişine, termosifon varsa sıcak su çıkışına vana takılmalıdır. (Mümkün olmayan
+yerlerde kör tapa ile kapatılmalıdır.) Güneş eneji sistemi bağlantıları küresel vanalar ile; sıcak su ve ısıtma tesisatından ayrı
+olmalıdır.
+*
+NOT-1: Kalorifer tesisatına basılacak suyun, 1- 1,5 bar arasında olmalı. Tesisat üzerinde sistem suyunun boşaltılabilmesi için
+boşaltma musluğu bağlanmış olması önerilir. Suyun yere akması durumunda zarar görebilecek parke ,ahşap zeminlerin
+bulunduğu ortamlarda, aşırı basınç emniyet ventilinin ucuna tahliye hortumu takılması ve gidere verilmesi önerilir.Kombi kabin
+içinde ise; kabinin alt ve üst bölümünde havalandırma menfezleri olması önerilir. Eski Kalorifer tesisatının yıkanmış olması
+önerilir.
+B 	DOĞAL GAZ VE LPG TESİSATI
+1 	Doğal gaz ile kullanım halinde; gaz dağıtım şirketinden gaz açma onay belgesi alınmış mı? Olmadığında ÇALIŞTIRILMAYACAK
+2 	Cihaz değişikliği yapılıyor ise gaz kuruluşundan onay belgesi alınmalıdır. (Gaz dağıtım şirketinin uygulaması var ise)
+3 	Kombi tip etiketindeki gaz ile bağlanan gaz aynı mı? Aynı değil ise dönüşüme uygun mu?
+4 	Kombi LPG ile çalıştırılacak ise; tüplerin yeri,sayısı, regülatörler ve bağlantı hortumları uygun mu?(Foto 11)
+5 Gaz kaçak testi yapılmalıdır. Gaz kaçağı olmadığı Yetkili Servis tarafından;cihazın girişi ,gaz valfi ve brülör iç bağlantıları kontrol
+edilerek sızdırmazlığı sağlanacaktır.
+*
+NOT-2: LPG ile kullanımda en az 2 adet 12 kg’lık veya 1 adet 24 kg’lık tüp ve dedantör kullanılmalıdır. Dedantörler ve bağlantı
+hortumları TSE belgeli olmalıdır. (Sanayi dedantörü kesinlikle kullanılmamalıdır.) 20 ve 24 kW cihazlarda 30 mbar (300 mmSS)
+1.6 kg/h kapasiteli dedantörler ile; 28, 33, 42, 45 kW cihazlarda 30 mbar (300 mmSS) 2 kg/h kapasiteli dedantörler ile uygun
+montaj yapılmalıdır. LPG kullanımında; 300 mmSS dedantör, propan kullanımında ise, 370 mmSS dedantör kullanılmalıdır.
+(500 mmSS dedantör kullanılamaz)
+C 	BACA VE YOĞUŞMA TESİSATI
+1 	Kombi baca ve bileşenleri (Dirsek,uzatma borusu vb.)Warmhaus markalı mı? Orijinal olmayan bacalar ÇALIŞTIRILMAYACAK
+2 	Baca bağlantıları sağlam ve yoğuşma sızdırmazlığı tam olarak yapılmış mı? %1,5-3 olarak yukarı eğim verilmiş mi?
+3 Yatay/dikey hermetik baca uygulamasında orijinal baca seti ve uzatmalar kullanıldı ise; mesafe parametresi (TSP 22 ) ayarlandı
+mı? Gereken yerlerde yükseklik (rakım) parametresi (TSP 25) ayarlandı mı?
+4 Yoğuşma giderleri uygun bir tahliye hattına bağlandı mı? Yoğuşma suyunun birikmesini engelleyen eğim ve kombi çıkışında
+havalıklı bağlantı parçası var mı? Bu şekilde bağlantı olmayan sistemler ÇALIŞTIRILMAYACAK.
+D 	KOMBİ ELEKTRİK TESİSATI ve KOMPONENT FONKSİYON KONTROLÜ
+1 	Elektrik besleme gerilimi uygun mu? 220 V. ölçüldü mü?
+2
+Cihaza max. 50 cm mesafede topraklı priz var mı veya elektrik faz bağlantısına montajlı 2-4 Amperlik (N veya W) otomat
+bağlanmalıdır. Topraklı priz yok ise; en yakın buattan 3x1,5 TTR kablo ile hat çekilerek topraklı priz takılmalı veya elektrik faz
+bağlantısına montajlı (N veya W) otomat takılmalıdır (Seyyar uzatma kablosu ile cihaz devreye alınmamalıdır)
+Form NO: SSH-FR 00 -000-01 R.T:13.04.2021
+Tarih: ……....... /……......... /…...................
+KOMBİ DEVREYE ALMA
+KONTROL FORMU
+
+-- 32 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	33
+3 Cihazın topraklaması standartlara uygun yapılmış mı? Topraklama olmayan yerlerde nötr hattından sıfırlama yapılmayacaktır.
+Böyle durumlarda yeniden topraklama hattı çekilmelidir. Hizmet formuna ''Topraklama Yok'' yazılmalıdır.
+4 	Topraklı prizin veya N otomatın yeri, cihazın alt seviyesinin altına gelmeyecek şekilde seçilmelidir.
+5 Kaçak akım rölesi bulunan yerlerde, devreye alma esnasında kaçak akım rölesi fonksiyon testi servis tarafından yapılacaktır.
+Bina elektrik tesisatı, elektrik iç tesisat yönetmeliğine uygun olmalıdır.
+6 WT-RF 03 (Wireless) Modeli dışındaki oda termostatlarının montajında, cihaz ile kombi arasına 2 x 0,75 kablo kullanılmalıdır.
+(Oda Termostatı ve cihaz kablo uçlarını Servis Teknisyeni bağlayacaktır)
+7 Oda termostatı montajı ve termostat kabloları montaj şartnamesinde belirtilen hususlara uygun çekildi. (Kablo uçları Servis
+Elemanı tarafından bağlanacaktır)(Oda termostatının bulunduğu odaya termostatik vana monte edilmemesi önerilmektedir.)
+8 	Gaz valfi üzerindeki pnomatik hava kanalı açık ve kablo bağlantısının sıkı olduğu kontrol edildi mi?
+9 Kombi içindeki kompenentler ,elektrik kablo bağlantıları, pompa üstü rekoru,eşanjör kapağı, elektrodlar, üç yollu vana motoru,
+susturucu ve kapağı yerin de mi? Çalışmada aşırı ses var mı ? Kombi içinde ve dışında su kaçakları var mı?
+* NOT-3: Yukarıda belirtilen maddeler, kombi montaj ve ilk çalıştırmasına onay verecek ilgili doğal gaz dağıtım şirketinin uyguladığı mevzuatlara göre
+değişkenlik gösterebilir. Maddeler uygulanırken doğal gaz şirketinin belirlediği şartlar ÖNCELİKLİDİR.
+*
+NOT-4: (Yukarıdaki formda uygun olan maddelerin yanındaki kutulara (X) işareti koyunuz) Bu form müşteride bırakılacaktır. Sistemin devreye
+alınabilmesi için; yukarıda belirtilen maddelerde eksiklik olmamalıdır. Eksiklik halinde; ürün devreye alınamaz. Cihaz için ikinci kez hizmet verildiğinde;
+yukarıda tamamlanmamış maddeler varsa ve ürün devreye alınamıyorsa ilgili tesisatçıya BAYİ KULANS; Eksiklik müşteri kaynaklı ise MÜŞTERİ
+KULANS uygulanır.(Tekrarlanan hizmet bedeli alınır)
+*
+NOT-5 : Garanti koşullarına uygun olmayan kullanımlardan veya bakımsızlıktan kaynaklanan arızalardan Üretici firma sorumlu tutulamaz.
+** Kalorifer, sıcak su, baca veya yoğuşma tesisatlarında sonradan oluşacak uygunsuzluklardan üretici firma sorumlu tutulamaz.
+*** Kalorifer sistemleri için magnetik filtre, tesisat temizliği ve koruyucu bakım ürünleri ile temizlik yaptırılması önerilir.
+**** Elektrik voltaj dengesizliği (düşük-yüksek voltaj) olduğunda (E 37 Hata durumunda) voltaj regülatörü taktırılması önerilir.
+Yetkili Servis Notları:
+Kombi Modeli 	Kombi Seri No: 	Gaz Açma Belge No:
+Müşteri Adı Soyadı: 	Yetkili Servis Adı: 	Bayi Adı Ünvanı:
+Telefonu: 	Yetkili Servis /Adı Soyadı: 	Yetkilisi /Adı Soyadı
+Adresi: 	Bayi Telefonu:
+e-mail :
+Müşteri İmza 	Yetkili Servis Kaşe / İmza
+
+-- 33 of 36 --
+
+34	i 	warmhaus.com
+5.4. GARANTİ BELGESİ
+G A R A N T İ
+B E L G E S İ
+Üretici veya İthalatçı Firmanın
+Ünvanı 	: 	WARMHAUS
+Isıtma ve Soğutma
+Sistemleri
+San. Tic. A.Ş.
+Adresi 	: 	Taşpınar Mah. TEKNOSAB
+1. Cad. No: 12 16700,
+Karacabey/Bursa/Türkiye
+Telefonu 	: 	0850 225 15 15
+Faks 	: 	0224 411 23 77
+E-posta 	: 	info@warmhaus.com.tr
+Satıcı Firmanın
+Ünvanı 	:
+Adresi 	:
+Telefonu 	:
+Faks 	:
+E-posta 	:
+Fatura Tarih ve Sayısı :
+Teslim Tarihi ve Yeri 	:
+Malın
+Cinsi 	: 	Kombi
+Markası 	: 	Warmhaus
+Modeli 	:
+Garanti Süresi 	: 2 Yıl
+Azami Tamir Süresi : 20 İş Günü
+Bandrol ve Seri No :
+2YIL
+GARANTİ
+
+-- 34 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	35
+G A R A N T İ 	Ş A R T L A R I
+1. Garanti süresi, kombinin teslim tarihinden
+itibaren başlar ve 2 yıldır.
+2. Kombi, yetkili montörler tarafından Montaj
+ve Kullanım Kılavuzunda belirtilen şartlara
+göre monte edildiği ve kullanıldığı,
+• İlk çalıştırması işleminin,
+• Bakımının, onarımının ve başka neden-
+lerle müdahalenin yalnızca yetkili servis
+tarafından yapılmış olması şartıyla,
+• Warmhaus tarafından bütün parçaları
+dahil olmak üzere tamamı, işçilik ve
+üre-tim hatalarına karşı,
+• Ürünün teslim tarihinden itibaren 2 (iki)
+yıl süre ile garanti edilmiştir.
+3. Kombinin 6502 sayılı Tüketicinin Korunma-
+sı Hakkında Kanunun 8. maddesine göre
+ayıplı olduğunun anlaşılması durumunda,
+yine aynı kanunun 11. maddesinde yer alan;
+a. Sözleşmeden dönme,
+b. Satış bedelinden indirim isteme,
+c. Ücretsiz onarılmasını isteme,
+d. Satılanın ayıpsız bir misli ile değiştiril-
+mesini isteme,
+haklarından birini kullanabilirsiniz.
+4. Bu haklardan ücretsiz onarım hakkını kul-
+lanarak; işçilik masrafı, değiştirilen parça
+bedeli ya da başka herhangi bir ad altında
+hiçbir ücret talep edilmeden kombinizin
+onarımı yetkili servisimiz tarafından yapı-
+lır. Arızanın giderilmesi konusunda uygu-
+lanacak teknik yöntemlerin belirlenmesi ve
+değiştirilecek parçaların saptanması tama-
+men firmamıza aittir.
+5. Ücretsiz onarım hakkını kullanarak kombi-
+nin;
+• 	Garanti süresi içinde tekrar arızalan-
+ması, tamiri için gereken azami sürenin
+aşılması,
+• 	Tamirinin mümkün olmadığının, yetkili
+servisimiz veya fabrikamız tarafından
+bir raporla belirlenmesi durumlarında;
+kombinin bedel iadesini, ayıp oranında
+bedel indirimini veya imkân varsa kom-
+binin ayıpsız misli ile değiştirilmesini sa-
+tıcıdan talep edebilirsiniz.
+6. Kombinin tamir süresi 20 iş gününü ge-
+çemez. Bu süre, garanti süresi içerisinde
+kombiye ilişkin arızanın Yetkili Servisimize
+veya satıcıya bildirimi tarihinde, garanti sü-
+resi dışında ise kombinin Yetkili Servisimize
+teslim tarihinden itibaren başlar. Kombinin
+arızasının 10 iş günü içerisinde giderileme-
+mesi halinde, firmamız; kombinin tamiri
+tamamlanıncaya kadar, benzer özelliklere
+sahip başka bir kombi tüketicinin kullanımı-
+na tahsis edilir. Ürünün garanti süresi içe-
+risinde arızalanması durumunda, tamirde
+geçen süre garanti süresine eklenir.
+7. Kombinin kullanma kılavuzunda yer alan
+hususlara aykırı kullanılmasından kaynakla-
+nan arızalar garanti kapsamı dışındadır.
+8. Garantiden doğan haklarının kullanılması
+ile ilgili olarak çıkabilecek uyuşmazlıklarda
+yerleşim yerinin bulunduğu veya tüketici
+işleminin yapıldığı yerdeki Tüketici Hakem
+Heyetine veya Tüketici Mahkemesine baş-
+vurabilirsiniz.
+9. Garanti Belgesi ile ilgili çıkabilecek sorunlar
+için Gümrük ve Ticaret Bakanlığı Tüketici-
+nin Korunması ve Piyasa Gözetimi Genel
+Müdürlüğüne başvurulabilir.
+
+-- 35 of 36 --
+
+EWA 20
+EWA 24
+DUVAR TİPİ GAZ ADAPTİF-PREMİX
+	SİSTEMLİ YOĞUŞMALI KOMBİ
+	MONT
+AJ VE KULLANIM KILAVUZU
+Ewa Montaj & Kullanım Kılavuzu Kodu: 15011606000135
+	Revizyon/Tarihi:
+ R08/01.2026
+
+-- 36 of 36 --
+

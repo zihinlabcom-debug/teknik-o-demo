@@ -1,0 +1,3019 @@
+EWA SMART 20
+EWA SMART 24
+CONDENSING COMBI BOILER
+INSTALLATION & USER MANUAL
+
+-- 1 of 40 --
+
+ warmhaus.com	2
+INDEX
+1. 	DEAR WARMHAUS CUSTOMER ........................................3
+1.1. 	GENERAL WARNINGS........................................................................ 3
+1.2. 	GENERAL WARRANTY CONDITIONS .............................................. 3
+1.3. 	BOILER GAS CATEGORIES & DESTINATIONS ................................. 4
+1.4. 	GAS LEAKAGES .................................................................................. 5
+2. 	INSTALLATION PERSONNEL SECTION..............................6
+2.1. 	CONTENTS OF PACKING BOX .......................................................... 6
+2.2. 	COMBI INSTALLATION RULES .......................................................... 7
+2.2.1. 	General Rules for Installation Places of Combi Boilers ...................... 7
+2.2.2. 	Places Not Suitable for Installing Hermetical Combi Boilers ........... 7
+2.2.3. 	Wall Installation of Combi and Selecting the Installation Place ..... 7
+2.2.4. 	Installation at Partially Protected Exteriors .......................................... 8
+2.2.5. 	Dimensions and Connections .................................................................... 9
+2.2.6. 	Natural Gas and LPG Connection (Device Category I2H, II2H3P)........ 9
+2.2.7. 	Flammable Gas Quality ............................................................................... 9
+2.2.8. 	In Case of Using LPG Tank ......................................................................... 9
+2.2.9. 	In Case of Using Bottled Gas ..................................................................... 9
+2.3. 	HYDRAULIC INSTALLATION RULES ................................................10
+2.3.1. 	Radiator and DHW Installations ............................................................. 10
+2.3.2. 	Filling/Emptying Radiator Installation ................................................. 10
+2.3.3. 	Circulation Pump......................................................................................... 10
+2.3.4. 	Filling the siphon for Condensation Line ..............................................12
+2.4. 	COMBI FLUE CONNECTIONS ........................................................... 13
+2.4.1. 	Exhaust Gas Flue Pipe Set and Accessories Connection ................13
+2.4.2. 	Combi Flue Connection Types .................................................................14
+2.4.3. 	Peripheral Distances of Flue Output Connections .............................16
+2.4.4. 	Installation with Horizontal Flue Sets ....................................................16
+2.4.5. 	Installation with Vertical Flue Sets (Ø 60/100 mm) ..........................18
+2.4.6. 	Twin Flue Kits Ø 80/80 Flue Type Use ..................................................18
+2.4.7. 	Concentric Flue Kits For Condensing Boilers (Ø60/100 mm)...... 20
+2.4.8. 	Twin Flue Kits For Condensing Boilers (Ø80/Ø80 mm) ..................21
+2.5. 	PLUME DISPLACEMENT KITS Ø60 MM .......................................... 22
+2.5.1. 	Recommendations of Plume Kit Installation ......................................22
+2.6. 	ELECTRICAL CONNECTIONS .......................................................... 23
+2.6.1. 	Optional Controls: Room Thermostat,
+Outside Sensor and Others......................................................................23
+2.6.2. 	Position of thermostat...............................................................................24
+3. 	USER'S SECTION ..............................................................25
+3.1. 	GENERAL WARNINGS FOR USER .................................................. 25
+3.1.1. 	Use of Combi ................................................................................................25
+3.2. 	SELECTION OF ON/OFF/STANDBY AND
+SUMMER/WINTER MODES .............................................................. 27
+3.2.1. 	On/Off/Standby Positions ........................................................................27
+3.2.2. 	Operation at Winter Position ..................................................................27
+3.2.3. 	Operation at Summer Position ...............................................................27
+3.2.4. 	Resetting the Combi (Re-Starting) .......................................................28
+3.2.5. 	Shutting off the Combi..............................................................................28
+3.2.6. 	Use with Room Thermostat (Optional) ................................................28
+3.2.7. 	Use of Outside Temperature Sensor (Optional) ................................29
+3.2.8. 	Customizing Combi Features ..................................................................29
+3.3. 	TROUBLESHOOTING ........................................................................30
+3.3.1. 	Failure Codes Table ................................................................................... 30
+3.4. 	RECOMMENDATIONS FOR ECONOMICAL USE OF COMBI ......... 34
+3.5. 	ISSUES REQUIRED TO BE TAKEN INTO CONSIDERATION FOR
+WARRANTY CONDITIONS............................................................... 34
+4. 	TECHNICAL DATA .............................................................35
+4.1. 	PRODUCT FICHE & ERP DATA ........................................................ 36
+4.2. 	ERP DATA........................................................................................... 37
+4.3. 	ENERGY TAG ..................................................................................... 38
+5. 	FIRST STARTING OF BOILER ...........................................39
+5.1. 	CONTROLS FOR INITIAL OPERATION OF COMBI ........................ 39
+5.2. 	PARTS COMPRISING THE COMBI ................................................... 39
+
+-- 2 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	3
+We congratulate you for preferring the Warmhaus combi to maintain
+your heating and hot use water comfort for long years and thank for your
+trust. Warmhaus combi, manufactured in accordance with European Union
+standards and advanced technology, are also being imported to many
+countries. You can benefit from our Authorized Technical Service network
+having occupational competency certificate for all kinds of ordinary
+maintenance requirements for this product manufactured with rigorous
+studies. Our Authorized Services guarantee protection of your device
+performance as they always provide original spare parts service. Carefully
+read this guide in order to use the combi in an economic, comfortable and
+efficient way and keep as a source of application.
+In order to ensure efficient use, we initially recommend you to have the
+installation performed by a certified dealer experienced and competent in
+installation by the local gas authority.
+1.1. GENERAL WARNINGS
+Guide Book is an inseparable and integral part of the product and should be
+delivered to the new user when the device is transferred. The aforementioned
+book should be carefully protected and used as well as be applicable when
+required as it contains important information regarding installation.
+Radiator and DHW installations should be engineered and
+produced by a competent and certified engineering company in
+accordance with measurements defined based on laws by
+considering legal regulations in force.
+Installation and Maintenance operations should be performed by
+the expert personnel having adequate technical knowledge in
+installations sector and occupational competency certificate in
+accordance with legal regulations in force. As the result of a false
+installation, dangers may occur which the manufacturer company cannot be
+held responsible for and may damage people, other live beings (animals,
+plants) or commodities.
+Natural Gas Installation Project; One of the dealers authorized by a
+gas company located at your city should be preferred for performing
+project and etude studies.
+In order to enable use of the combi with LPG tubes or LPG tanks,
+conversation of the combi should be performed by our authorized
+Warmhaus service. Project design and application for LPG use
+should be performed by the company supplying the tank in
+accordance with local and legal rules.
+1.2. GENERAL WARRANTY CONDITIONS
+The Manufacturer company shall not have any responsibilities
+within or out of the agreement scope due to failures arising from
+failing to follow legal regulations in force and standards and
+information given in this guide book (and information and instructions
+provided by the manufacturer under any circumstances) during
+installation, use or maintenance operations and device warranty shall also
+be void.
+Only the authorized Warmhaus Service is authorized to make the
+electrical connection of Combi and supplying electricity to the
+combi.
+The maintenance and repairs as the result of failure of the product within the
+warranty period due to material, production and installation errors shall be
+performed as free of charge without claiming any workmanship costs and
+spare part payments.
+(Also See: 3.5. ISSUES REQUIRED TO BE TAKEN INTO CONSIDERATION BY
+USERS FOR WARRANTY CONDITIONS)
+This device should only be used for its designed intended
+purposes (to be used in closed-circuit heater installation and
+production of open circuit domestic hot water production). All
+kinds of other uses are not suitable as well as may create a potential danger.
+Manufacturer shall not be responsible for damages occurring due to
+interventions, false installation and initial starting performed by unauthorized
+persons and warranty scope shall be void. As the Combi is a device having
+heating system, domestic hot water, natural gas/LPG and electrical
+connections, do not make and have any interventions made without the
+authorized service.
+Forbid any interference with a sealed component.
+Device maintenance operations should be performed by the
+authorized and expert technical personnel, and
+It is strictly forbidden to try to detect the gas leakage with the help
+of flame.
+This device has been manufactured to be installed in the country
+given on the technical registry label. Performing the installation in
+countries other than the country written on the table may damage
+individuals, animals and commodities.
+Combis bear CE mark in accordance with below given directives:
+- Gas Appliances Directive 2009/142/EC
+- Boiler Efficiency Directive 92/42/EEC
+- Low Voltage Directive 2014/35/EU
+- Electromagnetic Compatibility Directive 2014/30/EU
+Please visit the below given web site of Warmhaus for acquiring more
+detailed information regarding legal regulations on installation of gas fired
+heating devices: www.warmhaus.com
+Manufacturer: WARMHAUS Isıtma ve Soğutma Sistemleri Tic. A.Ş. Bursa
+Işıktepe OSB Mah. Park Cad. No:10 16140 Nilüfer-Bursa / Türkiye
+WARMHAUS
+Warmhaus Authorized Technical Service Centres maintain an assurance
+regarding quality and professionalism on that issue. WARMHAUS is not
+responsible for damages arising from repairs, part replacements and
+maintenances performed by third persons and companies and combi
+remains out of the warranty scope under such conditions.
+1015 18
+20 kW
+24 kW
+WARMHAUS A.Ş. reserves the right to make all kinds of technical and
+commercial amendments without giving information and rejects all
+responsibilities depending on misspelling.
+1. 	DEAR WARMHAUS CUSTOMER
+
+-- 3 of 40 --
+
+ warmhaus.com	4
+1.3. BOILER GAS CATEGORIES & DESTINATIONS
+Designation: Used gas types & Countries
+Object Manufacturer 	Type-model / Technical data 	Mark (s) of conformity
+Boiler gas categoires & destinations 	Warmhaus all wall-hung
+boilers 	granted
+Gas categories for Warmhaus boilers has been applied on CE certification on SZU Test / BRNO given bellow;
+- the appliance category(ies) in relation to the direct countries of destinationhas been spesified EN 15502-1; GAR Certificate E-30-00300-18 product ID Nr. CE-1015CT0615
+- the country(-ies) of destination, in accordance with EN ISO 3166-1;
+- the gas supply pressure in millibars, if several normal pressures can be used for the same gas group. They are indicated by their numerical value and the unit “mbar”
+Document for
+conformity
+approved by SZU
+test
+Appliance
+Categories 	Gas Type
+Gas Inlet
+Supply
+Pressures
+Used Gas 	Ewa Smart 20
+Ewa Smart 24 	Countries of Destination**
+YES 	I 2H 	Natural Gas 	20 mbar 	G20 	Available 	AT, BG, CH, CZ, DK, EE, ES, FI, GB, GR, HR, IE, IT, LT, LU, LV,
+NO, PT, RO, SE, SI, SK, TR
+YES 	I 2H 	Natural Gas 	25 mbar 	G20 	Available 	HU
+YES 	I 2E 	Natural Gas 	20 mbar 	G20 	Available 	DE, LU, PL, RO
+YES 	I 2E+ 	Natural Gas 	20 mbar 	G20 	Available 	BE, FR
+YES 	I 2E(S) 	Natural Gas 	20 mbar 	G20 	Available 	BE
+YES 	I 2ELL 	Natural Gas 	20 mbar 	G20 	Available 	DE
+YES 	II 2H3P 	Natural Gas 	20 mbar 	G20 	Available 	CH, CZ, ES, GB, GR, HR, IE, IT, LT, PT, RO, SI, SK
+YES 	II 2H3+ 	Natural Gas 	20 mbar 	G20 	Available 	CH, CY, CZ, ES, GB, GR, IE, IT, LT, PT, SI, SK, TR
+YES 	II 2E+3+ 	Natural Gas 	20 mbar
+25 mbar 	G20 	Available 	BE, FR
+YES 	II 2E+3P 	Natural Gas 	20 mbar
+25 mbar 	G20 	Available 	BE, FR
+YES 	II 2H3B/P 	Natural Gas 	20 mbar 	G20 	Available 	AT, CH, CY, CZ, DK, EE, FI, GR, IT, LT, NO, RO, SE, SI, SK
+YES 	II 2E3B/P 	Natural Gas 	20 mbar 	G20 	Available 	DE
+YES 	II 2ELL3B/P 	Natural Gas 	20 mbar 	G20 	Available 	DE
+YES 	I 2L 	Natural Gas 	25 mbar 	G25 	Available 	NL
+YES 	I 2E+ 	Natural Gas 	25 mbar 	G25 	Available 	BE, FR
+YES 	I 2ELL 	Natural Gas 	20 mbar 	G25 	Available 	DE
+YES 	II 2L3P 	Natural Gas 	25 mbar 	G25 	Available 	NL
+YES 	II 2L3B/P 	Natural Gas 	25 mbar 	G25 	Available 	NL
+YES 	II 2ELL3B/P 	Natural Gas 	20 mbar 	G25 	Available 	DE
+YES 	I 3+ 	Buthane Gas 	28-30 mbar
+37 mbar 	G30 	Available 	BE, CH, CY, CZ, ES, FR, GB, GR, IE, IT, LT, PT, SI, SK
+YES 	I 3B/P 	Buthane Gas 	30 mbar 	G30 	Available 	BE, CY, CZ, DK, EE, FI, GB, GR, HU, HR, IT, LT, NL, NO, RO,
+SE, SI, SK, TR
+YES 	I 3B/P 	Buthane Gas 	50 mbar 	G30 	Available 	AT, CH, DE, FR, SK
+YES 	II 2H3+ 	Buthane Gas 	28-30 mbar
+37 mbar 	G30 	Available 	CH, CY, CZ, ES, GB, GR, IE, IT, LT, PT, SI, SK, TR
+YES 	II 2E+3+ 	Buthane Gas 	28-30 mbar
+37 mbar 	G30 	Available 	BE, FR
+YES 	II 2H3B/P 	Buthane Gas 	30 mbar 	G30 	Available 	CY, CZ, DK, EE, FI, GR, IT, LT, NO, RO, SE, SI, SK
+YES 	II 2H3B/P 	Buthane Gas 	50 mbar 	G30 	Available 	AT, CH, SK
+YES 	II 2E3B/P 	Buthane Gas 	50 mbar 	G30 	Available 	DE
+YES 	II 2L3B/P 	Buthane Gas 	30 mbar 	G30 	Available 	NL
+YES 	II 2ELL3B/P 	Buthane Gas 	50 mbar 	G30 	Available 	DE
+YES 	I 3P 	Propane LPG 	37 mbar 	G31 	Available 	BE, CH, CZ, ES, FR, GB, GR, HR, IE, IT, LT, NL, PL, PT, SI,
+SK, TR
+YES 	II 2H3P 	Propane LPG 	37 mbar 	G31 	Available 	CH, CZ, ES, GB, GR, HR, IE, IT, LT, PT, RO, SI, SK
+YES 	II 2L3P 	Propane LPG 	37 mbar 	G31 	Available 	NL
+YES 	II 2E+3P 	Propane LPG 	37 mbar 	G31 	Available 	BE, FR
+** EN 437+A1:2009, Codes for the representation of gases and names of countries and their subdivisions; Part 1: Country codes (ISO 3166-1:2006)
+
+-- 4 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	5
+HOW TO MOVE WHEN NATURAL GAS ODOUR IS DETECTED.. 	.
+1.4. GAS LEAKAGES
+DURING EMERGENCIES
+INFORMATION: You can visit web sites of local gas authorities and NATURAL GAS EMERGENCY sections.
+Advice: Please take note local emergency phone numbers.
+AMBULANCE 	POLICE	FIRE
+DEPARTMENT
+NATURAL GAS
+EMERGENCY
+Do not use lighter
+- matches.
+Close valves of
+devices operating
+with natural gas and
+your gas meter.
+Immediately
+evacuate the place
+with gas odour.
+Natural Gas Emergency
+Line from your
+neighbour or another
+suitable place.
+Do not make any
+intervention on
+installation.
+Never close culverts
+ensuring discharge
+of the gas from the
+environment in case of
+a natural gas leakage.
+Do not use the door
+bell.
+Do not use phones
+in case of a natural
+gas leakage. It may
+create sparks.
+Do not light on and off
+lamps and other electrical
+devices or pull off the
+plug.
+Ventilate the
+environment by
+opening doors and
+windows.
+
+-- 5 of 40 --
+
+ warmhaus.com	6
+2. 	INSTALLATION PERSONNEL SECTION
+I. Installation Scheme (Figure 1)
+II. User's Guide (Figure 2)
+III. Connection Accessories (Figure 3)
+a. 1 throttle screw (installed at flue output).
+b. 2 hanger screws
+c. 2 Dowels
+IV. Hanger Plate (Figure 4)
+V. Exhaust Gas Flue Set (Figure 5)
+Figure 1 Installation scheme
+471
+1000
+GAS
+G3/4" 	G3/4"	G3/4"
+80 mm 	65 mm 	65 mm 	64 mm
+725 mm
+	592 mm
+422 mm
+G1/2"	G1/2"
+75 mm 	73 mm
+Ø110 mm
+114 mm
+(OPTIONAL)
+150.11.606.000028
+Do not leave packing materials (plastic, nylon, bags, etc.) at places
+to be reached by children for preventing any dangers for health.
+2.1. CONTENTS OF PACKING BOX
+Warmhaus is sold as two boxes with combi and flue set. Combi box contains below listed materials and small box contains exhaust gas flue pipes.
+Figure 2 User's Guide
+Figure 3 Connection accessories
+Figure 4 Hanger Plate
+Figure 5 Exhaust gas flue set
+
+-- 6 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	7
+2.2. COMBI INSTALLATION RULES
+2.2.1. General Rules for Installation Places of Combi Boilers
+No restriction is available for places where Hermetic (C typ) combi is installed
+(devices may be installed regardless the room volume and ventilation type).
+Also, they may be installed at partially protected areas such as balcony,
+terrace provided that being placed in protective cabinets and taking required
+precautions against frost of installation water.
+Combi should be soundly installed to building wall. Flexible connection
+piece should be used between the combi and gas line. Flex lengths to be
+used in A, B and C type devices should not exceed dimensions allowed by
+local gas authorities. Flue outputs of hermetic combis must be connected to
+places open to exterior and having air circulation. Installation (positions of
+pipe output opening based on various forms, vertical, horizontal minimum
+distances, cross section areas of channels if given to channels, etc.) must
+be carried out according to regulation standards, current legislation and
+in compliance with local technical regulations and the required technical
+procedures.
+2.2.2. Places Not Suitable for Installing Hermetical Combi Boilers
+Stairways of Buildings,
+• Corridors available for general use, ventilation ways and shafts, lofts, attics,
+emergency exit doors, cellars, hall and similar places creating common use
+areas,
+• Yards between buildings,
+• Narrow cornice distances,
+• Over flue walls,
+• Enclosed balconies,
+• Open balconies (except being located in the cabinet and permission of the
+device company),
+• Below protruding structure parts preventing exhaust gas output,
+• Places those may be directly subjected to wind resistance,
+• It is forbidden to install Hermetic combi (C type) to openings providing
+clean air to other units!
+2.2.3. Wall Installation of Combi and Selecting the Installation Place
+• It should be controlled and ensured that the wall installation of the combi
+is sound and reliable.
+• The hanger plate given as standard with the combi should be installed
+according to the technique to full or semi-full brick wall according to
+installation scheme and with connection screws and not to be used for
+other purposes.
+• In case of using different materials for installation, combi shall be out of
+the warranty scope.
+• If the wall of installation is not a brick wall, initially the reliability of support
+system should be controlled.
+• Combi should be installed on a wall resistant to fire.
+• NOTICE: Combustible and corrosive materials:
+• Chemically aggressive substances can corrode the appliance and
+invalidate any guarantee.
+• Do not store or use any combustible materials (paper, thinners, paints,
+propellants, cleaning agents etc.) Keep the distance minimum 50 mm.
+• Inside the cupboard containing the appliance or within the vicinity of the
+appliance.
+• 1,8 - 2,2 m height is recommended for installation of the combi hanger
+plate.
+• For places with limited installation place, combi should be installed
+at minimum 30 cm height from ground and by leaving at least 5 cm
+distances from both sides in order to allow easy intervention of the service
+technician.
+• Combi installation must not performed in environments containing
+explosive, flammable substances and acid fumes
+• Installation cannot be made at near or on ovens, radiators or heater
+devices.
+• Hermetic combis can be installed in furnitures but at least 5 cm each
+should be left at both sides.
+• If to be installed on the kitchen table or the set, at least 30 cm distance
+should be left under the combi.
+• It is recommended to connect the output to drain line with a transparent
+hose against the possibility of water leakage from Safety Valve of combi
+during installation. If this is not possible; do not place electronic devices,
+delicate, corrodible devices, components and tools under the combi.
+• Do not place/use any furnitures below the combi due to above mentioned
+reasons.
+Make sure that there are no liquids or inflammable materials in the
+immediate vicinity of the boiler. It is necessary to leave a spesific
+distance 1.0 	mt between the heating device and the building
+material containing combustible material even the maximum allowable
+temperature value of 85 °C in the rated heat capacity of the appliance is not
+exceeded.
+Figure 6 Boiler minimum dimensions in the cabinet *Minimum clearances required for servicing
+
+-- 7 of 40 --
+
+ warmhaus.com	8
+2.2.4. Installation at Partially Protected Exteriors
+Installation instructions: This combi can be installed in partially protected
+exteriors. Partially protected place means that the combi is located at places
+without direct exposure to atmospheric factors and precipitations (rain,
+snow, etc.).
+Frost protection: Combi device is equipped with a system that prevents
+frost by automatically activating the pump and boiler when the internal
+water is lower than 5°C.
+Frost protection function only depends on below given conditions:
+- If the combi is correctly connected to gas and electrical sources;
+- If the combi is supplied from gas and electricity sources (if the main switch
+is open) in a fixed way;
+- If the Combi is not in failure situation due to lack of ignition;
+- In order to maintain circulation of installation water, installation valves and
+radiator valves under the combi must be open.
+Under these conditions, the combi is protected against frost up to -5°C
+environment temperature.
+Lowest Temperature -5°C. In case the combi is installed in an environment
+with a temperature lower than -5°C, and gas supply is interrupted or passed
+into failure due to failing to make ignition, Frost Prevention System shall not
+be activated and frost/failure shall occur in the device. Following instructions
+should be followed for preventing the risk of frost:
+- Heating circuit, into antifreeze (special heating devices) a good brand of
+antifreeze manufacturer's instructions are followed carefully so as it deems
+necessary for the rate and the minimum temperature is desired to be stored in
+the heater frost protection with the matter.
+Materials used for manufacturing the combi are resistant against glycol and
+propylene based anti-frost liquids. Follow warnings of supplier company
+regarding their lives and possible disposals.
+Frost / icing protection of the combi is guaranteed only under these
+conditions:
+Damages arising from failing to follow above mentioned issues and
+interruption of electricity supply shall be excluded from validity of the
+warranty.
+In case the combi device is installed at places with temperature lower than
+0°C (both for tap water ad radiator purposes) both radiator installation and
+tap water pipes must be insulated.
+
+-- 8 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	9
+Figure 8 Combi bottled gas connection
+2.2.5. Dimensions and Connections
+2.2.6. Natural Gas and LPG Connection (Device Category I2H, II2H3P)
+Our combi devices are manufactured to be operated with methane gas
+(G20) and L.P.G. Gas supply pipes should be equal to or higher than 3/4"G
+combi connections. Prior to making the gas connection, a studious internal
+cleaning should be made to all fuel supply installation pipe furnhishings as
+possible wastes may distort smooth operation and reliability of the combi.
+It should be controlled whether the gas distributed from the main line is as
+envisaged (see the table on the combi device).
+In case of having differences, an intervention should be made on the combi
+and converted to other gas type (consult our authorized services in case
+of gas change). Also, in case of being inadequate, the network dynamic
+pressure (methane or LPG) to be used for supplying the combi should be
+controlled regarding the impact on combi strength and difficulties possible
+for the user. Ensure the correctness of gas valve connection. Flammable gas
+supply pipe should be able to supply correct adequate gas amount to the
+boiler when the combi is at full power and be projected and sized according
+to local gas company specification and instructions in order to guarantee the
+device efficiency. Connection system should comply with legal regulations.
+2.2.7. Flammable Gas Quality
+The combi is designed to be used with pure fuel not containing any foreign
+substances; therefore, required filter systems must be available in the gas
+supply line (for ensuring purification of the fuel).
+2.2.8. In Case of Using LPG Tank
+LPG use is recommended for heat requirements over 24 kW. New LPG stock
+tanks may contain settled gas residues (nitrogen) however, that pauperises
+the mixture assigned to that device and cause abnormal operations.
+- Various alloy layers may be formed during stocking LPG gas in tanks
+depending on mixture compositions. That causes a change in heating power
+of mixture assigned to the device and changes efficiency of the device.
+2.2.9. In Case of Using Bottled Gas
+• 300 mmSS pressurized hood should be used for LPG.
+• 500 mmSS hood should not be used.
+• 370 mmSS pressurized hood should be used for Propane.
+• Do not place tubes at cold places having risk of snow for preventing frost
+during winter months.
+• Do not place tubes in hot places containing ovens, fireplaces for preventing
+dangers!
+• Do not make connection with single tube and use LPG collector set for
+double, triple uses.
+• The distance between the collector and tube should be maximum 125 cm.
+• Copper pipe installation should not used for distances longer than 125 cm.
+• Hose connection ends should be tightened with clamp and no other tools
+should be used.
+• Gas installation rules with use of LPG tank and industrial tubes should
+comply with local standards and to be performed by expert installation
+teams and certified by the company undertaking the construction. In case
+of failing to fulfil these conditions, combi shall not be commissioned by
+Warmhaus Authorized Services.
+Figure 7 Ewa combi dimensions and connections
+Warmhaus Ewa
+A: Central heating flow
+B: Domestic hot water outlet
+C: Gas inlet
+D: Domestic hot water inlet
+E: Central heating return
+F: Filling valve
+G: Manometer
+H: Pressure relief valve outlet
+I: Drain point
+J: Condansate drain
+K: 230V 50HZ AC
+LPG 	LPG
+Ball Valve
+COLLECTOR
+370 mmSS
+2 kg
+Hood
+12 kg or
+24 kg
+LPG TUBE
+
+-- 9 of 40 --
+
+ warmhaus.com	10
+Figure 9 Filling the heating installation water with the filling valve of the boiler and pressure control.
+Figure 10 Ewa Smart pump Flow Rate / Pressure & Power / Flow Rate graphics.
+Figure 11 Pump with Automatic Air
+Vent Valve and modulation.
+2.3. HYDRAULIC INSTALLATION RULES
+2.3.1. Radiator and DHW Installations
+Radiator ad ground heating installation should be constructed in accordance
+with legistation in force technical specifications and heat loss calculation.
+Radiator type and amount and ground heating installation pipe amount
+should comply with the heat loss calculation.
+• Radiator installation should be designed as resisting to at least 6 bars.
+• If the city grid pressure is higher than 6,5 bars, pressure reducer must be
+installed.
+• It is recommended to construct the radiator installation as double line and
+without using bends and joints as much as possible.
+• Strainer filter must be installed in radiator return and tap water (city grid)
+input line.
+• For example; as the radiator cycle's 8 litres expansion (24 kW) tank
+can support maximum (80 °C in radiator system) 140 litre and (55°C in
+ground heating system) 170 litre installation water expansion, additional
+expansion tank should be used for larger installation volumes. 170 litre
+installation water expansion, additional expansion tank should be used for
+larger installation volumes.
+• If the room thermostat and thermostatic radiator valve shall be used
+together; thermostatic valve should not be installed in radiators in the
+place where room thermostat is available!
+• Cross connection must be made for efficient functioning in radiators
+longer than 1,5 m.
+• Covers should be used for radiator and hot tap water wall passages and
+fixed with wall clamps for preventing slopes in expansions due to heating.
+• Combi can function under minimum 0,5 bar tap water pressure and that
+corresponds to a very low flow rate and therefore, it shall not possible to
+adjust the requested tap water temperature. For this reason, tap water
+line should be installed at shortest distance with pipe having at least ½”
+internal diameter and by using bends as low as possible. At least 1 bar
+pressurized grid input water should be supplied for acquiring the comfort
+requested in the hot tap water. Hydrophore should be used if required.
+• Prior to filling the radiator installation, it must be flushed and all wastes
+must be cleaned!
+Warning: In order to prevent invalidity of device warranty prior to
+making combi connections, clean residues likely to be occurred in
+main heat exchangers (pipes, heater assembly, etc.) via dissolvent
+or equal substances, otherwise they will negatively affect functioning of
+the combi. In order to prevent lime scales in the radiator installation and
+therefore faulty operation of installation, follow rules envisaged by standards
+regarding domestic tap water and radiator installations.
+Warning: It is recommended to install a Anti-Lime Kit for preventing
+occurrence of lime scales at places where water hardness is higher
+than 25 French degree in order to protect service life and efficiency
+of the hot tap water heat exchanger.
+2.3.2. Filling/Emptying Radiator Installation
+Ensure that the pressure reaches to 1-1,5 bar in the Manometer indicated with
+G symbol by rotating the Fill Tap counter clockwise that is indicated with F
+symbol in Lower Figure 7 for filling the closed circuit radiator installation
+after installation of the and close the Filling Tap by rotating clockwise and
+discharge air of radiators via air discharge valves.
+Combi safety valve discharge should be connected to a discharge funnel.
+Otherwise, safety valve shall be activated and manufacturer shall not be
+responsible due to water discharge to the place of device.
+0
+3
+	2
+	1
+	0
+3
+	2
+	1	
+When the
+pressure is
+between 1 -
+1.5 bar, close the filling
+valve by turning it to
+the right.
+2.3.3. Circulation Pump
+Ewa is equipped with a pump having controlled by an external signal PWM
+(i=feedback signal), the main PCB of combi sends a PWM signal as an
+actuating variable to the pump. It should be controlled that the pump ensures
+required flow rate depending on the critic line pressure loss.
+COMPLY WITH
+THE NEW EUROPEAN
+DIRECTIVE FOR
+ENERGY EFFICIENT
+PRODUCTS
+
+-- 10 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	11
+Radiator
+Rotation
+Line (Flow)
+DHW
+(Cold Water
+Inlet)
+Condensate
+Water
+Discharge
+Line 	Radiator
+Rotation Line
+(Return)
+Figure 12 Scheme of use of the boiler in a double pipe heating installation system.ı
+Figure 13 Scheme of use of the boiler in a mobile tubular distributed heating installation systemı
+Figure 14 Scheme of use of the boiler in a mobile tubular distributed underfloor heating installation system
+
+-- 11 of 40 --
+
+ warmhaus.com	12
+2.3.4. Filling the siphon for Condensation Line
+After the wall hanging operation of condensing combi, electrical connections,
+radiator lines, hot tap water connections and condensation water drainage line
+are completed, condensation siphon should be filled with water (Figure 9).
+Slope of condensation water hose and line must be always towards down.
+Attentions For Condensate Drain:
+FAILURE TO INSTALL THE CONDENSATE DISCHARGE PIPEWORK
+CORRECTLY WILL AFFECT THE RELIABLE OPERATION OF THE BOILER
+1. Ensure the discharge of condensate complies with any national or local
+regulations in force.
+2. The discharge pipe should be run in a proprietary drain pipe material e.g.
+PVC, PVC-U, ABS, PVC-C or PP.
+3. Metal pipework is NOT suitable for use in condensate discharge systems.
+4. Any condensate discharge pipework external to the building (or in an
+unheated part of it e.g. garage) must be insulated to protect against frost.
+5. In all cases discharge pipe must be installed to aid disposal of the
+condensate. To reduce the risk of condensate being trapped, as few bends
+and fittings as possible should be used.
+6. When discharging condensate into a soil stack or waste pipe the effects
+of existing plumbing must be considered. If soil pipes or waste pipes are
+subjected to internal pressure fluctuations when WC's are flushed or sinks
+emptied then back-pressure may force water out of the boiler trap and
+cause appliance lockout.
+7. Condensate outlet shall not be modified or blocked always be downwards.
+Figure 19 Filling the condensation siphon
+Condensation line drain
+line 	impermeability
+should be maintained.
+However, prior to installation of
+the flue bend of the siphon in
+the combi, discharge 1 litre water
+to the internal flue against the
+possibility of flue gas leakage
+possibility at first start. Thus,
+waste gas leakage possibility
+shall be prevented with the water
+available in siphon.
+1 liter
+Outdoor flusher
+Condensate Water Drainage Pump
+(Refer to detailed instructions of the pump manufacturer)
+Min Ø 19 mm
+Inner
+Pipe
+75
+Min Ø 19 mm
+Inner pipe
+Min Ø 30 mm
+Inner pipe
+Air hole
+Combined waster
+and rain water
+drainage pipe
+43 mm 90º
+male/female bend
+Water / Air
+proof
+insulation
+68 mm Ø PVCU
+Fitting
+Min Ø 19 mm
+Min Ø 30 mm Drainage pipe with water
+and air insulation
+Maximum length of
+the outer pipe
+shall be 3 m.
+Insert the drainage pipe
+at least 25 mm into the tube
+located outdoors
+Pebble
+≥ 500
+≥ 25
+Required
+distance for
+minimum 3-storey
+buildings
+Drainage and
+	Ventilation Pipe
+	Min Ø 19 mm
+Water / Air proof
+insulation
+Outdoor flusher
+Min Ø 19 mm
+Inner pipe
+75 mm flusher
+bathroom/shower
+drainage combined
+with other drainage
+lines
+Minimum 30 mm
+Inner pipe
+Water / Air
+proof
+insulation
+≥ 25 Distance under grid
+45º pipe
+termination
+75
+≥ 100
+Figure 2.25
+Connection of a Condensate Pump Typical
+Method (see manufacturers detailed instructions)
+Figure 2.26
+Connection of condensate Drainage Pipe to
+External Soil & Vent Stack
+Figure 2.27
+Connection of a Condensate Drainage Pipe to an
+External Rainwater Downpipe (only combined foul/rainwater
+drain)
+Figure 2.29
+Connection of a Condensate Drainage Pipe to an
+External Purpose Made Soak Away.
+Figure 2.28
+Connection of Condensate Drainage Pipe
+Upstream of a Sink, Basin, Bath or Shower Waste Trap to
+External Drain, Gulley or Rainwater Hopper
+45º cross-
+sectional drainage
+pipe outlet
+Open air flusher
+Figure 17 Outside Connection of Condensate Water Drainage Pipe
+SECTION 2 - INS
+Outdoor flusher
+Condensate Water Drainage Pump
+(Refer to detailed instructions of the pump manufacturer)
+Min Ø 19 mm
+Inner
+Pipe
+75
+Figure 2.25
+Connection of a Condensate Pump Typical
+Method (see manufacturers detailed instructions)
+Connection of a Condensate Drainage Pipe to an
+CONDENSATE............ CONT’D
+Figure 18 Typical Connection Method of a Condensate Water Drainage Pipe (refer to
+detailed instructions of the pump manufacturer)
+Min Ø 19 mm
+Min Ø 19 mm
+Drainage and Ventilation Pipe
+≥ 100
+Figure 2.23
+Connection of Condensate Drainage Pipe to
+Internal Soil & Vent Stack
+Figure 2.24
+Connection of a Condensate Drainage Pipe
+Downstream of a Sink, Basin, Bath or Shower Water Trap to
+Internal Soil Vent Stack
+Minimum
+connection
+height
+up to 3
+storeys
+Sink/basin/
+bath or
+shower
+Drainage and Ventilation Pipe
+Figure 15 Connection of the Condensate Water Drainage Pipe to Internal Drainage
+and Ventilation Pipe
+Min Ø 19 mm
+Min Ø 19 mm
+Drainage and Ventilation Pipe
+≥ 100
+Figure 2.23
+Connection of Condensate Drainage Pipe to
+Internal Soil & Vent Stack
+Figure 2.24
+Connection of a Condensate Drainage Pipe
+Downstream of a Sink, Basin, Bath or Shower Water Trap to
+Internal Soil Vent Stack
+Minimum
+connection
+height
+up to 3
+storeys
+Sink/basin/
+bath or
+shower
+Drainage and Ventilation Pipe
+Figure 16 Connection of Condensate Water Drainage Pipe at Indoor Bathroom
+Drainage Lower Level
+Discharging the Condensation Water
+For discharging the condensation water produced by the device, it should
+be connected to waste water grid via at least Ø 24 mm pipes resistant to
+acidic condensation waters. Connection of the device with waste water grid
+should be made as preventing frost of the liquid contained in the connection
+installation. Prior to starting the device, ensure that the condensation
+water is correctly discharged; then verify that the siphon is filled through
+condensation at first start (parag. 2.2.10). Also, instructions in force, national
+and local arrangements should be taken into consideration for discharge of
+waste waters.
+
+-- 12 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	13
+Required
+distance for
+minimum 3-storey
+buildings
+Drainage and
+	Ventilation Pipe
+	Min Ø 19 mm
+Water / Air proof
+insulation
+Outdoor flusher
+Min Ø 19 mm
+Inner pipe
+75 mm flusher
+bathroom/shower
+drainage combined
+with other drainage
+lines
+Minimum 30 mm
+Inner pipe
+Water / Air
+proof
+insulation
+≥ 25 Distance under grid
+45º pipe
+termination
+75
+≥ 100
+Figure 2.26
+Connection of condensate Drainage Pipe to
+External Soil & Vent Stack
+Figure 2.28
+Connection of Condensate Drainage Pipe
+Upstream of a Sink, Basin, Bath or Shower Waste Trap to
+External Drain, Gulley or Rainwater Hopper
+INSTALLATIO
+Figure 20 Connection of Condensate Drainage to Drainage and Ventilation Pipe
+Installation and Servicing
+Min Ø 19 mm
+Inner pipe
+Min Ø 30 mm
+Inner pipe
+Air hole
+Combined waster
+and rain water
+drainage pipe
+43 mm 90º
+male/female bend
+Water / Air
+proof
+insulation
+68 mm Ø PVCU
+Fitting
+Min Ø 19 mm
+Min Ø 30 mm Drainage pipe with water
+and air insulation
+Maximum length of
+the outer pipe
+shall be 3 m.
+Insert the drainage pipe
+at least 25 mm into the tube
+located outdoors
+Pebble
+≥ 500
+≥ 25
+Figure 2.25
+Figure 2.27
+Connection of a Condensate Drainage Pipe to an
+External Rainwater Downpipe (only combined foul/rainwater
+drain)
+Figure 2.29
+Connection of a Condensate Drainage Pipe to an
+External Purpose Made Soak Away.
+45º cross-
+sectional drainage
+pipe outlet
+Open air flusher
+Figure 21 Connection of Condensate Drainage to Rain Water Drainage
+27
+Required
+distance for
+minimum 3-storey
+buildings
+Drainage and
+	Ventilation Pipe
+	Min Ø 19 mm
+Water / Air proof
+insulation
+Outdoor flusher
+Min Ø 19 mm
+Inner pipe
+75 mm flusher
+bathroom/shower
+drainage combined
+with other drainage
+lines
+Minimum 30 mm
+Inner pipe
+Water / Air
+proof
+insulation
+≥ 25 Distance under grid	
+45º pipe
+termination
+75
+≥ 100
+Figure 2.26
+Figure 2.28
+Connection of Condensate Drainage Pipe
+Upstream of a Sink, Basin, Bath or Shower Waste Trap to
+External Drain, Gulley or Rainwater Hopper
+INSTALLA
+Figure 22 Connection of Condensate Drainage to Rain Drainage Line through Sink,
+Bathtub or Shower Drainage Pipe
+2.4. COMBI FLUE CONNECTIONS
+2.4.1. Exhaust Gas Flue Pipe Set and Accessories Connection
+Flue accessory sets to be used in exhaust gas installation of
+hermetic combi should be original Warmhaus flue sets and they
+should be used by considering measurements and restrictions given
+in installation instructions.
+In case of using exhaust gas pipe and/or accessories other than
+Warmhaus original exhaust gas flue pipes and accessories, combi
+shall not be commissioned by the Authorized Service and thus, no
+warranty is given!
+Warmhaus provides different solutions for placing exhaust gas discharge and
+air suction pipes in addition to the combi and combi shall not be operated
+without them.
+Combi should only be installed with original Warmhaus air suction and
+exhaust gas discharge device made of plastic material. Plastic channels
+cannot be installed without suitable protection against UV and weather
+conditions to distances over 40 cm and exteriors. Every pipe is defined with
+an explanatory and discriminative 	Warmhaus mark mentioned in remarks.
+See Figure 23.
+Flue should be installed in accordance with national and local directives.
+Figure 23 Warmhaus logo is available on the flue bend.
+
+-- 13 of 40 --
+
+ warmhaus.com	14
+2.4.2. Combi Flue Connection Types
+Figure 24 Hermetic vertical split flue connection.
+Figure 25 Hermetic concentric and vertical split
+flue connection.
+Figure 26 Vertical Type Hermetic Use with Split
+Flue Set
+Figure 27 Exhaust gas discharge through the
+building chimney and fresh intake from the
+building chimney with split flue sets
+Figure 29 Building chimney connection with hermetic
+split flue
+Discharge with homocentric flue connection
+Discharge to building chimney and fresh air intake with
+split flue connection
+For room sealed appliances of the type C8 boilers
+a) overheat combustion products temperature; < 105 C°
+b) G20 : CO 2-content; 9.00 % ( tolerance +%0,5 / -0,5%);
+G30 / G31: CO 2-content; 10.00 % ( tolerance +%0,5 /
+-0,5 %)
+c) characteristics of the chimney to which the boiler may
+be connected, according to fig 13.
+d) condensate flow into the appliance is not allowed.
+Exhaust gas discharge through the building chimney and
+fresh intake from outside with split flue sets
+For room sealed appliances of the type C6 boilers
+overheat combustion products temperature for flue;
+< 105 °C G20 : CO 2 content at nominal operating
+conditions; 9.00 % (tolerance : +%0,5 / -0,5 % ) G30 /
+G31 : CO 2-content; 10.00 % (tolerance : +%0,5 / -0,5 %)
+maximum allowable draught and maximum allowable
+pressure difference between combustion air inlet and
+flue gas outlet (including wind pressures); 120 Pa.
+characteristics and the applications of the duct system
+to which the boiler can be connected; condensate flow
+into the appliance is not allowed. Maximum allowable
+temperature of combustion air; 40 C° maximum allowable
+recirculation rate of 10 % under wind conditions.
+Attention: The terminals for the supply of combustion air
+and for the evacuation of combustion products shall not
+be installed on opposite walls of the building.
+Exhaust gas discharge through the building
+chimney and fresh intake from outside with split
+flue sets
+Exhaust gas discharge and fresh air intake with
+concentric flue kit and split flue kits
+For room sealed appliances of the type C5 boilers
+Attention: The terminals for the supply of combustion
+air and for the evacuation of combustion products
+shall not be installed on opposite walls of the building.
+Exhaust Gas Discharge Fresh Air Intake with Split
+Flue Sets
+The terminal outlets from separate combustion
+and air supply circuits shall fit inside a square of 50
+cm and that the distance between the planes of
+the two orifices shall be less than 50 cm.
+Air
+Exhaust Gas
+Figure 28 Hermetic (Concentric) and Flue (Split-Flue
+type
+C 13
+C 53
+C 53
+C 33
+B23	C	C 83
+
+-- 14 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	15
+No place of the output flue should be blocked and not prevent other
+connections. If the output pipe passes 1000 mm nearby of a plastic or painted
+groove or 500 mm of painted fringes, an aluminium shield with at least 1000
+mm length should be placed below the groove or fringe. Output pipe should
+be at least 2 m over surfaces those may be reached by individuals.
+Under certain weather conditions, output pipe may emit water vapour;
+installation should not be performed at places where this vapour may cause
+discomfort.
+Exhaust gases should be prevented from entering flue ventilation spaces.
+Flue system of combi may be installed from inside the room without requiring
+intervention from the external wall. For that reason, a housing should be
+installed in the wall for lining the internal surface of channel wherein the
+output pipe passes through the wall, particularly for thick walls.
+Figure 30 Exhaust gas discharge through the building chimney and fresh intake from the building chimney with split flue sets
+Attention: The minimum usable diameter must not
+be under 80 mm or equivalent for the vertical duct
+supplying the combustion air.
+Attention:
+a) nominal working combustion product temperature : > 70°C max conditions
+b) overheat combustion products temperature : 105° C
+c) the minimum length of the specified connecting ducts; 1 mt / maximum length of the specified
+connecting ducts; 10 mt
+d) For size/shape of the end of the fitting please refer 2.2.14. Installation with Vertical Flue Sets page 13,
+Fig.26.
+e) Please re adjust TsP Paramater P22 = Flues gas pipe length ( value 1 = 1 meter ) according to actual flue
+lenght
+f) Its MUST to use NON RETURN valve ON the flue gas system.
+g) non-return valve function has to be checked annually by authorised service.
+Information for the design of the common duct system for a type C(10) boiler
+a) The boiler is designed to become connected to a common duct system that is designed to operate
+where the static pressure in the common flue duct might exceed the static pressure in the common air
+duct by 25 Pa under the condition that n-1 boilers are running at maximum nominal heat input (Qn,max)
+and 1 boiler at the minimum heat input allowed by the controls
+b) combustion product mass flow rate at maximum nominal heat input are given technical table.
+c) combustion product mass flow rate at minimum heat input allowed by the controls are given technical
+table.
+d) G20 : CO2 or O2 content of the combustion products at nominal operating conditions 9 % ( +0,5/-0,5 )
+G30 / G31 : CO2-content; 10.00 % ( tolerance : +%0,5 / -0,5 % )
+e) minimum allowable pressure difference between combustion product outlet and air inlet shall be
+declared as -200 Pa (including -100 Pa wind pressure).
+General for connection of a type C(10) boiler to a common duct system
+Characteristics and the applications of the common duct system to which the boiler can be connected,
+with at least the following information:
+a) the flue duct system shall be CE marked and comply with EN 15502 standart 12.2.1.4.111.2;
+b) nominal combustion products temperature for dimensioning the common duct system shall be
+declared as 25 °C;
+c) the combustion product mass flow rate at maximum heat input shall be specified for every connection
+point; the terminal of the common duct shall be designed to induce a draft;
+d) condensate flow into the boiler is allowed;
+e) maximum allowable recirculation rate of 10 % under wind conditions;
+f) the maximum allowable pressure difference between combustion product inlet and air outlet of the
+common duct system shall not be exceeded when n-1 boilers are running at maximum nominal heat
+input (Qn,max) and 1 boiler at the minimum heat input allowed by the controls;
+g) the common flue duct shall be appropriate for an overpressure of at least 200 Pa;
+h) the duct system shall not include a draft diverter.
+Warning: the boiler if it is installed as a C (10) boiler and IF / when the boiler is disconnected the air
+outlet and the combustion product inlet openings shall be closed and checked on tightness.
+C 	C 10
+
+-- 15 of 40 --
+
+ warmhaus.com	16
+2.4.3. Peripheral Distances of Flue Output Connections
+In order to position the flue set output pipe
+2.4.4. Installation with Horizontal Flue Sets
+Connecting Horizontal Concentric Flue Set to the Combi, (original
+diameter DN 60/100 mm)
+Since your combi is hermetic model, it takes the used air from exterior and
+discharges exhaust gases created as the result of burning through the same
+flue group. In order to prevent emission of excessively harmful exhaust gases,
+flue usage and installation is very important, therefore warnings should be
+taken into consideration when flue connections are being performed.
+• Make required flue selection for the flue connection to be made externall
+and installation place of the combi. If the standard flue set is not
+adequate, please select most suitable elements from our list of connection
+accessories considering warnings given in our user's guide.
+• Fix the flange under the Bend piece (1) by using the Flange Bolt (10) via
+Flange Connection Screws (11) to holes on the combi.
+• 2 impermeability bolts within the hermetic flue set (2) are placed into
+internal pipe slots at both ends of the 90° Bend.
+• Place the exterior wall (EPDM) bolt into the flue terminal as seen in Figure
+19 for grouping the flue output terminal. After placing the flue output
+terminal through exterior of wall and the previously opened hole, fix the
+Interior Wall Connection Bolt (7) into the flue terminal.
+300 min
+	Terminal
+Assembly
+Top View Rear Flue
+Property Boundary Line
+*
+N
+I
+I
+G
+F
+M
+I
+A A F
+H
+J,K
+D
+E
+H
+C
+R A
+I
+J,K
+I
+L
+S
+B
+T
+U
+Likely flue positions requiring
+a flue terminal guard
+Figure 31 Environmental locations of flue
+Terminal Position with Minimum Distance 	(mm)
+A1 	Directly below an opening, air brick, opening windows, etc. 	300
+B1 	Above an opening, air brick, opening window etc. 	300
+C 1 	Horizontally to an opening, air brick, opening window etc. 	300
+D2 	Below gutters, soil pipes or drain pipes. 	25 (75)
+E2 	Below eaves. 	25 (200)
+F2 	Below balconies or car port roof. 	25 (200)
+G2 	From a vertical drain pipe or soil pipe. 	25 (150)
+H2 	From an internal or external corner. 	25 (300)
+I 	Above ground, roof or balcony level. 	300
+J 	From a surface or boundary line facing a terminal. 	600
+Terminal Position with Minimum Distance 	(mm)
+K 	From a terminal facing a terminal (Horizontal flue).
+From a terminal facing a terminal (Vertical flue).
+1200
+600
+L 	From an opening in carport (e.g. door, window)
+into the dwelling.
+1200
+M 	Vertically from a terminal on the same wall. 	1500
+N 	Horizontally from a terminal on the same wall. 	300
+R 	From adjacent wall to flue (vertical only). 	300
+S 	From an adjacent opening window (vertical only). 	1000
+T 	Adjacent to windows or openings on pitched and flat roofs 	600
+U 	Below windows or openings on pitched roofs 	2000
+1 In addition, the terminal should be no nearer than 150 mm to an opening in the building fabric formed for the purpose of accommodating a built-in element such as a window frame.
+2 Only ONE 25mm clearance is allowed per installation. If one of the dimensions D, E, F, G or H is 25mm then the remainder MUST be as shown in brackets, in accordance with B.S.5440-1.
+NOTE: The distance from a
+fanned draught appliance
+terminal installed parallel to
+a boundary may not be less
+than 300 mm in accordance
+with the diagram below
+
+-- 16 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	17
+Flue Pipe
+Interior Wall
+Rosette
+Wall
+Flue Therminal
+Exterior Wall
+Rosette
+IWA / ENERWA PLUS
+gure XX single 90° bended sample flue installation
+(Ø 60/100 mm) L max =10 m)
+b
+d
+EWA
+Figure XX single 90° bended sample flue installation
+(Ø 60/100 mm) L max =10 m)
+b
+d
+1.5°-3° 	1.5°-3°
+a- Standard Flue Set Bend (90°)
+b- Flue Extension Pipe (L1)
+c- Additional 45° Bend
+d- Standard Flue Set Pipe (L2)
+e- Additional 45° Bend
+f- Standard Flue Set Pipe (L3)
+Figure 36 I. Single 90° bended sample flue installation
+Figure 37 III. Single 90° and two 45° bended sample flue
+installations
+Place other end of EPDM connection gasket to
+flue output terminal. Pay attention to correct
+placement of gaskets:
+• Click-fit gasket for concentric extension pipes
+and bends. In order to connect possible
+extension connections of exhaust gas flues
+with other elements of flues: Connect from
+concentric pipe or concentric bend male
+part (flat) to female part of the previous
+piece (gasket side), in such case ensure that
+required stamp is placed, therefore the piece
+maintaining tightness and the set shall be
+combined.
+When it is required to shorten the
+discharge 	flue 	and/or 	extension,
+consider that internal pipe should
+protrude 5 mm when compared with the external
+pipe.
+For security purposes, combi suction /
+discharge flue should not blocked even
+temporarily.
+1. 90° bend
+2. (Ø100 mm) Sealing gasket
+3. (Ø60 mm) Sealing gasket
+4. Centering wire
+5. Exterior flue pipe
+6. Interior wall closing flange
+7. Exterior wall closing flange.
+8. Interior flue pipe
+9. Protection cage
+10. Flange gasket
+11. Flange connection screws
+12. Fresh air control cap
+13. Flue gas control cap
+14. Fresh air control cap
+Figure 32 Hermetic combi concentric flue set.
+Figure 33 Installation of flue
+set pieces
+Figure 38 Hermetic combi concentric
+flue wall output.
+Total length of hermetic flue set should not exceed 10 m with single bend horizontally. Also, this total
+length reduces by 1 m with every 90°bends or two 45° bends. Maximum 3 pieces of 90° bend can be used.
+a- Standard Flue Set Bend (90°)
+b- Flue Extension Pipe
+c- Additional 90° Bend
+d- Standard Flue Set Pipe
+Figure 34 II. Two 90° bended sample flue installations
+3 o
+Figure 35 Condensing combi flue
+training
+During installation of horizontal
+pipes, the pipe slope should be
+kept at 3% upwards as minimum
+and dowel at every 3 meters and holder
+clamps should be used.
+A
+A
+Warmhaus
+horizontal flue
+sets do not
+require any fall and must
+be installed level.
+L2
+L1 + L2 ≤ 9 m
+(a + b + c + d ≤ LMax)
+L1
+L2
+a
+b 	c
+d
+e
+L3
+f
+L1 + L2 +L3 ≤ 9 m
+(a + b + c+ e + f ≤ LMax)
+
+-- 17 of 40 --
+
+ warmhaus.com	18
+2.4.5. Installation with Vertical Flue Sets (Ø 60/100 mm)
+Your combi can also be vertically connected to flat and aslope roofs via
+available connection accessories depending on the status of installation
+place. For flat connections (Ø 60/100mm) vertical flue set should not exceed
+11 m.
+2.4.6. Twin Flue Kits Ø 80/80 Flue Type Use
+This kit allows air to come in from outside the
+building and the fumes to exit from the chimney
+or flue through divided flue exhaust and air intake
+pipes. Combustion products are expelled from
+pipe (F) (in plastic, so as to resist acid condensate).
+Air is taken in through duct (A) for combustion
+(this is also in plastic). Extensions for separator
+kit Ø 80/80. The maximum vertical straight length
+(without bends) that can be used for Ø 80 intake
+and exhaust pipes is 34 metres, regardless from
+whether they are used for intake or exhaust. The
+maximum horizontal straight length (with bend in
+suction and in exhaust) that can be used for Ø 80
+intake and exhaust pipes is 30 metres, regardless
+from whether they are used for intake or exhaust.
+Figure 40 Vertical flue set installation application
+Figure 41 Hermetic flue type installation sample
+Implementation
+L1 	=0.3 m.
+L2 	=0.5 m. (45° bend equivalent length)
+L3 	=2.0 m.
+L4 	=0.5 m. (45° bend equivalent length)
+L5 	=1.0 m.
+L6 	=1.5 m.
+L Total 	=6.3 m. 	6.3 m. < Lmax = 11 m.
+Correct in implementation.
+Implementation
+L1 	=0.5 m.
+L2 	=1.0 m. (90° bend equivalent length)
+L3 	=1.5 m.
+L4 	=1.0 m. (90° bend equivalent length)
+L5 	=1.5 m.
+L6 	=0.5 m.
+L7 	=1.0 m. (90° bend equivalent length)
+L8 	=0.5 m.
+L9 	=0.5 m. (45° bend equivalent length)
+L10 	=1.5 m.
+L11 	=1.0 m. (90° bend equivalent length)
+L12 	=1.5 m.
+L Total 	=12 m. 	12 m. < Lmax = 30 m.
+Correct in implementation.
+Figure 39 Vertical flue set installation
+ATTENTION!
+For C3 boilers the terminal
+outlets 	from 	separete
+combustion and air supply circuits
+shall fit inside a square of 50 cm
+and that the distance between the
+planes of the two orifices shall be
+less than 50 cm.
+ATTENTION!
+For C1 boilers the terminal outlet
+from separete combustion and air
+supply circuits shall fit inside a square of 50
+cm for boilers with a heat input up to 70 kW.
+A
+Ø60/100 mm
+ = L max. = 11 m
+A
+
+-- 18 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	19
+TOTAL VERTICAL LENGTH: A+B =32 m
+FLUE
+OUTLET
+A
+	B
+AIR
+INTAKE
+When installing a replacement boiler a new flue system is delivered
+with the boiler as original flue set must be used and re-using the
+existing boiler flue installation is strictly not acceptable
+Design
+Individual air supply and flue outlet pipes are used as standard. The material
+approved for this application which MUST be used are:
+Termination Of The Flue And Air
+The flue and air pipes may terminate independently through any external
+walls within the same dwelling except on opposing walls, within the
+maximum lengths shown in graph below. (Alternatively a vertical flue pipe
+termination is acceptable.)
+The air pipe must have an elbow and 150 mm length of pipe directed
+downwards with a termination grill fitted.
+The air pipe can be situated at the side or beneath the flue pipe to a minimum
+dimension of 140 mm (see Table.1). It must not be sited above the flue pipe.
+The flue and air pipes must extend by at least 40 mm from the wall surface.
+Condensing boiler emit a visible plume of water vapour from the flue
+terminal, this is normal. It is the responsibility of the installer to judiciously
+select a terminal location that does not cause a nuisance.
+If either the flue or air terminal is below a height of 2 m from ground level a
+terminal guard must be fitted.
+Note. Any veritcal termination MUST have the terminals fitted and the air
+intake comply with the dimensions above
+305 mm
+102 mm
+2
+1
+2
+1
+1 	2
+1-
+2-
+INTAKE
+EXHAUST
+150 mm
+Min.40 mm
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+2 	4 	6 	8 10 12 14 16 18 20 22 24 26 28 30 32 34 36
+Flue Pipe Length (m)
+Air Pipe Length (m)
+Acceptable Operating Area
+Figure 42 Horizontal Air-Flue Lengths
+Figure 45 Table 1 Air Pipe and Flue Pipe Lengths Diagram
+Figure 43 Vertical Air and Horizontal Flue Lengths
+Figure 44
+1,5° slope back
+to boiler
+AIR
+INTAKE
+(80 mm)
+FLUE
+OUTLET
+(80 mm)
+A
+TOTAL HORIZONTAL LENGHT : A+B = 30 m
+B
+1,5° slope back
+to boiler
+
+-- 19 of 40 --
+
+ warmhaus.com	20
+Product Name 	Product Code
+(Ø60/100) Condensing Concentric Horizontal Flue Set
+LHorizontal = L From the center of the elbow + L Terminal
+L Total = 115 + 790 = 905 mm
+15311014000002 (White)
+(Ø60-100) Condensing Vertical Flue Set with Adapter
+L= [LTerm + L Extpipe+L Adapter=1000+500+145] = 1645 mm
+Extension Parts:
+(Ø60/100) Condensing Flue Extension, L Extpipe=500 mm,
+(Ø60/100) Condensing Vertical Adapter, L Adapt=145 mm
+15311660600013
+( Black-White)
+(Ø60/100) Condensing Flue Extension
+L=500 mm 	15311660600014 (White)
+(Ø60/100) Condensing Flue Extension
+L=1000 mm 	15311660600015 (White)
+(Ø60/100) Condensing Flue Extension
+L=2000 mm 	15311660600016 (White)
+(Ø60/100) Condensing
+45° Elbow 	15311660600017 (White)
+(Ø60/100) Condensing
+90° Elbow L=170 mm 	15311660600018 (White)
+(Ø60/100) Condensing
+Vertical Adapter
+L=130 mm
+15311660600019 (White)
+Flat Roof Outlet Part
+15311660600124
+Pitched Roof Outlet Tile A = 500 x 500 mm
+15311660600125
+500 mm
+500 mm
+132,5
+160 mm	
+132,5 mm
+129 mm
+110 mm
+22 mm
+0047_03.D210120
+0048_03.D210120
+0049_03.D210120
+0050_03.D210120
+0051_03.D210120
+0052_03.D210120
+0053_03.D210120
+0054_03.D210120
+0055_00.D210120 	0056_00.D210120	0057_00.D210120
+0057_00.D210120
+2.4.7. Concentric Flue Kits For Condensing Boilers (Ø60/100 mm)
+
+-- 20 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	21
+2.4.8. Twin Flue Kits For Condensing Boilers (Ø80/Ø80 mm)
+Product Name 	Specification 	Product Code
+Ø80 Twin Flue Set
+Ø80 mm
+Flue Terminal = 985 mm
+Air Terminal = 939 mm
+High of Twin Flue Adapter = 155 mm
+15311660600096
+Ø 60- Ø 80 Twin Flue Set Adapter
+Ø60 mm >
+Ø80 mm + Ø80 mm
+High of Twin Flue Adapter H = 155 mm
+15311660600102
+Ø80 Condensing Twin Flue
+Extension Pipe
+L=500 mm
+Ø80 mm; L = 500 mm 	15311660600091
+Ø80 Condensing Twin Flue
+Extension Pipe
+L=1000 mm
+Ø80 mm; L = 1000 mm 	15311660600092
+Ø80 Condensing Twin Flue
+Extension Pipe
+L=2000 mm
+Ø80 mm; L = 2000 mm 	15311660600093
+Ø80 Twin Flue Elbow (90°) 	Ø80 mm; H= 152 mm 	15311660600094
+Ø80 Twin Flue Elbow (45°) 	Ø80 mm; L = 117 mm 	15311660600095
+Ø80 Interior Wall Rosette 	Ø80 x 145 mm 	15311660600099
+Ø80 Exterior Wall Rosette 	Ø80 x 145 mm 	15311660600098
+Ø80 Flue Vertical Outlet Adapter
+with Condensate Trap 	Ø80 mm; L = 145 mm 	15311660600100
+Ø80 Vertical Flue Kit 	Ø80 mm; L = 861 mm 	15311660600097
+0113_00.D190515
+0114_00.D190515
+0115_00.D190515
+0116_00.D190515
+0117_00.D190515
+0118_00.D190515
+0119_00.D190515
+0121_00.D190515
+0120_00.D190515
+0122_00.D190515
+0123_00.D190515
+
+-- 21 of 40 --
+
+ warmhaus.com	22
+Figure 48 Installation Position of Plume Displacement Set to
+Window or Door
+2.5.1. Recommendations of Plume Kit
+Installation
+NOTE: Due to the nature of the boiler a plume
+of water vapour will be discharged from the
+flue. This should be taken into account when
+siting the flue terminal.
+1. The following guidelines indicate the
+general requirements for siting balanced
+flue terminals. For GB recommendations
+are given in BS 5440 Pt 1. For IE
+recommendations are given in the current
+edition 	of 	I.S. 	813 	“Domestic 	Gas
+Installations”.
+2. If the terminal discharges onto a pathway
+or passageway, check that combustion
+products will not cause a nuisance and
+that the terminal will not obstruct the
+passageway.
+3. If a terminal is less than 2 metres above
+a balcony, above ground or above a flat
+roof to which people have access, then a
+suitable terminal guard must be provided.
+4. *Reduction to the boundary is possible
+down 	to 	25 	mm 	but 	the 	Plume
+Displacement Kit Bend (45°) (part no.
+153.11.660.6000 33) must be fitted.
+IMPORTANT:
+• Under car ports we recommend the use of
+the plume displacement kit.
+• The terminal position must ensure the
+safe and nuisance - free dispersal of
+combustion products.
+IMPORTANT:
+If fitting a Plume Displacement Flue Kit, the
+air inlet must be a minimum of 150mm from
+any opening windows or doors)
+Opening Window
+or Door
+150 mm
+MIN.
+Plume
+Displacement Kit
+Air Inlet
+2.5. PLUME DISPLACEMENT KITS Ø60 MM
+Product Name 	Specification 	Product Code
+Plume Displacement Terminal Kit 	With 1 m Extension Pipe, Elbow( 87°),
+Plume Terminal and Bracket 	15311660600031
+Plume Displacement Terminal Kit 	87° 	15311660600032
+Plume Displacement Terminal Kit 	45° 	15311660600033
+Plume Terminal 	87° 	15311660600034
+Flue Pipe Support Bracket 	15311660600035
+Plume Displacement Kit Extension 	1000 mm 	15311660600036
+0058_01.D210120
+0059_01.D210120
+0060_01.D210120
+0061_01.D210120
+0062_01.D210120
+0063_01.D210120
+
+-- 22 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	23
+Figure 49 Combi room thermostat and Outside Temperature Sensor connections
+TO PCB
+TERMİNAL	ORANGE
+WHITE
+A
+24V AC
+G S M
+THERMOSTAD BRIDGE
+OPENTHERM
+CONNECTION
+OUTSIDE TEMP.
+SENSOR CONNECTION
+WHITE
+ORANGE
+WHITE
+GREEN
+GREEN
+ORANGE
+OPEN THERM
+CONNECTION
+OUTSIDE TEMP.
+SENSOR
+A PCB
+PCB
+PCB
+B
+TO PCB
+TERMİNAL	ORANGE
+WHITE
+A
+WARNING: REMOVE THE BRIDGE WIRE FROM THE ROOM THERMOSTAT/TIMER
+THERMINAL 	WHEN THE TIMER OR OPENTHERM CONNECTED THE BOILER!
+24V AC
+G S M
+THERMOSTAD BRIDGE
+OPENTHERM
+	CONNECTION
+OUTSIDE TEMP.
+SENSOR CONNECTION
+WHITE
+ORANGE
+WHITE
+GREEN
+GREEN
+ORANGE
+OPEN THERM
+CONNECTION
+OUTSIDE TEMP.
+SENSOR
+A PCB
+PCB
+PCB
+B
+B
+2.6. ELECTRICAL CONNECTIONS
+Electrical safety of combi shall be realized if completely connected to an
+effective earthing installation that follows safety instructions in force. No
+earthing shall be made from the neutral line on the socket for places not
+having earthing! It is dangerous and unacceptable to use gas and water
+connection pipes for earthing.
+WARMHAUS A.Ş. cannot be held as responsible for any damages and
+losses on individuals or commodities arising from failing to provide
+earth connection of the combi and not being provided by a competent
+electrician in accordance with directives and standards in force.
+Also, ensure that the electricity installation complies with the maximum
+power to be supplied as indicated in technical specifications label on the
+combi. Combi is given with "X" type socketless special power source
+cables. "Warmhaus combi has an IPX5D protection level. Power supply cable
+should be connected by relying on earth connection and L-N poles in a 230 V
++%10; -%15 50Hz grid, high voltage category 3rd class multiple pole disconnector
+should be envisaged on the same grid. Apply out Authorized Warmhaus Service
+for replacement of the cable.
+Power supply cable should follow the defined route. In case fuses on the
+adjustment card are replaced, please use 2A or 3,15A speed type fuses.
+In order to feed the device from the general electricity grid, adapter,
+multiple sockets and extension cables are not allowed to use.
+2.6.1. Optional Controls: Room Thermostat, Outside Sensor and Others
+Room thermostat, Outside Temperature Sensor, etc. control devices must be
+connected to Warmhaus combi devices by the authorized service personnel;
+in case connections are performed by unauthorized persons, combi warranty
+shall be void.
+Room thermostat, Outside Temperature Sensor, etc. control devices
+are provided as optional accessories for Warmhaus combi devices
+and they must be Warmhaus approved.
+Please follow user's instructions for placement of Outside Temperature
+Sensor.
+This sensor can be directly connected to electrical installation of the combi,
+and it automatically reduces the maximum return water temperature in the
+installation when exterior weather temperature rises for enabling functioning
+according to outside temperature changes sent to radiator installation.
+Outside Temperature Sensor is activated when connected as independent
+from the used room thermostat typology and functions as common with
+room thermostats. The relation between installation input temperature and
+exterior weather temperature is defined according to curves in the diagram
+from position of the button located on the panel of combi (or on the control
+panel if connected to combi (Figure 47-50).
+Electrical connection of the Outside weather temperature Sensor shall be
+made to the terminals to which the White & White cables of the Aux cable
+connected to the electronic card of the boiler are connected (Figure 10).
+
+-- 23 of 40 --
+
+ warmhaus.com	24
+Wi-Fi Smart Room Thermostat Set
+Combi Control Panel Accessories
+RECOWA Large Screen, Wi-Fi Internet Access, Wireless room thermostat
+Product Code: 15311800000001
+150 cm
+Min.
+30 cm
+Room thermostat shall be
+mounted 1,25 to 1,5 m above
+the ground.
+It shall be minimum 30 cm
+away from any doors or
+windows allowing airflows.
+Instruction for Installation: Installation
+of the appliance shall be carried out only
+by Warmhaus Authorized Service. The
+dual cable required for installation shall be
+provided by the dealer/customer.
+Figure 50 Position of thermostat
+CleWA Modulated, Weekly
+Program Scheduled, Cable room
+thermostat
+Product Code: 15311660600020
+WDHS-01 Outside Sensor
+Product Code: 15311660600001
+WT-01 Large Screen, Modulated, Weekly
+Program Scheduled, Cable room thermostat
+Product Code: 15311800000021
+CleWA S Large Screen, Modulated, Weekly Program Scheduled, Wireless room
+thermostat
+Product Code: 15311800000022
+2.6.2. Position of thermostat
+
+-- 24 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	25
+3. 	USER'S SECTION
+3.1. GENERAL WARNINGS FOR USER
+3.1.1. Use of Combi
+If a gas odour is available in the environment, close home entrance line and
+gas valves of your combi or close the LPG tank valve or tube valve if bulk gas
+is used. Do not shut on-off electricity buttons and do not do anything those
+may create sparks. Call the gas company or Authorized Service. (See 1.3 GAS
+LEAKAGES, Page 6)
+First start should be performed by the Warmhaus Authorized Service for
+your safety and preventing void warranty scope. Our Authorized Service will
+give you required information about use of combi after performing initial
+controls of your combi and starting for the first time.
+Perform below given controls prior to starting to use:
+• Ensure that radiator/heating system, tap water and gas valves located
+under your combi are open, the radiator installation pressure is between
+1 - 1,5 bar on the manometer located under the Combi and system air is
+discharged,
+• Gas is available in your gas line (you can control by igniting one of your
+gas ovens),
+• Combi electrical fuse is open,
+• No flammable materials and products are available near to the Combi,
+• Exhaust gas flue set output is not blocked,
+• If a room thermostat or control device is connected, ensure that it is at ON
+position.
+If you will shut-off the combi for a long period, perform below written
+operations:
+• Discharge the radiator installation water not containing anti-freeze,
+• Close combi electrical fuse, gas valve, radiator and tap water valves!
+If you will shut-off the combi for a short period, perform below written
+operations:
+• Do not close combi electrical fuse, gas valve, radiator and tap water
+valves!
+• Leave the Combi at Summer position and activate its Frost Protection
+function,
+Shut-off the combi during maintenance and repair operations to be
+performed around exhaust gas discharge flues. After operations are
+completed, have the combi controlled by Warmhaus Authorized Service
+prior to starting the combi.
+Follow below given main rules:
+• Do not clean external frame of combi while combi is functioning and do
+not use easily flammable materials.
+• Do not hold the combi with wet hands or feet; also without shoes and with
+bare feet.
+• Do not pick electricity cables.
+• In case cables are damaged, shut-off the combi and fuse switches and do
+not use the combi.
+• Electrical cables of combi and its accessories should have replaced by the
+Authorized Service.
+• Do not expose the hung combi to direct vapour those may arise from
+cooking places.
+• Prevent use of combi by children and inexperienced persons.
+
+-- 25 of 40 --
+
+ warmhaus.com	26
+BUTTONS and PUSHBUTTONS
+1. MODE, position adjustment button.
+2. RESET button.
+3. Radiator (CH) water temperature adjustment button.
+4. DHW temperature adjustment button.
+5. Software connection slot.
+6. Digital display screen
+7. Temperature, data and failure codes display
+8. Radiator symbol is seen when combi is functioning in (CH) position.
+Symbol flashes at heating steps or when radiator temperature adjustment
+is made.
+9. Flame symbol is only seen when boiler is active (burning in combi); when
+system detects availability of flame. It is seen as symbol 	in case of
+failure.
+10. DHW tap symbol is seen at summer and/or winter position of the combi.
+Symbol flashes on DHW request or when DHW adjustment is made.
+11. Failure indicator.
+12. Failure status RESET requirement.
+13. Radiator low water pressure.
+14. Temperature increasing button.
+15. Temperature decreasing
+The temperature value displayed on the combi screen has a ± 3°C tolerance
+depending on environmental conditions not arising from the combi.
+RESET: It is used for re-starting the combi and eliminating the failure in case
+of combi failure.
+MODE: Winter/Summer/OFF mode is used for position adjustment.
+Operating positions and related notifications:
+POSITION EXPLANATIONS:
+• CLOSED or OFF (3 digits LCD screen)
+• WINTER► Radiator temperature + °C + tap + radiator is displayed.
+• SUMMER► Radiator temperature + °C + tap is displayed.
+• CH ON► Radiator Temperature + °C + tap + flashing radiator (symbol) is
+displayed.
+• DHW ON► DHW temperature + °C + flashing tap (symbol) is displayed.
+• CH FROST PROTECTION► Radiator temperature
+• °C + flashing radiator (symbol) + when boiler is ignited flame (symbol) is
+displayed.
+• DHW FROST PROTECTION► CH temperature + °C flashing radiator and
+tap (symbol) + when boiler ignited flame (symbol)
+• CH/DHW SETTING CHANGE► CH adjustment change will be activated
+when radiator symbol rapidly flashes. DHW adjustment change will be
+activated when tap symbol rapidly flashes.
+• Service technician function radiator + tap displayed. (Only for authorized
+service, wait for the function to end without pressing any button or
+rotating the button in such case!)
+CH: (System) Central Heating 	DHW: Domestic Hot Water
+Control Panel of EWA Model Combi Devices
+4	3
+6
+5
+8	1
+7 	13	12	11 	15	2
+9 	10 	14
+Figure 55 Control panel of Ewa
+Figure 56 Control panel of Ewa combi screen
+
+-- 26 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	27
+3.2. SELECTION OF ON/OFF/STANDBY AND SUMMER/WINTER MODES
+Use V automat switch for interrupting the electrical connection of combi. The temperature value when electricity is supplied to the device is the temperature
+value of water in the installation.
+3.2.1. On/Off/Standby Positions
+Use V automat (fuse) switch for shutting ON/OFF the electrical
+connection of combi.
+3.2.2. Operation at Winter Position
+At that position, combi operates both for heating the environment and
+providing hot tap water.
+3.2.3. Operation at Summer Position
+Combi only operates for heating the Domestic Hot Water at that
+position. In order to switch to DHW position;
+When the combi is started for the first time,
+screen displays nG letter and then a number
+(for instance 24) indicating kW power of the
+device
+and screenlight is closed. Now, combi is at
+STANDBY position. The temperature value
+when electricity is supplied to the device
+is the temperature value of water in the
+installation.
+Then, OFF letter is displayed,
+OFF
+OFF
+Radiator temperature is adjusted with button
+(3) and Domestic Hot Water temperature
+adjustment is made with button(4) and this
+temperature is displayed by indicator (7) on
+the screen.
+In order to shuton the combi, hold MODE
+button, whereas a circle starts on the screen,
+release the button when circle 	is
+completed.
+In such case, combi initially gets in the
+Radiator position, its symbol flashes at left
+top corner of screen and existing radiator
+installation temperature is displayed on the
+screen and then screen light turns off. At
+that position, you can adjust the temperature
+between 25 – 80 °C with the Radiator
+temperature adjustment button (3).
+You can increase (14) and decrease (15) the
+temperature with temperature adjustment
+buttons (see.Figure 48) between 25 – 80
+°C, screen lights when buttons are pressed
+and °C symbol flashes besides the radiator
+temperature value.
+{If you have a ground heating system, as our Authorized
+Service adjust your combi for “Low Temperature Operation”,
+maximum temperature shall be limited with the Radiator
+temperature adjustment button (3) (e.g. maximum 47 °C)}.
+Domestic Hot Water Adjustment at Winter
+Position; First press the DHW button (4).
+At that position, 	symbol flashes at right
+top corner of the screen and existing DHW
+temperature will be seen on the screen and
+screen light will turn off.
+You can adjust the hot tap water temperature
+value between 35 – 60 °C with (14) and (15)
+numbered buttons. Screen lights during
+temperature change, °C symbol flashes
+besides the DHW temperature value. Screen
+light turns off after adjustment.
+If you are starting the combi for the first time
+hold MODE button, and release the button
+after the cycle is completed on the screen,
+initially combi switches to radiator position,
+its symbol 	will flash on left top corner
+of the screen existing radiator installation
+temperature shall be indicated on the screen
+and screenlight will be turned-off.
+In order to switch to DHW position, hold
+MODE button and release the button after
+completion of cycle on the screen. At that
+position, 	symbol flashes at right top corner
+of the screen and existing DHW temperature
+will be seen on the screen and screen light will
+turn off.
+At that position 	, you can adjust the
+temperature between 35 – 60 °C with the
+Domestic Hot Water temperature adjustment
+button (4). Screen light will be open during
+adjustment, tap symbol 	and Domestic
+Hot Water temperature value will flash. You
+can adjust the hot tap water temperature
+value between 35 – 60 °C with (14) and (15)
+numbered buttons. Screen lights during
+temperature change, °C symbol flashes
+besides the DHW temperature value. Screen
+light turns off after adjustment.
+
+-- 27 of 40 --
+
+ warmhaus.com	28
+3.2.4. Resetting the Combi (Re-Starting)
+In cases that device gives failure/locking errors hold RESET button for 3-4
+seconds, and release after completing the cycle on the screen. You can reset
+the device and have it repeated re-start operations
+3.2.5. Shutting off the Combi
+To bring the combi to OFF position while it is in SUMMER position;
+A sample utilisation error; when E81 or E06
+failure codes are displayed on the device
+screen, it has passed to failure since no ignition
+occurred in your device. In that case, any of
+gas line valves connected to the combi may
+be closed, combi will be restarted when closed
+valve is opened and RESET button is pressed.
+If combi is not started with resetting, please
+consult our Authorized Service.
+When the MODE button is hold, after the cycle is
+completed while screen light is on,
+screen will display OFF letter, that means your
+combi is OFF.
+OFF
+To bring combi in OFF position while it is in
+WINTER; hold MODE button, after cycle is
+completed while the screen light is on, combi
+will be in SUMMER position.
+When combi is started, flame modulation symbol is seen at the middle section
+of the screen. At that position, you can increase (3+14) 	and decrease
+(3+15) 	the temperature with radiator temperature adjustment buttons
+(see. Figure 47-48) (3) between 25 – 80 °C, screen lights when buttons are
+pressed and °C symbol 	flashes besides the radiator temperature value.
+Now, your combi is at STANDBY position as OFF.
+OFF
+Then, upon repeating the same operation, letter
+will be displayed on screen after completing
+the cycle and screen light turns off.
+Analogue manometer is located near to right-bottom side of the
+combi. Installation pressure should be seen in this manometer even
+in the absence of electricity.
+{If you have a ground heating system, as our Authorized
+Service adjust your combi for “Low Temperature Operation”,
+maximum temperature shall be limited with the Radiator (CH)
+temperature adjustment button (3) (e.g. maximum 50 °C)}.
+3.2.6. Use with Room Thermostat (Optional)
+Combi has initial preparation for remote control connection via environment
+thermostats being sold as optional sets. All Warmhaus thermostats can
+be connected with dual-wired cables. Carefully read user's and installation
+instructions given in the Accessory set. Thanks to control units with room
+thermostat having program clock, you can control your combi at installation
+Important: It is compulsory to have two different lines according to
+legal regulations being in force regarding electrical installations in
+case of using a thermostat On/Off on the Remote Control. It is not
+allowed to use any pipe or hose of the combi as electricity or phone earthing
+line. That must be ensured prior to making electrical connections of the
+combi.
+place, operating based on room temperature and also adjust different uses
+depending on each day of the week.
+General Utilisation Type
+• Please consult our authorized services for room thermostats compatible
+with Warmhaus combi.
+• Do not remove device components during operation.
+• Do not place at a position allowing direct sunlight exposure or near heat
+sources.
+• Manufacturer company shall not be responsible for below given situations:
+a) Faulty installation
+
+-- 28 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	29
+Maintenance and Service Life: Warmhaus room thermostat should not
+come into contact with water or excessive humidity. Unless an external
+damage occurs, the room thermostat does not require any maintenance.
+b) Making intervention on the device by unauthorized persons
+c) Failing to follow instructions given in this book and room thermostat
+booklets
+3.2.7. Use of Outside Temperature Sensor (Optional)
+Outside Weather Temperature Sensor (optional) can be installed in your
+combi by our Authorized Service (see: Installation Section; Accessory
+Connection Scheme), and you can enable automatic temperature adjustment
+for the radiator with immediate responses to outside weather temperature
+changes via smart and comfort operation. Therefore, it maintains an efficient
+and economic operation by reducing the radiator water temperature when
+outside weather temperature increases and gradually increasing the radiator
+water temperature when outside weather temperature decreases and sets
+you free from making radiator temperature adjustments. This sensor is
+activated when connected independently from the typology or availability
+of used thermostat, the relation between output temperature and outside
+temperature is defined according to curves given in the graphic below based
+on position of button located on the combi panel.
+After connecting the Outside Sensor, adjustment is made according to
+average external weather temperature of your province with P04 parameter.
+Our authorized service will make this adjustment during installation.
+3.2.8. Customizing Combi Features
+As your combi has an advanced electronic card, operation conditions and
+certain parameters related with your preferences may be changed by our
+Authorized Service. Please consult our authorized service when any changes
+requested in below given parameters.
+(P07) Controlled Power Increase Period.
+When combi starts, it uses a controlled period defined for reaching the
+adjusted maximum heating power. This period is adjusted as 3 minutes as
+standard and can be increased up to 3 minutes.
+(P08) Radiator (Heating) Power.
+with actual heat requirement of installation place. Thus, the combi
+automatically operates with variable gas flow rates depending on heat load
+of installation between the minimum and maximum power.
+(P21) Lowe temperature region selection.
+This parameter should be adjusted as 1 for ground heating or heating
+systems operating with low temperature. 0 (zero) value is selected for
+radiator systems to operate at high temperatures as standard.
+(P24) Child Protection
+This parameter is not active as standard, please consult our Authorized
+Service for activating the parameter (Protection lock is activated when
+parameter is adjusted as 1). Buttons are locked after 2 minutes following use
+of buttons when the function is active. Keylock is opened when the MODE
+button is hold until cycle is completed for getting off the child protection.
+Your combi is under control against setting changes upon activation of this
+feature.
+(P40) Radiator ignition delay period.
+Combi device is equipped with an electronic timer for preventing frequent
+ignition by the combi during heating stage. This period is adjusted as 2
+minutes as standard and can be increased up to 10 minutes.
+(P42) Ready Hot Water (Pre-Heating passive/active).
+In order to rapidly prepare without waiting for your hot tap water request
+and reducing the cold water consumption during waiting, grid water is
+heated in the plate exchanger and ready hot water is stored. This function is
+displayed on 6 buttons PriwaPlus LCD Screen.
+Activation of this function in PRIWA PLUS, PRIWA ErP PLUS and ENERWA
+models is performed with parametric adjustment by our Authorized Service
+depending on your request.
+Air Deareation Function
+It is possible to activated deaeration function pressing RESET and (–) button
+for circle time.
+The "Air" will be displayed on the screen. Boiler will start the Air
+Deareation function.
+During this function pump and 3-way valve are activated/deactivated in
+order to have deaeration of the hydraulic plant.
+This function ends pushing again RESET and (–) button for circle time or at
+the end of deaeration time: 12 minutes.
+Figure 57 Boiler controlled by Outside Sensor
+Figure 59 Reset button and (–) button are pressed.
+20,0
+30,0
+40,0
+50,0
+60,0
+70,0
+80,0
+-25	-20	-15	-10	-5	0	5	10	15	20
+K=0,75
+K=1,5
+K=2,2	K=3	K=4,5	K=6	K=9
+Figure 58 Outside weather temperature sensor operation curves
+Boiler Setpoint °C
+Outside Temperature °C
+1
+2
+
+-- 29 of 40 --
+
+ warmhaus.com	30
+3.3. TROUBLESHOOTING
+3.3.1. Failure Codes Table
+Error
+Code 	Description of the Error 	Malfunction 	Probable Cause 	Solution(s)
+E 01 	Intervention of exhaust
+Thermostat (Open
+Combustion Chamber
+boiler )
+Boiler does not work,
+E01 error code flashing on
+the screen
+> Flue Sensor faulty 	1-) Reset & Restart boiler
+2-) Call for authorised service
+E 02 	Low water pressure in the
+system/system parameter
+wrongly setted
+Boiler does not work,
+E02 error code flashing
+on the screen
+> Water pressure in the boiler not
+enough
+1-) Fill the boiler 1,2-1,5 bar according to manual page 28 or 29 problem
+will automatically removed
+2-) Check if the system pressure 1,2 - 1,5 bar from the manometer
+located right & bottom of the boiler
+3-) Reset & Restart boiler
+4-) If problem persist Call for authorised service
+E 03 	High water pressure in
+the system
+Boiler does not work,
+E03 error code flashing
+on the screen
+> High Water pressure in the
+boiler higher than > 2,8 bar
+1) First check the filling tap of the boiler and make sure it is closed.
+2) During boiler operation, the safety valve may continue to drain water
+from the drain line, so make sure that this line is connected to a drain
+line.
+3) If your plumbing line has a drain cock; first turn the boiler off and let
+the pressure drop to 1-1.5 bar, then switch it on again.
+4) If the pressure increase occurs again, call an authorized service.
+E 04 	Domestic heating water
+temperature sensor faulty
+Boiler does not work on
+DHW mode but still work
+on Central heating mode,
+E04 error code flashing on
+the screen
+> Domestic heating water
+temperature sensor faulty
+1-) Call for authorised service at first
+E 05 	Central heating FLOW
+temperature sensor faulty
+Boiler does not work,
+E05 error code flashing
+on the screen
+> Central heating FLOW
+temperature sensor faulty
+1-) RESET boiler at first check if problem removed
+2-) Check other gas devices if they are working
+3-) Check main gas suppy valve is open or not
+4-) Check boiler gas suppy valve bellow the boiler is open or not
+5-) RESET boiler at first check if problem removed
+6-) Call for authorised service
+E 06 	No ignition 	Boiler does not work,
+E06 error code flashing
+on the screen
+> Gas supply failure 	1-) RESET boiler at first check if problem removed
+2-) Check boiler central heating valves are open if they are closed open
+of all
+3-) Check all radiator valves are open if they are closed open of all
+minimum 3 meters of radiator must be open
+4-) RESET boiler and check if problem removed
+5-) Call for authorised service
+E 07 	Safety thermostat
+intervention
+Boiler does not work,
+E07 error code flashing
+on the screen
+> Lack of water on the system
+> Pump blockage
+> Pump failiure
+> Pump harness
+> Installation blockage
+1-) RESET boiler at first check if problem removed
+2-) Check boiler central heating valves are open if they are closed open
+of all
+3-) Check all radiator valves are open if they are closed open of all
+minimum 3 meters of radiator must be open
+4-) RESET boiler and check if problem removed
+5-) Call for authorised service
+E 08 	Flame circuit failure 	False flame signal from
+combustion or electrode
+> Water blokage on syphon
+> Electronic board
+1-) Call for authorised service
+E 09 	No water circulation
+in the system
+Boiler does not work,
+E09 error code flashing
+on the screen
+> Lack of water on the system
+> Pump blockage
+> Pump failiure
+> Pump harness
+> Installation blockage
+1-) RESET boiler at first check if problem removed
+2-) Check boiler central heating valves are open if they are closed open
+of all
+3-) Check all radiator valves are open if they are closed open of all
+minimum 3 meters of radiator must be open
+4-) RESET boiler and check if problem removed
+5-) Call for authorised service at first
+E 11 	Gas valve modulator
+disconnected
+Boiler does not work,
+E11 error code flashing
+on the screen
+> Gas valve harness 	1-) Call for authorised service at first
+2-) Check gas valve cabeling between board and gas valve
+E 13 	Exhaust temperature
+probe over-temperature
+alarm
+Boiler does not work,
+E13 error code flashing
+on the screen
+> Over temperature flue gas outlet
+value > 105 C°
+1-) Call for authorised service at first
+E 14 	Exhaust ( FLUE )
+temperature probe fault
+Boiler does not work,
+E14 error code flashing
+on the screen
+> Central heating FLUE temperature
+sensor faulty
+1-) Reset & Restart boiler
+2-) Call for authorised service
+E 15 	Fan failure (feedback/
+supply)
+Boiler does not work,
+E15 error code flashing
+on the screen
+> Fan harness 	1-) Reset & Restart boiler
+2-) Call for authorised service at first
+E 16 	Central heating
+temperature RETURN
+sensor faulty
+Boiler does not work,
+E16 error code flashing
+on the screen
+> Central heating RETURN
+temperature sensor faulty
+1-) Reset & Restart boiler
+2-) Call for authorised service at first
+
+-- 30 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	31
+Error
+Code 	Description of the Error 	Malfunction 	Probable Cause 	Solution(s)
+E 17 	Temperature difference
+between FLOW and LIMIT
+NTC (Double Heating
+Probe) faulty
+FLOW and LIMIT sensor
+(DOUBLE NTC)
+malfunction
+> FLOW and LIMIT Sensor
+( double NTC ) faulty
+1-) Reset & Restart boiler
+2-) Call for authorised service at first
+E 19 	Water flow selection with
+water flow meter input
+reading
+Lack of domestic heating
+water on request
+Wrong parameters settled on TsP
+menu
+1-) Call for authorised service at first
+2-) Only authorised service must adjust TsP Parameter P01=0 with
+defalut value
+E 20 	CH Overtemperature,
+Temperature Central
+Heating > TSP 81 value °C
+Boiler does not work,
+E81 error code flashing
+on the screen
+> Lack of water on the system
+> Pump blockage
+> Pump failiure
+> Pump harness
+> Installation blockage
+1-) RESET boiler at first check if problem removed
+2-) Check boiler central heating valves are open if they are closed open
+of all
+3-) Check all radiator valves are open if they are closed open of all
+minimum 3 meters of radiator must be open
+4-) RESET boiler and check if problem removed
+5-) Call for authorised service
+E 21 	Delta Temperature
+Central Heating flow
+and Return > TSP 82
+value °C
+Boiler does not work,
+E21 error code flashing
+on the screen
+> Lack of water on the system
+> Pump blockage
+> Pump failiure
+> Pump harness
+> Installation blockage
+1-) RESET boiler at first check if problem removed
+2-) Check boiler central heating valves are open if they are closed open
+of all
+3-) Check all radiator valves are open if they are closed open of all
+minimum 3 meters of radiator must be open
+4-) RESET boiler and check if problem removed
+5-) Call for authorised service
+E 28 	Maximum allowed
+consecutive lock-out reset
+reached
+Usable RESET number
+reached.
+Too many consecutive lock-out
+failures (followed by reset) due to
+other possible causes
+1-) Removing power supply reset will be allowed
+2-) Check the root cause of Error code to solve
+3-) If fault still persists call for authorised service
+E 37 	Low voltage anomaly 	Boiler does not work,
+E37 error code flashing
+on the screen
+Low voltage < 165 VAC +/- 5%
+on the supply network operatio
+mode OR During Au-TO calibration
+mode < 182 VAC +/- 5%
+1-) Call for Electrical supply network provider
+2-) Error will remove if supply voltage > 170 VAC +/- 5%
+3-) If you seen seen this E37 during calibration calibration can not be
+complete unless supply voltage > 188 VAC +/- 5%
+E 40 	Wrong network frequency
+survey
+Boiler does not work,
+E40 error code flashing
+on the screen
+Wrong frequency survey out of
+tolererance 50 Hz +/- 5% on the
+supply net work
+1-) Call for Electrical supply network provider
+2-) Error will remove if supply frquency 50 Hz +/- 5%
+E 41 	Loose of flame more than
+6 successive times
+Boiler does not work,
+E41 error code flashing
+on the screen
+> Too many domestic heat water
+request in short period ( 1 min )
+> Low gas pressure
+1-) Call for authorised service at first
+E 42 	Buttons anomaly 	Boiler does not work,
+E42 error code flashing
+on the screen
+Wrong parameters settled on
+TsP menu
+1-) Call For service
+E 43 	Opentherm ommunication
+error
+Boiler does not work,
+E43 error code flashing
+on the screen after 1
+minute of communucation
+error
+Opentherm line disconnected 	1-) Remove energy from boiler and re energised E43 will be removed
+and boiler & buttons will get back to funcitional
+2-) Replace the room unit batteries with the fresh ones and reset from
+room unit
+3-) Check cabeling between boiler and room unit and re connect if any
+disconnection, if connection set up succesfully then connection symbol
+page 37 symbol 19 will be activated on the screen
+4-) Call for authorised service to re connect openterm connection
+rE 44 	Cumulated intermittent
+ignition without reaching
+burner ignition.
+Boiler does not work,
+E44 error code flashing
+on the screen
+> Intermittent contacts on harness
+> Hammer effect on water net
+> Too many request from in shotr
+time from out side room units or
+thermosad bridge etc.
+1-) Reset & Restart boiler
+2-) Call for authorised service
+E 62 	Calibration request 	Boiler does not work,
+E62 error code flashing on
+the screen
+> Calibration not done
+> Replacing board but not service
+key from the board dismantled
+> Service key damaged or
+disconnected
+> Updating Software (probable)
+1-) Call For service
+E 72 	Delta T heating at ignition
+not occurred
+Boiler does not work,
+E72 error code flashing on
+the screen
+> FLOW OR RETURN Sensor not on
+position
+1-) Call for authorised service at first
+2-) Check RETURN and FLOW sensor on position.
+E 74 	Second CH temperature
+Probe faulty
+Boiler does not work,
+E74 error code flashing on
+the screen
+> FLOW and LIMIT Sensor (double
+NTC ) faulty
+1-) Reset & Restart boiler
+2-) Call for authorised service.
+E 77 	Absolute current values
+reached
+Boiler does not work,
+E77 error code flashing on
+the screen
+> Gas inlet pressure
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Cabeling disconnections
+> Combustion calibration
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+
+-- 31 of 40 --
+
+ warmhaus.com	32
+Error
+Code 	Description of the Error 	Malfunction 	Probable Cause 	Solution(s)
+E 78 	Max regulation current
+value reached
+Boiler does not work,
+E78 error code flashing on
+the screen
+> Gas inlet pressure
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Cabeling disconnections
+> Combustion calibration
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+E 79 	Min regulation current
+value reached
+Boiler does not work,
+E79 error code flashing on
+the screen
+> Gas inlet pressure
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Cabeling disconnections
+> Combustion calibration
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+E 80 	Problem on electronic gas
+valve driver
+Boiler does not work,
+E80 error code flashing on
+the screen
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+E 81 	Lock-out for combustion
+problem at starting (1)
+Boiler does not work,
+E81 error code flashing on
+the screen
+> Strong flue blokage
+> Combustion problem
+> Wrong flue
+> Gas inlet pressure
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Electrode position
+> Combustion calibration
+1-) Call for authorised service at first
+E82 	Lock-out for combustion
+problem on Lawa / Lawa
+Plus models
+Boiler does not work,
+E82 error code flashing on
+the screen
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Combustion calibration
+1-) If there is strong wind (ie.wind storm) wait until the wind storm stop
+then RESET the boiler
+2-) IF problem persist Call for authorised service
+E83 	Temporary bad
+combustion fault problem
+on Lawa / Lawa Plus
+models
+Boiler does not work,
+E83 error code flashing on
+the screen
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Combustion calibration
+1-) If there is strong wind (ie.wind storm) wait until the wind storm stop
+then RESET the boiler
+2-) IF problem persist Call for authorised service
+E 84 	Capacity reduction for
+detected (supposed) low
+gas inlet pressure
+Boiler does not work,
+E84 error code flashing on
+the screen
+> Gas inlet pressure
+> Combustion problem
+1-) If there is strong wind (ie.wind storm) wait until the wind storm stop
+then RESET the boiler
+2-) IF problem persist Call for authorised service
+E 87 	Problem on electronic gas
+valve circuit
+Boiler does not work,
+E87 error code flashing on
+the screen
+> Cabeling disconnections
+> Gas valve failiure
+1-) Call for authorised service at first
+E 88 	Fault of electronic gas
+valve managing circuit
+Boiler does not work,
+E88 error code flashing on
+the screen
+> Cabeling disconnections
+> Gas valve failiure
+1-) Call for authorised service at first
+E 89 	Problem on combustion
+feedback signal
+Boiler does not work,
+E89 error code flashing on
+the screen
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Cabeling disconnections
+> Combustion calibration
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+E 90 	Unable to regulate
+combustion
+Boiler does not work,
+E90 error code flashing
+on the screen
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Cabeling disconnections
+> Combustion calibration
+> Electronic board
+> Gas valve failiure
+1-) Call for authorised service at first
+E 92 	Air compensation active 	Boiler does not work,
+E91 error code flashing
+on the screen
+> Possible wind precence
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Combustion calibration
+> Min power adjustment
+1-) Call for authorised service at first
+E 93 	Unable to regulate
+combustion (temporarily)
+Boiler does not work,
+E93 error code flashing
+on the screen
+> Aging or rust on the electrode
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Electrode position
+> Combustion calibration
+> Gas valve failiure
+> Electronic board
+1-) Call for authorised service at first
+
+-- 32 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	33
+Error
+Code 	Description of the Error 	Malfunction 	Probable Cause 	Solution(s)
+E 94 	Possible low gas pressure
+or exhaust recirculation
+Boiler does not work,
+E94 error code flashing
+on the screen
+> Gas inlet pressure LOW
+> Recirculation on fluegas path
+> Blokage on flue or wrong flue
+> Aging or rust on the electrode
+> Electrode position
+> Combustion calibration
+> Gas valve failiure
+> Electronic board
+1-) Call for authorised service at first
+E 95 	Intermittent combustion
+value
+Boiler does not work,
+E95 error code flashing
+on the screen
+> Harness on electrode and earth
+> Aging or rust on the electrode
+> Electrode position
+> Combustion calibration
+1-) Call for authorised service at first
+E 96 	Flue or air suction way
+blockage
+Boiler does not work,
+E96 error code flashing
+on the screen
+> Blokage on flue
+> Blokage on air suction path
+1-) Call for authorised service at first
+E 98 	SW error, board start-up
+error fault
+Boiler does not work,
+E98 error code flashing
+on the screen
+> Boiler software problem 	1-) Call for authorised service at first
+E 99 	Generic fault 	Boiler does not work,
+E99 error code flashing
+on the screen
+> Boiler electronic hardware
+problem
+1-) Reset & Restart boiler
+2-) Call for authorised service at first
+(1) Call the Authorized Service if failure continues.
+(2) 81 numbered failure corresponds any blocking in the exhaust gas pipe. In such case, you should consult the authorized service technician before re-starting the combi.
+
+-- 33 of 40 --
+
+ warmhaus.com	34
+3.4. RECOMMENDATIONS FOR ECONOMICAL USE OF
+COMBI
+Your combi is adjusted at ECO mode for economic use, we recommend not
+to change.
+Correct Capacity Selection
+Heat loss calculation of the combi location should be made correctly and
+combi capacity should comply with this calculation. Devices not having
+adequate capacity shall give late responses to heating requests, devices with
+higher capacity may cause discomfort and more fuel consumption as they
+more frequently opened and closed. Therefore, combi capacities should be
+selected according to the place used.
+Insulation
+Insulation of your building is the most important item reducing the heat loss
+and gas consumption. However, as your combi has the highest thickness
+insulation of its class, heat loss is minimized.
+Radiators
+Ensure balancing our pressure distribution of your radiator installation within
+the house by making reduction adjustments from radiator valves. Placing
+furnitures in front of radiators prevents air circulation and causes discomfort
+and more fuel consumption. Reducing radiator valves of rooms not used for
+a long period or if thermostatic radiator valve is used, bringing to the lowest
+position then, closing room doors will provide saving.
+Domestic Hot Water
+Always adjust the domestic hot water temperature as (38~42 °C). Adjustment
+of temperature adjuster as low ensures a considerable power saving. In
+addition, high domestic hot water temperatures cause strong calcification
+and that negatively affects operation of the device (for instance, longer
+heating periods, less flow rate).
+Thermostatic Radiator Valves
+You can both acquire savings and comfort by balancing the heat distribution
+among the house by using Thermostatic Radiator Valves.
+Room Thermostats
+Your combi will operate more economically as you will have the chance to
+adjust requested room temperature according to comfort and economy
+timings via room thermostats. Thus, you can adjust temperature of your
+room as you wish, and also you can acquire approximately 6% power saving
+with every degree of temperature decrease.
+Ventilation
+Do not leave windows slightly open for ventilating room/rooms. In such case,
+continuous heat loss will occur and not having any certain improvement in
+the room air.
+Fully opening windows for a short period provides a better result. Bring
+thermostatic radiator valves to lowest position when ventilating rooms.
+Cleaning And Maintenance
+Attention: to preserve the boiler's integrity and keep the safety features,
+performance and reliability, which distinguish it, unchanged over time, you
+must at least execute maintenance operations on a yearly basis in compliance
+with what is stated in the relative point at “annual check and maintenance
+of the appliance”, in compliance with national, regional, or local standards
+in force.
+We recommend stipulating a yearly cleaning and maintenance contract with
+an authorised local firm.
+3.5. ISSUES REQUIRED TO BE TAKEN INTO
+CONSIDERATION FOR WARRANTY CONDITIONS
+This warranty given by WARMHAUS does not cover elimination of failures
+arising from abnormal use of the product and also out of the warranty scope
+for below given situations
+1. Damages and failures occurring in devices which are not first started by
+Warmhaus Authorized Services,
+2. Damages and failures arising from use of the product contrary to items
+given in User's Manual and using out of its intended purpose.
+3. Damages and failures arising from wrong type selection,
+4. Damages and failures arising from maintenance and repairs performed by
+persons other than our Authorized Services,
+5. Damages and failures occurring due to transportation, unloading, loading,
+storing, external physical (Crushing, scratches, fractures) and chemical
+factors following delivery of the Product,
+6. Damages and failures arising from fire and lightning,
+7. Damages and failures arising from false fuel use and fuel characteristics,
+8. Low or excessive voltage; unearthed socket usage;
+9. Damages and failures arising from faulty electricity installations,
+10.Damages and failures arising from failing to perform timely annual
+maintenance
+11. And cleaning, defined periodical maintenance operations by our
+Authorized Services,
+12.Damages and failures those may occur in the device or usage area due to
+other products and accessories used in a system with the device subject
+to the Warranty,
+13.Damages and failures arising from frost/icing or occurring due to using in
+the outdoor places (open balcony, etc.).
+14.Altering the Registry Label and Warranty Certificate,
+15.Damages and failures arising from using water out of the water values
+defined in device user's guide,
+Elimination of above mentioned failures shall be performed against payment.
+Our distinguished customer,
+we believe the importance of providing good products to you as well as
+rendering good services.
+Recommendations and Data to be Followed:
+1. When first start of your combi is done, please keep the technical service
+document given by the Aythorized Service and a copy of device invoice
+and the Warranty Document approved by your Authorized Dealer.
+2. Use your product according to principles of installation and operation
+guide.
+3. Keep the "SERVICE DOCUMENT" if received from your service technician
+following the service taken. The Service Document will be beneficial for
+you in any problems those may occur in your device in the future.
+
+-- 34 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	35
+4. TECHNICAL DATA
+TECHNICAL DATA 	UNIT 	Ewa 20 	Ewa 24
+Gas Circuit 	DG 	DG 	LPG 	LPG 	DG 	DG 	LPG 	LPG
+Gas Type 	G20 	G25 	G30 	G31 	G20 	G25 	G30 	G31
+Gas Supply Pressure 	20 	25 	30 	37 	20 	25 	30 	37
+Gas Consumption at Maximum 	m³/h 	2,12 	2,58 	0,71 	0,81 	2,38 	2,85 	0,73 	0,92
+Gas Consumption at Minimum 	m³/h 	0,36 	0,42 	0,13 	0,14 	0,37 	0,43 	0,11 	0,11
+Seasonal Space Heating Energy Efficiency Class 	A 	A
+Seasonal Space Heating Energy Efficiency (ŋs) 	% 	91,2 	91,2 	90,5 	90,5 	92 	92 	92 	92
+Useful efficiency at rated heat output and high temperature
+regime(2) (ŋ4) 	% 	87,6 	87,6 	88,3 	88,3 	87,6 	87,6 	87,6 	87,6
+Useful efficiency at 30% of rated heat output and low temperature
+regime(1) (ŋ1) 	% 	96,4 	96,4 	95,5 	95,5 	97,5 	97,5 	97,5 	97,5
+Radiator Circuit 	G20 	G25 	G30 	G31 	G20 	G25 	G30 	G31
+Maximum heat input Qn 	kW 	20 	20 	20 	19,79 	24,25 	24,25 	24,25 	24,25
+Minimum heat input Qn 	kW 	3,5 	3,5 	3,5 	3,5 	3,5 	3,5 	3,5 	2,8
+Maximum Heat Output Pn (50/30 °C) 	kW 	20,6 	21,1 	20,4 	20,6 	25 	25 	24,7 	25
+Minimum Heat Output Pn (50/30 °C) 	kW 	3,65 	3,62 	3,54 	3,57 	3,6 	3,6 	3,55 	2,9
+Maximum Heat Output (Pn) (80/60 °C) 	kW 	19,4 	19,57 	19,50 	19,4 	23,7 	23,7 	23,6 	23,7
+Minimum Heat Output (Pn) (80/60 °C) 	kW 	3,37 	3,30 	3,39 	3,35 	3 	3 	3,2 	2,5
+Temperature Selection Range (min÷max) High Temperature 	°C 	25 ÷ 80
+Temperature Selection Range (min÷max) Low Temperature 	°C 	25 ÷ 47
+Operating Pressure (Maximum/Minimum) 	bar 	3 / 0,5 	3 / 0,5
+Expansion Tank Volume 	L 	7 / 8 	7 / 8
+Pump pressure (at constant flow rate) 	mH2O 	6,2 (700 l/h) 	6,2 (700 l/h)
+Maximum Pump Delivery Head (Q = 0 m3/h) 	mH2O 	6,2 	6,2
+Max. Pump Flow Rate 	m³/h 	2,3 	2,3
+Pump Energy Efficiency Index 	EEI 	≤ 0,20 	≤ 0,20
+Domestic Hot Water Circuit
+Water Heating Energy Efficiency Class 	A 	A 	A
+Water Heating Declared Load Profile 	XL 	L 	XL
+Water Heating Energy Efficiency 	% 	85 	81 	84
+Gas Consumption at Maximum 	m³/h 	2,47 	2,83 	0,73 	0,94
+Modulation Rate 	15/100 	15/100 	15/100 	15/100 	14/100 	14/100 	14/100 	14/100
+Maximum DHW Heat Input 	kW 	23,7 	23,7 	23,7 	23,2 	25,8
+Minimum DHW Heat Input 	kW 	3,5 	3,5 	3,5 	3,5 	3,5
+Max. Domestic Hot Water flow rate
+Minimum / (Maksimum: ∆t: 30 °C / ∆t: 35 °C) 	L/min 	1,5 / (11 / 10) 	1,5 / (12 / 11)
+DHW Pressure (Minimum / Maksimum) 	bar 	0,5 / 10 	0,5 / 10
+Temperature Adjustment Range 	°C 	35 - 60 	35 - 60
+Electricity Circuit / Protection Index 	IP 	IPX5D 	IPX5D
+Electricity Supply 	V 	230 V +%10; -%15 	230 V +%10; -%15
+Electricity Consumption (Min./Max.) 	Watt 	57 / 86 	55 / 95
+Exhaust Gas Circuit 	G20 	G25 	G30 	G31 	G20 	G25 	G30 	G31
+(80/60 °C) Exhaust gas temperature (Min. / Max.) 	°C 	55 / 78 	55 / 78 	54 / 78 	54 / 78 	69 / 71 	65 / 70 	57 / 70 	60 / 70
+(50/30 °C) Exhaust gas temperature (Min. / Max.) 	°C 	37 / 57 	37 / 57 	41 / 55 	41 / 55 	49 / 51 	48 / 49 	43 / 57 	47 / 51
+Maximum Exhaust Gas Temperature [Maximum DHW Mode] 	°C 	78 	70
+Weighted Value of NOx (GCV) (NOx Class: 6) 	mg/
+kWh 	33 	33 	38 	38 	20 	19 	42 	31
+General / Dimensions (H x W X D) 	mm 	725 x 420 x 288 	725 x 420 x 288
+Sound Level 	dB (A ) 	52 	52
+Maximum Flue Lenght (Ø60/100 mm) [Horizontal* / (Vertical*] 	m 	10 / 11 	10 / 11
+Net Weight / Packed Device Weight 	kg 	30 / 31,8 	32,6 / 33,8
+Type 	B23, B23P, B33, B33P, B53, B53P, C13, C33, C43, C53, C63, C83, C93, C(10)3
+(1) Low temperature means for condensing boilers 30 °C, for low temperature boilers 37 °C and for other heaters 50 °C return temperature (at heater inlet).
+(2) High temperature regime means 60 °C return temperature at heater inlet and 80 °C feed temperature at heater outlet.
+* At the maximum flue distance, the flue length should be reduced by 1 meter for every 90° bend and 0.5 meter for every 45° bend.
+
+-- 35 of 40 --
+
+ warmhaus.com	36
+HANDING OVER
+After completing the installation and commissioning of the system the installer should hand over to the householder by the following actions:
+1. Make the householder aware that the user instructions are located in the pocket in the drop down door and explain his/her responsibilities under the relevant
+national regulations.
+2. Explain and demonstrate the lighting and shutting down procedures.
+3. The operation of the boiler and the use and adjustment of all system controls should be fully explained to the householder, to ensure the greatest possible
+fuel economy consistent with the household requirements of both heating and hot water consumption. Advise the User of the precautions necessary to
+prevent damage to the system and to the building, in the event of the system remaining inoperative during frosty conditions.
+4. Explain the function and the use of the boiler heating and domestic hot water controls.
+Explain that due to system variations and seasonal temperature fluctuations DHW flow rates/temperature rise will vary, requiring adjustment at the draw
+off tap. It is therefore necessary to draw the users attention to the section in the Users Instructions titled “Control of Water Temperature” and the following
+statement: “Additionally, the temperature can be controlled by the user via the draw-off tap: the lower the rate the higher the temperature, and vice versa”.
+4.1. PRODUCT FICHE & ERP DATA
+PRODUCT FICHE & ErP Data
+All information in the ERP Data Sheet & Product Data Sheet is based on the test results of the SZU Test / BRNO laboratories.
+Product Fiche (according to EU regulation No 811/2013 and 814/2013 )
+Ewa 20 	Ewa 24
+Space heating - Temperature application 	High / Medium / Low 	High / Medium / Low
+Water heating - Declared load profile 	XL 	L 	XL
+Seasonal space heating energy efficiency class 	A 	A 	A
+Water heating energy efficiency class 	A 	A 	A
+Rated heat output (Prated veya Psup) 	kW 	19 	24 	24
+Space heating - annual energy consumption 	QHE 	GJ 	34,8 	42 	42
+Water heating - Annual energy consumptio
+kWh (*) 	37 	26 	37
+GJ (**) 	17 	11 	18
+Seasonal space heating energy efficiency 	% 	91,17 	92 	92
+Water heating energy efficiency 	% 	81 	84
+Sound power level LWA indoors 	dB 	52 	52 	52
+Option to only operate during low demand periods 	— 	— 	— 	—
+Specific precautions for assembly, installation and maintenance 	Before any assembly, installation or maintenance the user and installation
+manual has to be read attentively and to be followed.
+All the data that is included in the product information was determined by applying the spesifications of the relevant European directives. Differences to product information
+listed elsewhere may result in different test conditions. Only the data that is contained in this product information is applicable and valid.
+(*) Electricity (**) Fuel
+
+-- 36 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	37
+4.2. ERP DATA
+ErP DATA (according to EU regulation No 813/2013 and 814/2013)
+Ewa 20 	Ewa 24
+Water heating - Declared load profile 	XL 	L 	XL
+Reated Heat Output 	Prated 	kW 	24 	24
+Useful heat output at rated heat output and high temperature regime (2) 	P4 	kW 	19,4 	23,7 	23,7
+Useful heat output at 30% of rated heat output and low temperature
+regime (1) 	P1 	kW 	3,63 	4,16 	4,16
+Seasonal Space Heating Energy Efficiency 	ηs 	% 	91 	92 	92
+Useful efficiency at rated heat output and high temperature regime(2) 	η4 	% 	88,47 	87,57 	87,57
+Useful efficiency at 30% of rated heat output and low temperature
+regime(1) 	η1 	% 	95,51 	97,48 	97,48
+Auxiliary Electricity Consumption
+Full load 	elmax 	kW 	0,040 	0,43 	0,43
+Part load 	elmin 	kW 	0,01 	0,11 	0,11
+Standby mode 	PSB 	kW 	0,004 	0,005 	0,005
+Other Items
+Standby heat loss 	PStby 	kW 	0,044 	0,057 	0,057
+Ignition burner power consumption 	Pign 	kW 	0,000 	0,000
+Space heating - annual energy consumption 	QHE 	GJ 	42 	42
+Sound power level, indoors 	LWA 	dB 	52 	52 	52
+Emissions of nitrogen oxides 	NOX 	mg/kWh 	33 	20 	20
+Domestic Hot Water Parameters
+Declared Load Profile 	L 	XL
+Daily electricity consumption 	Qelec 	kWh 	0,167 	0,117 	0,169
+Annual electricity consumption* 	AEC 	kWh 	37 	26 	37
+Water Heating Energy Efficiency 	hwh 	% 	85 	81 	84
+Daily fuel consumption 	Qfuel 	kWh 	22,900 	14,809 	23,152
+Annual fuel consumption 	AFC 	GJ 	17 	11 	18
+Condensing boiler 	— 	Yes 	Yes 	Yes
+Low temperature boiler 	— 	Yes 	Yes 	Yes
+Combination boiler 	— 	Yes 	Yes 	Yes
+B1 Boiler 	— 	No 	No 	No
+Room boiler with combined heat and power 	— 	Yes 	Yes 	Yes
+Auxiliary boiler 	— 	No 	No 	No
+Brand Name 	Warmhaus
+Manufacturer adress 	Warmhaus Isıtma ve Sogutma Sistemleri San. Tic. A.Ş.
+Işıktepe OSB Mah. Park Cad. No:10 16140, Nilüfer / Bursa
+Warnings
+All spesific precautions for assembly, installation and maintanance are described in the operating
+and installation manual. Read and follow the operating and installation manual.
+Read and follow the operating and installation manual regarding assembly, installation,
+maintenance, removal, recycling and/or disposal.
+(*) for avarage climatic conditions
+(1) Low temperature means for condensing boilers 30 oC, for low temperature boilers 37 oC and for other heaters 50 oC return temperature (at heater inlet).
+(2) High temperature regime means 60 oC return temperature at heater inlet and 80 oC feed temperature at heater outlet.
+
+-- 37 of 40 --
+
+ warmhaus.com	38
+52
+Ewa 20
+2019
+20 52
+Ewa 24
+2019
+24
+4.3. ENERGY TAG
+
+-- 38 of 40 --
+
+EWA SMART INSTALLATION & USER MANUAL • 15011606000196	39
+All descriptions and illustrations provided in this document have been carefully prepared but we reserve the right to make changes and improvements in
+our products which may affect the accuracy of the information contained in this leaflet. All goods are sold subject to our standard Conditions of Sale which
+are available on request.
+1. 	Flue Outlet
+2. 	Flue Condensation Pan
+3. 	Condensation Water Discharge Hose
+4. 	Main Heat Exchanger
+5. 	Ignition Electrode
+6. 	Air Gas Mixing Unit (AGM)
+7. 	CH NTC Sensor
+8. 	Condensation Water Trap (Siphon)
+9. 	Radiator Outlet (Flow) Pipe
+10. Three Way Motorized Valve
+11. Condensation water Discharge Hose
+12. Low Pressure switch
+13. Expansion Tank Air Valve
+14. Flue Gas NTC Sensor
+15. Expansion Valve
+16. Gas Inlet Pipe
+17. CH Return NTC Sensor
+18. Pump
+19. DHW Plate Heat Exchanger
+20. 3 Bar safety Valve
+21. Manometer
+22. Gas Valve
+23. Heat Exchanger Door
+24. Electronic Fan
+25. Automatic air relief Valve
+26. Control Panel
+27. Tap Water Flow Sensor
+28. Radiator Inlet (Return) Pipe
+29. Filling Tap
+4
+6
+3
+8
+9
+10
+12
+13
+15
+16
+18
+19
+20
+22
+24
+23
+4
+26
+17
+21
+25
+1
+14	2
+5
+7
+11
+27
+28
+29
+Figure 60 Components of Combi
+5. 	FIRST STARTING OF BOILER
+5.1. CONTROLS FOR INITIAL OPERATION OF COMBI
+In order to keep the combi within scope of warranty; first start must be
+performed by Warmhaus Authorized Service. Below given initial preparations
+should be performed prior to authorized service appointment request:
+- Gas opening approval certificate should be taken from the local gas
+company for your gas line,
+- Combi electricity connection should be made via 2 or 3 Amps fuse.
+- Ensure that no electricity interruption is available at your home.
+- Ensure that no grid water interruption is available at your home.
+- Ensure that water is supplied to radiator installation and 1,2 - 1,5 bar
+pressure is seen in the combi manometer.
+5.2. PARTS COMPRISING THE COMBI
+
+-- 39 of 40 --
+
+Ewa Installation & User Manual code: 15011606000196
+	Revision Date: R00/11.2024
+CONDENSING COMBI BOILER
+	INSTALLATION & USER MANUAL
+EWA 20
+EWA 24
+
+-- 40 of 40 --
+

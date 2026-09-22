@@ -7,18 +7,19 @@ const identity={brand:'Vaillant',model:'ecoTEC intro',code:'F.28'};
 const url='https://www.vaillant.com.tr/downloads/example.pdf';
 const record={status:'verified',...identity,modelMatch:true,codeMatch:true,officialManufacturer:true,
   meaning:'Ateşleme başarısız',url,title:'ecoTEC intro',revision:'test',page:31,
-  modelEvidence:'ecoTEC intro modeli kapsanıyor',codeEvidence:'F.28 kodu ateşleme başarısız',
+  modelScope:'exact',coveredModels:['ecoTEC intro'],modelEvidence:'ecoTEC intro',descriptionEvidence:'ateşleme başarısız',errorRecord:'F.28 kodu ateşleme başarısız\nÜretici gaz beslemesini listeliyor\nÜretici ateşleme kontrolünü listeliyor',codeEvidence:'F.28 kodu ateşleme başarısız',
   candidates:[{name:'Gaz beslemesi',basis:'Üretici gaz beslemesini listeliyor',part:''},
     {name:'Ateşleme sistemi',basis:'Üretici ateşleme kontrolünü listeliyor',part:''}],questionIds:['gasSupply','ignitionSound']};
+const proof={text:'ecoTEC intro\n'+record.errorRecord,review:{modelScopeSupported:true,faultRecordSupported:true,reason:'fixture',candidates:record.candidates.map((_,index)=>({index,supported:true,reason:'explicit cause'}))}};
 test('research validates exact device/code and a retrieved official source',()=>{
-  assert.equal(validateResearch(identity,record,[url]).status,'verified');
+  assert.equal(validateResearch(identity,record,[url],proof).status,'verified');
   for(const change of [{brand:'Bosch'},{model:'ecoTEC plus'},{code:'F76'},{officialManufacturer:false},{modelMatch:false},{candidates:[]},{questionIds:['invented']},{modelEvidence:''}])
-    assert.equal(validateResearch(identity,{...record,...change},[url]).status,'not_found');
-  assert.equal(validateResearch(identity,record,[]).status,'not_found');
+    assert.equal(validateResearch(identity,{...record,...change},[url],proof).status,'not_found');
+  assert.equal(validateResearch(identity,record,[],proof).status,'not_found');
 });
 test('lookalike, seller and insecure source URLs cannot establish official knowledge',()=>{
   for(const bad of ['https://vaillant.com.tr.example.com/doc','https://seller.example/doc','http://www.vaillant.com.tr/doc','https://user@www.vaillant.com.tr/doc'])
-    assert.equal(validateResearch(identity,{...record,url:bad},[bad]).status,'not_found');
+    assert.equal(validateResearch(identity,{...record,url:bad},[bad],proof).status,'not_found');
 });
 test('document evidence tolerates PDF line wrapping but rejects invented text and substring codes',()=>{
   assert.equal(sourceContains('Termik kapatma düzeneği tetiklen-\nmiş','Termik kapatma düzeneği tetiklenmiş'),true);
@@ -30,7 +31,7 @@ test('document evidence tolerates PDF line wrapping but rejects invented text an
 });
 test('cache separates brand, full model and code; expires without a stale fallback',async()=>{
   let clock=0,calls=0,fail=false;
-  const lookup=createTechnicalResearchService(async()=>{calls++;if(fail)throw Error('offline');return validateResearch(identity,record,[url]);},()=>clock);
+  const lookup=createTechnicalResearchService(async()=>{calls++;if(fail)throw Error('offline');return validateResearch(identity,record,[url],proof);},()=>clock);
   await Promise.all([lookup(identity),lookup(identity)]);assert.equal(calls,1);
   await lookup({...identity,model:'ecoTEC plus'});assert.equal(calls,2);
   clock=86400001;fail=true;assert.equal((await lookup(identity)).status,'unavailable');

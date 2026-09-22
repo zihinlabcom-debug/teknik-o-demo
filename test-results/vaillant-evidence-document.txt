@@ -1,0 +1,3421 @@
+tr Montaj ve bakım kılavuzu
+ecoTEC intro
+VUW 24/24 AS/2-1 (H-TR)
+VUW 28/28 AS/2-1 (H-TR)
+8000037569_02
+ - 27.01.2026
+
+-- 1 of 44 --
+
+2 Montaj ve bakım kılavuzu 8000037569_02
+Montaj ve bakım kılavuzu
+İçindekiler
+1 Emniyet ............................................................... 3
+1.1 Amacına uygun kullanım ....................................... 3
+1.2 Nitelik ..................................................................... 3
+1.3 Genel emniyet uyarıları.......................................... 3
+1.4 Yönetmelikler (direktifler, kanunlar, standartlar) .... 5
+2 Doküman ile ilgili uyarılar .................................... 6
+3 Ürünün tanımı ..................................................... 6
+3.1 Ürünün yapısı ........................................................ 6
+3.2 Ürün hidrolik blokunun yapısı ................................ 6
+3.3 Tip etiketi ............................................................... 6
+3.4 Seri numarası ........................................................ 7
+3.5 CE işareti ............................................................... 7
+3.6 TSE işareti ............................................................. 7
+4 Montaj ................................................................. 7
+4.1 Teslimat kapsamının kontrolü................................ 7
+4.2 Ürün ebatları .......................................................... 7
+4.3 Minimum mesafeler ............................................... 8
+4.4 Montaj şablonu kullanımı ....................................... 8
+4.5 Ürünün duvara montajı .......................................... 8
+5 Kurulum............................................................... 8
+5.1 Ön koşullar............................................................. 9
+5.2 Gaz ve su tarafındaki bağlantı ............................... 9
+5.3 Yoğuşma suyu gider hortumunun bağlanması ...... 9
+5.4 Emniyet ventili gider borusunun bağlanması....... 10
+5.5 Yoğuşma suyu sifonunun doldurulması............... 10
+5.6 Yanma havası/atık gaz sistemi ............................ 10
+5.7 Elektrik kurulumu ................................................. 11
+6 Kullanım ............................................................ 14
+6.1 Servis seviyesinin açılması.................................. 14
+6.2 Teşhis kodlarının kullanımı .................................. 14
+6.3 Kontrol programlarının yürütülmesi ..................... 14
+6.4 Durum kodlarının çağrılması ............................... 14
+6.5 Uzman seviyesinden çıkılması ............................ 15
+7 Devreye alma .................................................... 15
+7.1 Isıtma suyunun/dolum ve takviye suyunun
+kontrol edilmesi ve hazırlanması ......................... 15
+7.2 Isıtma sisteminin doldurulması ............................ 16
+7.3 Isıtma sisteminin havasının alınması................... 16
+7.4 Kullanım suyu sisteminin doldurulması ve
+havasının alınması............................................... 16
+7.5 Kontrol ve gaz ayarı............................................. 16
+7.6 Isıtma konumunun kontrolü ................................. 18
+7.7 Sıcak kullanım suyu kontrolü ............................... 18
+7.8 Sızdırmazlık kontrolü ........................................... 18
+8 Sistemin/tesisatın özelleştirilmesi ..................... 18
+8.1 Isıtmanın ayarlanması için ayarlar....................... 18
+9 Kullanıcıya teslim edilmesi................................ 20
+10 Kontrol ve bakım ............................................... 20
+10.1 Genleşme tankının, ateşleme blokunun bakım
+konumuna getirilmesi........................................... 20
+10.2 Genleşme tankının, hidrolik blokun bakım
+konumuna getirilmesi........................................... 20
+10.3 Komponentlerin temizlenmesi/kontrol
+edilmesi................................................................ 21
+10.4 Üründeki suyun boşaltılması ............................... 25
+10.5 Kontrol ve bakım çalışmalarının
+tamamlanması ..................................................... 25
+11 Arıza giderme.................................................... 26
+11.1 Arıza hafızasının sorgulanması ........................... 26
+11.2 Arızanın giderilmesi ............................................. 26
+11.3 Parametrenin fabrika ayarına geri alınması......... 26
+11.4 Arızalı parçaların değiştirilmesi............................ 26
+12 Ürünün devre dışı bırakılması........................... 28
+12.1 Geçici kapatma .................................................... 28
+12.2 Nihai kapatma...................................................... 28
+13 Ambalaj atıklarının yok edilmesi ....................... 28
+14 Müşteri hizmetleri .............................................. 28
+Ek ..................................................................................... 29
+A Servis teşhis kodları .......................................... 29
+B Durum kodları ................................................... 32
+C Arıza kodları ...................................................... 33
+D Kontrol programları ........................................... 37
+E Devre bağlantı şeması ...................................... 38
+F Kontrol ve bakım çalışmaları............................. 39
+G Teknik veriler..................................................... 39
+Dizin ................................................................................. 41
+
+-- 2 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 3
+1 Emniyet
+1.1 Amacına uygun kullanım
+Bu ürün, kapalı ısıtma sistemlerine ve sıcak
+su hazırlamasına yönelik ısıtma cihazı olarak
+öngörülmüştür.
+Her türlü kötü amaçlı kullanım yasaktır.
+Amacına uygun kullanım ayrıca aşağıdakileri
+içerir:
+– Ürünün kurulumu ve işletimi, sadece ilave
+dokümanlarda listelenen ve cihazın yapı
+tipine uygun olan yanma havası/atık gaz
+akım borusu aksesuarları ile bağlantılı
+olarak gerçekleştirilebilir
+– Ürün kullanılırken ürün ve sistemin diğer
+bileşenleri ile birlikte verilen kullanım, mon-
+taj ve bakım kılavuzlarının dikkate alınması
+– Ürün ve sistemin montaj kurallarına uyula-
+rak kurulumu ve montajı
+– Kılavuzlarda yer alan tüm kontrol ve bakım
+şartlarına uyulması da gereklidir
+– IP koduna uygun kurulum
+Aşağıdakiler amacına uygun olmayan kullanı-
+ma girer:
+– Ürünün mobil evler veya karavanlar gibi
+araçlarda kullanılması. Sürekli bir yere
+bağlı olan sabit birimler araç değildir (yani
+sabit montaj).
+– ürünün çoklu yerleşimli veya kaskad olarak
+kullanılması
+– Herhangi bir doğrudan ticari ve endüstriyel
+kullanım
+– Bu kılavuzda açıklananların dışında her-
+hangi bir kullanım ve burada açıklananların
+ötesinde herhangi bir kullanım
+1.2 Nitelik
+Burada açıklanan çalışma için mesleki eği-
+timin tamamlanmış olması gereklidir. Yetkili
+servis gerekli olan tüm bilgi, beceri ve yete-
+neklere sahip olmalıdır, ancak bu durumda
+çalışmaları yürütebilir.
+Aşağıdaki çalışmalar sadece yeterli niteliğe
+sahip yetkili bayi tarafından yapılmalıdır:
+– Montaj
+– Sökme
+– Kurulum
+Aşağıdaki çalışmalar sadece yetkili servisler
+tarafından yapılmalıdır:
+– Devreye alma
+– Kontrol ve bakım
+– Tamir
+– Ürünün devre dışı bırakılması
+▶ Güncel teknoloji seviyesine uygun hareket
+edin.
+▶ Uygun bir alet kullanın.
+Yeterli niteliklere sahip olmayan kişiler yukarı-
+daki çalışmaları asla gerçekleştiremez.
+Bu ürün 8 yaş ve üzerindeki çocuklar ve fizik-
+sel, algılama veya ruhsal yetenekleri sınırlı
+olan veya cihaz hakkında yeterince tecrübesi
+ve bilgisi olmayan kişiler tarafından, ancak bir
+kişi tarafından gözetim altında tutulursa ve-
+ya cihazın nasıl kullanıldığına ve oluşabilecek
+tehlikelere dair talimatlar aldılarsa, kullanıla-
+bilir. Çocuklar ürünle oynamamalıdır. Temiz-
+leme ve kullanıcı bakımı, denetlenmeyen ço-
+cuklar tarafından yapılmamalıdır.
+1.3 Genel emniyet uyarıları
+Aşağıdaki bölümlerde önemli güvenlik bilgileri
+verilmektedir. Bu bilgiler ölüm tehlikesi, yara-
+lanma tehlikesi, maddi hasar veya çevresel
+hasar riskini önlemek için okunmalı ve dikka-
+te alınmalıdır.
+1.3.1 Gaz
+Gaz kokusu varsa:
+▶ Gaz kokusu olan mekanlarda bulunmayın.
+▶ Mümkünse kapıları ve pencereleri açın ve
+cereyan yapmasını sağlayın.
+▶ Açık alevle yaklaşmaktan kaçının (örn.
+çakmak, kibrit).
+▶ Sigara içmeyin.
+▶ Binada bulunan elektrik şalterlerini, soket-
+leri, zilleri, telefonu ve diğer iletişim sistem-
+lerini kullanmayın.
+▶ Gaz sayacı kapatma düzeneğini veya ana
+kapatma düzeneğini kapatın.
+▶ Mümkünse üründeki gaz kesme vanasını
+kapatın.
+▶ Diğer bina sakinlerini uyarın.
+▶ Hemen binayı terk edin ve diğer kişilerin
+girmesini önleyin.
+▶ Binayı terk eder etmez polisi ve itfaiyeyi
+arayın ve gaz şirketinin acil durum birimini
+bilgilendirin.
+
+-- 3 of 44 --
+
+4 Montaj ve bakım kılavuzu 8000037569_02
+1.3.2 Atık gaz
+Atık gazlar zehirlenmeye, sıcak atık gazlara
+ve yanmalara neden olabilir. Bu nedenle, atık
+gazlar kontrol edilmeden asla kaçmamalıdır.
+Binalardaki atık gaz kokusunda:
+▶ Erişebileceğiniz tüm kapıları ve pencereleri
+açın ve cereyan yapmasını sağlayın.
+▶ Ürünü kapatın.
+▶ Üründeki atık gaz yollarını ve atık gaz hat-
+larını kontrol edin.
+Atık gaz sızıntısını önlemek için:
+▶ Ürünü sadece yanma havası/atık gaz akım
+borusu tam monte edilmiş olarak çalıştırın.
+▶ Ürünü – kısa süreli kontrol amaçları dışın-
+da – sadece monte edilmiş ve kapalı ön
+kapak ile çalıştırın.
+▶ Yoğuşma suyu sifonunun, ürün işletimi için
+daima dolu olmasını sağlayın.
+– Yoğuşma suyu sifonuna sahip cihazlar-
+daki sızdırmazlık suyu seviyesi (üçüncü
+taraf aksesuarları): ≥ 200 mm
+Contaların zarar görmemesi için:
+▶ Montajı kolaylaştırmak için gresler yerine
+sadece su veya piyasada bulunan yeşil
+sabun kullanın.
+1.3.3 Hava girişi
+Uygun olmayan veya yetersiz yanma hava-
+sı ve ortam havası, maddi hasara ve aynı za-
+manda hayati tehlike arz eden durumlara ne-
+den olabilir.
+Yanma havası girişinin ortam havasına bağlı
+işletim için yeterli olması için:
+▶ Ürünün montaj odasında yeterli hava girişi
+olduğundan ve bu girişin her durumda en-
+gellenmediğinden emin olun. Temel hava-
+landırma gereksinimlerini karşılamalıdır..
+Bu özellikle dolap gibi kaplamalarda geçer-
+lidir.
+Üründe ve atık gaz çıkış borusunda korozyo-
+nu önlemek için:
+▶ Yanma havası girişinde sprey, çözücü,
+klor içeren temizlik maddeleri, boyalar,
+yapıştırıcılar, amonyak bileşikleri, tozlar ve
+benzeri maddeler bulunmadığından daima
+emin olun.
+▶ Montaj yerinde kimyasal madde bulundur-
+mayın.
+▶ Ürünü kuaför salonlarında, boya veya ma-
+rangoz atölyelerinde, temizlik işletmelerin-
+de vb. kullanmak istiyorsanız, teknik açı-
+dan kimyasal madde bulunmayan ortam
+havasının sağlandığı ayrı bir montaj odası
+seçin.
+▶ Yanma havası, önceden sıvı yakıtlı kazan-
+lar veya bacanın kurumlanmasına neden
+olan diğer ısıtma cihazları için kullanılan
+bacalardan sağlanmamalıdır.
+1.3.4 Yanma havası/atık gaz akım borusu
+Isı üreticileri, orijinal yanma havası/atık gaz
+akım boruları ile birlikte sertifikalandırılmıştır.
+▶ Sadece üreticinin orijinal yanma hava-
+sı/atık gaz akım borularını kullanın.
+1.3.5 Elektrik
+L ve N şebeke bağlantı klemenslerinde geri-
+lim vardır!
+Elektrik çarpmasından kaçınmak için, ürün
+üzerinde çalışmadan önce aşağıdakileri ya-
+pın:
+▶ Tüm elektrik beslemesini bütün kutuplar-
+dan kapatarak ürünü yüksüz konuma geti-
+rin (en az 3 mm kontak açıklığı olan elekt-
+rikli ayırma donanımı üzerinden, örn. sigor-
+ta veya devre koruma şalteri) veya elektrik
+fişini çekin (varsa).
+▶ Tekrar çalıştırılmaya karşı emniyete alın.
+▶ Kondansatörler boşalana kadar en az 3
+dakika bekleyin.
+▶ Gerilim olmamasını kontrol edin.
+1.3.6 Ağırlık
+Nakliye sırasında yaralanmaları önlemek için:
+▶ Ürünü en az iki kişiyle taşıyın.
+1.3.7 Patlayıcı veya tutuşabilen maddeler
+Patlamaları ve yangını önlemek için:
+▶ Ürünü, patlayıcı ve yanıcı maddeler bulu-
+nan yerlerde (örn. benzin, kağıt, boya) kul-
+lanmayın.
+1.3.8 Yüksek sıcaklıklar
+Yanmaları önlemek için:
+▶ Ancak bu komponentler soğuduktan sonra
+çalışmaya başlayın.
+
+-- 4 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 5
+Isı transferi nedeniyle maddi hasarları önle-
+mek için:
+▶ Bağlantı parçalarını henüz küresel vanala-
+ra vidalanmamışlarsa lehimleyin.
+1.3.9 Isıtma suyu
+Hem uygun olmayan ısıtma suyu hem de ısıt-
+ma suyundaki hava, ürüne ve kazan devresi-
+ne zarar verebilir.
+▶ Isıtma suyunun kalitesini kontrol edin.
+(→ Bölüm 7.1)
+▶ Isıtma sisteminde difüzyon sızdırmazlığı
+yapılmamış plastik boru kullanacaksanız
+kazan devresine hava girmediğinden emin
+olun.
+1.3.10 Nötralizasyon ünitesi
+Atık suyun kirlenmesini önlemek için:
+▶ Ulusal talimatlara göre nötrleştirmenin ge-
+rekli olup olmadığını kontrol edin.
+▶ Yoğuşma suyunun nötrleştirilmesine ilişkin
+yerel yönetmeliklere dikkat edin.
+1.3.11 Donma
+Maddi hasarları önlemek için:
+▶ Ürünü donma tehlikesi bulunan mekanlara
+monte etmeyin.
+1.3.12 Güvenlik tertibatları
+▶ Sistem için gerekli güvenlik tertibatlarını
+monte edin.
+1.4 Yönetmelikler (direktifler, kanunlar,
+standartlar)
+▶ Ulusal yönetmelikleri, standartları, direk-
+tifleri, düzenlemeleri ve kanunları dikkate
+alın.
+
+-- 5 of 44 --
+
+6 Montaj ve bakım kılavuzu 8000037569_02
+2 Doküman ile ilgili uyarılar
+▶ Sistem bileşenlerinin beraberinde bulunan tüm işletme ve
+montaj kılavuzlarını mutlaka dikkate alın.
+▶ Bu kılavuzu ve ayrıca birlikte geçerli olan tüm belgeleri
+kullanıcıya teslim edin.
+Bu kılavuz sadece aşağıdaki ürünler için geçerlidir:
+Ürün - Ürün numarası
+VUW 24/24 AS/2-1 (H-TR) 8000018065
+VUW 28/28 AS/2-1 (H-TR) 8000018059
+3 Ürünün tanımı
+Bu ürün gaz yakıtlı, duvar tipi, yoğuşmalı ısı cihazıdır.
+3.1 Ürünün yapısı
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+13
+1
+16
+2
+3
+6
+7	8
+5
+4
+9
+10
+11
+14
+15
+12
+1 Yanıcı gazların dağıtma
+sistemi
+Atık gaz bağlantı parça-
+sı
+2 Fan
+3 Eşanjör
+4 Venturi
+5 Gaz armatürünün refe-
+rans basınç borusu
+6 Genleşme tankı
+7 Hidrolik blok
+8 Elektronik kutusu
+9 Ateşleme ve iyonizas-
+yon elektrotları
+10 Brülör
+11 Isıtma beslemesi sıcak-
+lık sensörü
+12 ısıtma dönüş hattı sı-
+caklık sensörü
+13 Ses izolasyonu
+14 Gaz armatürü
+15 Hava/gaz oranı ayarla-
+yıcı
+16 Hava emme borusu
+3.2 Ürün hidrolik blokunun yapısı
+1
+2
+3
+4
+10
+11
+6 	5
+8
+7
+9
+1 Sıcak su plaka eşanjörü
+2 Basınç sensörü
+3 Sıcak su debi sensörü
+4 Hava purjörü
+5 Baypas vanası
+6 Üç yollu vana
+7 Doldurma düzeneği
+8 Emniyet ventili
+9 Çekvalf
+10 Yoğuşma suyu sifonu
+11 Yüksek verimli pompa
+3.3 Tip etiketi
+Cihaz tip etiketi, fabrika çıkışlı olarak elektronik kutusunun
+arka tarafında ve ürünün üst tarafında yer almaktadır. Bura-
+da listelenmeyen bilgiler ilgili ayrı bölümlerde bulunabilir.
+Bilgi Anlamı
+Kılavuzu okuyun!
+ecoTEC ... Pazarlama adı
+ES, IT... Hedef pazar
+Kat. İzin verilen gaz kategorisi
+tipi Kategorideki ürünler
+2H, 2HS, 2ELw...
+- G20, G31... -
+XX mbar (X,X kPa)
+Fabrika tarafından ayarlanan gaz cinsi
+ve gaz bağlantı basıncı
+Tmax Maksimum gidiş sıcaklığı
+PMS Isıtma modu izin verilen çalışma basıncı
+NOx class NOx-Sınıf (Azotoksit çıkışı)
+D Spesifik debi
+V Şebeke gerilimi
+Hz Şebeke frekansı
+W Maksimum elektrik tüketimi
+IP Koruma derecesi
+Kod (DSN) Ürün kodu
+PMW İzin verilen Sıcak su işletimi çalışma
+basıncı
+Isıtma konumu
+Qn Anma ısıl yük
+Pn İtibari ısı çıkış aralığı (75/55 °C)
+Pnc Yoğuşmalı itibarî ısı çıkış aralığı
+(50/30 °C)
+Kullanım suyu çalışma konumu
+Pnw Sıcak su hazırlama modundaki azami
+ısıtma gücü
+
+-- 6 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 7
+Bilgi Anlamı
+Qnw Sıcak su hazırlama modundaki azami ısı
+yüklemesi
+Hi Alt yoğuşma ısıl değeri
+Seri numarasını içeren barkod
+3. ile 6. rakamlar arası = Üretim tarihi (yıl
+/ hafta)
+7. ila 16. rakamlar arası = Ürün numara-
+sı
+Bilgi
+Ürünün, montaj yerindeki gaz cinsine uygun oldu-
+ğundan emin olun.
+3.4 Seri numarası
+Seri numarasını ürünün üst tarafındaki etikette ve cihaz tip
+etiketinde bulabilirsiniz.
+Seri numarasını ve ürün tanımını da ürünün ön kapağının
+altındaki etikette bulabilirsiniz.
+3.5 CE işareti
+CE işareti, ürünlerin uygunluk beyanları doğrultusunda ge-
+çerli AB yönetmeliklerinin esas taleplerini yerine getirdiğini
+belgelendirir.
+Uygunluk açıklaması için üreticiye danışılabilir.
+3.6 TSE işareti
+TSE işareti ile, bu ürünün TSE tarafından kontrol edildiği ve
+Türkiye'de satış için onaylandığı belgelenmiştir.
+4 Montaj
+4.1 Teslimat kapsamının kontrolü
+Adet Tanım
+1 Gaz yakıtlı, duvar tipi yoğuşmalı ısıtma
+cihazı
+2 Küçük parçalar içeren poşet
+1 Yoğuşma suyu gider hortumu
+1 Dokümantasyon ek paketi
+4.2 Ürün ebatları
+130
+270
+400
+626
+=
+=
+130
+202
+	213
+	200
+156
+111
+119
+169
+71.5	30.5
+85
+Ø18,4	3/4”	1/2”	3/4”	1/2” 	3/4”
+29
+
+-- 7 of 44 --
+
+8 Montaj ve bakım kılavuzu 8000037569_02
+4.3 Minimum mesafeler
+C 	D
+A
+B
+E
+Minimum mesafe
+A Yanma havası/atık gaz akım borusu ⌀ 60/100 mm:
+248 mm
+Yanma havası/atık gaz akım borusu ⌀ 80/80 mm: 220 mm
+Yanma havası / atık gaz akım borusu ⌀ 80/125 mm:
+276 mm
+B 180 mm
+C 5 mm
+D 5 mm
+E 500 mm
+4.4 Montaj şablonu kullanımı
+▶ Deliklerin açılacağı noktaları belirlemek için montaj şablo-
+nunu kullanın.
+4.5 Ürünün duvara montajı
+1. Duvarın taşıma kapasitesini kontrol edin.
+2. Ürünün toplam ağırlığına dikkat edin. (→ Ek G)
+3. Sadece duvar için izin verilen sabitleme malzemesini
+kullanın.
+– Minimum 6 mm çaplı cıvatalar
+4. Gerekirse taşıma kapasitesi yeterli, harici bir asma
+düzeneği temin edin.
+5. Ürünü açıklandığı şekilde asın.
+5 Kurulum
+Tehlike!
+Yanlış montaj ve bunun sonucunda çıkan su
+nedeniyle haşlanma tehlikesi ve/veya maddi
+hasar tehlikesi!
+Bağlantı borularındaki mekanik gerilimler
+kaçaklara yol açabilir.
+▶ Bağlantı borularını gerilimsiz olarak monte
+edin.
+Dikkat!
+Gaz sızdırmazlık kontrolü nedeniyle maddi
+hasar tehlikesi!
+Gaz sızdırmazlık kontrol basıncı esnasında
+11 kPa (110 mbar) üzerindeki kontrol basın-
+cında gaz armatürü hasar görebilir.
+▶ Gaz sızdırmazlık kontrollerinde üründeki
+gaz armatürünü ve gaz hatlarını da basınç
+altına almak istiyorsanız, maks. 11 kPa'lık
+(110 mbar) bir kontrol basıncı kullanın.
+▶ Kontrol basıncını 11 kPa (110 mbar) ola-
+rak sınırlamak istemiyorsanız, gaz sız-
+dırmazlık kontrolünden önce ürünün gaz
+kesme vanasını kapatın.
+▶ Gaz sızdırmazlık kontrolleri sırasında ürü-
+ne takılı gaz kesme vanalarından birini ka-
+pattıysanız, bu gaz kesme vanasını açma-
+dan önce gaz hattı basıncını boşaltın.
+Dikkat!
+Lehimleme sırasında ısı transferi nedeniyle
+maddi hasar tehlikesi!
+Ürünün taban plakası yedek parça olarak
+mevcut değildir. Taban plakasının yüksek
+sıcaklık nedeniyle hasar görmesi halinde,
+ürünün bütününün tamamen ekonomik kayıp
+olduğu kabul edilir.
+▶ Bağlantı parçalarının, henüz küresel va-
+nalara sabitlenmemiş olması halinde, bun-
+ları lehimleyebilirsiniz. Bu daha sonra artık
+mümkün olmayacaktır.
+Dikkat!
+Boru tesisatında kalan artıklar nedeniyle
+maddi hasar riski!
+Boru tesisatındaki kaynak artıkları, conta
+artıkları, pislikler ve diğer artıklar ürüne zarar
+verebilir.
+▶ Ürünü kurmadan önce ısıtma sistemini
+iyice yıkayın.
+
+-- 8 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 9
+Uyarı!
+Kullanım suyundaki pislikler nedeniyle sağ-
+lık için tehlike!
+Boru tesisatındaki conta artıkları, pislikler ve
+diğer artıklar kullanım suyu kalitesini kötüleş-
+tirebilir.
+▶ Ürünü kurmadan önce soğuk ve sıcak su
+hatlarını iyice yıkayın.
+Dikkat!
+Önceden bağlı borulardaki değişiklikler ne-
+deniyle maddi hasar tehlikesi!
+▶ Bağlantı borularını sadece, ürüne bağlı
+değillerse bükün.
+Dikkat!
+Yanlış kullanım nedeniyle maddi hasar tehli-
+kesi!
+Ürün bir hidrolik seti ile donatılmıştır. Ürün
+zemine koyulursa, boruların hasarlanma teh-
+likesi vardır.
+▶ Ürünü zemine dik bir şekilde koymayın.
+5.1 Ön koşullar
+5.1.1 Doğru gaz grubunun kullanılması
+Yanlış bir gaz grubu, ürünün arıza ile kapanmasına neden
+olabilir. Üründe ateşleme ve yanma sesleri oluşabilir.
+▶ Sadece cihaz tip etiketinde belirtilen gaz grubunu kulla-
+nın.
+5.1.2 Gaz grubuna yönelik uyarılar
+Ürün için teslimat kapsamında, cihaz tip etiketi üzerinde be-
+lirtilen gaz grubu işletimine yönelik ön ayar yapılmıştır.
+Doğalgaz işletimi için ön ayarlı bir ürüne sahipseniz, sıvı gaz
+işletimine yönelik dönüşüm yapmanız gerekir.
+5.1.3 Montaj için temel hazırlıkların yapılması
+1. Gaz hattına bir gaz kesme vanası monte edin.
+2. Mevcut gaz sayacının gerekli gaz akışı için uygun oldu-
+ğundan emin olun.
+3. Bütünleşik genleşme tankı hacminin, tesisat hacmi için
+yeterli olduğundan emin olun.
+– Genleşme tankının tesisat hacminin yetersiz olması
+halinde, ürünün mümkün olduğunca yakınına ilave
+bir genleşme tankı monte edin
+4. Yoğuşma suyu giderine sifonlu bir gider hunisi ve em-
+niyet ventili boşaltma borusu monte edin. Gider boru-
+sunu mümkün olduğunca kısa olacak ve gider hunisine
+eğimli girecek şekilde döşeyin.
+5. Açıkta duran, çevre etkilerine maruz kalabilecek boru-
+ları donmaya karşı koruma amacıyla uygun bir izolas-
+yon malzemesi ile izole edin.
+6. Besleme hatlarını montajdan önce iyice yıkayın.
+7. Soğuk su boru devresi ve ısıtma devresi gidiş hattı
+arasına bir doldurma düzeneği monte edin.
+8. Ürünü su tesisatına sıkıca bağlayın. Bunun için hiçbir
+bağlantı hortumu seti kullanmayın.
+5.2 Gaz ve su tarafındaki bağlantı
+Tehlike!
+Yanlış montaj ve bunun sonucunda çıkan
+gaz nedeniyle yanma tehlikesi ve/veya
+maddi hasar tehlikesi!
+Üstüpü, teflon veya bu tür diğer ürünlerin her-
+hangi bir şekilde kullanımı gaz bağlantısının
+vida dişinde sızıntılara neden olabilir.
+▶ Prensip olarak ürünle birlikte teslim edilen
+veya üretici tarafından tedarik edilen yassı
+contaları kullanın.
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+▶ Gaz hattını gaz bağlantısına yüksüz monte edin.
+▶ Devreye almadan önce gaz hattının havasını alın.
+▶ Komple gaz hattını usulüne uygun olarak sızdırmazlık
+açısından kontrol edin.
+▶ Su gidiş ve dönüş bağlantılarını standartlara uygun
+olarak monte edin.
+5.3 Yoğuşma suyu gider hortumunun bağlanması
+Tehlike!
+Atık gaz sızıntısından dolayı ölüm tehlikesi!
+Sifonun yoğuşma suyu gider hortumunu bir
+atık su boru devresine bağlarken, bağlantı
+ucunu daldırmayın. Aksi taktirde dahili yoğuş-
+ma suyu sifonu boşalır ve atık gaz sızabilir.
+▶ Yoğuşma suyu gider hortumunun, atık
+su hattının üst kısmında sonlanmasını
+sağlayın.
+
+-- 9 of 44 --
+
+10 Montaj ve bakım kılavuzu 8000037569_02
+A
+B
+1. Yoğuşma suyu giderine yönelik burada belirtilen yönet-
+meliklere ve yasal ve yerel direktiflere dikkat edin.
+2. Yoğuşma suyu gider hattı için sadece aside dayanıklı
+(örn. plastik) malzemeden üretilmiş borular kullanın.
+3. Uygun yoğuşma suyu gider hattı malzemeleri temin
+edilemiyorsa, yoğuşma suyunu nötralize eden bir sis-
+tem monte edin.
+5.4 Emniyet ventili gider borusunun bağlanması
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+1
+▶ Boru tesisatının göründüğünden emin olun.
+▶ Emniyet ventilini (1), uygun bir tahliye sifonuna bağla-
+yın.
+– Bu tertibat, suyun nasıl dışarı çıktığı görülecek
+şekilde yerleştirilmelidir.
+▶ Borunun ucunun görünür olduğundan ve su veya bu-
+har çıkması durumunda herhangi birinin yaralanmaya-
+cağından ve herhangi bir elektrikli parçanın hasar gör-
+meyeceğinden emin olun.
+5.5 Yoğuşma suyu sifonunun doldurulması
+▶ Yoğuşma suyu sifonunu suyla doldurun.
+– ≈ 250 ml
+5.6 Yanma havası/atık gaz sistemi
+5.6.1 Yanma Havası/Atık Gaz Akım Borusunun
+montajı ve bağlanması
+1. Kullanılabilir Yanma Havası/Atık Gaz Akım Boruları
+için bkz. birlikte verilen Yanma Havası/Atık Gaz Akım
+Borusu montaj kılavuzu.
+Koşul: Nemli mekana montaj
+▶ Ürünü ortam havasından bağımsız bir yanma havası/atık
+gaz sistemine bağlayın.
+– Yanma havası, montaj yerinden alınmamalıdır.
+▶ Yanma Havası/Atık Gaz Akım Borusunu, montaj kılavu-
+zundaki talimatlara göre monte edin.
+5.6.2 B23 Kurulum
+B23 yapı tipindeki izin verilen cihazlara yönelik atık gaz çıkış
+borusu (atmosferik gaz yakıtlı, duvar tipi ısı cihazları) itinalı
+bir planlama ve uygulama gerektirir.
+▶ Planlama sırasında ürünün teknik verilerine dikkat edin.
+▶ Bilinen teknik kurallarına uyun.
+5.6.3 Gerekirse Yanma havası/Atık gaz akım borusu
+bağlantı parçasının değiştirilmesi
+5.6.3.1 Çapı 60/100 mm olan yanma havası/atık
+gaz akım borusu standart bağlantı parçasının
+monte edilmesi
+1. Standart bağlantı parçasını yerleştirin. Bu esnada otur-
+ma tırnaklarına dikkat edin.
+2. Standart bağlantı parçasını yerine oturana kadar saat
+ibresinin yönünde çevirin.
+
+-- 10 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 11
+5.6.3.2 Yanma havası/atık gaz akım borusu standart
+bağlantı parçasının sökülmesi
+A
+B
+C
+▶ 60/100 mm çapındaki yanma havası / atık gaz akım boru-
+su standart bağlantı parçasını şekilde gösterildiği gibi sö-
+kün.
+5.6.3.3 Yanma havası/Atık gaz
+akım borusu (çap 80/125 mm) bağlantı
+parçasının monte edilmesi
+1. Gerekirse yanma havası / atık gaz akım borusu bağ-
+lantı parçasını yenisi ile değiştirin. (→ Bölüm 5.6.3.2)
+2. Alternatif bağlantı parçasını yerleştirin. Bu esnada otur-
+ma tırnaklarına dikkat edin.
+3. Standart bağlantı parçasını yerine oturana kadar saat
+ibresinin yönünde çevirin.
+5.6.3.4 Ayrılmış yanma havası/atık gaz boru devresi
+(çap 80/80 mm) bağlantı parçasının monte
+edilmesi
+1. Gerekirse yanma havası / atık gaz akım borusu bağ-
+lantı parçasını yenisi ile değiştirin. (→ Bölüm 5.6.3.2)
+120 	120
+2. Alternatif bağlantı parçasını yerleştirin. Hava beslemesi
+bağlantısı sağ veya sol tarafa doğru olabilir. Bu esnada
+oturma tırnaklarına dikkat edin.
+3. Bağlantı parçasını yerine oturana kadar saat ibresinin
+yönünde çevirin.
+5.6.4 Ateşleme için ısıtma gücünün ayarlanması
+Ateşleme için gerekli ısıtma gücü, gaz cinsine ve yanma ha-
+vası/atık gaz borusunun uzunluğuna bağlı olarak ayarlanma-
+lıdır.
+▶ Ürün ateşlemesinin ısıtma gücünü ayarlamak için d.191
+teşhis kodunu ayarlayın. (→ Bölüm 6.2)
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR)
+Yanma hava-
+sı/atık gaz boru-
+su uzunluğu (U)
+0,4
+≤ L <
+2 m
+2
+≤ L <
+4 m
+4
+≤ L <
+6 m
+6
+≤ L ≤
+8 m
+L >
+8 m
+Doğalgaz 15 % 15 % 10 % 5 % 5 %
+Sıvı gaz 10 % 5 % 5 % 5 % 15 %
+Geçerlilik: VUW 28/28 AS/2-1 (H-TR)
+Yanma hava-
+sı/atık gaz boru-
+su uzunluğu (U)
+0,4
+< L <
+4 m
+4
+≤ L <
+7 m
+L ≥
+7 m
+Doğalgaz 15 % 10 % 0 %
+Sıvı gaz 13 % 15 % 15 %
+5.7 Elektrik kurulumu
+Elektrik tesisatı montajı sadece bir elektrik uzmanı tarafından
+yapılmalıdır.
+Ürünün topraklanmış olması gerekir.
+Tehlike!
+Elektrik çarpması nedeniyle ölüm tehlikesi!
+Şebeke bağlantı klemensleri L ve N arasında,
+Aç/Kapa tuşu kapalı olsa dahi sabit gerilim
+vardır.
+▶ Tüm elektrik beslemelerinin tüm kutupları-
+nı (en az 3 mm kontak açıklığı olan elekt-
+rikli ayırma donanımı üzerinden, örn. si-
+gorta veya devre koruma şalteri) ayırarak
+ürünü yüksüz konuma getirin.
+▶ Tekrar çalıştırılmaya karşı emniyete alın.
+▶ Kondansatörler boşalana kadar en az
+3 dakika bekleyin.
+▶ Gerilim olmamasını kontrol edin.
+
+-- 11 of 44 --
+
+12 Montaj ve bakım kılavuzu 8000037569_02
+5.7.1 Ön kapağın sökülmesi
+2x1
+D
+B A
+C
+5.7.2 Elektronik kutusunun açılması
+A
+B
+B
+5.7.3 Kablo geçişi
+230V
+24V / eBUS
+1
+2
+1 24-V/eBUS kabloları için
+kablo geçişi
+2 230 V kablosu için kablo
+geçişi
+5.7.4 Kablo bağlantıları hakkında genel bilgi
+Dikkat!
+Hatalı montaj nedeniyle maddi hasar tehli-
+kesi!
+Yanlış soketlerdeki ve klemenslerdeki şebeke
+gerilimi elektronik sisteme zarar verebilir.
+▶ RT 24 V ve eBUS klemenslerine (+/−)
+şebeke gerilimi bağlamayın.
+▶ Bağlantı kablosunu sadece öngörülen
+terminallere bağlayın!
+1. Bağlantı kablosunu ürünün alt tarafındaki kablo kanal-
+larının içine döşeyin.
+2. Kablo geçişinin usulüne uygun şekilde takıldığından ve
+kabloların doğru biçimde geçirildiğinden emin olun.
+3. Kablo geçişlerinin bağlantı kablolarını sıkıca ve görünür
+boşluk bırakmadan sardığından emin olun.
+4. Kablo kelepçeleri kullanın.
+5. Gerekirse bağlantı kablosunu kısaltın.
+-
++
+N
+L
+PE
+30 mm	≤
+30 mm	≤
+40 mm	≤
+6. Esnek kabloyu şekilde gösterildiği gibi soyun. Münferit
+damar izolasyonlarının zarar görmemesine dikkat edin.
+7. İç damarları sadece, sağlam bağlantılar sağlanacak
+kadar izole edin.
+
+-- 12 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 13
+8. Gevşek teller nedeniyle kısa devreleri önlemek için,
+damarların (kablo) izolasyonu çıkarılan uçlarını damar
+(kablo) ucu yüksükleri ile donatın.
+9. İlgili soketi bağlantı kablosuna vidalayın.
+10. Tüm damarların, konnektöre mekanik olarak sıkı bir
+şekilde bağlanmış olmasını kontrol edin. Gerekirse
+düzeltin.
+11. Soketi, elektronik kartın ilgili soket yerine takın.
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+Devre bağlantı şeması (Geçerlilik: VUW 24/24 AS/2-1 (H-TR)
+VEYA VUW 28/28 AS/2-1 (H-TR)) (→ Ek E)
+5.7.5 eBUS kablosu için gereksinimler
+eBUS kablolarını döşerken aşağıdaki kurallara uyun:
+▶ 2 damarlı kablolar kullanın.
+▶ Asla blendajlı veya bükülmüş kablo kullanmayın.
+▶ Yalnızca uygun kabloları kullanın, örn. tip NYM veya
+H05VV (-F / -U).
+▶ Lütfen izin verilen toplam 125 m uzunluğa dikkat edin.
+Burada, toplam 50 m uzunluğa kadar ≥0,75 mm²'lik bir
+damar kesiti ve 50 m'den itibaren 1,5 mm²'lik bir damar
+kesiti geçerlidir.
+eBUS sinyallerinin bozulmasını önlemek için (örn. parazit
+nedeniyle):
+▶ Şebeke bağlantı kablolarına veya diğer elektromanyetik
+parazit kaynaklarına minimum 120 mm mesafe bırakın.
+▶ Şebeke bağlantı kablolarına paralel döşeme sırasında,
+kabloları ilgili yönetmeliklere göre döşeyin, örneğin kablo
+kanallarına.
+▶ İstisnalar: Duvar geçişlerinde ve elektronik kutusunda
+minimum mesafenin altına düşme kabul edilebilir.
+5.7.6 Elektrik beslemesinin yapılması
+1. Ürünü bir sabit bağlantı ve en az 3 mm'lik kontak boş-
+luğuna sahip (örn. sigortalar veya güç şalterleri) bir
+elektrikli ayırma donanımı üzerinden bağlayın.
+2. Geçerli tüm talimatları dikkate alın.
+– Geçerli yönetmelikler uyarınca bağlantı kurulurken,
+her kutupta en az 3 mm kontak açıklığına sahip
+(örn. sigortalar veya güç şalterleri gibi) elektrikli
+ayırma donanımı kullanılmalıdır.
+3. Şebeke nominal geriliminin 230 V olmasını sağlayın.
+4. Kablo bağlantısını yapın. (→ Bölüm 5.7.4)
+– Şebeke bağlantı kablosu: Standart, esnek üç da-
+marlı kablo
+5. Şebeke bağlantı kablosu döşenirken, kablo yükü mu-
+kavemetini sağlamak için, kablonun kablo geçişinden
+geçerek döşenmiş olmasına dikkat edin.
+230V~
+X1
+≤ 30 mm	
+N L
+N	L
+1
+6. Teslimat kapsamında gelen fişi (1)
+230V için elektronik
+karttaki yuvaya takın.
+7. Şebeke bağlantısına erişimin daima sağlandığından
+ve üzerinin kapatılmadığından veya herhangi bir engel
+tarafından engellenmediğinden emin olun.
+5.7.7 Reglerin bağlanması
+Bilgi
+Üründeki ısıtma devresi gidiş hattını ve kullanım
+suyu sıcaklığını ilgili maksimum değere ayarlamak
+için bir
+eBUS oda termostatı bağlantısında devre-
+ye alma sonrasında bağlantıyı yapın.
+1. Üründe gerilim bulunmadığından emin olun.
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+BUS	24V
+– +	24V=
+RT 	BUS
+	Burner
+	off	
+X106
+X41
+1 	2 	3
+4
+1 Yerden ısıtma limit
+termostatı
+2
+	24 V (ON/OFF) regler
+3
+	eBUS-regleri veya
+radyo frekans alıcısı
+4 Dış sensör, kablolu
+▶ Kablo bağlantısını yapın. (→ Bölüm 5.7.4)
+Koşul: Dış hava kompanzasyonlu regler veya oda termostatını
+eBUS
+bağlayın
+▶ Regleri
+BUS bağlantısı (3)'e bağlayın.
+▶ Önceden köprü mevcut değilse,
+24 V =
+RT bağlantısı-
+nı köprüleyin.
+
+-- 13 of 44 --
+
+14 Montaj ve bakım kılavuzu 8000037569_02
+Koşul: Düşük voltaj reglerini (24 V) bağlayın
+▶ Köprüyü çıkartın ve regleri
+24 V =
+RT (2) bağlantısına
+bağlayın.
+Koşul: Yerden ısıtma için maksimum termostat bağlantısı
+▶ Köprüyü çıkartın ve limit termostatı
+Burner off (1) bağ-
+lantısına bağlayın.
+2. Elektronik kutusunu kapatın.
+6 Kullanım
+6.1 Servis seviyesinin açılması
+1. sembolü yanıp sönmeye başlayana kadar, tuşu-
+na birden çok kez basın.
+2. veya ile yetkili servis erişim kodunu ayarlayın
+ve ile onaylayın.
+– Yetkili servis erişim kodu: 17
+◁ Arıza teşhis kodları menüsü d. görüntülenir.
+6.2 Teşhis kodlarının kullanımı
+1. Servis seviyesini açın. (→ Bölüm 6.1)
+2. veya ile teşhis kodları menüsünü d. seçin.
+3. ile onaylayın.
+◁ 00 görüntülenir.
+4. Değeri değişmesi gereken, teşhis kodunu veya
+ile seçin.
+Servis teşhis kodları (→ Ek A)
+5. ile onaylayın.
+6. veya ile teşhis kodu için istenilen değeri seçin.
+7. Ayarı ile onaylayın.
+8. Teşhis kodlarından çıkmak için, tuşuna basın.
+9. Servis seviyesini açın. (→ Bölüm 6.1)
+10. veya ile arıza teşhis kodları menüsünü d.
+seçin.
+11. ile onaylayın.
+◁ 00 görüntülenir.
+12. veya ile parametrelenecek bir teşhis kodu
+seçin.
+Servis teşhis kodları (→ Ek A)
+13. ile onaylayın.
+14. veya ile teşhis kodu için istenilen değeri se-
+çin.
+15. Ayarı ile onaylayın.
+16. Teşhis kodlarından çıkmak için, tuşuna basın.
+6.3 Kontrol programlarının yürütülmesi
+1. Servis seviyesini açın. (→ Bölüm 6.1)
+2. veya ile kontrol programları menüsünü P. se-
+çin.
+3. ile onaylayın.
+4. veya ile istenilen kontrol programını seçin.
+Kontrol programları (→ Ek D)
+5. Onaylamak için, tuşuna basın.
+◁ Kontrol programı başlar, yürütülür ve öngörülen
+sürenin sonunda durur.
+◁ Kontrol programları menüsü P. tekrar görüntülenir.
+6. Kontrol programını öngörülen süre dolmadan yarıda
+kesmek isterseniz, tuşuna basın.
+◁ oF 10 saniye süreyle görüntülenir.
+◁ Kontrol programları menüsü P. tekrar görüntülenir.
+7. Kontrol programından çıkmak için, tuşuna basın.
+8. Servis seviyesini açın. (→ Bölüm 6.1)
+9. veya ile kontrol programları menüsünü P.
+seçin..
+10. ile onaylayın.
+11. veya ile istenilen kontrol programını seçin.
+Kontrol programları (→ Ek D)
+12. Onaylamak için, tuşuna basın.
+◁ Kontrol programı başlar, yürütülür ve öngörülen
+sürenin sonunda durur.
+◁ Kontrol programları menüsü P. tekrar görüntülenir.
+13. Kontrol programını öngörülen süre dolmadan yarıda
+kesmek isterseniz, tuşuna basın.
+◁ oF 10 saniye süreyle görüntülenir.
+◁ Kontrol programları menüsü P. tekrar görüntülenir.
+14. Kontrol programından çıkmak için, tuşuna basın.
+6.4 Durum kodlarının çağrılması
+1. Servis seviyesini açın. (→ Bölüm 6.1)
+2. veya ile Durum Kodları Menüsü'nü S. seçin..
+3. ile onaylayın.
+◁ Güncel durum kodu, güncel gidiş suyu sıcaklığı
+ve güncel su basıncı ekranda dönüşümlü olarak
+görüntülenir.
+– S. → XX → XX °C → X,X bar
+4. Durum kodlarından çıkmak için, tuşuna basın.
+5. Servis seviyesini açın. (→ Bölüm 6.1)
+6. veya ile durum kodları menüsünü S. seçin.
+7. ile onaylayın.
+◁ Güncel durum kodu, güncel gidiş suyu sıcaklığı
+ve güncel su basıncı ekranda dönüşümlü olarak
+görüntülenir.
+– S. → XX → XX °C → X,X bar
+8. Durum kodlarından çıkmak için, tuşuna basın.
+
+-- 14 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 15
+6.5 Uzman seviyesinden çıkılması
+▶ Ana ekrana geri dönmek için, tuşuna gerekli olduğu
+kadar basın.
+◁ Ana ekran görünür.
+7 Devreye alma
+İlk çalıştırma sırasında, başlangıçta yukarıda belirtilen nomi-
+nal işletim verilerinden sapmalar ortaya çıkabilir.
+7.1 Isıtma suyunun/dolum ve takviye suyunun
+kontrol edilmesi ve hazırlanması
+Dikkat!
+Kalitesiz ısıtma suyu nedeniyle maddi hasar
+tehlikesi
+▶ Isıtma suyu kalitesinin yeterli düzeyde
+olmasını sağlayın.
+▶ Tesisatı doldurmadan veya takviye yapmadan önce ısıt-
+ma suyunun kalitesini kontrol edin.
+Isıtma suyu kalitesinin kontrol edilmesi
+▶ Isıtma devresinden biraz su alın.
+▶ Isıtma suyunun dış görünümünü kontrol edin.
+▶ Suyun içinde tortu maddeleri saptarsanız, sistemdeki /
+tesisattaki çamuru temizleyin.
+▶ Mıknatıslı bir çubuk yardımıyla manyetit (demir oksit)
+olup olmadığını kontrol edin.
+▶ Manyetit tespit ederseniz, sistemi/tesisatı temizleyin ve
+korozyona karşı koruma sağlamak için gerekli önlemleri
+alın (örneğin bir manyetit ayırıcı monte edin).
+▶ Aldığınız suyun pH değerini 25 °C sıcaklıkta kontrol edin.
+▶ Değer 8,2'den düşük veya 10,0'dan yüksek ise tesisatı
+temizleyin ve ısıtma suyunu hazırlayın.
+▶ Isıtma suyuna oksijen girmemesini sağlayın.
+Dolum ve takviye suyunun kontrol edilmesi
+▶ Tesisatı doldurmadan önce dolum ve takviye suyunun
+sertliğini ölçün.
+Dolum ve takviye suyunun hazırlanması
+▶ Doldurulan ve ilave edilen suyun hazırlanması için geçerli
+ulusal yönetmelikleri ve teknik kuralları dikkate alın.
+Ulusal yönetmelikler ve teknik kurallar ile daha yüksek talep-
+ler belirlenmedikçe aşağıdakiler geçerlidir:
+Dolum ve takviye suyunu hazırlamalısınız,
+– Sistemin kullanım süresinde tüm dolum ve ilave su mikta-
+rı ısıtma sisteminin nominal hacmin üç katını aşarsa, ve-
+ya
+– ısıtma suyunun pH değeri 8,2'den düşük veya 10,0'dan
+yüksek ise veya
+– aşağıdaki tabloda belirtilen standart değerlere uyulmaz-
+sa.
+Toplam
+ısıtma
+gücü
+Belirli tesisat hacmi için su sertliği1)
+≤ 20 l/kW > 20 l/kW
+≤ 40 l/kW > 40 l/kW
+kW
+mg
+Ca-
+CO₃/
+l
+mol/
+m³
+mg
+Ca-
+CO₃/
+l
+mol/
+m³
+mg
+Ca-
+CO₃/
+l
+mol/
+m³
+≤ 502) Kapalı Kapalı ≤ 30 < 300 < 3,0 < 0,05
+< 503) < 300 < 3,0 150 ≤ 1,5 5,0 0,05
+> 50 ila
+≤ 200
+arası
+200 < 2,0 100 ≤ 1,0 5,0 0,05
+> 200
+ila
+≤ 600
+arası
+150 < 1,5 5,0 0,05 5,0 0,05
+> 600 5,0 0,05 5,0 0,05 5,0 0,05
+1) Nominal kapasite Litre/ısıtma gücü; çok kazanlı sistemlerde
+en küçük kazanın ısıtma gücü kullanılmalıdır.
+2) Spesifik su kapasitesi kW başına ≥ 0,3 l olan ısı üreticisi.
+3) Spesifik su kapasitesi kW başına ≥ 0,3 l olan ısı üreticisi
+(örn. duvar tipi ısıtma cihazı) ve elektronik ısıtma elemanına
+sahip tesisat.
+Dikkat!
+Isıtma suyuna uygun olmayan katkı mad-
+delerinin eklenmesi nedeniyle maddi hasar
+tehlikesi!
+Uygun olmayan katkı maddeleri yapı parçası
+değişikliklerine, ısıtma konumunda seslere ve
+diğer olası arızalara neden olabilir.
+▶ Uygun olmayan antifriz ve korozyon önle-
+yici maddeler, haşere ilacı ve sızdırmazlık
+maddesi kullanmayın.
+Aşağıdaki katkı maddelerinin doğru bir şekilde kullanılması
+koşuluyla şimdiye kadar ürünlerimizle ilgili herhangi bir uyuş-
+mazlık saptanmamıştır.
+▶ Kullanırken mutlaka katkı maddesi üreticisinin talimatları-
+na uyun.
+Isıtma sisteminde kullanılacak diğer katkı maddelerinin
+uyumluluğu ve bunların etkileri için sorumluluk üstlenmemek-
+teyiz.
+Temizlik yapmak için kullanılabilecek katkılar (ardın-
+dan durulama gerekli)
+– Adey MC3+
+– Adey MC5
+– Fernox F3
+– Sentinel X 300
+– Sentinel X 400
+Isıtma sisteminde koruyucu olarak kullanılan katkılar
+– Adey MC1+
+– Fernox F1
+– Fernox F2
+– Sentinel X 100
+– Sentinel X 200
+Isıtma sistemi için donmaya karşı koruma katkıları
+– Adey MC ZERO
+– Fernox Antifreeze Alphi 11
+
+-- 15 of 44 --
+
+16 Montaj ve bakım kılavuzu 8000037569_02
+– Sentinel X 500
+▶ Yukarıda belirtilen katkı maddelerini kullandıysanız, kulla-
+nıcıyı gerekli önlemler ile ilgili olarak bilgilendirin.
+▶ Kullanıcıya, donmaya karşı koruma için gerekli işleyişle
+ilgili bilgi verin.
+7.2 Isıtma sisteminin doldurulması
+Bilgi
+Her devreye almadan sonra, kalorifik değer etki-
+sini arttırmak için, ürün başlangıçta düşük güçte
+çalışır. Bu kontrol programları için geçerli değildir
+ve işleticinin konfor kaybıyla ilişkili değildir. Durum
+kodu S.58 bu aşamaya karşılık gelir. Bu aşamada
+ekran yaklaşık 50°C sıcaklık gösterir.
+1. Yoğuşma suyu sifonunun doğru şekilde doldurulmuş
+olduğundan emin olun.
+2. Isıtma sisteminin doldurmadan önce yeterince temiz-
+lenmiş olduğundan emin olun.
+1
+3. Otomatik pürjör kapağını (1) bir-iki tur gevşetin.
+4. Isıtma sisteminin doldurma ve boşaltma vanasını stan-
+dartlara uygun olarak bir ısıtma suyu beslemesine bağ-
+layın.
+5. Tüm radyatör termostat vanalarını ve gerekirse küresel
+vanaları açın.
+6. Isıtma suyu beslemesini ve doldurma vanasını, sıcak
+su Isıtma sistemi akacak şekilde açın.
+Ürünün devreye alınması
+▶ açma / kapatma düğmesine basın.
+◁ Ekranda ana ekran görüntülenir.
+7. P.08 kontrol programını başlatın. (→ Bölüm 6.3)
+Kontrol programları (→ Ek D)
+8. Su, hava purjöründen kabarcıksız çıkana kadar en
+yüksek noktadaki radyatörün havasını alın.
+9. Isıtma sistemi komple ısıtma suyuyla dolana kadar
+diğer tüm radyatörlerin havasını alın.
+10. Tüm purjörleri kapatın.
+11. Gerekli dolum basıncına ulaşana kadar ısıtma suyu
+takviyesi yapın.
+– 0,10 … 0,14 MPa (1,00 … 1,40 bar)
+▽ Isıtma sistemi birçok kata kadar uzanıyorsa, ısıtma
+sistemine hava girişini önlemek için dolum basıncı
+için daha yüksek değerler gerekli olabilir.
+12. Doldurma vanasını ve sıcak su beslemesini kapatın.
+13. Tüm bağlantıları ve tüm devreyi sızıntılara karşı kontrol
+edin
+7.3 Isıtma sisteminin havasının alınması
+1. P.00 kontrol programını başlatın. (→ Bölüm 6.3)
+Kontrol programları (→ Ek D)
+◁ Ekranda on görüntülenir.
+2. Isıtma devresi su basıncının asgari dolum basıncının
+altına düşmemesine dikkat edin.
+– ≥ 0,05 MPa (≥ 0,50 bar)
+3. Isıtma sistemi dolum basıncının, membranlı genleş-
+me tankındaki (MAG) karşı basıncın en az 0,02 MPa
+(0,2 bar) üzerinde olup olmadığını kontrol edin ( PTesisat
+≥ PMAG + 0,02 MPa (0,2 bar)).
+Sonuç:
+Isıtma sistemi dolum basıncı çok düşük
+▶ Isıtma sistemini tekrar doldurun.
+4. Kontrol programı P.00 tamamlandıktan sonra ısıtma
+sisteminde hala çok fazla hava varsa, kontrol programı-
+nı yeniden başlatın.
+7.4 Kullanım suyu sisteminin doldurulması ve
+havasının alınması
+1. Üründeki soğuk su vanasını açın.
+2. Sıcak su devresini doldurmak için, dışarı su çıkana
+kadar tüm sıcak su musluk armatürlerini açın.
+7.5 Kontrol ve gaz ayarı
+7.5.1 Fabrikasyon gaz ayarının kontrol edilmesi
+▶ Cihaz tip etiketi üzerindeki gaz cinsine ilişkin bilgileri
+kontrol edin ve bunları montaj yerinde mevcut gaz cinsi
+ile karşılaştırın.
+Sonuç 1:
+Ürün modeli bölgesel gaz grubuna uygun değil.
+▶ Ürünü devreye almayın.
+▶ Müşteri hizmetleri ile irtibat kurun.
+Sonuç 2:
+Ürün modeli bölgesel gaz grubuna uygun.
+▶ Gaz bağlantı basıncını/gaz giriş basıncını kontrol
+edin. (→ Bölüm 7.5.2)
+▶ CO₂ oranını kontrol edin. (→ Bölüm 7.5.4)
+7.5.2 Gaz bağlantı basıncı/gaz giriş basıncı kontrolü
+1. Ürünü geçici olarak devre dışı bırakın. (→ Bölüm 12.1)
+2. Elektronik kutusunu aşağıya doğru yatırın.
+
+-- 16 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 17
+2	1
+3. Gaz basıncı ölçüm noktasındaki vidayı (1) saat yönü-
+nün tersine döndürün.
+– Saat yönünün tersine (↺): 2 tur
+4. Manometreyi (2) ölçüm nipeline (1) bağlayın.
+– Çalışma malzemesi: U-manometre
+– Çalışma malzemesi: Dijital manometre
+5. Elektronik kutusunu yukarıya doğru kaldırın.
+6. Gaz kesme vanasını açın.
+7. Ürünü kontrol programı P.01 ile işletime alın (bu sırada
+gücü maksimuma ayarlayın). (→ Bölüm 6.3)
+8. Gaz bağlantı basıncını/Gaz giriş basıncını atmosfer
+basıncına karşı ölçün.
+Geçerli giriş basıncı
+Türkiye Doğalgaz H 1,7
+… 2,5 kPa
+(17,0
+… 25,0 mba-
+r)
+Bilgi
+Giriş basıncı gaz armatüründe ölçülür, bu
+nedenle izin verilen minimum değer 0,1 kPa
+(1 mbar), tabloda belirtilen minimum değerin
+altında olabilir.
+Sonuç 1:
+Gaz bağlantı basıncı/gaz giriş basıncı izin verilen ara-
+lıkta
+▶ Ürünü geçici olarak devre dışı bırakın.
+(→ Bölüm 12.1)
+▶ Elektronik kutusunu aşağıya doğru yatırın.
+▶ Manometreyi alın.
+▶ Ölçüm nipelinin vidasını sıkın.
+▶ Gaz kesme vanasını açın.
+▶ Ölçüm nipelinin gaz sızdırmazlığı kontrol edin.
+▶ Elektronik kutusunu yukarıya doğru kaldırın.
+▶ Ön kapağı monte edin. (→ Bölüm 7.5.3)
+▶ Ürünü devreye alın.
+Sonuç 2:
+Gaz bağlantı basıncı/Gaz giriş basıncı izin verilen ara-
+lıkta değil
+Dikkat!
+Hatalı gaz bağlantı basıncı/gaz akışı
+basıncı nedeniyle maddi hasar ve işle-
+tim arızaları tehlikesi!
+Gaz bağlantı basıncı/Gaz akışı basıncı
+izin verilen aralığın dışında ise çalışma
+sırasında arızalar ve ürün hasarları söz
+konusu olabilir.
+▶ Üründe ayar çalışmaları yapmayın.
+▶ Ürünü devreye almayın.
+▶ Bu arızayı gideremiyorsanız, gaz dağıtım kurumuna
+haber verin.
+▶ Gaz kesme vanasını kapatın.
+7.5.3 Ön kapağın montajı
+2x1
+A
+C
+B
+7.5.4 CO₂ oranının kontrol edilmesi
+1
+1. Atık gaz ölçüm ağzındaki ölçüm deliğini (1) açın.
+2. CO₂ ölçüm cihazının sensörünü atık gaz borusunun
+ortasına konumlandırın.
+3. Ürünü kontrol programı P.01 ile işletime alın (bu sırada
+gücü maksimuma ayarlayın). (→ Bölüm 6.3)
+4. Ürünün çalışma sıcaklığına ulaşması için en az 5 daki-
+ka bekleyin.
+5. Atık gaz ölçüm müşirinde CO2 miktarını ölçün ve öl-
+çüm değerini kaydedin.
+
+-- 17 of 44 --
+
+18 Montaj ve bakım kılavuzu 8000037569_02
+Doğal gaz H – CO₂ değerinin ayarlanması
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR)
+Bilgi
+46,44 ... 54,00 MJ/m³ aralığındaki bir Wobb en-
+deksi ile uyumludur (Referans Ws: 15 °C/15 °C)
+Türkiye
+Doğalgaz
+H
+Çıkarılmış ön
+kapak
+Monte edilmiş
+ön kapak
+Tam yükte CO₂ ara-
+lığı
+7,9 … % 9,9 8,1 … % 10,1
+Ayarlama Wobbe
+sayısı Ws için
+50,7 MJ/m³ 50,7 MJ/m³
+Tam yükte O₂ aralığı 3,2 … % 6,8 2,9 … % 6,5
+Tam yükte karbon-
+monoksit
+≤ 650 ppm ≤ 650 ppm
+Doğal gaz H – CO₂ değerinin ayarlanması
+Geçerlilik: VUW 28/28 AS/2-1 (H-TR)
+Bilgi
+46,44 ... 54,00 MJ/m³ aralığındaki bir Wobb en-
+deksi ile uyumludur (Referans Ws: 15 °C/15 °C)
+Türkiye
+Doğalgaz
+H
+Çıkarılmış ön
+kapak
+Monte edilmiş
+ön kapak
+Tam yükte CO₂ ara-
+lığı
+8,0 … % 10,0 8,2 … % 10,2
+Ayarlama Wobbe
+sayısı Ws için
+50,7 MJ/m³ 50,7 MJ/m³
+Tam yükte O₂ aralığı 3,1 … % ha-
+cim 6,6
+2,7 … % ha-
+cim 6,3
+Tam yükte karbon-
+monoksit
+≤ 650 ppm ≤ 650 ppm
+Sonuç 1:
+Değerin izin verilen aralığın dışında olması halinde:
+▶ Atık gaz ölçüm müşirinde CO2 miktarını yeniden
+ölçün ve ölçüm değerini kaydedin.
+▶ Değerin hâlâ kabul edilebilir aralığın dışında olması
+halinde, ürünü çalıştırmayın ve Müşteri Hizmetleri'ni
+bilgilendirin.
+Sonuç 2:
+Değerin izin verilen aralığın içinde olması halinde:
+▶ Ürünü devreye alma işlemine devam edin.
+6. CO2 ölçüm cihazının sensörünü çıkartın ve atık gaz
+ölçüm ağzındaki ölçüm deliğini kapatın.
+7.6 Isıtma konumunun kontrolü
+1. Isı talebi sağlayın.
+2. Durum kodu göstergesini etkinleştirin. (→ Bölüm 6.4)
+◁ Ürün doğru çalışıyorsa, ekranda S.04 görünür.
+▽ Yoğuşma suyu sifonunun dolum işlevinin etkinleşti-
+rilmiş olması halinde, öncelikle S.58 görüntülenir.
+7.7 Sıcak kullanım suyu kontrolü
+1. Bir sıcak su musluğunu tam açın.
+2. Durum kodu göstergesini etkinleştirin. (→ Bölüm 6.4)
+◁ Ürün düzgün çalışıyorsa, ekranda şunlar görüne-
+cektir: S.14.
+7.8 Sızdırmazlık kontrolü
+▶ Gaz hattını, ısıtma devresini ve sıcak su devresini sızdır-
+mazlık bakımından kontrol edin.
+▶ Yanma havası/atık gaz akım borusunu doğru montaj
+açısından kontrol edin.
+Koşul: Ortam havasından bağımsız işletim
+▶ Alçak basınç yanma hücresini sızdırmazlık bakımından
+kontrol edin.
+8 Sistemin/tesisatın özelleştirilmesi
+8.1 Isıtmanın ayarlanması için ayarlar
+8.1.1 Brülör kapatma süresi
+Brülörün çok sık açılıp kapanmasını ve bunun sonucunda
+enerji kaybını önlemek için, brülör her kapanışından sonra,
+belirli bir süre çalışmaması için, elektronik olarak kilitlenir.
+Brülör bekleme süresi sadece ısıtma konumu için etkindir.
+Brülör bekleme süresinde kullanım suyu konumunun devre-
+ye alınması hiçbir etkiye neden olmaz.
+d.02 teşhis kodu üzerinden maksimum brülör bekleme süre-
+sini ayarlayabilirsiniz (Fabrika ayarı: 20 dak).
+Tİleri (talep
+edilen)
+℃
+Ayarlanan maksimum brülör bekleme süresi
+dk.
+1 5 10 15 20 25 30
+30 2,0 4,0 8,5 12,5 16,5 20,5 25,0
+35 2,0 4,0 7,5 11,0 15,0 18,5 22,0
+40 2,0 3,5 6,5 10,0 13,0 16,5 19,5
+45 2,0 3,0 6,0 8,5 11,5 14,0 17,0
+50 2,0 3,0 5,0 7,5 9,5 12,0 14,0
+55 2,0 2,5 4,5 6,0 8,0 10,0 11,5
+60 2,0 2,0 3,5 5,0 6,0 7,5 9,0
+65 2,0 1,5 2,5 3,5 4,5 5,5 6,5
+70 2,0 1,5 2,0 2,5 2,5 3,0 3,5
+75 2,0 1,0 1,0 1,0 1,0 1,0 1,0
+Tİleri (talep edile-
+n)
+℃
+Ayarlanan maksimum brülör bekleme süresi
+dk.
+35 40 45 50 55 60
+30 29,0 33,0 37,0 41,0 45,0 49,5
+35 25,5 29,5 33,0 36,5 40,5 44,0
+40 22,5 26,0 29,0 32,0 35,5 38,5
+
+-- 18 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 19
+Tİleri (talep edile-
+n)
+℃
+Ayarlanan maksimum brülör bekleme süresi
+dk.
+35 40 45 50 55 60
+45 19,5 22,5 25,0 27,5 30,5 33,0
+50 16,5 18,5 21,0 23,5 25,5 28,0
+55 13,5 15,0 17,0 19,0 20,5 22,5
+60 10,5 11,5 13,0 14,5 15,5 17,0
+65 7,0 8,0 9,0 10,0 11,0 11,5
+70 4,0 4,5 5,0 5,5 6,0 6,5
+75 1,0 1,0 1,0 1,0 1,0 1,0
+8.1.2 Pompa gücünün ayarlanması
+8.1.2.1 Pompa çalışma türünü ayarlama
+Ürün, kademeli bir yüksek verimli pompa ile donatılmıştır.
+Otomatik çalışma modunda (d.14 =0) pompa kademesi bir
+regülasyon tarafından ayarlanır.
+Gerekirse pompa işletim konumunu, manuel olarak mümkün
+olan maksimum güce kadar beş kademe halinde sabit bir
+şekilde ayarlayabilirsiniz. Devir sayısı kontrolü bu şekilde
+kapanır.
+▶ Pompa gücünü değiştirmek için d.14'ü istediğiniz değere
+ayarlayın.
+Servis teşhis kodları (→ Ek A)
+8.1.2.2 Pompa karakteristik eğrisi
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR)
+300
+400
+500
+600
+700
+800
+200
+100
+0
+5 	600	400	200 	1000 	1200	800 	A
+B
+1 	2 	3 	4
+1 Azm. pompa devir
+sayısı, Taşma valfı
+kapalı
+2 Azm. pompa devir
+sayısı, taşma valfı
+3/4 tur açıldı
+(Taşma valfinin fabrika
+ayarı )
+3 Asg. pompa devir sa-
+yısı, taşma valfı 3/4 tur
+açıldı
+(Taşma valfinin fabrika
+ayarı )
+4 Qazm (ΔT = 20°C)
+A l / sa cinsinden sistem
+debisi
+B hPa (mbar) cinsinden
+pompanın basma yük-
+sekliği
+Geçerlilik: VUW 28/28 AS/2-1 (H-TR)
+300
+400
+500
+600
+700
+200
+100
+0
+5 	600	400	200 	1000 	1200	800 	A
+B
+1 	2 	3 	4
+1 Azm. pompa devir
+sayısı, Taşma valfı
+kapalı
+2 Azm. pompa devir
+sayısı, taşma valfı
+3/4 tur açıldı
+(Taşma valfinin fabrika
+ayarı )
+3 Asg. pompa devir sa-
+yısı, taşma valfı 3/4 tur
+açıldı
+(Taşma valfinin fabrika
+ayarı )
+4 Qazm (ΔT = 20°C)
+A l / sa cinsinden sistem
+debisi
+B hPa (mbar) cinsinden
+pompanın basma yük-
+sekliği
+8.1.3 Baypas vanasının ayarlanması
+1. Ön kapağı sökün. (→ Bölüm 5.7.1)
+2. Elektronik kutusunu aşağıya doğru yatırın.
+1
+3. Ayar vidasından (1) basıncı ayarlayın.
+Ayar vidasının
+konumu Basınç Not / Uygulama
+Sağ tahdit (tama-
+men sağa döndü-
+rülmüş)
+0,035 MPa
+(0,350 bar)
+Eğer radyatörler fabrika
+ayarında yeterince ısın-
+mazlarsa.
+Bu durumda pompa
+azm. kademeye ayarlan-
+malıdır.
+Saat yönünün
+tersine 3/4 tur
+0,025 MPa
+(0,250 bar) Fabrika ayarı
+Orta konumda
+hareket ederek
+saat yönünün
+tersinde 3 tur
+daha
+0,017 MPa
+(0,170 bar)
+Radyatörlerde veya
+radyatör vanalarında
+sesler ortaya çıkarsa.
+4. Elektronik kutusunu yukarıya doğru kaldırın.
+5. Ön kapağı monte edin. (→ Bölüm 7.5.3)
+
+-- 19 of 44 --
+
+20 Montaj ve bakım kılavuzu 8000037569_02
+8.1.4 Isıtma ve sıcak su sıcaklığının ayarlanması
+Koşul: Bir regler kurulumu öngörülmemiştir
+▶ Üründe istenilen ısıtma devresi gidiş hattı ve sıcak su
+sıcaklığını ayarlayın (→ Ürün kullanma kılavuzu).
+Koşul: Bir regler kurulumu öngörülmüştür
+▶ Üründe ısıtma devresi gidiş hattı ve sıcak su sıcaklığını il-
+gili maksimum değere ayarlayın (→ Ürün kullanma kılavu-
+zu).
+▶ Regleri ürüne bağlayın. (→ Bölüm 5.7.7)
+▶ Reglerde istenilen ısıtma devresi gidiş hattı ve sıcak su
+sıcaklığını ayarlayın (→ Regler kullanma kılavuzu).
+8.1.5 Sıcak su
+8.1.5.1 Suyu kireçten arındırma
+Su sıcaklığı arttıkça kireçlenme olasılığı da artar.
+▶ Gerekirse suyu kireçten arındırın.
+9 Kullanıcıya teslim edilmesi
+▶ Montajı tamamladıktan sonra işleticiye, emniyet tertibatla-
+rının yerlerini ve fonksiyonlarını gösterin.
+▶ Kullanıcıya, ürünü nasıl kullanılacağını gösterin.
+▶ Kullanıcıyı, özellikle uyması gereken emniyet uyarılarına
+karşı uyarın.
+▶ Kullanıcıyı, ürün bakımının öngörülen araklıklarla yapıl-
+ması gerektiği konusunda bilgilendirin.
+▶ Kullanıcıya tüm talimatları ve ürün evraklarını saklaması
+için verin.
+▶ Kullanıcıyı, yanma havası girişi ve atık gaz çıkış borusu
+konularındaki önlemler hakkında bilgilendirin. En ufak bir
+değişiklik bile yapmaması gerektiği konusunda uyarın.
+▶ Kullanıcıyı, ürünün kurulum yerinde patlayıcı veya kolay
+tutuşabilen maddeler (örn. benzin, boyalar) kullanmaması
+ve depolamaması konusunda bilgilendirin.
+10 Kontrol ve bakım
+▶ Minimum kontrol ve bakım aralıklarına uyun.
+▶ Kontrol sonucunda zamanından erken bir bakımın gerekli
+olduğu anlaşılırsa ürün bakımını erken yapın.
+10.1 Genleşme tankının, ateşleme blokunun bakım
+konumuna getirilmesi
+A
+A
+B
+▶ Üzerinde çalışmak istediğiniz komponentlere bağlı ola-
+rak, genleşme tankını bakım konumuna getirin.
+10.2 Genleşme tankının, hidrolik blokun bakım
+konumuna getirilmesi
+A
+C
+A
+B
+D
+▶ Üzerinde çalışmak istediğiniz komponentlere bağlı ola-
+rak, genleşme tankını bakım konumuna getirin.
+
+-- 20 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 21
+10.3 Komponentlerin temizlenmesi/kontrol edilmesi
+Her temizlik/kontrol öncesinde hazırlık çalışmaları yapın.
+▶ Temizlik ve kontrol çalışmalarını hazırlayın.
+(→ Bölüm 10.3.1)
+Her temizlik/kontrol sonrasında tamamlayıcı çalışmaları ya-
+pın.
+▶ Temizleme ve kontrol çalışmalarını tamamlayın.
+(→ Bölüm 10.3.11)
+10.3.1 Temizlik ve kontrol çalışmalarının
+hazırlanması
+1. Hidrolik bileşenlerine müdahale ederek ürünü boşaltın.
+(→ Bölüm 10.4)
+2. Ürünü geçici olarak devre dışı bırakın. (→ Bölüm 12.1)
+– Tekrar açılmaması için gerekli tüm önlemleri alın.
+3. Ürünü elektrik şebekesinden ayırın.
+4. Ürünün servis vanalarını kapatın.
+5. Ön kapağı sökün. (→ Bölüm 5.7.1)
+6. Elektronik kutusunu aşağı katlayın.
+7. Elektrikli komponentleri (örn. elektronik kutusunu) sıç-
+rayan sudan koruyun.
+8. Sadece yeni contalar kullanın.
+10.3.2 Ses izolasyonunun sökülmesi
+B
+A
+1
+2
+1. Yanma havası borusunu (1) takılı bırakın.
+2. Ses izolasyonunu (2) sökün.
+10.3.3 Termo kompakt modülün sökülmesi
+Tehlike!
+Sıcak atık gazlar nedeniyle ölüm tehlikesi ve
+maddi hasar tehlikesi!
+Brülör flanşındaki conta, izolasyon ve kilitli
+somunlar hasar görmemiş olmalıdır. Aksi
+takdirde atık gazlar çıkabilir ve yaralanmalara
+ve maddi hasarlara yol açabilir.
+▶ Brülör flanşını her açtığınızda contayı
+değiştirin.
+▶ Brülör flanşını her açtığınızda brülör flan-
+şındaki kilitli somunları değiştirin.
+▶ Brülör flanşındaki veya eşanjör arka pane-
+lindeki izolasyonda hasar belirtileri varsa,
+izolasyonu değiştirin.
+1. Ventüri memesini asla brülör flanşından sökmeyin.
+Bilgi
+Termo kompakt modül yapı grubu dört ana
+bileşenden oluşmaktadır:
+– Gaz armatürü,
+– Ventüri memesi,
+– Brülör flanşı,
+– Ön karışımlı brülör.
+2. Ses izolasyonunu sökün. (→ Bölüm 10.3.2)
+E x4
+B
+A
+C
+D
+1
+2
+3
+6
+4
+5
+3. Gaz armatürünün fişini (5) çekin.
+4. Fişi (4) ateşleme tertibatından çekin.
+5. Ateşleme elektrodundaki topraklama kablosunu (3)
+çekin.
+6. Gaz armatüründeki somunu (6) sökün.
+7. Brülör flanşındaki (2) dört adet somunu (1) sökün.
+
+-- 21 of 44 --
+
+22 Montaj ve bakım kılavuzu 8000037569_02
+1
+A
+B
+8. Termo kompakt modülü (1) komple eşanjörden çıkar-
+tın.
+9. Brülörün ve brülör izolasyon matının hasarlı olup olma-
+dığını kontrol edin. (→ Bölüm 10.3.5)
+10. Eşanjörde hasar olup olmadığını kontrol edin.
+Sonuç:
+Eşanjör hasarlı
+▶ Eşanjörü yenisi ile değiştirin (→ Yedek parça kılavu-
+zu "Eşanjör").
+11. Eşanjörün kirlenmiş olup olmadığını kontrol edin.
+Sonuç:
+Eşanjör kirlenmiş
+▶ Eşanjörü temizleyin. (→ Bölüm 10.3.4)
+12. Eşanjörün izolasyon matının hasarlı olup olmadığını
+kontrol edin.
+Sonuç:
+İzolasyon matı hasarlı
+▶ İzolasyon matını yenisi işle değiştirin (→ Yedek
+parça kılavuzu Eşanjörün izolasyon matı ).
+10.3.4 Eşanjörün temizlenmesi
+1
+2
+3
+4
+1. Eşanjörün (4) serpantinini (2) suyla veya gerekirse
+sirkeyle temizleyin (maks. % 5 asit).
+– Temizleme maddesi tesir süresi: 20 dk.
+2. Çözülen kirleri plastik bir fırçayla veya yeterli güçteki bir
+su jetiyle temizleyin (örneğin, içinde yükselticili borusu
+bulunan bir püskürtme şişesi kullanarak). Bu sırada
+püskürtülen suyun diğer bileşenlere girmediğinden
+emin olun. Su huzmesini doğrudan eşanjörün arka
+kısmında bulunan izolasyon matına (3) doğrultmayın.
+◁ Su, eşanjörden yoğuşma suyu sifonuna ulaşır.
+3. Brülör flanşındaki izolasyon matının (3) hasarlı olup
+olmadığını kontrol edin.
+Sonuç:
+İzolasyon matı hasarlı
+▶ İzolasyon matını yenisi işle değiştirin (→ Yedek
+parça kılavuzu Eşanjörün izolasyon matı ).
+10.3.5 Brülörün ve brülör izolasyon matının hasarlı
+olup olmadığının kontrol edilmesi
+1
+2
+3
+1. Brülörün (1) yüzeyinin hasarlı olup olmadığını kontrol
+edin.
+Sonuç:
+Brülör hasarlı
+▶ Brülörü değiştirin.
+2. Yeni bir brülör flanş contası (3) monte edin.
+3. Brülör flanşındaki izolasyon matının (2) hasarlı olup
+olmadığını kontrol edin.
+Sonuç:
+İzolasyon matı hasarlı
+▶ İzolasyon matını yenisi işle değiştirin (→ Yedek
+parça kılavuzu Brülör flanşının izolasyon matı ).
+10.3.6 Termo kompakt modülün montajı
+1
+B
+A
+1. Yanma havası borusunu emme ağzına takın.
+
+-- 22 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 23
+2. Termo kompakt modülü (1) eşanjöre takın.
+A x4
+B
+E
+C
+D
+1
+2
+3
+6
+4
+5
+3. Dört adet yeni somunu (1), brülör flanşı yüzeyleri eşit
+bir şekilde oturana kadar çapraz sırayla sıkın.
+– Sıkma torku: 6 Nm
+4. Topraklama kablosunu (3) ateşleme elektroduna tekrar
+bağlayın.
+5. Fişi (5) gaz armatürüne tekrar takın.
+6. Fişi (4) tekrar ateşleme tertibatına takın.
+7. Somunu (6) gaz armatürüne yeni bir contayla tekrar
+vidalayın.
+10.3.7 Ateşleme elektrodunun kontrol edilmesi
+1
+2
+3
+4
+1. Topraklama kablosunu (1) çıkartın.
+2. Sabitleme vidalarını (2) sökün.
+3. Elektrodu (4) dikkatli bir şekilde yanma hücresinden
+çıkarın.
+4. Elektrot uçlarının hasarsız olduğundan emin olun.
+5. Elektrotların arasındaki açıklığı temizleyin ve kontrol
+edin.
+– Ateşleme elektrotlarının mesafesi: 4,5 ± 0,5 mm
+6. Contayı (3) yenisi ile değiştirin.
+7. Elektrodu monte edin. Bu sırada ters işlem sırasını
+uygulayın.
+10.3.8 Genleşme tankı ön basıncının kontrol edilmesi
+1. Ürünü boşaltın. (→ Bölüm 10.4)
+1
+2. Genleşme tankı hava basıncını genleşme tankının
+vanasında (1) kontrol edin.
+– Çalışma malzemesi: U-manometre
+– Çalışma malzemesi: Dijital manometre
+Sonuç 1:
+≥ 0,075 MPa (≥ 0,750 bar)
+Ön basınç izin verilen aralıkta.
+Sonuç 2:
+< 0,075 MPa (< 0,750 bar)
+▶ Genleşme tankına, ısıtma sisteminin statik yüksek-
+liğine göre tercihen azot takviyesi yapın, aksi takdir-
+de hava takviyesi yapın. Boşaltma vanasının takvi-
+ye sırasında açık olmasını sağlayın.
+3. Genleşme tankının vanasından su çıkışı mevcutsa,
+genleşme tankını değiştirin.
+4. Isıtma sistemini doldurun. (→ Bölüm 7.2)
+5. Isıtma sisteminin havasını alın. (→ Bölüm 7.3)
+10.3.9 Isıtma filtresinin temizlenmesi
+1. Ürünün ısıtma tarafını boşaltın.
+2. Ürünü (sıcak su tarafında) boşaltın.
+3. Elektronik kutusunu öne yatırın.
+1
+2
+3
+4
+4. Basınç sensörü üzerindeki konnektörü (1) çıkartın.
+5. Sıcak su debi sensörü üzerindeki fişi (2) ayırın.
+6. 3 yollu on/off vana üzerindeki konnektörü (3) çıkarın.
+7. Pompa üzerindeki konektörleri (4) çıkarın.
+
+-- 23 of 44 --
+
+24 Montaj ve bakım kılavuzu 8000037569_02
+3
+2
+1
+6
+5
+4
+8. Su ve gaz bağlantılarını (1) sökün.
+9. Genleşme tankındaki bağlantıyı sökmeden (2) hidrolik
+blok üzerindeki esnek hortumu sökün.
+10. Gaz nozülünü çıkarın (3).
+11. Yoğuşma suyu sifonunu çıkarın (4). (→ Bölüm 10.3.10)
+12. Isıtma akış borusunu ısı eşanjöründe dikey olarak ha-
+reket ettirerek (5) hidrolik bloktan ayırın.
+13. Isı eşanjörü üzerindeki ısıtma akış borusunu gevşetin.
+14. Isıtma akış borusunu üründe ve ısıtma devresi gidiş
+hattı sıcaklık sensörünü konumunu değiştirmeden takılı
+bırakın.
+15. Isıtma dönüş borusunu ısı eşanjöründe dikey olarak
+hareket ettirerek (6) hidrolik bloktan ayırın.
+16. Isıtma dönüş borusunu üründe ve ısıtma devresi dönüş
+hattı sıcaklık sensörünü konumunu değiştirmeden takılı
+bırakın.
+1
+17. (1)Hidrolik bloğun 5 sabitleme vidasını sökün.
+18. Hidrolik bloğu üründen çıkarın.
+1
+2
+3
+4
+19. (1)Sıcak su plaka eşanjörünün 2 sabitleme vidasını
+sökün.
+20. Sıcak su plaka eşanjörünü çıkarın (2).
+21. Contayı (3) çıkarın.
+22. Isıtma suyu filtresini (4) tutucusundan çıkartın.
+23. Isıtma suyu filtresini akar su altında akış yönünde ters
+istikamette iyice durulayın.
+24. Süzgeç hasar görmüşse veya artık yeterince temizle-
+nemiyorsa, süzgeci değiştirin.
+4
+3 	2
+1
+25. Merkezleme sistemini kullanarak ısıtma filtresini (1)
+konumlandırın.
+26. Isıtma filtresini hidrolik bloktaki tutucusuna yerleştirin.
+27. Sadece yeni contalar kullanın (2).
+28. Sıcak su plaka eşanjörünü (3) merkezleme sistemini
+kullanarak hidrolik blok üzerine monte edin..
+29. 2 sabitleme vidasını (4) takın.
+
+-- 24 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 25
+30. Hidrolik bloğu ürüne yeniden monte etmek için sökme
+işleminin tersi sırayla ilerleyin.
+31. 5 sabitleme vidasını takın.
+– Sıkma torku: 2 Nm
+32. Su bileşenlerini hidrolik bloğa bağlamak için, sökme
+işleminin tersi sırayla ilerleyin.
+33. Fişi basınç sensörüne bağlayın.
+34. Fişi sıcak su debi sensörüne bağlayın.
+35. Fişi 3 yollu on/off vanaya bağlayın.
+36. Fişleri pompaya bağlayın.
+10.3.10 Yoğuşma suyu sifonunun temizlenmesi
+A
+E
+D
+C
+B
+1. Yoğuşma suyu gider hortumunu sifonun alt kısmından
+çıkartın.
+2. Yoğuşma suyu sifonunu, şekilde gösterildiği gibi → (A)
+ila (D) temizleyin.
+3. Isıtıcı eşanjöründeki contanın hâlâ yerinde olup olmadı-
+ğını kontrol edin.
+▽ Contanın yerinde olmaması veya hasarlı olması
+halinde contayı yenisi ile değiştirin.
+4. Yoğuşma suyu sifonunu (E) doldurun.
+5. Yoğuşma suyu sifonunu tekrar yerine takın.
+6. Yoğuşma suyu gider hortumunu bağlayın.
+10.3.11 Temizleme ve kontrol çalışmalarının
+tamamlanması
+1. Elektronik kutusunu yukarıya doğru kaldırın.
+2. Ön kapağı monte edin. (→ Bölüm 7.5.3)
+3. Henüz yapılmadıysa elektrik bağlantısını yapın.
+4. Henüz yapılmadıysa tüm küresel vanaları ve gaz kes-
+me vanasını açın.
+5. Henüz yapmadıysanız, ürünü tekrar açın.
+(→ Bölüm 7.2)
+6. Ürünü sızdırmazlık bakımından kontrol edin.
+(→ Bölüm 7.8)
+10.4 Üründeki suyun boşaltılması
+1
+1. Ürünün servis vanalarını kapatın.
+2. Ön kapağı sökün. (→ Bölüm 5.7.1)
+3. Alternatif 1:
+▶ Boşaltma vanasının (1) altına bir kap yerleştirin..
+3. Alternatif 2:
+▶ Boşaltma vanasını (1) kanalizasyona bağlayın.
+4. Dahili pompadaki otomatik pürjörün kapağını sökün.
+5. Ürünü devreye alın.
+6. Boşaltma vanasını (1) açın.
+7. P.08 kontrol programını başlatın. (→ Bölüm 6.3)
+◁ Ürün (ısıtma devresi) boşaltılır.
+8. Ürün boşaldığında, boşaltma vanasını kapatın.
+9. Otomatik purjör kapağını kapatın.
+10. Ön kapağı monte edin. (→ Bölüm 7.5.3)
+11. Ürünü geçici olarak devre dışı bırakın. (→ Bölüm 12.1)
+10.5 Kontrol ve bakım çalışmalarının
+tamamlanması
+▶ Gaz bağlantı basıncını/gaz giriş basıncını kontrol edin.
+(→ Bölüm 7.5.2)
+▶ CO₂ oranını kontrol edin. (→ Bölüm 7.5.4)
+▶ Ürünü sızdırmazlık bakımından kontrol edin.
+(→ Bölüm 7.8)
+▶ Kontrol/bakımı raporlayın.
+
+-- 25 of 44 --
+
+26 Montaj ve bakım kılavuzu 8000037569_02
+11 Arıza giderme
+11.1 Arıza hafızasının sorgulanması
+1. Servis seviyesini açın. (→ Bölüm 6.1)
+2. ile arıza / hata belleği menüsünü F. seçin.
+3. ile onaylayın.
+4. Bellekteki son 10 arıza / hata kaydı arasında veya
+ile gezinin.
+◁ 01 akış konumu en son ortaya çıkan arızaya / hata-
+ya karşılık gelir.
+◁ Akış konumu ve arıza / hata numarası değişmeli
+olarak görüntülenir.
+5. Hata / arıza belleğinden çıkmak için, tuşuna basın.
+6. Uzman seviyesinden çıkın. (→ Bölüm 6.5)
+11.2 Arızanın giderilmesi
+Etkin hatalar ana ekranda görüntülenir.
+▶ Üründe en son hangi hataların ortaya çıktığını öğrenmek
+için arıza / hata hafızasını çağırın. (→ Bölüm 11.1)
+▶ Ekteki tablolara bakarak arızaları giderin.
+Arıza kodları (→ Ek C)
+▶ düğmesine 3 saniyeden daha uzun bir süre basmak
+suretiyle, ürünün arızalarını giderin (en fazla beş kez).
+◁ Ekranda rE görüntülenir.
+▽ 5 arıza giderme denemesinden sonra rE hızlı bir şe-
+kilde yanıp söner.
+▶ Yanıp sönmeyi durdurmak ve ürünü yeniden baş-
+latmak için, düğmesine basın.
+▶ Eğer arıza giderilemiyorsa ve resetleme denemelerinin
+ardından tekrar ortaya çıkıyorsa, müşteri hizmetlerine
+danışın.
+11.3 Parametrenin fabrika ayarına geri alınması
+1. d.50 ve d.51 ayarlarının yanı sıra sisteme özgü ayarla-
+rı da not alın. (→ Bölüm 6.2)
+2. d.96 teşhis kodunu 1 olarak ayarlayın. (→ Bölüm 6.2)
+◁ Parametreler, fabrika ayarına geri alındı.
+3. d.50 ve d.51 ayarlarının yanı sıra sisteme özgü ayarla-
+rı da kontrol edin ve gerekirse bunları uyarlayın.
+4. Uzman seviyesinden çıkın. (→ Bölüm 6.5)
+11.4 Arızalı parçaların değiştirilmesi
+Bir parçayı yenisi ile değiştirmeden önce hazırlık çalışmaları
+yapın.
+▶ Tamiri hazırlayın. (→ Bölüm 11.4.2)
+Bir parçayı yenisi ile değiştirdikten sonra tamamlayıcı çalış-
+maları yapın.
+▶ Tamiri tamamlayın. (→ Bölüm 11.4.11)
+11.4.1 Yedek parça temini
+Ürünün orijinal parçaları üretici tarafından uyumluluk kontrolü
+ile sertifikalandırılmıştır. Bakım veya onarım için başka, ser-
+tifikasız veya onaylanmamış parçaların kullanılması halinde
+bu, ürünün geçerli standartlara uymamasına ve dolayısıyla
+ürünün uygunluğunu geçersiz kılmasına neden olabilir.
+Ürünün sorunsuz ve güvenli işletimi için üreticinin orijinal
+yedek parçalarının kullanılmasını öneriyoruz. Mevcut orijinal
+yedek parçalarla ilgili bilgileri, bu kılavuzun arka yüzünde
+bulunan iletişim adresinden temin edebilirsiniz.
+▶ Bakım veya tamir sırasında yedek parça kullanımı gerek-
+liyse, sadece ürün için izin verilen yedek parçaları kulla-
+nın.
+11.4.2 Tamirin hazırlanması
+1. Hidrolik bileşenlerine müdahale ederek ürünü boşaltın.
+(→ Bölüm 10.4)
+2. Ürünü geçici olarak devre dışı bırakın. (→ Bölüm 12.1)
+– Tekrar açılmaması için gerekli tüm önlemleri alın.
+3. Ürünü elektrik şebekesinden ayırın.
+4. Ürünün servis vanalarını kapatın.
+5. Ön kapağı sökün. (→ Bölüm 5.7.1)
+6. Elektronik kutusunu aşağı katlayın.
+7. Elektrikli komponentleri (örn. elektronik kutusunu) sıç-
+rayan sudan koruyun.
+8. Sadece yeni contalar kullanın.
+11.4.3 Gaz/hava karışım oranı ayarlayıcısının ve gaz
+armatürünün sökülmesi
+C
+D
+A 	B
+1. Ürünü kapatmak için, açma/kapatma düğmesine
+basın.
+◁ Ekranda oF görüntüye gelir ve ardından silinir.
+2. Ürünü elektrik şebekesinden ayırın.
+3. Gaz girişi durdurun.
+4. Gaz armatürünün fişini çekin.
+5. Gaz armatürünün referans basınç tüpünü ayırın.
+6. Gaz borusunun vidalarını sökün.
+7. Hava/gaz oranı ayarlayıcı ve gaz armatürü yapı grubu-
+nu çıkarmak için brülör flanşının 2 vidasını gevşetin.
+
+-- 26 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 27
+11.4.4 Gaz/hava karışım oranı ayarlayıcısının
+sökülmesi
+A
+B
+▶ Şekilde gösterildiği gibi gaz/hava karışım oranı ayarlayı-
+cısını sökün.
+11.4.5 Gaz/hava karışım oranı ayarlayıcısının
+takılması
+1. Yeni gaz/hava karışım oranı ayarlayıcısını gaz armatü-
+rüne (→ Bölüm 11.4.4) monte etmek için, sökme işlem-
+lerini ters sırayla gerçekleştirin.
+2. Gaz/hava karışım oranı ayarlayıcısının 3 vidasını takın.
+– Sıkma torku: 2 Nm
+11.4.6 Gaz/hava karışım oranı ayarlayıcısının ve gaz
+armatürünün takılması
+1. Gaz/hava karışım oranı ayarlayıcı ve gaz armatürün-
+den (→ Bölüm 11.4.3) oluşan yapı grubunu monte et-
+mek için, sökme işlemlerini ters sırayla uygulayın.
+2. 2 vidayı gaz armatürüne takın.
+– Sıkma torku: 6,5 Nm
+11.4.7 Gaz armatürünün değiştirilmesi
+1. Gaz/hava karışım oranı ayarlayıcı ve gaz armatürün-
+den oluşan yapı grubunu sökün. (→ Bölüm 11.4.3)
+2. Gaz/hava karışım oranı ayarlayıcısını sökün.
+(→ Bölüm 11.4.4)
+3. Gaz/hava karışım oranı ayarlayıcısını yeni gaz armatü-
+rüne takın.
+4. Gaz/hava karışım oranı ayarlayıcı ve gaz armatürün-
+den oluşan yapı grubunu takın. (→ Bölüm 11.4.6)
+5. CO₂ oranını kontrol edin. (→ Bölüm 7.5.4)
+11.4.8 Ventürinin değiştirilmesi
+1. Termo kompakt modülü sökün. (→ Bölüm 10.3.3)
+A
+B
+2. Ventüriyi şekilde gösterildiği gibi çıkarın.
+1
+A 	B
+3. Yeni ventüriyi ters sırayla takın.
+4. Ventüriyi, dayanaklarla (1) temas edene kadar itin.
+11.4.9 Fanın değiştirilmesi
+1. Genleşme tankını ateşleme blokunun bakım konumuna
+getirin. (→ Bölüm 10.1)
+2. Termo kompakt modülü sökün. (→ Bölüm 10.3.3)
+
+-- 27 of 44 --
+
+28 Montaj ve bakım kılavuzu 8000037569_02
+B
+C
+3x
+A
+3. Fanı şekilde gösterildiği gibi sökün.
+4. Yeni fanı ters işlem sırasıyla tekrar monte edin.
+5. Termo kompakt modülü monte edin. (→ Bölüm 10.3.6)
+6. Genleşme tankını tekrar yerine takın.
+7. CO₂ oranını kontrol edin. (→ Bölüm 7.5.4)
+11.4.10 Pompa motorunun değiştirilmesi
+B
+A
+1. Pompa motorunu şekilde gösterildiği gibi sökün.
+2. Yeni pompa motorunu ters sırada monte edin.
+11.4.11 Tamiri tamamlama
+1. Elektronik kutusunu yukarıya doğru kaldırın.
+2. Ön kapağı monte edin. (→ Bölüm 7.5.3)
+3. Henüz yapılmadıysa elektrik bağlantısını yapın.
+4. Henüz yapılmadıysa tüm küresel vanaları ve gaz kes-
+me vanasını açın.
+5. Henüz yapmadıysanız, ürünü tekrar açın.
+(→ Bölüm 7.2)
+6. Ürünü sızdırmazlık bakımından kontrol edin.
+(→ Bölüm 7.8)
+12 Ürünün devre dışı bırakılması
+12.1 Geçici kapatma
+1. açma / kapatma düğmesine basın.
+◁ Ekranda oF görüntüye gelir ve ardından silinir.
+2. Gaz vanasını kapatın.
+3. Ürünü elektrik şebekesinden ayırın.
+12.2 Nihai kapatma
+1. Ürünü boşaltın. (→ Bölüm 10.4)
+2. açma / kapatma düğmesine basın.
+◁ Ekranda oF görüntüye gelir ve ardından silinir.
+3. Ürünü elektrik şebekesinden ayırın.
+4. Gaz vanasını kapatın.
+5. Soğuk su bağlantısındaki kapatma vanasını kapatın.
+13 Ambalaj atıklarının yok edilmesi
+▶ Ambalajı usulüne uygun imha edin.
+▶ Geçerli tüm talimatları dikkate alın.
+14 Müşteri hizmetleri
+Müşteri Hizmetleri: 0850 2222888
+Internet: http://www.vaillant.com.tr
+
+-- 28 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 29
+Ek
+A Servis teşhis kodları
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Kod Parametre Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı	Min. Maks.
+d.00 Maksimum ısıtma gücü
+sabit olarak ayarlandı
+veya otomatik adaptif
+mod açık
+– – kW Maksimum ısıtma gücü ürüne göre değişiklik göste-
+rir.
+→ Bölüm „Teknik veriler“
+Au = Otomatik: Ürün, maksimum gücü otomatik ola-
+rak güncel sistem/tesisat ihtiyacına ayarlar
+Au =
+otomatik
+d.01 Isıtma modunda pompa
+için çalışmaya devam
+etme süresi
+1 60 dk. Artış = 1 5
+d.02 Isıtma modu maksimum
+brülör bekleme süresi
+2 60 dk. Artış = 1 20
+d.05 Belirlenen ısıtma devresi
+gidiş hattı talep edilen
+sıcaklığı
+güncel değer ℃ – –
+d.06 Sıcak su talep edilen
+sıcaklığı
+güncel değer ℃ – –
+d.08 230 V oda termostatının
+durumu
+güncel değer – OF = Açık (0 V, ısıtma modu yok)
+on = Kapalı (230 V, ısıtma modu )
+–
+d.09 eBUS oda termostatında
+ayarlanan ısıtma devresi
+gidiş hattı talep edilen
+sıcaklığı
+güncel değer ℃ – –
+d.10 Isıtma devresi dahili
+pompa durumu
+güncel değer – OF = Pompa kapalı
+on = Pompa açık
+–
+d.11 Isıtma devresi şönt pom-
+pası durumu
+güncel değer – Geçerlilik: Isıtma devresinin şönt pompası monte
+edilmiş (opsiyonel)
+OF = Pompa kapalı
+on = Pompa açık
+–
+d.13 Sıcak su devresi sirkü-
+lasyon pompası durumu
+güncel değer – Geçerlilik: Sıcak su devresi sirkülasyon pompası
+monte edilmiş (opsiyonel)
+OF = Pompa kapalı
+on = Pompa açık
+–
+d.14 Modülasyonlu pompa
+çalışma modu
+0 5 – 0 = Devir sayısı ayarlı (kademe 1 ile 5 arasında oto-
+matik pompa işletimi)
+1 = Frekans kontrollü modülasyon = % 55
+2 = Frekans kontrollü modülasyon = % 65
+3 = Frekans kontrollü modülasyon = % 75
+4 = Frekans kontrollü modülasyon = % 85
+5 = Frekans kontrollü modülasyon = % 95
+1; 2; 3; 4; 5 = Sabit devir sayıları → Bölüm "Pompa
+gücünün ayarlanması"
+0
+d.15 Pompa hızı güncel değer % Hi = %100 –
+d.16 24 V oda termostatı du-
+rumu (ON/OFF)
+güncel değer – OF = Isıtma kapalı
+on = Isıtma veya eBUS regleri kullanılıyor
+–
+d.17 Isıtma ayarı – – – 0 = Gidiş suyu sıcaklığı
+1 = Dönüş sıcaklığı (Yerden ısıtma değişikliği. Dö-
+nüş sıcaklığına göre ayarlama özelliğini aktifleştirdiy-
+seniz, ısıtma gücünü otomatik belirleme fonksiyonu
+aktif değildir.)
+0
+d.18 Pompanın ilave çalışma
+işletim modu
+1 3 – 1 = Konfor (çalışan pompa)
+3 = Eco (pompa aralıklı olarak çalışır)
+3
+d.20 Maksimum sıcak su talep
+edilen sıcaklığı
+50 55 ℃ Artış = 1 55
+
+-- 29 of 44 --
+
+30 Montaj ve bakım kılavuzu 8000037569_02
+Kod Parametre Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı	Min. Maks.
+d.21 Sıcak su aqua-konfor
+durumu
+güncel değer – Bu fonksiyonun görüntülenmesine rağmen, aqua-
+konfor bu ürün için mevcut değildir. Fonksiyon devre
+dışı bırakıldığı için, OF kalıcı olarak görüntüleniyor.
+on = Fonksiyon etkin ve kullanılabilir durumda
+–
+d.22 Sıcak su talebi durumu güncel değer – OF = Güncel talep yok
+on = Güncel talep
+–
+d.23 Isıtma talebi durumu güncel değer – OF = Isıtma kapalı (yaz konumu)
+on = Isıtma açık
+–
+d.27 Röle 1 fonksiyonu (çoklu
+fonksiyon modülü)
+1 10 – 1 = Resirkülasyon pompası
+2 = Harici pompa
+3 = Boyler doldurma pompası
+4 = Mutfak aspiratörü
+5 = Harici selenoid vana
+6 = Hata mesajı
+7 = güneş enerjisi devresi pompası (devre dışı)
+8 = eBUS uzaktan kumandası
+9 = Lejyoner önleme pompası
+10 = Solar toplama vanası
+1
+d.28 Röle 2 fonksiyonu (çoklu
+fonksiyon modülü)
+1 10 – 2
+d.33 Fan devir sayısı talep
+edilen değeri
+güncel değer Dev/dk Fan devir sayısı = Gösterge değeri x 1000 –
+d.34 Fan devir sayısı değeri güncel değer Dev/dk Fan devir sayısı = Gösterge değeri x 1000 –
+d.35 3 yollu on/off vana konu-
+mu
+güncel değer – 0 = Isıtma
+40 = Orta konum (Donmaya karşı koruma veya dolu-
+m)
+Hi = Sıcak su
+–
+d.36 Sıcak su akış değeri güncel değer l/dk – –
+d.39 Güneş enerjisi devresin-
+deki su sıcaklığı
+güncel değer ℃ Güneş enerjisi devresindeki su sıcaklığı sadece opsi-
+yonel bir güneş enerjisi seti kurulduğunda görüntüle-
+nir.
+–
+d.40 Gidiş suyu sıcaklığı güncel değer ℃ – –
+d.41 Isıtma dönüş sıcaklığı güncel değer ℃ – –
+d.43 Isı eğrisi 0,2 4 – 0,1 1,2
+d.45 Isı eğrisinin en düşük
+nokta değeri
+15 30 – 1 20
+d.47 Dış sıcaklık ℃ 0 2500 – –
+d.50 Minimum fan devir sayısı
+düzeltmesi
+0 2500 Dev/dk Artış = 100
+Fan devir sayısı = Gösterge değeri x 1000
+600 (0,6 x
+1000)
+d.51 Maksimum fan devir sa-
+yısı düzeltmesi
+-2500 0 Dev/dk Artış = 100
+Fan devir sayısı = Gösterge değeri x 1000 (yanıp
+sönüyor)
+-1000 (1,0 x
+1000)
+d.58 Güneş enerjisi devresi
+takviye ısıtması
+0 3 – Geçerlilik: Güneş enerjisi devresi seti monte edilmiş
+(opsiyonel)
+0 = Ürünün lejyoner önleme fonksiyonu devre dışı
+3 = Sıcak su etkinleştirildi (talep edilen değer min.
+55 °C)
+0
+d.60 Sıcaklık sınırlayıcı kilitle-
+me sayısı (limit sıcaklık)
+güncel değer – Değer 99'dan büyükse, ekran sayının baş ve son
+kısımlarını değişmeli olarak görüntüler.
+Örnek olarak 1581 sayısını verelim: Ekran değişmeli
+olarak sürekli 15 → 81 → __ sayılarını görüntüler.
+–
+d.61 Başarısız ateşleme sayı-
+sı
+güncel değer – –
+d.64 Brülör ortalama ateşleme
+süresi
+güncel değer sn. – –
+d.65 Brülör maksimum ateşle-
+me süresi
+güncel değer sn. – –
+d.67 Kalan brülör bekleme
+süresi (ayar d.02 altında)
+güncel değer dk. – –
+d.68 1. denemede başarısız
+ateşleme sayısı
+güncel değer – Değer 99'dan büyükse, ekran sayının baş ve son
+kısımlarını değişmeli olarak görüntüler.
+Örnek olarak 1581 sayısını verelim: Ekran değişmeli
+olarak sürekli 15 → 81 → __ sayılarını görüntüler.
+–
+d.69 2. denemede başarısız
+ateşleme sayısı
+güncel değer – –
+
+-- 30 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 31
+Kod Parametre Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı	Min. Maks.
+d.71 Maksimum ısıtma dev-
+resi gidiş hattı talep edi-
+len sıcaklığı
+30 75 ℃ Artış = 1 75
+d.80 Isıtma modunda çalışma
+süresi
+güncel değer saat Çalışma süresi = Gösterge değeri x 1000 –
+d.81 Sıcak su konumunda
+çalışma süresi
+güncel değer saat Çalışma süresi = Gösterge değeri x 1000 –
+d.82 Isıtma modunda brülör
+ateşleme sayısı
+güncel değer – Ateşleme sayısı = Gösterge değeri x 1000 –
+d.83 Sıcak su konumunda
+brülör ateşleme sayısı
+güncel değer – Ateşleme sayısı = Gösterge değeri x 1000 –
+d.85 Minimum gücün kaldırıl-
+ması (ısıtma ve sıcak su
+konumu)
+– – kW Artış = 1 –
+d.88 Kullanım suyu konumun-
+da ateşleme için akış li-
+mit değeri
+0 1 – 0 = 1,5 l / dak (gecikme yok)
+1 = 3,7 l / dak (2 san gecikme)
+0
+d.90 eBUS oda termostatı
+durumu
+güncel değer – 0 = Bağlı değil
+1 = Bağlı
+–
+d.91 Durum DCF77 güncel değer – 0 = Sinyal alınmıyor
+1 = Sinyal alınıyor
+2 = Senkronize
+3 = Geçerli
+–
+d.93 Ürün kodu ayarı 0 99 – Artış = 1
+Özel ürün kodu (DSN) cihaz tip etiketinde bulunur.
+–
+d.94 Arıza kayıtlarının silin-
+mesi
+0 1 – 0 = Hayır
+1 = Evet
+–
+d.96 Fabrika ayarlarına dön-
+me
+0 1 – 0 = Hayır
+1 = Evet
+–
+d.149 Sirkülasyon hatası F.75
+için ayrıntılı bilgi
+– – – Arıza F.75 ortaya çıkarsa, problemin analiz edilmesi
+için teşhis kodunun ilgili değerine yönelik aşağıdaki
+açıklamayı okuyun.
+0 = Arıza yok
+1 = Pompa bloke
+2 = Elektrikli pompa arızası
+3 = Pompanın kuru çalışması
+5 = Basınç sensörü arızası
+6 = Pompa geri bildirimi yok
+7 = Yanlış pompa algılandı
+8 = Hava tahliye programının sonunda akış yetersiz
+d.165 Sifon doldurma fonksiyo-
+nunun by-pass vanası
+0 1 – 0 = By-pass vanası aktif değil
+1 = By-pass vanası aktif
+4 işletim saatinden ya da açılıp/kapatıldıktan sonra
+değer 0'lanır
+0
+d.191 Ateşleme için ısıtma gü-
+cünün ayarlanması
+0 Ürüne
+bağlı
+% Artış = 1
+24 kW maksimum güce sahip ürünün %20 maksi-
+mum değeri
+28 kW maksimum güce sahip ürünün %25 maksi-
+mum değeri
+15
+d.192 Isıtma modunda modü-
+lasyon aralığının ayarı
+0 1 – Isıtma gücünün %20'sinin modülasyon aralığı = 0
+Isıtma gücünün %15'sinin modülasyon aralığı = 1
+–
+
+-- 31 of 44 --
+
+32 Montaj ve bakım kılavuzu 8000037569_02
+B Durum kodları
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Kod Anlamı
+S.00 Isıtma sisteminin ısı ihtiyacı yok. Brülör kapalı.
+S.01 Isıtma modu için fan çalışması etkinleştirildi.
+S.02 Isıtma modu için pompanın önceden çalışması etkinleştirildi.
+S.03 Isıtma modu için ateşleme etkinleştirildi.
+S.04 Isıtma modu için brülör etkinleştirildi.
+S.05 Isıtma modu için pompa ve fan ilave çalışması etkinleştirildi.
+S.06 Isıtma modu için fan ilave çalışması etkinleştirildi.
+S.07 Isıtma modu için pompa ilave çalışması etkinleştirildi.
+S.08 Isıtma modu için bekleme süresi etkinleştirildi.
+S.10 Sıcak su talebi etkinleştirildi.
+S.11 Sıcak su işletimi için fan çalışması etkinleştirildi.
+S.13 Sıcak su işletimi için ateşleme etkinleştirildi.
+S.14 Sıcak su işletimi için brülör etkinleştirildi.
+S.15 Sıcak su işletimi için pompa ve fan ilave çalışması etkinleştirildi.
+S.16 Sıcak su işletimi için fan ilave çalışması etkinleştirildi.
+S.17 Sıcak su işletimi için pompa ilave çalışması etkinleştirildi.
+S.20 Sıcak su talebi etkinleştirildi.
+S.21 Sıcak su işletimi için fan çalışması etkinleştirildi.
+S.23 Sıcak su işletimi için ateşleme etkinleştirildi.
+S.24 Sıcak su işletimi için brülör etkinleştirildi.
+S.25 Sıcak su işletimi için pompa ve fan ilave çalışması etkinleştirildi.
+S.26 Sıcak su işletimi için fan ilave çalışması etkinleştirildi.
+S.27 Sıcak su işletimi için pompa ilave çalışması etkinleştirildi.
+S.28 Sıcak su işletimi için Brülör bekleme süresi etkinleştirildi.
+S.30 Oda termostatı ısıtma konumunu bloke ediyor.
+S.31 Yaz işletimi etkinleştirildi veya e-Veri yolu regleri ısıtma modunu bloke ediyor.
+S.32 Fan çalışmasında bekleme süresi etkinleştirildi.
+S.34 Donmaya karşı koruma fonksiyonu aktif.
+S.39 "burner off contact" devreye girdi (örneğin kontaklı termostat veya yoğuşma suyu pompası)
+S.41 Tesisat basıncı fazla yüksek.
+S.42 Atık gaz klapesi geri bildirimi brülör işletimini (sadece çoklu fonksiyon modülü ile bağlantılı olarak)
+bloke ediyor veya yoğuşma suyu pompası arızalı, ısı talebi bloke ediliyor.
+S.46 En küçük yükte alev sönmesi için konforlu emniyet işletimi etkinleştirildi.
+S.53 Ürün, çok düşük su basıncı / su eksikliği nedeniyle modülasyon blokajı / işletme blokajı fonksiyonunun
+bekleme süresinde bulunuyor (gidiş-dönüş bağlantısı sıcaklık farkı çok büyük).
+S.54 Bekleme süresi: Sistemde su yok, gidiş/dönüş bağlantısı sensörü sıcaklık artışı çok yüksek.
+S.58 Brülörün modülasyon sınırlaması veya sifon doldurma fonksiyonu etkinleştirildi
+S.76 Bir servis mesajı etkinleştirildi. Su basıncını kontrol edin.
+S.88 Hava tahliye programı etkindir.
+S.91 Sergi modu etkinleştirildi.
+S.96 Dönüş devresi sıcaklık sensörü için otomatik kontrol etkinleştirildi. Isıtma talepleri bloke edildi.
+S.98 Gidiş/Dönüş devresi sıcaklık sensörü için otomatik kontrol etkinleştirildi. Isıtma talepleri bloke edildi.
+
+-- 32 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 33
+C Arıza kodları
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Kod/Anlamı Olası neden Tedbir
+F.00
+Gidiş devresi sıcaklık sensörün-
+de kesinti
+Gidiş devresi sıcaklık sensörü-
+nün fişi takılmamış/gevşek
+▶ Gidiş devresi sıcaklık sensörünün fişini ve soket bağlantısını
+kontrol edin.
+Gidiş devresi sıcaklık sensörü
+arızalı
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin ve gerekirse de-
+ğiştirin.
+Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+F.01
+Dönüş bağlantısı sıcaklık sen-
+söründe kesinti
+Dönüş devresi sıcaklık sensörü-
+nün fişi takılmamış/gevşek
+▶ Dönüş devresi sıcaklık sensörünün fişini ve soket bağlantısını
+kontrol edin.
+Dönüş devresi sıcaklık sensörü
+arızalı
+▶ Dönüş devresi sıcaklık sensörünü kontrol edin ve gerekirse
+değiştirin.
+Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+F.10
+Gidiş devresi sıcaklık sensörün-
+de kısa devre
+Gidiş devresi sıcaklık sensörü
+arızalı
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin ve gerekirse de-
+ğiştirin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+Gidiş devresi sıcaklık sensörü
+kablosu arızalı
+▶ Gidiş devresi sıcaklık sensörü kablosunu kontrol edin.
+F.11
+Dönüş bağlantısı sıcaklık sen-
+söründe kısa devre
+Dönüş devresi sıcaklık sensörü
+arızalı
+▶ Dönüş devresi sıcaklık sensörünü kontrol edin ve gerekirse
+değiştirin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+Dönüş devresi sıcaklık sensörü
+kablosu arızalı
+▶ Dönüş devresi sıcaklık sensörü kablosunu kontrol edin.
+F.13
+Bellek sıcaklık sensöründe kısa
+devre
+Boyler sıcaklık sensörü arızalı ▶ Boyler çıkış sıcaklık sensörünü kontrol edin ve gerekirse değiş-
+tirin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+Bağlantı kablosunda kısa devre ▶ Bağlantı kablosunu kontrol edin ve gerekirse yenisi ile değişti-
+rin.
+F.20
+Sıcaklık sınırlayıcı emniyet ka-
+patması
+Gidiş devresi sıcaklık sensörü
+arızalı
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin ve gerekirse de-
+ğiştirin.
+Dönüş devresi sıcaklık sensörü
+arızalı
+▶ Dönüş devresi sıcaklık sensörünü kontrol edin ve gerekirse
+değiştirin.
+Şasi bağlantısı hatalı ▶ Şasi bağlantısını kontrol edin.
+Ateşleme kablosu, ateşleme
+soketi, ateşleme trafosu veya
+ateşleme elektrodu üzerinden
+karanlık deşarj var
+▶ Ateşleme kablosu, ateşleme soketi, ateşleme trafosu ve ateş-
+leme elektrodunu kontrol edin ve gerekirse değiştirin.
+F.22
+Tesisat basıncı çok düşük
+Üründe su çok az/yok. ▶ Isıtma sistemini doldurun. (→ Bölüm 7.2)
+Su basıncı sensörü arızalı ▶ Su basıncı sensörünü kontrol edin ve gerekirse değiştirin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+Pompaya / su basınç sensörüne
+giden kablo gevşek / takılı değil
+/ arızalı
+▶ Pompaya/su basınç sensörüne giden kabloyu kontrol edin ve
+gerekirse değiştirin.
+F.23
+Emniyet kapatması: Sıcaklık
+farkı çok büyük
+Pompa bloke olmuş ▶ Pompanın işlevselliğini kontrol edin.
+Üründe hava var ▶ Isıtma sisteminin havasını alın.
+Pompa düşük güçte çalışıyor ▶ Pompanın işlevselliğini kontrol edin.
+Gidiş ve dönüş devresi sıcaklık
+sensörlerinin bağlantıları karıştı-
+rılmış
+▶ Gidiş ve dönüş devresi sıcaklık sensörlerinin bağlantılarını
+kontrol edin.
+
+-- 33 of 44 --
+
+34 Montaj ve bakım kılavuzu 8000037569_02
+Kod/Anlamı Olası neden Tedbir
+F.24
+Emniyet kapatmasının sıcaklık
+artışı çok hızlı
+Pompa bloke olmuş ▶ Pompanın işlevselliğini kontrol edin.
+Pompa düşük güçte çalışıyor ▶ Pompanın işlevselliğini kontrol edin.
+Üründe hava var ▶ Isıtma sisteminin havasını alın.
+Sistem/Tesisat basıncı çok dü-
+şük
+▶ Sistem basıncını kontrol edin.
+Çekvalf bloke ▶ Çekvalfi fonksiyon bakımından kontrol edin.
+Çekvalf yanlış monte edilmiş ▶ Çekvalfin montaj konumunu kontrol edin.
+F.25
+Emniyet kapatması: Atık gaz
+sıcaklığı çok yüksek
+Atık gaz limit termostatının fişi
+takılmamış/gevşek
+▶ Fişi ve geçme bağlantıyı kontrol edin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+F.27
+Sahte alev emniyet kapatması
+Elektronik kartta nemlenme ▶ Elektronik kartı fonksiyon bakımından kontrol edin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+Selenoid gaz valfi sızdırıyor ▶ Gaz armatürünün işlevselliğini kontrol edin ve gerekirse değiş-
+tirin.
+F.28
+Ateşleme başarısız
+Gaz kesme vanası kapalı ▶ Gaz kesme vanasını açın.
+Gaz sayacı arızalı ▶ Gaz sayacını değiştirin.
+Gaz basıncı sensörü tetiklendi ▶ Gaz giriş basıncını kontrol edin.
+Gaz hattındaki hava (örneğin ilk
+çalıştırmada)
+▶ Cihazın arızasını bir kereliğine giderin.
+Gaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol
+edin.
+Termik kapatma düzeneği tetik-
+lenmiş
+▶ Termik kapatma düzeneğini kontrol edin.
+Yoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.
+Yanlış ET gaz armatürü ▶ ET gaz armatürünü kontrol edin.
+Yanlış gaz armatürü ofseti ▶ Gaz armatürünün ofset ayarını kontrol edin.
+Gaz armatürü arızalı ▶ Gaz armatürünü kontrol edin.
+Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+Ateşleme sistemi arızalı ▶ Ateşleme sistemini değiştirin.
+Topraklama hatalı ▶ Ürünün topraklamasını kontrol edin.
+Elektronik arızalı ▶ Elektronik kartı kontrol edin.
+Yanma Havası/Atık Gaz Akım
+Borusu tıkalı
+▶ Yanma havası/atık gaz akım borusunu kontrol edin.
+Referans basınç tüpünün kısma
+vanası takımı tıkanmış
+▶ Gaz armatürünün referans basınç tüplerindeki kısma vanası
+takımının durumunu kontrol edin.
+F.29
+İşletim sırasında ateşleme ve
+kontrol arızası - Alev sönüyor
+Gaz girişi kesildi ▶ Gaz girişini kontrol edin.
+Atık gaz devri daimi hatalı ▶ Atık gaz devri daimini kontrol edin.
+Topraklama hatalı ▶ Ürünün topraklamasını kontrol edin.
+Ateşleme teklemesi ▶ Ateşleme trafosunu fonksiyon bakımından kontrol edin.
+Yoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.
+Yanma Havası/Atık Gaz Akım
+Borusu tıkalı
+▶ Yanma havası/atık gaz akım borusunu kontrol edin.
+Referans basınç tüpü bağlı de-
+ğil
+1. Gaz armatürü ile kısma vanası takımı arasında bağlanmış
+bir referans basınç tüpü olup olmadığını kontrol edin.
+2. Referans basınç tüpünün kısma vanası takımı ile dağıtım
+borusu arasında bağlanmış bir referans basınç tüpü olup
+olmadığını kontrol edin.
+F.32
+Fan arızası
+Fan fişi takılmamış/gevşek ▶ Fan fişini ve geçme bağlantıyı kontrol edin.
+Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+Fan bloke ▶ Fanı fonksiyon bakımından kontrol edin.
+Hall sensörü arızalı ▶ Hall sensörünü yenisi ile değiştirin.
+
+-- 34 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 35
+Kod/Anlamı Olası neden Tedbir
+F.32
+Fan arızası
+Elektronik arızalı ▶ Elektronik kartı kontrol edin.
+F.33
+Yanma havası/atık gaz siste-
+mindeki basınç kaybı çok yük-
+sek
+Yanma havası/atık gaz akım
+borusu bloke veya kısmen tıkalı
+▶ Komple yanma havası/atık gaz akım borusunu kontrol edin.
+Fan arızalı ▶ Fanı fonksiyon bakımından kontrol edin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+Kollektör sıcaklık sensörü arızalı
+veya doğru bağlanmamış
+▶ Sıcaklık sensörlerinin elektrik bağlantısının doğru yapıldığın-
+dan, korozyona uğramadığından ve boru soketine düzgün bir
+şekilde oturduklarından emin olun.
+CO2 oranı çok düşük ▶ CO2 ayarını kontrol edin ve toleransları dikkate alarak gerekir-
+se CO2 oranını arttırın. (→ Bölüm 10)
+▽ CO2 oranındaki artışın yeterli olmaması halinde, teşhis
+kodunu d.85 10 olarak ayarlayın.
+Devrede bir karıştırıcılı devre
+pompasının bulunması
+▶ Bu ürün sistemdeki bir karıştırıcılı devre pompası ile uyumlu
+değildir, karıştırıcılı devre pompasını çıkartın ve sistem şema-
+sını buna göre değiştirin.
+Yanma havası / atık gaz akım
+borusunda çok yüksek karşı
+basınç
+▶ Gereğinde ürünü. (rüzgâr siperliğini) koruyun.
+F.46
+Soğuk su sensöründe kısa dev-
+re
+Soğuk su sensörü arızalı ▶ Soğuk su sensörünü yenisi ile değiştirin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+F.49
+e-Veri yolu arızası
+e-Veri yolu bağlantısında kısa
+devre
+▶ Tüm eBUS bağlantılarını kontrol edin..
+e-Veri yolu aşırı yüklü ▶ e-Veri yolu bağlantısını fonksiyon bakımından kontrol edin.
+e-Veri yolu bağlantısında farklı
+kutup bağlantıları
+▶ eBUS bağlantılarının polaritesini (+/-) kontrol edin.
+F.61
+Yakıt kumanda vana arızası
+Gaz armatürünün elektronik
+bağlantısında arıza
+▶ Gaz armatürüne giden kablo demetini kontrol edin ve gerekirse
+değiştirin.
+Gaz armatürü arızalı ▶ Gaz armatürünü değiştirin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+F.62
+Yakıt kumanda vanasının kapa-
+tılması sırasında hata gecikmesi
+Gaz armatürü arızalı ▶ Gaz armatürünü değiştirin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+Ateşleme elektrodu arızalı ▶ Ateşleme elektrodunu kontrol edin ve gerekirse değiştirin.
+F.63
+EEPROM arızası
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+F.64
+Elektronik / sıcaklık sensörü
+arızası
+Gidiş devresi sıcaklık sensörün-
+de kısa devre
+▶ Gidiş devresi sıcaklık sensörünü fonksiyon bakımından kontrol
+edin.
+Dönüş bağlantısı sıcaklık sen-
+söründe kısa devre
+▶ Dönüş devresi sıcaklık sensörünü fonksiyon bakımından kont-
+rol edin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+F.65
+Elektronik sisteminde sıcaklık
+arızası
+Elektronik aşırı ısınmış ▶ Dış ısı etkenlerinin elektronik üzerindeki etkisini kontrol edin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+F.67
+Elektronik / alev arızası
+Alev sinyali tutarsız ▶ Alev sinyalini kontrol edin.
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+Atık gaz yolunda arıza ▶ Tüm atık gaz yolunu kontrol edin.
+F.68
+Alev sinyali hatası kararsız
+Gaz hattındaki hava (örneğin ilk
+çalıştırmada)
+▶ Cihazın arızasını bir kereliğine giderin.
+Gaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol
+edin.
+Yanlış hava karışım oranı ▶ Atık gaz ölçüm ağzındaki CO2 miktarını kontrol edin.
+Atık gaz devri daimi hatalı ▶ Atık gaz devri daimini kontrol edin.
+Yoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.
+F.70
+Geçersiz cihaz kodu (DSN)
+Cihaz tipi numarası ayarlanma-
+mış / hatalı
+▶ Doğru cihaz tipi numarasını ayarlayın.
+
+-- 35 of 44 --
+
+36 Montaj ve bakım kılavuzu 8000037569_02
+Kod/Anlamı Olası neden Tedbir
+F.71
+Gidiş suyu sıcaklık sensörü
+arızası
+Gidiş devresi sıcaklık sensörü
+sabit değer bildiriyor
+▶ Gidiş devresi sıcaklık sensörünün konumunu kontrol edin.
+Gidiş devresi sıcaklık sensörü-
+nün konumu hatalı
+▶ Gidiş devresi sıcaklık sensörünün konumunu kontrol edin.
+Gidiş devresi sıcaklık sensörü
+arızalı
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin ve gerekirse de-
+ğiştirin.
+F.72
+Dönüş devresi sıcaklık sensörü
+arızası
+Gidiş devresi sıcaklık sensörü
+arızalı
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin ve gerekirse de-
+ğiştirin.
+Dönüş devresi sıcaklık sensörü
+arızalı
+▶ Dönüş devresi sıcaklık sensörünü kontrol edin ve gerekirse
+değiştirin.
+F.73
+Su basıncı sensörü sinyali hata-
+lı (çok düşük)
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+Su basıncı sensörü arızalı ▶ Su basıncı sensörünü kontrol edin ve gerekirse değiştirin.
+F.74
+Su basıncı sensörü sinyali hata-
+lı (çok yüksek)
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-
+rol edin ve gerekirse değiştirin.
+Su basıncı sensörü arızalı ▶ Su basıncı sensörünü kontrol edin ve gerekirse değiştirin.
+F.75
+Pompa arızası / su eksikliği
+Su basıncı sensörü arızalı ▶ Su basıncı sensörünü kontrol edin ve gerekirse değiştirin.
+Dahilî ısıtma devresi pompası
+arızalı
+▶ Dahilî ısıtma devresi pompasını yenisi ile değiştirin.
+Sistem/Tesisat basıncı çok dü-
+şük
+▶ Sistem basıncını kontrol edin.
+Üründe su çok az/yok. ▶ Isıtma sistemini doldurun. (→ Bölüm 7.2)
+Üründe hava var ▶ Isıtma sisteminin havasını alın.
+F.76
+Termik kapatma düzeneği arıza-
+sı
+Termik sigorta arızalı ▶ Eşanjörde sızıntı olup olmadığını kontrol edin. Eşanjörde ka-
+çak olmaması halinde, termik sigortaya köprü atın. Ürünü daha
+sonra başlatabilmeniz halinde, termik sigortayı yenisi ile değiş-
+tirin.
+F.77
+Atık gaz klapesi / yoğuşma su-
+yu pompası arızası
+Atık gaz klapesi geri bildirimi
+yok/ hatalı
+▶ Atık gaz klapesini fonksiyon bakımından kontrol edin.
+Atık gaz klapesi arızalı ▶ Atık gaz klapesini değiştirin.
+Yoğuşma suyu pompası arızalı ▶ Yoğuşma suyu pompasını yenisi ile değiştirin.
+F.78
+Sıcak su çıkış sıcaklığı sensörü-
+nün haricî kontrolle kesilmesi
+NTC sensörü arızalı ▶ NTC sensörünü yenisi ile değiştirin.
+F.83
+NTC sıcaklık dalgalanması ha-
+tası
+Sistem/Tesisat basıncı çok dü-
+şük
+▶ Sistem basıncını kontrol edin.
+Gidiş devresi sıcaklık sensörü
+temas etmiyor
+▶ Gidiş devresi sıcaklık sensörünün gidiş borusuna doğru monte
+edilip edilmediğini kontrol edin.
+Dönüş devresi sıcaklık sensö-
+ründe temas yok
+▶ Dönüş devresi sıcaklık sensörünün dönüş borusuna doğru bir
+şekilde monte edilmiş olup olmadığını kontrol edin.
+Üründe su çok az/yok. ▶ Isıtma sistemini doldurun. (→ Bölüm 7.2)
+F.84
+NTC sıcaklık farkı tutarsız
+Gidiş devresi sıcaklık sensörü
+yanlış monte edilmiş
+▶ Gidiş devresi sıcaklık sensörünün doğru monte edilip edilmedi-
+ğini kontrol edin.
+Dönüş devresi sıcaklık sensörü
+yanlış monte edilmiş
+▶ Dönüş devresi sıcaklık sensörünün doğru monte edilip edilme-
+diğini kontrol edin.
+Gidiş ve dönüş devresi sıcaklık
+sensörü karıştırılmış
+▶ Gidiş ve dönüş devresi sıcaklık sensörlerinin doğru monte edi-
+lip edilmediklerini kontrol edin.
+F.85
+Gidiş ve dönüş devresi sıcaklık
+sensörü yanlış monte edilmiş
+(karıştırılmış)
+Gidiş ve dönüş devresi sıcaklık
+sensörleri aynı/yanlış boruya
+monte edilmiş
+▶ Gidiş ve dönüş devresi sıcaklık sensörlerinin doğru boruya
+monte edilip edilmediklerini kontrol edin.
+F.86
+Haricî emniyet kapatması
+Limit termostatin ayarları hatalı ▶ Limit termostatın ayarlarını kontrol edin.
+Gidiş devresi sıcaklık sensörü
+sapma yapan değerler ölçüyor
+▶ Gidiş devresi sıcaklık sensörünü kontrol edin.
+3 yollu on/off vana bloke ▶ 3 yollu on/off vanayı kontrol edin.
+Yoğuşma suyu pompası arızalı ▶ Yoğuşma suyu pompasını yenisi ile değiştirin.
+
+-- 36 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 37
+Kod/Anlamı Olası neden Tedbir
+F.87
+Ateşleme trafosu arızası
+Ateşleme trafosu bağlı değil ▶ Ateşleme trafosunun bağlantısını kontrol edin.
+Ateşleme trafosu yanlış bağlan-
+mış
+▶ Ateşleme trafosunun bağlantısını kontrol edin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+F.88
+Gaz armatürü arızası
+Gaz armatürü bağlı değil ▶ Gaz armatürünün bağlantısını kontrol edin.
+Gaz armatürü hatalı bağlanmış ▶ Gaz armatürünün bağlantısını kontrol edin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+F.89
+Pompa arızası
+Pompa bağlı değil ▶ Pompanın bağlantısını kontrol edin.
+Pompa yanlış bağlanmış ▶ Pompanın bağlantısını kontrol edin.
+Yanlış pompa bağlanmış ▶ Bağlanmış olan pompanın ürün için önerilen pompa olup olma-
+dığını kontrol edin.
+Kablo demetinde kısa devre ▶ Kablo demetini kontrol edin ve kablo demetini gerekirse değiş-
+tirin.
+F.97
+Ana devre kartı otomatik testi
+başarısız oldu
+Elektronik kart arızalı ▶ Elektronik kartı değiştirin.
+D Kontrol programları
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Kontrol programı Anlamı
+P.00 Sıcak su ve ısıtma devresi
+havasının alınması
+Bu fonksiyon, küçük sıcak su devresinde 4 dakika için ve ardından ısıtma devresinde 1 dakika için
+etkinleştirilir. Pompa, düzenli aralıklarla çalışır ve durur. Bu fonksiyon 5 dakika süreyle etkin kalır.
+P.01 Isıtma modunda brülörün
+ayarlanabilir ısı yüklemesine
+yükseltilmesi
+Ürün başarılı ateşlemeden sonra ekranda görüntülenen ısıl yük ile çalıştırılır. Bu değer ile ve
+%0 (0 = min. güç) ile %100 (Hi = maks. güç) arasında ayarlanabilir. Bu fonksiyon 15 dakika süreyle
+aktif kalır.
+P.03 Brülörün kısmi yüke geç-
+mesi
+Ürün, başarıyla ateşlendikten sonra, arıza teşhis kodu d.00 ile ayarlanan ısıtma konumu kısmi yükün-
+de işletilir. Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.04 Baca temizleme işlevi Sıcak su talebi varsa, ürün kullanım suyu konumunda ve maksimum ısıtma yükünde çalışır. Sıcak
+su talebi yoksa, ürün teşhis kodu d.00 üzerinden ayarlanmış ısıtma konumu kısmi yükü ve ısıtma
+modunda çalışır. Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.08 Ürünün doldurulması veya
+boşaltılması
+Üç yollu vana orta konuma alınır. Brülör ve pompa ürünün doldurulması ve boşaltılması için kapatılır.
+Bu fonksiyon 15 dakika süreyle aktif kalır.
+
+-- 37 of 44 --
+
+38 Montaj ve bakım kılavuzu 8000037569_02
+E Devre bağlantı şeması
+Geçerlilik: VUW 24/24 AS/2-1 (H-TR) VEYA VUW 28/28 AS/2-1 (H-TR)
+X2
+X14
+L
+N
+19
+9
+20
+2
+6
+3
+11
+13
+14
+18
+7
+17
+8
+X51
+X51
+X20
+16
+1
+9
+3
+15
+4
+5
+10
+11
+6
+13
+X51
+X20
+X40 	X51
+X30
+X2
+X21
+X41
+X22
+X14
+L
+N
+– +	24V=
+RT 	BUS
+	Burner
+off
+X1
+FUS
+ 
+X106
+X32
+X90
+X12
+X35
+X1 L
+N
+eBUS
+RT 24V
+Burner off
+FB
+AF
+RF
+DCF
+0
+0
+X106
+18
+17
+8
+7
+10
+4
+X41
+1
+3
+4
+1
+3
+3
+1
+2
+M
+1
+3
+4
+6
+1
+2
+3
+M
+5
+4
+2
+1
+2
+1
+2
+1
+N
+L
+24V
+230V~
+24V
+230V~
+2
+11
+12
+13
+15
+1
+7
+8
+9
+10
+14
+17	17
+3
+4
+5
+6
+X32
+1
+3
+2
+4
+16
+1 Ana elektronik kart
+2 Kumanda elemanının elektronik kartı
+3 Yerden ısıtma
+Burner offiçin kontaklı limit termostat
+(opsiyonel)
+4
+	RT 24 V oda termostatı
+(opsiyonel)
+5 Regler / oda termostatı için veri yolu bağlantısı
+(opsiyonel)
+6 Dış sensör, Gidiş devresi sıcaklık sensörü (haricî),
+DCF alıcısı
+(opsiyonel)
+7 Isıtma devresi gidiş hattı sıcaklık sensörü
+8 Isıtma devresi dönüş hattı sıcaklık sensörü
+9 Fan
+10 Gaz armatürü
+11 Üç yollu vana
+12 Su basınç sensörü
+13 Su şalteri
+14 Ateşleme trafosu
+15 Ateşleme elektrodu
+16 Pompa
+17 Ana güç kaynağı
+
+-- 38 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 39
+F Kontrol ve bakım çalışmaları
+Aşağıdaki tablo, minimum kontrol ve bakım aralıkları ile ilgili üretici taleplerini listelemektedir. Ulusal talimatlar ve yönergeler
+daha kısa kontrol ve bakım aralıkları öngörüyorsa talep edilen bu aralıklara uyun. Her kontrol ve bakım çalışmasında gerekli
+hazırlık ve tamamlama çalışmalarını yürütün.
+# Bakım çalışması Aralık
+1 Yanma havası/Atık gaz akım borusunun sızdırmazlık, hasar, doğru sabit-
+lenme ve doğru montaj bakımından kontrol edilmesi
+Yılda bir
+2 Üründeki ve alçak basınç yanma hücresindeki kirlerin temizlenmesi Yılda bir
+3 Isı hücresinin aşınmış, paslı veya hasarlı olup olmadığının ve durumunun
+görsel olarak kontrol edilmesi
+Yılda bir
+4 Maksimum ısıtma yükünde gaz bağlantı basıncının kontrol edilmesi Yılda bir
+5 CO₂ oranının kontrol edilmesi Yılda bir 17
+6 CO2 oranının (hava fazlalık katsayısı) raporlanması Yılda bir
+7 Elektrikli soket bağlantılarının/bağlantı fonksiyonlarının/doğru bağlantı
+durumunun kontrol edilmesi (ürün gerilimsiz olmalıdır)
+Yılda bir
+8 Gaz kesme vanasının ve küresel vanaların fonksiyon bakımından kontrol
+edilmesi
+Yılda bir
+9 Yoğuşma suyu sifonunun temizlenmesi Yılda bir 25
+10 Genleşme tankı ön basıncının kontrol edilmesi Gerekirse, en az 2 yılda bir 23
+11 Yanma alanındaki izolasyon matlarının kontrol edilmesi ve hasarlı izolas-
+yon matlarının değiştirilmesi
+Gerekirse, en az 2 yılda bir
+12 Brülörün ve brülör izolasyon matının hasarlı olup olmadığının kontrol edil-
+mesi
+Gerekirse, en az 2 yılda bir
+22
+13 Ateşleme elektrodunun kontrol edilmesi Gerekirse, en az 2 yılda bir 23
+14 Eşanjörün temizlenmesi Gerekirse, en az 2 yılda bir 22
+15 Isıtma sistemi dolum basıncı kontrolü Yılda bir
+16 Ürün / ısıtma sistemin ve sıcak su hazırlama ile ilgili bir fonksiyon testi
+yürütün. Gerekirse havasını alın.
+Yılda bir
+17 Kontrol ve bakım çalışmalarının tamamlanması Yılda bir 25
+G Teknik veriler
+Teknik veriler – Genel
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+Sevk edildiği ülke (ISO 3166 doğrultusunda tanım) TR TR
+İzin verilen gazlı cihaz kategorileri l2H l2H
+CE numarası 0063DQ3807 0063DQ3807
+Ürün tarafındaki gaz bağlantısı 3/4" 3/4"
+Ürün tarafındaki ısıtma sistemi gidiş / dönüş bağlantıları 3/4" 3/4"
+Emniyet ventili bağlantı borusu (asg.) 15 mm 15 mm
+Yoğuşma suyu gider hortumu (min.) 18,4 mm 18,4 mm
+Yanma havası/Atık gaz akım borusu bağlantısı 60/100 mm 60/100 mm
+Gaz bağlantı basıncı, doğalgaz G20 2,0 kPa
+(20,0 mbar)
+2,0 kPa
+(20,0 mbar)
+Maks. Atık gaz sıcaklığı (80 °C/60 °C) 89 ℃ 89 ℃
+Min. Atık gaz sıcaklığı (80 °C/60 °C) 72 ℃ 72 ℃
+Atık gazın aşırı ısınma sıcaklığı (80 °C/60 °C) 89 ℃ 89 ℃
+15°C ve 1.013 mbar'da asgari gaz debisi, (G20) 0,38 m³/sa 0,44 m³/sa
+15°C ve 1.013 mbar'daki azami gaz debisi (ısıtma konumuna göre), G20 2,54 m³/sa 2,96 m³/sa
+15°C ve 1.013 mbar'daki azami gaz debisi (sıcak su hazırlamaya göre), G20 2,54 m³/sa 2,96 m³/sa
+İzin verilen montaj cinsleri C13, C33, C93, B53P C13, C33, C93, B53P
+Kısmi yük işletiminde (%30) nominal etki derecesi % 107,4 % 108,2
+NOx sınıfı 6 6
+
+-- 39 of 44 --
+
+40 Montaj ve bakım kılavuzu 8000037569_02
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+Azot oksit emisyonları, NOx ağırlıklı (Hs) (G20) 35,1 mg/kWh 32,4 mg/kWh
+CO-Emisyonu 121,65 ppm 131,17 ppm
+Net ağırlık 25,2 kg 27,4 kg
+Teknik veriler – Güç/Yük (G20)
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+50/30 °C'de anma ısıl güç aralığı P 3,8 … 25,5 kW 4,5 … 29,6 kW
+60/40 °C'de anma ısıl güç aralığı P 3,7 … 24,6 kW 4,4 … 28,7 kW
+75/55°C seviyesinde anma ısıl güç aralığı P 3,5 … 23,4 kW 4,0 … 27,3 kW
+Sıcak su azami ısıl yükü (Qmax) (Hi) 24,0 kW 28,0 kW
+P asg. için ısıtma modundaki atık gaz debisi 1,7 g/s
+(6,12 kg/sa)
+2,0 g/s
+(7,20 kg/sa)
+P azm. için ısıtma modundaki atık gaz debisi 10,9 g/s
+(39,24 kg/sa)
+12,5 g/s
+(45,00 kg/sa)
+Isıtma anma ısıl güç aralığı 3,6 … 24,0 kW 4,2 … 28,0 kW
+Teknik veriler – Isıtma
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+Azami gidiş suyu sıcaklığı (fabrika ayarı - d.71) 75 ℃ 75 ℃
+Maksimum gidiş suyu sıcaklığı ayar aralığı 35 … 75 ℃ 35 … 75 ℃
+Maksimum çalışma basıncı (MWP) 0,3 MPa
+(3,0 bar)
+0,3 MPa
+(3,0 bar)
+Nominal su debisi (ΔT = 20 K) 1.008 l/sa 1.176 l/sa
+Nominal yük altındaki işlemde 50/30°C için yoğuşma suyu hacminin yaklaşık değeri
+(pH değeri 3,5 ile 4,0 arasında)
+2,40 l/sa 2,80 l/sa
+Pompa basma yüksekliği (anma sirkülâsyon suyu miktarında) 0,0207 MPa
+(0,2070 bar)
+0,0122 MPa
+(0,1220 bar)
+Isıtma genleşme tankının içeriği 8 l 8 l
+Teknik veriler - Sıcak su
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+Minimum su debisi 1,7 l/dk 1,7 l/dk
+Spesifik debi D (ΔT = 30 K) 11,5 l/dk 13,4 l/dk
+İzin verilen çalışma basıncı 0,03 … 1 MPa
+(0,30 … 10 bar)
+0,03 … 1 MPa
+(0,30 … 10 bar)
+Tavsiye edilen besleme basıncı 0,3 MPa
+(3,0 bar)
+0,3 MPa
+(3,0 bar)
+EN 13203 standardına göre sıcak su konforu ** **
+Soğuk su için akış miktarı sınırlayıcı 8,0 l/dk 10,0 l/dk
+Sıcak su ayar aralığı 35 … 55 ℃ 35 … 55 ℃
+Teknik veriler – Elektrik
+VUW 24/24 AS/2-
+1 (H-TR)
+VUW 28/28 AS/2-
+1 (H-TR)
+Nominal gerilim 230 V 230 V
+Nominal frekans 50 Hz 50 Hz
+İzin verilen bağlantı voltajı 195 … 253 V 195 … 253 V
+Dahili sigorta (gecikmeli) T2/2 A, 250 V T2/2 A, 250 V
+Maksimum elektrik tüketimi 90 W 90 W
+Bekleme modu elektrik tüketimi 1,7 W 1,7 W
+Koruma türü IPX4 IPX4
+
+-- 40 of 44 --
+
+8000037569_02 Montaj ve bakım kılavuzu 41
+Dizin
+6
+60/100 mm çaplı cihaz bağlantı parçasının monte
+edilmesi ............................................................................... 10
+8
+80/125 mm çapındaki bağlantı parçasının monte edilmesi ... 11
+80/80⌀mm ⌀ çapındaki bağlantı parçasının monte
+edilmesi ............................................................................... 11
+A
+Ağırlık .................................................................................... 8
+Amacına uygun kullanım ....................................................... 3
+Ambalaj atıklarının yok edilmesi.......................................... 28
+Arıza hafızasının çağrılması................................................ 26
+Arıza mesajları .................................................................... 26
+Atık gaz çıkış borusu ........................................................... 10
+Atıkların yok edilmesi, ambalaj............................................ 28
+B
+Bakım .................................................................................. 20
+Bakım çalışmaları hazırlığı .................................................. 21
+Bakım çalışmalarının tamamlanması .................................. 25
+Boşaltma borusu ................................................................. 10
+Brülör flanşı, izolasyon matı ................................................ 22
+Brülör kapatma süresi ......................................................... 18
+Brülörün kontrol edilmesi..................................................... 22
+By-pass vanasının ayarlanması .......................................... 19
+C
+CE işaretlemesi ..................................................................... 7
+CO₂ oranının kontrol edilmesi.............................................. 17
+D
+Dokümanlar ........................................................................... 6
+Durum kodlarının çağrılması ............................................... 14
+E
+Elektrik beslemesi ............................................................... 13
+Elektronik kutusunun açılması............................................. 12
+Emniyet ventili ..................................................................... 10
+Eşanjörün temizlenmesi ...................................................... 22
+F
+Fanın değiştirilmesi ............................................................. 27
+G
+Gaz armatürünün değiştirilmesi........................................... 27
+Gaz armatürünün monte edilmesi ....................................... 27
+Gaz armatürünün sökülmesi ............................................... 26
+Gaz ayarının kontrol edilmesi.............................................. 16
+Gaz bağlantı basıncı kontrolü.............................................. 16
+Gaz bağlantısının yapılması.................................................. 9
+Gaz giriş basıncı kontrolü.................................................... 16
+Gaz grubu.............................................................................. 9
+Gaz/hava karışım oranı ayarlayıcısının sökülmesi........ 26–27
+Gaz/hava karışım oranı ayarlayıcısının takılması ............... 27
+Genleşme tankı ön basıncının kontrol edilmesi................... 23
+Genleşme tankının doldurulması......................................... 23
+H
+Hava karışım oranı ayarı ..................................................... 17
+Havanın alınması ................................................................ 16
+I
+Isıtma devresi dönüş hattının montajı ................................... 9
+Isıtma devresi gidiş hattının montajı...................................... 9
+Isıtma suyu filtresi, temizlik.................................................. 23
+Isıtma suyunun hazırlanması .............................................. 15
+İşletici, teslimat .................................................................... 20
+İzolasyon matı , yanma alanı............................................... 21
+İzolasyon matı, brülör flanşı ................................................ 22
+İzolasyon matının kontrol edilmesi ...................................... 21
+K
+Kalorifer gidiş suyu sıcaklığı................................................ 20
+Kapatma .............................................................................. 28
+Kireçlenme .......................................................................... 20
+Komponentlerin değiştirilmesi ............................................. 26
+Komponentlerin kontrol edilmesi ......................................... 21
+Komponentlerin temizlenmesi ............................................. 21
+Kontrol ................................................................................. 20
+Kontrol çalışmalarının tamamlanması ................................. 25
+Kontrol programının çağrılması ........................................... 14
+Kullanım suyu sıcaklığı........................................................ 20
+N
+Nihai kapatma ..................................................................... 28
+O
+Ön kapağın montajı ............................................................. 17
+Ön kapağın sökülmesi/monte edilmesi................................ 12
+P
+Pompa karakteristik eğrisinin ayarlanması.......................... 19
+Pompanın değiştirilmesi ...................................................... 28
+R
+Reglerin bağlanması ........................................................... 13
+S
+Seri numarası ........................................................................ 7
+Ses izolasyonu .................................................................... 21
+Sızdırmazlık......................................................................... 18
+Ş
+Şebeke bağlantısı................................................................ 13
+T
+Talimatlar............................................................................... 5
+Tamiri tamamlama............................................................... 28
+Tamirin hazırlanması........................................................... 26
+Temizlik çalışmalarının hazırlanması .................................. 21
+Temizlik çalışmalarının tamamlanması ............................... 25
+Temizlik, ısıtma suyu filtresi ................................................ 23
+Termo kompakt modülün sökülmesi.................................... 21
+Termo kompakt modülün takılması ..................................... 22
+Teslim, kullanıcı................................................................... 20
+Teslimat kapsamı .................................................................. 7
+Test programları .................................................................. 26
+Teşhis kodunun ayarlanması .............................................. 14
+Teşhis kodunun çağrılması ................................................. 14
+U
+Uzman seviyesinden çıkılması ............................................ 15
+Ürün ebatları.......................................................................... 7
+Ürün numarası....................................................................... 7
+Üründeki suyun boşaltılması ............................................... 25
+Ürünü açma......................................................................... 16
+Ürünün doldurulması ve havasının alınması ....................... 16
+Ürünün etrafındaki minimum mesafe .................................... 8
+Ürünün kapatılması ............................................................. 28
+V
+Ventürinin değiştirilmesi ...................................................... 27
+Y
+Yanma alanı, izolasyon matı ............................................... 22
+Yanma havası/Atık gaz akım borusu................................... 11
+Yanma Havası/Atık Gaz Akım Borusunun bağlanması....... 10
+Yanma Havası/Atık Gaz Akım Borusunun montajı.............. 10
+Yedek parçalar .................................................................... 26
+Yetkili servis seviyesinin açılması ....................................... 14
+Yoğuşma suyu sifonu .................................................... 10, 25
+Yoğuşma suyu sifonunu suyla doldurun................................ 9
+
+-- 41 of 44 --
+
+
+
+-- 42 of 44 --
+
+
+
+-- 43 of 44 --
+
+tedarikçi
+Vaillant Isı Sanayi ve Ticaret Ltd. Şti.
+Atatürk Mahallesi Meriç Caddesi No: 1/4 34758 / Ataşehir ‒ İstanbul Türkiye
+Tel. 0216 558 8000 Fax 0216 462 3424
+Müşteri Hizmetleri 0850 2222888
+vaillant@vaillant.com.tr www.vaillant.com.tr
+Yayınlayan/üretici
+Vaillant GmbH
+Berghauser Str. 40 42859 Remscheid Deutschland
+Tel. +49 (0)2191 18 0 Fax +49 (0)2191 18 2810
+info@vaillant.de www.vaillant.de
+© Bu kılavuzun veya kısımlarının, telif hakları korunmaktadır ve sadece üreticinin yazılı onayı ile çoğaltılabilir
+veya dağıtılabilir.
+Değişiklik yapma hakkı saklıdır.
+8000037569_02
+
+-- 44 of 44 --
+

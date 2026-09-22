@@ -1,0 +1,3616 @@
+HOT WATER 	HEATING 	RENEWABLE 	AIR CONDITIONING
+bar
+CLAS ONE L WIFI
+IT - 420000609400	3302126
+ISTRUZIONI TECNICHE PER L’INSTALLAZIONE E LA MANUTENZIONE
+CALDAIA MURALE ISTANTANEA A CONDENSAZIONE
+420011260800 - Rev. 01 - 052022
+
+-- 1 of 40 --
+
+INDICE
+Generalità ....................................................................................................3
+Avvertenze per l’installatore....................................................................3
+Marcatura CE ...............................................................................................3
+Norme di sicurezza ....................................................................................4
+Descrizione del prodotto ........................................................................6
+Pannello comandi.......................................................................................6
+Dispaly 	....................................................................................................6
+Vista complessiva ...................................................................................... 7
+Dimensioni caldaia ..................................................................................... 7
+Distanze minime per l’installazione .......................................................8
+Dima Installazione ......................................................................................8
+Installazione ................................................................................................9
+Avvertenze prima dell’installazione.......................................................9
+Collegamento gas ......................................................................................9
+Collegamento idraulico .......................................................................... 10
+Vista raccordi idraulici ............................................................................. 10
+Rappresentazione grafica prevalenza residua circolatore............ 10
+Dispositivo di sovrapressione ............................................................... 10
+Pulizia impianto di riscaldamento ........................................................ 10
+Impianti a pavimento ............................................................................... 10
+Collegamento bollitore ........................................................................... 10
+Scarico della condensa ........................................................................... 11
+Schema idraulico ....................................................................................... 11
+Collegamento condotti aspirazione e scarico fumi ......................... 12
+Tabella lunghezze condotti aspirazione/scarico .............................. 12
+Collegamento condotti sdoppiati (Ø80) con
+intubamento di Ø 50 o 60 mm. ............................................................ 13
+Tipologie di aspirazione/scarico fumi ................................................. 14
+Collegamenti elettrici .............................................................................. 15
+Cavo alimentazione ................................................................................. 15
+C ollegamento periferiche ...................................................................... 15
+Collegamento Termostato Ambiente .................................................. 15
+Schema elettrico....................................................................................... 16
+Messa in funzione ....................................................................................17
+Predisposizione al servizio .....................................................................17
+Procedura di accensione ....................................................................... 18
+Prima accensione ..................................................................................... 18
+Funzione Disareazione ........................................................................... 18
+Analisi della combustione ...................................................................... 19
+Regolazione della massima potenza riscaldamento ..................... 20
+Controllo della potenza di lenta accensione ................................... 20
+Controllo del ritardo di accensione .................................................... 20
+Tabella riepilogativa gas ......................................................................... 21
+Cambio gas ................................................................................................ 21
+Funzione AUTO ........................................................................................ 21
+Sistemi di protezione caldaia ............................................................. 22
+Arresto di sicurezza ................................................................................ 22
+Arresto di blocco ..................................................................................... 22
+Avviso di malfunzionamento ................................................................ 22
+Tabella riepilogativa codici errore ...................................................... 23
+Funzione antigelo.................................................................................... 23
+Area tecnica ............................................................................................. 24
+Parametri Menu Completo................................................................... 25
+Funzione asciugatura del massetto ................................................... 30
+Manutenzione .......................................................................................... 31
+Istruzioni per l’apertura della mantellatura
+ed ispezione dell’interno .................................................................... 31
+Note generali............................................................................................ 32
+Pulizia scambiatore primario ................................................................ 32
+Prova di funzionamento......................................................................... 32
+Operazioni di svuotamento .................................................................. 32
+Informazioni all’utente............................................................................ 33
+Targhetta caratteristiche........................................................................ 33
+Smaltimento e riciclaggio caldaia ....................................................... 33
+Dati tecnici................................................................................................ 34
+Scheda prodotto...................................................................................... 36
+Package Label...........................................................................................37
+
+-- 2 of 40 --
+
+GENERALITÀ
+/ 3
+Questo apparecchio serve a produrre acqua calda
+potabile per uso domestico.
+Deve essere allacciato ad un impianto di riscaldamento
+ed a una rete di distribuzione di acqua calda sanitaria
+compatibilmente alle sue prestazioni ed alla sua potenza.
+È vietato l’utilizzo di questo prodotto per scopi diversi
+da quelli qui specificati. Il costruttore non è responsabile
+di eventuali danni derivanti da usi impropri, erronei ed
+irragionevoli del prodotto o da un mancato rispetto delle
+istruzioni riportate sul presente libretto.
+È vietato l’utilizzo di questo prodotto in combinazione con
+apparecchi elettrici ed elettronici o con accessori non
+fabbricati e/o non autorizzati dal costruttore che possono
+alterare le condizioni di conformità ai requisiti di legge e/o
+alla relativa normativa tecnica o che possono comunque
+alterare le condizioni di sicurezza e/o di funzionalità e/o
+le prestazioni del prodotto medesimo con conseguente
+invalidazione della marcatura di conformità del prodotto
+(es. marcatura CE o di altre marcature di conformità del
+prodotto).
+È altresì vietato apportare modifiche al software del
+prodotto per le ragioni qui sopra indicate e per le
+conseguenze che ne possono derivare, ivi compresa
+l’invalidazione della marcatura di conformità del prodotto
+(es. marcatura CE o di altre marcature di conformità del
+prodotto).
+Il costruttore declina ogni responsabilità derivante
+dall’utilizzo del prodotto nel caso di violazione delle
+presenti avvertenze.
+L’installazione, la manutenzione e qualsiasi altro
+intervento, che richiede l’utilizzo di componenti e
+accessori in cui vi è contatto con la acqua potabile,
+devono essere effettuati nel rispetto delle norme vigenti e
+delle indicazioni fornite dal costruttore.
+Questo apparecchio, relativamente ai materiali a contatto
+con acqua sanitaria, risponde ai requisiti previsti dal
+Decreto Ministeriale n. 174/2004 del 6 aprile 2004.
+Regolamento concernete i materiali e gli oggetti che
+possono essere utilizzati negli impianti fissi di captazione,
+trattamento, adduzione e distribuzione delle acque
+destinate al consumo umano.
+ATTENZIONE
+L’INSTALLAZIONE, LA PRIMA
+ACCENSIONE, LE REGOLAZIONI
+DI MANUTENZIONE DEVONO ESSERE
+EFFETTUATE, SECONDO LE ISTRUZIONI,
+ESCLUSIVAMENTE DA PERSONALE
+QUALIFICATO.
+UN’ERRATA INSTALLAZIONE PUÒ
+CAUSARE DANNI A PERSONE, ANIMALI
+O COSE, NEI CONFRONTI DEI QUALI IL
+COSTRUTTORE NON È CONSIDERATO
+RESPONSABILE.
+Un’errata installazione può causare danni a persone,
+animali e cose per i quali l’azienda costruttrice non è
+responsabile.
+La caldaia viene fornita in un imballo di cartone, dopo aver
+tolto l’imballo assicurarsi dell’integrità dell’apparecchio
+e della completezza della fornitura. In caso di non
+rispondenza rivolgersi al fornitore.
+Gli elementi di imballaggio (graffe, sacchetti in plastica, ,
+ecc.) non devono essere lasciati alla portata dei bambini
+in quanto fonti di pericolo.
+In caso di guasto e/o cattivo funzionamento spegnere
+l’apparecchio, chiudere il rubinetto del gas e non tentare
+di ripararlo ma rivolgersi a personale qualificato.
+Prima di ogni intervento di manutenzione/riparazione
+nella caldaia è necessario togliere l’alimentazione elettrica
+portando l’interruttore bipolare esterno alla caldaia in
+posizione “OFF”.
+Eventuali riparazioni, effettuate utilizzando esclusivamente
+ricambi originali, devono essere eseguite solamente da
+tecnici qualificati. Il mancato rispetto di quanto sopra
+può compromettere la sicurezza dell’apparecchio e fa
+decadere ogni responsabilità del costruttore.
+Nel caso di lavori o manutenzioni di strutture poste nelle
+vicinanze dei condotti o dei dispositivi di scarico dei fumi
+e loro accessori, mettere fuori servizio l’apparecchio
+portando l’interruttore esterno bipolare in posizione OFF
+e chiudendo il rubinetto del gas.
+A lavori ultimati far verificare l’efficienza dei condotti e dei
+dispositivi da personale tecnico qualificato.
+Per la pulizia delle parti esterne spegnere la caldaia e
+portare l’interruttore esterno in posizione “OFF”.
+Effettuare la pulizia con un panno umido imbevuto di
+acqua saponata.
+Non utilizzare detersivi aggressivi, insetticidi o prodotti
+tossici.
+Il rispetto delle norme vigenti permette un funzionamento
+sicuro, ecologico e a risparmio energetico.
+Nel caso di uso di kit od optional si dovranno utilizzare
+solo quelli originali.
+Marcatura CE
+Il marchio CE garantisce la rispondenza dell’apparecchio
+alle seguenti direttive:
+- 2016/426/EU - relativa agli apparecchi a gas
+- 2014/30/EU 	- relativa alla compatibilità elettromagnetica
+- 2014/35/EU 	- relativa alla sicurezza elettrica
+- 92/42/CEE 	- relativa al rendimento energetico
+“solo art.7 (§2), art.8 e gli allegati da III a V”
+- 2009/125/CE - Energy related Products
+- 813/2013 	- Regolamento UE
+- 2014/53/EU 	- RED (Radio Equipment Directive)
+
+-- 3 of 40 --
+
+GENERALITÀ
+/ 4
+NORME DI SICUREZZA
+Legenda simboli:
+Il mancato rispetto dell’avvertenza comporta
+rischio di lesioni, in determinate
+circostanze anche mortali, per le persone
+Il mancato rispetto dell’avvertenza
+comporta rischio di danneggiamenti, in
+determinate circostanze anche gravi, per
+oggetti, piante o animali
+Installare l’apparecchio su parete solida, non
+soggetta a vibrazioni.
+Rumorosità durante il funzionamento.
+Non danneggiare, nel forare la parete, cavi
+elettrici o tubazioni preesistenti.
+Folgorazione per contatto con conduttori
+sotto tensione. Esplosioni, incendi o
+intossicazioni per perdita gas dalle tubazioni
+danneggiate.
+Danneggiamento impianti preesistenti.
+Allagamenti per perdita acqua dalle tubazioni
+danneggiate.
+Eseguire i collegamenti elettrici con conduttori di
+sezione adeguata.
+Incendio per surriscaldamento dovuto al
+passaggio di corrente elettrica in cavi
+sottodimensionati.
+Proteggere tubi e cavi di collegamento in modo
+da evitare il loro danneggiamento.
+Folgorazione per contatto con conduttori
+sotto tensione. Esplosioni, incendi o
+intossicazioni per perdita gas dalle tubazioni
+danneggiate.
+Allagamenti per perdita acqua dalle tubazioni
+danneggiate.
+Assicurarsi che l’ambiente di installazione e gli
+impianti a cui deve connettersi l’apparecchiatura
+siano conformi alle normative vigenti.
+Folgorazione per contatto con conduttori
+sotto tensione incorrettamente installati.
+Danneggiamento dell’apparecchio per
+condizioni di funzionamento improprie.
+Adoperare utensili ed attrezzature manuali
+adeguati all’uso (in particolare assicurarsi che
+l’utensile non sia deteriorato e che il manico
+sia integro e correttamente fissato), utilizzarli
+correttamente, assicurarli da eventuale caduta
+dall’alto, riporli dopo l’uso.
+Lesioni personali per proiezione di schegge
+o frammenti, inalazione polveri, urti, tagli,
+punture, abrasioni.
+Danneggiamento dell’apparecchio o di
+oggetti circostanti per proiezione di schegge,
+colpi, incisioni.
+Adoperare attrezzature elettriche adeguate
+all’uso (in particolare assicurarsi che il cavo e
+la spina di alimentazione siano integri e che le
+parti dotate di moto rotativo o alternativo siano
+correttamente fissate), utilizzarle correttamente,
+non intralciare i passaggi con il cavo di
+alimentazione, assicurarle da eventuale caduta
+dall’alto, scollegare e riporle dopo l’uso.
+Lesioni personali per proiezione di schegge
+o frammenti, inalazione polveri, urti, tagli,
+punture, abrasioni, rumore, vibrazioni.
+Danneggiamento dell’apparecchio o di oggetti
+circostanti per proiezione di schegge, colpi,
+incisioni.
+Assicurarsi che le scale portatili siano
+stabilmente appoggiate, che siano
+appropriatamente resistenti, che i gradini siano
+integri e non scivolosi, che non vengano spostate
+con qualcuno sopra, che qualcuno vigili.
+Lesioni personali per la caduta dall’alto o per
+cesoiamento (scale doppie).
+Assicurarsi che le scale a castello siano
+stabilmente appoggiate, che siano
+appropriatamente resistenti, che i gradini siano
+integri e non scivolosi, che abbiano mancorrenti
+lungo la rampa e parapetti sul pianerottolo.
+Lesioni personali per la caduta dall’alto.
+Assicurarsi, durante i lavori eseguiti in quota
+(in genere con dislivello superiore a due metri),
+che siano adottati parapetti perimetrali nella
+zona di lavoro o imbragature individuali atti
+a prevenire la caduta, che lo spazio percorso
+durante l’eventuale caduta sia libero da ostacoli
+pericolosi, che l’eventuale impatto sia attutito da
+superfici di arresto semirigide o deformabili.
+Lesioni personali per la caduta dall’alto.
+Assicurarsi che il luogo di lavoro abbia
+adeguate condizioni igienico sanitarie in
+riferimento all’illuminazione, all’aerazione, alla
+solidità.
+Lesioni personali per urti, inciampi, ecc.
+Proteggere con adeguato materiale
+l’apparecchio e le aree in prossimità del luogo di
+lavoro.
+Danneggiamento dell’apparecchio o di oggetti
+circostanti per proiezione di schegge, colpi,
+incisioni.
+Movimentare l’apparecchio con le dovute
+protezioni e con la dovuta cautela.
+Danneggiamento dell’apparecchio o di
+oggetti circostanti per urti, colpi, incisioni,
+schiacciamento.
+
+-- 4 of 40 --
+
+GENERALITÀ
+/ 5
+Indossare, durante le lavorazioni, gli indumenti e
+gli equipaggiamenti protettivi individuali.
+Lesioni personali per folgorazione, proiezione
+di schegge o frammenti, inalazioni polveri, urti,
+tagli, punture, abrasioni, rumore, vibrazioni.
+Organizzare la dislocazione del materiale e
+delle attrezzature in modo da rendere agevole e
+sicura la movimentazione, evitando cataste che
+possano essere soggette a cedimenti o crolli.
+Danneggiamento dell’apparecchio o di
+oggetti circostanti per urti, colpi, incisioni,
+schiacciamento.
+Le operazioni all’interno dell’apparecchio devono
+essere eseguite con la cautela necessaria ad
+evitare bruschi contatti con parti acuminate.
+Lesioni personali per tagli, punture, abrasioni.
+Ripristinare tutte le funzioni di sicurezza
+e controllo interessate da un intervento
+sull’apparecchio ed accertarne la funzionalità
+prima della rimessa in servizio.
+Esplosioni, incendi o intossicazioni per perdita
+gas o per incorretto scarico fumi.
+Danneggiamento o blocco dell’apparecchio
+per funzionamento fuori controllo.
+Svuotare i componenti che potrebbero contenere
+acqua calda, attivando eventuali sfiati, prima
+della loro manipolazione.
+Lesioni personali per ustioni.
+Effettuare la disincrostazione da calcare di
+componenti attenendosi a quanto specificato
+nella scheda di sicurezza del prodotto usato,
+aerando l’ambiente, indossando indumenti
+protettivi, evitando miscelazioni di prodotti
+diversi, proteggendo l’apparecchio e gli oggetti
+circostanti.
+Lesioni personali per contatto di pelle o occhi
+con sostanze acide, inalazione o ingestione di
+agenti chimici nocivi.
+Danneggiamento dell’apparecchio o di oggetti
+circostanti per corrosione da sostanze acide.
+Nel caso si avverta odore di bruciato o si veda
+del fumo fuoriuscire dall’apparecchio, togliere
+l’alimentazione elettrica, aprire le finestre ed
+avvisare il tecnico.
+Lesioni personali per ustioni, inalazione fumi,
+intossicazione.
+ATTENZIONE!!!!
+L’apparecchio può essere utilizzato da
+bambinni di età non inferiore a 8 anni e
+da persone con ridotte capacità fisiche,
+sensoriali o mentali, o prive di esperienza o
+della necessaria conoscenza, purché sotto
+sorveglianza oppure dopo che le stesse
+abbiano ricevuto istruzioni relative all’uso
+sicuro dell’apparecchio e alla comprensione
+dei pericoli ad esso inerenti. I bambini non
+devono giocare con l’apparecchio. La pulizia
+e la manutenzione destinata ad essere
+effettuata dall’utilizzatore non deve essere
+effettuata da bambini senza sorveglianza.
+
+-- 5 of 40 --
+
+DESCRIZIONE DEL PRODOTTO
+/ 6
+PANNELLO COMANDI
+bar
+2	1 	3 	4 	5 	6 	7 	8
+DISPLAY
+Legenda:
+1. 	Display
+2. 	Tasti +/- regolazione temperatura sanitario
+3. 	Tasto MODE - selezione modalità di funzionamento (estate / inverno)
+4. 	Tasto attivazione/disattivazione Funzione COMFORT
+5. 	Tasto ON/OFF
+6. 	Tasto attivazione/disattivazione Funzione Auto
+7. 	Tasto RESET
+8. 	Tasti +/- regolazione temperatura riscaldamento
+Legenda
+Cifre per indicazione:
+- 	stato caldaia
+- 	indicazione temperaure con
+barra di livello
+- 	Segnalazione codici d’errore
+(ERROR)
+- 	Richiesta pressione tasto
+RESET
+(caldaia in blocco)
+- 	Settaggio MENU
+Richiesto intervento assistenza
+tecnica
+Segnalazione presenza fiamma con
+indicazione potenza utilizzata
+Funzionamento in riscaldamento
+impostato
+Richiesta riscaldamento attiva
+Funzionamento in sanitario impostato
+Richiesta sanitario attiva
+Funzione Comfort attivata
+Caldaia spenta con Funzione Antigelo
+attiva
+Funzione Antigelo attivata
+AUTO 	Funzione AUTO attivata
+(Termoregolazione attiva)
+8.8 bar 	Pressione impianto - bar
+Sonda ingresso solare collegata
+(optional)
+Segnalazione Errore
+Sonda Esterna collegata (Kit optional)
+Connessione Wi-Fi attiva
+ARISTON NET
+bar
+
+-- 6 of 40 --
+
+DESCRIZIONE DEL PRODOTTO
+/ 7
+VISTA COMPLESSIVA
+1
+2
+5
+6
+8
+9
+10 	12
+13
+14
+15
+16
+17
+20
+18
+4
+7
+3
+11
+Legenda
+1. 	Collettore scarico fumi
+2. 	Valvola sfogo aria
+3. 	Sonda mandata riscaldamento
+4. 	Scambiatore primario
+5. 	Elettrodo di accensione/rilevazione fiamma
+6. 	Mixer Aria/Gas
+7. 	Scambiatore sanitario
+8 	Sifone
+9. 	Valvola di sicurezza 3 bar
+10. 	Valvola gas
+11. 	Rubinetto di riempimento
+12. 	Filtro circuito riscaldamento
+13. 	Circolatore modulante con disareatore
+14. 	Flussostato sanitario
+15. 	Valvola deviatrice motorizzata
+16. 	Pressostato di minima
+17. 	Sonda ritorno riscaldamento
+18. 	Ventilatore modulante
+19. 	Silenziatore
+20. Prese analisi fumi
+DIMENSIONI CALDAIA
+A. Mandata impianto
+B. Uscita acqua calda
+C. Ingresso Gas
+D. Entrata acqua fredda
+E. Ritorno Impianto
+150
+319 (Mod. 24)
+389 (Mod. 30/35)
+180
+25
+745
+	745
+200
+120 	120
+200
+28
+	65 	65	67 67
+
+-- 7 of 40 --
+
+DESCRIZIONE DEL PRODOTTO
+/ 8
+Distanze minime per l’installazione
+Per permettere un agevole svolgimento delle operazioni di
+manutenzione della caldaia è necessario rispettare un’adeguata
+distanza nell’installazione.
+Posizionare la caldaia secondo le regole della buona tecnica
+utilizzando una livella a bolla.
+420020160100 - 03/2017
+353 (compact)
+136
+30
+60
+320
+450
+053
+003
+50 	50
+
+-- 8 of 40 --
+
+INSTALLAZIONE
+/ 9
+Avvertenze prima dell’installazione
+La caldaia serve a riscaldare l’acqua ad una temperatura
+inferiore a quella di ebollizione.
+Essa deve essere allacciata ad un impianto di riscaldamento e
+ad una rete di acqua sanitaria entrambi dimensionati in base
+alle sue prestazione ed alla sua potenza.
+Prima di collegare la caldaia è necessario:
+- effettuare un lavaggio accurato delle tubazioni degli
+impianti per rimuovere eventuali residui di filettature,
+saldature o sporcizie che possano compromettere il corretto
+funzionamento della caldaia;
+- verificare la predisposizione della caldaia per il funzionamento
+con il tipo di gas disponibile (leggere quanto riportato
+sull’etichetta dell’imballo e sulla targhetta caratteristiche della
+caldaia);
+- controllare che la canna fumaria non presenti strozzature e
+non vi siano collegati scarichi di altri apparecchi, salvo che
+questa sia stata realizzata per servire più utenze secondo
+quanto previsto dalle Norme vigenti;
+- controllare che, nel caso di raccordo su canne fumarie
+preesistenti, queste siano state perfettamente pulite e non
+presentino scorie, in quanto l’eventuale distacco delle stesse
+potrebbe ostruire il passaggio dei fumi, causando situazioni di
+pericolo;
+- controllare che, nel caso di raccordo su canne fumarie non
+idonee, queste siano state intubate;
+- in presenza di acque con durezza particolarmente elevata,
+si avrà rischio di accumulo di calcare con conseguente
+diminuzione di efficienza dei componenti della caldaia.
+- evitare l’installazione dell’apparecchio in zone dove l’aria di
+combustione contiene un elevato tasso di cloro (ambienti
+come una piscina), e/o di altri prodotti nocivi come ad
+esempio l’ammoniaca (negozi di parrucchiera), gli agenti
+alcalini (lavanderie)...
+- Il tasso di zolfo del gas utilizzato deve essere inferiore alle
+vigenti normative europee: punta massima nell’anno per
+breve periodo: 150 mg/m3 di gas e media nell’anno di 30 mg/
+m 3 di gas.
+Gli apparecchi tipo C, la cui camera di combustione e circuito di
+alimentazione d’aria sono a tenuta stagna rispetto all’ambiente,
+non hanno alcuna limitazione dovuta alle condizioni di
+aerazione ed al volume del locale.
+La caldaia può essere installata solo in um ambiente che
+soddisfa i necessari requisiti di ventilazione o in luogo
+parzialmente protetto in modo tale che non entri direttamente in
+contatto con gli agenti atmosferici.
+Per non compromettere il regolare funzionamento della caldaia
+il luogo di installazione deve essere idoneo in relazione al
+valore della temperatura limite di funzionamento (>0°C - vedi
+tabella Dati Tecnici).
+Avvertenza
+I materiali utilizzati per l’installazione devono essere
+tali da mantenere la propria funzionalita’ nel campo di
+temperatura sopra dichiarato.
+La caldaia è progettata per l’installazione a parete e deve deve
+essere installata su una parete idonea a sostenerne il peso.
+Nella creazione di un vano tecnico si impone il rispetto di
+distanze minime che garantiscano l’accessibilità alle parti della
+caldaia.
+ATTENZIONE!
+NESSUN OGGETTO INFIAMMABILE DEVE
+TROVARSI NELLE VICINANZE DELLA
+CALDAIA.
+ASSICURARSI CHE L’AMBIENTE DI
+INSTALLAZIONE E GLI IMPIANTI A CUI DEVE
+CONNETTERSI L’APPARECCHIO SIANO
+CONFORMI ALLE NORMATIVE VIGENTI.
+SE NEL LOCALE DI INSTALLAZIONE SONO
+PRESENTI POLVERI E/O VAPORI AGGRESSIVI,
+L’APPARECCHIO DEVE FUNZIONARE
+INDIPENDENTEMENTE DALL’ARIA DEL LOCALE.
+ATTENZIONE!
+L’INSTALLAZIONE, LA PRIMA
+ACCENSIONE, LA MANUTENZIONE
+E LA RIPARAZIONE DELLA CALDAIA,
+DEVONO ESSERE EFFETTUATE DA PERSONALE
+QUALIFICATO IN CONFORMITÀ ALLE
+NORMATIVE NAZIONALI DI INSTALLAZIONE IN
+VIGORE E AD EVENTUALI PRESCRIZIONI DELLE
+AUTORITÀ LOCALI E DI ENTI PREPOSTI ALLA
+SALUTE PUBBLICA.
+Collegamento gas
+La caldaia è stata progettata per utilizzare gas appartenenti alle
+categorie come riportato sulla seguente tabella
+NAZIONE 	MODELLO 	CATEGORIA
+IT 	CLAS ONE L WIFI 30 	II2HM3P
+Accertarsi tramite le targhette poste sull’imballo e
+sull’apparecchio che la caldaia sia destinata al paese in cui
+dovrà essere installata, che la categoria gas per la quale la
+caldaia è stata progettata corrisponda ad una delle categorie
+ammesse dal paese di destinazione.
+La tubazione di adduzione del gas deve essere realizzata e
+dimensionata secondo quanto prescritto dalle Norme specifiche
+ed in base alla potenza massima della caldaia, assicurarsi anche
+del corretto dimensionamento ed allacciamento del rubinetto di
+intercettazione.
+Prima dell’installazione si consiglia un’accurata pulizia
+delle tubazioni del gas per rimuovere eventuali residui che
+potrebbero compromettere il funzionamento della caldaia.
+E’ necessario verificare che il gas distribuito corrisponda a
+quello per cui è stata predisposta la caldaia (vedi targa dati
+posta in caldaia).
+E’ inoltre importante verificare la pressione del gas (metano o
+GPL) che si andrà ad utilizzare per l’alimentazione della caldaia,
+in quanto se insufficiente può ridurre la potenza del generatore
+con disagi per l’utente.
+IMPORTANTE!!
+SE L’INSTALLAZIONE VIENE
+EFFETTUATA IN ZONE DOVE LA
+TEMPERATURA PUO’ SCENDERE DA 0 A
+-5°C E’ NECESSARIA L’INSTALLAZIONE DEL
+KIT ANTIGELO 3318949.
+
+-- 9 of 40 --
+
+INSTALLAZIONE
+/ 10
+Collegamento idraulico
+In figura sono rappresentati i raccordi per l’allacciamento
+idraulico e gas della caldaia.
+Verificare che la pressione massima della rete idrica non superi
+i 6 bar; in caso contrario è necessario installare un riduttore di
+pressione.
+Vista raccordi idraulici
+Dispositivo di sovrapressione
+Provvedere al montaggio del tubo di scarico della valvola di
+sicurezza “F” presente nella confezione documenti.
+Lo scarico del dispositivo di sovrapressione deve essere
+collegato ad un sifone di scarico con possibilità di controllo visivo
+per evitare che in caso di intervento dello stesso si provochino
+danni a persone, animali e cose, dei quali il costruttore non è
+responsabile.
+Pulizia impianto di riscaldamento
+In caso di installazione su vecchi impianti si rileva spesso la
+presenza di sostanze e additivi nell’acqua che potrebbero influire
+negativamente sul funzionamento e sulla durata della nuova
+caldaia. Prima della sostituzione bisogna provvedere ad un
+accurato lavaggio dell’impianto per eliminare eventuali residui o
+sporcizie che possono comprometterne il buon funzionamento.
+Verificare che il vaso di espansione abbia una capacità adeguata
+al contenuto d’acqua dell’impianto.
+Rappresentazione grafica della prevalenza residua circolatore
+Per il dimensionamento delle tubazioni e dei corpi radianti
+dell’impianto di riscaldamento si valuti il valore di prevalenza
+residua in funzione della portata richiesta, secondo i valori
+riportati sul grafico del circolatore.
+Impianti a pavimento
+Negli impianti di riscaldamento a pavimento, installare un
+termostato di sicurezza sulla mandata della caldaia (vedere
+Schema Elettrico). Tale termostato deve essere collocato ad
+una distanza dalla caldaia sufficiente a garantirne il corretto
+funzionamento. Se posto troppo vicino, in seguito ad un
+prelievo di acqua calda sanitaria, l’acqua che rimane nella
+caldaia, fatta fluire nell’impianto, potrebbe causare l’apertura
+del contatto del termostato senza che vi sia un reale pericolo di
+danneggiamento dell’impianto.
+Questo comporta il blocco del funzionamento della caldaia
+sia in modo sanitario che riscaldamento e a display compare il
+codice di errore “116”; il ripristino del funzionamento si avrà in
+automatico quando il contatto del termostato , raffreddandosi,
+si chiude.
+Nel caso in cui il termostato non possa essere installato
+come indicato, l’impianto a pavimento dovrà essere protetto
+installando, a monte del termostato, una valvola termostatica
+per impedire il flusso di acqua troppo calda verso l’impianto.
+Legenda:
+A. Mandata Impianto
+B. Uscita acqua calda
+C. Ingresso Gas
+D. Entrata acqua fredda
+E. Ritorno impianto
+F. Scarico dispositivo di sovrapressione
+G. Rubinetto di riempimento
+H. Rubinetto di svuotamento
+I. Scarico condensa
+L. Idrometro
+A
+B
+C
+D
+H
+G
+F
+I
+L
+bar
+0
+1
+2
+3
+E
+0
+1
+2
+3
+4
+5
+6
+0 	100 	200 	300 	400 	500 	600 	700 	800 	900 	1000 	1100
+[mCE]
+[l\h]
+
+-- 10 of 40 --
+
+INSTALLAZIONE
+/ 11
+Scarico della condensa
+L’elevata efficienza energetica produce condensa che deve
+essere smaltita. A tal fine si deve utilizzare una tubazione in
+plastica posizionata in modo tale da evitare il ristagno della
+condensa nella caldaia. La tubazione deve essere collegata ad
+un sifone di scarico con possibilità di controllo visivo.
+Rispettare le normative nazionali di installazione in vigore ed
+eventuali prescrizioni delle autorità locali e di enti preposti alla
+salute pubblica.
+Prima della messa in servizio, il sifone deve essere riempito
+d’acqua.
+Il riempimento del sifone viene effettuato durante la
+procedura di disareazione impianto - vedi pag. 17
+Verificare, al termine della procedura di disarezione,
+che il sifone sia riempito di acqua. Se necessario aprire
+la valvola di sfogo aria manuale sullo scambiatore fino a
+completo riempimento
+ATTENZIONE!
+LA MANCANZA DI ACQUA NEL SIFONE
+PROVOCA LA FUORIUSCITA DEI FUMI
+DI SCARICO NELL’AMBIENTE.
+Schema idraulico
+Legenda:
+1. 	Valvola sfogo aria
+3. 	Scambiatore primario
+4. 	Elettrodo accensione/rilevazione
+5. 	Sonda ritorno riscaldamento
+6. 	Sonda mandata riscaldamento
+7. 	Valvola gas
+8. 	Scambiatore secondario
+9. 	Valvola di sicurezza 3 bar
+10. Rubinetto svuotamento
+11. 	Sifone
+12. Rubinetto di riempimento
+13. Filtro circuito riscaldamento
+14. Flussostato sanitario
+15. By-pass automatico
+16. Valvola deviatrice motorizzata
+17. 	idrometro
+18. Pressostato di minima
+19. Circolatore modulante con disareatore
+20. Vaso espansione
+21. Ventilatore modulante
+A 	B 	C 	D E
+12
+13
+14
+16
+15
+18
+17
+19
+20
+1
+4
+3
+9
+10
+11
+8
+7
+5
+6 	21
+
+-- 11 of 40 --
+
+INSTALLAZIONE
+/ 12
+Collegamento condotti aspirazione e scarico fumi
+La caldaia è idonea a funzionare in modalità B prelevando aria
+dall’ambiente e in modalità C prelevando aria dall’esterno.
+Nell’installazione di un sistema di scarico fare attenzione alle
+tenute per evitare infiltrazioni di fumi nel circuito aria.
+Le tubazioni installate orizzontalmente devono avere una
+pendenza (3%) verso il basso per evitare ristagni di condensa.
+Nel caso di installazione di tipo B il locale in cui la caldaia viene
+installata deve essere ventilato da una adeguata presa d’aria
+conforme alle norme vigenti. Nei locali con rischio di vapori
+corrosivi (esempio lavanderie, saloni per parrucchiere, ambienti
+per processi galvanici ecc.) è molto importante utilizzare
+l’installazione di tipo C con prelievo di aria per la combustione
+dall’esterno. In questo modo si preserva la caldaia dagli effetti
+della corrosione.
+Per la realizzazione di sistemi di aspirazione/scarico di tipo
+coassiale è obbligatorio l’utilizzo di accessori originali.
+I condotti scarico fumi non devono essere a contatto o nelle
+vicinanze di materiali infiammabili e non devono attraversare
+strutture edili o pareti di materiale infiammabile.
+Nel caso di installazione per sostituzione di una vecchia caldaia
+il sistema di aspirazione e scarico fumi andrà sempre sostituito.
+La giunzione dei tubi scarico fumi viene realizzata con innesto
+maschio/femmina e guarnizione di tenuta.
+Gli innesti devono essere disposti sempre contro il senso di
+scorrimento della condensa.
+Tipologie di collegamento della caldaia alla canna
+fumaria
+- collegamento coassiale della caldaia alla canna fumaria di
+aspirazione/scarico,
+- collegamento sdoppiato della caldaia alla canna fumaria di
+scarico con aspirazione aria dall’esterno,
+- collegamento sdoppiato della caldaia alla canna fumaria di
+scarico con aspirazione aria dall’ambiente.
+Nel collegamento tra caldaia e canna fumaria debbono essere
+impiegati prodotti resistenti alla condensa. Per le lunghezze
+e cambi di direzione dei collegamenti consultare la tabella
+tipologie di scarico.
+I kit di collegamento aspirazione/scarico fumi vengono forniti
+separatamente dall’apparecchio in base alle diverse soluzioni di
+installazione.
+Il collegamento dalla caldaia alla canna fumaria è eseguito in
+tutti gli apparecchi con tubazioni coassiali ø60/100 o tubazioni
+sdoppiate ø 80/80.
+Per le perdite di carico dei condotti fare riferimento al catalogo
+fumisteria. La resistenza supplementare deve essere tenuta in
+considerazione nel suddetto dimensionamento.
+Per il metodo di calcolo, i valori delle lunghezze equivalenti e gli
+esempi installativi far riferimento al catalogo fumi
+ATTENZIONE!
+ASSICURARSI CHE I PASSAGGI DI
+SCARICO E VENTILAZIONE NON
+SIANO OSTRUITI.
+ASSICURARSI CHE I CONDOTTI DI
+SCARICO FUMI NON ABBIANO PERDITE
+La caldaia è predisposta per l’allacciamento ad un sistema di
+aspirazione e scarico fumi coassiale 60/100.
+Per l’utilizzo di tipologie di aspirazione e scarico sdoppiato è
+necessario utlizzare una delle due prese aria.
+Rimuovere il tappo della presa d’aria tagliandolo con un
+utensile.
+Tabella Lunghezza condotti aspirazione/scarico
+S1. aspirazione aria - S2. scarico fumi
+ATTENZIONE!
+L’INSTALLAZIONE DEI CONDOTTI DI
+ASPIRAZIONE ARIA E SCARICO FUMI
+DEVE ESSERE EFFETTUATE DA PERSONALE
+QUALIFICATO IN CONFORMITÀ ALLE
+NORMATIVE NAZIONALI IN VIGORE E AD
+EVENTUALI PRESCRIZIONI DELLE AUTORITÀ
+LOCALI E DI ENTI PREPOSTI ALLA SALUTE
+PUBBLICA.
+Tipologia di
+scarico
+fumi
+Lunghezza equivalente
+massima tubi aspirazione/
+scarico (m)
+Diametro
+condotti
+(mm)	CLAS ONE L WIFI 30
+MIN 	MAX
+Sistemi
+	Coassiali
+C13
+C33
+C43
+1 	7 ø 60/100
+B33 	1 	7
+C13
+C33
+C43
+1 	24 ø 80/125
+B33 	1 	24
+Sistemi
+	Sdoppiati
+S1 = S2
+ø 80/80
+C13 	1,5 = 1,5 	26 = 26
+C33 	1,5 = 1,5 	40 = 40
+C43 	1,5 = 1,5 	26 = 26
+C13 	0,5 = 0,5 	7 = 7
+ø 60/60	C33 	0,5 = 0,5 	9 = 9
+C43 	0,5 = 0,5 	7 = 7
+S1 + S2
+C53
+C83
+1 	50 	ø 80/80
+1 	14 	ø 60/60
+B23 0,5 	50 	ø 80
+0,5 	14 	ø 60
+
+-- 12 of 40 --
+
+INSTALLAZIONE
+/ 13
+ATTENZIONE!
+NEL CASO SI RILEVI UNA
+PRESSIONE SUPERIORE AI 200 PA
+È OBBLIGATORIO UTILIZZARE TUBI IN
+CLASSE DI PRESSIONE H1
+E’ possibile collegare la caldaia a condotti intubati di diametro
+50 o 60 mm .
+La configurazione di base ammessa è indicata nelle figure
+segeunti.
+Nella seguente tabella è indicata la lunghezza massima del
+tratto verticale con le regolazioni di fabbrica della caldaia:
+Nel caso siano necessarie lunghezze maggiori, è possibile
+aumentare i giri del ventilatore (RPM) per compensare le
+perdite di carico, garantendo sempre la Portata Termica della
+caldaia indicata nella Targhetta caratteristiche.
+RISPETTARE LA CONFIGURAZIONE INDICATA
+NELLE FIGURE A LATO E LE LUNGHEZZE
+MASSIME RIPORTATE IN TABELLA.
+Nel caso si utilizzino scarichi fumi diversi da quelli ARISTON è
+necessario verificare il valore del ∆P per calcolare la lunghezza
+massima ammessa.
+CONSULTARE IL NS. CATALOGO FUMISTERIA PER CONDOTTI
+ASPIRAZIONE E SCARICO PER CALDAIE A CONSENSAZIONE
+DI CLASSE P1 E H1.
+Ingresso aria
+Curva Ø 80 = nr. 1
+Tubo Ø 80 = 4,5 m
+Ingresso aria
+Curva Ø 80 = nr. 1
+Tubo Ø 80 = 4,5 m
+Scarico Fumi
+Curva Ø 80 = nr. 1
+Tubo Ø 80 = 4,5 m
+Curva Ø 80 = nr. 1
+Adattatore da Ø 80 a Ø 60 = nr. 1
+Tubo verticale - vedi tabella
+Scarico Fumi
+Curva Ø 80 = nr. 1
+Tubo Ø 80 = 4,5 m
+Curva /riduzione da Ø 80 a Ø 50 = nr. 1
+Tubo verticale - vedi tabella
+RPM
+(giri
+ventilatore)
+Parametro 232
+(impostazione
+di fabbrica)
+Lunghezza massima tratto
+verticale intubato (m)
+60 	50
+5950 	90 	10 	2
+RPM 	Parametro 232
+Lunghezza massima tratto
+verticale intubato (m)
+60 	∆P 1-2 	50 	∆P 1-2
+5950 	90 	10 	0,81 	2 	0,84
+6000 	91 	15 	1,02 	3 	1
+6050 	92 	20 	1,25 	5 	1,25
+6100 	93 	25 	1,52 	6 	1,46
+6200 	95 	8 	1,89
+6300 	96 	9 	2,12 (*)
+Collegamento condotti sdoppiati (Ø80) con
+intubamento di Ø 50 o 60 mm.
+Intubato di Ø 60 mm
+Intubato di Ø 50 mm
+camino per intubamento Ø 60
+4,5 m
+Ø 80 mm
+4,5 m
+Ø 80 mm
+curve 90°
+Ø 80 mm
+riduzione
+Ø 80-60 mm
+curva
+Ø 80 mm
+Lunghezza
+camino per intubamento Ø 50
+4,5 m
+Ø 80 mm
+4,5 m
+Ø 80 mm
+curve 90°
+Ø 80 mm curva/riduzione
+da Ø 80 a Ø 50 mm
+Lunghezza
+(*) UTILIZZARE TUBI IN CLASSE H1
+ATTENZIONE!
+NON MODIFICARE I PARAMETRI
+AL MINIMO ED ALLA MASSIMA
+RISCALDAMENTO
+
+-- 13 of 40 --
+
+INSTALLAZIONE
+/ 14
+Aria di combustione proveniente dall’ambiente
+B23 	Scarico fumi all’esterno
+Aspirazione aria
+dall’ambiente
+External flue gas exhaust
+B33 	Scarico fumi in canna
+fumaria
+singola o collettiva integrata
+nell’edificio
+Aspirazione aria
+dall’ambiente
+Aria di combustione proveniente dall’esterno
+C13 	Scarico fumi e aspirazione
+aria attraverso parete
+esterna
+nello stesso campo di
+pressione
+C33 	Scarico fumi e aspirazione
+aria dall’esterno
+con terminale a tetto
+nello stesso campo di
+pressione
+C43 	Scarico fumi e aspirazione
+aria attraverso canna
+fumaria
+singola o collettiva integrata
+nell’edificio
+C53 	Scarico fumi all’esterno e
+aspirazione aria attraverso
+parete esterna non nello
+stesso campo di pressione
+C63 	Apparecchio omologato per essere connesso
+con sistemi di aspirazione e scarico approvati
+separatamente
+C83 	Scarico fumi attraverso
+canna fumaria
+singola o collettiva integrata
+nell’edificio
+Aspirazione aria attraverso
+parete esterna
+Tipologie di aspirazione/scarico fumi
+
+-- 14 of 40 --
+
+INSTALLAZIONE
+/ 15
+Collegamenti elettrici
+Per una maggiore sicurezza far effettuare da personale qualificato
+un controllo accurato dell’impianto elettrico. Il costruttore non è
+responsabile per eventuali danni causati dalla mancanza di messa
+a terra dell’impianto o per anomalie di alimentazione elettrica.
+Verificare che l’impianto sia adeguato alla potenza massima
+assorbita dalla caldaia indicata sulla targhetta.
+Controllare che la sezione dei cavi sia idonea, comunque non
+inferiore a 0,75 mm2
+.
+Il corretto collegamento ad un efficiente impianto di terra è
+indispensabile per garantire la sicurezza dell’apparecchio.
+Il cavo di alimentazione deve essere allacciato ad una rete di
+230V-50Hz rispettando la polarizzazione L-N ed il collegamento di
+terra.
+Se il cavo di alimentazione è danneggiato, deve essere sostituito
+da un tecnico qualificato, utilizzando ricambi originali disponibili
+presso il costruttore o il suo servizio assistenza.
+Cavo alimentazione
+IMPORTANTE!
+Il collegamento alla rete elettrica deve essere eseguito con
+allacciamento fisso (non con spina mobile) e dotato di un
+interruttore bipolare con distanza di apertura dei contatti che
+consenta la disconnessione completa nelle condizioni della
+categoria di sovratensione III.
+Sono vietate prese multiple, prolunghe o adattatori.
+E’ vietato utilizzare i tubi dell’impianto idraulico, di riscaldamento
+e del gas per il collegamento di terra dell’apparecchio.
+La caldaia non è protetta contro gli effetti causati dai fulmini.
+In caso si debbano sostituire i fusibili di rete, usare fusibili da 2A
+rapidi.
+SWHV06
+60 mm
+N
+L
+ATTENZIONE!
+PRIMA DI QUALUNQUE INTERVENTO
+NELLA CALDAIA TOGLIERE
+L’ALIMENTAZIONE ELETTRICA TRAMITE
+L’INTERRUTTORE BIPOLARE ESTERNO.
+ATTENZIONE!
+PER IL COLLEGAMENTO ED IL
+POSIZIONAMENTO DEI CAVI
+DELLE PERIFERICHE OPTIONALI
+VEDERE LE AVVERTENZE RELATIVE
+ALL’INSTALLAZIONE DELLE PERIFERICHE
+STESSE.
+Connessioni periferiche:
+BUS = Collegamento periferiche modulanti
+FLOOR/ TA2 = Termostato limite per impianti a pavimento o
+Termostato ambiente Zona 2
+(di fabbrica impostato come termostato impianti a
+pavimento per modificare accedere al parametro 223)
+SE 	= Sonda Esterna
+SOL = Sonda solare
+TA1 = Termostato ambiente Zona1
+BUS
+T 	B FLOOR
+TA2 	SE 	TNK 	SOL 	TA1
+CN1
+SENSYS HD
+Interfaccia di Sistema (optional)
+Sonda
+Esterna
+(optional)
+Termostato Ambiente1
+(optional)
+1 2 3 4 5 6 7
+30
+21°,5
+°C5
+18,0°
+Me 27-OTT 12:30
+1,5 bar
+10°
+Collegamento Periferiche
+Per accedere alle connessioni delle periferiche procedere come
+segue:
+- scollegare elettricamente la caldaia
+- rimuovere il mantello frontale
+- ruotare il pannello portastrumenti
+- sganciare le due clip “a”, ruotare in alto il pannello “b” per
+accedere al collegamento delle periferiche
+- svitare le due viti “c” e rimuovere il coperchio “d” del
+portastrumenti per accedere alla scheda elettronica.
+a
+b
+a
+c
+c
+d
+
+-- 15 of 40 --
+
+INSTALLAZIONE
+/ 16
+N L
+N L
+BUS	
+T B
+FLOOR
+	TA2
+	230 V
+SE 
+TNK
+ 
+SOL
+ 
+TA1
+230 V
+ 
+230 V
+ 
+230 V
+ 
+230 V
+ 
+230 V
+Bk
+Bk
+Gry
+	Bk
+	Bl
+Br
+	Bk
+Bl Rd Wh
+Br
+Bl
+	Bl
+1
+	2
+	3
+4
+5
+6
+7
+8
+	9
+10
+Rd
+Br 
+Bk
+848
+ o 8205
+1 32 4
+GATEWAY WIFI
+Schema elettrico caldaia
+Per una maggiore sicurezza far effettuare da personale
+qualificato un controllo accurato dell’impianto elettrico.
+Il costruttore non è responsabile per eventuali danni causati
+dalla mancanza di messa a terra dell’impianto o per anomalie di
+alimentazione elettrica.
+Bk. Nero
+Rd. Rosso
+Gr. Verde
+Bl. Blu
+Br. Marrone
+Wh. Bianco
+Gry. Grigio
+1. Sonda ritorno riscaldamento
+2. Sonda mandata riscaldamento
+3. Flussostatosanitario
+4. Pressostato di minima
+5. Valvola deviatrice
+6. Circolatore modulante
+7. Ventilatore modulante
+8. Valvola gas
+9. Elettrodo accensione/rilevazione fiamma
+10. Accenditore
+Collegamento termostato ambiente
+- 	allentare il fermacavo con un cacciavite e inserire il cavo
+proveniente dal termostato ambiente
+- 	collegare i cavi al morsetto TA1, rimuovendo il ponticello
+- 	assicurarsi che siano ben collegati e che non vengano
+messi in trazione quando si chiude o si apre lo sportello
+portastrumenti
+- 	richiudere lo sportellino, richiudere lo sportello
+portastrumenti e il mantello frontale.
+
+-- 16 of 40 --
+
+MESSA IN FUNZIONE
+/ 17
+Predisposizione al servizio
+Per garantire la sicurezza ed il corretto funzionamento
+dell’apparecchio la messa in funzione della caldaia deve essere
+eseguita da un tecnico qualificato in possesso dei requisiti di
+legge.
+Alimentazione Elettrica
+- Verificare che la tensione e la frequenza di alimentazione
+coincidano con i dati riportati sulla targa della caldaia
+- verificare l’efficienza del collegamento di terra.
+Alimentazione Gas
+Procedere nel modo seguente:
+- verificare che il tipo di gas erogato corrisponda a quello
+indicato sulla targhetta della caldaia
+- aprire porte e finestre
+- evitare la presenza di scintille e fiamme libere
+- verificare la tenuta dell’impianto del combustibile con
+rubinetto di intercettazione posto in caldaia chiuso e
+successivamente aperto con valvola del gas chiusa
+(disattivata), per 10 minuti il contatore non deve indicare alcun
+passaggio di gas.
+Riempimento e disareazione del circuito idraulico e della
+caldaia.
+In fase di installazione o manutenzione straordinaria è
+necessario eseguire un’accurata disareazione dell’impianto e
+della caldaia.
+Procedere nel modo seguente:
+- 	Aprire la valvola sfogo aria (2) sullo scambiatore primario. La
+valvola è già collegata ad un tubo di scarico raccordato al
+sifone della condensa.
+- 	Allentare il tappo della valvola automatica di sfogo aria posta
+sul circolatore.
+- 	Aprire le valvole di sfogo dei radiatori dell’impianto.
+- 	Aprire gradualmente il rubinetto di riempimento della caldaia
+e chiudere le valvole di sfogo aria sui radiatori appena esce
+acqua.
+- 	Chiudere la valvola di sfogo aria (2) sullo scambiatore
+primario quando è visibile acqua priva di bolle d’aria.
+- 	Chiudere il rubinetto di riempimento caldaia quando la
+pressione indicata sull’idrometro è di 1-1,5 bar.
+2
+ATTENZIONE!!
+CONTROLLARE SE IL SIFONE
+DI SCARICO DELLA CONDENSA
+CONTIENE ACQUA. SE NON FOSSE
+RIEMPITO APRIRE LO SFIATO ARIA
+MANUALE SULLO SCAMBIATORE
+PRINCIPALE FINO COMPLETO
+RIEMPIMENTO.
+CONTROLLARE DI NUOVO LA PRESSIONE
+DELL’IMPIANTO SULL’IDROMETRO.
+ATTENZIONE!!
+COLLEGARE IL TUBO DELLO SCARICO DELLA
+CONDENSA PRIMA DI RIEMPIRE IL CIRCUITO
+RISCALDAMENTO.
+
+-- 17 of 40 --
+
+MESSA IN FUNZIONE
+/ 18
+Procedura di accensione
+Premere il tasto ON/OFF sul pannello comandi per accendere la
+caldaia il display visualizza:
+● la modalità di funzionamento impostata:
+Inverno 	Estate
+● le cifre indicano:
+- 	in modalità riscaldamento la temperatura impostata
+- 	in modalità sanitario la temperatura impostata acqua calda
+sanitaria
+Viene inoltre segnalato lo svolgimento di alcune funzioni:
+Ciclo disareazione attivato
+Post-circolazione in riscaldamento
+bar
+Post-circolazione in sanitario
+bar
+Prima accensione
+1. 	Assicurarsi che:
+- 	il rubinetto gas sia chiuso;
+- 	il collegamento elettrico sia stato effettuato in modo
+corretto. Assicurarsi in ogni caso che il filo di terra verde/
+giallo sia collegato ad un efficiente impianto di terra;
+- 	sollevare, con un cacciavite, il tappo della valvola sfogo
+aria automatica. - la pressione del circuito riscaldamento,
+indicata dall’idrometro, sia superiore ad 1 bar.
+2. Accendere la caldaia (premendo il tasto ON/OFF) e
+selezionare la modalità stand-by - non ci sono richieste né
+dal sanitario né dal riscaldamento;
+3. La caldaia inizierà automaticamente un ciclo di disareazione
+di circa 7 minuti che può essere interrotto se necessario
+premendo il tasto MODE.
+Durante il ciclo di disareazione aprire la valvola di sfiato
+manuale (2) sullo scambiatore di calore primario e
+richiuderla quando è visibile acqua priva da bolle d’aria.
+Al termine verificare che l’impianto sia completamente
+disareato e, in caso contrario, ripetere l’operazione
+premendo per 5 secondi il tasto MODE.
+4. Spurgare l’aria dai radiatori.
+5. Verificare che la pressione del circuito riscaldamento,
+indicata dall’idrometro, sia superiore ad 1 bar.
+6. Verificare che il condotto di evacuazione dei prodotti della
+combustione sia idoneo e libero da eventuali ostruzioni.
+7. 	Verificare che le eventuali necessarie prese di ventilazione
+del locale siano aperte (installazioni di tipo B).
+8. Verificare che l’acqua sia presente nel sifone altrimenti
+provvedere al riempimento. Se necessario, aprire la valvola
+di sfogo aria sullo scambiatore primario fino a completo
+riempimanto.
+NB. in caso di prolungato inutilizzo
+dell’apparecchio il sifone va riempito
+prima di una nuova accensione. Il mancato
+reintegro dell’acqua nel sifone è pericoloso
+in quanto c’è possibilità di uscita di fumi
+nell’ambiente.
+9. Aprire il rubinetto del gas e verificare la tenuta degli attacchi
+compresi quelli della caldaia verificando che il contatore non
+segnali alcun passaggio di gas. Eliminare eventuali fughe.
+10. Mettere in funzione la caldaia selezionando con il Tasto
+Mode il funzionamento in riscaldamento o produzione di
+acqua calda ad uso sanitario.
+FUNZIONE DISAREAZIONE
+La Funzione di Disareazione si attiva
+AUTOMATICAMENTE la prima volta che si
+alimenta elettricamente la caldaia o dopo il
+messaggio di errore - 108 Pressione insufficiente.
+E’ comunque possibile attivare la funzione premendo il tasto
+MODE per 5 secondi.
+La funzione può essere interrotta premendo il tasto MODE.
+Se necessario è possibile attivare un nuovo ciclo.
+Verificare che la caldaia sia in Stand-by, nessuna richiesta dal
+circuito riscaldamento o dal sanitario.
+bar
+
+-- 18 of 40 --
+
+MESSA IN FUNZIONE
+/ 19
+ANALISI DELLA COMBUSTIONE
+Nota: E’ indispensabile rispettare l’ordine delle operazioni da
+svolgere.
+Operazione 1 - Verifica della pressione di alimentazione
+Allentare la vite 1 ed inserire il tubo di raccordo del manometro
+nella presa pressione.
+Attivare le Funzione Spazzacamino alla
+massima potenza. Premere il pulsante di
+Reset per 10 secondi, sul display viene
+visualizzato 	ed il simbolo 	.
+La pressione deve corrispondere a quella
+prevista per il tipo di gas per cui la caldaia è predisposta – vedi
+Tabella riepilogativa gas.
+Operazione 2 – Collegamento analizzatore
+Collegare l’analizzatore della combustione alla presa di analisi
+di sinistra, svitando la vite ed estraendo l’otturatore.
+Operazione 3 – Regolazione del CO2 alla massima potenza
+(sanitario)
+Aprire un rubinetto dell’acqua calda alla massima portata.
+Attivare la Funzione Spazzacamino premendo il tasto Reset per
+10 secondi.
+ATTENZIONE!! Attivando la Funzione Spazzacamino la
+temperatura dell’acqua in uscita dalla caldaia può superare i
+65°C.
+Sul display viene visualizzato 	ed il simbolo 	. La
+caldaia viene forzata alla massima potenza riscaldamento.
+Premere il tasto 2 	per attivare la
+caldaia alla massima potenza sanitario.
+Sul display viene visualizzato il simbolo 	.
+Prima di iniziare l’analisi della combustione,
+attendere un minuto in modo che la caldaia
+si stabilizzi.
+Rilevare il valore del C02(%) e confrontarlo con quanto riportato
+nella Tabella A:
+NOTA:
+VALORI MISURATI CON CAMERA DI COMBUSTIONE
+CHIUSA.
+Se il valore del C02 (%) è diverso da quanto indicato in tabella,
+procedere alla regolazione della valvola gas come sotto
+indicato, altrimenti passare all’operazione successiva.
+1
+2
+4	2
+1
+1 
+3
+2 
+4	1
+2
+4
+4	2
+1
+Valvola gas 848 	Valvola gas 8205
+CLAS ONE L WIFI 30
+Gas 	CO2 (%) MAX 	CO2 (%) MIN
+G20 	8,7 ÷ 9,7 	8,4 ÷ 9,4
+G31 	9,5 ÷ 10,5
+IL VALORE DEL CO2 ALLA MASSIMA POTENZA
+(SANITARIO) DEVE ESSERE SEMPRE SUPERIORE DI 0,5
+SUL VALORE DEL CO2 ALLA POTENZA MINIMA.
+Esempio: con CO2 Max Sanitario = 9,2 %, il CO2 alla Potenza
+Min DEVE ESSERE UGUALE O INFERIORE a 8,7 %
+
+-- 19 of 40 --
+
+MESSA IN FUNZIONE
+/ 20
+27,4
+3,9
+Regolazione valvola gas alla massima potenza (sanitario)
+Effettuare la regolazione della valvola gas ruotando
+gradualmente in senso orario la vite 4 per diminuire il valore del
+C02 (1 di giro modifica il valore di circa 0,2-0,4 %). Dopo ogni
+modifica, attendere un minuto per stabilizzare il valore del C02.
+Se il valore rilevato coincide con quello indicato nella Tabella
+A, la regolazione è terminata. In caso contrario ripetere
+l’operazione.
+Nota: La funzione Spazzacamino si disattiva automaticamente
+dopo 30 minuti o manualmente premendo il tasto Reset.
+Operazione 4 – Regolazione del C02 alla potenza minima
+Con la funzione Spazzacamino attivata,
+premere il tasto 2 	fino a selezionare il
+simbolo 	e 	.
+La caldaia viene attivata alla minima
+potenza.
+Prima di iniziare l’analisi attendere un minuto che la caldaia si
+stabilizzi.
+Se il valore del C02 (%) è diverso da quanto indicato nella
+Tabella A, procedere alla regolazione della valvola gas come
+sotto indicato, altrimenti passare all’operazione successiva.
+Regolazione della valvola gas alla potenza minima
+Rimuovere il tappo ed effettuare la regolazione agendo sulla vite
+2. Ruotando in senso antiorario si diminuisce il valore del C02.
+Dopo ogni regolazione attendere un minuto per stabilizzare il
+valore C02.
+Misurare il valore finale del C02, dopo un minuto, e se
+corrisponde a quello previsto nella Tabella A , la regolazione è
+terminata.
+In caso contrario ripetere l’operazione.
+ATTENZIONE!! Se il valore del CO2 alla minima potenza viene
+modificato è necessario ripetere la regolazione alla massima
+potenza.
+Controllo della potenza di lenta accensione
+parametro 220
+Con tale parametro si limita la potenza utile della caldaia in fase
+di accensione.
+La percentuale equivarrà ad un valore della potenza utile
+compresa tra quella minima (0) e la massima (99).
+Per controllare la potenza di lenta accensione accedere
+al parametro e, se necessario, modificare il valore del parametro
+fino a rilevare la corretta pressione.
+Regolazione del ritardo di accensione riscaldamento
+parametro 235
+Tale parametro permette di impostare in manuale (0) o in
+automatico (1) il tempo di attesa prima di una successiva
+riaccensione del bruciatore dopo lo spegnimento per raggiunta
+termostatazione.
+Selezionando manuale è possibile impostare il ritardo in minuti
+con il parametro successivo - parametro 236) da 0 a 7 minuti.
+Selezionando automatico la caldaia provvederà a stabilire il
+tempo di ritardo in base alla temperatura di set-point.
+Regolazione della massima potenza riscaldamento regolabile
+parametro 231
+Con tale parametro si limita la potenza utile della caldaia.
+La percentuale equivarrà ad un valore della potenza utile com-
+presa tra la potenza minima (0) e la potenza massima (99) .
+Per controllare la massima potenza riscaldamento accedere al
+parametro e, se necessario, modificare il valore come indicato
+nella Tabella riepilogativa gas.
+Operazione 5 – Termine delle operazioni di regolazione
+Uscire dalla funzione Spazzacamino premendo il tasto Reset.
+Chiudere il rubinetto dell’acqua.
+Verificare ed eventualmente eliminare eventuali perdite di gas.
+Rimontare il pannello frontale dell’apparecchio.
+Riposizionare l’otturatore sulla presa di analisi.
+1 
+3
+2 
+4
+4
+4
+1 
+3
+2 
+4
+4
+Valvola gas 848 	Valvola gas 8205
+1 
+3
+2 
+4
+2
+1 
+3
+2 
+4
+2
+2
+Valvola gas 848 	Valvola gas 8205
+
+-- 20 of 40 --
+
+MESSA IN FUNZIONE
+/ 21
+Cambio Gas
+Questi apparecchi sono concepiti per funzionare con diversi tipi
+di gas vedi tabella.
+Il cambio del tipo di gas deve essere effettuato da un
+professionista qualificato.
+Seguire attentamente le istruzioni contenute nel Kit e procedere
+alla regola zione dell’apparecchio per il gas prescelto.
+Tabella riepilogativa gas
+(*) Diaframma gas integrato nel mixer aria/gas
+(NON REMOVIBILE)
+Funzione AUTO
+Funzione che permette alla caldaia di adattare autonomamente
+il proprio regime di funzionamento (temperatura degli elementi
+scaldanti) alle condizioni esterne per raggiungere e mantenere
+le condizioni di temperatura ambiente richieste.
+A seconda delle periferiche connesse e del numero delle zone
+gestite, la caldaia regola autonomamente la temperatura di
+mandata.
+Provvedere quindi al settaggio dei vari parametri interessati
+(vedi menu regolazioni).
+Per attivare la funzione premere il tasto Auto.
+Per maggiori informazioni consultare il Manuale di
+Termoregolazione di ARISTON.
+Esempio 1:
+Impianto singola zona (alta temperatura) con Termostato
+Ambiente on/off.
+In questo caso è necessario impostare i seguenti parametri:
+4 2 1 - Attivazione Termoregolazione tramite sensori
+- selezionare 01 = Dispositivi On/Off
+2 4 4 - Boost Time (opzionale)
+può essere impostato il tempo di attesa per l’incremento
+a step di 4°C della temperatura di mandata. Il valore varia
+a seconda del tipo di impianto e di installazione.
+Se il Boost Time è = 00 tale funzione non è attiva
+Esempio 2:
+Impianto singola zona (alta temperatura) con Termostato
+Ambiente on/off + sonda esterna.
+In questo caso è necessario impostare i seguenti parametri:
+4 2 1 - Attivazione Termoregolazione tramite sensori
+- selezionare 03 = solo sonda esterna
+4 2 2 - Selezione curva termoregolazione
+- selezionare la curva interessata in base al tipo
+di impianto, di installazione, di isolamento termico
+dell’edificio etc..
+4 2 3 - Spostamento parallelo curva se necessario, che
+permette di spostare parallelamente la curva
+aumentando o diminuendo la temperatura di set-point
+(modificabile anche dall’utente, tramite la manopola di
+regolazione della temperatura riscaldamento che con la
+funzione auto attivata, svolge la funzione di spostamento
+parallelo della curva).
+Esempio 3:
+Impianto singola zona (alta temperatura) con Controllo
+Remoto SENSYS HD + sonda esterna.
+In questo caso è necessario impostare i seguenti parametri:
+4 2 1 - Attivazione Termoregolazione tramite sensori
+- selezionare 4 = sonda esterna + sonda ambiente
+4 2 2 - Selezione curva termoregolazione
+- selezionare la curva interessata in base al tipo
+di impianto, di installazione, di isolamento termico
+dell’edificio etc..
+4 2 3 - Spostamento parallelo curva se necessario, che
+permette di spostare parallelamente la curva
+aumentando o diminuendo la temperatura di set-point
+(modificabile anche dall’utente tramite l’encoder che,
+con la funzione Auto attivata, svolge la funzione di
+spostamento parallelo della curva)
+4 2 4 - Influenza del sensore ambiente
+- permette di regolare l’influenza del sensore ambiente
+sul calcolo della temperatura di set-point mandata (20 =
+massima 	0 = minima)
+parametro CLAS ONE L WIFI 30
+G20 	G230 	G31
+Indice di Wobbe inferiore (15°C, 1013 mbar) ( MJ/m3) 	45,67 	38,90 	70,69
+Pressione di alimentazione gas - mbar 	20 	20 	37
+Lenta accensione 	220 	62
+Massima potenza riscaldamento regolabile 	231 	60
+Velocità ventilatore al minimo (%) 	233 	2
+Velocità ventilatore maxi riscaldamento (%) 	234 	84
+Velocità ventilatore maxi sanitario (%) 	232 	90
+Diaframma gas (ø) mm 	5,8(*) 	NO 	4,0
+Nuovo Mixer aria/gas 	NO 	SI 	NO
+Consumi max/min
+(15°C, 1013 mbar)
+(nat - m3/h) (GPL - kg/h)
+max sanitario 	3,17 	3,87 	2,33
+max riscaldamento 	2,96 	3,61 	2,18
+minimo 	0,40 	0,56 	0,33
+bar
+
+-- 21 of 40 --
+
+SISTEMI DI PROTEZIONE CALDAIA
+/ 22
+La prima cifra del codice di errore (Es: 1 01) indica in quale
+gruppo funzionale della caldaia si è determinato l’errore:
+1 - Circuito Primario
+2 - Circuito Sanitario
+3 - Parte Elettronica interna
+4 - Parte Elettronica esterna
+5 - Accensione e Rilevazione
+6 - Ingresso aria-uscita fumi
+7 - Multizone riscaldamento (Moduli Gestione Zone - optional)
+Avviso di malfunzionamento
+Questo avviso viene indicato sul display nel seguente formato:
+5 P3	5 P3 -la prima cifra che indica il gruppo funzionale è seguita
+da una P (avviso) e dal codice relativo al particolare avviso.
+Condizioni di arresto dell’apparecchio
+La caldaia è protetta da malfunzionamento tramite controlli
+interni da parte della scheda elettronica, che opera se
+necessario 	blocco di sicurezza. In caso di blocco viene
+visualizzato sul display del pannello comandi un codice che si
+riferisce al tipo di arresto ed alla causa che lo ha generato.
+Si possono verificare due tipi di arresto.
+Arresto di sicurezza
+Questo tipo di errore è di tipo “volatile”, ciò significa che viene
+automaticamente rimosso al cessare della causa che lo aveva
+provocato.
+Sul display viene visualizzato il codice, che
+lampeggia alternativamente alla scritta
+, (es. 	/ 	) ed appare il
+simbolo 	- vedi Tabella Errori.
+Non appena la causa dell’arresto
+scompare, la caldaia riparte e riprende il
+suo normale funzionamento.
+Se la caldaia segnalerà ancora l’arresto
+di sicurezza, spegnere la caldaia. Portare
+l’interruttore elettrico esterno in posizione OFF, chiudere il
+rubinetto del gas e contattare un tecnico qualificato.
+Arresto di sicurezza per insufficiente pressione acqua
+In caso di insufficiente pressione dell’acqua
+nel circuito riscaldamento la caldaia
+segnala un arresto di sicurezza 	/
+- vedi Tabella Errori.
+E’ possibile ripristinare il sistema
+reintegrando l’acqua attraverso il rubinetto
+di riempimento posto sotto la caldaia.
+Se la richiesta di reintegro dovesse essere
+frequente, spegnere la caldaia, portare
+l’interruttore elettrico esterno in posizione
+OFF, chiudere il rubinetto del gas e contattare un tecnico
+qualificato per verificare la presenza di eventuali perdite di
+acqua.
+Blocco di funzionamento
+Questo tipo di errore è di tipo “non volatile”, ciò significa che
+non viene automaticamente rimosso.
+Sul display viene visualizzato il codice, che lampeggia
+alternativamente alla scritta 	, es. Err/501 e compare
+il simbolo 	.
+In questo caso la caldaia non riparte automaticamente e potrà
+essere sbloccata solo tramite la pressione del tasto 	.
+Dopo alcuni tentativi di sblocco, se il problema si ripete è
+necessario far intervenire un tecnico qualificato.
+Importante
+Se il blocco si ripete con frequenza, si consiglia l’intervento del
+Centro di Assistenza Tecnica autorizzato.
+Per motivi di sicurezza, la caldaia consentirà comunque un numero
+massimo di 5 riarmi (pressioni del tasto 	) in 15 minuti.
+Nel caso in cui il blocco sia sporadico o isolato non costituisce un
+problema.
+bar
+bar
+bar
+bar
+bar
+bar
+bar
+
+-- 22 of 40 --
+
+SISTEMI DI PROTEZIONE CALDAIA
+/ 23
+Circuito Primario
+Display Descrizione
+1 01 	Sovratemperatura
+1 03
+Circolazione Insufficiente
+1 04
+1 05
+1 06
+1 07
+1 08 	Mancanza acqua (richiesto riempimento)
+1 09 	Pressione impianto > 3 bar
+1 10 Circuito aperto o cortocircuito sonda mandata
+riscaldamento
+1 12 Circuito aperto o cortocircuito sonda ritorno
+riscaldamento
+1 14 	Circuito aperto o cortocircuito sonda esterna
+1 16 	Termostato pavimento aperto
+1 18 	Problema alle sonde circuito primario
+1 P1
+Segnalazione circolazione insufficiente
+1 P2
+1 P3
+1 P4
+Circuito Sanitario
+2 05 	Sonda Ing San Difettosa
+Parte Elettronica Interna
+3 01 	Errore EEPROM
+3 02 	Errore di comunicazione
+3 03 Errore scheda principale - Rilevazione fiamma dopo
+chiusera valvola gas
+3 04 	Troppi sblocchi (>5 in 15 minuti)
+3 05 	Errore scheda principale
+3 06 	Errore scheda principale
+3 07 	Errore scheda principale
+3 P9 	Avviso Manutenzione
+Parte Elettronica Esterna
+4 11 	Circuito aperto o cortocircuito sonda ambiente ZONA 1
+4 12 	Circuito aperto o cortocircuito sonda ambiente ZONA 2
+4 13 	Circuito aperto o cortocircuito sonda ambiente ZONA 3
+Accensione e rilevazione
+5 01 	Mancanza fiamma
+5 02 	Rilevamento fiamma con valvola gas chiusa
+5 04 	Distacco fiamma
+5 P1 	Primo tentativo di accensione fallito
+5 P2 	Secondo tentativo di accensione fallito
+5 P3 	Distacco fiamma
+Ingresso Aria / Uscita Fumi
+6 12 	Velocità ventilatore insufficiente
+Multizone Riscaldamento (Moduli Gestione Zone - optional)
+7 01 	Circuito aperto o cortoc. sonda mandata risc. ZONA 1
+7 02 	Circuito aperto o cortoc. sonda mandata risc. ZONA 2
+7 03 	Circuito aperto o cortoc. sonda mandata risc. ZONA 3
+7 11 	Circuito aperto o cortoc. sonda riorno risc. ZONA 1
+7 12 	Circuito aperto o cortoc. sonda riorno risc. ZONA 1
+7 13 	Circuito aperto o cortoc. sonda riorno risc. ZONA 1
+7 22 	Sovratemperatura ZONA 2
+7 23 	Sovratemperatura ZONE 3
+7 50 	Tutte le zone bloccate
+Tabella riepilogativa codici errori 	Sicurezza antigelo
+La caldaia è dotata di una protezione antigelo che provvede
+al controllo della temperatura di mandata della caldaia: se tale
+temperatura scende sotto i 8°C si attiva la pompa (circolazione
+nell’impianto di riscaldamento) per 2 minuti.
+Dopo i due minuti di circolazione la scheda elettronica verifica
+quanto segue:
+a- se la temperatura di mandata è > di 8°C la pompa si ferma;
+b- se la temperatura di mandata è > di 4°C e < di 8°C la pompa
+si attiva per altri 2 minuti;
+c- se la temperatura di mandata è < di 4°C si accende
+il bruciatore (in sanitario alla minima potenza) fino al
+raggiungimento dei 33°C. Raggiunta la temperatura il
+bruciatore si spegne ed il circolatore continua a funzionare
+per altri due minuti.
+L’attivazione della sicurezza antigelo è segnalata sul display dal
+simbolo 	.
+La protezione antigelo è attiva solo con la caldaia perfettamente
+funzionante:
+- la pressione dell’installazione è sufficiente;
+- la caldaia è alimentata elettricamente;
+- il gas viene erogato.
+
+-- 23 of 40 --
+
+AREA TECNICA
+/ 24
+Area Tecnica
+La caldaia permette di gestire in maniera completa il sistema di
+riscaldamento e produzione di acqua calda ad uso sanitario.
+La navigazione all’interno dei menu permette di personalizzare
+il sistema caldaia + periferiche connesse ottimizzando il
+funzionamento per il massimo comfort ed il massimo risparmio.
+Inoltre fornisce importanti informazioni relative al buon
+funzionamento della caldaia.
+Il display visualizza, prima di accedere al MENU COMPLETO, le
+seguenti viste con accesso diretto ad alcuni parametri.
+Per visualizzare tutti i menu ed i parametri disponibili accedere
+alla vista MENU COMPLETO
+CODICE D’ACCESSO
+GAS 	Accesso diretto ai parametri da verificare/modifi-
+care in caso di regolazione/cambio gas
+220 - 231- 232- 233 - 234 - 270
+SET 	Accesso diretto ai parametri da verificare/modifi-
+care in fase di prima accensione
+220 - 231- 223 - 245 - 246
+PCB 	Accesso diretto ai parametri da verificare/modifi-
+care in caso di sostituzione della sche da elettro-
+nica
+214 - 220 - 228 - 229 - 231- 232- 233 - 234 - 247 - 250 - 253
+VIS 	Accesso diretto ai parametri per la verifica delle
+impostazioni della caldaia
+821 - 822 - 824 - 825 - 827 - 830 - 831 - 832 - 833- 840 - 835 - 874
+ZONE Accesso diretto ai parametri relativi alle zone di
+riscaldamento
+040 - 402 - 502 - 602 - 420 - 520 - 620 -434 - 534 - 634 - 830
+ERR 	Il display visualizza gli ultimi 10 errori da ERR 0 a
+ERR 9. Ruotare l’encoder per scorrere gli errori.
+MENU COMPLETO - vedi tabella pagine seguenti
+0 NETWORK
+0 4 	Impostazione display caldaia
+2 Parametri Caldaia
+2 0 	Impostazioni Generali
+2 1 	Oarametri caldaia
+2 2 	Impostazioni Generali caldaia
+2 3 	Parametri Riscaldamento Parte 1
+2 4 	Parametri Riscaldamento Parte 2
+2 5 	Parametri Sanitario
+2 6 	Verifica funzionamento componenti
+2 7 	Test & Utilities
+2 8 	Reset Menù 2
+4 Parametri Zona 1
+4 0 	Impostazione Temperature zona 1
+4 2 	Impostazione zona 1
+4 3 	Diagnostica
+5 Parametri Zona 2
+5 0 	Impostazione Temperature zona 2
+5 2 	Impostazione zona 2
+5 3 	Diagnostica Zona 2
+6 Parametri Zona 3
+6 0 	Impostazione Temperature zona 3
+6 2 	Impostazione zona 3
+6 3 	Diagnostica Zona 3
+8 Parametri assistenza
+8 0 	Statistiche 1
+8 1 	Statistiche 2
+8 2 	Caldaia
+8 3 	Temperature caldaia
+8 4 	Solare e bollitore (se presenti)
+8 5 	Service - Assistenza Tecnica
+8 6 	Elenco errori
+I parametri relativi ad ogni singolo menu sono riportati nelle
+pagine seguenti.
+L’elenco dei menu e dei parametri disponibili è riportato nelle
+pagine seguenti.
+L’accesso e la modifica dei vari parametri viene effettuata
+attraverso i tasti “+” e “-” 	ed i tasti “+” OK e “-”
+2. Tasti “+” e “-” 	per accedere ai parametri e modificarne
+il valore
+8. Tasto “+” OK per memorizzare le modifiche dei vari
+parametri
+Tasto “-” 	(ESC) per uscire dai parametri
+Il numero dei menu e dei parametri viene visualizzato dalle cifre
+del display.
+ATTENZIONE! I MENU SONO RISERVATI AL TECNICO
+QUALIFICATO E SONO ACCESSIBILI SOLO DOPO AVER
+IMPOSTATO IL CODICE D’ACCESSO.
+Per accedere ai Menu procedere come segue:
+- Esempio: modifica parametro 231	231
+1. 	premere contemporaneamente i tasti 2 “+”
+e “-” 	per 5 secondi. La caldaia richiede
+l’inserimento del codice d’accesso,
+sul display compare 222	222
+2. premere il tasto “+” 	per
+selezionare il codice 234	234..
+3. premere il tasto “+” OK Sul display
+compare la vista “GAS”
+4. premere il tasto “+” 	per
+selezionare la vista MENU (Menu
+Completo)
+3. premere il tasto “+” OK. Il display visualizza il
+menu 00
+4. premere il tasto “+” 	per selezionare il
+menu 22.
+5. Premere il tasto OK per accedere al Menu. Il
+display visualizza il sotto-menu 20	20.
+4. premere il tasto “+” 	per selezionare ilotto-
+menu 23	23.
+3. premere il tasto “+” OK per accedere al
+sottomenu. Il display visualizza il parametro
+230	230.
+4. premere il tasto “+” 	per selezionare ilil
+parametro 231	231.
+5. premere il tasto “+” OK per accedere al
+parametro,
+il display visualizza il valore “es: 70	70”
+lampeggiante
+6. premere i tasti 2 “+” o “-” 	per selezionare
+il nuovo valore “es: 75	75”
+7. 	premere il tasto “+” OK per memorizzare la
+modifica o il tasto “-” 	(ESC) per uscire
+senza memorizzare.
+Per uscire premere il tasto “-” 	(ESC) fino a ritornare alla
+normale visualizzazione.
+2 	8
+
+-- 24 of 40 --
+
+AREA TECNICA
+/ 25
+INSERIMENTO CODICE D’ACCESSO 	222
+Premere il tasto “+” 	per selezionare 234 e premere il tasto OK
+0 NETWORK
+0 4 IMPOSTAZIONE DISPLAY
+0 4 0 Zona Riscaldamento da
+regolare dal pannello
+comandi della caldaia
+1 = Zona 1
+2 = Zona 2
+3 = Zona 3
+1
+0 4 1 Temporizzazione backlight da 0 a 10 (minuti) o
+24 (ore)
+24
+0 4 2 Disattiva tasto
+termoregolazione
+0 = OFF
+1 = ON
+0
+2 IMPOSTAZIONE PARAMETRI CALDAIA
+2 0 IMPOSTAZIONI GENERALI 1
+2 0 0 Impostazione temperatura
+sanitario
+da 36 a 60 (°C)
+Regolabile dal pannello comandi Tasti 2
+2 0 1 Funzione
+preriscaldamento
+0 = OFF
+1 = ON
+1
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica
+2 1 	IMPOSTAZIONI GENERALI CALDAIA
+2 1 	4 Selezione tipologia
+circolatore
+0 = Standard
+1 = Alta efficienza
+0
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica
+2 2 IMPOSTAZIONI GENERALI CALDAIA
+2 2 0 Lenta Accensione 	da 0 a 100
+Vedi tabella regolazione gas
+2 2 3 Termostato Pavimento\
+TA2
+0 = Termostato
+Pavimento
+1 =Termostato
+Ambiente2
+0
+2 2 4 Termoregolazione 	0 = Disattivata
+0 = Attivata
+0
+2 2 5 Ritardo partenza in
+riscaldamento
+0= Disattivato
+1= 10 secondi
+2= 90 secondi
+3= 210 secondi
+0
+2 2 8 Versione Caldaia
+NON MODIFICARE
+da 0 a 5
+0 = MISTA
+0
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica
+2 2 9 Settaggio potenza
+nominale caldaia
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica
+2 3 PARAMETRI RISCALDAMENTO - PARTE 1
+2 3 1 Max Potenza
+Riscaldamento regolabile
+da 0 a 100 	60
+vedi paragrafo Regolazione Gas
+2 3 2 Percentuale Pot Max
+Sanitario
+- NON MODIFICARE
+da 0 a 100
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica - vedi tabella regolazione gas
+2 3 3 Percentuale Pot min
+NON MODIFICARE
+da 0 a 100
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica - vedi tabella regolazione gas
+2 3 4 Percentuale Pot Max
+Riscaldamento
+- NON MODIFICARE
+da 0 a 100
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica - vedi tabella regolazione gas
+2 3 5 Selezione Tipologia
+ritardo d'accensione in
+riscaldamento
+0 = Manuale
+1 = Automatico
+1
+2 3 6 Impostazione tempo
+ritardo d'accensione in
+riscaldamento
+da 0 a 7 minuti 	3
+2 3 7 Post-circolazione
+riscaldamento
+da 0 a 15 minuti o
+CO (in continuo)
+3
+2 4 PARAMETRI RISCALDAMENTO - PARTE 2
+2 4 3 Post-ventilazione dopo
+richiesta riscaldamento
+0 = OFF (5 secondi)
+1 = ON (3 minuti)
+0
+2 4 4 Tempo incremento
+temperatura
+riscaldamento
+da 0 a 60
+(minuti)
+16
+attivo solo con T. A. on/off e Termoregolazione
+attivata (parametro 421 o 521 o 621 su 01 =
+Dispositivi ON/OFF)
+Tale parametro permette di impostare il tempo
+di attesa prima dell’aumento automatico della
+temperatura di mandata con step di 4°C (max 12°C)
+Se tale parametro rimane con valore 0 tale funzione
+non è attiva.
+2 4 5 Velocità MAX Circolatore 	da 75 a100
+2 4 6 Velocità MIN Circolatore 	da 40 a 100 	40
+2 4 7 Indicazione dispositivo
+per rilevazione pressione
+circuito riscaldamento
+0 = Solo sonde
+temperatura
+1 = Press. di minima
+2 = Sens. di
+pressione
+1
+RISERVATO AL SAT Solo in caso di sostituzione della
+scheda elettronica
+2 4 9 Correzione temperatura
+esterna
+da -3 a +3 (°)
+Attivo con sonda esterna collegata
+2 5 	PARAMETRI SANITARIO
+2 5 0 Funzione COMFORT 	0 = disattivata
+1 = Temporizzato
+2 = sempre attiva
+0
+L’apparecchio consente di aumentare il comfort
+nell’erogazione di acqua sanitaria tramite la funzione
+“COMFORT”.
+Tale funzione mantiene caldo lo scambiatore
+secondario (o bollitore esterno) durante i periodi
+di inattività della caldaia; ciò al fine di aumentare
+il benessere termico iniziale di prelievo di acqua
+erogando a una temperatura maggiore.
+Quando la funzione è attiva sul display si illumina la
+scritta COMFORT
+Nota: Tale funzione può essere attivata o disattivata
+anche premendo il tasto Comfort
+2 5 1 Ritardo d’accensione
+durante un ciclo
+COMFORT
+da 0 a120 minuti 	0
+menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+	menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+
+-- 25 of 40 --
+
+AREA TECNICA
+/ 26
+2 5 2 Ritardo partenza in
+sanitario
+da 5 a 200
+(da 0,5 a 20 secondi)
+5
+Anti-colpo d’ariete
+2 5 3 Logica spegimento
+bruciatore in sanitario
+0 = Anticalcare
+(stop a > 67°C)
+1 = Set-point +4°C
+0
+2 5 4 Post-circolazione e
+post-ventilazione dopo
+prelievo sanitario
+0 = OFF
+1 = ON
+0
+OFF = 3 minuti di post-circolazione e post-
+ventilazione dopo un prelievo sanitario se le
+temperature rilevate dalla caldaia lo richiedono.
+ON = sempre attivi i 3 minuti di post-circolazione e
+post-ventilazione dopo ogni prelievo sanitario.
+2 5 5 Ritardo partenza in
+riscaldamento dopo
+prelievo sanitario
+da 0 a 30
+(minuti)
+0
+2 6 VERIFICA FUNZIONAMENTO COMPONENTI
+2 6 0 Activation mode manuel 	0 = OFF
+1 = ON
+0
+2 6 1 Controllo circolatore 	0 = OFF
+1 = ON
+0
+2 6 2 Controllo ventilatore 	0 = OFF
+1 = ON
+0
+2 6 3 Controllo valvola dev.
+motorizzata
+0 = OFF
+1 = ON
+0
+2 7 MODALITA’ TEST
+2 7 0 Funzione Test -
+Spazzacamino
+TEST+ 	=
+Potenza Max Riscaldam.
+TEST+ 	=
+Potenza Max Sanitario
+TEST+ 	=
+Potenza Minima
+Attivabile anche premendo per 10 secondi il tasto
+RESET. La funzione si disabilita dopo 10 minuti o
+premendo il Tasto RESET.
+2 7 1 Ciclo Disareazione 	Premere il tasto ESC
+2 7 4 Ciclo asciugatura del
+massetto
+0 = OFF
+1 = Funzionale
+2 = Pronto posa
+3 =Funzionale +
+Pronto posa
+4 = Pronto posa +
+Funzionale
+5 = Manuale
+0
+2 7 5 Temp mand per Asciug
+Massetto
+da 25 a 60 °C 	40
+2 8 RESET MENU 2
+2 8 0 Ripristino, in automatico,
+delle impostazioni di
+fabbrica del menu 2
+Resettare tutti
+OK = Si
+ESC = NO
+Per resettare tutti i parametri alle impostazioni iniziali
+di fabbrica premere il tasto OK.
+4 PARAMETRI ZONA 1
+4 0 IMPOSTAZIONE TEMPERATURE ZONA 1
+4 0 2 Impostazione Temperatura
+Fissa Riscaldamento
+da 35 a 82 (°C)
+(alte temperature)
+70
+da 20 a 45(°C)
+(basse temperature)
+20
+Da impostare per termoregolazione a temperatura
+fissa (vedi 421)
+4 2 IMPOSTAZIONE ZONA 1
+4 2 0 Impostazione Range
+Temperature
+0 = da 20 a 45°C
+(imp. bassa
+temp.)
+1 = da 35 to 82 °C
+(imp. alta temp.)
+1
+4 2 1 Selezione Tipologia
+Termoregolazione in base
+alle periferiche connesse
+Per attivare la
+Termoregolazione
+premere il tasto AUTO.
+0 = Temperatura
+fissa
+di mandata
+1 = Dispositivi
+ON/OFF
+2 = Sensore
+ambiente
+3 = Solo Sonda
+Esterna
+4 = Sensore
+ambiente
++ sonda esterna
+1
+4 2 2 Selezione curva
+Termoregolazione
+da 0.4 a 3.5
+(imp. alta temp.)
+1.3
+da 0.2 a 1.0
+(imp. bassa temp.)
+0.6
+°C
+°C
+temperatura di mandata all’impianto
+bassa tempertaura
+ 
+alta tempertaura
+temperatura esterna
+valore di consegna
+	temperatura ambiente
+23
+23 
+21
+21
+19 
+19
+30
+20
+10
+0
+40
+50
+60
+70
+80
+90
+°C
+5	10	15	20	25
+3.5
+3.0
+2.5
+	2.0
+1.8
+	1.5
+	1.3
+0.8
+1.0
+0.6
+0.4
+0 	-5 -10 -15 -20 -25 °C
+0.8
+	0.6
+	1.0
+0.4
+0.2
+Nel caso di utilizzo della sonda esterna, la caldaia
+calcola la temperatura di mandata più idonea
+tenendo conto della temperatura all’esterno e del
+tipo di impianto.
+Il tipo di curva va scelta in funzione della temperatura
+di progetto dell’impianto e dell’entità delle dispersioni
+presenti nella struttura.
+Per impianti ad alta temperatura è possibile scegliere
+tra una delle curve a lato rappresentate.
+4 2 3 Spostamento parallelo
+della curva di
+termoregolazione
+da - 14 a + 14 (°C)
+(imp. alta temp.)
+0
+da - 7 a + 7 (°C)
+(imp. bassa temp.)
+0
+Per adattare la curva termica alle esigenze
+dell’impianto è possibile spostare parallelamente la
+curva così da modificare la temperatura di mandata
+calcolata e quindi la temperatura ambiente.
+menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+	menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+
+-- 26 of 40 --
+
+AREA TECNICA
+/ 27
+E’ possibile adattare la
+curva prescelta premendo
+i tasti 8
+Accedendo al parametro
+e ruotando l’encoder
+si può spostare
+parallelamente la curva.
+Il valore di spostamento
+è leggibile sul display da
+-14 a +14 per impianti ad
+alta temperatura o da -7
+a 7 per impianti a bassa
+temperatura. Ogni step
+equivale ad un aumento/
+diminuzione 1°C della
+temperatura di mandata
+rispetto al set-piont.
+4 2 4 Impostazione influenza
+del sensore ambiente
+per il calcolo della
+temperatura di set-point
+- Termoregolazione
+attivata-
+da 0 a 20 	20
+Se impostato a 0 la temperatura rilevata dal sensore
+ambiente non influisce sul calcolo del setpoint.
+Se a 20, la temperatura ambiente rilevata ha la
+massima influenza sul calcolo del setpoint. Attivo con
+dispositivi modulanti collegati.
+4 2 5 Impostazione temp.
+massima riscaldamento
+Zona 1
+da 35 a 82 °C
+(Param. 420 = 1)
+82
+da 20 a 45 °C
+(Param. 420 = 0)
+45
+4 2 6 Impostazione temp.
+minima riscaldamento
+Zona 1
+da 35 a 82 °C
+(Param. 420 = 1)
+40
+da 20 a 45 °C
+(Param. 420 = 0)
+25
+4 3 DIAGNOSTICA
+4 3 4 Stato richiesta di calore
+Zona 1
+0 = OFF
+1 = ON
+5 PARAMETRI ZONA 2
+5 0 IMPOSTAZIONE TEMPERATURE ZONA 2
+5 0 2 Impostazione Temperatura
+Fissa Riscaldamento
+da 35 a 82 (°C)
+(alte temperature)
+70
+da 20 a 45(°C)
+(basse temperature)
+20
+Da impostare per termoregolazione a temperatura
+fissa (vedi 521)
+5 2 IMPOSTAZIONE ZONA 2
+5 2 0 Impostazione Range
+Temperature Zona 2
+0 = da 20 a 45°C
+(imp. bassa
+temp.)
+1 = da 35 to 82 °C
+(imp. alta temp.)
+5 2 1 Selezione Tipologia
+Termoregolazione in base
+alle periferiche connesse
+Per attivare la
+Termoregolazione
+premere il tasto AUTO.
+0 = Temperatura
+fissa
+di mandata
+1 = Dispositivi
+ON/OFF
+2 = Sensore
+ambiente
+3 = Solo Sonda
+Esterna
+4 = Sensore
+ambiente
++ sonda esterna
+1
+5 2 2 Selezione curva
+Termoregolazione
+da 0.4 a 3.5
+(imp. alta temp.)
+1.3
+da 0.2 a 1.0
+(imp. bassa temp.)
+0.6
+vedi disegno parametro 422
+Nel caso di utilizzo della sonda esterna, la caldaia
+calcola la temperatura di mandata più idonea
+tenendo conto della temperatura all’esterno e del
+tipo di impianto.
+Il tipo di curva va scelta in funzione della temperatura
+di progetto dell’impianto e dell’entità delle dispersioni
+presenti nella struttura.
+Per impianti ad alta temperatura è possibile scegliere
+tra una delle curve a lato rappresentate.
+5 2 3 Spostamento parallelo
+della curva di
+termoregolazione
+da - 14 a + 14 (°C)
+(imp. alta temp.)
+0
+da - 7 a + 7 (°C)
+(imp. bassa temp.)
+0
+Per adattare la curva termica alle esigenze dell’impianto
+è possibile spostare parallelamente la curva così da
+modificare la temperatura di mandata calcolata e quindi la
+temperatura ambiente.
+E’ possibile adattare la
+curva prescelta premendo
+i tasti 8
+Accedendo al parametro
+e ruotando l’encoder
+si può spostare
+parallelamente la curva.
+Il valore di spostamento
+è leggibile sul display da
+-14 a +14 per impianti ad
+alta temperatura o da -7
+a 7 per impianti a bassa
+temperatura. Ogni step
+equivale ad un aumento/
+diminuzione 1°C della
+temperatura di mandata
+rispetto al set-piont.
+5 2 4 Impostazione influenza
+del sensore ambiente
+per il calcolo della
+temperatura di set-point
+- Termoregolazione
+attivata-
+da 0 a 20 	20
+Se impostato a 0 la temperatura rilevata dal sensore
+ambiente non influisce sul calcolo del setpoint.
+Se a 20, la temperatura ambiente rilevata ha la
+massima influenza sul calcolo del setpoint. Attivo con
+dispositivi modulanti collegati.
+5 2 5 Impostazione temp.
+massima riscaldamento
+Zona 2
+da 35 a 82 °C
+(Param. 520 = 1)
+82
+da 20 a 45 °C
+(Param. 520 = 0)
+45
+5 2 6 Impostazione temperatura
+minima riscaldamento Zona
+2
+da 35 a 82 °C
+(Param. 520 = 1)
+40
+da 20 a 45 °C
+(Param. 520 = 0)
+25
+5 3 DIAGNOSTICA
+5 3 4 Stato richiesta di calore
+Zona 2
+0 = OFF
+1 = ON
+menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+	menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+
+-- 27 of 40 --
+
+AREA TECNICA
+/ 28
+6 PARAMETRI ZONA 3
+6 0 IMPOSTAZIONE TEMPERATURE ZONA 3
+6 0 2 Impostazione Temperatura
+Fissa Riscaldamento
+da 35 a 82 (°C)
+(alte temperature)
+70
+da 20 a 45(°C)
+(basse temperature)
+20
+Da impostare per termoregolazione a temperatura
+fissa (vedi 621)
+6 2 IMPOSTAZIONE ZONA 3
+6 2 0 Impostazione Range
+Temperature Zona 3
+0 = da 20 a 45°C
+(imp. bassa
+temp.)
+1 = da 35 to 82 °C
+(imp. alta temp.)
+1
+6 2 1 Selezione Tipologia
+Termoregolazione in base
+alle periferiche connesse
+Per attivare la
+Termoregolazione
+premere il tasto AUTO.
+0 = Temperatura
+fissa
+di mandata
+1 = Dispositivi
+ON/OFF
+2 = Sensore
+ambiente
+3 = Solo Sonda
+Esterna
+4 = Sensore
+ambiente
++ sonda esterna
+1
+6 2 2 Selezione curva
+Termoregolazione
+da 0.4 a 3.5
+(imp. alta temp.)
+1.3
+da 0.2 a 1.0
+(imp. bassa temp.)
+0.6
+vedi disegno parametro 422
+Nel caso di utilizzo della sonda esterna, la caldaia
+calcola la temperatura di mandata più idonea
+tenendo conto della temperatura all’esterno e del
+tipo di impianto.
+Il tipo di curva va scelta in funzione della temperatura
+di progetto dell’impianto e dell’entità delle dispersioni
+presenti nella struttura.
+Per impianti ad alta temperatura è possibile scegliere
+tra una delle curve a lato rappresentate.
+6 2 3 Spostamento parallelo
+della curva di
+termoregolazione
+da - 14 a + 14 (°C)
+(imp. alta temp.)
+0
+da - 7 a + 7 (°C)
+(imp. bassa temp.)
+0
+Per adattare la curva termica alle esigenze
+dell’impianto è possibile spostare parallelamente la
+curva così da modificare la temperatura di mandata
+calcolata e quindi la temperatura ambiente.
+E’ possibile adattare la
+curva prescelta premendo
+i tasti 8
+Accedendo al parametro
+e ruotando l’encoder
+si può spostare
+parallelamente la curva.
+Il valore di spostamento
+è leggibile sul display da
+-14 a +14 per impianti ad
+alta temperatura o da -7
+a 7 per impianti a bassa
+temperatura. Ogni step
+equivale ad un aumento/
+diminuzione 1°C della
+temperatura di mandata
+rispetto al set-piont.
+6 2 4 Impostazione influenza
+del sensore ambiente
+per il calcolo della
+temperatura di set-point
+- Termoregolazione
+attivata-
+da 0 a 20 	20
+Se impostato a 0 la temperatura rilevata dal sensore
+ambiente non influisce sul calcolo del setpoint.
+Se a 20, la temperatura ambiente rilevata ha la
+massima influenza sul calcolo del setpoint. Attivo con
+dispositivi modulanti collegati.
+6 2 5 Impostazione temp.
+massima riscaldamento
+Zona 3
+da 35 a 82 °C
+(Param. 420 = 1)
+82
+da 20 a 45 °C
+(Param. 420 = 0)
+45
+6 2 6 Impostazione temp. minima
+riscaldamento Zona 3
+da 35 a 82 °C
+(Param. 420 = 1)
+40
+da 20 a 45 °C
+(Param. 420 = 0)
+25
+6 3 DIAGNOSTICA
+6 3 4 Stato richiesta di calore
+Zona 3
+0 = OFF
+1 = ON
+8 PARAMETRI PER ASSISTENZA TECNICA
+8 0 BOILER STATISTICS - 1
+8 0 0 Nr cicli valvola deviatrice (n x 10)
+8 0 1 	Tempo funz. del circolatore (h x10)
+8 0 2 Nr cicli circolatore (n x10)
+8 0 3 Tempo vita caldaia(h x10)
+8 0 4 Tempo funz. del ventilatore (h x10)
+8 0 5 Nr. Cicli ventilatore (n x10)
+8 0 6 Nr rilevazioni fiamma in risc. (n x10)
+8 0 7 Nr rilevazioni fiamma in san. (n x10)
+8 1 	STATISTICHE 2
+8 1 	0 Ore Bruciatore ON Risc (h x10)
+8 1 	1 Ore Bruciatore ON San (h x10)
+8 1 	2 Nr Distacchi Fiamma (n x10)
+8 1 	3 Nr Cicli Accensione (n x10)
+8 1 	4 Durata Media Richieste Calore
+8 2 STATISTICHE 2
+8 2 1 Stato Ventilatore 	0 = OFF
+1 = ON
+8 2 2 Velocità Ventilatore
+8 2 4 Posizione valvola
+deviatrice 0 = Sanitario
+1 = Riscaldamento
+8 2 5 Portata sanitario (l/min)
+8 2 7 % Modulazione Pompa
+8 2 8 Potenza istantanea (kW)
+8 3 TEMPERATURE CALDAIA
+8 3 0 Temperatura impostata riscaldamento (°C)
+8 3 1 Temperatura mandata riscaldamento (°C)
+8 3 2 Temperatura ritorno riscaldamento (°C)
+8 3 3 Temperatura acqua calda uso sanitario (°C)
+8 3 5 Temperatura esterna (°C)
+Solo con sonda esterna collegata
+menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+	menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+
+-- 28 of 40 --
+
+AREA TECNICA
+/ 29
+8 4 SOLARE E BOLLITORE
+8 4 2 Temperatura ingresso sanitario solare (°C)
+Attivi solo con Kit solare collegato
+8 5 SERVICE - ASSISTENZA TECNICA
+8 5 0 Impostazione tempo
+mancante alla prossima
+manutenzione
+da 0 a 60 (mesi) 	24
+Impostati il parametri la caldaia provvederà a
+segnalare all’utente la scadenza della prossima
+manutenzione
+8 5 1 Abilitazione avviso di
+manutenzione
+0 = OFF
+1 =ON
+0
+8 5 2 Cancellazione dell’avviso
+di manutenzione
+Reset?
+OK= Cancellare
+ESC = No
+Effettuata la manutenzione il parametro permette la
+cancellazione dell’avviso.
+8 5 4 Versione Hardware scheda elettronica
+8 5 5 Versione Hardware scheda elettronica
+8 5 7 Tot. gg restanti asciugatura massetto
+8 6 ELENCO ERRORI
+8 6 0 Ultimi 10 errori 	da Err 0 a Err 9
+Il parametro consente di visualizzare gli ultimi 10
+errori segnalati dalla caldaia indicando giorno, mese
+e anno.
+Accedendo al parametro vengono visualizzati in
+sequenza gli errori verificatesi dal numero Err 0 al
+numero Err 9.
+Per ogni singolo errore viene visualizzato in
+sequenza:
+Err 0 - numero errore
+108 - codice dell’errore
+8 6 1 Reset lista errori 	Reset?
+Ok = Si
+Esc = NO
+8 7 INFO CALDAIA
+8 7 4 Consenso flussostato
+sanitario (Nr) 0 = Aperto
+1 = Chiuso
+8 7 5 Ionization current (uA)
+8 7 6 indicazione presenza fiamma 0 = Assente
+1 = Rilevata fiamma
+menu
+	sotto-menu
+	parametro
+descrizione 	range
+impostazioni di
+	fabbrica
+	note
+
+-- 29 of 40 --
+
+AREA TECNICA
+/ 30
+Funzione asciugatura massetto
+La Funzione asciugatura del massetto consente all’installatore,
+tramite un ciclo di riscaldamento dedicato, di utilizzare la caldaia per
+l’asciugatura del pavimento.
+Con il parametro 2.7.4 - Area tecnica - Menu Completo - è possibile
+decidere la modalità della funzione (Funzionale, Pronto posa).
+Parametro 274 : Ciclo asciugatura massetto
+Valore 	Descrizione della modalità di funzionamento
+0 	OFF (impostazione di fabbrica)
+1
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Giorni
+Giorni
+Giorni
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Riscaldamento funzionale
+Durata: 7 giorni
+Descrizione del ciclo: per i primi tre giorni porta
+l’impianto alla temperatura di 25°C, per gli altri
+quattro alla temperatura impostata al parametro
+2.7.5 (impostazione di fabbrica 55°C).
+2
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Giorni
+Giorni
+Giorni
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Pronto posa
+Durata: 18 giorni
+Descrizione del ciclo: nei primi sei giorni porta
+l’impianto dalla temperatura di 25°C alla
+temperatura impostata al parametro 2.7.5 e la
+mantiene per i successivi sei; negli ultimi sei giorni
+porta l’impianto dalla temperatura max impostata
+alla temperatura di 25°C.
+3
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+Giorni
+Riscaldamento funzionale
+7 giorni
+Riscaldamento pronto posa
+18 giorni
+2 giorni
+OFF
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+15 16 17 18 19 20 21 22 23 24 25 26 27 28
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+Giorni
+Riscaldamento
+funzionale
+7 giorni
+Riscaldamento pronto posa
+18 giorni 	1 giorno
+OFF
+	Temperatura di mandata
+	riscaldamento - para. 275 - °C
+15 16 17 18 19 20 21 22 23 24 25 26 27 28
+Risc. funzionale/pronto posa
+Durata: 27 giorni
+Descrizione del ciclo: nei primi sette giorni esegue il
+ciclo “Riscaldamento funzionale”, due giorni di stop,
+nei successivi diciotto quello “Riscaldamento pronto
+posa”.
+4
+0
+10
+20
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+Giorni
+Riscaldamento funzionale
+7 giorni
+Riscaldamento pronto posa
+18 giorni
+2 giorni
+OFF
+Tempe
+riscalda
+15 16 17 18 19 20 21 22 23 24 25 26 27 28
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+Giorni
+Riscaldamento
+funzionale
+7 giorni
+Riscaldamento pronto posa
+18 giorni 	1 giorno
+OFF
+	Temperatura di mandata
+	riscaldamento - para. 275 - °C
+15 16 17 18 19 20 21 22 23 24 25 26 27 28
+Pronto posa/Risc. funzionale
+Durata: 26 giorni
+Descrizione del ciclo: nei primi diciotto giorni eseg-
+ue il ciclo “Riscaldamento pronto posa”, un giorno
+di stop, nei successivi sette quello “Riscaldamento
+funzionale”.
+5
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+0
+10
+20
+30
+40
+50
+60
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Giorni
+Giorni
+Giorni
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Temperatura di mandata
+	riscaldamento - para. 275 - °C
+Manuale
+Durata: Non definita
+Per interrompere la funzione portare il parametro
+a 0 (OFF). Descrizione del ciclo: durante i 25 giorni
+l’incremento di temperatura va eseguito manual-
+mente agendo al parametro 2.7.5.
+Con il parametro 2.7.5 - Funzione Asciugatura massetto
+impostazione temperatura di mandata viene impostata la temperatura
+di mandata da 25 a 60°C.
+Attenzione: prima di attivare il ciclo verificare che la
+temperatura massima di mandata impianto sia stata
+correttamente limitata.
+La funzione viene attivata su tutte le zone (le eventuali valvole di zona
+presenti nella zona da asciugare devono essere aperte).
+Per controllare i gioni che mancano al completamento della funzione
+accedere al parametro 857 - Area tecnica.
+La funzione ha priorità su eventuali richieste dal circuito riscaldamento
+o dal circuito sanitario sanitario.
+La funzione si arresta in caso di:
+- Mancanza di alimentazione elettrica
+- Raggiungimento temperatura di
+termostatazione
+- Attivazione Spazzamino
+- Attivazione disareazione impianto
+- Segnalazione errori
+AL RIPRISTINO LA FUNZIONE RIPRENDERA’ DA DOVE SI ERA
+INTERROTTA.
+
+-- 30 of 40 --
+
+MANUTENZIONE
+/ 31
+Istruzioni per l’apertura della mantellatura ed ispezione
+dell’interno
+Prima di qualunque intervento nella caldaia togliere
+l’alimentazione elettrica tramite l’interruttore bipolare esterno e
+chiudere il rubinetto del gas.
+Per accedere all’interno della caldaia è necessario:
+1. svitare le due viti sul mantello frontale (a), tirarlo in avanti e
+sganciarlo dai perni superiori (b)
+2. ruotare il pannello comandi tirandolo in avanti (c).
+(a)
+(b)
+(c)
+
+-- 31 of 40 --
+
+MANUTENZIONE
+/ 32
+La manutenzione è essenziale per la sicurezza, il
+buon funzionamento e la durata della caldaia.
+Va effettuata in base a quanto previsto dalle norme
+vigenti.
+E’ consigliabile eseguire periodicamente l’analisi
+della combustione per controllare il rendimento e le
+emissioni inquinanti della caldaia, secondo le norme
+vigenti.
+Prima di iniziare le operazioni di manutenzione:
+- 	togliere l’alimentazione elettrica posizionando
+l’interruttore bipolare esterno alla caldaia in
+posizione OFF;
+- 	chiudere il rubinetto del gas e dell’acqua degli
+impianti termici e sanitari.
+Al termine vanno ripristinate le regolazioni iniziali.
+Note Generali
+Si raccomanda di effettuare sull’apparecchio,
+almeno una volta l’anno, i seguenti controlli:
+1. Controllo delle tenute della parte acqua con eventuale
+sostituzione delle guarnizioni e ripristino della tenuta.
+2. Controllo delle tenute della parte gas con eventuale
+sostituzione delle guarnizioni e ripristino della tenuta.
+3. Controllo visivo dello stato complessivo dell’apparecchio.
+4. Controllo visivo della combustione ed eventuale smontaggio
+e pulizia del bruciatore
+5. A seguito del controllo al punto “3”, eventuale smontaggio e
+pulizia della camera di combustione.
+6. A seguito del controllo al punto “4”, eventuale smontaggio e
+pulizia del bruciatore e dell’iniettore.
+7. Pulizia dello scambiatore di calore primario.
+8. Verifica del funzionamento dei sistemi di sicurezza
+riscaldamento:
+- sicurezza temperatura limite.
+9. Verifica del funzionamento dei sistemi di sicurezza parte gas:
+- sicurezza mancanza gas o fiamma (ionizzazione).
+10.Controllo dell’efficienza della produzione di acqua sanitaria
+(verifica della portata e della temperatura).
+11.Controllo generale del funzionamento dell’apparecchio.
+12.Rimozione dell’ossido dall’elettrodo di rilevazione tramite tela
+smeriglio.
+Pulizia dello scambiatore primario
+PULIZIA LATO FUMI
+Si accede all’interno dello scambiatore primario smontando
+il bruciatore. Il lavaggio può essere effettuato con acqua
+e detergente, aiutandosi con un pennello non metallico,
+risciacquare con acqua.
+Pulizia sifone
+Si accede al sifone svitando in senso arario il tappo del sifone,
+situato nella parte inferiore. Il lavaggio può essere effettuato
+con acqua e detergente. Rimontare il tappo nel suo alloggio.
+NB. in caso di prolungato inutilizzo
+dell’apparecchio il sifone va riempito prima di
+una nuova accensione -vedi pagina 16
+Il mancato reintegro dell’acqua nel sifone è
+pericoloso in quanto c’è possibilità di uscita di
+fumi nell’ambiente.
+Prova di funzionamento
+Dopo aver effettuato le operazioni di manutenzione, riempire il
+circuito di riscaldamento alla pressione di circa 1,0 bar e sfiatare
+l’impianto.
+Riempire anche l’impianto sanitario.
+- Mettere in funzione l’apparecchio.
+- Se è necessario sfiatare nuovamente l’impianto di
+riscaldamento.
+- Verificare le impostazioni e il buon funzionamento di tutti gli
+organi di comando, regolazione e controllo.
+- Verificare la tenuta e il buon funzionamento dell’impianto di
+evecuazione fumi/prelievo aria comburente.
+Operazioni di svuotamento
+Lo svuotamento dell’impianto di riscaldamento deve essere
+eseguito nel seguente modo:
+- spegnere la caldaia e portare l’interruttore bipolare esterno in
+posizione OFF e chiudere il rubinetto del gas;
+- allentare la valvola automatica di sfogo aria;
+- aprire il rubinetto di scarico dell’impianto raccogliendo in un
+contenitore l’acqua che fuoriesce;
+- svuotare dai punti più bassi dell’impianto (dove previsti).
+Se si prevede di tenere l’impianto fermo nelle zone dove la
+temperatura ambiente può scendere nel periodo invernale al di
+sotto di 0°C, si consiglia di aggiungere liquido antigelo all’acqua
+dell’impianto di riscaldamento per evitare ripetuti svuotamenti;
+in caso di impiego di tale liquido, verificarne attentamente la
+compatibilità con l’acciaio inox costituente il corpo caldaia.
+Si suggerisce l’impiego di prodotti antigelo contenenti GLICOLE
+di tipo PROPILENICO inibito alla corrosione (come ad esempio
+il CILLICHEMIE CILLIT CC 45, il quale è atossico e svolge
+una funzione contemporanea di antigelo, antincrostante ed
+anticorrosione) nelle dosi prescritte dal produttore, in funzione
+della temperatura minima prevista.
+Controllare periodicamente il pH della miscela acqua-antigelo
+del circuito caldaia e sostituirla quando il valore misurato è
+inferiore al limite prescritto dal produttore dell’antigelo.
+NON MESCOLARE TIPI DIFFERENTI DI ANTIGELO.
+Il costruttore non risponde dei danni causati all’apparecchio o
+all’impianto dovuti all’utilizzo di sostanze antigelo o additivi non
+appropriati.
+Svuotamento impianto sanitario
+Ogni qualvolta esista pericolo di gelo, deve essere svuotato
+l’impianto sanitario nel seguente modo:
+- chiudere il rubinetto della rete idrica;
+- aprire tutti i rubinetti dell’acqua calda e fredda;
+- svuotare dai punti più bassi (dove previsti).
+ATTENZIONE
+Svuotare i componenti che potrebbero contenere acqua calda,
+attivando eventuali sfiati, prima della loro manipolazione.
+Effettuare la disincrostazione da calcare di componenti
+attenendosi a quanto specificato nella scheda di sicurezza del
+prodotto usato, aerando l’ambiente, indossando indumenti
+protettivi, evitando miscelazioni di prodotti diversi, proteggendo
+l’apparecchio e gli oggetti circostanti.
+Richiudere ermeticamente le aperture utilizzate per effettuare
+letture di pressione gas o regolazioni gas.
+Accertarsi che gli ugelli siano compatibili con il gas di
+alimentazione.
+Nel caso si avverta odore di bruciato o si veda del fumo
+fuoriuscire dall’apparecchio o si avverta forte odore di gas,
+togliere l’alimentazione elettrica, chiudere il rubinetto del gas,
+aprire le finestre ed avvisare il tecnico.
+
+-- 32 of 40 --
+
+MANUTENZIONE
+/ 33
+MIN
+Q MAX
+P60/80°C
+1
+2
+5
+4	3
+6
+7
+19
+8
+9
+10 	11
+12
+	14
+15
+16 	17 	18
+13
+20
+21
+22
+Legenda:
+1. 	Marchio
+2. 	Produttore
+3. 	Modello - Nr. di serie
+4. 	Codice commerciale
+5. 	Nr. di omologa
+6. Paesi di destinazione - categoria gas
+7. 	Predisposizione Gas
+8. Tipologia di installazione
+9. Dati elettrici
+10. Pressione massima sanitario
+11. Pressione massima riscaldamento
+12. Tipo caldaia
+13. Classe NOx / Efficienza
+14. Portata termica max - min
+15. Potenza termica max - min
+16. Portata specifica
+17. Taratura potenza caldaia
+18. Portata nominale in sanitario
+19. Gas utilizzabili
+20. Temperatura ambiente minima di
+funzionamento
+21. Temperatura massima riscaldamento
+22. Temperatura massima sanitario
+Smaltimento e riciclaggio caldaia.
+I nostri prodotti sono progettati e realizzati per la maggior
+parte dei componenti con materiali riciclabili.
+La caldaia i suoi eventuali accessori devono essere
+smaltiti adeguatamente differenziando, ove possibile i
+vari materiali.
+Lo smaltimento dell’imballlo utilizzato per il per il trasporto
+della caldaia deve essere effettuato dall’installatore/
+rivendore.
+ATTENZIONE!!
+Per il riciclaggio e lo smaltimento della caldaia e degli
+eventuali accessori rispettare quanto stabilito dalla
+normativa vigente.
+Informazioni per l’Utente
+Informare l’utente sulla modalità di funzionamento dell’impianto.
+In particolare consegnare all’utente i manuali di istruzione,
+informandolo che essi devono essere conservati a corredo
+dell’apparecchio.
+Inoltre far presente all’utente quanto segue:
+- 	Controllare periodicamente la pressione dell’acqua
+dell’impianto e istruirlo su come reintegrare e disareare.
+- 	Come impostare la temperatura ed i dispositivi di
+regolazione per una corretta e più economica gestione
+dell’impianto.
+- 	Far eseguire, come da normativa, la manutenzione periodica
+dell’impianto.
+- 	Non modificare, in nessun caso, le impostazioni relative
+all’alimentazione di aria di combustione e del gas di
+combustione.
+Targhetta caratteristiche
+PRODOTTO CONFORME ALLA DIRETTIVA
+EU 2012/19/EU- D.Lgs.49/2014
+ai sensi dell’art. 26 del Decreto
+Legislativo 14 marzo 2014, n. 49
+“Attuazione della direttiva 2012/19/UE
+sui rifiuti di apparecchiature
+elettriche ed elettroniche (RAEE)”
+Il simbolo del cassonetto barrato riportato sull’apparecchiatura
+o sulla sua confezione indica che il prodotto alla fine della
+propria vita utile deve essere raccolto separatamente dagli altri
+rifiuti.
+L’utente dovrà, pertanto, conferire l’apparecchiatura giunta a
+fine vita agli idonei centri comunali di raccolta differenziata dei
+rifiuti elettrotecnici ed elettronici.
+In alternativa alla gestione autonoma è possibile consegnare
+l’apparecchiatura che si desidera smaltire al rivenditore, al
+momento dell’acquisto di una nuova apparecchiatura di tipo
+equivalente. Presso i rivenditori di prodotti elettronici con
+superficie di vendita di almeno 400 m2 è inoltre possibile
+consegnare gratuitamente, senza obbligo di acquisto, i prodotti
+elettronici da smaltire con dimensioni inferiori a 25 cm.
+L’adeguata raccolta differenziata per l’avvio successivo
+dell’apparecchiatura dismessa al riciclaggio, al trattamento e
+allo smaltimento ambientalmente compatibile contribuisce ad
+evitare possibili effetti negativi sull’ambiente e sulla salute e
+favorisce il reimpiego e/o riciclo dei materiali di cui è composta
+l’apparecchiatura.
+
+-- 33 of 40 --
+
+DATI TECNICI
+/ 34
+NOTE GEN.
+ 
+Modello: 	CLAS ONE L WIFI 30
+Certificazione CE (pin) 	0085CR0393
+Tipo caldaia
+C13(X)-C23-C33(X)-C43(X)-
+C53(X)-C63(X)C83(X)-
+C93(X)-B23-B23P-B33
+PRESTAZIONI ENERGETICHE
+Portata termica nominale in riscaldamento G20 max/min (Hi) Qn 	kW 	28.0 / 3.8
+Portata termica nominale in riscaldamento G20 max/min (Hs) Qn 	kW 	31.1 / 4.2
+Portata termica nominale in sanitario G20 max/min (Hi) Qn 	kW 	30.0 / 3.8
+Portata termica nominale in sanitario G20 max/min (Hs) Qn 	kW 	33.3 / 4.2
+Potenza termica riscaldamento G20 max/min (80°C-60°C) Pn 	kW 	27.4 / 3.5
+Potenza termica G20 max/min (50°C-30°C) Pn 	kW 	30.0 / 4.0
+Potenza termica G20 max/min sanitario Pn 	kW 	28.7 / 3.6
+Portata termica nominale in riscaldamento G31 max/min (Hi) Qn 	kW 	28.0 / 4.3
+Portata termica nominale in riscaldamento G31 max/min (Hs) Qn 	kW 	30.4 / 4.7
+Portata termica nominale in sanitario G31 max/min (Hi) Qn 	kW 	30.0 / 4.3
+Portata termica nominale in sanitario G31 max/min (Hs) Qn 	kW 	32.6 / 4.7
+Potenza termica riscaldamento G31 max/min (80°C-60°C) Pn 	kW 	27.4 / 3.9
+Potenza termica G31 max/min (50°C-30°C) Pn 	kW 	30.0 / 4.5
+Potenza termica G31 max/min sanitario Pn 	kW 	28.7 / 4.1
+Rendimento di combustione (ai fumi) 	% 	98.0
+Rendimento alla portata termica nominale (60/80°C) Hi/Hs 	% 	97.9 / 88.2
+Rendimento alla portata termica nominale (30/50°C) Hi/Hs 	% 	107.3 / 96.6
+Rendimento al 30 % a 30°C (condensation) Hi/Hs 	% 	109.6 / 98.7
+Rendimento al minimo (60/80°C) Hi/Hs 	% 	91.1 / 82.0
+Stelle di rendimento (dir. 92/42/EEC)
+Perdite al camino bruciatore funzionante 	% 	2.0
+EMISSIONI
+Prevalenza residua di evacuazione 	Pa 	100
+Classe Nox 	classe 	6
+Temperatura fumi (G20) (80°C-60°C) 	°C 	62
+Contenuto di CO2 (G20) (80°C-60°C) max/min 	% 	9.2 / 8.9
+Contenuto di CO2 (G31) (80°C-60°C) max/min 	% 	10.0 / 10.0
+Contenuto di CO (0%O2) (80°C-60°C) 	ppm 	124.0
+Contenuto di O2 (G20) (80°C-60°C) 	% 	4.2
+Portata massica fumi (G20) (80°C-60°C) max/min 	Kg/h 	48.6 / 6.3
+Portata massica fumi (G31) (80°C-60°C) max/min 	Kg/h 	50.6 / 7.3
+Eccesso d’aria (80°C-60°C) 	% 	25
+CIRCUITO
+RISCALDAMENTO
+ 	Pressione di precarica vaso di espansione 	bar 	1
+Pressione massima di riscaldamento 	bar 	3
+Capacità vaso di espansione 	l 	10
+Temperatura di riscaldamento min/max (range alte temperature) 	°C 	35 / 82
+Temperatura di riscaldamento min/max (range basse temperature) 	°C 	20 / 45
+CIRCUITO SANITARIO
+Temperatura sanitario min/max 	°C 	36 / 60
+Portata specifica in sanitario (10 min. con ∆T=30°C) 	l/min 	14.5
+Quantità istantanea di acqua calda ∆T=25°C 	l/min 	17.4
+Quantità istantanea di acqua calda ∆T=35°C 	l/min 	12.5
+Stelle comfort sanitario (EN13203)
+Prelievo minimo di acqua calda 	l/min 	2
+Pressione acqua sanitaria max/min 	bar 	7 / 0,2
+
+-- 34 of 40 --
+
+DATI TECNICI
+/ 35
+Modello: 	CLAS ONE L WIFI 30
+Apparecchio a condensazione 	si/no 	si
+Apparecchio misto 	si/no 	si
+Caldaia di tipo B1 	si/no 	no
+Apparecchio di cogenerazione per il riscaldamento d’ambiente: 	si/no 	no
+Apparecchio a bassa temperatura 	si/no 	no
+Recapiti
+( Nome e indirizzo del fabbricante o del suo mandatario)
+ARISTON S.p.A.
+Viale A. Merloni 45 60044 FABRIANO
+AN - ITALIA
+ErP RISCALDAMENTO
+Potenza termica nominale 	Pn 	kW 	27
+Potenza termica nominale alte tempera 	P4 	kW 	27,4
+30% della Potenza termica nominale
+basse temperature (Temperatura di ritorno 30°C) P1 	kW 	8,2
+Efficienza energetica stagionale del riscaldamento d’ambiente 	ηs 	% 	94,0
+Efficienza utile alla potenza termica nominale
+ad alte temperature (60-80°C) η4 	% 	88,2
+Efficienza utile al 30% della potenza termica nominale
+a basse temperature (Temp. ritorno 30°C) η1 	% 	98,7
+ErP ACS
+Profilo di carico dichiarato 	XL
+Efficienza energetica di riscaldamento dell’acqua 	ηwh 	% 	82
+Consumo quotidiano di energia elettrica 	Qelec 	kWh 	0,190
+Consumo quotidiano di combustibile 	Qfuel 	kWh 	23,870
+CONSUMO AUSILIARIO DI ELETTRICITÀ
+A pieno carico 	elmax 	kW 	0,039
+A carico parziale 	elmin 	kW 	0,015
+In modalità Stand/by 	PSB 	kW 	0,004
+ALTRE INFORMAZIONI
+Dispersione termica in Stand/by 	Pstby 	kW 	0,043
+Consumo energetico del bruciatore di accensione 	Pign 	kW 	0,000
+Livello della potenza sonora all’interno 	LWA 	dB 	51
+Emissione di ossidi di azoto 	NOx mg/
+kWh 46
+Dati ErP - EU 813/2013
+Modello: 	CLAS ONE L WIFI 30
+Certificazione CE (pin) 	0085CR0393
+DATI ELETTR.
+ 
+Tensione/frequanza di alimentazione 	V/Hz 	230 / 50
+Potenza elettrica assorbita totale 	W 	89
+Indice di efficienza energetica del circolatore 	EEI ≤ 0,23
+Temperatura ambiente minima di utilizzo (*) 	°C 	> 0
+Gradi di protezione impianto elettrico 	IP 	XD
+Peso 	kg
+(*) IMPORTANTE!!
+SE L’INSTALLAZIONE VIENE EFFETTUATA IN ZONE DOVE LA TEMPERATURA PUO’
+SCENDERE DA 0 A -5°C E’ NECESSARIA L’INSTALLAZIONE DEL KIT ANTIGELO 3318949.
+
+-- 35 of 40 --
+
+DATI TECNICI
+/ 36
+SCHEDA PRODOTTO - EU 811/2013
+Marchio 	ARISTON
+Modello: 	CLAS ONE L WIFI 30
+Profilo di carico dichiarato ACS 	XL
+Classe di Efficienza energetica stagionale di riscaldamento di ambiente A
+Classe di Efficienza energetica di riscaldamento dell’acqua A
+Potenza termica nominale 	Pn 	kW 	27
+Consumo annuo di energia in riscaldamento 	QHE 	GJ 	50
+Consumo annuo di energia elettrica 	AEC 	kWh 	42
+Consumo annuo di combustibile 	AFC 	GJ 	19
+Efficienza energetica stagionale di riscaldamento di ambiente 	ηs 	% 	94
+Efficienza energetica di riscaldamento dell’acqua 	ηWH 	% 	82
+Livello di potenza sonora all’interno 	L WA 	dB 	51
+
+-- 36 of 40 --
+
+DATI TECNICI
+/ 37
+Istruzioni per la compilazione dell’etichetta degli insiemi
+di apparecchi di riscaldamento d’ambiente (o misti),
+dispositivi di controllo della temperatura e dispositivi
+solari.
+I 	II
+A+
+A++
+A
+A
+A +++
+A ++
+A +
+A
+B
+C
+D
+E
+F
+G
+A +++
+A ++
+A +
+A
+B
+C
+D
+E
+F
+G
++
++
++
++ XL
+2015 	811/2013
+XL
+1. il nome o marchio del rivenditore e/o del fornitore;
+2. l’identificativo del modello del rivenditore e/o del fornitore;
+3. la classe di efficienza energetica stagionale del riscaldamento
+d’ambiente dell’apparecchio per il riscaldamento d’ambiente,
+già compilata;
+4. la classe di efficienza energetica stagionale del riscaldamento
+dell’acqua dell’apparecchio di riscaldamento misto già
+compilata;
+5. Indicazione 	se un collettore solare, un serbatoio per l’acqua
+calda, un dispositivo di controllo della temperatura e/o un
+apparecchio per il riscaldamento d’ambiente supplementare
+sono compresi nell’installazione.
+6. la classe di efficienza energetica stagionale di riscaldamento
+d’ambiente dell’insieme comprendente l’apparecchio per
+il riscaldamento d’ambiente, il dispositivo di controllo della
+temperatura e il dispositivo solare, determinata come indicato
+nella figura 1 nelle pagine seguenti.
+La punta della freccia che indica la classe di efficienza energetica
+stagionale di riscaldamento d’ambiente dell’insieme di
+apparecchi per il riscaldamento d’ambiente, dispositivi di
+controllo della temperatura e dispositivi solari si trova all’altezza
+della punta della freccia che indica la relativa classe di efficienza
+energetica.
+7. la classe di efficienza energetica stagionale di riscaldamento
+dell’acqua dell’insieme di apparecchi di riscaldamento misti, il
+dispositivo di controllo della temperatura e il dispositivo solare,
+determinata come indicato nella figura 5 nelle pagine seguenti.
+La punta della freccia che indica la classe di efficienza energetica
+di riscaldamento dell’acqua dell’insieme di apparecchi di
+riscaldamento misti, dispositivi di controllo della temperatura e
+dispositivi solari si trova all’altezza della punta della freccia che
+indica la relativa classe di efficienza energetica.
+1 	2
+3
+4
+5
+6
+7
+SCHEDA DI INSIEMI DI APPARECCHI DI RISCALDAMENTO
+D’AMBIENTE O MISTI, DISPOSITIVI DI CONTROLLO DELLA
+TEMPERATURA E DISPOSITIVI SOLARI.
+La scheda degli insiemi di apparecchi di riscaldamento misti,
+dispositivi di controllo della temperatura e dispositivi solari riporta
+gli elementi di cui alle lettere a) e b):
+a) gli elementi di cui, rispettivamente, alle figure 1 e 3, per valutare
+l’efficienza energetica stagionale di riscaldamento d’ambiente
+di un insieme comprendente un apparecchio di riscaldamento
+misto, un dispositivo di controllo della temperatura e un
+dispositivo solare, comprese le seguenti informazioni:
+- I: 	il valore dell’efficienza energetica stagionale di
+riscaldamento d’ambiente dell’apparecchio di
+riscaldamento misto preferenziale, espresso in %;
+- II: il fattore di ponderazione della potenza termica degli
+apparecchi di riscaldamento preferenziali o supplementari
+di un insieme quale indicato (vedi REGOLAMENTO
+DELEGATO (UE) N. 811/2013 - allegato IV - 6.a);
+- III: il valore dell’espressione matematica: 294/(11 · Pnominale),
+dove Pnominale si riferisce all’apparecchio di riscaldamento
+misto preferenziale;
+- IV: il valore dell’espressione matematica 115/(11 · Pnominale),
+dove Pnominale si riferisce all’apparecchio di riscaldamento
+misto preferenziale;
+inoltre, per gli apparecchi di riscaldamento misti preferenziali a
+pompa di calore:
+- V: il valore della differenza tra l’efficienza energetica stagionale
+del riscaldamento d’ambiente in condizioni climatiche
+medie e più fredde, espresso in %;
+- VI: il valore della differenza tra l’efficienza energetica stagionale
+del riscaldamento d’ambiente in condizioni climatiche più
+calde e medie, espresso in %;
+b) gli elementi di cui alla figura 5 per valutare l’efficienza energetica
+di riscaldamento dell’acqua di un insieme comprendente un
+apparecchio di riscaldamento misto, un dispositivo di controllo
+della temperatura e un dispositivo solare, comprese le seguenti
+informazioni:
+- I: il valore dell’efficienza energetica di riscaldamento dell’acqua
+dell’apparecchio di riscaldamento misto, espresso in %;
+- II: il valore dell’espressione matematica (220 · Qref
+)/Q nonsol
+,
+dove Q ref è estratto dall’allegato VII - tabella 15 del
+REGOLAMENTO DELEGATO (UE) N. 811/2013, e Q nonsol
+dalla scheda di prodotto del dispositivo solare per il profilo
+di carico dichiarato M, L, XL o XXL dell’apparecchio di
+riscaldamento misto;
+- III:il valore dell’espressione matematica (Qaux · 2,5)/(220 · Q ref
+),
+espresso in %, dove Qaux è estratto dalla scheda di prodotto
+del dispositivo solare e Qref dall’allegato VII - tabella 15 del
+REGOLAMENTO DELEGATO (UE) N. 811/2013 per il profilo di
+carico dichiarato M, L, XL o XXL.
+
+-- 37 of 40 --
+
+DATI TECNICI
+/ 38
+✂
+✂
+Figura 1
+Efficienza energetica stagionale di riscaldamento d’ambiente della caldaia
+Controllo della temperatura
+Dalla scheda di controllo della temperatura
+Caldaia supplementare
+Dalla scheda della caldaia
+( 	- ‘I’ ) x 0,1 =
+Efficienza energetica stagionale di riscaldamento
+d’ambiente (in %)
+Classe
+I = 1%, II = 2%, III = 1,5%, IV = 2%,
+V = 3%, VI = 4 %, VII = 3,5%, VIII = 5%
+‘I’ %
+1
+%
+2
++
+%
+3
+Efficienza energetica stagionale di
+riscaldamento d’ambiente (in %)
+Contributo solare - Dalla scheda del dispositivo solare
+Contributo solare E pompa di calore supplementare
+Efficienza energetica stagionale di riscaldamento d’ambiente dell’insieme
+Classe di efficienza energetica stagionale di riscaldamento d’ambiente dell’insieme
+Caldaia e pompa di calore supplementare installata con emettitori di calore a bassa temperatura a 35 °C?
+Dalla scheda della pompa di calore
+Pompa di calore supplementare
+Dalla scheda della pompa di calore
+Selezionare il valore più basso
+( ‘III’ x 	+ ‘IV’ x 	) x 0,9 x 	( 	/100 ) 	x 	=
+( 	- ‘I’ ) x ‘II’ 	=
+Dimensioni del
+collettore ( in m2 )
+Volume del
+serbatoio ( in m3 )
+Efficienza del
+collettore ( in %)
+Classificazione del serbatoio
+A* = 0,95, A = 0,91,
+B = 0,86, C = 0,83, D-G = 0,81
+%
+4
+4
++
+%
+5
+5
++
+%
+6
+%
+%
+7
+0,5 x 	O 	0,5 x 	=
+7
++ (50 x ‘II’) =
+G 	F 	E 	D 	C 	B 	A 	A
++ A
+++ A
++++
+< 30% 	≥ 30 % ≥ 34 % 	≥ 36 % ≥ 75 % 	≥ 82 % ≥ 90 % ≥ 98 % ≥ 125 % ≥ 150%
+L’efficienza energetica dell’insieme di prodotti indicata nella
+presente scheda può non corrispondere all’efficienza energetica
+effettiva a installazione avvenuta poiché tale efficienza è
+influenzata da ulteriori fattori, quali la dispersione di calore nel
+sistema di distribuzione e la dimensione dei prodotti rispetto alle
+dimensioni e alle caratteristiche dell’edificio.
+
+-- 38 of 40 --
+
+DATI TECNICI
+/ 39
+✂
+✂
+Figura 5
+Efficienza energetica di riscaldamento dell’acqua della caldaia mista
+Efficienza energetica di riscaldamento dell’acqua dell’insieme in
+condizioni climatiche medie
+Classe di efficienza energetica di riscaldamento dell’acqua dell’insieme in
+condizioni climatiche medie
+(1,1 x ‘I’ - 10%) x ‘II’ - 	- ‘I’ =
+Elettricità ausiliaria
+Contributo solare - Dalla scheda del dispositivo solare
+Profilo di carico dichiarato:
+‘I’ 	%
+1
++
+%
+3
+%
+2
+‘III’
+< 27 % 	≥ 27 %
+< 27 % 	≥ 27 %
+≥ 30 %
+≥ 30 % 	≥ 34 % 	≥ 37 % 	≥ 50 % 	≥ 75 % 	≥ 115 % ≥ 150 % ≥ 188 %
+< 27 % 	≥ 27 % 	≥ 30 % 	≥ 35 % 	≥ 38 % 	≥ 55 % 	≥ 80 % 	≥ 125 % ≥ 160 % ≥ 200 %
+< 28 % 	≥ 28 % 	≥ 32 % 	≥ 36 % 	≥ 40 % 	≥ 60 % 	≥ 85 % 	≥ 131 % ≥ 170 % ≥ 213 %
+≥ 33 % 	≥ 36 % 	≥ 39 % 	≥ 65 % 	≥ 100 % ≥ 130 % ≥ 163 %
+G
+M
+L
+XL
+XXL
+F 	E 	D 	C 	B 	A 	A
++ A
+++ A
++++
+Efficienza energetica di riscaldamento dell’acqua in condizioni climatiche più fredde e più calde
+- 0,2 x
++ 0,4 x
+=
+=
+Più freddo:
+Più caldo:
+3
+3
+2
+2
+%
+%
+L’efficienza energetica dell’insieme di prodotti indicata nella
+presente scheda può non corrispondere all’efficienza energetica
+effettiva a installazione avvenuta poiché tale efficienza è
+influenzata da ulteriori fattori, quali la dispersione di calore nel
+sistema di distribuzione e la dimensione dei prodotti rispetto alle
+dimensioni e alle caratteristiche dell’edificio.
+
+-- 39 of 40 --
+
+Ariston SpA
+Produced by:
+Viale A. Merloni, 45
+60044 Fabriano (AN) Italy
+ariston.com
+Servizio clienti
+0732 633528
+420011260800 - Rev. 01 - 052022
+
+-- 40 of 40 --
+

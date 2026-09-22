@@ -7,13 +7,113 @@
     },
     "status": "verified",
     "knowledge": {
+      "evidence": {
+        "version": 2,
+        "modelScope": "family",
+        "coveredModels": [
+          "ecoTEC intro",
+          "VUW 24/24 AS/2-1 (H-TR)",
+          "VUW 28/28 AS/2-1 (H-TR)"
+        ],
+        "modelEvidence": "ecoTEC intro\nVUW 24/24 AS/2-1 (H-TR)\nVUW 28/28 AS/2-1 (H-TR)",
+        "errorRecord": "F.28\nAteşleme başarısız\nGaz kesme vanası kapalı ▶ Gaz kesme vanasını açın.\nGaz sayacı arızalı ▶ Gaz sayacını değiştirin.\nGaz basıncı sensörü tetiklendi ▶ Gaz giriş basıncını kontrol edin.\nGaz hattındaki hava (örneğin ilk\nçalıştırmada)\n▶ Cihazın arızasını bir kereliğine giderin.\nGaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol\nedin.\nTermik kapatma düzeneği tetik-\nlenmiş\n▶ Termik kapatma düzeneğini kontrol edin.\nYoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.\nYanlış ET gaz armatürü ▶ ET gaz armatürünü kontrol edin.\nYanlış gaz armatürü ofseti ▶ Gaz armatürünün ofset ayarını kontrol edin.\nGaz armatürü arızalı ▶ Gaz armatürünü kontrol edin.\nÇoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.\nKablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-\nrol edin ve gerekirse değiştirin.\nAteşleme sistemi arızalı ▶ Ateşleme sistemini değiştirin.\nTopraklama hatalı ▶ Ürünün topraklamasını kontrol edin.\nElektronik arızalı ▶ Elektronik kartı kontrol edin.\nYanma Havası/Atık Gaz Akım\nBorusu tıkalı\n▶ Yanma havası/atık gaz akım borusunu kontrol edin.\nReferans basınç tüpünün kısma\nvanası takımı tıkanmış\n▶ Gaz armatürünün referans basınç tüplerindeki kısma vanası\ntakımının durumunu kontrol edin.",
+        "codeEvidence": "F.28\nAteşleme başarısız",
+        "descriptionEvidence": "Ateşleme başarısız",
+        "candidates": [
+          {
+            "name": "Gaz kesme vanası kapalı",
+            "basis": "Gaz kesme vanası kapalı ▶ Gaz kesme vanasını açın.",
+            "part": "gaz kesme vanası"
+          },
+          {
+            "name": "Gaz sayacı arızalı",
+            "basis": "Gaz sayacı arızalı ▶ Gaz sayacını değiştirin.",
+            "part": "gaz sayacı"
+          },
+          {
+            "name": "Gaz basıncı sensörü tetiklendi",
+            "basis": "Gaz basıncı sensörü tetiklendi ▶ Gaz giriş basıncını kontrol edin.",
+            "part": "gaz basıncı sensörü"
+          },
+          {
+            "name": "Gaz hattındaki hava (örneğin ilk çalıştırmada)",
+            "basis": "Gaz hattındaki hava (örneğin ilk çalıştırmada)\n▶ Cihazın arızasını bir kereliğine giderin.",
+            "part": ""
+          },
+          {
+            "name": "Gaz giriş basıncı çok düşük",
+            "basis": "Gaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol\nedin.",
+            "part": "gaz basıncı sensörü"
+          },
+          {
+            "name": "Termik kapatma düzeneği tetiklenmiş",
+            "basis": "Termik kapatma düzeneği tetiklenmiş\n▶ Termik kapatma düzeneğini kontrol edin.",
+            "part": "termik kapatma düzeneği"
+          },
+          {
+            "name": "Yoğuşma suyu gider hattı tıkalı",
+            "basis": "Yoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.",
+            "part": "yoğuşma suyu gider hattı"
+          },
+          {
+            "name": "Yanlış ET gaz armatürü",
+            "basis": "Yanlış ET gaz armatürü ▶ ET gaz armatürünü kontrol edin.",
+            "part": "ET gaz armatürü"
+          },
+          {
+            "name": "Yanlış gaz armatürü ofseti",
+            "basis": "Yanlış gaz armatürü ofseti ▶ Gaz armatürünün ofset ayarını kontrol edin.",
+            "part": "gaz armatürü"
+          },
+          {
+            "name": "Gaz armatürü arızalı",
+            "basis": "Gaz armatürü arızalı ▶ Gaz armatürünü kontrol edin.",
+            "part": "gaz armatürü"
+          },
+          {
+            "name": "Çoklu soket takılmamış/gevşek",
+            "basis": "Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.",
+            "part": "çoklu soket"
+          },
+          {
+            "name": "Kablo demetinde kesinti",
+            "basis": "Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-\nrol edin ve gerekirse değiştirin.",
+            "part": "kablo demeti"
+          },
+          {
+            "name": "Ateşleme sistemi arızalı",
+            "basis": "Ateşleme sistemi arızalı ▶ Ateşleme sistemini değiştirin.",
+            "part": "ateşleme sistemi"
+          },
+          {
+            "name": "Topraklama hatalı",
+            "basis": "Topraklama hatalı ▶ Ürünün topraklamasını kontrol edin.",
+            "part": ""
+          },
+          {
+            "name": "Elektronik arızalı",
+            "basis": "Elektronik arızalı ▶ Elektronik kartı kontrol edin.",
+            "part": "elektronik kart"
+          },
+          {
+            "name": "Yanma Havası/Atık Gaz Akım Borusu tıkalı",
+            "basis": "Yanma Havası/Atık Gaz Akım Borusu tıkalı\n▶ Yanma havası/atık gaz akım borusunu kontrol edin.",
+            "part": "yanma havası/atık gaz akım borusu"
+          },
+          {
+            "name": "Referans basınç tüpünün kısma vanası takımı tıkanmış",
+            "basis": "Referans basınç tüpünün kısma vanası takımı tıkanmış\n▶ Gaz armatürünün referans basınç tüplerindeki kısma vanası\ntakımının durumunu kontrol edin.",
+            "part": "referans basınç tüpü"
+          }
+        ]
+      },
       "code": "F28",
       "meaning": "Ateşleme başarısız",
       "causes": [
         "Gaz kesme vanası kapalı",
         "Gaz sayacı arızalı",
         "Gaz basıncı sensörü tetiklendi",
-        "Gaz hattında hava var",
+        "Gaz hattındaki hava (örneğin ilk çalıştırmada)",
         "Gaz giriş basıncı çok düşük",
         "Termik kapatma düzeneği tetiklenmiş",
         "Yoğuşma suyu gider hattı tıkalı",
@@ -25,51 +125,296 @@
         "Ateşleme sistemi arızalı",
         "Topraklama hatalı",
         "Elektronik arızalı",
-        "Yanma havası/atık gaz akım borusu tıkalı",
+        "Yanma Havası/Atık Gaz Akım Borusu tıkalı",
         "Referans basınç tüpünün kısma vanası takımı tıkanmış"
       ],
       "parts": [
-        "gaz vanası",
+        "gaz kesme vanası",
         "gaz sayacı",
         "gaz basıncı sensörü",
         "termik kapatma düzeneği",
         "yoğuşma suyu gider hattı",
+        "ET gaz armatürü",
         "gaz armatürü",
+        "çoklu soket",
+        "kablo demeti",
         "ateşleme sistemi",
         "elektronik kart",
-        "yanma havası/atık gaz borusu",
-        "referans basınç tüpü/kısma vanası"
+        "yanma havası/atık gaz akım borusu",
+        "referans basınç tüpü"
       ],
       "questions": [
-        "Cihazınızın ekranı açık mı?",
-        "Evde diğer elektrikli cihazlar çalışıyor mu?",
-        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
-        "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
-        "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?",
-        "Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?",
-        "Ekranda görünen basınç değeri kaç bar?",
-        "Sorun ilk ne zaman başladı?",
-        "Sorun sürekli mi oluyor, yoksa arada düzeliyor mu?"
+        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?"
       ],
       "questionIds": [
-        "screen",
-        "power",
-        "gasSupply",
-        "ignitionSound",
-        "flame",
-        "recentWork",
-        "pressure",
-        "onset",
-        "recurrence"
+        "gasSupply"
       ],
-      "page": 31,
+      "page": 34,
       "source": {
-        "url": "https://www.vaillant.com.tr/downloads/ecotec-intro-montaj-klavuzu-1953733.pdf",
-        "title": "Montaj ve bakım kılavuzu",
-        "revision": "0020289235_04",
-        "reviewedAt": "2026-09-22T10:05:32.044Z"
+        "url": "https://www.vaillant.com.tr/api/download/product/tr/_ecotec-intro_1471323.pdf",
+        "title": "C Arıza kodları",
+        "revision": "8000037569_02 - 27.01.2026",
+        "reviewedAt": "2026-09-22T15:45:03.681Z"
       }
-    }
+    },
+    "events": [
+      {
+        "raw": {
+          "stage": "discovery",
+          "sources": [
+            {
+              "url": "https://www.vaillant.com.tr/downloads/ecotec-intro-montaj-klavuzu-1953733.pdf",
+              "title": "ecoTEC intro Montaj ve bakım kılavuzu (Montaj Servis Kılavuzu, Türkçe)"
+            },
+            {
+              "url": "https://www.vaillant.com.tr/downloads/ecotec-intro-montaj-ve-bakm-klavuzu-3050428.pdf",
+              "title": "ecoTEC intro Montaj ve bakım kılavuzu (Güncel Türkçe)"
+            },
+            {
+              "url": "https://www.vaillant.com.tr/downloads/ecotec-intro-kullanma-klavuzu-1953732.pdf",
+              "title": "ecoTEC intro Kullanma Kılavuzu (Türkçe)"
+            },
+            {
+              "url": "https://www.vaillant.com/en/products/ecotec-intro/",
+              "title": "ecoTEC intro Installation & Commissioning / Operating Instructions (İngilizce)"
+            },
+            {
+              "url": "https://www.vaillant.co.uk/service/boiler-fault-codes/",
+              "title": "Boiler fault codes list – Vaillant (İngilizce genel hata kodu sayfası)"
+            }
+          ]
+        },
+        "urls": []
+      },
+      {
+        "raw": {
+          "status": "verified",
+          "brand": "Vaillant",
+          "model": "ecoTEC intro",
+          "code": "F.28",
+          "meaning": "Ateşleme başarısız",
+          "title": "C Arıza kodları",
+          "revision": "8000037569_02 - 27.01.2026",
+          "modelEvidence": "ecoTEC intro\nVUW 24/24 AS/2-1 (H-TR)\nVUW 28/28 AS/2-1 (H-TR)",
+          "codeEvidence": "F.28\nAteşleme başarısız",
+          "modelScope": "family",
+          "coveredModels": [
+            "ecoTEC intro",
+            "VUW 24/24 AS/2-1 (H-TR)",
+            "VUW 28/28 AS/2-1 (H-TR)"
+          ],
+          "errorRecord": "F.28\nAteşleme başarısız\nGaz kesme vanası kapalı ▶ Gaz kesme vanasını açın.\nGaz sayacı arızalı ▶ Gaz sayacını değiştirin.\nGaz basıncı sensörü tetiklendi ▶ Gaz giriş basıncını kontrol edin.\nGaz hattındaki hava (örneğin ilk\nçalıştırmada)\n▶ Cihazın arızasını bir kereliğine giderin.\nGaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol\nedin.\nTermik kapatma düzeneği tetik-\nlenmiş\n▶ Termik kapatma düzeneğini kontrol edin.\nYoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.\nYanlış ET gaz armatürü ▶ ET gaz armatürünü kontrol edin.\nYanlış gaz armatürü ofseti ▶ Gaz armatürünün ofset ayarını kontrol edin.\nGaz armatürü arızalı ▶ Gaz armatürünü kontrol edin.\nÇoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.\nKablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-\nrol edin ve gerekirse değiştirin.\nAteşleme sistemi arızalı ▶ Ateşleme sistemini değiştirin.\nTopraklama hatalı ▶ Ürünün topraklamasını kontrol edin.\nElektronik arızalı ▶ Elektronik kartı kontrol edin.\nYanma Havası/Atık Gaz Akım\nBorusu tıkalı\n▶ Yanma havası/atık gaz akım borusunu kontrol edin.\nReferans basınç tüpünün kısma\nvanası takımı tıkanmış\n▶ Gaz armatürünün referans basınç tüplerindeki kısma vanası\ntakımının durumunu kontrol edin.",
+          "descriptionEvidence": "Ateşleme başarısız",
+          "modelMatch": true,
+          "codeMatch": true,
+          "officialManufacturer": true,
+          "page": 34,
+          "candidates": [
+            {
+              "name": "Gaz kesme vanası kapalı",
+              "basis": "Gaz kesme vanası kapalı ▶ Gaz kesme vanasını açın.",
+              "part": "gaz kesme vanası"
+            },
+            {
+              "name": "Gaz sayacı arızalı",
+              "basis": "Gaz sayacı arızalı ▶ Gaz sayacını değiştirin.",
+              "part": "gaz sayacı"
+            },
+            {
+              "name": "Gaz basıncı sensörü tetiklendi",
+              "basis": "Gaz basıncı sensörü tetiklendi ▶ Gaz giriş basıncını kontrol edin.",
+              "part": "gaz basıncı sensörü"
+            },
+            {
+              "name": "Gaz hattındaki hava (örneğin ilk çalıştırmada)",
+              "basis": "Gaz hattındaki hava (örneğin ilk çalıştırmada)\n▶ Cihazın arızasını bir kereliğine giderin.",
+              "part": ""
+            },
+            {
+              "name": "Gaz giriş basıncı çok düşük",
+              "basis": "Gaz giriş basıncı çok düşük ▶ Gaz giriş basıncını ve harici gaz basıncı sensörünü kontrol\nedin.",
+              "part": "gaz basıncı sensörü"
+            },
+            {
+              "name": "Termik kapatma düzeneği tetiklenmiş",
+              "basis": "Termik kapatma düzeneği tetiklenmiş\n▶ Termik kapatma düzeneğini kontrol edin.",
+              "part": "termik kapatma düzeneği"
+            },
+            {
+              "name": "Yoğuşma suyu gider hattı tıkalı",
+              "basis": "Yoğuşma suyu gider hattı tıkalı ▶ Yoğuşma suyu gider hattını kontrol edin.",
+              "part": "yoğuşma suyu gider hattı"
+            },
+            {
+              "name": "Yanlış ET gaz armatürü",
+              "basis": "Yanlış ET gaz armatürü ▶ ET gaz armatürünü kontrol edin.",
+              "part": "ET gaz armatürü"
+            },
+            {
+              "name": "Yanlış gaz armatürü ofseti",
+              "basis": "Yanlış gaz armatürü ofseti ▶ Gaz armatürünün ofset ayarını kontrol edin.",
+              "part": "gaz armatürü"
+            },
+            {
+              "name": "Gaz armatürü arızalı",
+              "basis": "Gaz armatürü arızalı ▶ Gaz armatürünü kontrol edin.",
+              "part": "gaz armatürü"
+            },
+            {
+              "name": "Çoklu soket takılmamış/gevşek",
+              "basis": "Çoklu soket takılmamış/gevşek ▶ Çoklu soketi ve geçme bağlantıyı kontrol edin.",
+              "part": "çoklu soket"
+            },
+            {
+              "name": "Kablo demetinde kesinti",
+              "basis": "Kablo demetinde kesinti ▶ Tüm geçme bağlantılar dahil olmak üzere kablo demetini kont-\nrol edin ve gerekirse değiştirin.",
+              "part": "kablo demeti"
+            },
+            {
+              "name": "Ateşleme sistemi arızalı",
+              "basis": "Ateşleme sistemi arızalı ▶ Ateşleme sistemini değiştirin.",
+              "part": "ateşleme sistemi"
+            },
+            {
+              "name": "Topraklama hatalı",
+              "basis": "Topraklama hatalı ▶ Ürünün topraklamasını kontrol edin.",
+              "part": ""
+            },
+            {
+              "name": "Elektronik arızalı",
+              "basis": "Elektronik arızalı ▶ Elektronik kartı kontrol edin.",
+              "part": "elektronik kart"
+            },
+            {
+              "name": "Yanma Havası/Atık Gaz Akım Borusu tıkalı",
+              "basis": "Yanma Havası/Atık Gaz Akım Borusu tıkalı\n▶ Yanma havası/atık gaz akım borusunu kontrol edin.",
+              "part": "yanma havası/atık gaz akım borusu"
+            },
+            {
+              "name": "Referans basınç tüpünün kısma vanası takımı tıkanmış",
+              "basis": "Referans basınç tüpünün kısma vanası takımı tıkanmış\n▶ Gaz armatürünün referans basınç tüplerindeki kısma vanası\ntakımının durumunu kontrol edin.",
+              "part": "referans basınç tüpü"
+            }
+          ],
+          "questionIds": [
+            "gasSupply"
+          ],
+          "url": "https://www.vaillant.com.tr/api/download/product/tr/_ecotec-intro_1471323.pdf"
+        },
+        "urls": [
+          "https://www.vaillant.com.tr/api/download/product/tr/_ecotec-intro_1471323.pdf"
+        ]
+      },
+      {
+        "raw": {
+          "stage": "entailment",
+          "review": {
+            "modelScopeSupported": true,
+            "faultRecordSupported": true,
+            "candidates": [
+              {
+                "index": 0,
+                "supported": true,
+                "reason": "The document explicitly lists 'Gaz kesme vanası kapalı' as a possible cause for F.28 and instructs to check/open the gas shut-off valve. This directly supports the candidate."
+              },
+              {
+                "index": 1,
+                "supported": true,
+                "reason": "'Gaz sayacı arızalı' is explicitly listed as a possible cause for F.28, with the instruction to replace the gas meter. This supports the candidate."
+              },
+              {
+                "index": 2,
+                "supported": true,
+                "reason": "'Gaz basıncı sensörü tetiklendi' is listed as a possible cause, with the instruction to check gas inlet pressure. This supports the candidate."
+              },
+              {
+                "index": 3,
+                "supported": true,
+                "reason": "'Gaz hattındaki hava (örneğin ilk çalıştırmada)' is listed as a possible cause, with the instruction to clear the fault once. This supports the candidate."
+              },
+              {
+                "index": 4,
+                "supported": true,
+                "reason": "'Gaz giriş basıncı çok düşük' is listed as a possible cause, with the instruction to check gas inlet pressure and external sensor. This supports the candidate."
+              },
+              {
+                "index": 5,
+                "supported": true,
+                "reason": "'Termik kapatma düzeneği tetiklenmiş' is listed as a possible cause, with the instruction to check the thermal cut-off device. This supports the candidate."
+              },
+              {
+                "index": 6,
+                "supported": true,
+                "reason": "'Yoğuşma suyu gider hattı tıkalı' is listed as a possible cause, with the instruction to check the condensate drain. This supports the candidate."
+              },
+              {
+                "index": 7,
+                "supported": true,
+                "reason": "'Yanlış ET gaz armatürü' is listed as a possible cause, with the instruction to check the ET gas valve. This supports the candidate."
+              },
+              {
+                "index": 8,
+                "supported": true,
+                "reason": "'Yanlış gaz armatürü ofseti' is listed as a possible cause, with the instruction to check the offset setting. This supports the candidate."
+              },
+              {
+                "index": 9,
+                "supported": true,
+                "reason": "'Gaz armatürü arızalı' is listed as a possible cause, with the instruction to check the gas valve. This supports the candidate."
+              },
+              {
+                "index": 10,
+                "supported": true,
+                "reason": "'Çoklu soket takılmamış/gevşek' is listed as a possible cause, with the instruction to check the multi-plug and connections. This supports the candidate."
+              },
+              {
+                "index": 11,
+                "supported": true,
+                "reason": "'Kablo demetinde kesinti' is listed as a possible cause, with the instruction to check all wiring harnesses and connections. This supports the candidate."
+              },
+              {
+                "index": 12,
+                "supported": true,
+                "reason": "'Ateşleme sistemi arızalı' is listed as a possible cause, with the instruction to replace the ignition system. This supports the candidate."
+              },
+              {
+                "index": 13,
+                "supported": true,
+                "reason": "'Topraklama hatalı' is listed as a possible cause, with the instruction to check the product's grounding. This supports the candidate."
+              },
+              {
+                "index": 14,
+                "supported": true,
+                "reason": "'Elektronik arızalı' is listed as a possible cause, with the instruction to check the electronic board. This supports the candidate."
+              },
+              {
+                "index": 15,
+                "supported": true,
+                "reason": "'Yanma Havası/Atık Gaz Akım Borusu tıkalı' is listed as a possible cause, with the instruction to check the air/flue system. This supports the candidate."
+              },
+              {
+                "index": 16,
+                "supported": true,
+                "reason": "'Referans basınç tüpünün kısma vanası takımı tıkanmış' is listed as a possible cause, with the instruction to check the restrictor in the reference pressure tube. This supports the candidate."
+              }
+            ],
+            "reason": "The document is the official installation and service manual for the Vaillant ecoTEC intro, explicitly covering the listed models. The F.28 error record is present with a detailed list of possible causes and corresponding instructions. Each candidate cause is directly and explicitly supported by the text for F.28, with no unsupported or ambiguous entries."
+          }
+        },
+        "urls": [
+          "https://www.vaillant.com.tr/api/download/product/tr/_ecotec-intro_1471323.pdf"
+        ]
+      },
+      {
+        "raw": {
+          "stage": "decision",
+          "status": "verified"
+        },
+        "urls": [
+          "https://www.vaillant.com.tr/api/download/product/tr/_ecotec-intro_1471323.pdf"
+        ]
+      }
+    ]
   },
   {
     "identity": {
@@ -79,59 +424,385 @@
     },
     "status": "verified",
     "knowledge": {
+      "evidence": {
+        "version": 2,
+        "modelScope": "exact",
+        "coveredModels": [
+          "Condens 2500 W"
+        ],
+        "modelEvidence": "Condens 2500 W",
+        "errorRecord": "EA \tНе распознается пламя. \t▶ Проверьте подсоединение провода заземления.\n▶ Проверьте, открыт ли газовый кран.\n▶ Проверьте подаваемое давление газа, отрегулируйте при\nнеобходимости.\n▶ Проверьте подключение к электросети.\n▶ Проверьте электроды с проводами, замените при\nнеобходимости.\n▶ Проверьте систему отвода дымовых газов, при необходимости\nочистите или отремонтируйте.\n▶ Проверьте соотношение газ-воздух, исправьте при\nнеобходимости.\n▶ Для природного газа: проверьте реле контроля потока газа,\nзамените при необходимости.\n▶ При работе с забором воздуха для горения из помещения\nпроверьте подачу воздуха в помещение и вентиляционные\nотверстия.\n▶ Прочистите слив конденсатного сифона ( стр. 46).\n▶ Демонтируйте мембрану в смесительном устройстве\nвентилятора и проверьте наличие трещин и загрязнений\n( стр. 46).\n▶ Очистите теплообменник ( стр. 44).\n▶ Проверьте газовую арматуру, при необходимости замените.\n▶ 2-фазная сеть (IT): установите сопротивление 2 МОм между PE\nи N на подключении электронной платы к электросети.",
+        "codeEvidence": "EA \tНе распознается пламя.",
+        "descriptionEvidence": "Не распознается пламя.",
+        "candidates": [
+          {
+            "name": "Gaz vanasının kapalı olması",
+            "basis": "Проверьте, открыт ли газовый кран.",
+            "part": "gaz vanası"
+          },
+          {
+            "name": "Gaz basıncının yetersiz olması",
+            "basis": "Проверьте подаваемое давление газа, отрегулируйте при необходимости.",
+            "part": ""
+          },
+          {
+            "name": "Topraklama bağlantısının hatalı olması",
+            "basis": "Проверьте подсоединение провода заземления.",
+            "part": "topraklama kablosu"
+          },
+          {
+            "name": "Elektrik bağlantısında sorun olması",
+            "basis": "Проверьте подключение к электросети.",
+            "part": ""
+          },
+          {
+            "name": "Elektrot veya bağlantı kablolarında arıza",
+            "basis": "Проверьте электроды с проводами, замените при необходимости.",
+            "part": "ateşleme elektrodu"
+          },
+          {
+            "name": "Baca gazı tahliye sisteminde tıkanıklık veya arıza",
+            "basis": "Проверьте систему отвода дымовых газов, при необходимости очистите или отремонтируйте.",
+            "part": "baca"
+          },
+          {
+            "name": "Gaz-hava oranının yanlış olması",
+            "basis": "Проверьте соотношение газ-воздух, исправьте при необходимости.",
+            "part": ""
+          },
+          {
+            "name": "Doğalgazda gaz akış rölesi arızası",
+            "basis": "Для природного газа: проверьте реле контроля потока газа, замените при необходимости.",
+            "part": "gaz akış rölesi"
+          },
+          {
+            "name": "Yanma havası yetersizliği (ortamdan hava alıyorsa)",
+            "basis": "При работе с забором воздуха для горения из помещения проверьте подачу воздуха в помещение и вентиляционные отверстия.",
+            "part": ""
+          },
+          {
+            "name": "Kondens sifonunun tıkalı olması",
+            "basis": "Прочистите слив конденсатного сифона ( стр. 46).",
+            "part": "kondens sifonu"
+          },
+          {
+            "name": "Fan karıştırıcı membranında çatlak veya kir",
+            "basis": "Демонтируйте мембрану в смесительном устройстве вентилятора и проверьте наличие трещин и загрязнений ( стр. 46).",
+            "part": "fan karıştırıcı membranı"
+          },
+          {
+            "name": "Eşanjörde kirlenme",
+            "basis": "Очистите теплообменник ( стр. 44).",
+            "part": "eşanjör"
+          },
+          {
+            "name": "Gaz armatüründe arıza",
+            "basis": "Проверьте газовую арматуру, при необходимости замените.",
+            "part": "gaz armatürü"
+          }
+        ]
+      },
       "code": "EA",
-      "meaning": "Alev algılanmıyor.",
+      "meaning": "Flame not detected",
       "causes": [
-        "Topraklama bağlantısı hatalı veya eksik",
-        "Gaz vanası kapalı",
-        "Gaz basıncı yetersiz veya ayarsız",
-        "Elektrik bağlantısı hatalı",
-        "Ateşleme elektrodu veya kabloları arızalı",
-        "Baca sistemi tıkalı veya arızalı",
-        "Gaz-hava karışımı hatalı",
-        "Gaz akış rölesi arızalı (doğalgazda)",
-        "Yanma havası eksik (oda havasından yanma için)",
-        "Kondens sifonu tıkalı",
-        "Fan karışım ünitesi membranı arızalı",
-        "Ana eşanjör kirli",
-        "Gaz valfi arızalı",
-        "Elektronik kart ile şebeke arasında topraklama sorunu (IT şebekede)"
+        "Gaz vanasının kapalı olması",
+        "Gaz basıncının yetersiz olması",
+        "Topraklama bağlantısının hatalı olması",
+        "Elektrik bağlantısında sorun olması",
+        "Elektrot veya bağlantı kablolarında arıza",
+        "Baca gazı tahliye sisteminde tıkanıklık veya arıza",
+        "Gaz-hava oranının yanlış olması",
+        "Doğalgazda gaz akış rölesi arızası",
+        "Yanma havası yetersizliği (ortamdan hava alıyorsa)",
+        "Kondens sifonunun tıkalı olması",
+        "Fan karıştırıcı membranında çatlak veya kir",
+        "Eşanjörde kirlenme",
+        "Gaz armatüründe arıza"
       ],
       "parts": [
-        "topraklama",
         "gaz vanası",
-        "gaz hattı",
-        "elektrik bağlantısı",
+        "topraklama kablosu",
         "ateşleme elektrodu",
-        "baca sistemi",
+        "baca",
         "gaz akış rölesi",
         "kondens sifonu",
-        "fan karışım ünitesi membranı",
+        "fan karıştırıcı membranı",
         "eşanjör",
-        "gaz valfi",
-        "elektronik kart"
+        "gaz armatürü"
       ],
       "questions": [
-        "Cihazınızın ekranı açık mı?",
-        "Evde diğer elektrikli cihazlar çalışıyor mu?",
-        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
-        "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
-        "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?"
+        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?"
       ],
       "questionIds": [
-        "screen",
-        "power",
-        "gasSupply",
-        "ignitionSound",
-        "flame"
+        "gasSupply"
       ],
       "page": 54,
       "source": {
-        "url": "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575784v272_2500W_IM.pdf",
-        "title": "Bosch Condens 2500 W Hata Kodları",
+        "url": "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf",
+        "title": "Не распознается пламя.",
         "revision": "6720866193 (2021/04)",
-        "reviewedAt": "2026-09-22T10:05:44.322Z"
+        "reviewedAt": "2026-09-22T15:45:47.348Z"
       }
-    }
+    },
+    "events": [
+      {
+        "raw": {
+          "stage": "discovery",
+          "sources": [
+            {
+              "url": "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/ea/",
+              "title": "Bosch Kombi EA Hatası ve Çözümü (Türkçe; arıza kodu açıklaması) – Bosch Home Comfort Türkiye"
+            },
+            {
+              "url": "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/",
+              "title": "Bosch Kombi Arıza Kodları & Çözümleri (Türkçe; Condens 2500 W arıza kod listesi) – Bosch Home Comfort Türkiye"
+            },
+            {
+              "url": "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf",
+              "title": "Condens 2500 W – 6720866193 (Installation/Service manual PDF) – Bosch Home Comfort (uluslararası)"
+            }
+          ]
+        },
+        "urls": []
+      },
+      {
+        "raw": {
+          "stage": "document_identity",
+          "error": "model_or_code_absent"
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/ea/"
+        ]
+      },
+      {
+        "raw": {
+          "status": "verified",
+          "brand": "Bosch",
+          "model": "Condens 2500 W",
+          "code": "EA",
+          "meaning": "",
+          "title": "Bosch Condens 2500 W Arıza Kodları",
+          "revision": "",
+          "modelEvidence": "Condens 2500 W Arıza Kodları",
+          "codeEvidence": "EA",
+          "modelScope": "exact",
+          "coveredModels": [
+            "Condens 2500 W"
+          ],
+          "errorRecord": "Condens 2500 W Arıza Kodları\n  A7  \n  A8  \n  b1  \n  b2/b3  \n  C6  \n  CC  \n  CE  \n  E2  \n  E9  \n  EA  \n  F0  \n  F1  \n  FA  \n  Fd  \n  Bosch Condens 2500 W Yoğuşmalı Kombi hakkında detaylı bilgi almak için tıklayınız",
+          "descriptionEvidence": "",
+          "modelMatch": true,
+          "codeMatch": true,
+          "officialManufacturer": true,
+          "page": null,
+          "candidates": [],
+          "questionIds": [],
+          "url": "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/"
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/"
+        ]
+      },
+      {
+        "raw": {
+          "stage": "evidence",
+          "error": "literal_scope_or_candidate_record_invalid",
+          "checks": {
+            "modelEvidence": true,
+            "errorRecord": true,
+            "codeEvidence": true
+          }
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/tr/tr/residential/servis-hizmetlerimiz/ariza-kodlari-ve-cozumleri/"
+        ]
+      },
+      {
+        "raw": {
+          "status": "verified",
+          "brand": "Bosch",
+          "model": "Condens 2500 W",
+          "code": "EA",
+          "meaning": "Flame not detected",
+          "title": "Не распознается пламя.",
+          "revision": "6720866193 (2021/04)",
+          "modelEvidence": "Condens 2500 W",
+          "codeEvidence": "EA \tНе распознается пламя.",
+          "modelScope": "exact",
+          "coveredModels": [
+            "Condens 2500 W"
+          ],
+          "errorRecord": "EA \tНе распознается пламя. \t▶ Проверьте подсоединение провода заземления.\n▶ Проверьте, открыт ли газовый кран.\n▶ Проверьте подаваемое давление газа, отрегулируйте при\nнеобходимости.\n▶ Проверьте подключение к электросети.\n▶ Проверьте электроды с проводами, замените при\nнеобходимости.\n▶ Проверьте систему отвода дымовых газов, при необходимости\nочистите или отремонтируйте.\n▶ Проверьте соотношение газ-воздух, исправьте при\nнеобходимости.\n▶ Для природного газа: проверьте реле контроля потока газа,\nзамените при необходимости.\n▶ При работе с забором воздуха для горения из помещения\nпроверьте подачу воздуха в помещение и вентиляционные\nотверстия.\n▶ Прочистите слив конденсатного сифона ( стр. 46).\n▶ Демонтируйте мембрану в смесительном устройстве\nвентилятора и проверьте наличие трещин и загрязнений\n( стр. 46).\n▶ Очистите теплообменник ( стр. 44).\n▶ Проверьте газовую арматуру, при необходимости замените.\n▶ 2-фазная сеть (IT): установите сопротивление 2 МОм между PE\nи N на подключении электронной платы к электросети.",
+          "descriptionEvidence": "Не распознается пламя.",
+          "modelMatch": true,
+          "codeMatch": true,
+          "officialManufacturer": true,
+          "page": 54,
+          "candidates": [
+            {
+              "name": "Gaz vanasının kapalı olması",
+              "basis": "Проверьте, открыт ли газовый кран.",
+              "part": "gaz vanası"
+            },
+            {
+              "name": "Gaz basıncının yetersiz olması",
+              "basis": "Проверьте подаваемое давление газа, отрегулируйте при необходимости.",
+              "part": ""
+            },
+            {
+              "name": "Topraklama bağlantısının hatalı olması",
+              "basis": "Проверьте подсоединение провода заземления.",
+              "part": "topraklama kablosu"
+            },
+            {
+              "name": "Elektrik bağlantısında sorun olması",
+              "basis": "Проверьте подключение к электросети.",
+              "part": ""
+            },
+            {
+              "name": "Elektrot veya bağlantı kablolarında arıza",
+              "basis": "Проверьте электроды с проводами, замените при необходимости.",
+              "part": "ateşleme elektrodu"
+            },
+            {
+              "name": "Baca gazı tahliye sisteminde tıkanıklık veya arıza",
+              "basis": "Проверьте систему отвода дымовых газов, при необходимости очистите или отремонтируйте.",
+              "part": "baca"
+            },
+            {
+              "name": "Gaz-hava oranının yanlış olması",
+              "basis": "Проверьте соотношение газ-воздух, исправьте при необходимости.",
+              "part": ""
+            },
+            {
+              "name": "Doğalgazda gaz akış rölesi arızası",
+              "basis": "Для природного газа: проверьте реле контроля потока газа, замените при необходимости.",
+              "part": "gaz akış rölesi"
+            },
+            {
+              "name": "Yanma havası yetersizliği (ortamdan hava alıyorsa)",
+              "basis": "При работе с забором воздуха для горения из помещения проверьте подачу воздуха в помещение и вентиляционные отверстия.",
+              "part": ""
+            },
+            {
+              "name": "Kondens sifonunun tıkalı olması",
+              "basis": "Прочистите слив конденсатного сифона ( стр. 46).",
+              "part": "kondens sifonu"
+            },
+            {
+              "name": "Fan karıştırıcı membranında çatlak veya kir",
+              "basis": "Демонтируйте мембрану в смесительном устройстве вентилятора и проверьте наличие трещин и загрязнений ( стр. 46).",
+              "part": "fan karıştırıcı membranı"
+            },
+            {
+              "name": "Eşanjörde kirlenme",
+              "basis": "Очистите теплообменник ( стр. 44).",
+              "part": "eşanjör"
+            },
+            {
+              "name": "Gaz armatüründe arıza",
+              "basis": "Проверьте газовую арматуру, при необходимости замените.",
+              "part": "gaz armatürü"
+            }
+          ],
+          "questionIds": [
+            "gasSupply"
+          ],
+          "url": "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf"
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf"
+        ]
+      },
+      {
+        "raw": {
+          "stage": "entailment",
+          "review": {
+            "modelScopeSupported": true,
+            "faultRecordSupported": true,
+            "candidates": [
+              {
+                "index": 0,
+                "supported": true,
+                "reason": "The error record explicitly states: 'Проверьте, открыт ли газовый кран.' This directly supports the candidate 'Gaz vanasının kapalı olması' (gas valve closed)."
+              },
+              {
+                "index": 1,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте подаваемое давление газа, отрегулируйте при необходимости.' This supports 'Gaz basıncının yetersiz olması' (insufficient gas pressure)."
+              },
+              {
+                "index": 2,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте подсоединение провода заземления.' This supports 'Topraklama bağlantısının hatalı olması' (faulty grounding connection)."
+              },
+              {
+                "index": 3,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте подключение к электросети.' This supports 'Elektrik bağlantısında sorun olması' (problem with electrical connection)."
+              },
+              {
+                "index": 4,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте электроды с проводами, замените при необходимости.' This supports 'Elektrot veya bağlantı kablolarında arıza' (fault in electrode or connection cables)."
+              },
+              {
+                "index": 5,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте систему отвода дымовых газов, при необходимости очистите или отремонтируйте.' This supports 'Baca gazı tahliye sisteminde tıkanıklık veya arıza' (blockage or fault in flue gas exhaust system)."
+              },
+              {
+                "index": 6,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте соотношение газ-воздух, исправьте при необходимости.' This supports 'Gaz-hava oranının yanlış olması' (incorrect gas-air ratio)."
+              },
+              {
+                "index": 7,
+                "supported": true,
+                "reason": "The error record states: 'Для природного газа: проверьте реле контроля потока газа, замените при необходимости.' This supports 'Doğalgazda gaz akış rölesi arızası' (fault in gas flow relay for natural gas)."
+              },
+              {
+                "index": 8,
+                "supported": true,
+                "reason": "The error record states: 'При работе с забором воздуха для горения из помещения проверьте подачу воздуха в помещение и вентиляционные отверстия.' This supports 'Yanma havası yetersizliği (ortamdan hava alıyorsa)' (insufficient combustion air if taking air from the room)."
+              },
+              {
+                "index": 9,
+                "supported": true,
+                "reason": "The error record states: 'Прочистите слив конденсатного сифона ( стр. 46).' This supports 'Kondens sifonunun tıkalı olması' (condensate siphon blockage)."
+              },
+              {
+                "index": 10,
+                "supported": true,
+                "reason": "The error record states: 'Демонтируйте мембрану в смесительном устройстве вентилятора и проверьте наличие трещин и загрязнений ( стр. 46).' This supports 'Fan karıştırıcı membranında çatlak veya kir' (crack or dirt in fan mixing membrane)."
+              },
+              {
+                "index": 11,
+                "supported": true,
+                "reason": "The error record states: 'Очистите теплообменник ( стр. 44).' This supports 'Eşanjörde kirlenme' (heat exchanger contamination)."
+              },
+              {
+                "index": 12,
+                "supported": true,
+                "reason": "The error record states: 'Проверьте газовую арматуру, при необходимости замените.' This supports 'Gaz armatüründe arıza' (fault in gas valve/armature)."
+              }
+            ],
+            "reason": "All candidates are directly and explicitly supported by the error record for code EA in the official Bosch Condens 2500 W documentation. Each candidate's cause is named in the troubleshooting steps for this error code, with no unsupported or inferred causes present."
+          }
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf"
+        ]
+      },
+      {
+        "raw": {
+          "stage": "decision",
+          "status": "verified"
+        },
+        "urls": [
+          "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575786v272_2500W_IM.pdf"
+        ]
+      }
+    ]
   }
 ]

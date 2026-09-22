@@ -1,0 +1,1623 @@
+Kurulum ve bakımdan önce dikkatlice okuyun.
+Montaj Kılavuzu
+Duvar Tipi Yoğuşmalı Kombi
+Logamax plus
+6 720 646 606-00.1O
+GB072-24 | GB072-24K
+6721835147 (2021/03)TR
+
+-- 1 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+İçindekiler
+2
+İçindekiler
+1 	Sembol Açıklamaları ve Emniyetle İlgili Bilgiler . . . . . . . . . . . . 4
+1.1 	Sembol Açıklamaları . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.2 	Emniyetle İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2 	Teslimat Kapsamı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3 	Cihazla İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.1 	Amacına Uygun Kullanım . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.2 	AB Tasarım Uygunluğu Deklarasyonu . . . . . . . . . . . . . . . . 6
+3.3 	Kullanılabilir Gaz Gruplarına Genel Bakış . . . . . . . . . . . . . 6
+3.4 	Tip Etiketi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.5 	Cihazla İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.6 	Aksesuar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.7 	Boyutlar ve Asgari Mesafeler . . . . . . . . . . . . . . . . . . . . . . 8
+3.8 	Cihaz Yapısı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3.9 	Teknik Veriler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.10 	Yoğuşma suyunun bileşimi . . . . . . . . . . . . . . . . . . . . . . 12
+4 	Yönetmelikler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+5 	Montaj . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+5.1 	Önemli uyarılar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+5.2 	Su kalitesi (doldurma ve tamamlama suyu) . . . . . . . . . 15
+5.3 	Genleşme Tankı Kapasite Kontrolü . . . . . . . . . . . . . . . 15
+5.4 	Montaj Yeri Seçimi . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+5.5 	Askı Sacının Monte Edilmesi . . . . . . . . . . . . . . . . . . . . . 16
+5.6 	Cihazın Montajı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5.7 	Bağlantıların Kontrol Edilmesi . . . . . . . . . . . . . . . . . . . 19
+5.8 	Sıcak su boyleri için boyler bağlantısı olmayan cihazların
+işletilmesi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6 	Elektrik Bağlantısı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.1 	Genel uyarılar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.2 	Cihazın bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.3 	Bağlantı Kablolu ve Elektrik Fişli Cihazların ile Bağlanması
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+6.4 	Kontrol sistemleri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+6.5 	Aksesuarların Bağlanması . . . . . . . . . . . . . . . . . . . . . . . 21
+6.5.1 	On/Off termostatın bağlanması . . . . . . . . . . . . . . . . . . 21
+6.5.2 	Logamatic RC35 kumanda ünitesinin veya Logamatic
+4000 kumanda sisteminin bağlanması . . . . . . . . . . . . . 21
+6.5.3 	Yerden ısıtma sisteminin gidiş suyu sıcaklık denetleyicisi
+AT90'ın bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.4 	Yoğuşma suyu pompası BM-C20'nin veya nötralizasyon
+kutusu NE1.x'in bağlanması . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.5 	Dış Hava Sıcaklık Sensörünün Bağlanması . . . . . . . . . 22
+6.5.6 	Boyler sıcaklık sensörünün bağlanması . . . . . . . . . . . . 22
+6.5.7 	Harici gidiş suyu sıcaklık sensörü (örn. hidrolik denge kabı)
+bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.8 	Sirkülasyon pompası (230 V, maks. 100 W) bağlanması
+(GB072-24) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.9 	Harici sirkülasyon pompası (230 V, maks. 250 W)
+bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.10 Boyler pompasının (230 V, maks. 100 W)/harici üç yollu
+vananın (230 V, yay geri dönüşlü) bağlanması
+(GB072-24) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.11 Modüllerin monte edilmesi ve bağlanması . . . . . . . . . . 22
+6.5.12 Şebeke kablosunun bağlanması . . . . . . . . . . . . . . . . . . . 22
+7 	Termik Dezenfeksiyon Yapılması . . . . . . . . . . . . . . . . . . . . . . . 23
+7.1 	Genel bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+7.2 	Sıcak Kullanım Suyu Boyleri Olan Cihazlarda Termik
+Dezenfeksiyon Yapılması . . . . . . . . . . . . . . . . . . . . . . . . 23
+7.2.1 	Kumanda sistemi kontrollü termik dezenfeksiyon . . . . 23
+7.2.2 	Temel kontrol ünitesi kontrollü termik dezenfeksiyon . 23
+7.3 	Karşı akım prensibi ile sıcak su hazırlayan cihazlarda
+(GB072-24K) termik dezenfeksiyon yapılması . . . . . . 23
+8 	Sirkülasyon pompası . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+8.1 	Isıtma Pompası Karakteristik Eğrisinin Değiştirilmesi . 24
+8.2 	Pompa Blokaj Koruması . . . . . . . . . . . . . . . . . . . . . . . . . 24
+9 	Çevre Koruma/Geri Dönüşüm . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+10 İşletim ve Arıza Göstergeleri . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+10.1 	İşletim ve Arıza Göstergelerinin Gösterilmesi . . . . . . . . 26
+11 İşletmeye Alma Protokolü . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+12 Ek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+12.1 	Sensör değerleri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+12.1.1 Dış hava sıcaklık sensörü (aksesuar) . . . . . . . . . . . . . . . 29
+12.1.2 Gidiş suyu, harici gidiş suyu sıcaklık sensörü . . . . . . . . 29
+12.1.3 Sıcak kullanım suyu sıcaklık sensörü (GB072-24K) . . . 29
+12.1.4 Boyler sıcaklık sensörü (aksesuar) . . . . . . . . . . . . . . . . 29
+12.2 	KIM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+12.3 	Isıtma eğrisi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+12.4 	Isıtma/Sıcak su kapasitesi için ayar değerleri . . . . . . . . 31
+Servis ile ilgili daha detaylı bilgi için lütfen 6721835151 servis
+kılavuzuna bakınız.
+
+-- 2 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+1	Sembol Açıklamaları ve Emniyetle İlgili Bilgiler
+3
+1 	Sembol Açıklamaları ve Emniyetle İlgili Bilgiler
+1.1 	Sembol Açıklamaları
+İkaz Uyarılar
+Bir güvenlik uyarısının başlangıcındaki sinyal sözcükler, hasarların
+önlenmesine yönelik tedbirlere uyulmaması halinde ortaya çıkabilecek
+tehlikelerin türlerini ve ağırlıklarını belirtmektedir.
+• UYARI: Hasarların oluşabileceğini gösterir.
+• DİKKAT: İnsanlar için hafiften orta ağırlığa kadar kişisel
+yaralanmaların meydana gelebileceğini gösterir.
+• İKAZ: Ağır yaralanmaların meydana gelebileceğini gösterir.
+• TEHLİKE: Ölümcül ağır yaralanmaların meydana gelebileceğini
+gösterir.
+Önemli Bilgiler
+Diğer semboller
+1.2 	Emniyetle İlgili Bilgiler
+Çiğ Gaz Kokusu Halinde
+▶ Gaz vanasını.
+▶ Pencere ve kapıları açın.
+▶ Elektrik düğmelerine dokunmayın.
+▶ Açık alevleri söndürün.
+▶ Evin dışına çıkarak gaz dağıtım şirketine ve yetkili servise telefon
+edin.
+Atık Gaz Kokusu Halinde
+▶ Cihazı kapatın.
+▶ Pencere ve kapıları açın.
+▶ Yetkili servise haber verin.
+Oda havasına bağlı işletmede:
+Yeterli yanma havası olmadığında, atık gazlar nedeniyle zehirlenme
+tehlikesi vardır
+▶ Yeterli miktarda yanma havası sağlamaya yönelik gerekli tedbirleri
+alın.
+▶ Kapılarda, pencerelerde ve duvarlarda bulunan havalandırma ve hava
+tahliye deliklerinin önlerini kapatmayın veya kesitlerini daraltmayın.
+▶ Örneğin atık hava vantilatörleri, mutfak davlumbazları ve dış ortama
+doğru atık hava çıkışı olan klima cihazları gibi sonradan monte edilen
+cihazlarda da yeterli yanma havası beslemesi bulunmasını sağlayın.
+▶ Yeterli yanma havası olmadığında, cihazı çalıştırmayın.
+Yanıcı Gazların Patlama Tehlikesi Vardır
+İçinden gaz geçen parçaların üzerindeki çalışmaların sadece yetkili
+servis tarafından yapılmasını sağlayın.
+Patlayıcı ve Kolay Tutuşabilen Materyaller
+Cihazın yakınında kolay tutuşabilen maddeler (kağıt, tiner, boya vb.)
+kullanmayın veya depolamayın.
+Yanma Havası/Oda Havası
+Korozyonu önlemek için yanma havasında/oda havasında aşındırıcı
+maddeler (örn. klor ve flor bileşenleri ihtiva eden halojenik
+hidrokarbonlar) bulunmamasını sağlayın.
+Metinde yer alan güvenlik uyarıları gri renkte arka plana
+sahip bir ikaz üçgeni ile belirtilmekte ve bir çerçeve
+içinde yer almaktadır.
+Elektriğin neden olduğu tehlikelerde, ikaz üçgeninin
+içindeki ünlem işareti yerine bir yıldırım sembolü
+bulunmaktadır.
+İnsanlar için tehlikelerin veya maddi hasar tehlikesinin
+söz konusu olmadığı önemli bilgiler yanda gösterilen
+sembol ile belirtilmektedir. Metnin altında ve üstünde
+bulunan çizgilerle sınırlanırlar.
+Sembol 	Anlamı
+▶ 	İşlem adımı
+ 	Doküman içinde başka yerlere veya başka
+dokümanlara çapraz başvuru
+• 	Sayma/liste maddesi
+– 	Sayma/liste maddesi (2. düzlem)
+Tab. 1
+
+-- 3 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+2 	Teslimat Kapsamı
+4
+2 	Teslimat Kapsamı
+Res. 1
+[1] 	Duvar tipi yoğuşmalı kombi
+[2] 	Tespit malzemesi (Aksesuarlı vidalar)
+[3] 	Cihaz dokümantasyonu için üzeri baskılı çıkartma takımı
+[4] 	Askı sacı
+[5] 	Doldurma ve boşaltma vanası
+[6] 	Emniyet ventilinin hortumu (ısıtma devresi)
+[7] 	Yoğuşma suyu hortumu
+1
+3
+2
+6 720 646 606-02.1O
+4
+5
+6
+7
+
+-- 4 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3	Cihazla İlgili Bilgiler
+5
+3 	Cihazla İlgili Bilgiler
+Logamax plus GB072-24 cihazları, dolaylı olarak ısıtılan bir boyler
+bağlamak için sirkülasyon pompası ve üç yollu vana entegre edilmiş
+yoğuşmalı kazanlardır.
+Entegre sirkülasyon pompasına, 3 yollu vanaya ve plakalı eşanjöre sahip
+Logamax plus GB072-24K tipi cihazlar, sürekli akış prensibi ile çalışan
+ve ısıtmaya ve sıcak su hazırlamaya yönelik yoğuşmalı cihazlardır.
+3.1 	Amacına Uygun Kullanım
+Cihaz, EN 12828 standardı uyarınca yalnızca kapalı devre ısıtma
+tesisatlarında kullanılabilir.
+Bunun dışındaki kullanımlar amacına uygun olmayan kullanım olarak
+kabul edilmektedir. Amacına uygun olmayan kullanım nedeniyle
+meydana gelen hasarlar garanti kapsamı dışındadır.
+Cihazların proses ısısı üretmek amacıyla ticari veya endüstriyel olarak
+kullanılması yasaktır.
+3.2 	AB Tasarım Uygunluğu Deklarasyonu
+Bu ürünün yapısı ve işletimi AB Direktifleri ile üye ülkelerin ek taleplerine
+uygundur. Uyumluluğu CE işareti ile ispatlanmıştır.
+Dilerseniz ürünün uygunluk beyanını talep edebilirsiniz. Bunun için bu
+kılavuzun arka sayfasında belirtilen adrese başvurun.
+Bu ürün, enerji tasarruf düzenlemesi bağlamında, yoğuşmalı
+kazanlardan olan talepleri karşılamaktadır.
+Atık gaz içinde bulunan NO x miktarı 60 mg/kWh’ in altındadır.
+Bu cihaz, EN 677 standardına göre kontrol edilmiştir.
+3.3 	Kullanılabilir Gaz Gruplarına Genel Bakış
+EN 437 standardına uygun olarak kod ve gaz grubu ile birlikte test gazları
+bilgileri:
+3.4 	Tip Etiketi
+Res. 2 Tip etiketi
+Burada, cihazın gücü, ruhsat bilgileri ve seri numarası ile ilgili bilgileri
+bulabilirsiniz.
+Ürün ID No. 	CE-0085BU0450
+Cihaz kategorisi (gaz türü) 	II2 H 3 B/P
+Montaj tipi C13X, C 33X, C 43X, C 53X, C 63X, C 83X ,
+B23, B33
+Tab. 2
+Wobbe-Endeksi (WS) (15 °C) 	Gaz Familyası
+12,7 - 15,2 kWh/m3 	Doğalgaz, 2H tipi
+20,2 - 24,3 kWh/m3 	LPG 3B/P
+Tab. 3
+6 720 619 605-03.1O
+
+-- 5 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3 	Cihazla İlgili Bilgiler
+6
+3.5 	Cihazla İlgili Bilgiler
+• Duvar tipi yoğuşmalı kombi
+• Doğalgaz cihazları, Hannover teşvik programının ve yoğuşmalı
+kombiler için geçerli çevre indeksinin gerekliliklerini karşılamaktadır.
+• Temel kontrol ünitesi BC20 ile temel ayarları doğrudan ısıtma cihazı
+üzerinden yapılabilir.
+• Dış hava sıcaklığına bağlı olarak çalışan bir kumanda sistemi bağlamak
+için EMS-Bus (RC serisi Logamatic veya Logamatic 4000 kumanda
+ünitesi)
+• Üç kademeli sirkülasyon pompası
+• Fişli elektrik bağlantı kablosu
+• Gösterge
+• Otomatik ateşleme
+• EN 298'e uygun manyetik valfler ve alev kontrolü ile tam emniyet
+• Sirkülasyon suyu debisi için asgari bir sınırlama gerekli değil
+• Yerden ısıtma için uygundur
+• Atık gaz/yanma havası için konsantrik boru Ø 60/100 mm veya Ø 80/
+125 mm veya tekli boru Ø 80 mm bağlama imkanı
+• Devir sayısı kontrollü fan
+• Ön karışımlı brülör
+• Kalorifer için sıcaklık sensörü ve termostat
+• Gidiş suyu hattında sıcaklık sınırlayıcısı
+• Otomatik hava pürjörü
+• Emniyet ventili (ısıtma)
+• Manometre (ısıtma)
+• Atık gaz sıcaklık sınırlayıcısı
+• Kullanım suyu öncelikli işletim
+• Motorlu üç yollu vana
+• Genleşme tankı
+İlave olarak GB072-24K'de:
+• Plakalı eşanjör
+• Emniyet ventili (sıcak su)
+İlave olarak GB072-24'te:
+• Boyler sıcaklık sensörü için bağlantı olanağı
+3.6 	Aksesuar
+• Atık gaz aksesuarları
+• Kumanda ünitesi Logamatic RC25/RC35
+• Yoğuşma suyu pompası BM-C20
+• Neutrakon nötralizasyon kutusunötralizasyon kutusu NE1.0/1.1
+• Bağlantı seti AS5/AS6/AS7/AS8
+• Yoğuşma suyu ve emniyet ventili için bağlantı olanağına sahip sifon
+huni (ısıtma ve sıcak su)
+Bu bölümde, tipik aksesuar parçalarının bir listesini
+bulabilirsiniz. Temin edilebilir tüm aksesuarlar ile ilgili
+genel bir fikir edinmek için lütfen üretici firmaya
+başvurunuz.
+
+-- 6 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3	Cihazla İlgili Bilgiler
+7
+3.7 	Boyutlar ve Asgari Mesafeler
+Res. 3
+[1] 	Dış sac
+[2] 	Askı sacı
+[3] 	Boyler gidiş suyu hattı/Sıcak su
+[4] 	Isıtma devresi gidiş suyu hattı
+[5] 	DN 40 sifon huni bağlantısı
+[6] 	Isıtma devresi dönüş suyu hattı
+[7] 	Boyler dönüş suyu hattı/Soğuk su
+[8] 	Gaz
+[*] 	Bu ölçü, sifon huni aksesuarı kullanıldığında geçerlidir
+440	min.
+100
+840
+350
+801
+min.
+100
+338
+2
+1
+4
+3
+6 720 646 840-04.1O
+6
+5
+7
+8
+65 65 65 65 46
+	165*
+160
+
+-- 7 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3 	Cihazla İlgili Bilgiler
+8
+3.8 	Cihaz Yapısı
+Res. 4
+4
+5
+7
+8
+9
+10
+11
+12
+13
+15
+16
+17
+18
+14
+35
+33
+32
+34
+31
+30
+29
+28
+27
+26
+25
+24
+23
+22
+21
+19
+20
+6
+3
+1 	2
+6 720 646 840-01.1O
+35
+36
+
+-- 8 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3	Cihazla İlgili Bilgiler
+9
+Şekil 4 ile ilgili açıklamalar:
+[1] 	Ana şalter
+[2] 	Temel kontrol ünitesi BC20
+[3] 	Manometre
+[4] 	Sıcak su sıcaklık sensörü (GB072-24K)
+[5] 	Yoğuşma suyu sifonu
+[6] 	Plakalı eşanjör (GB072-24K)
+[7] 	Atık gaz sıcaklık sınırlayıcısı
+[8] 	Gaz bağlantı basıncı için ölçüm ağzı
+[9] 	Gaz kısıcı, kısmi yük gaz miktarının ayarı
+[10] Gaz kısıcı, tam yük gaz miktarının ayarı
+[11 ] Azot dolumu için ventil
+[12] Emiş borusu
+[13] Isıtma sistemi gidiş hattı
+[14] Gidiş suyu sıcaklık sensörü
+[15] Genleşme tankı
+[16] Otomatik pürjör
+[17] Tespit mandalı
+[18] Atık gaz borusu
+[19] Kontrol açıklığı
+[20] Fan
+[21] Karıştırma tertibatı
+[22] Elektrod seti
+[23] Ana eşanjör sıcaklık sınırlayıcısı
+[24] Isı bloğu
+[25] Tip etiketi
+[26] Ateşleme transformatörü
+[27] Yoğuşma kabı
+[28] Kontrol açıklığı kapağı
+[29] Pompa devir sayısı şalteri
+[30] Sirkülasyon pompası
+[31] Üç yollu vana
+[32] Türbin (GB072-24K)
+[33] Emniyet ventili (Isıtma devresi)
+[34] Emniyet ventili (sıcak su) (GB072-24K)
+[35] Doldurma ve boşaltma vanası
+[36] Su doldurma donanımı
+
+-- 9 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3 	Cihazla İlgili Bilgiler
+10
+3.9 	Teknik Veriler
+GB072-24 	GB072-24K
+Birim 	Doğalgaz 	Propan 	Butan 	Doğalgaz 	Propan 	Butan
+Maks. nominal ısıl güç (P max ) 40/30 °C 	kW 	23,8 	23,8 	27,2 	23,8 	23,8 	27,2
+Maks. nominal ısıl güç (P max ) 50/30 °C 	kW 	23,6 	23,6 	26,9 	23,6 	23,6 	26,9
+Maks. nominal ısıl güç (P max ) 80/60 °C 	kW 	22,5 	22,5 	25,7 	22,5 	22,5 	25,7
+Maks. nominal sıcaklık yükü (Q max), ısıtma devresi 	kW 	23,1 	23,1 	26,4 	23,1 	23,1 	26,4
+Maks. nominal ısıl güç (P min ) 40/30 °C 	kW 	7,3 	8,0 	9,1 	7,3 	8,0 	9,1
+Maks. nominal ısıl güç (P min ) 50/30 °C 	kW 	7,3 	8,0 	9,1 	7,3 	8,0 	9,1
+Min. nominal ısıl güç (P min ) 80/60 °C 	kW 	6,6 	7,3 	8,2 	6,6 	7,3 	8,2
+Min. nominal sıcaklık yükü (Q min ), ısıtma devresi 	kW 	6,8 	7,5 	8,5 	6,8 	7,5 	8,5
+Maks. nominal ısıl güç (P nW), sıcak kullanım suyu 	kW 	29,7 	29,7 	33,8 	29,7 	29,7 	33,8
+Maks. nominal sıcaklık yükü (Q nW ), sıcak kullanım suyu 	kW 	30,0 	30,0 	34,1 	30,0 	30,0 	34,1
+Cihaz etki derecesi, maks. güç, ısıtma eğrisi 80/60 °C 	% 	97,5 	97,5 	97,5 	97,5 	97,5 	97,5
+Cihaz etki derecesi, maks. güç, ısıtma eğrisi 50/30 °C 	% 	102,2 	102,2 	102,2 	102,2 	102,2 	102,2
+Faydalı norm verimi ısıtma eğrisi 75/60 °C 	% 	104 	104 	104 	104 	104 	104
+Faydalı norm verimi ısıtma eğrisi 40/30 °C 	% 	109 	109 	109 	109 	109 	109
+Beklemedeki ısı kaybı (elektriksel kayıplar dahil) 	% 	0,36 	0,36 	0,32 	0,36 	0,36 	0,32
+Gaz Giriş Değeri
+Doğalgaz H (H i(15 °C) = 9,5 kWh/m 3
+) 	m 3
+/h 	0,72 - 3,18 	– 	– 	0,72 - 3,18 	– 	–
+LPG (H i = 12,9 kWh/kg) 	kg/h 	– 	0,56 - 2,27 	0,66 - 2,62 	– 	0,56 - 2,27 	0,66 - 2,62
+Müsaade edilen gaz bağlantı basıncı
+Doğalgaz H 	mbar 	17 - 25 	– 	– 	17 - 25 	– 	–
+LPG 	mbar 	– 	25 - 35 	25 - 35 	– 	25 - 35 	25 - 35
+Genleşme Kabı
+Ön basınç 	bar 	0,75 	0,75 	0,75 	0,75 	0,75 	0,75
+Toplam hacim 	l 	12 	12 	12 	12 	12 	12
+Sıcak Kullanım Suyu
+Maks. sıcak kullanım suyu miktarı 	l/dak 	– 	– 	– 	12 	12 	12
+Gidiş suyu sıcaklığı 	°C 	– 	– 	– 	40 - 60 	40 - 60 	40 - 60
+Maks. soğuk su geliş sıcaklığı 	°C 	– 	– 	– 	60 	60 	60
+İzin verilen maks. sıcak kullanım suyu basıncı 	bar 	– 	– 	– 	10 	10 	10
+Min. akış basıncı 	bar 	– 	– 	– 	0,2 	0,2 	0,2
+EN 625' göre spesifik su debisi 	l/dak 	– 	– 	– 	14,1 	14,1 	14,1
+EN 13384’e göre baca çapı hesaplaması için atık gaz değerleri
+Atık gaz kütlesel debisi maks./min. nominal değer. 	g/s 	13,1/3,2 	13,0/3,3 	13,2/3,4 	13,1/3,2 	13,0/3,3 	13,2/3,4
+Atık gaz sıcaklığı 80/60 °C maks./min. nominal değer. 	°C 	90/57 	90/57 	90/57 	90/57 	90/57 	90/57
+Atık gaz sıcaklığı 40/30 °C maks./min. nominal değer. 	°C 	60/32 	60/32 	60/32 	60/32 	60/32 	60/32
+CO için norm emisyon faktörü
+mg/
+kWh 	 15 	– 	– 	 15 	– 	–
+NO X için norm emisyon faktörü
+mg/
+kWh 	 35 	– 	– 	 35 	– 	–
+Fanın serbest basma basıncı 	Pa 	80 	80 	80 	80 	80 	80
+Maks. nominal ısıl güçteki CO 2 	% 	9,4 	10,8 	12,4 	9,4 	10,8 	12,4
+Min. nominal ısıl güçteki CO 2 	% 	8,6 	10,5 	12 	8,6 	10,5 	12
+G 636'ya Göre Atık Gaz Değeri Grubu 	– 	G61/G62 	G 61 /G62 	G61/G62 	G61/G 62 	G61 /G62 	G 61 /G62
+NO x sınıfı 	– 	5 	5 	5 	5 	5 	5
+Yoğuşma suyu
+Maks. yoğuşma suyu miktarı (t R = 30 °C) 	l/h 	1,7 	1,7 	1,7 	1,7 	1,7 	1,7
+Yakl. pH değeri 	– 	4,8 	4,8 	4,8 	4,8 	4,8 	4,8
+Genel
+Elektrik gerilimi 	AC... V 	230 	230 	230 	230 	230 	230
+Frekans 	Hz 	50 	50 	50 	50 	50 	50
+Çekilen maks. güç (ısıtma işletmesi) 	W 	120 	120 	120 	120 	120 	120
+EMV sınır değeri sınıfı 	– 	B 	B 	B 	B 	B 	B
+Ses basıncı seviyesi 	dB(A) 	 36 	 36 	 36 	 36 	 36 	 36
+Koruma sınıfı 	IP 	X4D 	X4D 	X4D 	X4D 	X4D 	X4D
+maks. gidiş suyu sıcaklığı 	°C 	82 	82 	82 	82 	82 	82
+Müsaade edilen maks. işletme basıncı (P MS) ısıtma 	bar 	3 	3 	3 	3 	3 	3
+İzin verilen ortam sıcaklığı 	°C 	0 - 50 	0 - 50 	0 - 50 	0 - 50 	0 - 50 	0 - 50
+Tab. 4
+
+-- 10 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+3	Cihazla İlgili Bilgiler
+11
+3.10 	Yoğuşma suyunun bileşimi
+Nominal hacim (ısıtma devresi) 	l 	7,0 	7,0 	7,0 	7,0 	7,0 	7,0
+Ağırlık (ambalaj hariç) 	kg 	43 	43 	43 	44 	44 	44
+Ölçüler G × Y × D 	mm
+440 × 840 ×
+350
+440 × 840 ×
+350
+440 × 840 ×
+350
+440 × 840 ×
+350
+440 × 840 ×
+350
+440 × 840
+× 350
+GB072-24 	GB072-24K
+Birim 	Doğalgaz 	Propan 	Butan 	Doğalgaz 	Propan 	Butan
+Tab. 4
+Madde 	Değer [mg/l]
+Amonyum 	1,2
+Kurşun 	 	0,01
+Kadmiyum 	 	0,001
+Krom 	 	0,1
+Halojen hidrokarbon 	 	0,002
+Hidrokarbonlar 	0,015
+Bakır 	0,028
+Nikel 	0,1
+Cıva 	 	0,0001
+Sülfat 	1
+Çinko 	 	0,015
+Kalay 	 	0,01
+Vanadyum 	 	0,001
+pH-değeri 	4,8
+Tab. 5
+
+-- 11 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+4 	Yönetmelikler
+12
+4 	Yönetmelikler
+Aşağıda belirtilen talimatlara ve yönetmeliklere uyulmalıdır:
+• ilgili yerel yönetim yönetmeliği
+• Yetkili doğalgaz dağıtım kurumunun kuralları
+• EnEG (Enerji Tasarrufu Kanunu)
+• EnEV (Binalarda kullanılan enerji tasarrufu sağlayan ısı yalıtımı ve
+sistem teknolojilerine ilişkin düzenleme)
+• Kazan Dairesi Yönetmeliği veya Eyaletlere Ait Yapı Direktifleri,
+Merkezi Kazan Dairelerinin Yakıt Depolama Alanlarıyla Birlikte
+Kurulmasına Dair YönetmeliklerBeuth-Verlag GmbH -
+Burggrafenstraße 6 - 10787 Berlin-Almanya
+• DVGW, Wirtschafts- und Verlagsgesellschaft, Gas- und Wasser GmbH
+- Josef-Wirmer-Str. 1–3 - 53123 Bonn-Almanya
+– İş Çizelgesi G 600, TRGI
+(Doğalgaz Tesisatlarıyla ilgili Teknik Kurallar)
+– İş Çizelgesi G 670, (Mekanik Havalandırma Ünitesine Sahip
+Ortamlara Gazlı Kazanların Kurulması)
+• TRF 1996 (LPG için Teknik Kurallar)Wirtschafts- und
+Verlagsgesellschaft, Gas- und Wasser GmbH - Josef-Wirmer-Str. 1–3
+- 53123 Bonn-Almanya
+• DIN Normları, Beuth-Verlag GmbH - Burggrafenstraße 6 - 10787
+Berlin-Almanya
+– DIN 1988, TRWI (Kullanma suyu tesisatları için teknik kurallar)
+– DIN 4708 (Merkezi Su Isıtma Tesisatları)
+– DIN 4807 (Genleşme Kapları)
+– DIN EN 12828 (Binalardaki Isıtma Sistemleri)
+– DIN VDE 0100, Bölüm 701 (Anma Gerilimi 1000 V'a Kadar olan
+Kuvvetli Akım Tesisatlarının Kurulması, Banyo Teknesi veya Duş
+Bulunan Odalar)
+• VDI Direktifleri, Beuth-Verlag GmbH - Burggrafenstraße 6 - 10787
+Berlin
+– VDI 2035, sıcak kullanım suyu ısıtma tesisatlarında hasar meydana
+gelmesinin önlenmesi
+• Avusturya:
+– G 1 ve G 2 sayılı ÖVGW Direktifleri ve bölgesel yapı yönetmeliği
+– ÖNORM H 5195-1 (İşletme sıcaklığı 100 °C'ye kadar olan kapalı
+sıcak kullanım suyu/ısıtma tesisatlarında korozyon ve kireçlenme
+nedeniyle hasarlar meydana gelmesinin önlenmesi)
+– ÖNORM H 5195-2 (Kapalı ısıtma tesisatlarında donma nedeniyle
+meydana gelebilecek hasarların önlenmesi)
+• İsviçre: SVGW ve VKF Direktifleri, kantona özel ve bölgesel
+yönetmelikler ve LPG Yönetmeliği'nin 2. bölümü
+
+-- 12 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5	Montaj
+13
+5 	Montaj
+5.1 	Önemli uyarılar
+Cihazların sahip oldukları su hacmi 10 litrenin altında olduğundan
+Buharlı Kazanlar Direktifi'ne göre Grup 1'de yer almaktadırlar. Bu
+nedenle herhangi bir yapı tipi onayına ihtiyaç yoktur.
+▶ Montajdan önce gaz dağıtım kurumunun ve bir baca uzmanının görüşü
+alınmalıdır.
+Açık Isıtma Sistemleri
+▶ Açık ısıtma sistemleri, kapalı sisteme dönüştürülmelidir.
+Sirkülasyonlu ısıtma sistemleri
+▶ Cihazı, çamur ayırıcısı olan bir hidrolik denge kabı üzerinden mevcut
+boru tesisatına bağlayın
+Yerden Isıtma Sistemleri
+▶ Cihaz, yerden ısıtma sistemleri için uygundur, müsaade edilen gidiş
+suyu sıcaklıklarını dikkate alın.
+▶ Yerden ısıtma sisteminde plastik borular kullanılması halinde,
+kullanılan borular DIN 4726/4729 standardına uygun olarak oksijen
+geçirimsiz özellikte olmalıdır. Kullanılan plastik boruların bu özellikleri
+taşımaması halinde sistemler bir eşanjör yardımı ile birbirinden
+ayrılmalıdır.
+Çinko Kaplı Radyatörler ve Tesisat Boruları
+Gaz oluşumunu önlemek için:
+▶ Çinko kaplı radyatörler ve borular kullanmayın.
+Nötralizasyon Tertibatı
+Yetkili kurumun bir nötralizasyon tertibatı bulunmasını şart koşması
+halinde:
+▶ Nötralizasyon tertibatı kullanın.
+Dona Karşı Koruma Maddeleri
+İzin verilen antifiriz maddeleri aşağıda verilmiştir:
+Korozyona karşı koruyucu madde
+Sadece Buderus tarafından kullanımı onaylanmış olan korozyona karşı
+koruyucu maddeler kullanılmalıdır.
+Sızdırmazlık Maddesi
+Isıtma tesisatında sızdırmazlık maddesi kullanımı riskli (termoblokta
+birikme/tıkanma) olduğu için kullanılmaması tavsiye edilir.
+Sirkülasyon Gürültüsü
+Sirkülasyon gürültülerini önlemek için:
+▶ Termostatik, on/off çalışan vb kontrol ekipmanları ile sıcaklık
+kontrollerinin yapıldığı tesisatlarda oluşabilecek debi değişimlerinde
+artacak hız ve buna bağlı ses problemlerini önleyebilmek için sisteme
+bir aşırı akım bypass vanası kullanılmalıdır.
+On-off çalışan kontrol ekipmanları ve termostatik vanalar
+Belirtilen maksimum işletme basıncına dayanıklı ve işletme şartları
+mevcut sisteme uygun on/off kontrol ekipmanları ve termostatik vanalar
+kullanılabilir.
+LPG
+Cihazı yüksek basınçtan korumak için:
+▶ Emniyet ventilli bir basınç regülatörü takın.
+TEHLİKE: Patlama!
+▶ Gazla ilgili parçalar üzerinde çalışmadan önce gaz
+vanasını kapatın.
+▶ Gazla ilgili parçalar üzerinde yapılan çalışmalardan
+sonra sızdırmazlık kontrolü yapın.
+Montaj, gaz ve atık gaz bağlantıları yetkili bayi, ilk
+işletmeye alma işlemi ise mutlaka yetkili servis
+tarafından yapılmalıdır.
+Tanımı 	Konsantrasyonu
+Varidos FSK 	22 - 55 %
+Alphi - 11
+Glythermin NF 	20 - 62 %
+Tab. 6
+
+-- 13 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5 	Montaj
+14
+5.2 	Su kalitesi (doldurma ve tamamlama suyu)
+Uygun olmayan veya kirli su, çamur oluşumu, korozyon veya kireçlenme
+gibi nedenlerle ısıtma cihazında arızalara ve eşanjörün hasar görmesine
+neden olabilir.
+Ayrıca, sıcak kullanım suyu beslemesi,
+örneğin çamur oluşumu, korozyon veya kireçlenme nedeniyle olumsuz
+şekilde etkilenebilir.
+Isıtma cihazını bütün kullanım ömrü boyunca kirecin neden olabileceği
+hasarlardan korumak ve arızasız bir işletim sağlamak için aşağıda
+belirtilenlere dikkat edilmelidir:
+• Sadece işleme tâbi tutulmamış musluk suyu kullanın (Şekil 5'daki
+diyagramı da dikkate alın).
+• Kuyu ve yer altı suları, tesisat suyu olarak uygun değildir.
+• Isıtma devresinin doldurma ve takviye suyundaki sertleştirici
+maddelerin toplam miktarını sınırlayın.
+Tesisat suyunun kalitesi ile bağlantılı olarak müsaade edilen su
+miktarlarını kontrol etmek için Şekil 5'daki grafikten yararlanılabilir.
+Res. 5 100 kW ısıtma gücüne kadar olan tekli cihazlar için tesisat suyu
+ile ilgili gereklilikler
+[1] 	Isıtma cihazının tüm kullanım ömrü boyunca söz konusu olan su
+miktarları (m3 olarak)
+[2] 	Suyun sertliği (dH olarak)
+[3] 	İçme Suyu Yönetmeliği uyarınca işlenmemiş su
+[4] 	Sınır eğrisinin üzerindeki değerlerde önlem alınması gereklidir.
+Bir eşanjör yardımı ile sistemlerin doğrudan ısıtma cihazının
+altında birbirinden ayrılması öngörülmelidir. Bunun mümkün
+olmaması halinde yetkili Buderus temsilciliğine başvurarak
+konuyla ilgili olarak yapılmasına izin verilen önlem çalışmaları
+hakkında bilgi edinin. Aynı durum kaskad sistemleri için de
+geçerlidir.
+• Gerçekte ihtiyaç duyulan tesisat suyu miktarı, tüm kullanım ömrü
+( Şekil 5) boyunca söz konusu olan su miktarından fazlaysa, suyun
+işlenmesi gereklidir. Bu bağlamda sadece Buderus tarafından izin
+verilen kimyasalları, su hazırlama maddelerini vb. kullanın.
+• Su işleme ile ilgili yapılmasına müsaade edilen işlemlerle ilgili olarak
+Buderus'tan bilgi alabilirsiniz. Diğer uyarılar için bkz. Buderus İş
+Çizelgesi K8.
+• Suyun, örneğin pH artırıcı/düşürücü gibi maddelerle (kimyasal katkı
+maddeleri) işleme tâbi tutulmasına izin verilmemektedir.
+▶ Isıtma tesisatı doldurulmadan önce iyi bir şekilde yıkanmalıdır.
+Sıcak kullanım suyu beslemesi
+Sadece işleme tâbi tutulmamış musluk suyu kullanın. Yeraltı sularının
+kullanımı uygun değildir.
+5.3 	Genleşme Tankı Kapasite Kontrolü
+Aşağıdaki grafik, cihaza monte edilmiş olan genleşme tankının yeterli
+olur mu, yoksa ilave bir genleşme tankına ihtiyaç duyulacak mı sorusuna
+cevap bulmada genel bir fikir vermesi açısından kullanılabilir (yerden
+ısıtma için değil).
+Gösterilen diyagram eğrileri için aşağıda belirtilen referans değerleri baz
+alınmıştır:
+• Tesisat su hacminin % 1’i veya genleşme tankı nominal hacminin % 20’
+si
+• DIN 3320'ye uygun olarak 0,5 bar'lık emniyet ventili çalışma basıncı
+farkı
+• Genleşme tankı ön basıncı, eşanjörün üzerindeki statik tesisat
+yüksekliğine karşılık gelmektedir
+• Maks. işletme basıncı: 3 bar
+Res. 6
+[I] 	Ön basınç 0,2 bar
+[II] 	Ön basınç 0,5 bar
+[III] 	Ön basınç 0,75 bar (Temel ayar)
+[IV] 	Ön basınç 1,0 bar
+[V] 	Ön basınç 1,2 bar
+[VI] 	Ön basınç 1,3 bar
+[A] 	Genleşme tankı çalışma aralığı
+[B] 	ilave bir genleşme tankına ihtiyaç var
+[T V] 	Gidiş suyu sıcaklığı
+[VA ] Litre olarak tesisatın toplam hacmi
+▶ Sınır bölgesinde: DIN EN 12828 standardına uygun olarak genleşme
+tankının tam kapasitesini belirleyin.
+▶ Kesişme noktası, eğrinin sağında yer aldığında: İlave bir genleşme
+tankı monte edin.
+30	0
+< 100 kW
+< 50 kW
+6 720 619 605-44.1O
+TV/°C
+V A/l
+90
+80
+70
+60
+50
+40
+30 0 	50 100 150 200
+6 720 610 889-30.2O
+250 300 350 400 450 500 550
+A
+B
+
+-- 14 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5	Montaj
+15
+5.4 	Montaj Yeri Seçimi
+Montaj Yeriyle ilgili Talimatlar
+DVGW-TRGI ve TRF’ nin (LPG için teknik spesifikasyonlar) en son güncel
+talimatı dikkate alınmalıdır.
+▶ Ulusal ve yerel talimatlar dikkate alınmalıdır.
+▶ Asgari montaj ölçüleriyle ilgili olarak atık gaz tahliye aksesuarlarının
+montaj kılavuzlarını dikkate alın.
+Yanma Havası
+Korozyon meydana gelmesini önlemek için yanma havasında aşındırıcı
+maddeler bulunmamalıdır.
+Korozyona neden olan maddelerin başında klor veya flor içeren
+hidrokarbonlar gelmektedir. Bu maddeler, örn. çözücü maddelerde,
+boyalarda, yapışkanlarda, uçucu gazlarda ve evsel temizlik
+maddelerinde bulunabilmektedir.
+Yüzey Sıcaklığı
+Cihazın max. yüzey sıcaklığı 85 °C’ ın altındadır. Bu nedenle TRGI ve TRF
+talimatlarına göre, yanıcı yapı malzemelerine ve mobilyalara karşı özel
+bir koruyucu önleme gerek yoktur. Konuyla ilgili ulusal ve yerel talimatlar
+dikkate alınmalıdır.
+Bodrum Katında Bulunan LPG'li Sistemler
+Cihaz, zeminden daha düşük seviyeye yapılan montajlarda, TRF'nin
+gerekliliklerini karşılamaktadır.
+5.5 	Askı Sacının Monte Edilmesi
+▶ Matbu belge takımında bulunan montaj şablonunu duvara sabitleyin,
+bu sırada kenarlardan asgari 100 mm mesafe bırakmaya dikkat edin
+( sayfa 7).
+▶ Askı sacı için gerekli delikleri montaj şablonuna göre açın.
+Res. 7 Montaj şablonu
+▶ Montaj şablonunu sökün.
+▶ Askı sacını, cihaz ile birlikte verilmiş olan vidaları ve dübelleri
+kullanarak duvara tespit edin.
+▶ Gaz beslemesi için olan boru uzunluğunu ilgili yerel ve ulusal
+yönetmeliklere göre (Almanya için DVGW-TRGI'ye ve TRF'ye göre)
+belirleyin.
+▶ Tesisatın doldurulmasında ve boşaltılmasında kullanılmak üzere
+zemine yakın bir konumda işletmeci tarafında bir doldurma ve
+boşaltma musluğu taktırılmalıdır.
+Sanayi kaynaklı
+Kimyasal temizlik
+çalışmaları
+Trikloretilen, tetrakloretilen, florlu
+hidrokarbonlar
+Yağdan arındırma
+banyoları
+Perkloretilen, trikloretilen, metilkloroform
+Matbaalar 	Trikloretilen
+Berber/Kuaför dükkanları Sprey kutusu püskürtme sevk maddesi, flor
+ve klor içeren hidrokarbonlar
+Evsel kaynaklı
+Temizlik ve yağdan
+arındırma maddeleri
+Perkloretilen, metilkloroform, trikloretilen,
+metilen klorit, tetraklor karbon, hidroklorik
+asit
+Hobi odaları
+Solvent ve incelticiler 	Çeşitli klorlanmış hidrokarbonlar
+Sprey kutuları 	Klorlu florlu hidrokarbonlar
+Tab. 7 Korozyona neden olan maddeler
+6 720 646 840-35.1O
+S10S10
+	S10S10
+754.5754.5
+130130
+	62.562.5
+	130130
+	62.562.5
+777777
+338338
+8716013431 (2009/09)
+8716013431 (2009/09)
+87186428938718642893
+
+-- 15 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5 	Montaj
+16
+5.6 	Cihazın Montajı
+▶ Ambalajların üzerindeki uyarıları dikkate alarak ambalajları sökün.
+▶ Tip etiketinde, belirleyici ülke kodunu ve gaz dağıtım şirketi tarafından
+sağlanan gaz türünün uygunluğunu kontrol edin ( sayfa 8).
+Dış Sacın Çıkartılması
+1. Vidaları sökün.
+2. Tespit mandallarını kaldırın.
+3. Dış sacı öne doğru çıkartın.
+Res. 8
+Montaj için hazırlık yapılması
+▶ Contaları, montaj bağlantı plakası üzerindeki bağlantılara yerleştirin.
+Cihazın monte edilmesi
+▶ Cihazı duvara doğru yanaştırın ve askı sacına asın.
+▶ Boru bağlantılarının rakor somunlarını sıkın.
+Emniyet ventilinin (ısıtma) hortumunun monte edilmesi
+Res. 9
+Hortumun yoğuşma suyu sifonuna monte ediilmesi
+Res. 10
+UYARI: Boru şebekesi içinde bulunan artık maddeler
+cihazın hasar görmesine neden olabilir.
+▶ Artık maddeleri temizlemek için boru şebekesini
+yıkayın.
+Dış sac, yetkisiz olarak sökülmeye karşı iki adet vida
+aracılığıyla emniyete alınmıştır (elektriğe yönelik
+emniyet).
+▶ Dış sacı daima bu vidaları kullanarak sabitleyin.
+3.
+6 720 646 606-08 .1O
+1.
+1.
+2. 6 720 619 605-37.1O
+6 720 646 606-38.1O
+
+-- 16 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5	Montaj
+17
+Doldurma ve boşaltma vanası monte edilmesi
+1. Emniyet yayını çekip çıkartın.
+2. Kör tapayı sökün.
+3. Teslimat kapsamında bulunan doldurma ve boşaltma vanasını monte
+edin ve emniyet yayı ile sabitleyin.
+Res. 11 Doldurma ve boşaltma vanasının montajı
+Sifon huni (Aksesuar)
+Emniyet ventilinden akan suyu ve yoğuşma suyunu emniyetli bir şekilde
+tahliye edebilmek için sifon hunisi bulunmaktadır.
+▶ Tahliye hattını korozyona karşı dayanıklı yapı malzemeleri (ATV-A
+251) kullanarak oluşturun.
+Bu türe giren yapı malzemeleri: Beton borular, sert PVC borular, PVC
+borular, PE-HD borular, PP borular, ABS/ASA borular, içi emaye kaplı
+döküm borular veya plastik kaplı çelik borular, paslanmaz çelik
+borular, boro-silikat cam borular.
+▶ Tahliyeyi doğrudan bir DN 40 bağlantısına monte edin.
+Res. 12
+1.
+3.	2.
+6 720 646 840-34.1O
+UYARI:
+▶ Tahliye üzerinde değişiklik yapmayın veya tahliyeyi
+kapatmayın.
+▶ Hortumları sadece aşağı doğru eğimli şekilde döşeyin.
+6 720 619 605-36.1O
+DN 40
+
+-- 17 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+5 	Montaj
+18
+Atık gaz aksesuarlarının bağlanması
+▶ Atık gaz aksesuarını takın ve birlikte verilen vidalar ile sabitleyin.
+Res. 13
+[1] 	Atık gaz adaptörü
+[2] 	Vidalar
+▶ Atık gaz yolunun sızdırmazlığını kontrol edin.
+5.7 	Bağlantıların Kontrol Edilmesi
+Su Bağlantıları
+▶ Isıtma gidiş suyu vanasını ve ısıtma dönüş suyu vanasını açın ve ısıtma
+tesisatını doldurun.
+▶ Ayrılma yerlerini sızdırmazlık bakımından kontrol edin (test basıncı:
+manometrede maks. 2,5 bar).
+▶ Cihazın girişindeki soğuk su vanasını ve sıcak su akana kadar sıcak su
+musluklarından birini açın (test basıncı: maks. 10 bar).
+Gaz Borusu
+▶ Gaz armatüründe aşırı basınç nedeniyle hasar meydana gelmesini
+önlemek için gaz vanasını kapatın.
+▶ Ayrılma yerlerini sızdırmazlık bakımından kontrol edin (test basıncı:
+maks. 150 mbar).
+▶ Basıncı tahliye edin.
+5.8 	Sıcak su boyleri için boyler bağlantısı olmayan
+cihazların işletilmesi
+▶ Montaj bağlantı plakasındaki sıcak ve soğuk su bağlantılarını WW
+kapakları 1/2" (Ürün numarası 7 709 000 227) aksesuarını
+kullanarak kapatın.
+Montajla ilgili daha ayrıntılı bilgi için atık gaz tahliye
+aksesuarının ilgili montaj kılavuzuna bakın.
+1
+2
+6 720 645 406-04.1O
+
+-- 18 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+6	Elektrik Bağlantısı
+19
+6 	Elektrik Bağlantısı
+6.1 	Genel uyarılar
+▶ Ulusal ve uluslararası yönetmeliklerce öngörülen koruyucu önlemleri
+dikkate alın.
+▶ Banyo küveti veya duş bulunan odalar: Cihazı bir kaçak akım koruma
+şalterine bağlayın.
+▶ Cihazın şebeke bağlantısına başka tüketici cihaz bağlamayın.
+Sigortalar
+Cihaz, iki adet sigorta ile koruma altına alınmıştır. Bu sigortalar devre
+kartı üzerindedir.
+6.2 	Cihazın bağlanması
+Koruma alanları
+[1] 	Koruma alanı 1, doğrudan banyo küvetinin üst kısmı
+[2] 	Koruma alanı 2, banyo küvetinin/duşun 60 cm'lik çevresi
+Koruma alanı 1 ve 2 dışında bağlantı:
+▶ Şebeke kablosu takılı olduğunda, bunu topraklı bir prize takın.
+-veya-
+▶ Şebeke kablosu takılı olmadığında, şebeke kablosunu uygun bir devre
+kesiciye (sigorta) bağlayın.
+Koruma alanı 1 ve 2 dahilinde bağlantı:
+▶ Elektrik bağlantısı, min. 3 mm kontak aralığına sahip bir tüm
+kutuplardan ayırıcı bir ayırma tertibatı (örn. sigortalar, otomatik
+sigortalar) kullanılarak oluşturulmalıdır.
+▶ Koruma alanı 1'de: Şebeke kablosu dikey olarak yukarıya doğru
+döşenmelidir.
+UYARI: Elektrik akımı nedeniyle hayati tehlike!
+Gerilim altında olan elektrikli parçalara temas elektrik
+çarpmasına yol açabilir.
+▶ Elektrikli parçalarda çalışmalardan önce gerilim
+beslemesini tüm kutuplardan kesin (sigorta/otomatik
+sigorta) ve yanlışlıkla açılmaya karşı emniyete alın.
+Yedek sigortalar, kumanda cihazının kapağındadır.
+UYARI: Elektrik akımı nedeniyle hayati tehlike!
+Montaj, sadece bir topraklama hattının mevcut olduğu
+yerlerde yapılabilir.
+Elektrik işleri, sadece elektrik tesisatları konusunda
+uzman yetkili servis personelleri tarafından yapılabilir.
+Elektrik işlerine başlamadan önce:
+▶ Şebeke gerilimini tüm kutuplardan ayırarak kesin ve
+yanlışlıkla açılmaması için gerekli önlemleri alın.
+▶ Gerilim olmadığından emin olun.
+▶ Diğer tesisat parçalarının bağlantı şemalarını da
+dikkate alın.
+225 cm
+6 720 612 659-13.3TT
+2	2 	1	1
+60 cm	60 cm
+
+-- 19 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+6 	Elektrik Bağlantısı
+20
+6.3 	Bağlantı Kablolu ve Elektrik Fişli Cihazların ile
+Bağlanması
+▶ Elektrik fişini topraklı bir prize takın (priz, koruma alanı 1 ve 2
+içerisinde olmamalıdır).
+-veya-
+▶ Cihaz, koruma alanı 1 veya 2 içerisine bağlandığında veya kablo
+uzunluğu yeterli gelmediğinde kabloyu sökün ( Bölüm 6.5.5).
+▶ Elektrik bağlantısı, min. 3 mm kontak aralığına sahip, tü kutupları
+ayıran bir ayırma tertibatı (örn. sigortalar, LS şalterleri) kullanılarak
+oluşturulmalıdır.
+▶ Kablo, koruma alanı 1 içerisinde dikey olarak yukarıya doğru
+döşenmelidir.
+6.4 	Kontrol sistemleri
+Cihaz, aşağıda belirtilen Buderus kumanda sistemleri ile işletilebilir.
+• Logamatic RC serisi kumanda ünitesi
+• Logamatic 4000 kumanda sistemi
+6.5 	Aksesuarların Bağlanması
+Bağlantı klemenslerinin muhafaza kapağının sökülmesi
+Harici aksesuarlara yönelik bağlantılar, hep bir arada bir muhafaza
+kapağının arkasında bulunmaktadır. Klemens soketleri renkli ve mekanik
+olarak kodlanmıştır.
+▶ Kapaktaki 3 adet vidayı sökün ve kapağı aşağıya doğru çıkartın.
+Res. 14
+Sıçrayan suya karşı koruma
+▶ Sıçrayan suya karşı koruma (IP) için sabitleme bandını daima kablo
+çapına uygun olarak kesin.
+Res. 15
+▶ Kabloyu sabitleme bandından geçirin ve aşağıda belirtilen şekilde
+bağlayın.
+▶ Kabloyu gerilim önleyici ile emniyete alın.
+6.5.1 	On/Off termostatın bağlanması
+On/Off termostatın bazı ülkelerde (örn. Almanya, Avusturya)
+kullanılmasına izin verilmemektedir Ülkelere özgü yasal düzenlemeleri
+dikkate alın.
+▶ On/Off termostatı, bu sembol ile işaretlenmiş olan
+klemenslere bağlayın
+6.5.2 	Logamatic RC35 kumanda ünitesinin
+veya Logamatic 4000 kumanda sisteminin bağlanması
+▶ Logamatic'i, bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+Temel kontrol ünitesi BC20, yeterli gerilim stabilitesine
+sahip, resmi besleme şebekelerine yapılacak elektrik
+bağlantısı için öngörülmüştür.
+▶ Büyük gerilim dalgalanmaları söz konusu olduğunda,
+gerilim stabilizasyonu için bir balast takılması
+öngörülmelidir.
+6 720 646 606-10.1O
+5-7
+6 720 612 259-30.1R
+13-14	10-12
+8-9
+EMS	EMS
+
+-- 20 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+6	Elektrik Bağlantısı
+21
+6.5.3 	Yerden ısıtma sisteminin gidiş suyu sıcaklık denetleyicisi
+AT90'ın bağlanması
+Sadece yerden ısıtma sistemli ve cihaza doğrudan bir hidrolik bağlantısı
+olan ısıtma tesisatlarında.
+Sıcaklık denetleyicisi devreye girdiğinde ısıtma ve sıcak kullanım suyu
+işletmesi kesilir.
+▶ Bu sembol ile işaretlenmiş olan klemensteki
+köprüyü sökün.
+▶ Sıcaklık denetleyicisini bağlayın.
+6.5.4 	Yoğuşma suyu pompası BM-C20'nin veya nötralizasyon
+kutusu NE1.x'in bağlanması
+Hatalı yoğuşma suyu tahliyesinde ısıtma ve sıcak kullanım suyu işletmesi
+kesilir.
+▶ Bu sembol ile işaretlenmiş olan klemensteki
+köprüyü sökün.
+▶ Brülör kapatması için olan kontağı bağlayın.
+6.5.5 	Dış Hava Sıcaklık Sensörünün Bağlanması
+Kumanda sistemi için olan dış hava sıcaklık sensörü, ısıtma cihazına
+bağlanır.
+▶ Dış hava sıcaklık sensörünü, bu sembol ile
+işaretlenmiş olan klemenslere bağlayın.
+6.5.6 	Boyler sıcaklık sensörünün bağlanması
+▶ Buderus boyler sıcaklık sensörü olan boyleri
+doğrudan bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+-veya-
+▶ Buderus Termostatlı boyleri, boyler sıcaklık sensörü 63012831 ile
+donatın.
+▶ Boyler sıcaklık sensörünü, bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+6.5.7 	Harici gidiş suyu sıcaklık sensörü (örn. hidrolik denge kabı)
+bağlanması
+▶ Harici gidiş suyu sıcaklık sensörünü, bu sembol
+ile işaretlenmiş olan klemenslere bağlayın.
+6.5.8 	Sirkülasyon pompası (230 V, maks. 100 W) bağlanması
+(GB072-24)
+Sirkülasyon pompası, temel kontrol ünitesi BC20 veya kumanda sistemi
+(Logamatic RC35 kumanda ünitesi veya Logamatic 4000) tarafından
+kumanda edilebilir.
+▶ Sirkülasyon pompasını bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+▶ Temel kontrol ünitesi BC20 aracılığıyla yapılan
+kontrolde 2.CL ve 2.CE servis fonksiyonlarını buna
+uygun olarak ayarlayın.
+6.5.9 	Harici sirkülasyon pompası (230 V, maks. 250 W)
+bağlanması
+Sirkülasyon pompası daima ısıtma işletmesinde çalışır (cihazdaki dahili
+pompa ile paralel olarak).
+▶ Sirkülasyon pompasını bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+6.5.10 Boyler pompasının (230 V, maks. 100 W)/
+harici üç yollu vananın (230 V, yay geri dönüşlü) bağlanması
+(GB072-24)
+Boyleri ısıtmak için bir boyler pompası veya harici bir üç
+yollu vana bağlandığında, dahili üç yollu vanaya ihtiyaç
+yoktur.
+▶ Dahili üç yollu vanadaki fişi çekip çıkartın.
+▶ Boyler pompasını/harici üç yollu vanayı (230 V, aksesuar ürün no.
+7 736 995 008) bu sembol ile işaretlenmiş olan klemenslere
+bağlayın.
+▶ Temel kontrol ünitesi BC20'de tesisatın yapılandırmasını uygun
+şekilde ayarlayın (2.1F servis fonksiyonu).
+▶ Üç yollu vanada (Ürün no. 7 736 995 008) pompa blokaj süresini
+(2.2A servis fonksiyonu) 20 saniye olarak ayarlayın.
+6.5.11 Modüllerin monte edilmesi ve bağlanması
+Modüller (örn. güneş enerjisi, denge kabı, üç yollu vana modülü) harici
+olarak monte edilmelidir. Temel kontrol ünitesi/Kumanda sistemi için
+olan iletişim bağlantısı EMS-Bus üzerinden gerçekleşmektedir.
+▶ İletişim kablosunu bu sembol ile işaretlenmiş
+olan klemenslere bağlayın.
+İlave bir gerilim beslemesi gerekli olduğunda:
+▶ 230 V'luk kabloyu bu sembol ile işaretlenmiş olan
+klemenslere bağlayın.
+6.5.12 Şebeke kablosunun bağlanması
+Mevcut elektrik kablosunun değiştirilmesi gerektiğinde,
+aşağıda belirtilen kablo tipleri kullanılmalıdır:
+• Koruma alanı 1 ve 2'de:
+– NYM-I 3 × 1,5 mm 2
+• Koruma alanı 1 ve 2'nin dışında:
+– HO5VV-F 3 x 0,75 mm 2 veya
+– HO5VV-F 3 x 1,0 mm 2
+▶ Yeni elektrik bağlantı kablosunu bu sembol ile
+işaretlenmiş olan klemenslere bağlayın.
+▶ Bağlantı kablosunu, koruyucu toprak iletkeni diğer
+iletkenlerden daha uzun olacak şekilde bağlayın.
+UYARI: Seri bağlantı!
+▶ Birden fazla harici emniyet tertibatı, örneğin AT90 ve
+yoğuşma suyu basma pompası gibi, bağlandığında,
+bunların birbirine seri olarak bağlanması gereklidir.
+UYARI: Seri bağlantı!
+▶ Birden fazla harici emniyet tertibatı, örneğin AT90 ve
+yoğuşma suyu basma pompası gibi, bağlandığında,
+bunların birbirine seri olarak bağlanması gereklidir.
+Isıtma cihazına, sadece brülör kapatması için olan kontak
+bağlanabilir.
+▶ Yoğuşma suyu pompasının uygulayıcı tarafındaki 230
+V-AC'lik bağlantısını yapın.
+N 	L
+EMS	EMS
+230V
+OUT
+N 	L
+
+-- 21 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+7 	Termik Dezenfeksiyon Yapılması
+22
+7 	Termik Dezenfeksiyon Yapılması
+7.1 	Genel bilgiler
+Sıcak kullanım suyunun, örneğin Lejyonella nedeniyle bakteriyolojik
+olarak kirlenmesini önlemek için uzun süre kullanılmamış tesisatlarda bir
+termik dezenfektasyon yapmanızı öneririz.
+Termik dezenfeksiyon, bir kumanda sisteminde belirli bir zaman için
+sabit olarak programlanabilir, bkz. kumanda sisteminin (örn. kumanda
+ünitesi RC35) kullanma kılavuzu.
+Termik dezenfeksiyon, sıcak kullanım suyunun kullanıldığı yerler dahil
+olmak üzere sıcak kullanım suyu sistemini kapsamaktadır. Güneş enerjisi
+sıcak kullanım suyu boylerinde sadece boylerin üst kısmı kapsam
+dahilindedir.
+7.2 	Sıcak Kullanım Suyu Boyleri Olan Cihazlarda Termik
+Dezenfeksiyon Yapılması
+7.2.1 	Kumanda sistemi kontrollü termik dezenfeksiyon
+Termik dezenfeksiyon bu durumda sadece kumanda sistemi tarafından
+kumanda edilir, bkz. kumanda sisteminin kullanma kılavuzu (örn.
+kumanda ünitesi RC35).
+▶ Sıcak kullanım suyu musluklarını kapatın.
+▶ Ev sakinlerini haşlanma tehlikesine karşı uyarın.
+▶ Sirkülasyon pompası varsa, bunu sürekli işletime ayarlayın.
+▶ Kumanda sisteminde (örn. kumanda ünitesi RC35), termik
+dezenfeksiyonu maksimum sıcaklıkta etkinleştirin.
+▶ Maksimum sıcaklığa ulaşılıncaya kadar bekleyin.
+▶ En yakındaki sıcak su musluğunu ve mesafe olarak en uzaktaki sıcak su
+musluğunu, 3 dakika boyunca 70 °C sıcaklığında sıcak su akana kadar
+açık bırakın.
+▶ Sirkülasyon pompasını ve kumanda sistemini tekrar normal işletime
+ayarlayın.
+7.2.2 	Temel kontrol ünitesi kontrollü termik dezenfeksiyon
+Termik dezenfeksiyon bu durumda temel kontrol ünitesi BC20'de
+başlatılır ve termik dezenfeksiyon işlemi otomatik olarak sona erer.
+▶ Sıcak kullanım suyu musluklarını kapatın.
+▶ Ev sakinlerini haşlanma tehlikesine karşı uyarın.
+▶ Sirkülasyon pompası varsa, bunu sürekli işletime ayarlayın.
+▶ 2.9L servis fonksiyonu üzerinden termik dezenfeksiyonu etkinleştirin.
+▶ Maksimum sıcaklığa ulaşılıncaya kadar bekleyin.
+▶ En yakındaki sıcak su musluğunu ve mesafe olarak en uzaktaki sıcak su
+musluğunu, 3 dakika boyunca 70 °C sıcaklığında sıcak su akana kadar
+açık bırakın.
+▶ Sirkülasyon pompasını tekrar normal işletime ayarlayın.
+Suyun sıcaklığı 35 dakika boyunca 75 °C'de tutulduktan sonra termik
+dezenfeksiyon sonlandırılır.
+Termik dezenfeksiyonu yarıda kesmek için:
+▶ Cihazı kapatın ve tekrar açın.
+Cihaz tekrar çalışmaya başlar ve gidiş suyu sıcaklığı gösterilir.
+7.3 	Karşı akım prensibi ile sıcak su hazırlayan cihazlarda
+(GB072-24K) termik dezenfeksiyon yapılması
+▶ Sıcak kullanım suyu musluklarını kapatın.
+▶ Ev sakinlerini haşlanma tehlikesine karşı uyarın.
+▶ Kumanda sisteminde, sıcak kullanım suyu programını zamanı ve sıcak
+kullanım suyu sıcaklığı ile uygun şekilde ayarlayın.
+▶ Servis fonksiyonu 2.2d üzerinden termik dezenfeksiyonu
+etkinleştirin.
+Su, sadece sıcak kullanım suyu kullanıldığında ısıtılır.
+▶ En yakındaki sıcak su musluğunu ve mesafe olarak en uzaktaki sıcak su
+musluğunu, 3 dakika boyunca 70 °C sıcaklığında sıcak su akana kadar
+açık bırakın.
+▶ Kumanda sistemini tekrar normal işletime ayarlayın.
+▶ Servis fonksiyonu 2.2d üzerinden termik dezenfeksiyonu tekrar
+kapatın.
+İKAZ: Haşlanma tehlikesi!
+Sıcak su, ağır derecede haşlanmalara neden olabilir.
+▶ Termik dezenfeksiyon yalnızca, normal işletme
+zamanlarının dışında uygulanmalıdır.
+▶ Boylerde bulunan sıcak kullanım suyu, termik
+dezenfeksiyondan sonra termik kayıplar nedeniyle
+yavaş yavaş, ayarlanmış olan sıcak kullanım suyu
+sıcaklığına kadar soğur. Bu nedenle sıcak kullanım
+suyu, kısa bir süre için ayarlı sıcaklıktan daha yüksek
+olabilir.
+Sıcak kullanım suyu çok miktarda kullanıldığında, gerekli
+sıcaklığa ulaşılamayabilir.
+▶ Eş zamanlı olarak 70 °C'lik dezenfeksiyon sıcaklığına
+ulaşılmasını engelleyecek miktarda sıcak kullanım
+suyu kullanmayın.
+
+-- 22 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+8	Sirkülasyon pompası
+23
+8 	Sirkülasyon pompası
+8.1 	Isıtma Pompası Karakteristik Eğrisinin Değiştirilmesi
+Sirkülasyon pompasının devir sayısı, pompanın klemens kutusu
+üzerinden değiştirilebilir.
+Res. 16 Pompa grafiği
+[1] 	Şalter konumu 1 eğrisi
+[2] 	Şalter konumu 2 eğrisi
+[3] 	Şalter konumu 3'ün karakteristik eğrisi (temel ayar)
+[H] 	Net basma yüksekliği
+[V] 	Sirkülasyon debisi
+8.2 	Pompa Blokaj Koruması
+Pompa her durduğunda, sirkülasyon pompasını ve üç yollu vanayı kısa
+süreli olarak çalıştırmak için bir zaman ölçümü devreye girmektedir.
+5
+4
+3
+2
+H/m
+.
+6720619 656-40.1O
+6
+1400
+V/l/h
+1200	1000	800	600	400	200	0
+0
+1
+1
+2
+3
+▶ Olabildiğince fazla enerji tasarrufu yapabilmek ve
+olması muhtemel sirkülasyon seslerini en düşük
+seviyede tutumak için daha düşük bir karakteristik eğri
+seçin.
+.
+Bu fonksiyon, ısıtma tesisatı uzun süre kullanılmadığında
+sirkülasyon pompasının ve üç yollu vananın bloke
+olmasını önler.
+
+-- 23 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+9 	Çevre Koruma/Geri Dönüşüm
+24
+9 	Çevre Koruma/Geri Dönüşüm
+Çevre koruma, Buderus grubunda temel bir şirket prensibidir.
+Ürünlerin kalitesi, ekonomiklik ve çevre koruma, bizler için aynı önem
+seviyesindedir. Çevre korumayla ilgili yasalar ve talimatlara çok sıkı bir
+şekilde uyulmaktadır.
+Çevrenin korunması için bizler, ekonomikliği dikkate alarak, mümkün
+olan en iyi teknolojiyi ve malzemeyi kullanmaya özen gösteririz.
+Ambalaj
+Ürünlerin paketlenmesinde, optimum bir geri kazanıma (Recycling)
+imkan sağlayan, ülkeye özel geri kazandırma sistemlerinde katılımcıyız.
+Kullandığımız tüm paketleme malzemeleri çevreye zarar vermeyen, geri
+kazanımlı malzemelerdir.
+Eski Cihazlar
+Eski cihazlarda yeniden değerlendirilebilecek (geri kazanabilecek)
+malzemeler mevcuttur.
+Cihazların yapı grupları kolaylıkla ayrılabilir ve plastik malzemeler
+işaretlenmiştir. Böylelikle farklı yapı grupları ayrıştırılabilir ve geri
+kazanıma veya etkisizleştirilmeye yönlendirilebilir.
+
+-- 24 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+10	İşletim ve Arıza Göstergeleri
+25
+10 	İşletim ve Arıza Göstergeleri
+10.1 	İşletim ve Arıza Göstergelerinin Gösterilmesi
+Temel kontrol ünitesi BC20, tüm emniyet, kontrol ve kumanda
+elemanlarını denetlemektedir.
+Cihazın her bir işletme durumu ayarı bir işletme kodu, arızalar ise ilave
+olarak bir arıza kodu ile kayıt altına alınır. Bu sayede, aşağıdaki tablolar
+aracılığıyla arıza teşhisinin kolayca yapılması sağlanır.
+İşletme ve arıza göstergeleri aşağıda belirtilen şekilde sınıflandırılmıştır:
+• İşletme mesajları; bunlar normal işletim sırasındaki işletme
+durumlarını gösterir.
+– İşletme sırasındaki işletme mesajları bilgi menüsü üzerinden
+okunabilir.
+• Bloke edici arızalar, cihazın belirli bir süre için kapanmasına neden
+olur. Bloke edici arıza ortadan kalktığında, cihaz kendiliğinden tekrar
+çalışmaya başlar.
+– Bloke edici arızaların mesajları, arıza kodu ve işletme kodu ile
+birlikte göstergede sürekli olarak gösterilir.
+• Kilitleyici arızalar, cihazın kapanmasına neden olan ve cihaz
+resetlenmeden tekrar çalışmadığı arızalardır.
+– Kilitleyici arızaların mesajları, arıza kodu ve işletme kodu ile birlikte
+göstergede yanıp sönerek gösterilir.
+Res. 17 Örnek bir işletme kodu
+[1] 	Alfanümerik göstergedeki arıza kodu
+[2] 	Metin satırındaki servis fonksiyonu
+[3] 	Metin satırındaki işletme kodu
+1
+2 	3
+6 720 619 605-33.1O
+
+-- 25 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+11 	İşletmeye Alma Protokolü
+26
+11 	İşletmeye Alma Protokolü
+Müşteri/Tesis İşletmecisi:
+Soyadı, adı 	Cadde, no.
+Telefon/Faks 	Posta kodu, yer adı
+Yetkili bayi:
+Sipariş numarası:
+Cihaz tipi: 	(Her bir cihaz için ayrı bir protokol doldurun!)
+Seri numarası:
+İşletmeye Alma Tarihi:
+ Tek cihaz |  kaskad, cihaz sayısı: ......
+Kurulum yeri: 	 Kiler |  çatı katı | diğer:
+Havalandırma açıklıkları: Sayısı: ......, Ebadı: yaklaşık 	cm 2
+Atık gaz tahliyesi: 	 Çift borulu sistem |  LAS |  Havalandırma boşluğu |  Boruların birbirinden ayrı olarak döşenmesi
+ Plastik |  Paslanmaz çelik |  Alüminyum
+Toplam uzunluk: yaklaşık ...... m | 90°'lik dirsek: ...... adet | 15 - 45°'lik dirsek: ...... adet
+Atık gaz hattının karşı akımda sızdırmazlığının kontrol edilmesi:  evet |  hayır
+Maksimum nominal ısıl güçte, yanma havasındaki CO2 değer: 	%
+Maksimum nominal ısıl güçte, yanma havasındaki O2 değer: 	%
+Alçak veya yüksek basınçla ilgili notlar:
+Gaz ayarları ve atık gaz ölçümü:
+Ayarlanmış olan gaz türü:  Doğalgaz H |  Propan |  Bütan
+Gaz bağlantı basıncı: 	mbar Bekleme durumundaki gaz bağlantı basıncı: 	mbar
+Ayarlanmış olan maksimum nominal ısıl güç: 	kW Ayarlanmış olan minimum nominal ısıl güç: 	kW
+Maksimum nominal ısıl güçteki gaz debisi: 	l/dk. Minimum nominal ısıl güçteki gaz debisi: 	l/dk.
+Isıl değer H iB: 	kWh/m3
+Maksimum nominal ısıl güçteki CO 2 : 	% Minimum ısıl güçteki CO2 : 	%
+Maksimum nominal ısıl güçteki O 2: 	% Minimum ısıl güçteki O 2 : 	%
+Maksimum nominal ısıl güçteki CO: 	ppm Minimum ısıl güçteki CO: 	ppm
+Maksimum nominal ısıl güçteki atık gaz sıcaklığı: 	°C Minimum nominal ısıl güçteki atık gaz sıcaklığı: 	°C
+Ölçülen maksimum gidiş suyu sıcaklığı: 	°C Ölçülen minimum gidiş suyu sıcaklığı: 	°C
+Tesisat hidroliği:
+ Hidrolik denge kabı, tip: 	 	İlave genleşme tankı
+ Sirkülasyon pompası: 	Hacmi/Ön basıncı:
+Otomatik hava pürjörü var mı?
+ evet |  hayır
+ Sıcak su boyleri/Tipi/Sayısı/Isıtma yüzeyi kapasitesi:
+ Tesisat hidroliği kontrol edildi, Açıklamalar:
+Değiştirilen servis fonksiyonları: (Burada, değiştirilmiş olan servis fonksiyonlarını okuyun ve değerleri işleyin.)
+Örnek: Servis fonksiyonu 2.5F, 0'dan 12'ye değiştirildi
+“Servis Menüsündeki Ayarlar” çıkartması dolduruldu ve yapıştırıldı 
+Isıtma tesisatı kumanda ünitesi:
+ RC35 (oda termostatı olarak) |  Logamatic 4_ _ _(lütfen tip adını eksiksiz olarak yazın)
+ RC20 × ...... adet, ısıtma devresinin (devrelerinin) kodlaması:
+ SM10 |  VM10 |  WM10 |  MM10 × ...... adet |  EM10 |  ASM10
+ CM431 |  ZM424 |  FM441 |  FM442 |  FM443 |  FM444 |  FM445 |  FM446 |  FM448 |  FM455 |  FM456 |
+ FM457 |  MEC2
+Diğer:
+ Isıtma tesisatı kontrol cihazı ayarlandı, açıklamalar:
+ Isıtma tesisatının ayarlarında yapılan değişiklikler kontrol cihazının kullanma/montaj kılavuzuna işlendi
+
+-- 26 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+11	İşletmeye Alma Protokolü
+27
+Yapılan işler:
+ Elektrik bağlantıları kontrol edildi, açıklamalar:
+ Yoğuşma suyu sifonu dolduruldu 	 Yanma havası/Atık gaz ölçümü yapıldı
+ Fonksiyon kontrolü yapıldı
+ Gaz ve su tarafında sızdırmazlık kontrolü yapıldı
+İşletmeye alma işlemi; ayar değerlerinin kontrolünü, ısıtma cihazındaki görsel sızdırmazlık kontrolünü, ısıtma cihazının ve kontrol cihazının fonksiyon
+kontrolünü kapsamaktadır. Yetkili bayi, ısıtma tesisatını bir kontrolden geçirir.
+İşletmeye alma çalışmaları sırasında Buderus bileşenlerinde ufak tefek montaj hataları tespit edildiğinde, Buderus, müşterinin onaylaması halinde tüm
+bu montaj hatalarını gidermeye hazırdır. Bu durum, montaj performansı ile ilgili sorumluluğun üstlenildiği anlamına gelmez.
+Yukarıda adı geçene tesisat, belirtilen kapsam dahilinde kontrol edildi.
+____________________________________________
+Servis personelinin adı-soyadı
+Dokümanlar kullanıcıya teslim edildi. Tesisat sahibine, aksesuarları dahil
+olmak üzere ısıtma cihazının emniyet uyarıları ve bakımı ile ilgili olarak bilgi
+verildi. Yukarıda adı geçen tesisat sahibine, tesisat için düzenli olarak
+bakım yapılması gerektiği belirtildi.
+___________________________________________
+Tarih, tesisat sahibinin adı-soyadı
+____________________________________________
+Tarih, yetkili bayinin imzası
+Buraya ölçüm raporunu yapıştırın.
+
+-- 27 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+12 	Ek
+28
+12 	Ek
+12.1 	Sensör değerleri
+12.1.1 Dış hava sıcaklık sensörü (aksesuar)
+12.1.2 Gidiş suyu, harici gidiş suyu sıcaklık sensörü
+12.1.3 Sıcak kullanım suyu sıcaklık sensörü (GB072-24K)
+12.1.4 Boyler sıcaklık sensörü (aksesuar)
+Dış hava
+sıcaklığı / °C 	Direnç/ 
+Dış hava
+sıcaklığı / °C 	Direnç/ 
+–20 	95 893 	6 	24 100
+–19 	90 543 	7 	22 952
+–18 	85 522 	8 	21 865
+–17 	80 810 	9 	20 835
+–16 	76 385 	10 	19 860
+–15 	72 228 	11 	18 936
+–14 	68 322 	12 	18 060
+–13 	64 650 	13 	17 229
+–12 	61 196 	14 	16 441
+–11 	57 947 	15 	15 693
+–10 	54 889 	16 	14 984
+–9 	52 011 	17 	14 310
+–8 	49 299 	18 	13 671
+–7 	46 745 	19 	13 063
+–6 	44 338 	20 	12 486
+–5 	42 069 	21 	11 938
+–4 	39 928 	22 	11 416
+–3 	37 909 	23 	10 920
+–2 	36 004 	24 	10 449
+–1 	34 205 	25 	10 000
+0 	32 506 	26 	9 573
+1 	30 901 	27 	9 167
+2 	29 385 	28 	8 780
+3 	27 951 	29 	8 411
+4 	26 596 	30 	8 060
+5 	25 313
+Tab. 8
+Sıcaklık/ °C
+Ölçüm toleransı  10 % 	Direnç/ 
+20 	14 772
+25 	11 981
+30 	9 786
+35 	8 047
+40 	6 653
+45 	5 523
+50 	4 608
+55 	3 856
+60 	3 243
+65 	2 744
+70 	2 332
+75 	1 990
+80 	1 704
+85 	1 464
+90 	1 262
+95 	1 093
+100 	950
+Tab. 9
+Sıcak kullanım suyu sıcaklığı/ °C 	Direnç/ 
+0 	33242
+10 	19947
+20 	12394
+30 	7947
+40 	5242
+50 	3548
+60 	2459
+70 	1740
+80 	1256
+90 	923
+Tab. 10
+Boyler sıcaklığı /
+°C 	Direnç / 
+Boyler sıcaklığı /
+°C 	Direnç / 
+10 	19 860 	41 	5 121
+11 	18 936 	42 	4 921
+12 	18 060 	43 	4 730
+13 	17 229 	44 	4 547
+14 	16 441 	45 	4 372
+15 	15 693 	46 	4 205
+16 	14 984 	47 	4 045
+17 	14 310 	48 	3 892
+18 	13 671 	49 	3 746
+19 	13 063 	50 	3 605
+20 	12 486 	51 	3 471
+21 	11 938 	52 	3 343
+22 	11 416 	53 	3 220
+23 	10 920 	54 	3 102
+24 	10 449 	55 	2 989
+25 	10 000 	56 	2 880
+26 	9 573 	57 	2 776
+27 	9 167 	58 	2 677
+28 	8 780 	59 	2 581
+29 	8 411 	60 	2 490
+30 	8 060 	61 	2 402
+31 	7 725 	62 	2 317
+32 	7 406 	63 	2 236
+33 	7 102 	64 	2 159
+34 	6 812 	65 	2 084
+35 	6 536 	66 	2 072
+36 	6 272 	67 	1 943
+37 	6 020 	68 	1 877
+38 	5 779 	69 	1 814
+39 	5 550 	70 	1 753
+40 	5 331
+Tab. 11
+
+-- 28 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+12	Ek
+29
+12.2 	KIM 	12.3 	Isıtma eğrisi
+Res. 18
+[A] 	Son nokta ( – 10 °C dış hava sıcaklığında)
+[AT] Dış hava sıcaklığı
+[B] 	Ayak noktası (+ 20 °C dış hava sıcaklığında)
+[pA] Isıtma eğrisinin son noktasındaki gidiş suyu sıcaklığı
+[pB] Isıtma eğrisinin ayağındaki gidiş suyu sıcaklığı
+[S] 	Otomatik ısıtma kapatması (yaz işletimi)
+[VT] Gidiş suyu sıcaklığı
+Cihaz 	Numara
+GB072-24K (Doğalgaz) 	1121
+GB072-24K (LPG) 	1127
+GB072-24 (Doğalgaz) 	1122
+GB072-24 (LPG) 	1126
+Tab. 12
+AT/°C
+VT/°C
+6 720 619 605-43.1O
+A
+B S
++20
+pA
+pB
+-10
+
+-- 29 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+12 	Ek
+30
+12.4 	Isıtma/Sıcak su kapasitesi için ayar değerleri
+GB072-24/GB072-24K
+Doğalgaz H
+üst ısıl değer 	HS(0 °C) (kWh/m3 ) 	9,3 	9,8 	10,2 	10,7 	11,2 	11,6 	12,1 	12,6 	13,0
+alt ısıl değer 	H i(15 °C) (kWh/m3 ) 	7,9 	8,3 	8,7 	9,1 	9,5 	9,9 	10,3 	10,7 	11,1
+Gösterge 	Güç (kW) 	Yüklenme (kW) 	Gaz miktarı (t V/tR = 80/60 °C'de l/dk. olarak)
+23 	6,6 	6,8 	13 	13 	12 	12 	11 	11 	11 	10 	10
+25 	7,2 	7,4 	14 	14 	13 	13 	12 	12 	11 	11 	11
+30 	8,7 	8,9 	17 	17 	16 	15 	15 	14 	14 	13 	13
+35 	10,1 	10,4 	20 	19 	19 	18 	17 	17 	16 	15 	15
+40 	11,6 	11,9 	23 	22 	22 	21 	20 	19 	18 	18 	17
+45 	13,1 	13,4 	26 	25 	24 	23 	22 	22 	21 	20 	19
+50 	14,5 	14,9 	29 	28 	27 	26 	25 	24 	23 	22 	21
+55 	16 	16,4 	32 	31 	30 	29 	27 	27 	25 	24 	23
+60 	17,5 	17,9 	35 	33 	32 	31 	30 	29 	28 	27 	26
+65 	18,9 	19,5 	37 	36 	35 	34 	32 	31 	30 	29 	28
+70 	20,4 	21 	40 	39 	38 	36 	35 	34 	32 	31 	30
+75 	21,9 	22,5 	43 	42 	41 	39 	37 	36 	35 	33 	32
+80 	23,3 	24 	46 	45 	43 	42 	40 	39 	37 	35 	34
+85 	24,8 	25,5 	49 	47 	46 	44 	43 	41 	39 	38 	36
+90 	26,3 	27 	52 	50 	49 	47 	45 	44 	42 	40 	38
+95 	27,8 	28,5 	55 	53 	51 	49 	48 	46 	44 	42 	41
+100 	29,2 	30 	58 	56 	54 	52 	50 	48 	46 	44 	43
+Tab. 13
+Propan 	Butan
+Gösterge 	Güç (kW) 	Yüklenme (kW) 	Güç (kW) 	Yüklenme (kW)
+25 	7,3 	7,5 	8,2 	8,5
+30 	8,8 	9,0 	9,9 	10,2
+35 	10,2 	10,5 	11,5 	11,9
+40 	11,7 	12,0 	13,2 	13,6
+45 	13,1 	13,5 	14,9 	15,3
+50 	14,6 	15,0 	16,5 	17,0
+55 	16,1 	16,5 	18,2 	18,7
+60 	17,5 	18,0 	19,9 	20,4
+65 	19,0 	19,5 	21,5 	22,2
+70 	20,4 	21,0 	23,2 	23,9
+75 	21,9 	22,5 	24,9 	25,6
+80 	23,4 	24,0 	26,5 	27,3
+85 	24,8 	25,5 	28,2 	29,0
+90 	26,3 	27,0 	29,9 	30,7
+95 	27,7 	28,5 	31,5 	32,4
+100 	29,2 	30,0 	33,2 	34,1
+Tab. 14
+
+-- 30 of 32 --
+
+
+
+-- 31 of 32 --
+
+Bosch Termoteknik Isıtma ve Klima Sanayi Ticaret Anonim Şirketi
+Merkez: Organize Sanayi Bölgesi - 45030 Manisa
+İrtibat Adresi: Aydınevler Mahallesi İnönü Caddesi No:20
+Küçükyalı Ofis Park A Blok
+34854 Maltepe/İstanbul
+Tel: (0216) 432 0 800
+Faks: (0216) 432 0 986
+Isı Sistemleri Servis Destek Merkezi: 444 5 474
+www.buderus-tr.com
+Üretici Firma:
+Bosch Thermotechnik GmbH
+Sophienstr. 30 - 32
+D-35576 Wetzlar / Germany
+www.bosch-thermotechnology.com
+Türkiye'de üretilm-iştir.
+Kullanım Ömrü 10 Yıldır
+Şikayet ve itirazlarınız konusundaki başvurularınızı tüketici mahkemelerine
+ve tüketici hakem heyetlerine yapabilirsiniz.
+Malın ayıplı olması durumunda;
+a) Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme,
+b) Satılanı alıkoyup ayıp oranında satış bedelinden indirim isteme,
+c) Aşırı bir masraf gerektirmediği takdirde, bütün masrafları satıcıya ait olmak
+üzere satılanın ücretsiz onarılmasını isteme,
+ç) İmkân varsa, satılanın ayıpsız bir misli ile değiştirilmesini isteme, hak-
+
+-- 32 of 32 --
+

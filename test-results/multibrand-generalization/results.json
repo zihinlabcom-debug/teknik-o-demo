@@ -1,0 +1,872 @@
+{
+  "startedAt": "2026-09-22T15:05:52.207Z",
+  "model": "gpt-4.1",
+  "method": "One uncached researchManufacturer call per identity, sequential; original document reader wrapped only for observation. No URLs or reference answers sent to the model.",
+  "approvedDomains": {
+    "vaillant": [
+      "vaillant.com.tr",
+      "vaillant.com",
+      "vaillant.co.uk"
+    ],
+    "bosch": [
+      "bosch-homecomfort.com",
+      "bosch-thermotechnology.com",
+      "bosch.com.tr"
+    ],
+    "demirdokum": [
+      "demirdokum.com.tr"
+    ],
+    "buderus": [
+      "buderus.com",
+      "buderus.com.tr"
+    ],
+    "baymak": [
+      "baymak.com.tr"
+    ],
+    "eca": [
+      "eca.com.tr"
+    ],
+    "ariston": [
+      "ariston.com"
+    ],
+    "viessmann": [
+      "viessmann.com.tr",
+      "viessmann.com"
+    ],
+    "ferroli": [
+      "ferroli.com"
+    ],
+    "immergas": [
+      "immergas.com",
+      "immergas.com.tr"
+    ],
+    "airfel": [
+      "airfel.com.tr"
+    ],
+    "arcelik": [
+      "arcelik.com.tr"
+    ],
+    "beko": [
+      "beko.com",
+      "beko.com.tr"
+    ],
+    "warmhaus": [
+      "warmhaus.com.tr",
+      "warmhaus.com"
+    ]
+  },
+  "productionFingerprintsBefore": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "a579bc9f6c225cd8c06cc66bc99bd71a996ae5d09d5a4c47184e473a993747ad",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "200cbf03cf7b617260503b8b3be3b560ecafcd9ed444292930d2f5392614beae",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "0521a7cf595643fe45c59a2644cd8c7f7bb6dbba6db2172360e4f025f5adb037"
+  },
+  "results": [
+    {
+      "identity": {
+        "brand": "Baymak",
+        "model": "DUOTEC",
+        "code": "E01"
+      },
+      "researchStatus": "verified",
+      "elapsedMs": 12168,
+      "discoveredUrl": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+      "sourceUrl": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+      "modelDocumentVerified": true,
+      "errorCodeDocumentVerified": true,
+      "meaning": "Başarısız ateşleme",
+      "modelProposedMeaning": "Başarısız ateşleme",
+      "candidateCount": 5,
+      "poolOnlyVerifiedDocument": true,
+      "failure": null,
+      "probes": [
+        {
+          "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:05:55.951Z",
+          "raw": {
+            "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+            "title": "Baymak DUOTEC DHW Tam Yoğuşmalı Kombi Kullanma Kılavuzu"
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T15:06:04.161Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Baymak",
+            "model": "DUOTEC",
+            "code": "E01",
+            "meaning": "Başarısız ateşleme",
+            "title": "Baymak DUOTEC Hata Kodları",
+            "revision": "",
+            "modelEvidence": "Model 42 kW",
+            "codeEvidence": "E01 \tBaşarısız ateşleme",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 17,
+            "candidates": [
+              {
+                "name": "Gaz beslemesi yok veya yetersiz",
+                "basis": "Başarısız ateşleme",
+                "part": "gaz valfi"
+              },
+              {
+                "name": "Ateşleme elektrodu arızalı veya kirli",
+                "basis": "Başarısız ateşleme",
+                "part": "ateşleme elektrodu"
+              },
+              {
+                "name": "İyonizasyon elektrodu arızalı",
+                "basis": "Başarısız ateşleme",
+                "part": "iyonizasyon elektrodu"
+              },
+              {
+                "name": "Gaz valfi arızalı",
+                "basis": "Başarısız ateşleme",
+                "part": "gaz valfi"
+              },
+              {
+                "name": "Elektronik kart arızası",
+                "basis": "Başarısız ateşleme",
+                "part": "elektronik kart"
+              }
+            ],
+            "questionIds": [
+              "screen",
+              "gasSupply",
+              "ignitionSound",
+              "flame",
+              "recentWork"
+            ],
+            "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+          ]
+        }
+      ],
+      "quoteChecks": {
+        "model": true,
+        "code": true,
+        "codeMatchesInput": true,
+        "candidates": [
+          {
+            "name": "Gaz beslemesi yok veya yetersiz",
+            "basis": "Başarısız ateşleme",
+            "present": true
+          },
+          {
+            "name": "Ateşleme elektrodu arızalı veya kirli",
+            "basis": "Başarısız ateşleme",
+            "present": true
+          },
+          {
+            "name": "İyonizasyon elektrodu arızalı",
+            "basis": "Başarısız ateşleme",
+            "present": true
+          },
+          {
+            "name": "Gaz valfi arızalı",
+            "basis": "Başarısız ateşleme",
+            "present": true
+          },
+          {
+            "name": "Elektronik kart arızası",
+            "basis": "Başarısız ateşleme",
+            "present": true
+          }
+        ]
+      },
+      "documents": [
+        {
+          "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "finalUrl": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true
+        }
+      ],
+      "result": {
+        "status": "verified",
+        "knowledge": {
+          "code": "E01",
+          "meaning": "Başarısız ateşleme",
+          "causes": [
+            "Gaz beslemesi yok veya yetersiz",
+            "Ateşleme elektrodu arızalı veya kirli",
+            "İyonizasyon elektrodu arızalı",
+            "Gaz valfi arızalı",
+            "Elektronik kart arızası"
+          ],
+          "parts": [
+            "gaz valfi",
+            "ateşleme elektrodu",
+            "iyonizasyon elektrodu",
+            "elektronik kart"
+          ],
+          "questions": [
+            "Cihazınızın ekranı açık mı?",
+            "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
+            "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
+            "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?",
+            "Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?"
+          ],
+          "questionIds": [
+            "screen",
+            "gasSupply",
+            "ignitionSound",
+            "flame",
+            "recentWork"
+          ],
+          "page": 17,
+          "source": {
+            "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+            "title": "Baymak DUOTEC Hata Kodları",
+            "revision": "",
+            "reviewedAt": "2026-09-22T15:06:04.181Z"
+          }
+        }
+      }
+    },
+    {
+      "identity": {
+        "brand": "Ariston",
+        "model": "CLAS ONE",
+        "code": "501"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 3094,
+      "discoveredUrl": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+      "sourceUrl": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "document_download_or_parse",
+        "reason": "Manufacturer document unavailable"
+      },
+      "probes": [
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+              "status": 404,
+              "contentType": "text/html; charset=utf-8"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:06:06.950Z",
+          "raw": {
+            "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+            "title": "Manuale installazione e manutenzione CLAS ONE"
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T15:06:07.412Z",
+          "raw": {
+            "stage": "document",
+            "error": "document_unavailable",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf"
+          ]
+        }
+      ],
+      "quoteChecks": null,
+      "documents": [
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Bu marka, model ve hata kodu için üretici belgesi indirilemedi veya doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Immergas",
+        "model": "VICTRIX TERA",
+        "code": "27"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 20889,
+      "discoveredUrl": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+      "sourceUrl": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+      "modelDocumentVerified": true,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": "C53* - C83\t\n26 \t27\n28\n* per completare la configurazione C53 prevedere anche un terminale di scarico a\ntetto. Non è ammessa la configurazione su pareti opposte all'edificio.",
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "literal_source_evidence_validation",
+        "reason": "At least one model/code/candidate quotation is absent from the downloaded document",
+        "quoteChecks": {
+          "model": true,
+          "code": false,
+          "codeMatchesInput": true,
+          "candidates": [
+            {
+              "name": "Yanlış baca konfigürasyonu",
+              "basis": "Non è ammessa la configurazione su pareti opposte all'edificio.",
+              "present": true
+            }
+          ]
+        }
+      },
+      "probes": [
+        {
+          "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:06:11.861Z",
+          "raw": {
+            "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+            "title": "Libretto Istruzioni VICTRIX TERA (Italian) – includes error code table with code 27"
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T15:06:28.146Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Immergas",
+            "model": "VICTRIX TERA",
+            "code": "27",
+            "meaning": "C53* - C83\t\n26 \t27\n28\n* per completare la configurazione C53 prevedere anche un terminale di scarico a\ntetto. Non è ammessa la configurazione su pareti opposte all'edificio.",
+            "title": "VICTRIX TERA 24 PLUS",
+            "revision": "",
+            "modelEvidence": "VICTRIX TERA",
+            "codeEvidence": "27",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 18,
+            "candidates": [
+              {
+                "name": "Yanlış baca konfigürasyonu",
+                "basis": "Non è ammessa la configurazione su pareti opposte all'edificio.",
+                "part": "baca"
+              }
+            ],
+            "questionIds": [
+              "screen",
+              "power",
+              "gasSupply",
+              "flame"
+            ],
+            "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+          },
+          "urls": [
+            "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+          ]
+        }
+      ],
+      "quoteChecks": {
+        "model": true,
+        "code": false,
+        "codeMatchesInput": true,
+        "candidates": [
+          {
+            "name": "Yanlış baca konfigürasyonu",
+            "basis": "Non è ammessa la configurazione su pareti opposte all'edificio.",
+            "present": true
+          }
+        ]
+      },
+      "documents": [
+        {
+          "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "finalUrl": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Bu marka, model ve hata kodu için üretici bilgisi doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Demirdöküm",
+        "model": "Atromix",
+        "code": "F.28"
+      },
+      "researchStatus": "verified",
+      "elapsedMs": 16465,
+      "discoveredUrl": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+      "sourceUrl": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+      "modelDocumentVerified": true,
+      "errorCodeDocumentVerified": true,
+      "meaning": "Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+      "modelProposedMeaning": "Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+      "candidateCount": 13,
+      "poolOnlyVerifiedDocument": true,
+      "failure": null,
+      "probes": [
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+              "status": 200,
+              "contentType": "application/pdf;charset=UTF-8"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:06:30.982Z",
+          "raw": {
+            "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+            "title": "Atromix Montaj ve Bakım Kılavuzu (Installation and Maintenance Instructions)"
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T15:06:44.618Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Demirdöküm",
+            "model": "Atromix",
+            "code": "F.28",
+            "meaning": "Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "title": "Arıza kodu anlamı ve nedenleri",
+            "revision": "0020242182_FT2",
+            "modelEvidence": "Atromix",
+            "codeEvidence": "F.28 Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 33,
+            "candidates": [
+              {
+                "name": "Gaz sayacı arızası veya gaz basıncı sensörü devrede",
+                "basis": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+                "part": "gaz sayacı"
+              },
+              {
+                "name": "Gazda hava bulunması",
+                "basis": "gazda hava var",
+                "part": ""
+              },
+              {
+                "name": "Düşük gaz giriş basıncı",
+                "basis": "gaz giriş basıncı çok düşük",
+                "part": ""
+              },
+              {
+                "name": "Termik kapatma düzeneği devrede",
+                "basis": "termik kapatma düzeneği (TAE) devrede",
+                "part": ""
+              },
+              {
+                "name": "Yanlış gaz memesi kullanımı",
+                "basis": "yanlış gaz memesi",
+                "part": "gaz memesi"
+              },
+              {
+                "name": "Yanlış yedek parça gaz armatürü kullanımı",
+                "basis": "yanlış yedek parça gaz armatürü",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Gaz armatüründe arıza",
+                "basis": "gaz armatüründe arıza",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Elektronik kart üzerindeki çoklu soketin doğru takılmaması",
+                "basis": "elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+                "part": "elektronik kart"
+              },
+              {
+                "name": "Kablo demetinde kesinti",
+                "basis": "kablo demetinde kesinti",
+                "part": ""
+              },
+              {
+                "name": "Ateşleme sistemi arızası",
+                "basis": "ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+                "part": "ateşleme sistemi"
+              },
+              {
+                "name": "İyonizasyon akımında kesinti",
+                "basis": "iyonizasyon akımında (kablo, elektrot) kesinti",
+                "part": "iyonizasyon elektrodu"
+              },
+              {
+                "name": "Üründe hatalı topraklama",
+                "basis": "üründe hatalı topraklama",
+                "part": ""
+              },
+              {
+                "name": "Elektronik arızası",
+                "basis": "elektronik arızalı",
+                "part": "elektronik kart"
+              }
+            ],
+            "questionIds": [
+              "screen",
+              "power",
+              "gasSupply",
+              "ignitionSound",
+              "recentWork",
+              "flame"
+            ],
+            "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          ]
+        }
+      ],
+      "quoteChecks": {
+        "model": true,
+        "code": true,
+        "codeMatchesInput": true,
+        "candidates": [
+          {
+            "name": "Gaz sayacı arızası veya gaz basıncı sensörü devrede",
+            "basis": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+            "present": true
+          },
+          {
+            "name": "Gazda hava bulunması",
+            "basis": "gazda hava var",
+            "present": true
+          },
+          {
+            "name": "Düşük gaz giriş basıncı",
+            "basis": "gaz giriş basıncı çok düşük",
+            "present": true
+          },
+          {
+            "name": "Termik kapatma düzeneği devrede",
+            "basis": "termik kapatma düzeneği (TAE) devrede",
+            "present": true
+          },
+          {
+            "name": "Yanlış gaz memesi kullanımı",
+            "basis": "yanlış gaz memesi",
+            "present": true
+          },
+          {
+            "name": "Yanlış yedek parça gaz armatürü kullanımı",
+            "basis": "yanlış yedek parça gaz armatürü",
+            "present": true
+          },
+          {
+            "name": "Gaz armatüründe arıza",
+            "basis": "gaz armatüründe arıza",
+            "present": true
+          },
+          {
+            "name": "Elektronik kart üzerindeki çoklu soketin doğru takılmaması",
+            "basis": "elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+            "present": true
+          },
+          {
+            "name": "Kablo demetinde kesinti",
+            "basis": "kablo demetinde kesinti",
+            "present": true
+          },
+          {
+            "name": "Ateşleme sistemi arızası",
+            "basis": "ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+            "present": true
+          },
+          {
+            "name": "İyonizasyon akımında kesinti",
+            "basis": "iyonizasyon akımında (kablo, elektrot) kesinti",
+            "present": true
+          },
+          {
+            "name": "Üründe hatalı topraklama",
+            "basis": "üründe hatalı topraklama",
+            "present": true
+          },
+          {
+            "name": "Elektronik arızası",
+            "basis": "elektronik arızalı",
+            "present": true
+          }
+        ]
+      },
+      "documents": [
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "finalUrl": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true
+        }
+      ],
+      "result": {
+        "status": "verified",
+        "knowledge": {
+          "code": "F28",
+          "meaning": "Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+          "causes": [
+            "Gaz sayacı arızası veya gaz basıncı sensörü devrede",
+            "Gazda hava bulunması",
+            "Düşük gaz giriş basıncı",
+            "Termik kapatma düzeneği devrede",
+            "Yanlış gaz memesi kullanımı",
+            "Yanlış yedek parça gaz armatürü kullanımı",
+            "Gaz armatüründe arıza",
+            "Elektronik kart üzerindeki çoklu soketin doğru takılmaması",
+            "Kablo demetinde kesinti",
+            "Ateşleme sistemi arızası",
+            "İyonizasyon akımında kesinti",
+            "Üründe hatalı topraklama",
+            "Elektronik arızası"
+          ],
+          "parts": [
+            "gaz sayacı",
+            "gaz memesi",
+            "gaz armatürü",
+            "elektronik kart",
+            "ateşleme sistemi",
+            "iyonizasyon elektrodu"
+          ],
+          "questions": [
+            "Cihazınızın ekranı açık mı?",
+            "Evde diğer elektrikli cihazlar çalışıyor mu?",
+            "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
+            "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
+            "Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?",
+            "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?"
+          ],
+          "questionIds": [
+            "screen",
+            "power",
+            "gasSupply",
+            "ignitionSound",
+            "recentWork",
+            "flame"
+          ],
+          "page": 33,
+          "source": {
+            "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+            "title": "Arıza kodu anlamı ve nedenleri",
+            "revision": "0020242182_FT2",
+            "reviewedAt": "2026-09-22T15:06:44.717Z"
+          }
+        }
+      }
+    },
+    {
+      "identity": {
+        "brand": "Buderus",
+        "model": "Logamax plus GB072",
+        "code": "6A"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 6752,
+      "discoveredUrl": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+      "sourceUrl": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "document_identity_check",
+        "reason": "model=true, code=false"
+      },
+      "probes": [
+        {
+          "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:06:48.419Z",
+          "raw": {
+            "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+            "title": "Logamax plus GB072 – Montaj Kılavuzu"
+          },
+          "urls": []
+        }
+      ],
+      "quoteChecks": null,
+      "documents": [
+        {
+          "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "finalUrl": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": false
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Bu marka, model ve hata kodu için üretici belgesi indirilemedi veya doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Warmhaus",
+        "model": "Ewa",
+        "code": "E02"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 10977,
+      "discoveredUrl": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+      "sourceUrl": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "document_identity_check",
+        "reason": "model=false, code=true"
+      },
+      "probes": [
+        {
+          "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T15:06:57.277Z",
+          "raw": {
+            "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+            "title": "EWA Montaj ve Kullanım Kılavuzu (Model EWA, Revizyon R08/01.2026)"
+          },
+          "urls": []
+        }
+      ],
+      "quoteChecks": null,
+      "documents": [
+        {
+          "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "finalUrl": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "readable": true,
+          "modelTextMatch": false,
+          "codeTextMatch": true
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Bu marka, model ve hata kodu için üretici belgesi indirilemedi veya doğrulanamadı."
+      }
+    }
+  ],
+  "finishedAt": "2026-09-22T15:07:02.691Z",
+  "productionFingerprintsAfter": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "a579bc9f6c225cd8c06cc66bc99bd71a996ae5d09d5a4c47184e473a993747ad",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "200cbf03cf7b617260503b8b3be3b560ecafcd9ed444292930d2f5392614beae",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "0521a7cf595643fe45c59a2644cd8c7f7bb6dbba6db2172360e4f025f5adb037"
+  },
+  "productionFilesUnchanged": true
+}

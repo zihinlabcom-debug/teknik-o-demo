@@ -1,0 +1,88 @@
+Kurulum ve bakımdan önce dikkatlice okuyun.
+Montaj Kılavuzu
+Duvar Tipi Yoğuşmalı Kombi
+Logamax plus
+6 720 646 606-00.1O
+GB072-24 | GB072-24K
+6721835147 (2021/03)TR
+
+-- 1 of 32 --
+
+Logamax plus – 6721835147 (2021/03)
+İçindekiler
+2
+İçindekiler
+1 	Sembol Açıklamaları ve Emniyetle İlgili Bilgiler . . . . . . . . . . . . 4
+1.1 	Sembol Açıklamaları . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.2 	Emniyetle İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2 	Teslimat Kapsamı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3 	Cihazla İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.1 	Amacına Uygun Kullanım . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.2 	AB Tasarım Uygunluğu Deklarasyonu . . . . . . . . . . . . . . . . 6
+3.3 	Kullanılabilir Gaz Gruplarına Genel Bakış . . . . . . . . . . . . . 6
+3.4 	Tip Etiketi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.5 	Cihazla İlgili Bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.6 	Aksesuar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.7 	Boyutlar ve Asgari Mesafeler . . . . . . . . . . . . . . . . . . . . . . 8
+3.8 	Cihaz Yapısı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3.9 	Teknik Veriler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.10 	Yoğuşma suyunun bileşimi . . . . . . . . . . . . . . . . . . . . . . 12
+4 	Yönetmelikler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+5 	Montaj . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+5.1 	Önemli uyarılar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+5.2 	Su kalitesi (doldurma ve tamamlama suyu) . . . . . . . . . 15
+5.3 	Genleşme Tankı Kapasite Kontrolü . . . . . . . . . . . . . . . 15
+5.4 	Montaj Yeri Seçimi . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+5.5 	Askı Sacının Monte Edilmesi . . . . . . . . . . . . . . . . . . . . . 16
+5.6 	Cihazın Montajı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5.7 	Bağlantıların Kontrol Edilmesi . . . . . . . . . . . . . . . . . . . 19
+5.8 	Sıcak su boyleri için boyler bağlantısı olmayan cihazların
+işletilmesi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6 	Elektrik Bağlantısı . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.1 	Genel uyarılar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.2 	Cihazın bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6.3 	Bağlantı Kablolu ve Elektrik Fişli Cihazların ile Bağlanması
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+6.4 	Kontrol sistemleri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+6.5 	Aksesuarların Bağlanması . . . . . . . . . . . . . . . . . . . . . . . 21
+6.5.1 	On/Off termostatın bağlanması . . . . . . . . . . . . . . . . . . 21
+6.5.2 	Logamatic RC35 kumanda ünitesinin veya Logamatic
+4000 kumanda sisteminin bağlanması . . . . . . . . . . . . . 21
+6.5.3 	Yerden ısıtma sisteminin gidiş suyu sıcaklık denetleyicisi
+AT90'ın bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.4 	Yoğuşma suyu pompası BM-C20'nin veya nötralizasyon
+kutusu NE1.x'in bağlanması . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.5 	Dış Hava Sıcaklık Sensörünün Bağlanması . . . . . . . . . 22
+6.5.6 	Boyler sıcaklık sensörünün bağlanması . . . . . . . . . . . . 22
+6.5.7 	Harici gidiş suyu sıcaklık sensörü (örn. hidrolik denge kabı)
+bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.8 	Sirkülasyon pompası (230 V, maks. 100 W) bağlanması
+(GB072-24) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.9 	Harici sirkülasyon pompası (230 V, maks. 250 W)
+bağlanması . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.10 Boyler pompasının (230 V, maks. 100 W)/harici üç yollu
+vananın (230 V, yay geri dönüşlü) bağlanması
+(GB072-24) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+6.5.11 Modüllerin monte edilmesi ve bağlanması . . . . . . . . . . 22
+6.5.12 Şebeke kablosunun bağlanması . . . . . . . . . . . . . . . . . . . 22
+7 	Termik Dezenfeksiyon Yapılması . . . . . . . . . . . . . . . . . . . . . . . 23
+7.1 	Genel bilgiler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+7.2 	Sıcak Kullanım Suyu Boyleri Olan Cihazlarda Termik
+Dezenfeksiyon Yapılması . . . . . . . . . . . . . . . . . . . . . . . . 23
+7.2.1 	Kumanda sistemi kontrollü termik dezenfeksiyon . . . . 23
+7.2.2 	Temel kontrol ünitesi kontrollü termik dezenfeksiyon . 23
+7.3 	Karşı akım prensibi ile sıcak su hazırlayan cihazlarda
+(GB072-24K) termik dezenfeksiyon yapılması . . . . . . 23
+8 	Sirkülasyon pompası . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+8.1 	Isıtma Pompası Karakteristik Eğrisinin Değiştirilmesi . 24
+8.2 	Pompa Blokaj Koruması . . . . . . . . . . . . . . . . . . . . . . . . . 24
+9 	Çevre Koruma/Geri Dönüşüm . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+10 İşletim ve Arıza Göstergeleri . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+10.1 	İşletim ve Arıza Göstergelerinin Gösterilmesi . . . . . . . . 26
+11 İşletmeye Alma Protokolü . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+12 Ek . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+12.1 	Sensör değerleri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+12.1.1 Dış hava sıcaklık sensörü (aksesuar) . . . . . . . . . . . . . . . 29
+12.1.2 Gidiş suyu, harici gidiş suyu sıcaklık sensörü . . . . . . . . 29
+12.1.3 Sıcak kullanım suyu sıcaklık sensörü (GB072-24K) . . . 29
+12.1.4 Boyler sıcaklık sensörü (aksesuar) . . . . . . . . . .

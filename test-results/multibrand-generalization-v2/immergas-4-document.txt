@@ -1,0 +1,861 @@
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	1
+1
+IL PRESENTE FOGLIO È DA LASCIARE ALL'UTENTE ABBINATO AL LIBRETTO ISTRUZIONI DELL' APPARECCHIO 	IT
+KIT TERMOSTATO DI SICUREZZA A BRACCIALE
+COD. 3.019229 - 3.027084
+AVVERTENZE GENERALI.
+Tutti i prodotti Immergas sono protetti con idoneo imballaggio da trasporto.
+Il materiale deve essere immagazzinato in ambienti asciutti ed al riparo dalle intemperie.
+Il presente foglio istruzioni contiene informazioni tecniche relative all’installazione del kit Immergas. Per quanto concerne le altre temati-
+che correlate all’installazione del kit stesso (a titolo esemplificativo: sicurezza sui luoghi di lavoro, salvaguardia dell’ambiente, prevenzioni
+degli infortuni), è necessario rispettare i dettami della normativa vigente ed i principi della buona tecnica.
+L’installazione o il montaggio improprio dell’apparecchio e/o dei componenti, accessori, kit e dispositivi Immergas potrebbe dare luogo a
+problematiche non prevedibili a priori nei confronti di persone, animali, cose. Leggere attentamente le istruzioni a corredo del prodotto
+per una corretta installazione dello stesso.
+L'installazione e la manutenzione devono essere effettuate in ottemperanza alle normative vigenti, secondo le istruzioni del costruttore e
+da parte di personale abilitato nonché professionalmente qualificato, intendendo per tale quello avente specifica competenza tecnica nel
+settore degli impianti, come previsto dalla Legge.
+Cod. 1.033477 - rev. ST.000880/014 - 02/26
+• Victrix Superior
+• UCI Eureka
+• Victrix Zeus Superior
+• Victrix Zeus
+• Victrix Tera - Victrix Tera V2
+• Victrix Tera V3 (Export)
+• Victrix Tera Vip - Victrix Tera Vip V2
+• Victrix Omnia
+• Victrix Omnia V2 (Export)
+• Victrix Pro V2
+• Victrix Extra/Plus
+• Victrix Maior/Plus
+• Magis Combo
+• Mythos HP
+• Magis Hercules Pro
+• Magis Hercules Pro Mini
+• Magis Hercules Pro Mini EH
+• Magis Hercules Mini Hydro
+• Magis Hercules Mini Hydro EH
+ELENCO APPARECCHI ABBINABILI.
+STD.001124/015
+
+-- 1 of 24 --
+
+2 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+2
+a
+b
+c
+b
+a
+INSTALLAZIONE KIT PER I MODELLI MAGIS HERCULES PRO MINI E MAGIS HERCULES PRO MINI EH.
+Apertura quadro principale.
+e
+d e	e 	f
+Per effettuare l'apertura del quadro principale è sufficiente seguire le seguenti istruzioni:
+1. togliere tensione all'apparecchio disalimentando l'interruttore a monte della caldaia.
+2. Togliere i tappi di protezione (a) e svitare le viti (b) per rimuovere il profilo estetico (c) (Fig. 2).
+3. Aprire il portello della cover (f) per farlo basculare. Togliere i tappi di protezione (d), svitare le due viti frontali superiori e le viti infe-
+riori (e) per rimuovere la cover (f) (Fig. 3).
+CARATTERISTICHE TECNICHE.
+Pre-regolazione temperatura limitatore 	55 °C
+Campo temperatura limitatore 	40 ÷ 70 °C
+Tolleranza 	0-10 K
+Riarmo 	Manuale
+Temperatura di riarmo 	intervento 25 ± 8K
+Grado di protezione 	IP 40
+Classe di isolamento 	I
+Gradiente termico 	< 1 K/min.
+Temperatura massima testa 	55 °C
+Temperatura massima bulbo 	125 °C
+Temperatura di stoccaggio 	15 ÷ 60 °C
+Portata sui contatti C-1; 0,5 A/250 V~
+C-2; 10(2,5) A/250 V~
+Uscita 	Contatti in interruzione
+Tipo di azione 	1B
+Situazione di installazione 	Ambiente normale
+Passacavo 	3/8” GAS
+Tipo di montaggio 	su tubazione
+3
+STD.001124/015
+
+-- 2 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	3
+4
+g
+g
+5
+i 	h
+i
+i
+6
+4. Svitare le viti (g) (Fig. 4).
+5. Aprire il quadro principale come indicato in figura 5.
+6. Togliere il coperchio del quadro elettrico (h) svitando le viti (i) (Fig. 6).
+STD.001124/015
+
+-- 3 of 24 --
+
+4 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+o
+p
+q
+8
+l 	l
+m
+n
+7
+Percorso cablaggio kit termostato sicurezza a bracciale su Magis Hercules Pro Mini e Magis Hercules Pro Mini EH.
+N.B.: il cablaggio fornito nel kit non è sufficientemente lungo per la Magis Hercules Pro Mini e la Magis Hercules Pro Mini EH, pertanto
+sarà cura dell'installatore giuntare il cablaggio oppure fornire un cablaggio di lunghezza idonea mantenendo le stesse caratteristiche
+del cablaggio fornito nel kit.
+8. Far passare il cablaggio del termostato (o) attraverso il tubo corrugato (p), quindi seguire il percorso del cablaggio del circolatore (q)
+fino all'interno del quadro elettrico (Fig. 8).
+Installazione kit termostato sicurezza a bracciale su Magis Hercules Pro Mini e Magis Hercules Pro Mini EH.
+7. 	Fissare il termostato (l) sul tubo mandata impianto utilizzando la molla (m) in dotazione dopo aver rimosso una parte della coibenta-
+zione (n) (Fig. 7).
+In figura 7 viene rappresentato un esempio di posizionamento del termostato di sicurezza sul tubo di mandata del kit allacciamento
+idraulico Immergas (optional).
+N.B.: in caso l'impianto sia dotato di una resistenza integrativa esterna, installare il termostato a valle della stessa sul tubo della man-
+data impianto.
+In tutti i casi fissare il termostato non oltre 30 cm dal raccordo di allacciamento di Magis Hercules Pro Mini o dall'uscita della resistenza
+integrativa esterna.
+STD.001124/015
+
+-- 4 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	5
+11
+s
+Z1
+r
+r
+CABLAGGIO
+CIRCOLATORE
+MORSETTO LATO
+CIRCOLATORE
+MORSETTO LATO
+FILTRO "Z1"
+12
+Z1
+t
+u
+v
+MORSETTO LATO
+CIRCOLATORE CABLAGGIO
+TERMOSTATO
+DI SICUREZZA
+MORSETTO LATO
+FILTRO "Z1"
+CABLAGGIO
+CIRCOLATORE
+r
+Z1
+r
+Z1
+9 	10
+Istruzioni collegamento cavi su Magis Hercules Pro Mini e Magis Hercules Pro Mini EH.
+9. Identificare il cavo marrone (r) del circolatore collegato al filtro antidisturbi "Z1" (Fig. 9).
+10. Tagliare il cavo marrone (r) indicativamente a metà lunghezza (Fig. 10).
+11. Collegare due morsetti (s) alle due estremità del cavo marrone (r) tagliato precedentemente (Fig. 11).
+12. Collegare il cavo grigio (t) del cablaggio del termostato di sicurezza al morsetto del cavo marrone "LATO FILTRO Z1".
+Collegare il cavo nero (u) del cablaggio del termostato di sicurezza al morsetto del cavo marrone "LATO CIRCOLATORE".
+Collegare il cavo giallo-verde (v) della messa a terra al relativo punto di connessione (Fig. 12)
+STD.001124/015
+
+-- 5 of 24 --
+
+6 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+15
+g
+g
+16
+13
+c
+a
+b
+b	a
+14
+e
+d e	e 	f
+4. Svitare le viti (g) (Fig. 15).
+5. Aprire il quadro principale come indicato in figura 16.
+INSTALLAZIONE KIT PER I MODELLI MAGIS HERCULES MINI HYDRO E MAGIS HERCULES MINI HYDRO EH.
+Apertura quadro principale.
+Per effettuare l'apertura del quadro principale è sufficiente seguire le seguenti istruzioni:
+1. togliere tensione all'apparecchio disalimentando l'interruttore a monte della caldaia.
+2. Togliere i tappi di protezione (a) e svitare le viti (b) per rimuovere il profilo estetico (c) (Fig. 13).
+3. Aprire il portello della cover (f) per farlo basculare. Togliere i tappi di protezione (d), svitare le due viti frontali superiori e le viti infe-
+riori (e) per rimuovere la cover (f) (Fig. 14).
+STD.001124/015
+
+-- 6 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	7
+l
+m
+l	n
+18
+i
+h
+i
+17
+6. Togliere il coperchio del quadro elettrico (h) svitando le viti (i) (Fig. 17).
+Installazione kit termostato sicurezza a bracciale su Magis Hercules Mini Hydro e Magis Hercules Mini Hydro EH.
+7. 	Fissare il termostato (l) sul tubo mandata impianto utilizzando la molla (m) in dotazione dopo aver rimosso una parte della coibenta-
+zione (n) (Fig. 18).
+In figura 18 viene rappresentato un esempio di posizionamento del termostato di sicurezza sul tubo di mandata del kit allacciamento
+idraulico Immergas (optional).
+N.B.: in caso l'impianto sia dotato di una resistenza integrativa esterna, installare il termostato a valle della stessa sul tubo della man-
+data impianto.
+In tutti i casi fissare il termostato non oltre 30 cm dal raccordo di allacciamento di Magis Hercules Mini Hydro o dall'uscita della
+resistenza integrativa esterna.
+STD.001124/015
+
+-- 7 of 24 --
+
+8 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+20
+p
+q
+o	19
+M1 Z1
+r
+Percorso cablaggio kit termostato sicurezza a bracciale su Magis Hercules Mini Hydro e Magis Hercules Mini Hydro EH.
+N.B.: il cablaggio fornito nel kit non è sufficientemente lungo per la Magis Hercules Mini Hydro e la Magis Hercules Mini Hydro EH,
+pertanto sarà cura dell'installatore giuntare il cablaggio oppure fornire un cablaggio di lunghezza idonea mantenendo le stesse carat-
+teristiche del cablaggio fornito nel kit.
+8. Far passare il cablaggio del termostato (o) attraverso il tubo corrugato (p), quindi seguire il percorso del cablaggio del circolatore (q)
+fino all'interno del quadro elettrico (Fig. 19).
+Istruzioni collegamento cavi su Magis Hercules Mini Hydro e Magis Hercules Mini Hydro EH.
+9. Rimuovere il ponticello marrone (r) fra le due morsettiere"M1-Z1" (Fig. 20).
+STD.001124/015
+
+-- 8 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	9
+21
+22
+M1 Z1
+t	u
+s
+CABLAGGIO
+TERMOSTATO
+DI SICUREZZA
+MORSETTO CAVO
+DI MESSA A TERRA
+10. Collegare il cavo grigio (t) del cablaggio del termostato di sicurezza alla morsettiera "Z1".
+11. Collegare il cavo nero (u) del cablaggio del termostato di sicurezza alla morsettiera "M1".
+12. Collegare il cavo giallo-verde (s) della messa a terra al relativo punto di connessione (Fig. 21).
+INSTALLAZIONE KIT PER I RESTANTI MODELLI.
+- togliere tensione all'apparecchio disalimentando l'interruttore a monte della caldaia;
+- fissare il termostato sul tubo mandata impianto utilizzando la molla in dotazione (Fig. 22).
+STD.001124/015
+
+-- 9 of 24 --
+
+10 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+24	23
+25
+Tutti i modelli:
+- Rimuovere il coperchio del termostato (Fig. 23) e far passare il cablaggio nel relativo pressacavo;
+- collegare il cablaggio al termostato come indicato nello schema elettrico (Fig. 26, 27, 28, 29);
+- rimontare il coperchio del termostato; chiudere il cruscotto; rimontare la mantellatura e ridare tensione alla caldaia per riportarla
+alle normali condizioni di funzionamento.
+COLLEGAMENTO ELETTRICO (Fig. 26, 27, 28, 29).
+Morsetto 1 = Chiude il circuito con l'aumentare della temperatura.
+Morsetto 2 = Apre il circuito con l'aumentare della temperatura.
+Morsetto C = Entrata comune.
+In generale (impianto di riscaldamento), collegare l'utilizzatore ai morsetti C e 2 del termostato.
+INTERVENTO DEL TERMOSTATO DI SICUREZZA BASSA TEMPERATURA.
+Durante il normale regime di funzionamento se per un’anomalia si verifica un eccessivo surriscaldamento della temperatura di mandata
+in bassa temperatura in base al collegamento elettrico previsto:
+- (Fig. 26) l'apparecchio va in blocco visualizzando il codice errore E46.
+- (Fig. 27) l'apparecchio va in blocco visualizzando il codice errore E27.
+- (Fig. 28) l'apparecchio va in blocco visualizzando il codice errore E27.
+- (Fig. 29) viene interrotta l'alimentazione elettrica dell'apparecchio
+Dopo un opportuno raffreddamento è possibile resettare il termostato come descritto di seguito. Se il fenomeno si verifica frequen-
+temente chiamare un tecnico abilitato (ad esempio il Servizio Assistenza Tecnica Immergas).
+RIARMO E REGOLAZIONE TEMPERATURA D'INTERVENTO.
+Per il riarmo del termostato svitare il cappuccio B e premere il pulsante di ripristino A (Fig. 24). Per regolare la temperatura di intervento
+rimuovere il coperchio, quindi svitare leggermente la vite di blocco piastrina e posizionare la piastrina sulla temperatura desiderata in
+corrispondenza della scala graduata. Riavvitare la vite di blocco piastrina C e riagganciare il coperchio (Fig. 25).
+- Modelli Victrix TT, Victrix Zeus, Victrix Zeus Superior (2020), Victrix Superior (2022), UCI Eureka,Victrix Extra, Victrix
+Maior e Victrix Tera Vip V2 (Fig. 26):
+- aprire il vano allacciamenti (vedi libretto istruzioni caldaia);
+- eliminare il ponte "X70";
+- collegare il cablaggio al termostato e alla morsettiera di caldaia;
+- far passare i fili del cablaggio nella parte inferiore del vano allacciamento.
+- Tutti i restanti modelli (Fig. 27, 28, 29):
+- accedere agli allacciamenti elettrici (vedi libretto istruzioni caldaia);
+- aprire il cruscotto;
+- collegare effettuando il cablaggio dei fili come indicato nel relativo schema elettrico.
+- far passare i fili del cablaggio nel pressacavo libero presente nel cruscotto di caldaia.
+STD.001124/015
+
+-- 10 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	11
+1 	2
+3
+4
+26
+1
+2
+3
+4
+27
+SCHEMA ELETTRICO VICTRIX TT - VICTRIX ZEUS - VICTRIX ZEUS SUPERIOR (2020), VICTRIX SUPERIOR (2022),
+UCI EUREKA, VICTRIX EXTRA, VICTRIX MAIOR E VICTRIX TERA VIP V2.
+Legenda codici colori cablaggio:
+BK - Nero
+GY - Grigio
+Legenda:
+1 - Caldaia
+2 - Morsettiera allacciamento bassa tensione
+3 - Termostato di sicurezza da fissare sul tubo di mandata
+impianto
+4 - Collegando il termostato di sicurezza bassa temperature
+occorre eliminare il ponte X70
+SCHEMA ELETTRICO MAGIS HERCULES PRO MINI E MAGIS HERCULES PRO MINI EH.
+Legenda:
+1 - Fare riferimento allo schema connessioni di potenza nel
+libretto istruzioni Magis Hercules Pro Mini
+2 - Morsetto a cappuccio
+3 - Quadro principale
+4 - Termostato di sicurezza da fissare sul tubo di mandata
+impianto oppure dopo la resistenza integrativa impianto
+se presente
+E19 Termostato sicurezza a bracciale
+M1 Circolatore pompa di calore
+Z1 Filtro antidisturbi
+Legenda codici colori cablaggio:
+BK - Nero
+BL 	- Blu
+BR - Marrone
+GY - Grigio
+Y/G - Giallo / Verde
+STD.001124/015
+
+-- 11 of 24 --
+
+12 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+G/Y
+G/Y
+Z1
+BL 	BR
+BK
+2
+1
+C
+G/Y
+BK
+BR
+BK
+GY	BL
+M1
+BL
+BR
+BR
+BL
+G/Y
+BR
+6 	4
+BR
+	GY
+Z1
+BR
+GY
+M1
+GY
+BR
+BK
+GY
+G/Y
+GY	G/Y
+E19
+X101
+BR	BR
+BR
+Z1
+4 6
+N
+L
+PWM-IN
+PWM-OUT
+GND
+4
+1
+2
+3
+28
+1
+2 	3
+4
+29
+SCHEMA ELETTRICO MAGIS HERCULES MINI HYDRO E MAGIS HERCULES MINI HYDRO EH.
+Legenda:
+1 - Fare riferimento allo schema connessioni di alimen-
+tazione nel libretto istruzioni Magis Hercules Mini
+Hydro
+2 - Occorre rimuovere il ponte da X101 prima di collegare
+il termostato di sicurezza bassa temperature
+3 - Quadro principale
+4 - Termostato di sicurezza da fissare sul tubo di man-
+data impianto oppure dopo la resistenza integrativa
+impianto se presente
+E19 Termostato sicurezza a bracciale
+M1 Circolatore pompa di calore
+Z1 Filtro antidisturbi
+Legenda codici colori cablaggio:
+BK - Nero
+BL 	- Blu
+BR - Marrone
+GY - Grigio
+Y/G - Giallo / Verde
+SCHEMA ELETTRICO PER I RESTANTI MODELLI.
+Legenda:
+1 - Morsetto a cappuccio
+2 - Alimentazione 230 V ac 50 Hz
+3 - Termostato di sicurezza da fissare sul tubo
+di mandata impianto
+4 - Caldaia
+Legenda codici colori cablaggio:
+BK - Nero
+BL 	- Blu
+BR - Marrone
+GY - Grigio
+Y/G - Giallo / Verde
+STD.001124/015
+
+-- 12 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	13
+1
+THIS SHEET IS TO BE LEFT WITH THE USER ALONG WITH THE APPLIANCE INSTRUCTION BOOKLET 	IE
+SAFETY MARKER THERMOSTAT KIT
+COD. 3.019229 - 3.027084
+GENERAL WARNINGS.
+All Immergas products are protected with suitable transport packaging. The material must be stored in a dry place protected from the
+weather. This instruction manual provides technical information for installing the Immergas kit. As for the other issues related to kit instal-
+lation (e.g. safety in the workplace, environmental protection, accident prevention), it is necessary to comply with the provisions specified
+in the regulations in force and with the principles of good practice. Improper installation or assembly of the Immergas appliance and/or
+components, accessories, kits and devices can cause unexpected problems for people, animals and objects. Read the instructions provided
+with the product carefully to ensure proper installation. Installation and maintenance must be performed in compliance with the regula-
+tions in force, according to the manufacturer's instructions and by professionally qualified staff, meaning staff with specific technical skills
+in the plant sector, as envisioned by the law.
+Cod. 1.033477 - rev. ST.000880/014 - 02/26
+LIST OF COMPATIBLE APPLIANCES.
+• Victrix Superior
+• UCI Eureka
+• Victrix Zeus Superior
+• Victrix Zeus
+• Victrix Tera - Victrix Tera V2
+• Victrix Tera V3 (Export)
+• Victrix Tera Vip - Victrix Tera Vip V2
+• Victrix Omnia
+• Victrix Omnia V2 (Export)
+• Victrix Pro V2
+• Victrix Extra/Plus
+• Victrix Maior/Plus
+• Magis Combo
+• Mythos HP
+• Magis Hercules Pro
+• Magis Hercules Pro Mini
+• Magis Hercules Pro Mini EH
+• Magis Hercules Mini Hydro
+• Magis Hercules Mini Hydro EH
+STD.001124/015
+
+-- 13 of 24 --
+
+14 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+e
+d e	e 	f
+2
+a
+b
+c
+b
+a
+3. Open the cover door (f) to make it tilt. Remove the protection caps (d), loosen the two upper front screws and the lower screws (e) to
+remove the cover (f) (Fig. 3).
+TECHNICAL FEATURES.
+Limiter temperature pre-adjustment 	55 °C
+Limiter temperature range 	40 - 70 °C
+Tolerance 	0-10 K
+Reset 	Manual
+Reset temperature 	intervention 25 ± 8K
+Degree of protection 	IP 40
+Insulation class 	I
+Temperature gradient 	< 1 K/min.
+Head maximum temperature 	55 °C
+Bulb maximum temperature 	125 °C
+Storage temperature 	15 - 60 °C
+Capacity on contacts C-1; 0.5 A/250 V~
+C-2; 10(2.5) A/250 V~
+Outlet 	Contacts in shut-off
+Type of action 	1B
+Installation situation 	Normal room
+Fairlead 	3/8” GAS
+Type of assembly 	on pipe
+INSTALLATION KIT FOR MAGIS HERCULES PRO MINI AND MAGIS HERCULES PRO MINI EH.
+Main panel opening.
+To open the main panel, simply follow the instructions below:
+1. cut power to the appliance by disconnecting the switch upstream from the boiler.
+2. Remove the protection caps (a) and loosen the screws (b) to remove the aesthetic profile (c) (Fig. 2).
+3
+STD.001124/015
+
+-- 14 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	15
+4
+g
+g
+5
+i 	h
+i
+i
+6
+4. Unscrew the screws (g) (Fig. 4).
+5. Open the main panel as shown in figure 5.
+6. Close the cover of the electrical panel (h) by removing the screws (i) (Fig. 6).
+STD.001124/015
+
+-- 15 of 24 --
+
+16 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+l 	l
+m
+n
+7
+o
+p
+q
+8
+Wiring path for safety marker thermostat kit on Magis Hercules Pro Mini and Magis Hercules Pro Mini EH.
+N.B.: the wiring supplied in the kit is not long enough for the Magis Hercules Pro Mini and the Magis Hercules Pro Mini EH, there-
+fore the installer will have to splice the wiring or provide a suitable length of wiring while maintaining the same characteristics as the
+wiring supplied in the kit.
+8. Pass the thermostat wiring (o) through the corrugated pipe (p), then follow the path of the circulator wiring (q) up to the inside of the
+electrical panel (Fig. 8).
+Installation of safety marker thermostat kit on Magis Hercules Pro Mini and Magis Hercules Pro Mini EH.
+7. 	Secure the thermostat (l) on the system flow pipe using the supplied spring (m) after having removed part of the insulation (n) (Fig. 7).
+Figure 7 shows an example of the positioning of the safety thermostat on the delivery pipe of the Immergas hydraulic connection kit
+(optional).
+N.B.: if the system is equipped with an external integrative resistance, install the thermostat downstream of the same on the system
+flow pipe.
+In all cases, fix the thermostat not more than 30 cm from the connection of the Magis Hercules Pro Mini or from the exit of the external
+supplementary resistance.
+STD.001124/015
+
+-- 16 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	17
+r
+Z1
+r
+Z1
+9 	10
+11
+s
+Z1
+r
+r
+CIRCULATOR
+WIRING
+CIRCULATOR
+SIDE TERMINAL
+"Z1" FILTER SIDE
+TERMINAL
+12
+Z1
+t
+u
+v
+CIRCULATOR
+SIDE TERMINAL SAFETY
+THERMOSTAT
+WIRING
+"Z1" FILTER SIDE
+TERMINAL
+CIRCULATOR
+WIRING
+Cable connection instructions on Magis Hercules Pro Mini and Magis Hercules Pro Mini EH.
+9. Identify the brown cable (r) of the circulator connected to the "Z1" antijamming filter (Fig. 9).
+10. Cut the brown cable (r) roughly in half length (Fig. 10).
+11. Connect two terminals (s) to the two ends of the previously cut brown cable (Fig. 11).
+12. Connect the gray cable (t) of the safety thermostat wiring to the brown cable terminal "Z1 FILTER SIDE".
+Connect the black cable (u) of the safety thermostat wiring to the brown cable terminal "CIRCULATOR SIDE".
+Connect the yellow-green earth cable (v) to the relative connection point (Fig. 12)
+STD.001124/015
+
+-- 17 of 24 --
+
+18 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+13
+c
+a
+b
+b	a
+14
+e
+d e	e 	f
+15
+g
+g
+16
+INSTALLATION KIT FOR MAGIS HERCULES MINI HYDRO AND MAGIS HERCULES MINI HYDRO EH.
+Main panel opening.
+To open the main panel, simply follow the instructions below:
+1. cut power to the appliance by disconnecting the switch upstream from the boiler.
+2. Remove the protection caps (a) and loosen the screws (b) to remove the aesthetic profile (c) (Fig. 13).
+3. Open the cover door (f) to make it tilt. Remove the protection caps (d), loosen the two upper front screws and the lower screws (e) to
+remove the cover (f) (Fig. 14).
+4. Unscrew the screws (g) (Fig. 15).
+5. Open the main panel as shown in figure 16.
+STD.001124/015
+
+-- 18 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	19
+l
+m
+l	n
+i
+h
+i
+17
+18
+6. Close the cover of the electrical panel (h) by removing the screws (i) (Fig. 17)..
+Installation of safety marker thermostat kit on Magis Hercules Mini Hydro and Magis Hercules Mini Hydro EH.
+7. 	Secure the thermostat (l) on the system flow pipe using the supplied spring (m) after having removed part of the insulation (n) (Fig.18).
+Figure 18 shows an example of the positioning of the safety thermostat on the delivery pipe of the Immergas hydraulic connection kit
+(optional).
+N.B.: if the system is equipped with an external integrative resistance, install the thermostat downstream of the same on the system
+flow pipe.
+In all cases, fix the thermostat not more than 30 cm from the connection of the Magis Hercules Mini Hydro or from the exit of the
+external supplementary resistance.
+STD.001124/015
+
+-- 19 of 24 --
+
+20 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+p
+q
+o
+M1 Z1
+r
+19
+20
+Wiring path for safety marker thermostat kit on Magis Hercules Mini Hydro and Magis Hercules Mini Hydro EH.
+N.B.: the wiring supplied in the kit is not long enough for the Magis Hercules Pro Mini and the Magis Hercules Pro Mini EH, therefore
+the installer will have to splice the wiring or provide a suitable length of wiring while maintaining the same characteristics as the wiring
+supplied in the kit.
+8. Pass the thermostat wiring (o) through the corrugated pipe (p), then follow the path of the circulator wiring (q) up to the inside of the elec-
+trical panel (Fig. 19).
+Cable connection instructions on Magis Hercules Mini Hydro and Magis Hercules Mini Hydro EH.
+9. Remove the brown jumper (r) between the two "M1-Z1" terminal blocks (Fig. 20).
+STD.001124/015
+
+-- 20 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	21
+21
+Spring
+22
+M1 Z1
+t	u
+s
+SAFETY
+THERMOSTAT
+WIRING
+EARTH CABLE
+TERMINAL
+10. Connect the gray cable (t) of the safety thermostat wiring to the "Z1" terminal block.
+11. Connect the black cable (u) of the safety thermostat wiring to the "M1" terminal block.
+12. Connect the yellow-green earth cable (s) to the relevant connection point (Fig. 21)
+KIT INSTALLATION FOR THE REMAINING MODELS.
+- cut power to the appliance by disconnecting the switch upstream from the boiler;
+- fix the thermostat to the system flow pipe using the spring provided (Fig. 22).
+STD.001124/015
+
+-- 21 of 24 --
+
+22 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+24	23
+plate locking
+screw
+All models:
+- Remove the thermostat cover (Fig. 23) and pass the wiring through the relative cable clamp;
+- connect the wiring to the thermostat as indicated in the wiring diagram (Fig. 26, 27, 28, 29);
+- re-mount the thermostat cover; close the control panel; re-mount the casing and re-apply the voltage to the boiler to take it back to
+normal functioning conditions.
+ELECTRICAL CONNECTION (Fig. 26, 27, 28, 29).
+Terminal 1 = Closes the circuit as the temperature increases.
+Terminal 2 = Opens the circuit as the temperature increases.
+Terminal C = Common input.
+In general (central heating system), connect the user to terminals C and 2 of the thermostat.
+LOW TEMPERATURE SAFETY THERMOSTAT INTERVENTION.
+During normal operation, if due to an anomaly excessive overheating of the low temperature delivery temperature occurs based on
+the planned electrical connection:
+- (Fig. 26) the appliance locks out, displaying the error code E46.
+- (Fig. 27) the appliance locks out, displaying the error code E27.
+- (Fig. 28) the appliance locks out, displaying ahe error code E27.
+- (Fig. 29) the electrical power supply to the appliance is interrupted.
+After suitable cooling, it is possible to reset the thermostat as described below. If this phenomenon occurs frequently, contact a
+qualified technician for assistance (e.g. Immergas After-Sales Technical Assistance Service).
+TRIGGERING TEMPERATURE RESET ANDADJUSTMENT.
+To reset the thermostat, loosen the cap B and press the reset button A (Fig. 24). To adjust the triggering temperature, remove the cover,
+then slightly loosen the plate locking screw and position the plate on the desired temperature in correspondence with the graduated
+scale. Tighten the plate locking screw C and reattach the cover (Fig. 25).
+cap
+reset button
+25
+- Victrix TT, Victrix Zeus, Victrix Zeus Superior (2020), Victrix Superior (2022), UCI Eureka, Victrix Extra, Victrix Maior e
+Victrix Tera Vip V2 models (Fig. 26):
+- open the connection compartment (see boiler instructions booklet);
+- remove jumper “X70”;
+- connect the wiring to the thermostat and to the boiler terminal board;
+- pass the wiring cables through the lower part of the connection compartment.
+- All the remaining models (Fig. 27, 28, 29):
+- access the electrical connections (see boiler instructions booklet);
+- open the control panel;
+- Connect by wiring the wires as indicated in the relevant wiring diagram.
+- pass the wiring cables through the free cable clamp in the boiler control panel.
+STD.001124/015
+
+-- 22 of 24 --
+
+3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26 	23
+26
+1
+2
+3
+4
+27
+1 	2
+3
+4
+VICTRIX TT - VICTRIX ZEUS - VICTRIX ZEUS SUPERIOR (2020), VICTRIX SUPERIOR (2022), UCI EUREKA,
+VICTRIX EXTRA, VICTRIX MAIOR AND VICTRIX TERA VIP V2 WIRING DIAGRAM.
+Key:
+1 - Boiler
+2 - Low voltage connection terminal board
+3 - Safety thermostat to be secured to the system flow pipe
+4 - On connecting the low temperature safety thermostat, it
+is necessary to eliminate jumper X70
+Key of wiring colour codes
+BK - Black
+GY - Grey
+MAGIS HERCULES PRO MINI AND MAGIS HERCULES PRO MINI EH WIRING DIAGRAM.
+Key:
+1 - Refer to the power connection diagram in the Magis
+Hercules Pro Mini instruction booklet
+2 - Cap terminal
+3 - Main panel
+4 - Fix the safety thermostat at the flow pipe or after exter-
+nal integrated resistance if present
+E19 Safety marker thermostat
+M1 HP pump
+Z1 Antijamming filter
+Key of wiring colour codes:
+BK - Black
+BL 	- Blue
+BR - Brown
+GY - Grey
+Y/G - Yellow / Green
+STD.001124/015
+
+-- 23 of 24 --
+
+24 	3.019229 - 3.027084 - 1.033477 - ST.000880/014 - 02/26
+29
+1
+2 	3
+4
+G/Y
+G/Y
+Z1
+BL 	BR
+BK
+2
+1
+C
+G/Y
+BK
+BR
+BK
+GY	BL
+M1
+BL
+BR
+BR
+BL
+G/Y
+BR
+6 	4
+BR
+	GY
+Z1
+BR
+GY
+M1
+GY
+BR
+BK
+GY
+G/Y
+GY	G/Y
+E19
+X101
+BR	BR
+BR
+Z1
+4 6
+N
+L
+PWM-IN
+PWM-OUT
+GND
+4
+1
+2
+3
+28
+WIRING DIAGRAM FOR THE REMAINING MODELS.
+Key:
+1 - Cap terminal
+2 - 230 V ac 50 Hz power supply
+3 - Safety thermostat to be secured to the
+system flow pipe
+4 - Boiler
+Key of wiring colour codes:
+BK - Black
+BL 	- Blue
+BR - Brown
+GY - Grey
+Y/G - Yellow / Green
+MAGIS HERCULES MINI HYDRO AND MAGIS HERCULES MINI HYDRO EH WIRING DIAGRAM.
+Key:
+1 - Refer to the power connection diagram in the Magis
+Hercules Mini Hydro instruction booklet
+2 - It is necessary to remove the link from X101 before
+connecting the low temperature safety thermostat
+3 - Main panel
+4 - Fix the safety thermostat at the flow pipe or after
+external integrated resistance if present
+E19 Safety marker thermostat
+M1 HP pump
+Z1 Antijamming filter
+Key of wiring colour codes:
+BK - Black
+BL 	- Blue
+BR - Brown
+GY - Grey
+Y/G - Yellow / Green
+STD.001124/015
+
+-- 24 of 24 --
+

@@ -28,9 +28,11 @@ if(process.argv.includes('--chat')) {
   process.exit(0);
 }
 const identities=[{brand:'Vaillant',model:'ecoTEC intro',code:'F.28'}, {brand:'Bosch',model:'Condens 2500 W',code:'EA'}];
-const results=await Promise.all(identities.map(async identity=>{
-  try { const result=await researchManufacturer(identity,(raw,urls)=>console.log(JSON.stringify({audit:identity,raw,urls}))); console.log(JSON.stringify({identity,...result}));return {identity,...result}; }
-  catch(error){ const result={identity,status:'error',message:error.message,cause:error.cause?.code};console.log(JSON.stringify(result));return result; }
-}));
-await writeFile('test-results/technical-research-live.json',JSON.stringify(results,null,2));
+const results=[];
+for(const identity of identities) {
+ const events=[];
+ try {const result=await researchManufacturer(identity,(raw,urls)=>{events.push({raw,urls});console.log(JSON.stringify({audit:identity,raw,urls}));});results.push({identity,...result,events});}
+ catch(error){results.push({identity,status:'error',message:error.message,events});}
+ await writeFile('test-results/technical-research-live.json',JSON.stringify(results,null,2));
+}
 if(results.some(r=>r.status!=='verified')) process.exitCode=1;

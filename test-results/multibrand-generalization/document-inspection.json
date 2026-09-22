@@ -1,0 +1,94 @@
+[
+  {
+    "brand": "Baymak",
+    "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+    "documentLength": 45537,
+    "excerptLength": 15454,
+    "hits": [
+      {
+        "offset": 37110,
+        "text": "E01).\nKombiyi resetlemek için, RESET (K1) tuşuna basınız. Sorun devam ederse mutlaka yetkili servisi arayınız.\nHata Kodu \tTanımı\nE01 \tBaşarısız ateşleme\nE02 \tHatalı alev oluşumu\nE03 \tAşırı ısınma hatası\nE05 \tFan geri besleme hatası\nE09 \tGaz valfi geri besleme hatası\nE12 \tEEPROM (yazılım) arızası\nE15 \tSensor sıcaklık değişim hatası\nE16 \tDönüş sıcaklık sensör kilitlenme hatası\nE17 \tÇıkış sıcaklık sensör kilitlenme hatası\nE18 \tSensor test hatası\nE21 \tElektronik kart arızası\nE33 \tDönüş sıcaklık sensörü arızası\nE35 \tÇıkış sıcaklık sensörü arızası\nHata Kodu \tTanımı\nF13 \tReset kilitlenmesi (cihaz elektrik beslemesini açıp kapatınız)\nF34 \tDüşük besleme gerilimi\nF37 \tDüşük su basıncı\nF39 \tDış hava sensör arızası\nF40 \tYüksek su basıncı\nF47 \tSu basınç anahtarı bağlı değil\nF50 \tSıcak su boyler sensör arızası\nF51 \tPT1000 sensör arızası\nF52 \tKullanım suyu sensör arızası\nF53 \tAna eşanjör ısı sigortası arı"
+      },
+      {
+        "offset": 17004,
+        "text": "Duotec 42 DHW kullanıcısına yönelik\nhazırlanmıştır. Cihazın satılması veya taşınması durumunda kullanma\nkılavuzu cihazla birli"
+      },
+      {
+        "offset": 18225,
+        "text": "Duotec 42 DHW\nGaz kategorisi \tI2H\nMaksimum Isı Yükü - merkezi ısıtma \tkW \t40\nMinimum Isı Yükü - merkezi ısıtma \tkW \t9,5\nMaksim"
+      },
+      {
+        "offset": 25595,
+        "text": "Duotec 42 DHW Kombi oda sızdırmazlığı ve fan destekli olup, merkezi ısıtma imkanı sağlar.\nKombi, sadece Doğal Gazda (G20) kull"
+      }
+    ]
+  },
+  {
+    "brand": "Immergas",
+    "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+    "documentLength": 165724,
+    "excerptLength": 45000,
+    "error27CirculationIncludedInModelInput": false,
+    "hits": [
+      {
+        "offset": 106310,
+        "text": "27 Circolazione insuffi-\nciente\nSi verifica nel caso in cui vi è un surriscaldamento della caldaia\ndovuto a scarsa circolazione di acqua nel circuito primario; le cause\npossono essere:\n- scarsa circolazione impianto; verificare che non vi sia una inter-\ncettazione sul circuito di riscaldamento chiusa e che l’impianto sia\nperfettamente libero dall’aria (disaerato);\n- circolatore bloccato; occorre far provvedere allo sblocco del circo-\nlatore.\nPremere il pulsante di Reset (1).\n29 \tAnomalia sonda fumi \tLa scheda rileva un’anomalia sulla sonda fumi \tLa caldaia non parte (1)\n31\nPerdita di comuni-\ncazione col comando\nremoto\nSi verifica nel caso di collegamento a un controllo remoto non\ncompatibile, oppure in caso di caduta di comunicazione fra caldaia\ne comando remoto.\nTogliere e ridare tensione alla caldaia. Se\nalla riaccensione non viene rilevato il\nComando Remoto la caldaia passa in\nmodalità di funzionamento locale quindi\nutilizzando i comandi presenti sul pannel-\nlo comandi. In questo caso non è possibile\nattivare la funzione “Riscaldamento” (1).\n(1) Se il blocco o l’anomalia persiste è necessario chiamare una impresa abilitata (ad esempio il Servizio Assistenza Tecnica Immergas)\n(2) È possibile verificare quest’anomalia solo nella lista degli errori presente nel menù “Informazioni”\n\n-- 28 of 52 --\n\n29\nINSTALLATORE\nUTENTE\nMANUTENTORE\nCodice\nErrore Anomalia segnalata \tCausa \tStato caldaia / Soluzione\n37 Bassa tensione di\nalimentazione\nSi verifica nel caso in cui la tensione di alimentazione è inferiore\nai limiti consentiti per il corretto funzionamento della caldaia.\nIn caso di ripristino delle condizioni nor-\nmali la caldaia riparte senza il bisogno di\ndover essere resettata (1)\n38 Perdita segnale di\nfiamma\nSi verifica nel caso in cui la caldaia è accesa correttamente e avviene\nuno speg"
+      }
+    ]
+  },
+  {
+    "brand": "Buderus",
+    "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+    "documentLength": 59082,
+    "excerptLength": 6000,
+    "hits": [
+      {
+        "offset": 1107,
+        "text": "6 \tA"
+      },
+      {
+        "offset": 12788,
+        "text": "6 \tA"
+      },
+      {
+        "offset": 5291,
+        "text": "Arıza Göstergeleri . . . . . . . . . . . . . . . . . . . . . . . . . . . 26\n10.1 \tİşletim ve Arıza Göstergelerinin Gösterilmesi . . . . . . . . 26\n11 İşletmeye Alma Protokolü . . . . . . . . . . . . . . . . . . . . . . . . . "
+      },
+      {
+        "offset": 24468,
+        "text": "arızalara ve eşanjörün hasar görmesine\nneden olabilir.\nAyrıca, sıcak kullanım suyu beslemesi,\nörneğin çamur oluşumu, korozyon veya kireçlenme nedeniyle olumsuz\nşekilde etkilenebilir.\nIsıtma cihazını bütün kullanım ömrü boyunc"
+      },
+      {
+        "offset": 24744,
+        "text": "arızasız bir işletim sağlamak için aşağıda\nbelirtilenlere dikkat edilmelidir:\n• Sadece işleme tâbi tutulmamış musluk suyu kullanın (Şekil 5'daki\ndiyagramı da dikkate alın).\n• Kuyu ve yer altı suları, tesisat suyu olarak uygun"
+      },
+      {
+        "offset": 48055,
+        "text": "Arıza Göstergeleri\n25\n10 \tİşletim ve Arıza Göstergeleri\n10.1 \tİşletim ve Arıza Göstergelerinin Gösterilmesi\nTemel kontrol ünitesi BC20, tüm emniyet, kontrol ve kumanda\nelemanlarını denetlemektedir.\nCihazın her bir işletme dur"
+      },
+      {
+        "offset": 48308,
+        "text": "arızalar ise ilave\nolarak bir arıza kodu ile kayıt altına alınır. Bu sayede, aşağıdaki tablolar\naracılığıyla arıza teşhisinin kolayca yapılması sağlanır.\nİşletme ve arıza göstergeleri aşağıda belirtilen şekilde sınıflandırılm"
+      },
+      {
+        "offset": 48714,
+        "text": "arızalar, cihazın belirli bir süre için kapanmasına neden\nolur. Bloke edici arıza ortadan kalktığında, cihaz kendiliğinden tekrar\nçalışmaya başlar.\n– Bloke edici arızaların mesajları, arıza kodu ve işletme kodu ile\nbirlikte g"
+      },
+      {
+        "offset": 48990,
+        "text": "arızalar, cihazın kapanmasına neden olan ve cihaz\nresetlenmeden tekrar çalışmadığı arızalardır.\n– Kilitleyici arızaların mesajları, arıza kodu ve işletme kodu ile birlikte\ngöstergede yanıp sönerek gösterilir.\nRes. 17 Örnek bi"
+      },
+      {
+        "offset": 49260,
+        "text": "arıza kodu\n[2] \tMetin satırındaki servis fonksiyonu\n[3] \tMetin satırındaki işletme kodu\n1\n2 \t3\n6 720 619 605-33.1O\n\n-- 25 of 32 --\n\nLogamax plus – 6721835147 (2021/03)\n11 \tİşletmeye Alma Protokolü\n26\n11 \tİşletmeye Alma Protok"
+      }
+    ]
+  },
+  {
+    "brand": "Warmhaus",
+    "sourceContainsEwa": false,
+    "ordinaryCaseInsensitiveContains": true,
+    "firstLines": "EWA 20\nEWA 24\nDUVAR TİPİ GAZ ADAPTİF-PREMİX\nSİSTEMLİ YOĞUŞMALI KOMBİ\nMONTAJ VE KULLANIM KILAVUZU\n\n-- 1 of 36 --\n\n2\ti \twa",
+    "reason": "sourceContains requires quote.trim().length >= 4; Ewa has 3 characters."
+  }
+]

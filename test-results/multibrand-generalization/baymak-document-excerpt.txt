@@ -1,0 +1,323 @@
+
+
+-- 1 of 28 --
+
+Sayın Müşteri,
+Ürün, evin dışına bağlanması gereken bir atık gaz borusu sistemine sahiptir.
+Sizin için hazırlanmış olan bu kitapçıkta; kombinizin doğru ve verimli kullanılması ile ilgili olarak çok faydalı bilgi ve açıklamalar
+yer almaktadır.
+Lütfen kombinizi, bu kitapçığı okumadan kullanmamaya özen gösteriniz.
+Baymak, üretici firma, bu ürüne ait yedek parçaları, üzerinde yazılı olan üretim tarihinden itibaren 10 yıl boyunca temin
+etmeyi garanti etmektedir.
+Size bu kitapçıkla birlikte servis hizmeti alabileceğiniz, servis istasyonlarıyla ilgili bilgileri içeren “Yetkili Servis
+Kitapçığı” verilmiştir. Firmamız tarafından dönemsel olarak Yetkili Servis bilgilerinde değişiklikler yapılabilmektedir. Bu
+sebeple güncel Yetkili Servis Bilgilerine firmamızın web sayfasında yer alan ‘’ Yetkili Servisler ‘’ bölümünden
+ulaşabilirsiniz. Bilgi için lütfen internet adresindeki web sayfamızı ziyaret ediniz.
+Cihazın ilk çalıştırma işleminin Yetkili Servis tarafından yapılması zorunludur. Aksi takdirde, cihaz garanti kapsamı
+dışında kalacaktır.
+Üretici Firma
+MAKİNA SANAYİ VE TİCARET A.Ş.
+Orhanlı Beldesi, Orta Mahalle, Akdeniz Caddesi No: 8
+Tuzla / İSTANBUL
+Tel.: (0216) 581 65 00
+Fax: (0216) 304 20 13
+http: // www.baymak.com.tr
+E-mail: musterihizmetleri@baymak.com.tr
+
+-- 2 of 28 --
+
+3
+İçindekiler
+1 	Güvenlik .................................................................................................................................................................... 4
+1.1 	Genel güvenlik talimatları .................................................................................................................................. 4
+1.2 	Montaj Öncesi Talimatlar ................................................................................................................................... 5
+1.3 	Sorumluluklar ..................................................................................................................................................... 6
+2 	Kullanma Kılavuzu Hakkında Bilgiler ......................................................................................................................... 7
+2.1 	Genel.................................................................................................................................................................. 7
+2.2 	Ek Hizmetler ....................................................................................................................................................... 7
+3 	Teknik Özellikler ........................................................................................................................................................ 8
+3.1 Teknik veriler............................................................................................................................................................ 8
+3.2 Boyutlar Bağlantılar ve Tesisat Şeması ................................................................................................................... 9
+3.3 Baca Bağlantısı ...................................................................................................................................................... 10
+4 	Ürün Bilgileri ........................................................................................................................................................... 13
+4.1 	Genel açıklamalar ............................................................................................................................................ 13
+4.2 	Çalışma prensibi .............................................................................................................................................. 13
+4.3 	Kontrol paneli bilgileri ....................................................................................................................................... 14
+5 	Çalıştırma Öncesi Talimatlar .................................................................................................................................... 14
+5.1 Kombinin çalıştırılması ........................................................................................................................................... 14
+5.2 	Sisteme su doldurulması ................................................................................................................................. 15
+5.3 	Cihazın kapatılması ......................................................................................................................................... 15
+5.4 	Donma koruması.............................................................................................................................................. 15
+6 	Bakım ...................................................................................................................................................................... 16
+6.1 	Genel bakım ..................................................................................................................................................... 16
+6.2 	Bakım talimatları .............................................................................................................................................. 16
+6.3 	Ürün Garanti Şartları ile ilgili Tüketicinin Dikkat Etmesi Gereken Hususlar .................................................... 17
+7 	Sorun Giderme ........................................................................................................................................................ 18
+7.1 	Hata kodları ...................................................................................................................................................... 18
+8 	Ek Bölüm ................................................................................................................................................................. 19
+8.1 	Ürün fişi ve teknik parametreler ..............................................................................
+[...document excerpt...]
+meydana gelebilecek arızalar ve hasarlar garanti kapsamı dışındadır.
+15. Garanti belgesinin tüketiciye tesliminden, malı satın aldığı satıcı, bayi, acenta ya da temsilcilik sorumludur.
+6502 sayılı tüketicinin korunması hakkındaki kanuna göre, malın ayıplı olduğunun anlaşılması durumunda tüketici;
+a) Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme,
+b) Satılanı alıkoyup ayıp oranında satış bedelinden indirim isteme,
+c) Aşırı bir masraf gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere satılanın ücretsiz onarılmasını isteme,
+ç) İmkan varsa, satılanın ayıpsız bir misli ile değiştirilmesini isteme,
+seçimlik haklarından birini kullanabilir. Satıcı, tüketicinin tercih ettiği bu talebi yerine getirmekle yükümlüdür.
+Tüketiciler, şikayet ve itirazları konusundaki başvurularını tüketici mahkemelerine ve tüketici hakem heyetlerine yapabilirler.
+
+-- 17 of 28 --
+
+18
+7 	Sorun Giderme
+7.1 	Hata kodları
+Bir hata oluştuğunda ekranda hata kodu görüntülenecektir (örneğin E01).
+Kombiyi resetlemek için, RESET (K1) tuşuna basınız. Sorun devam ederse mutlaka yetkili servisi arayınız.
+Hata Kodu 	Tanımı
+E01 	Başarısız ateşleme
+E02 	Hatalı alev oluşumu
+E03 	Aşırı ısınma hatası
+E05 	Fan geri besleme hatası
+E09 	Gaz valfi geri besleme hatası
+E12 	EEPROM (yazılım) arızası
+E15 	Sensor sıcaklık değişim hatası
+E16 	Dönüş sıcaklık sensör kilitlenme hatası
+E17 	Çıkış sıcaklık sensör kilitlenme hatası
+E18 	Sensor test hatası
+E21 	Elektronik kart arızası
+E33 	Dönüş sıcaklık sensörü arızası
+E35 	Çıkış sıcaklık sensörü arızası
+Hata Kodu 	Tanımı
+F13 	Reset kilitlenmesi (cihaz elektrik beslemesini açıp kapatınız)
+F34 	Düşük besleme gerilimi
+F37 	Düşük su basıncı
+F39 	Dış hava sensör arızası
+F40 	Yüksek su basıncı
+F47 	Su basınç anahtarı bağlı değil
+F50 	Sıcak su boyler sensör arızası
+F51 	PT1000 sensör arızası
+F52 	Kullanım suyu sensör arızası
+F53 	Ana eşanjör ısı sigortası arızası
+F81 	Sensör test arızası
+
+-- 18 of 28 --
+
+19
+8 	Ek Bölüm
+8.1 	Ürün fişi ve teknik parametreler
+Model 	42 kW
+Mevsimsel mahal ısıtması enerji verimliliği sınıfı 	A
+Yoğuşmalı kombi 	Evet
+Düşük sıcaklıklı kombi (1) 	Hayır
+B1 kombi 	Hayır
+Kojenerasyon mahal ısıtıcı 	Hayır
+Kombine ısıtıcı 	Evet
+Anma ısı çıkışı 	Prated 	kW 	39
+Nominal ısı çıkışında ve yüksek sıcaklıkta faydalı ısı
+çıkışı 	P4 	kW 	38,8
+Nominal ısı çıkışının% 30'unda ve düşük sıcaklıkta
+kullanışlı ısı çıkışı. 	P1 	kW 	13
+Sezonsal alan ısıtma verimliliği 	ηs 	% 	92,7
+Nominal ısı çıkışında ve yüksek sıcaklıkta faydalı verim.
+rejim 	η4 	% 	87,4
+Nominal ısı çıkışının% 30'unda ve düşük sıcaklıkta
+faydalı verim. mode 	η1 	% 	97,6
+Yardımcı güç tüketimi 	-
+Tam yük 	elmax 	kW 	0,036
+Kısmi yük 	elmin 	kW 	0,013
+Bekleme modunda 	PSB 	kW 	0,067
+Diğer veri
+Bekleme ısı kaybı 	Pstby 	kW 	0,069
+Ateşleme brülör güç tüketimi 	Pign 	kW 	0
+Yıllık enerji tüketimi 	Q HE 	GJ 	120
+Ses gücü seviyesi, iç mekanlarda 	L WA 	dB 	53,6
+Azot oksit emisyonları
+NOx (NCV) 	mg/kWh 	47,57
+NOx (GCV) 	mg/kWh 	42,83
+(1) Düşük sıcaklıklı kombiler için 30 ° C, düşük sıcaklıklı cihazlar için 37 ° C ve diğer ısıtıcılar için 50 ° C dönüş sıcaklığı (ısıtıcı girişinde) için
+düşük sıcaklık araçları.
+(2) Yüksek sıcaklık modu ısıtıcı girişinde 60 ° C dönüş sıcaklığı ve ısıtıcı çıkışında 80 ° C besleme sıcaklığı anlamına gelir
+
+-- 19 of 28 --
+
+20
+9 Elektrik Bağlantısı
+9.1 	Elektrik diyagramı
+Konnektör 	Pin No 	Sinyal 	Açıklama
+X1 	1 	Alev 	-
+X2 	1 	Toprak 	Toprak
+2 	Toprak
+X3
+8 	Input 	Dış hava sensörü
+7 	Gnd
+6 	RX-TX 	OpenTherm (3.0)
+	5 	Gnd
+4 	Input 	-
+3 	Gnd
+2 	Input 	Oda termostatı
+1 	Gnd
+X4
+7 	24Vdc 	DC gaz valfi
+	6 	Gnd
+5 	- 	-
+4 	PWM
+Fan modülasyonu	3 	24Vdc
+2 	Tacho
+1 	Gnd
+X5
+9 	- 	-
+8 	Input 	Isıl sigorta
+7 	Gnd
+6 	Input Kullanım suyu sensörü	
+5 	Gnd
+4 	Input 	Çıkış sensörü
+3 	Gnd 	Çıkış sensörü - dönüş sensörü
+2 	Input 	Dönüş sensörü
+1 	24Vdc 	-
+X7
+10 	WPS supply 5Vdc 	Su basınç anahtarı
+9 	WPS input 	Su basınç anahtarı
+8 	WPS gnd 	-
+7 	PWM supply 	PWM pompa
+	6 	PWM output
+5 	Supply 12Vdc
+Kullanım suyu türbin sensörü	4 	Input
+3 	Gnd
+2 	Input Güneş enerji boyleri alt sensörü	
+1 	Gnd
+X10
+3 	Faz merkezi ısıtma
+3 yollu vana	2 	Faz kullanım suyu
+1 	Nötr
+X11
+4 	Faz Fan besleme
+	3 	Nötr
+2 	Faz Pompa besleme
+	1 	Nötr
+X12 2 	Faz Besleme	
+1 	Nötr
+HT 1 	HT Ateşleme / iyonizasyon elektrodu	
+2 	-
+
+-- 20 of 28 --
+
+21
+Cihazın sağlıklı çalışabilmesi ve elektriksel güvenliğin tam olabilmesi için, cihazın bağlı olduğu enerji hattında mutlaka
+topraklama olmalıdır.
+Her iki kutup arasında min. 3 mm mesafe olacak şekilde, çift kutuplu bir anahtar kullanınız. Besleme kablosunu
+değiştirirken, mutlaka max. çapı 8mm olan, HAR H05 VV-F’ 3x0,75 kablo kullanınız.
+Cihaz üzerinde bir işlem yapılmadan önce elektrik bağlantısı mutlaka kesilmelidir.
+9.2 	Klemens bağlantı şeması
+
+-- 21 of 28 --
+
+22
+10 Pompa Grafiği
+11 Çevresel Değerlendirme
+11.1 Enerji tasarrufu
+Enerji tasarrufu ile ilgili ipuçları:
+ 	Radyatörleri örtmeyin. Radyatörlerin önüne gelecek şekilde perde asmayın.
+ 	Isı kaybını önlemek için radyatörlerin arkasına yansıtıcı paneller takın.
+ 	Çatı yalıtımını yapın ve çift cam kullanın.
+ 	Kombinin kontrol ve bakımlarını düzenli yapın.
+ 	Oda termostatlarını 1 °C kısın.
+ 	Kullanılmayan odalarda radyatörleri kapatın.
+ 	Sıcak ve soğuk suyu dikkatli kullanın.
+ 	Oda termostatı kullanın. Termostatı yaklaşık 20 °C'ye indirin. Bu sayede ısıtma maliyetlerini ve enerji tüketimi azalmış
+olur.
+ 	Termostatik radyatör vanaları ile birlikte modülasyonlu bir termostat enerji tasarrufu sağlar ve önemli bir konfor sunar. Bu
+kombinasyon size sıcaklıklarda esneklik sağlar. Termostatik radyatör vanalarını oda termostatının monte edildiği odalarda
+kullanmayın.
+ 	Termostatik vananın tamamen kapanması ve açılması, istenmeyen sıcaklık dalgalanmalarına neden olur. Termostatik
+vanaları küçük adımlarla açıp kapatın.
+ 	Odayı havalandırmak için pencereleri açarsanız oda termostatı sıcaklığını geçici olarak düşürün.
+ 	Oda termostatını saatlik ayarlarken evde olunmayan günleri ve tatil günlerini dikkate alın. Elektrik tüketimi ve enerji
+tasarrufu, programlanmış ve aktif bir zamanlayıcı programı ile optimum seviyelere ulaşır.
+
+-- 22 of 28 --
+
+23
+12 Paket Etiketi Bilgileri
+14.1 Paketin merkezi ısıtma enerji verimliliğini belirten paket bilgi kartı
+14.1.1 Paket bilgileri-Kombi
+Kombinin Sezonsal Enerji Verimliliği
+‘I’:Öncelikli merkezi ısıtıcının sezonsal ısıtma verimliliğinin değeri, % olarak ifade edilir.
+Sıcaklık Kontrolörü
+(Oda termostatı-Dış hava sensörü)
+Sıcaklık kontrol bilgi kartından
+Ek Kombi
+Kombi bilgi kartından
+.
+Güneş Enerjisi Katkısı
+Güneş enerjisi ürününün bilgi kartından.
+‘III’: Matematiksel ifadenin değeri: 294/(11.Prated), burada ‘’Prated’’ tercih edilen ısıtıcıyla ilgilidir.
+‘IV’: Matematiksel ifadenin değeri: 115/(11.Prated), burada ‘’Prated’’ tercih edilen ısıtıcıyla ilgilidir.
+(1) Eğer tank derecesi A’nın üzerindeyse 0,95 kullanınız.
+Isı Pompası Katkısı
+Isı pompası bilgi kartından
+‘II’: Bir paketin tercihli ve ilave ısıtıcılarının ısı çıktısını
+ağırlıklandırmak için tercih edilen faktör aşağıdaki
+tabloda verilmiştir.
+Sınıf I =% 1, Sınıf II =% 2, Sınıf III =% 1.5,
+Sınıf IV =% 2, Sınıf V =% 3, Sınıf VI =% 4,
+VII. Sınıf =% 3,5, Sınıf VIII =% 5
+Merkezi ısıtma sezonsal verimliliği(%)
+Kolektör boyutu(m²) 	Tank hacmi(m²) 	Kolektör verimliliği(%)
+Tank derecelendirmesi
+A * = 0.95, A = 0.91,
+B = 0.86, C = 0.83,
+D- G = 0,81
+Merkezi ısıtma sezonsal enerji verimliliği(in%)
+
+-- 23 of 28 --
+
+24
+Güneş Enerjisi Katkısı ve Ek Isı Pompası
+Küçük değeri seçiniz
+Paketin merkezi ısıtma sezonsal enerji verimliliği sınıfı
+Paketin merkezi ısıtma sezonsal enerji verimliliği sınıfı
+Bu kartta verilen ürün paketinin enerji verimliliği, bir binaya kurulduktan sonra gerçek enerji verimliliğine karşı gelmeyebilir çünkü
+bu verimlilik, dağıtım sistemindeki ısı kaybı ve bina büyüklüğü ve özellikleri ile ilgili olarak ürünlerin boyutlandırılması gibi
+faktörlerden etkilenir.
+Düşük Sıcaklık Uygulaması için Kullanılan Kombi ve Ek Isı Pompası(35ºC)
+Isı pompası bilgi kartından
+Kombilerin ağırlıklandırılması
+
+-- 24 of 28 --
+
+25
+14.1.2 Paket Ürün Kartı-Isıtıcı Kombinleri (Kombiler ya da Isı Pompaları)
+Kombine ısıtıcının su ısıtma enerji verimliliği
+Beyan edilen yük profili
+Güneş Enerjisi Katkısı
+Güneş enerjisi ürününün bilgi kartından
+Ortalama iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği
+Ortalama iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği sınıfı
+Soğuk ve sıcak iklim şartları altında paketin kullanım suyu ısıtması enerji verimliliği sınıfı
+Soğuk
+Sıcak
+Elektrik Desteği
+
+-- 25 of 28 --
+
+26
+Bu fişte verilen ürün paketinin enerji verimliliği, bir binaya monte edildikten sonra gerçek enerji verimliliğine karşılık
+gelmeyebilir, çünkü bu verimlilik dağıtım sistemindeki ısı kaybı ve bina büyüklüğü ve özellikleri ile ilişkili olarak ürünlerin
+boyutlandırılması gibi faktörlerden etkilenir.
+I Kombine ısıtıcının kullanım suyu enerjisi verimliliğinin değeri,% cinsinden ifade edilir.
+II Matematiksel ifadenin değeri (220 · Qref) / Qnonsol, kombine ısıtıcısının M, L, XL veya XXL yük profilini beyan etmek
+için , Ek VII, Tablo 15 ve Qnonsol güneş enerjisi ürününün bilgi kartından AB 811/2013 yönetmeliğinden alınmıştır.
+III Matematiksel ifadenin değeri (Qaux · 2,5) / (220 · Qref),% olarak ifade edilir, Qaux beyan edilen yük profili M, L, XL
+veya XXL için güneş enerjisi ürününün bilgi kartından ve Qref AB 811/2013, Ek VII, Tablo 15 den alınır.
+
+-- 26 of 28 --
+
+
+
+-- 27 of 28 --
+
+
+
+-- 28 of 28 --
+

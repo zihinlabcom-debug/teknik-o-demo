@@ -129,7 +129,8 @@ Kod yoksa errorCode boş; F.76 gibi kodları olduğu gibi koru. Eksik kimliği u
   if(previous.poolKey && previous.poolKey!==key) previous = {...previous,candidates:[],information:0,asked:[],evidence:[],finished:false,technicalKnowledge:undefined};
   previous.poolKey=key;
   let knowledge = lookupDiagnosticKnowledge(identity.brand,identity.model,identity.code);
-  if(!knowledge && previous.technicalKnowledge && Date.now()-Date.parse(previous.technicalKnowledge.source.reviewedAt)<86400000) knowledge=previous.technicalKnowledge;
+  if(!knowledge && previous.technicalKnowledge && previous.technicalKnowledge.evidence?.version!==2) previous={...previous,candidates:[],information:0,asked:[],evidence:[],finished:false,technicalKnowledge:undefined};
+  if(!knowledge && previous.technicalKnowledge?.evidence?.version===2 && Date.now()-Date.parse(previous.technicalKnowledge.source.reviewedAt)<86400000) knowledge=previous.technicalKnowledge;
   let researchStatus = knowledge ? 'verified' : 'not_needed';
   let researchMessage = '';
   if(!knowledge && identity.brand && identity.model && identity.code) {

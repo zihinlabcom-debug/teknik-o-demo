@@ -1,0 +1,296 @@
+{
+  "startedAt": "2026-09-22T15:05:16.071Z",
+  "model": "gpt-4.1",
+  "method": "One uncached researchManufacturer call per identity, sequential; original document reader wrapped only for observation. No URLs or reference answers sent to the model.",
+  "approvedDomains": {
+    "vaillant": [
+      "vaillant.com.tr",
+      "vaillant.com",
+      "vaillant.co.uk"
+    ],
+    "bosch": [
+      "bosch-homecomfort.com",
+      "bosch-thermotechnology.com",
+      "bosch.com.tr"
+    ],
+    "demirdokum": [
+      "demirdokum.com.tr"
+    ],
+    "buderus": [
+      "buderus.com",
+      "buderus.com.tr"
+    ],
+    "baymak": [
+      "baymak.com.tr"
+    ],
+    "eca": [
+      "eca.com.tr"
+    ],
+    "ariston": [
+      "ariston.com"
+    ],
+    "viessmann": [
+      "viessmann.com.tr",
+      "viessmann.com"
+    ],
+    "ferroli": [
+      "ferroli.com"
+    ],
+    "immergas": [
+      "immergas.com",
+      "immergas.com.tr"
+    ],
+    "airfel": [
+      "airfel.com.tr"
+    ],
+    "arcelik": [
+      "arcelik.com.tr"
+    ],
+    "beko": [
+      "beko.com",
+      "beko.com.tr"
+    ],
+    "warmhaus": [
+      "warmhaus.com.tr",
+      "warmhaus.com"
+    ]
+  },
+  "productionFingerprintsBefore": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "a579bc9f6c225cd8c06cc66bc99bd71a996ae5d09d5a4c47184e473a993747ad",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "200cbf03cf7b617260503b8b3be3b560ecafcd9ed444292930d2f5392614beae",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "0521a7cf595643fe45c59a2644cd8c7f7bb6dbba6db2172360e4f025f5adb037"
+  },
+  "results": [
+    {
+      "identity": {
+        "brand": "Baymak",
+        "model": "DUOTEC",
+        "code": "E01"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 229,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Ariston",
+        "model": "CLAS ONE",
+        "code": "501"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 8,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Immergas",
+        "model": "VICTRIX TERA",
+        "code": "27"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 8,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Demirdöküm",
+        "model": "Atromix",
+        "code": "F.28"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 10,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Buderus",
+        "model": "Logamax plus GB072",
+        "code": "6A"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 10,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Warmhaus",
+        "model": "Ewa",
+        "code": "E02"
+      },
+      "researchStatus": "error",
+      "elapsedMs": 9,
+      "discoveredUrl": null,
+      "sourceUrl": null,
+      "modelDocumentVerified": false,
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "modelProposedMeaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "stage": "web_search",
+        "message": "Connection error."
+      },
+      "probes": [],
+      "events": [],
+      "quoteChecks": null,
+      "documents": [],
+      "result": {
+        "status": "error",
+        "message": "Connection error."
+      }
+    }
+  ],
+  "finishedAt": "2026-09-22T15:05:16.374Z",
+  "productionFingerprintsAfter": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "a579bc9f6c225cd8c06cc66bc99bd71a996ae5d09d5a4c47184e473a993747ad",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "200cbf03cf7b617260503b8b3be3b560ecafcd9ed444292930d2f5392614beae",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "0521a7cf595643fe45c59a2644cd8c7f7bb6dbba6db2172360e4f025f5adb037"
+  },
+  "productionFilesUnchanged": true
+}

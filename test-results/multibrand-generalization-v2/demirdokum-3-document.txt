@@ -1,0 +1,2950 @@
+Montaj ve bakım
+kılavuzu
+Atromix
+P20, P24, P28
+TR
+
+-- 1 of 44 --
+
+İçindekiler
+2 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+İçindekiler
+1 Emniyet ............................................................... 4
+1.1 İşlemle ilgili uyarı bilgileri ....................................... 4
+1.2 Amacına uygun kullanım ....................................... 4
+1.3 Genel emniyet uyarıları.......................................... 4
+1.4 Yanma havası/atık gaz sistemi ile ilgili emniyet
+uyarıları.................................................................. 6
+1.5 Yönetmelikler (direktifler, kanunlar, standartlar) .... 7
+2 Doküman ile ilgili uyarılar .................................... 8
+2.1 Birlikte geçerli olan dokümanların dikkate
+alınması ................................................................. 8
+2.2 Dokümanların saklanması ..................................... 8
+2.3 Kılavuzun geçerliliği ............................................... 8
+3 Ürünün tanımı ..................................................... 8
+3.1 Cihaz tip etiketi üzerindeki bilgiler ......................... 8
+3.2 Kombi cihazının fonksiyon elemanları ................... 8
+3.3 CE işareti ............................................................... 8
+3.4 TSE işareti ............................................................. 8
+4 Montaj ................................................................. 8
+4.1 Ürünün ambalajından çıkarılması.......................... 8
+4.2 Teslimat kapsamının kontrolü................................ 8
+4.3 Ölçüler ................................................................... 9
+4.4 Minimum mesafeler ............................................... 9
+4.5 Yanıcı parçalara mesafeler.................................... 9
+4.6 Montaj şablonunun kullanılması ............................ 9
+4.7 Ürünün duvara montajı .......................................... 9
+4.8 Ön kapağın sökülmesi/monte edilmesi................ 10
+4.9 Yan kapakların sökülmesi/monte edilmesi .......... 10
+5 Kurulum............................................................. 10
+5.1 Gaz sayacının kontrol edilmesi............................ 11
+5.2 Gaz ve su bağlantıları.......................................... 11
+5.3 Emniyet ventili gider borusunun bağlanması....... 11
+5.4 Yoğuşma suyu gider hattının bağlantısı .............. 12
+5.5 Atık gaz sistemi.................................................... 12
+5.6 Elektrik kurulumu ................................................. 14
+6 Kullanım ............................................................ 15
+6.1 Teşhis kodlarının kullanılması ............................. 15
+6.2 Durum kodlarını göster ........................................ 16
+6.3 Test programlarının kullanılması ......................... 16
+7 Devreye alma .................................................... 16
+7.1 Gaz cinsinin kontrolü ........................................... 16
+7.2 Fabrika ayarlarının kontrol edilmesi..................... 16
+7.3 Isıtma suyunun/dolum ve takviye suyunun
+kontrol edilmesi ve hazırlanması ......................... 16
+7.4 Düşük su basıncının önlenmesi........................... 17
+7.5 Ürünü açma ......................................................... 18
+7.6 Isıtma sisteminin doldurulması ............................ 18
+7.7 Isıtma sisteminin havasının alınması................... 18
+7.8 Yoğuşma suyu sifonunun doldurulması............... 18
+7.9 Sıcak su devresinin doldurulması........................ 18
+7.10 Gaz ayarlarının kontrol edilmesi ve
+ayarlanması ......................................................... 19
+7.11 Sızdırmazlık kontrolü ........................................... 20
+8 Isıtma sistemine uyarlama ................................ 20
+8.1 Brülör kapatma süresi.......................................... 20
+8.2 Pompa gücünün ayarlanması.............................. 20
+9 Ürünü kullanıcıya teslim etme........................... 21
+10 Kontrol ve bakım ............................................... 21
+10.1 Kontrol ve bakım şartlarına uyulması .................. 21
+10.2 Yedek parça temini .............................................. 21
+10.3 CO₂ oranının kontrol edilmesi .............................. 21
+10.4 CO₂ oranının ayarlanması ................................... 22
+10.5 Gaz/hava karışımının sökülmesi ......................... 22
+10.6 Eşanjörün temizlenmesi ...................................... 23
+10.7 Brülörün kontrol edilmesi ..................................... 23
+10.8 Ateşleme elektrodunun kontrol edilmesi.............. 23
+10.9 Yoğuşma suyu sifonunun temizlenmesi .............. 23
+10.10 Soğuk su girişindeki süzgecin temizlenmesi ....... 24
+10.11 Isıtma filtresinin temizlenmesi.............................. 24
+10.12 Gaz-hava-bağlantısının montajı .......................... 24
+10.13 Üründeki suyun boşaltılması ............................... 24
+10.14 Genleşme tankı ön basıncının kontrol
+edilmesi................................................................ 24
+10.15 Kontrol ve bakım çalışmalarının
+tamamlanması ..................................................... 24
+11 Arıza giderme.................................................... 24
+11.1 Arızanın giderilmesi ............................................. 24
+11.2 Arıza hafızasının çağrılması ................................ 24
+11.3 Arıza hafızasının silinmesi ................................... 24
+11.4 Parametrenin fabrika ayarına geri alınması......... 25
+11.5 Tamirin hazırlanması ........................................... 25
+11.6 Arızalı parçaların değiştirilmesi............................ 25
+11.7 Tamiri tamamlama ............................................... 27
+12 Ürünün kapatılması ........................................... 27
+13 Müşteri hizmetleri .............................................. 27
+Ek ..................................................................................... 28
+A Kontrol programları – Genel bakış .................... 28
+B Servis teşhis kodları – Genel bakış................... 28
+C Durum kodları – Genel bakış ............................ 32
+D Arıza kodları – Genel bakış ............................... 33
+E Kablo bağlantı şeması: Kombi cihazı................ 35
+F Kontrol ve bakım çalışmaları – Genel bakış...... 36
+G Yanma havası/Atık gaz akım borusu
+uzunlukları......................................................... 36
+G.1 C13 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 36
+G.2 C33 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 37
+G.3 C43 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 37
+G.4 C53 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 37
+
+-- 2 of 44 --
+
+İçindekiler
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 3
+G.5 C83 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 37
+G.6 B23P tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 38
+G.7 B33 tipi yanma havası/atık gaz akım borusu
+uzunluğu .............................................................. 38
+H Teknik veriler..................................................... 38
+Dizin ................................................................................. 40
+
+-- 3 of 44 --
+
+1 Emniyet
+4 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+1 Emniyet
+1.1 İşlemle ilgili uyarı bilgileri
+İşlemle ilgili uyarı bilgilerinin sınıflandırılması
+İşlemle ilgili uyarı bilgileri, aşağıda gösterildiği
+gibi tehlikenin ağırlığına bağlı olarak uyarı
+işaretleri ve uyarı metinleriyle sınıflandırılmış-
+tır:
+Uyarı işaretleri ve uyarı metinleri
+Tehlike!
+Ölüm tehlikesi veya ağır yaralanma
+tehlikesi
+Tehlike!
+Elektrik çarpması nedeniyle ölüm
+tehlikesi
+Uyarı!
+Hafif yaralanma tehlikesi
+Dikkat!
+Maddi hasar veya çevreye zarar
+verme tehlikesi
+1.2 Amacına uygun kullanım
+Yanlış veya amacına uygun olmayan şekilde
+kullanılması durumunda; yaşamsal tehlike
+arz edebilir, üründe veya çevresinde maddi
+hasarlar meydana gelebilir.
+Bu ürün, kapalı ısıtma sistemlerine ve sıcak
+su hazırlamasına yönelik ısıtma cihazı olarak
+öngörülmüştür.
+Gaz yakıtlı cihaz türüne bağlı olarak bu kıla-
+vuzda bahsedilen ürünler, sadece ilave dokü-
+manlarda belirtilen Yanma Havası/Atık Gaz
+Akım Borusu aksesuarlarıyla monte edilmeli
+ve çalıştırılmalıdır.
+Amacına uygun kullanım arasında yer alan-
+lar:
+– Ürün ve sistemin diğer bileşenleri ile bir-
+likte verilen kullanım, montaj ve bakım kıla-
+vuzlarının dikkate alınması
+– Ürün ve sistemin montaj kurallarına göre
+kurulumu ve montajı
+– Kılavuzlarda yer alan tüm kontrol ve bakım
+şartlarının yerine getirilmesidir.
+Amacına uygun kullanım ayrıca IP koduna
+uygun kurulumu da kapsamaktadır.
+Bu kılavuzda tarif edilenin dışında bir kulla-
+nım veya bunu aşan bir kullanım amacına
+uygun değildir. Her türlü doğrudan ticari ve
+endüstriyel kullanım da amacına uygun kulla-
+nım değildir.
+Dikkat!
+Her türlü kötü amaçlı kullanım yasaktır.
+1.3 Genel emniyet uyarıları
+1.3.1 Yetersiz nitelik nedeniyle tehlike
+Aşağıdaki çalışmalar sadece yetkili bayiler
+tarafından yapılmalıdır:
+– Montaj
+– Sökme
+– Kurulum
+– Devreye alma
+– Kontrol ve bakım
+– Tamir
+– Ürünün devre dışı bırakılması
+▶ Tüm ürün kılavuzlarına dikkat edin.
+▶ Güncel teknoloji seviyesine uygun hareket
+edin.
+▶ Tüm direktiflere, standartlara, kanunlara ve
+diğer yönetmeliklere uyun.
+1.3.2 Gaz kaçağı nedeniyle ölüm tehlikesi
+Binalarda doğal gaz kokusunda:
+▶ Gaz kokusu olan mekanlarda bulunmayın.
+▶ Mümkünse kapıları ve pencereleri açın ve
+cereyan yapmasını sağlayın.
+▶ Açık alevden kaçının (örn. çakmak, kibrit).
+▶ Sigara içmeyin.
+▶ Binada bulunan elektrik şalterlerini, soket-
+leri, zilleri, telefonu ve diğer iletişim sistem-
+lerini kullanmayın.
+▶ Gaz sayacı kapatma düzeneğini veya ana
+kapatma düzeneğini kapatın.
+▶ Mümkünse üründeki gaz kesme vanasını
+kapatın.
+▶ Diğer bina sakinlerini uyarın.
+▶ Hemen binayı terk edin ve diğer kişilerin
+girmesini önleyin.
+▶ Binayı terk eder etmez polisi ve itfaiyeyi
+arayın.
+▶ Gaz şirketinin acil durum birimini evin dı-
+şındaki bir telefondan haberdar edin.
+
+-- 4 of 44 --
+
+Emniyet 1
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 5
+1.3.3 Atık gaz sızıntısı nedeniyle ölüm
+tehlikesi
+Ürünü boş yoğuşma suyu sifonu ile çalıştırır-
+sanız, ortam havasına atık gaz sızabilir.
+▶ Yoğuşma suyu sifonunun, ürün işletimi için
+daima dolu olmasını sağlayın.
+Koşullar: Yoğuşma suyu sifonuna sahip
+B23 veya B23P bağlantısı için izin verilen
+cihazlar (harici aksesuar)
+– Blokaj su yüksekliği: ≥ 200 mm
+1.3.4 Tıkanmış veya sızdıran atık gaz
+yolları nedeniyle ölüm tehlikesi
+Montaj hataları, hasar, yanlış işlem, uygun
+olmayan montaj yeri veya benzeri nedenlerle
+atık gaz kaçağı olabilir ve zehirlenmeye yol
+açabilir.
+Binalardaki atık gaz kokusunda:
+▶ Erişebileceğiniz tüm kapıları ve pencereleri
+açın ve cereyan yapmasını sağlayın.
+▶ Ürünü kapatın.
+▶ Üründeki atık gaz yollarını ve atık gaz hat-
+larını kontrol edin.
+1.3.5 Dolap gibi kaplamalar nedeniyle ölüm
+tehlikesi
+Dolap gibi bir kaplama, ortam havasına bağlı
+çalıştırılan bir üründe tehlikeli durumlara yol
+açabilir.
+▶ Ürünün yeterince yanma havası ile beslen-
+mesine dikkat edin.
+1.3.6 Patlayıcı veya tutuşabilen maddeler
+nedeniyle yaşam tehlikesi
+▶ Ürünü, patlayıcı ve yanıcı maddeler bu-
+lunan yerlerde (örn. benzin, kağıt, boya)
+kullanmayın.
+1.3.7 Elektrik çarpması nedeniyle ölüm
+tehlikesi
+Gerilim taşıyan bileşenlere dokunursanız,
+elektrik çarpmasından dolayı ölüm tehlikesi
+söz konusudur.
+Üründe çalışmaya başlamadan önce:
+▶ Elektrik fişini çekin.
+▶ Veya tüm elektrik beslemesini kapatarak
+ürünü yüksüz konuma getirin (en az 3 mm
+kontak açıklığı olan elektrik ayırma dona-
+nımı üzerinden, örn. sigorta veya devre
+koruma şalteri).
+▶ Tekrar çalıştırmaya karşı emniyete alın.
+▶ Kondansatörler boşalana kadar en az
+3 dakika bekleyin.
+▶ Gerilim olmamasını kontrol edin.
+1.3.8 Güvenlik tertibatlarının eksik olması
+nedeniyle ölüm tehlikesi
+Bu kılavuzda yer alan şemalar, usulüne uy-
+gun kurulum için gerekli tüm güvenlik tertibat-
+larını içermemektedir.
+▶ Sistem için gerekli güvenlik tertibatlarını
+monte edin.
+▶ Geçerli ulusal ve uluslararası yasaları,
+standartları ve yönetmelikleri dikkate alın.
+1.3.9 Çıkan sıcak atık gazlar nedeniyle
+zehirlenme ve yanma tehlikesi
+▶ Ürünü sadece yanma havası/atık gaz akım
+borusu tam monte edilmiş olarak çalıştırın.
+▶ Ürünü – kısa süreli kontrol amaçları dı-
+şında – sadece monte edilmiş ve kapalı ön
+kapak ile çalıştırın.
+1.3.10 Yetersiz yanma havası girişi
+nedeniyle zehirlenme tehlikesi
+Koşullar: Ortam havasına bağımlı işletim
+▶ Havalandırma şartlarına uygun olarak ürü-
+nün montaj odasına sürekli engelsiz ve
+yeterli hava girişi sağlayın.
+1.3.11 Sıcak parçalar nedeniyle yanma veya
+haşlanma tehlikesi
+▶ Ancak bu parçalar soğuduktan sonra çalış-
+maya başlayın.
+1.3.12 Fazla ürün ağırlığı nedeniyle
+yaralanma tehlikesi
+▶ Ürünü en az iki kişiyle taşıyın.
+1.3.13 Uygun olmayan yanma ve ortam
+havası nedeniyle korozyon hasarı
+tehlikesi
+Spreyler, çözücü maddeler, klor içeren temiz-
+lik maddeleri, boyalar, yapıştırıcı maddeler,
+amonyak bileşikleri, tozlar vb. üründe ve atık
+gaz çıkış borusunda korozyona yol açabilir.
+
+-- 5 of 44 --
+
+1 Emniyet
+6 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+▶ Yanma havası beslemesinin flor, klor, kü-
+kürt, toz vs. içermemesini sağlayın.
+▶ Montaj yerinde kimyasal madde olmama-
+sını sağlayın.
+▶ Ürünü kuaför salonlarında, boya veya ma-
+rangoz atölyelerinde, temizlik işletmele-
+rinde vb. kullanmak istiyorsanız, teknik açı-
+dan kimyasal madde bulunmayan ortam
+havasının sağlandığı ayrı bir montaj odası
+seçin.
+▶ Yanma havası, önceden sıvı yakıtlı kazan-
+lar veya bacanın kurumlanmasına neden
+olan diğer ısıtma cihazları için kullanılan
+bacalardan sağlanmamalıdır.
+1.3.14 Kaçak arama spreyleri ve sıvıları
+nedeniyle maddi hasar tehlikesi
+Kaçak arama spreyleri ve sıvıları, venturideki
+kütle akış sensörünün filtresini tıkar ve bu
+nedenle kütle akış sensörüne zarar verir.
+▶ Onarım çalışmalarında venturi filtresindeki
+koruyucu kapağa kaçak arama spreyleri ve
+sıvıları uygulamayın.
+1.3.15 Donma sonucu maddi hasar tehlikesi
+▶ Ürünü donma tehlikesi bulunan mekanlara
+monte etmeyin.
+1.3.16 Uygun olmayan alet nedeniyle maddi
+hasar tehlikesi
+▶ Rakorlu bağlantıları sıkmak veya çözmek
+için uygun aletler kullanın.
+1.4 Yanma havası/atık gaz sistemi ile ilgili
+emniyet uyarıları
+1.4.1 Atık gaz sızıntısı nedeniyle ölüm
+tehlikesi
+▶ Bina içindeki açılabilen tüm yanma ha-
+vası/atık gaz akım borusu kontrol ve ölçüm
+deliklerinin, devreye alma ve işletim sıra-
+sında daima kapalı olmasını sağlayın.
+Hasarlı borulardan ve hasarlı contalardan atık
+gaz sızabilir. Madeni yağlar contalara zarar
+verebilirler.
+▶ Atık gaz sisteminin kurulumunda sadece
+aynı malzemeden üretilmiş atık gaz boru-
+ları kullanın.
+▶ Hasarlı boruları monte etmeyin.
+▶ Boruları monte etmeden önce pahlarını
+alın ve çapaklarından arındırın.
+▶ Montaj için kesinlikle madeni yağlar kullan-
+mayın.
+▶ Montajı kolaylaştırmak için sadece su, pi-
+yasada yaygın kullanılan sıvı yeşil sabun
+veya gerekirse birlikte verilen kayar mad-
+deyi kullanın.
+Atık gaz yolundaki harç artıkları, çapaklar vs.
+atık gazların açık havaya ulaşmasını engelle-
+yebilir, bunun sonucunda atık gaz bina içine
+sızabilir.
+▶ Montajdan sonra harç artıklarını, çapakları
+vs. yanma havası/atık gaz akım borusun-
+dan temizleyin.
+1.4.2 Buzlanma nedeniyle yaralanma
+tehlikesi
+Çatıdan geçirilen bir yanma havası/atık gaz
+akım borusunda, atık gazın içinde bulunan
+su buharı, çatı veya çatı yapısı üzerinde buz
+oluşturabilir.
+▶ Çatıda oluşacak buzların çatıdan kayma-
+masını sağlayın.
+1.4.3 Yıldırım çarpması nedeniyle yangın
+tehlikesi ve elektronik hasarlar
+▶ Eğer bina bir paratoner sistemi ile donatıl-
+mışsa, yanma havası/atık gaz akım boru-
+sunu paratonere bağlayın.
+▶ Atık gaz borusu (yanma havası/atık gaz
+akım borusunun bina dışındaki kısımları)
+metal malzemeler içeriyorsa, atık gaz bo-
+rusunu topraklayın.
+1.4.4 Bacadaki kimyasal tortular nedeniyle
+korozyon tehlikesi
+Önceden sıvı veya katı yakıtlı ısı kazanları-
+nın atık gazı için kullanılan bacalar, yanma
+havası girişi olarak kullanıma uygun değildir.
+Bacadaki kimyasal tortular yanma havasını
+etkileyebilir ve üründe korozyona yol açabilir.
+▶ Yanma havası girişinde aşındırıcı madde-
+ler olmamasını sağlayın.
+1.4.5 Emilen atık gazlar veya kir partikülleri
+nedeniyle maddi hasar tehlikesi
+Yanma havası/atık gaz sisteminin ağzı bir
+bacanın yanında yer alıyorsa atık gazlar veya
+
+-- 6 of 44 --
+
+Emniyet 1
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 7
+kir partikülleri emilebilir. Emilen atık gazlar
+veya kir partikülleri ürüne zarar verebilir.
+Yandaki baca çok yüksek sıcaklığa sahip atık
+gaz taşıyorsa veya bir kurum yangını mey-
+dana gelirse yanma havası/atık gaz sistemi-
+nin ağzı ısı etkisi nedeniyle zarar görebilir.
+▶ Örn. bacayı yükselterek yanma havası/atık
+gaz sistemini korumak için uygun tedbirler
+alın.
+1.5 Yönetmelikler (direktifler, kanunlar,
+standartlar)
+▶ Ulusal talimatları, standartları, direktifleri
+ve yasaları dikkate alın.
+
+-- 7 of 44 --
+
+2 Doküman ile ilgili uyarılar
+8 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+2 Doküman ile ilgili uyarılar
+2.1 Birlikte geçerli olan dokümanların dikkate
+alınması
+▶ Sistem bileşenlerinin beraberinde bulunan tüm işletme ve
+montaj kılavuzlarını mutlaka dikkate alın.
+2.2 Dokümanların saklanması
+▶ Bu kılavuzu ve ayrıca birlikte geçerli olan tüm belgeleri
+kullanıcıya teslim edin.
+2.3 Kılavuzun geçerliliği
+Bu kılavuz sadece aşağıdaki ürünler için geçerlidir:
+Ürün - Ürün numarası
+Atromix P20 0010022843
+Atromix P24 0010022844
+Atromix P28 0010022845
+3 Ürünün tanımı
+3.1 Cihaz tip etiketi üzerindeki bilgiler
+Tip etiketi ürünün alt tarafında yer almaktadır.
+Cihaz tip etiketi, ürünün monte edilmesi gereken ülkeyi gös-
+terir.
+3.2 Kombi cihazının fonksiyon elemanları
+12
+13
+14
+16
+15
+17	1
+2
+4
+3
+5
+6
+7
+8
+9
+10 	11
+1 Elektronik kutusu
+2 Üç yollu vana
+3 Isıtma devresi emniyet
+ventili
+4 Basınç sensörü
+5 Atık gaz borusu
+6 Ateşleme trafosu
+7 Atık gaz ölçüm müşiri
+8 Gaz armatürü
+9 Hava emme borusu
+10 Ateşleme elektrodu
+11 Fan
+12 Birincil ısı eşanjörü
+13 Kalorifer genleşme
+deposu
+14 Plakalı eşanjör
+15 Debi sensörü
+16 Kalorifer pompası
+17 Yoğuşma suyu sifonu
+3.3 CE işareti
+CE işareti, ürünlerin tip etiketi doğrultusunda geçerli yönet-
+meliklerin esas taleplerini yerine getirdiğini belgelendirir.
+Uygunluk açıklaması için üreticiye danışılabilir.
+3.4 TSE işareti
+TSE işareti ile, bu ürünün TSE tarafından kontrol edildiği ve
+Türkiye'de satış için onaylandığı belgelenmiştir.
+4 Montaj
+4.1 Ürünün ambalajından çıkarılması
+1. Ürünü karton ambalajından çıkarın.
+2. Ürünün tüm komponentlerinin koruma folyolarını çıka-
+rın.
+4.2 Teslimat kapsamının kontrolü
+▶ Teslimat kapsamının eksik olup olmadığını kontrol edin.
+Miktar Tanım
+1 Isı üreticisi
+1 Asma düzeneği
+2 Asma düzeneği için dübelli vidalar
+1 Esnek yoğuşma suyu gider hattı
+6 Poşette 1/2″ ve 3/4″ contası
+1 Montaj şablonu
+1 Dokümantasyon ek paketi
+
+-- 8 of 44 --
+
+Montaj 4
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 9
+4.3 Ölçüler
+1 	2 	3 	4 	5
+6
+220
+390
+185
+155 	155
+85	85
+205
+150
+ 
+70 
+95
+280
+356
+350
+52
+1 Kalorifer gidiş suyu hattı
+2 Sıcak su bağlantısı
+3 Gaz bağlantısı
+4 Soğuk su bağlantısı
+5 Kalorifer dönüş suyu
+hattı
+6 Yanma havası/Atık gaz
+akım borusu bağlantısı
+4.4 Minimum mesafeler
+C	C
+A
+B
+D
+Minimum mesafe
+A 150 mm
+B 150 mm
+C 5 mm
+D 600 mm
+4.5 Yanıcı parçalara mesafeler
+Ürün ile minimum mesafe gerektiren (bkz. sayfa (→ sayfa 9))
+yanabilecek komponentler arasında mesafe bırakılmasına
+gerek yoktur.
+4.6 Montaj şablonunun kullanılması
+▶ Delik delmeniz gereken yerleri tespit etmek için montaj
+şablonunu kullanın.
+4.7 Ürünün duvara montajı
+B
+A
+1. Duvarın, ürün çalışma ağırlığı için yeterli taşıma kapasi-
+tesine sahip olup olmadığını kontrol edin.
+2. Birlikte teslim edilen sabitleme malzemesinin duvar için
+kullanılabilir olup olmadığını kontrol edin.
+Koşullar: Duvarın taşıma kapasitesi yeterli, Sabitleme malzemesi duvarda
+kullanıma uygun
+▶ Ürünü açıklandığı şekilde asın.
+
+-- 9 of 44 --
+
+5 Kurulum
+10 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+Koşullar: Duvarın taşıma kapasitesi yeterli değil
+▶ Taşıma kapasitesi yeterli, harici bir asma düzeneği temin
+edin. Bu doğrultuda örneğin münferit ayaklar kullanın
+veya tuğla döşeyin.
+▶ Taşıma kapasitesi yeterli bir asma düzeneği oluşturamı-
+yorsanız ürünü asmayın.
+Koşullar: Sabitleme malzemesi duvarda kullanıma uygun değil
+▶ Ürünü harici olarak temin edilen, uygun sabitleme mal-
+zemesi kullanarak açıklandığı şekilde asın.
+4.8 Ön kapağın sökülmesi/monte edilmesi
+4.8.1 Ön kapağın sökülmesi
+B
+C
+A
+1
+1
+1. İki vidayı (1) gevşetin.
+2. Ön kapağı tetik yerinden çıkacak şekilde ortadan hafifçe
+arkaya doğru bastırın.
+3. Ön kapağı alt kenardan öne doğru çekin.
+4. Ön kapağı yukarı doğru mesnetten çıkartın.
+4.8.2 Ön kapağın montajı
+▶ Bileşenleri ters sırada tekrar monte edin.
+4.9 Yan kapakların sökülmesi/monte edilmesi
+4.9.1 Yan panelin sökülmesi
+Dikkat!
+Mekanik deformasyon nedeniyle maddi ha-
+sar tehlikesi!
+Her iki yan paneli çıkarırsanız, ürün mekanik
+olarak zorlanabilir, bu da örn. borulamada
+hasarlara yol açabilir ve kaçaklar meydana
+gelebilir.
+▶ Daima sadece bir yan bölümü sökün, asla
+her iki yan bölümü aynı anda sökmeyin.
+Bilgi
+Bakım veya onarım çalışmalarını kolaylaştırmak
+için yanlarda yeterli mesafe olması halinde (en az
+70 mm) bir yan paneli sökebilirsiniz.
+2x 	1
+A
+B
+C
+D
+1. Elektronik kutusunu öne doğru yatırın.
+2. Düşmemesi için yan paneli tutun ve üst ve alt taraftaki
+iki vidayı (1) sökün.
+3. Yan paneli dışa doğru döndürün ve aşağı doğru sökün.
+4.9.2 Yan bölümün montajı
+▶ Bileşenleri ters sırada tekrar monte edin.
+5 Kurulum
+Tehlike!
+Yanlış montaj ve bunun sonucunda çıkan su
+nedeniyle haşlanma tehlikesi ve/veya hasar
+tehlikesi!
+Bağlantı borularındaki mekanik gerilimler
+kaçaklara neden olabilir.
+▶ Bağlantı borularının mekanik gerilimsiz
+monte edilmesine dikkat edin.
+Dikkat!
+Boru tesisatında kalan artıklar nedeniyle
+maddi hasar riski!
+Boru tesisatındaki kaynak artıkları, conta
+artıkları, pislikler ve diğer artıklar ürüne zarar
+verebilir.
+
+-- 10 of 44 --
+
+Kurulum 5
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 11
+▶ Ürünü kurmadan önce ısıtma sistemini
+iyice yıkayın.
+5.1 Gaz sayacının kontrol edilmesi
+▶ Mevcut gaz sayacının gerekli gaz akışı için uygun oldu-
+ğundan emin olun.
+5.2 Gaz ve su bağlantıları
+Dikkat!
+Usulüne uygun olmayan gaz bağlantısı ne-
+deniyle hasar tehlikesi!
+Kontrol basıncının veya çalışma basıncının
+aşılması gaz armatüründe hasarlara neden
+olabilir!
+▶ Gaz armatürünü 11 kPa (110 mbar) de-
+ğerinde maksimum basınç ile sızdırmazlık
+bakımından kontrol edin.
+Dikkat!
+Korozyon nedeniyle maddi hasar tehlikesi
+Isıtma sistemindeki difüzyon sızdırmazlığı
+yapılmamış plastik borular nedeniyle ısıtma
+suyuna hava karışabilir. Isıtma suyundaki
+hava, kazan devresinde ve üründe korozyona
+neden olur.
+▶ Isıtma sisteminde difüzyon sızdırmazlığı
+yapılmamış plastik boru kullanacaksanız
+kazan devresine hava girmediğinden emin
+olun.
+Dikkat!
+Lehimleme sırasında ısı transferi nedeniyle
+maddi hasar tehlikesi!
+▶ Bağlantı parçalarını henüz küresel vana-
+lara vidalanmamışlarsa lehimleyin.
+Bilgi
+Isıtma cihazı çıkışındaki ve sistemdeki su borula-
+rını izolasyonla kaplayın.
+Ön çalışma
+1. Sistem hacmi ile genleşme tankı kapasitesinin birbirine
+uygun olup olmadıklarını kontrol edin.
+▽ Sistem / Tesisat için genleşme tankı hacmi yeterli
+değilse.
+▶ İlave genleşme tankını, ısıtma devresi dönüş
+hattında ürüne mümkün olduğunca yakın monte
+edin.
+▶ Ürün çıkışına bir geri tepme klapesi monte edin
+(ısıtma devresi gidiş hattı).
+2. Sistemde / Tesisatta aşağıdaki komponentlerin bulun-
+duğundan emin olun:
+– Cihaza yönelik bir soğuk su devresi kapatma mus-
+luğu
+– Cihaz gaz kesme vanası
+– Isıtma sisteminde bir doldurma ve boşaltma düze-
+neği
+1 	2 	3 	4 	5
+1 Isıtma devresi gidiş hattı
+bağlantısı, G3/4
+2 Sıcak su bağlantısı,
+G1/2
+3 Gaz bağlantısı, G3/4
+4 Soğuk su borusu bağ-
+lantısı, G1/2
+5 Isıtma devresi dönüş
+hattı bağlantısı, G3/4
+1. Su ve gaz bağlantılarını geçerli standartlara uygun ola-
+rak yapın.
+2. Devreye almadan önce gaz hattının havasını alın.
+3. Bağlantıları (→ sayfa 20) sızdırmazlık bakımından kont-
+rol edin.
+5.3 Emniyet ventili gider borusunun bağlanması
+1
+▶ Boru tesisatının göründüğünden emin olun.
+▶ Emniyet ventilini (1), uygun bir tahliye sifonuna bağlayın.
+Bunun için birlikte verilen plastik hortumu kullanın.
+◁ Bu tertibat, suyun nasıl dışarı çıktığı görülecek şe-
+kilde yerleştirilmelidir.
+
+-- 11 of 44 --
+
+5 Kurulum
+12 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+5.4 Yoğuşma suyu gider hattının bağlantısı
+1
+▶ Yoğuşma suyu giderine yönelik burada açıklanan talimat-
+lara, yasal direktiflere ve yerel talimatlara dikkat edin.
+▶ Nötralize olmayan yoğuşma suyunun boşaltılması için
+uygun olan bir PVC veya benzeri bir malzeme kullanın.
+▶ Uygun gider borusu malzemeleri temin edilemiyorsa,
+yoğuşma suyunu nötralize eden bir sistem monte edin.
+▶ Yoğuşma suyu gider hattı ile gider hortumunun sızdırmaz
+şekilde bağlı olmadığından emin olun.
+▶ Yoğuşma suyu sifonunu (1) bağlayın. Bunun için birlikte
+verilen plastik hortumu kullanın.
+5.5 Atık gaz sistemi
+5.5.1 Yanma Havası/Atık Gaz Akım Borusunun
+montajı
+50 mm/1m
+5 %
+1. Yoğuşma suyunun ürüne geri akabilmesi için dirsek ile
+Yanma Havası/Atık Gaz Geçişinin son parçası arasında
+%5'lik asgari bir eğimin olmasına dikkat edin.
+Koşullar: Atık gaz sızıntısı tabanın en az 1,80 m üzerinde bulunmaktadır.
+▶ Geçiş için koruma setinin montajını yapın.
+5.5.2 Yanma havası/Atık gaz sistemi
+5.5.2.1 Yatay yanma havası/atık gaz sistemi
+Geçerlilik: C13 tipi yanma havası/atık gaz akım borusu
+L
+L
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L) 1 m azaltılmalıdır.
+C13 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 36)
+5.5.2.2 Dikey yanma havası/atık gaz sistemi
+Geçerlilik: C33 tipi yanma havası/atık gaz akım borusu
+L
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L) 1 m azaltılmalıdır.
+C33 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 37)
+
+-- 12 of 44 --
+
+Kurulum 5
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 13
+5.5.2.3 Toplama hattı için yanma havası/atık gaz
+sistemi
+Geçerlilik: C43 tipi yanma havası/atık gaz akım borusu
+L
+Hat ile bağlantılar özel olarak ürün üreticisi tarafından gelişti-
+rilen aksesuarlar ile sağlanır.
+C43 tipi sisteme bağlı olan bir ısıtma cihazı, sadece doğal
+çekişli bacalara bağlanmalıdır.
+Toplama hattı sistemlerinden gelen yoğuşma suyu ısıtma
+cihazına akmamalıdır.
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L) 1 m azaltılmalıdır.
+C43 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 37)
+5.5.2.4 Ayrık borular üzerinden yanma havası/atık
+gaz sistemi
+Geçerlilik: C53 tipi yanma havası/atık gaz akım borusu
+L2
+L1
+Duvardan geçen ve sıcaklığı, oda sıcaklığını 60 °C aşan her
+hat, geçtiği bölgede bir izolasyon ile döşenmelidir. Bu izolas-
+yon, kalınlığı ≥ 10 mm ve ısı iletkenliği λ ≤ 0,04 W/mK olan
+uygun bir yalıtım malzemesi ile gerçekleştirilebilir (örn. cam
+yünü). Temiz hava beslemesi ve atık gaz çıkışı başlıkları bi-
+nanın karşılıklı duvarlarına monte edilmemelidir.
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L1+L2) 2 m azaltılmalıdır.
+C53 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 37)
+5.5.2.5 Tekli veya çoklu hat için ayrık borular
+üzerinden yanma havası/atık gaz sistemi
+Geçerlilik: C83 tipi yanma havası/atık gaz akım borusu
+L2 	L1
+Toplama hattı sistemlerinden gelen yoğuşma suyu ısıtma
+cihazına akmamalıdır.
+Atık gaz bağlantısı, tekli veya çoklu hatlardaki (doğal çekiş
+konumu) saptırma üzerinden gerçekleşir. Hattın çapı bağlı
+ürünlerin toplam gücüne göre belirlenmelidir.
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L1+L2) 2 m azaltılmalıdır.
+C83 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 37)
+
+-- 13 of 44 --
+
+5 Kurulum
+14 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+5.5.2.6 Aşırı basınç altındaki baca için esnek yanma
+havası/atık gaz sistemi
+Geçerlilik: B23P tipi yanma havası/atık gaz akım borusu
+L1
+L2
+Bu yapılandırmada eski bir atık gaz veya havalandırma şaftı,
+ortam havasından bağımsız bir ısıtma cihazı çıkışının monte
+edilmesi için kullanılabilir.
+Bu yapılandırmada havalandırmayla ilgili öngörülen yasal
+koşullar yerine getirilmiş olmalıdır.
+Temiz hava girişi, ürünün kurulu olduğu odadan, yatay
+yanma havası/atık gaz çıkış borusu elemanının dirseği
+üzerinden gerçekleşir.
+– Yatay borunun (L1) uzunlamasına bölümünde,
+Ø 60/100 mm'lik bir konsantrik boru söz konusudur.
+Bu değer, dirsek nedeniyle oluşan yük kaybını dikkate
+almaktadır.
+– Dikey borunun (L2) uzunlamasına bölümünde Ø 80 mm'-
+lik esnek bir atık gaz borusu söz konusudur.
+Bu değer, dirsek ve baca çıkış şapkası nedeniyle oluşan
+yük kaybını dikkate almaktadır.
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L1+L2) 1 m azaltılmalıdır.
+5.5.2.7 Doğal çekişli çoklu hat için yanma havası/atık
+gaz sistemi
+Geçerlilik: B33 tipi yanma havası/atık gaz akım borusu
+L
+Hat ile bağlantılar özel olarak ürün üreticisi tarafından gelişti-
+rilen aksesuarlar ile sağlanır.
+Bu yapılandırmada havalandırmayla ilgili öngörülen yasal
+koşullar yerine getirilmiş olmalıdır.
+B33 tipi sisteme bağlı olan bir ısıtma cihazı, sadece doğal
+çekişli bacalara bağlanmalıdır.
+Toplama hattı sistemlerinden gelen yoğuşma suyu ısıtma
+cihazına akmamalıdır.
+Temiz hava girişi, ürünün kurulu olduğu odadan, yatay
+yanma havası/atık gaz çıkış borusu elemanı üzerinden
+gerçekleşir.
+Gerekli olan her ilave 90° dirsek (veya 2 adet 45° ile) için
+uzunluk (L) 1 m azaltılmalıdır.
+B33 tipi yanma havası/atık gaz akım borusu uzunluğu
+(→ sayfa 38)
+5.6 Elektrik kurulumu
+Elektrik tesisatı montajı sadece bir elektrik uzmanı tarafından
+yapılmalıdır.
+Tehlike!
+Elektrik çarpması nedeniyle ölüm tehlikesi!
+Şebeke bağlantı klemensleri L ve N arasında
+ürün kapalı olsa dahi sabit gerilim vardır:
+▶ Elektrik beslemesini kapatın.
+▶ Elektrik beslemesini tekrar açılmaya karşı
+emniyete alın.
+
+-- 14 of 44 --
+
+Kullanım 6
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 15
+5.6.1 Elektronik kutusunun açılması
+A
+B
+B
+▶ Belirtilen sıralamaya göre talimatlara uyun.
+5.6.2 Kablo bağlantısı
+1
+2
+1 24 V e-Veri yolu kablo
+yerleşimi
+2 230 V kablo yerleşimi
+5.6.3 Kablo bağlantısının yapılması
+30 mm max.
+1. Elektronik kutusunda hasar görmemesi için bağlantı
+kablosunu uygun şekilde kısaltın.
+2. Soketi bağlantı kablosuna vidalayın.
+3. Soketi, elektronik kart üzerindeki yerine takın.
+5.6.4 Elektrik beslemesinin yapılması
+1. Geçerli tüm talimatları dikkate alın.
+2. Şebeke nominal geriliminin 230 V olduğundan emin
+olun.
+3. Bir elektrik fişini şebeke bağlantı kablosuna takın.
+4. Elektrik fişini prize takın.
+5. Şebeke bağlantısına erişimin daima sağlanmasını ve
+önünün/üstünün kapatılmamasını sağlayın.
+5.6.5 Reglerin elektronik sisteme bağlanması
+X2
+X22 	X41
+– +	24V=
+RT 	BUS
+	Burner
+off
+	X106
+BUS	24 V
+BUS
+RT
+B.off
+	Burner
+off 
+RT	24V =
+ 
+- +
+BUS
+1
+4
+3	2
+1 Zeminde duran ısıtma
+için maksimum termos-
+tat
+2 24 V Regler
+3 eBUS regleri veya
+radyo frekans alıcısı
+4 Dış sensör, kablolu
+1. Elektronik kutusunu açın. (→ sayfa 15)
+2. Kablo bağlantısını yapın. (→ sayfa 15)
+3. Münferit bileşenleri montaj cinsine göre bağlayın.
+Koşullar: Çoklu devre regülatörü monte ediliyorsa.
+▶ Pompanın işletim modunu (d.18) Eco konumundan (ara-
+lıklı pompa işletimi) Konfor konumuna değiştirin (sürekli
+pompa işletimi).
+4. Elektronik kutuyu kapatın.
+6 Kullanım
+6.1 Teşhis kodlarının kullanılması
+Teşhis kodları tablosunda ayarlanabilir olarak işaretlenen pa-
+rametreleri, ürünü sisteme ve müşteri ihtiyaçlarına uyarlamak
+için kullanabilirsiniz.
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+6.1.1 Teşhis kodlarının etkinleştirilmesi
+1. tuşuna 9 saniye boyunca basın.
+◁ Ekranda görünür.
+2. Değeri ayarlamak için ayar düğmesini döndürün.
+◁ Erişim kodu (96) yetkili bayi için öngörülmüştür.
+◁ Erişim kodu (35) müşteri hizmetleri için öngörülmüş-
+tür.
+3. Onaylamak için tuşuna basın.
+◁ Ekranda görünür.
+
+-- 15 of 44 --
+
+7 Devreye alma
+16 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+6.1.2 Teşhis kodunun ayarlanması
+1. Teşhis kodunu seçmek için ayar düğmesini çevirin.
+2. Onaylamak için tuşuna basın.
+◁ Değer veya teşhis kodunun durumu ekranda görün-
+tülenir.
+3. Değeri ayarlamak için ayar düğmesini döndürün.
+4. Onaylamak için tuşuna basın.
+◁ Ekranda görünür.
+5. Değiştirilmesi gereken tüm parametreler için aynı işlem-
+leri yapın.
+6. Teşhis kodları yapılandırmasını sonlandırmak için
+tuşuna 3 saniye boyunca basın.
+6.2 Durum kodlarını göster
+Durum kodları, ürünün güncel işletme durumunu gösterir.
+Durum kodları – Genel bakış (→ sayfa 32)
+6.2.1 Durum kodlarının çağrılması
+1. tuşuna 5 saniye boyunca basın.
+◁ Ekranda görünür.
+2. Bu menüden çıkmak için tuşuna basın.
+6.3 Test programlarının kullanılması
+Farklı test programlarını etkinleştirerek, üründe çeşitli özel
+fonksiyonları devreye alabilirsiniz.
+Kontrol programları – Genel bakış (→ sayfa 28)
+6.3.1 Kontrol programlarının etkinleştirilmesi
+1. tuşuna 7 saniye boyunca basın.
+◁ Ekranda görünür.
+2. Kontrol programını seçmek için ayar düğmesini çevi-
+rin.
+3. Onaylamak için tuşuna basın.
+◁ Seçilen kontrol programı başlatılır.
+4. Kontrol programını sonlandırmak için tuşuna basın.
+5. Kontrol programlarını sonlandırmak için tuşuna 3 sa-
+niye boyunca basın.
+Bilgi
+15 saniye boyunca herhangi bir tuşa bas-
+mazsanız, mevcut program otomatik olarak
+iptal edilir ve ana ekran görüntülenir.
+7 Devreye alma
+7.1 Gaz cinsinin kontrolü
+Gaz cinsini kontrol ederek ürünün doğru ayarlandığından
+emin olun. Bu sayede optimum yanma tepkimesi sağlanabi-
+lir.
+▶ Komponent değişimi durumunda, gaz devresinde çalışır-
+ken veya bir gaz cinsi dönüşümü yapıldığında, gaz cinsini
+düzenli ürün bakımı kapsamında kontrol edin.
+7.2 Fabrika ayarlarının kontrol edilmesi
+Ürünün yakma işlemi fabrikada kontrol edildi ve tip etiketi
+üzerinde belirlenen gaz cinsi ile işletim için ön ayarı yapıldı.
+Ürün yalnızca doğal gaz ile işletilebilir.
+▶ Cihaz tip etiketi üzerindeki gaz cinsine ilişkin bilgileri
+kontrol edin ve bunları montaj yerinde mevcut gaz cinsi
+ile karşılaştırın.
+Koşullar: Ürün modeli yerel mevcut gaz cinsine uygun değil
+▶ Ürünü devreye almayın.
+Koşullar: Ürün modeli yerel mevcut gaz cinsine uygun
+▶ Bunun için aşağıda tanımlanan yolu izleyin.
+7.3 Isıtma suyunun/dolum ve takviye suyunun
+kontrol edilmesi ve hazırlanması
+Dikkat!
+Kalitesiz ısıtma suyu nedeniyle maddi hasar
+tehlikesi
+▶ Isıtma suyu kalitesinin yeterli düzeyde
+olmasını sağlayın.
+▶ Tesisatı doldurmadan veya takviye yapmadan önce
+ısıtma suyunun kalitesini kontrol edin.
+Isıtma suyu kalitesinin kontrol edilmesi
+▶ Isıtma devresinden biraz su alın.
+▶ Isıtma suyunun dış görünümünü kontrol edin.
+▶ Suyun içinde tortu maddeleri saptarsanız, sistemdeki /
+tesisattaki çamuru temizlemelisiniz.
+▶ Mıknatıslı bir çubuk yardımıyla manyetit (demir oksit)
+olup olmadığını kontrol edin.
+▶ Manyetit saptarsanız tesisatı temizleyin ve korozyona
+karşı koruma sağlamak için gerekli önlemleri alın. Veya
+manyetik bir filtre takın.
+▶ Aldığınız suyun pH değerini 25 °C sıcaklıkta kontrol edin.
+▶ Değer 6,5'den düşük veya 8,5'den yüksek ise tesisatı
+temizleyin ve ısıtma suyunu hazırlayın.
+▶ Isıtma suyuna oksijen girmemesini sağlayın.
+Dolum ve takviye suyunun kontrol edilmesi
+▶ Tesisatı doldurmadan önce dolum ve takviye suyunun
+sertliğini ölçün.
+Dolum ve takviye suyunun hazırlanması
+▶ Doldurulan ve ilave edilen suyun hazırlanması için geçerli
+ulusal talimatları ve teknik kuralları dikkate alın.
+Ulusal yönetmelikler ve teknik kurallar ile daha yüksek talep-
+ler belirlenmedikçe aşağıdakiler geçerlidir:
+
+-- 16 of 44 --
+
+Devreye alma 7
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 17
+Şu durumda kalorifer suyu hazırlayın:
+– Sistemin kullanım süresinde tüm dolum ve ilave su mik-
+tarı ısıtma sisteminin nominal hacmin üç katını aşarsa,
+veya
+– aşağıdaki tabloda belirtilen standart değerlere uyulmazsa
+veya
+– ısıtma suyunun pH değeri 6,5'den düşük veya 8,5'den
+yüksek ise.
+Toplam
+ısıtma
+gücü
+Belirli tesisat hacmi için su sertliği1)
+≤ 20 l/kW > 20 l/kW
+≤ 50 l/kW > 50 l/kW
+kW
+mg
+CaCO₃/
+l
+mol/
+m³
+mg
+CaCO₃/
+l
+mol/
+m³
+mg
+CaCO₃/
+l
+mol/
+m³
+< 50 < 300 < 3 200 2 2 0,02
+> 50 ila
+≤ 200
+arası
+200 2 150 1,5 2 0,02
+> 200
+ila
+≤ 600
+arası
+150 1,5 2 0,02 2 0,02
+> 600 2 0,02 2 0,02 2 0,02
+1) Litre normal kapasite/ısıtma gücü; çok kazanlı tesisatlarda en
+küçük münferit ısıtma gücü kullanılmalıdır.
+Dikkat!
+Uygun olmayan ısıtma suyu nedeniyle alü-
+minyum korozyonu ve bunun sonucunda
+sızıntılar!
+Örn. çelikten, dökme demirden veya bakır-
+dan farklı olarak alkalize edilmiş alüminyum
+radyatörler kalorifer suyuna (pH değeri > 8,5)
+yüksek korozyonla birlikte farklı tepki verir.
+▶ Alüminyum radyatörlerde kalorifer suyu-
+nun pH değerinin 6,5 ve azami 8,5 ara-
+sında olmasına dikkat edin.
+Dikkat!
+Isıtma suyuna uygun olmayan katkı mad-
+delerinin eklenmesi nedeniyle maddi hasar
+tehlikesi!
+Uygun olmayan katkı maddeleri yapı parçası
+değişikliklerine, ısıtma konumunda seslere ve
+diğer olası arızalara neden olabilir.
+▶ Uygun olmayan antifriz ve korozyon önle-
+yici maddeler, haşere ilacı ve sızdırmazlık
+maddesi kullanmayın.
+Aşağıdaki katkı maddelerinin doğru bir şekilde kullanılması
+koşuluyla şimdiye kadar ürünlerimizle ilgili herhangi bir uyuş-
+mazlık saptanmamıştır.
+▶ Kullanırken mutlaka katkı maddesi üreticisinin talimatla-
+rına uyun.
+Isıtma sisteminde kullanılacak diğer katkı maddelerinin
+uyumluluğu ve bunların etkileri için sorumluluk üstlenmemek-
+teyiz.
+Temizlik yapmak için kullanılabilecek katkılar (ardın-
+dan durulama gerekli)
+– Adey MC3+
+– Adey MC5
+– Fernox F3
+– Sentinel X 300
+– Sentinel X 400
+Isıtma sisteminde koruyucu olarak kullanılan katkılar
+– Adey MC1+
+– Fernox F1
+– Fernox F2
+– Sentinel X 100
+– Sentinel X 200
+Isıtma sistemi için donmaya karşı koruma katkıları
+– Adey MC ZERO
+– Fernox Antifreeze Alphi 11
+– Sentinel X 500
+▶ Yukarıda belirtilen katkı maddelerini kullandıysanız, kulla-
+nıcıyı gerekli önlemler ile ilgili olarak bilgilendirin.
+▶ Kullanıcıya, donmaya karşı koruma için gerekli işleyişle
+ilgili bilgi verin.
+7.4 Düşük su basıncının önlenmesi
+Dolum basıncı 0,05 ile 0,27 MPa (0,5 ile 2,7 bar) arasında
+olmalıdır.
+Bilgi
+Ekranda gidiş suyu sıcaklığı gösterildiğinde,
+ve tuşunu aynı anda 5 saniyeden fazla basılı
+tutun veya basıncı görüntülemek için geçici olarak
+ısıtma devresini devre dışı bırakın.
+Isıtma sistemi birçok kata kadar uzanıyorsa, ısıtma sistemine
+hava girişini önlemek için dolum basıncı için daha yüksek
+değerler gerekli olabilir.
+Su basıncı 0,05 MPa (0,5 bar) değerinin altında kalırsa, bu
+değer ekranda yanıp söner.
+Su basıncı 0,03 MPa (0,3 bar) değerinin altına düşerse, ürün
+kapanır. Ekranda 0,0 MPa (0,0 bar) görünür. Arıza F.22
+arıza listesine kaydedilir.
+▶ Ürünü tekrar işletime almak için kalorifere su ilave edin.
+◁ Ekranda ilgili basınç değeri, 0,05 MPa (0,5 bar) veya
+üzerindeki bir basınca ulaşılana kadar yanıp sönerek
+gösterilir.
+
+-- 17 of 44 --
+
+7 Devreye alma
+18 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+7.5 Ürünü açma
+▶ Harici olarak monte edilmiş ana şalter ile ürünü çalıştırın.
+7.6 Isıtma sisteminin doldurulması
+Ön çalışma
+▶ Isıtma sistemini yıkayın.
+1
+1. Pompadaki otomatik purjör (1) tapasını iki defa döndü-
+rerek çıkarın.
+2. Gerekli dolum basıncına ulaşana kadar su takviyesi
+yapın.
+◁ Ürün devreye girmez.
+◁ Isıtmanın sistem basıncı ekranda yanıp söner.
+◁ Basınç 0,05 MPa (0,5 bar) değerinin altındaysa ve
+ardından 15 saniyeden uzun süreyle 0,07 MPa (0,7
+bar) değerinin üzerine çıkıyorsa, otomatik hava alma
+fonksiyonu etkinleştirilir.
+3. Pompanın otomatik purjörünü açık bırakın.
+4. Isıtma suyu basıncının gerekli dolum basıncına uygun
+olup olmadığından emin olun. Uygun değilse ürünü
+yeniden doldurun.
+Bilgi
+Takviye için ürünün alt tarafındaki doldurma
+vanasını kullanabilirsiniz.
+5. Tüm bağlantıları sızdırmazlık bakımından kontrol edin.
+7.7 Isıtma sisteminin havasının alınması
+1. Devrenin havasını almadan önce ısıtma sistemi dolum
+basıncının minimum basıncın üzerinde olduğundan
+emin olun.
+2. Tüm termostatik radyatör vanalarını açın.
+3. Sistemin tüm hava alma vanalarını açın.
+4. Isıtma sisteminin havasını almak için kontrol programını
+P.06 seçin.
+◁ Ürün devreye girmez.
+5. Su hava alma vanasından kabarcıksız çıkana kadar en
+alçak noktadaki radyatörün havasını alın.
+6. Isıtma sistemi suyla dolana kadar diğer tüm radyatörle-
+rin havasını alın.
+7. Sistemin tüm hava alma vanalarını kapatın.
+8. Kontrol programı P.06 tamamlandıktan sonra ısıtma sis-
+teminde hala çok fazla hava varsa, kontrol programını
+yeniden başlatın.
+7.8 Yoğuşma suyu sifonunun doldurulması
+C
+2
+3
+1
+A B
+1. Sifonun alt parçasını (1) sifonun üst parçasından (2)
+ayırın.
+2. Şamandırayı (3) çıkarın.
+3. Sifonun alt parçasını, yoğuşma suyu gider hattı üst ke-
+narının 10 mm altına gelene kadar suyla doldurun.
+4. Şamandırayı (3) tekrar yerleştirin.
+Bilgi
+Yoğuşma suyu sifonunda şamandıra olup
+olmadığını kontrol edin.
+5. Sifonun alt parçasını (1) sifonun üst parçasına (2) yer-
+leştirin.
+7.9 Sıcak su devresinin doldurulması
+1. Sıcak su devresinin doldurulması için su musluklarını
+açın.
+2. Gerekli akış miktarına ulaşıldığında su musluklarını
+kapatın.
+◁ Sıcak su devresi dolumu yapılır.
+3. Tüm bağlantıların ve sistemin sızdırmazlığını kontrol
+edin.
+
+-- 18 of 44 --
+
+Devreye alma 7
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 19
+7.10 Gaz ayarlarının kontrol edilmesi ve
+ayarlanması
+Gaz armatüründeki ayarlar sadece nitelikli bir yetkili bayi
+tarafından yapılmalıdır.
+Tahrip edilen her mühür değiştirilmelidir.
+Karbondioksit ayar vidası mühürlenmelidir.
+Gaz armatürü gaz basıncı regülatörünün fabrika ayarları asla
+değiştirilmemelidir.
+7.10.1 Gaz bağlantı basıncının kontrolü (gaz giriş
+basıncı)
+1. Gaz kesme vanasını kapatın.
+1
+2. Bir tornavida ile gaz armatürü ölçüm nipelindeki (1)
+conta vidasını sökün.
+1
+2
+3. Manometreyi (2) ölçüm nipeline (1) bağlayın.
+4. Gaz kesme vanasını açın.
+5. Ürünü kontrol programı (P.01) ile işletime alın ve ilgili
+değeri ayarlayın.
+– P.01 programı ayar değeri: 100
+Kontrol programları – Genel bakış (→ sayfa 28)
+6. Gaz bağlantı basıncını atmosfer basıncına karşı ölçün.
+Geçerli giriş basıncı
+Türkiye Doğalgaz G20 1,7
+… 2,5 kPa
+(17,0
+… 25,0 mbar)
+Bilgi
+Giriş basıncı gaz armatüründe ölçülür, bu
+nedenle izin verilen minimum değer 0,1 kPa
+(1 mbar), tabloda belirtilen minimum değerin
+altında olabilir.
+Gaz bağlantı basıncı izin verilen aralıkta değil
+Dikkat!
+Yanlış gaz bağlantı basıncı nedeniyle
+işletim arızaları ve maddi hasar tehli-
+kesi!
+Gaz bağlantı basıncı izin verilen aralığın
+dışında ise, bu çalışma sırasında arıza-
+lara ve ürün hasarlarına yol açabilir.
+▶ Üründe ayar çalışmaları yapmayın.
+▶ Ürünü devreye almayın.
+▶ Bu arızayı gideremiyorsanız, gaz dağıtım kurumuna
+haber verin.
+▶ Gaz kesme vanasını kapatın.
+7. Ürünü kapatın.
+8. Gaz kesme vanasını kapatın.
+9. Manometreyi alın.
+10. Ölçüm nipelinin (1) vidasını sıkın.
+11. Gaz kesme vanasını açın.
+12. Ölçüm nipelinin gaz sızdırmazlığını kontrol edin.
+7.10.2 CO₂ oranının kontrol edilmesi
+1. Ürünü kontrol programı (P.01) ile işletime alın ve ilgili
+değeri ayarlayın.
+– P.01 programı ayar değeri: 100
+Kontrol programları – Genel bakış (→ sayfa 28)
+2. Okunan değerin sabitlenmesini bekleyin.
+– Sabit değerin okunması için bekleme süresi: 5 dk.
+1
+3. Atık gaz ölçüm müşirinin kapağını (1) çıkarın.
+4. CO₂ oranını atık gaz ölçüm müşirinden (1) ölçün.
+5. Ölçüm değerini, tablodaki ilgili değerle karşılaştırın.
+
+-- 19 of 44 --
+
+8 Isıtma sistemine uyarlama
+20 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+CO₂ oranının kontrol edilmesi
+Türkiye
+Çıkarılmış ön kapak /
+Monte edilmiş ön kapak
+Doğalgaz
+G20
+9,2 % ±1
+◁ Değer tamam.
+▽ Değer tamam değil, ürün devreye alınmamalıdır.
+▶ Müşteri hizmetlerini bilgilendirin.
+7.11 Sızdırmazlık kontrolü
+▶ Gaz hattını, ısıtma devresini ve sıcak su devresini sızdır-
+mazlık bakımından kontrol edin.
+▶ Atık gaz çıkış borusunu doğru kurulum açısından kontrol
+edin.
+7.11.1 Isıtma devresi kontrolü
+1. Isıtma devresini kullanıcı ara biriminden etkinleştirin.
+2. Radyatörlerdeki tüm termostatik vanaları tamamen
+açın.
+3. Ürünü en az 15 dakika çalıştırın.
+4. Isıtma sistemini doldurun ve havasını alın. (→ sayfa 18)
+5. Isıtma sisteminin havasını alın. (→ sayfa 18)
+6. Mevcut işletme durumunun göstergesini etkinleştirin.
+(→ sayfa 16)
+Durum kodları – Genel bakış (→ sayfa 32)
+◁ Ürün doğru çalışıyorsa, ekranda S.04 görünür.
+7.11.2 Sıcak kullanım suyu kontrolü
+1. Kullanım suyu konumunu kullanıcı ara biriminden etkin-
+leştirin.
+2. Bir sıcak su musluğunu tam açın.
+3. Mevcut işletme durumunun göstergesini etkinleştirin.
+(→ sayfa 16)
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+◁ Ürün doğru çalışıyorsa, ekranda S.14 görünür.
+8 Isıtma sistemine uyarlama
+Sistem parametrelerini yeniden belirleyebilir/değiştirebilirsiniz
+(Bölüm "Teşhis kodlarının kullanımı“).
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+8.1 Brülör kapatma süresi
+Brülörün çok sık açılıp kapanmasını ve bunun sonucunda
+enerji kaybını önlemek için, brülör her kapanışından sonra,
+belirli bir süre çalışmaması için, elektronik olarak kilitlenir.
+Brülör bekleme süresi sadece ısıtma konumu için etkindir.
+Devam eden bir brülör kapatma süresi sırasında bir kullanım
+suyu konumu, zaman elemanını etkilemez.
+8.1.1 Brülör kapatma süresinin ayarlanması
+▶ Teşhis kodunu ayarlayın. (→ sayfa 16)
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+8.1.2 Kalan brülör kapatma süresinin geri alınması
+▶ Reset tuşuna basın.
+◁ Ekranda görünür.
+8.2 Pompa gücünün ayarlanması
+Koşullar: Atromix P20/P24
+1
+▶ Gerekirse şalterden (1) pompanın devir sayısı kademe-
+sini ayarlayın.
+Koşullar: Atromix P28
+1
+▶ Gerekirse (1) tuşuna basarak pompanın devir sayısı ka-
+demesini ayarlayın.
+8.2.1 Pompa diyagramı
+Atromix P20/P24:
+
+-- 20 of 44 --
+
+Ürünü kullanıcıya teslim etme 9
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 21
+600
+500
+400
+200
+300
+100
+0
+0 	4 	10 	35 	40	16 	20 	26 	30 	A
+B
+3 2
+1
+1 Devir sayısı kademesi 1
+2 Devir sayısı kademesi 2
+3 Devir sayısı kademesi 3
+A Devredeki akış oranı
+(l/dk)
+B Kullanılabilir basınç
+(hPa)
+Atromix P28:
+600
+700
+500
+400
+200
+300
+100
+0
+0 	4 	8 	28 	32 	36	12 	16 	20 	24 	A
+B
+3
+4
+2
+1
+1 Devir sayısı kademesi 1
+2 Devir sayısı kademesi 2
+3 Devir sayısı kademesi 3
+3 Devir sayısı kademesi 4
+A Devredeki akış oranı
+(l/dk)
+B Kullanılabilir basınç
+(hPa)
+9 Ürünü kullanıcıya teslim etme
+▶ Kurulumu sonlandırdıktan sonra ilişikteki etiketi (kullanıcı-
+nın diline göre) ürün kaplamasına yapıştırın.
+▶ Kullanıcıyı güvenlik tertibatlarının konumu ve fonksiyon
+hakkında bilgilendirin.
+▶ Kullanıcıya, ürünü nasıl kullanılacağını gösterin.
+▶ Kullanıcıyı, özellikle uyması gereken emniyet uyarılarına
+karşı uyarın.
+▶ Kullanıcıyı, ürün bakımının öngörülen aralıklarla yapıl-
+ması gerektiği konusunda bilgilendirin.
+▶ Kullanıcıyı, yanma havası girişi ve atık gaz çıkış borusu-
+nun döşenmesine ilişkin önlemler hakkında bilgilendirin.
+10 Kontrol ve bakım
+10.1 Kontrol ve bakım şartlarına uyulması
+▶ Minimum kontrol ve bakım aralıklarına uyun. Kontrol so-
+nuçlarına bağlı olarak daha erken bakım gerekebilir.
+Kontrol ve bakım çalışmaları – Genel bakış (→ sayfa 36)
+10.2 Yedek parça temini
+Ürünün orijinal parçaları üretici tarafından uyumluluk kontrolü
+ile sertifikalandırılmıştır. Bakım veya tamir sırasında serti-
+fikalı olmayan veya izin verilmeyen parçaları kullanırsanız,
+ürün uyumluluğunu ve geçerli standartlara uygunluğunu kay-
+beder.
+Ürüne yönelik sorunsuz ve güvenli bir işletim için üreticinin
+orijinal yedek parçalarının kullanılmasını öneriyoruz. Mevcut
+orijinal yedek parçalarla ilgili bilgileri, bu kılavuzun arka yü-
+zünde bulunan iletişim adresinden temin edebilirsiniz.
+▶ Bakım veya tamir sırasında yedek parça kullanımı gerek-
+liyse, sadece ürün için izin verilen yedek parçaları kulla-
+nın.
+10.3 CO₂ oranının kontrol edilmesi
+1. Ürünü kontrol programı (P.01) ile işletime alın ve ilgili
+değeri ayarlayın.
+– P.01 programı ayar değeri: 100
+Kontrol programları – Genel bakış (→ sayfa 28)
+2. Okunan değerin sabitlenmesini bekleyin.
+– Sabit değerin okunması için bekleme süresi: 5 dk.
+1
+3. Kapağı atık gaz ölçüm müşirinden (1) sökün.
+4. CO₂ oranını atık gaz ölçüm müşirinden (1) ölçün.
+5. Ölçüm değerini, tablodaki ilgili değerle karşılaştırın.
+CO₂ oranının kontrol edilmesi
+Türkiye
+Çıkarılmış ön kapak /
+Monte edilmiş ön kapak
+Doğalgaz
+G20
+9,2 % ±1
+◁ Değer tamam.
+▽ Değer tamam değil, ürün devreye alınmamalıdır.
+▶ CO₂ oranını ayarlayın. (→ sayfa 22)
+
+-- 21 of 44 --
+
+10 Kontrol ve bakım
+22 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+10.4 CO₂ oranının ayarlanması
+Koşullar: CO₂ oranının ayarlanması gerekir
+1
+A
+B
+▶ Etiketi çıkarın.
+▶ CO₂ oranını ayarlamak için vidayı (1) çevirin (değer, ön
+kapak sökülmüş haldeyken).
+◁ CO₂ oranının arttırılması: Saat yönünün tersine dön-
+dürme
+◁ CO₂ oranının azaltılması: Saat yönünde döndürme
+▶ Ayarı sadece 1/8'lik adımlarla değiştirin ve her ayar de-
+ğişikliğinin ardından yaklaşık 1 dakika boyunca değerin
+stabil hale gelmesini bekleyin.
+▶ Ölçüm değerini, tablodaki ilgili değerle karşılaştırın.
+CO₂ değerinin ayarlanması
+Türkiye
+Çıkarılmış ön kapak / Monte edilmiş
+ön kapak
+Doğalgaz
+G20
+Tam yükte karbondi-
+oksit
+9,2 % ±0,2
+Ayarlama Wobbe
+Endeksi W₀ için
+14,09 kW⋅h/m³
+Tam yükte oksijen % hacim 4,5 ±1,8
+Tam yükte karbon-
+monoksit
+≤ 250 ppm
+Karbonmonok-
+sit/Karbondioksit
+≤ 0,0027
+▽ Ayar, öngörülen ayar aralığında değilse ürünü dev-
+reye almamalısınız.
+▶ Müşteri hizmetlerini bilgilendirin.
+▶ Hava temiz tutma taleplerinin veya karbonmonoksit ta-
+leplerinin yerine getirilip getirilmediğini kontrol edin.
+▶ Ön kapağı monte edin.
+10.5 Gaz/hava karışımının sökülmesi
+Bilgi
+Gaz hava bağlamı yapı grubu üç ana bileşenden
+oluşmaktadır:
+– Fan
+– Gaz armatürü,
+– Brülör kapağı
+1. Ürünü ana şalter üzerinden kapatın.
+2. Gaz kesme vanasını kapatın.
+3. Ön kapağı sökün. (→ sayfa 10)
+C
+A
+B
+1
+D
+2
+4. Vidayı sökün (1).
+5. Klipsi yukarı doğru bastırın.
+6. Atık gaz borusunu (2) çıkarın.
+3
+4
+5
+A	B
+7. Hava emme borusunu(3) sökün.
+8. Fişleri gaz armatüründen (4) ve fandan (5) çekin.
+
+-- 22 of 44 --
+
+Kontrol ve bakım 10
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 23
+A
+C
+D 	B
+6
+9. Gaz / hava karışımını (6) sökün.
+7
+7
+8
+10. Brülör contalarını (7) ve brülörü (8) sökün.
+11. Brülörü ve eşanjörü hasara ve kire karşı kontrol edin.
+12. Gerekirse temizleyin veya parçaları aşağıdaki bölüm-
+lere uygun olarak değiştirin.
+13. Her iki yeni brülör contasını monte edin.
+10.6 Eşanjörün temizlenmesi
+1
+1. Açıkta bulunan elektronik kutusunu sıçrayan sulara
+karşı koruyun.
+2. Eşanjörün (1) kanallarını su ile temizleyin.
+◁ Su, yoğuşma suyu toplama kabına akar.
+10.7 Brülörün kontrol edilmesi
+1. Brülör yüzeyini olası hasarlara karşı kontrol edin. Hasar
+tespit etmeniz durumunda brülörü değiştirin.
+2. Her iki yeni brülör contasını monte edin.
+10.8 Ateşleme elektrodunun kontrol edilmesi
+1
+2
+3 	4 	5
+1. Bağlantıyı (2) ve şase kablosunu (1) çözün.
+2. Sabitleme cıvatalarını (3) sökün.
+3. Elektrodu dikkatlice yanma hücresinden çıkarın.
+4. Elektrot uçlarının (4) hasarsız olup olmadıklarını kontrol
+edin.
+5. Elektrot mesafesini kontrol edin.
+– Ateşleme elektrotlarının mesafesi: 3,5 … 4,5 mm
+6. Contanın (5) hasarsız olduğundan emin olun.
+▽ Gerekirse contayı değiştirin.
+10.9 Yoğuşma suyu sifonunun temizlenmesi
+C
+2
+3
+1
+A B
+1. Sifonun alt parçasını (1) sifonun üst parçasından (2)
+ayırın.
+2. Şamandırayı (3) çıkarın.
+3. Şamandırayı ve sifonun alt parçasını suyla yıkayın.
+4. Sifonun alt parçasını, yoğuşma suyu gider hattı üst ke-
+narının 10 mm altına gelene kadar suyla doldurun.
+5. Şamandırayı (3) tekrar yerleştirin.
+Bilgi
+Yoğuşma suyu sifonunda şamandıra olup
+olmadığını kontrol edin.
+
+-- 23 of 44 --
+
+11 Arıza giderme
+24 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+6. Sifonun alt parçasını (1) sifonun üst parçasına (2) yer-
+leştirin.
+10.10 Soğuk su girişindeki süzgecin temizlenmesi
+1. Ana soğuk su girişini kapatın.
+2. Ürünü (sıcak su tarafında) boşaltın.
+3. Ürünün soğuk su borusu bağlantısındaki bağlantı par-
+çasını çıkarın.
+4. Soğuk su girişindeki süzgeci çıkarmadan temizleyin.
+10.11 Isıtma filtresinin temizlenmesi
+B
+A
+1. Ürünü boşaltın. (→ sayfa 24)
+2. Klipsi çıkarın.
+3. Isıtma filtresini çıkarın ve temizleyin.
+4. Bileşenleri ters sırada tekrar monte edin.
+10.12 Gaz-hava-bağlantısının montajı
+1. Brülörü takın.
+2. İki yeni brülör contasını brülör kapağına takın.
+3. Gaz-hava-bağlantısını monte edin.
+4. Gaz hava bağlamındaki vidaları sıkın.
+– İdeal olan tork anahtarı ile 7 Nm ile sıkmak.
+5. Atık gaz borusunu takın.
+6. Yanma havası borusunu takın.
+10.13 Üründeki suyun boşaltılması
+1. Ürünün servis vanalarını kapatın.
+2. Kontrol programını P.05 (→ sayfa 16) başlatın.
+Kontrol programları – Genel bakış (→ sayfa 28)
+3. Boşaltma vanalarını açın.
+4. Ürünün tamamen boşaltılması için dahili pompadaki
+hava purjörü kapağının açık olduğundan emin olun.
+10.14 Genleşme tankı ön basıncının kontrol
+edilmesi
+1. Ürünü boşaltın. (→ sayfa 24)
+2. Genleşme tankı ön basıncını, tankın ventilinde ölçün.
+Koşullar: Ön basınç < 0,075 MPa (0,75 bar)
+▶ Genleşme tankına, ısıtma sisteminin statik yüksekliğine
+göre en iyisi azot takviyesi yapın, yoksa hava takviyesi
+yapın. Boşaltma vanasının takviye sırasında açık olup
+olmadığını kontrol edin.
+3. Genleşme tankı vanasından su çıkarsa, genleşme tan-
+kını (→ sayfa 26) değiştirmelisiniz.
+4. Isıtma sistemini doldurun ve havasını alın. (→ sayfa 18)
+10.15 Kontrol ve bakım çalışmalarının
+tamamlanması
+1. Gaz bağlantı basıncını (gaz giriş basıncının) kontrol
+edin. (→ sayfa 19)
+2. CO₂ oranını kontrol edin. (→ sayfa 21)
+11 Arıza giderme
+11.1 Arızanın giderilmesi
+▶ Arıza kodları (F.XX) mevcutsa, ekteki tabloyu dikkate alın
+veya kontrol programlarını kullanın.
+Arıza kodları – Genel bakış (→ sayfa 33)
+Kontrol programları – Genel bakış (→ sayfa 28)
+Aynı anda birden fazla arıza mevcutsa arıza kodları ortaya
+çıkış saatleriyle birlikte ekranda sırayla görüntülenir.
+▶ Reset tuşuna basın.
+▶ Eğer arıza kodu giderilemiyorsa ve resetleme denemele-
+rinin ardından tekrar ortaya çıkıyorsa, müşteri hizmetle-
+rine danışın.
+11.2 Arıza hafızasının çağrılması
+Son 10 arıza kodu arıza hafızasında kayıtlıdır (ilgili arızaya
+ait ortaya çıkış saati ve 24 saat sonra gün sayısı ile birlikte).
+▶
+3 saniye boyunca düğmesini basılı tutun.
+Arıza kodları – Genel bakış (→ sayfa 33)
+◁ Arıza kodları ekranda sırayla görüntülenir.
+▶ Bu menüden çıkmak için tuşuna basın.
+11.3 Arıza hafızasının silinmesi
+1. Arıza hafızasını teşhis kodu d.94 ile silin.
+2. Teşhis kodunu ayarlayın. (→ sayfa 16)
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+
+-- 24 of 44 --
+
+Arıza giderme 11
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 25
+11.4 Parametrenin fabrika ayarına geri alınması
+1. Tüm parametreleri teşhis kodu d.96 ile fabrika ayarla-
+rına döndürün.
+2. Teşhis kodunu ayarlayın. (→ sayfa 16)
+Servis teşhis kodları – Genel bakış (→ sayfa 28)
+11.5 Tamirin hazırlanması
+1. Ürünü kapatın.
+2. Ürünü elektrik tesisatından ayırın.
+3. Ön kapağı sökün.
+4. Gaz kesme vanasını kapatın.
+5. Isıtma devresi gidiş ve dönüş hattındaki küresel vana-
+ları kapatın.
+6. Soğuk su borusundaki küresel vanayı kapatın.
+7. Ürünün su ileten parçalarını değiştirecekseniz ürünü
+boşaltın.
+8. Elektrikli parçalara suyun sıçramamasını (örn. elektro-
+nik kutusu) sağlayın.
+9. Sadece yeni conta ve O-Ring'leri kullanın. Ayrıca sızdır-
+mazlık maddeleri kullanmayın.
+11.6 Arızalı parçaların değiştirilmesi
+11.6.1 Brülörün değiştirilmesi
+1. Gaz hava bağlamını sökün. (→ sayfa 22)
+2. Brülör contasını sökün.
+3. Brülörü çıkarın.
+4. Brülörü yeni bir brülör contasıyla eşanjörün üzerine
+yerleştirin.
+5. Gaz-hava-bağlantısını monte edin. (→ sayfa 24)
+11.6.2 Gaz / hava karışımının değiştirilmesi
+1. Gaz hava bağlamını sökün. (→ sayfa 22)
+2. Yeni gaz / hava karışımını (→ sayfa 24) monte edin.
+11.6.3 Eşanjörün değişimi
+1. Ön kapağı sökün. (→ sayfa 10)
+2. Gaz hava bağlamını sökün. (→ sayfa 22)
+1 	A
+B
+3. Gaz borusunu (1) sökün.
+3
+1
+2
+A
+2 	4
+B
+4. Sıcaklık sensörünü (3) çıkarın.
+5. Üstteki klipsi (1) çıkarın.
+6. Alttaki klipsi (4) çıkarın.
+7. Gidiş borusunu (2) çıkarın.
+2
+2 	3
+B
+1
+A
+8. Üstteki klipsi (1) çıkarın.
+9. Alttaki klipsi (3) çıkarın.
+10. Dönüş borusunu (2) sökün.
+1
+A
+2
+11. Yoğuşma suyu toplama kabının (1) altındaki klipsi sö-
+kün .
+12. Dört adet vidayı (2) sökün.
+
+-- 25 of 44 --
+
+11 Arıza giderme
+26 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+2
+1
+B
+C
+A
+13. Ateşleme elektrodunu (1) sökün.
+14. Eşanjörü hafifçe kaldırın ve yoğuşma suyu toplama
+kabıyla birlikte sökün.
+15. Ateşleme trafosunu (2) sökün.
+16. Yeni eşanjörü ters sırada monte edin.
+11.6.4 Genleşme deposunun değiştirilmesi
+1. Ürünü boşaltın. (→ sayfa 24)
+B
+C
+1
+2
+3
+A
+D
+2. Somunu (3) sökün.
+3. Tespit sacının (1) her iki vidasını sökün.
+4. Tespit sacını çıkarın.
+5. Genleşme tankını (2) öne doğru çekip çıkarın.
+6. Yeni genleşme deposunu ürüne yerleştirin.
+7. Yeni genleşme deposunu su bağlantısına vidalayın.
+Bunun için yeni bir conta kullanın.
+8. Sabitleme plakasını iki vida ile sabitleyin.
+9. Ürünü (→ sayfa 18) doldurun ve havasını alın, gerekirse
+ısıtma sistemini de doldurun ve havasını alın.
+11.6.5 Ana elektronik kartın değiştirilmesi
+C
+C
+D
+B
+C
+C
+D
+B
+A
+A
+1. Elektronik kutusunu açın. (→ sayfa 15)
+2. Elektronik kartın tüm soketini çekin.
+3. Elektronik karttaki klipsleri sökün.
+4. Elektronik kartı çıkarın.
+5. Yeni elektronik kartı, alttan oluğa ve üstten klipslere
+oturacak şekilde monte edin.
+6. Elektronik kart soketlerini takın.
+7. Elektronik kutusunu kapatın.
+11.6.6 Kullanıcı ara birimi elektronik kartının
+değiştirilmesi
+B
+C
+C
+D
+A
+A
+1. Elektronik kutusunu açın. (→ sayfa 15)
+2. Elektronik kart soketini çekin.
+3. Elektronik karttaki klipsleri sökün.
+4. Elektronik kartı çıkarın.
+5. Yeni elektronik kartı, alttan oluğa ve üstten klipslere
+oturacak şekilde monte edin.
+6. Elektronik kart soketini takın.
+
+-- 26 of 44 --
+
+Ürünün kapatılması 12
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 27
+7. Elektronik kutusunu kapatın.
+11.6.7 Emniyet ventilinin değiştirilmesi
+C
+A
+B
+1. Basınç sensörünü çıkarın (→ sayfa 27).
+2. Her iki klipsi sökün.
+3. Yapı grubunu emniyet ventiliyle birlikte sökün.
+4. Emniyet ventilli yapı grubunu O-Ring'leri ile birlikte
+monte edin.
+5. Klipsleri yeniden takın.
+11.6.8 Debi sensörünün değiştirilmesi
+1
+B A
+1. Soketi çekin.
+2. Debi sensörünü (1) çıkarın.
+3. Yeni debi sensörünü takın.
+4. Fişi takın.
+11.6.9 Basınç sensörünün değiştirilmesi
+B
+A
+1. Soketi çekin.
+2. Klipsi çıkarın.
+3. Basınç sensörünü çıkarın.
+4. Yeni basınç sensörünü takın.
+5. Klipsi tekrar takın.
+11.6.10 Elektrik besleme kablosunun değiştirilmesi
+Bilgi
+Olası tehlikelerin önlenmesi için kablo üretici,
+müşteri hizmetleri veya nitelikli personel tarafın-
+dan değiştirilmelidir.
+▶ Elektrik besleme kablosu hasarlı ise, elektrik bağlantısı
+(→ sayfa 15) talimatlarına uygun olarak değiştirin.
+– Elektrik besleme kablosu kesiti: 3 G 0,75mm²
+11.7 Tamiri tamamlama
+▶ Ürünü fonksiyon ve sızdırmazlık (→ sayfa 20) açısından
+kontrol edin.
+12 Ürünün kapatılması
+▶ Ürünü kapatın.
+▶ Ürünü elektrik şebekesinden ayırın.
+▶ Gaz kesme vanasını kapatın.
+▶ Soğuk su devresi kapatma vanasını kapatın.
+▶ Ürünü boşaltın. (→ sayfa 24)
+13 Müşteri hizmetleri
+Müşteri iletişim merkezi: 444 1833
+Internet: http://www.demirdokum.com.tr
+
+-- 27 of 44 --
+
+Ek
+28 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+Ek
+A Kontrol programları – Genel bakış
+Bilgi
+Program tablosu farklı ürünler için kullanıldığından, bazı programlar ilgili üründe görünmeyebilir.
+Gösterge Anlamı
+P.01 Ayarlanabilir ısıtma konumunda brülör işletimi:
+Ateşlemeden sonra ürün ısıl yükle çalışmaya başlar, bu değer „0“ (0 % = Pmin) ile „100“ (100 % = Pmax) ara-
+sında ayarlanmıştır.
+Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.02 Ateşleme yükü ile brülör işletimi:
+Ateşleme sonrasında ürün ateşleme yükü ile çalışmaya başlar.
+Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.03 Ürün ısıtma devresinde teşhis kodu d.00 üzerinden ayarlanmış maksimum ısıtma konumu ile çalışır.
+P.04 Bacacı konumu fonksiyonu:
+Sıcak su talebi varsa, ürün kullanım suyu konumunda ve maksimum ısıtma konumu ile çalışır.
+Sıcak su talebi yoksa, ürün teşhis kodu d.00 üzerinden ayarlanmış kalorifer kısmi yükü ile ve ısıtma devresinde
+çalışır.
+Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.05 Ürünü doldurma:
+Üç yollu vana orta konuma alınır. Brülör ve pompa kapanır (ürünün doldurulması ve boşaltılması için).
+Basınç 15 saniyeden uzun süreyle 0,03 MPa (0,3 bar) değerinin altındaysa ve ardından 0,05 MPa (0,5 bar)
+değerinin üzerine çıkıyorsa, otomatik hava alma işlemi etkinleştirilir.
+Bu fonksiyon 15 dakika süreyle aktif kalır.
+P.06 Isıtma devresi havasını alma:
+Üç yollu vana ısıtma konumuna alınır.
+Fonksiyon, ısıtma devresinde 15 dakikalık süre için etkinleştirilir.
+Pompa, düzenli aralıklarla çalışır ve durur.
+Gerekirse bu fonksiyon manuel olarak devre dışı bırakılabilir.
+P.07 Sıcak su devresi havasını alma:
+Bu fonksiyon, küçük sıcak su devresinde 4 dakika için ve ardından ısıtma devresinde 1 dakika için etkinleştirilir.
+Pompa, düzenli aralıklarla çalışır ve durur.
+Gerekirse bu fonksiyon manuel olarak devre dışı bırakılabilir.
+Hızlı hava alma
+fonksiyonu
+Ürün havasının alınması:
+Basınç 15 saniyeden uzun süreyle 0,03 MPa (0,3 bar) değerinin altındaysa ve ardından 0,05 MPa (0,5 bar)
+değerinin üzerine çıkıyorsa, otomatik hava alma işlemi etkinleştirilir.
+Bu fonksiyon, küçük sıcak su devresinde 4 dakika için ve ardından ısıtma devresinde 1 dakika için etkinleştirilir.
+Bu fonksiyon manuel olarak devre dışı bırakılamaz.
+B Servis teşhis kodları – Genel bakış
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Ayar seviyesi Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı Özel ayar
+min. maks.
+d.00 Maksimum ısıtma gücü – – kW Maksimum ısıtma gücü ürüne göre
+değişiklik gösterir.
+→ Bölüm „Teknik veriler“
+→ Bölüm
+„Teknik veri-
+ler“
+Ayarlanabilir
+d.01 Isıtma devresinde pompa
+için çalışmaya devam etme sü-
+resi
+1 60 dk. 1 5 Ayarlanabilir
+d.02 Isıtma devresinde brülör
+bekleme süresi
+2 60 dk. 1 20 Ayarlanabilir
+d.04 Boylerdeki su sıcaklığı güncel değer ℃ – – Ayarlanamaz
+
+-- 28 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 29
+Ayar seviyesi Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı Özel ayar
+min. maks.
+d.05 Belirlenen ısıtma devresi
+gidiş hattının talep edilen sıcak-
+lığı
+güncel değer
+℃ – – Ayarlanamaz
+d.06 Talep edilen sıcak su sı-
+caklığı
+güncel değer ℃ (yalnızca kombi cihazı) – Ayarlanamaz
+d.07 Sıcak su boylerinin talep
+edilen sıcaklığı
+güncel değer ℃ – – Ayarlanamaz
+d.08 230-V termostatının du-
+rumu
+güncel değer – 0 = Oda termostatı açık (ısı talebi
+yok)
+1 = Oda termostatı kapalı (ısı talebi)
+– Ayarlanamaz
+d.09 e-Veri yolu oda termosta-
+tında ayarlanan ısıtma devresi
+gidiş hattının talep edilen sıcak-
+lığı
+güncel değer – – – Ayarlanamaz
+d.10 Isıtma devresi dahili pom-
+panın durumu
+güncel değer – off / on – Ayarlanamaz
+d.11 Isıtma devresi karıştırıcılı
+devre pompasının durumu
+güncel değer – off / on – Ayarlanamaz
+d.13 Sıcak su devresi sirkülas-
+yon pompasının durumu
+güncel değer – off / on – Ayarlanamaz
+d.15 Pompa devir sayısı güncel değer % – – Ayarlanamaz
+d.16 24-V oda termostatının
+durumu
+güncel değer – off = Isıtma kapalı
+on = Isıtma açık
+– Ayarlanamaz
+d.17 Isıtma ayarı – – – off = Gidiş suyu sıcaklığı
+on = Dönüş devresi sıcaklığı (Yerden
+ısıtma değişikliği. Dönüş sıcaklığına
+göre ayarlama özelliğini aktifleştirdiy-
+seniz, ısıtma gücünü otomatik belir-
+leme fonksiyonu aktif değildir.)
+0 Ayarlanabilir
+d.18 Pompanın ilave çalışma
+işletim modu
+1 3 – 1 = Konfor (çalışmaya devam eden
+pompa)
+3 = Eco (aralıklı pompa işletimi - çok
+düşük ısı ihtiyacında sıcak kullanım
+suyundan sonra artık ısının tahliye
+edilmesi için)
+1 Ayarlanabilir
+d.20 Maksimum talep edilen
+sıcak su sıcaklığı
+50 60 ℃ 1 50 Ayarlanabilir
+d.21 Sıcak su için aqua-konfor
+durumu
+güncel değer – off = Fonksiyon devre dışı
+on = Fonksiyon aktif ve kullanılıyor
+– Ayarlanamaz
+d.22 Sıcak su talebi durumu güncel değer – off = Güncel talep yok
+on = Güncel talep
+– Ayarlanamaz
+d.23 Isıtma talebi durumu güncel değer – off = Isıtma kapalı (yaz konumu)
+on = Isıtma açık
+– Ayarlanamaz
+d.24 Presostat durumu 0 1 – off = devre dışı
+on = devrede
+– Ayarlanamaz
+d.25 Boyler takviye ısıtması
+veya sıcak su aqua-konfor için
+e-Veri yolu termostatı talep du-
+rumu
+güncel değer – off = Fonksiyon devre dışı
+on = Fonksiyon devrede
+– Ayarlanamaz
+d.27 Röle 1 fonksiyonu (çoklu
+fonksiyon modülü)
+1 10 – 1 = Sirkülasyon pompası
+2 = Harici pompa
+3 = Boyler ısıtma pompası
+4 = Buhar aspiratörü
+5 = Harici manyetik valf
+6 = Harici arıza bildirimi
+7 = Güneş enerjisi devresi pompası
+(devre dışı)
+8 = e-Veri yolu uzaktan kumandası
+9 = Lejyoner önleme pompası
+10 = Solar toplama vanası
+1 Ayarlanabilir
+
+-- 29 of 44 --
+
+Ek
+30 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+Ayar seviyesi Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı Özel ayar
+min. maks.
+d.28 Röle 2 fonksiyonu (çoklu
+fonksiyon modülü)
+1 10 – 1 = Sirkülasyon pompası
+2 = Harici pompa
+3 = Boyler ısıtma pompası
+4 = Buhar aspiratörü
+5 = Harici manyetik valf
+6 = Harici arıza bildirimi
+7 = Güneş enerjisi devresi pompası
+(devre dışı)
+8 = e-Veri yolu uzaktan kumandası
+9 = Lejyoner önleme pompası
+10 = Solar toplama vanası
+2 Ayarlanabilir
+d.31 Otomatik doldurma düze-
+neği
+0 2 – 0 = manüel
+1 = yarı otomatik
+2 = otomatik
+0 Ayarlanabilir
+d.33 Fan devir sayısının talep
+edilen değeri
+güncel değer Dev/dk Fan devir sayısı = Gösterge değeri x
+100
+– Ayarlanamaz
+d.34 Fan devir sayısı değeri güncel değer Dev/dk Fan devir sayısı = Gösterge değeri x
+100
+– Ayarlanamaz
+d.35 Üç yollu vana konumu güncel değer – 0 = Isıtma
+40 = Orta konum (paralel yükleme)
+100 = Sıcak su
+– Ayarlanamaz
+d.36 Sıcak su akış değeri güncel değer l/sa – – Ayarlanamaz
+d.39 Güneş enerjisi devresin-
+deki su sıcaklığı
+güncel değer ℃ – – Ayarlanamaz
+d.40 Gidiş suyu sıcaklığı güncel değer ℃ – – Ayarlanamaz
+d.41 Dönüş suyu sıcaklığı güncel değer ℃ – – Ayarlanamaz
+d.43 Isı eğrisi 0,2 4 – 0,1 1,2 Ayarlanabilir
+d.45 Isı eğrisinin en düşük
+nokta değeri
+15 30 – 1 20 Ayarlanabilir
+d.47 Dış sıcaklık güncel değer ℃ – – Ayarlanamaz
+d.50 Minimum fan devir sayısı
+düzeltmesi
+0 3000 Dev/dk 1
+Fan devir sayısı = Gösterge değeri x
+10
+600 Ayarlanabilir
+d.51 Maksimum fan devir sayısı
+düzeltmesi
+-2500 0 Dev/dk 1
+Fan devir sayısı = Gösterge değeri x
+10
+-1000 Ayarlanabilir
+d.58 Güneş enerjisi devresi tak-
+viye ısıtması
+0 3 – 0 = Isıtma cihazının lejyoner önleme
+fonksiyonu devre dışı
+3 = Sıcak su etkinleştirildi (talep edi-
+len değer min. 60 °C)
+0 Ayarlanabilir
+d.60 Sıcaklık sensörü nedeniyle
+durdurma sayısı
+güncel değer – – – Ayarlanamaz
+d.61 Başarısız ateşleme sayısı güncel değer – – – Ayarlanamaz
+d.62 Gece konumu 0 30 – 1 0 Ayarlanabilir
+d.64 Brülör ortalama ateşleme
+süresi
+güncel değer sn. – – Ayarlanamaz
+d.65 Brülör maksimum ateşleme
+süresi
+güncel değer sn. – – Ayarlanamaz
+d.66 Sıcak su için aqua-konfor
+fonksiyonu etkinleştirme
+– – – off = Fonksiyon devre dışı
+on = Fonksiyon devrede
+1 Ayarlanabilir
+d.67 Kalan brülör bekleme sü-
+resi (ayar d.02 altında)
+güncel değer dk. – – Ayarlanamaz
+d.68 1. denemede başarısız
+ateşleme sayısı
+güncel değer – – – Ayarlanamaz
+d.69 2. denemede başarısız
+ateşleme sayısı
+güncel değer – – – Ayarlanamaz
+
+-- 30 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 31
+Ayar seviyesi Değerler Birim Ayar aralığı, seçim, açıklama Fabrika
+ayarı Özel ayar
+min. maks.
+d.70 Üç yollu vana fonksiyonu 0 2 – 0 = Normal çalışma konumu (sıcak su
+ve ısıtma devresi)
+1 = Orta konum (paralel konumda)
+2 = Sürekli ısıtma konumu
+0 Ayarlanabilir
+d.71 Maksimum ısıtma devresi
+gidiş hattının talep edilen sıcak-
+lığı
+45 80 ℃ 1 75 Ayarlanabilir
+d.73 Sıcak su aqua-konfor sı-
+caklık düzeltmesi
+-15 5 K 1 0 Ayarlanabilir
+d.75 Boylerin maksimum takviye
+ısıtma süresi
+20 90 dk. 1 45 Ayarlanabilir
+d.77 Boylerin maksimum takviye
+ısıtması
+– – kW 1
+→ Bölüm „Teknik veriler“
+– Ayarlanabilir
+d.80 Isıtma devresinde çalışma
+süresi
+güncel değer saat – – Ayarlanamaz
+d.81 Kullanım suyu konumunda
+çalışma süresi
+güncel değer saat – – Ayarlanamaz
+d.82 Isıtma devresinde brülör
+ateşleme sayısı
+güncel değer – Ateşleme sayısı = Gösterge değeri x
+100
+– Ayarlanamaz
+d.83 Kullanım suyu konumunda
+brülör ateşleme sayısı
+güncel değer – Ateşleme sayısı = Gösterge değeri x
+100
+– Ayarlanamaz
+d.84 Bakım zamanı 0 3000 saat Saat sayısı = Gösterge değeri x 10 300 Ayarlanamaz
+d.85 Minimum gücün artırılması
+(ısıtma ve kullanım suyu ko-
+numu)
+– – kW 1
+→ Bölüm „Teknik veriler“
+– Ayarlanabilir
+d.88 Kullanım suyu konumunda
+ateşleme için akış limit değeri
+0 1 – 0 = 1,5 l/h (gecikme yok)
+1 = 3,7 l/h (2 sn. gecikme)
+0 Ayarlanabilir
+d.90 e-Veri yolu oda termostatı
+durumu
+güncel değer – off = Bağlı değil
+on = Bağlı
+– Ayarlanamaz
+d.91 Durum DCF77 güncel değer – – – Ayarlanamaz
+d.93 Ürün kodu ayarı 0 99 – 1 – Ayarlanabilir
+d.94 Arıza listesinin silinmesi 0 1 – off = Hayır
+on = Evet
+– Ayarlanabilir
+d.95 Yazılım versiyonları – – – 1 = Ana kart
+2 = Ara birim kartı
+– Ayarlanabilir
+d.96 Fabrika ayarlarına dönül-
+mesi
+– – – 0 = Hayır
+1 = Evet
+– Ayarlanabilir
+d.128 Talep edilen minimum
+ısıtma değeri
+10 75 ℃ 1 10 Ayarlanabilir
+d.129 Talep edilen minimum
+sıcak suyu değeri
+35
+(Kombi
+cihazı)
+45
+(Salt
+ısıtma
+cihazı)
+60 ℃ 1 35 Ayarlanabilir
+
+-- 31 of 44 --
+
+Ek
+32 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+C Durum kodları – Genel bakış
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Durum kodu Anlamı
+Isıtma konumundaki göstergeler
+S. 0 Isıtma devresi: Talep yok
+S.01 Isıtma devresi: Fan ön çalışması
+S.02 Isıtma devresi: Pompanın önceden çalışması
+S.03 Isıtma devresi: Brülör ateşlemesi
+S.04 Isıtma devresi: Brülör açık
+S.05 Isıtma devresi: Pompanın/Fanın çalışmaya devam etmesi
+S.06 Isıtma devresi: Fanın çalışmaya devam etmesi
+S.07 Isıtma devresi: Pompanın çalışmaya devam etmesi
+S.08 Isıtma devresi: Isıtma işleminden sonra geçici kapatma
+Kullanım suyu konumundaki göstergeler
+S.10 Kullanım suyu konumu: Talep
+S.11 Kullanım suyu konumu: Fan ön çalışması
+S.13 Kullanım suyu konumu: Brülör ateşlemesi
+S.14 Kullanım suyu konumu: Brülör açık
+S.15 Kullanım suyu konumu: Pompanın/Fanın çalışmaya devam etmesi
+S.16 Kullanım suyu konumu: Fanın çalışmaya devam etmesi
+S.17 Kullanım suyu konumu: Pompanın çalışmaya devam etmesi
+Aqua-konforlu konfor konumunda veya boylerli kullanım suyu konumunda gösterge
+S.20 Kullanım suyu konumu: Talep
+S.21 Kullanım suyu konumu: Fan ön çalışması
+S.22 Kullanım suyu konumu: Pompanın önceden çalışması
+S.23 Kullanım suyu konumu: Brülör ateşlemesi
+S.24 Kullanım suyu konumu: Brülör açık
+S.25 Kullanım suyu konumu: Pompanın/Fanın çalışmaya devam etmesi
+S.26 Kullanım suyu konumu: Fanın çalışmaya devam etmesi
+S.27 Kullanım suyu konumu: Pompanın çalışmaya devam etmesi
+S.28 Kullanım suyu konumu: Brülör geçici kapatması
+Diğer göstergeler
+S.30 Isıtma konumu, oda termostatı tarafından bloke ediliyor.
+S.31 Isıtma talebi yok: Yaz konumu, e-Veri yolu regleri, bekleme süresi
+S.32 Fan bekleme süresi: Fan devir sayısı tolerans değerleri dışında
+S.33 Presostat devreye girene kadar fanın zorla çalıştırılması
+S.34 Donmaya karşı koruma aktif
+S.39 Yerden ısıtma kontağı açık
+S.41 Su basıncı çok yüksek
+S.42 Atık gaz klapesi kapalı
+S.46 Donmaya karşı koruma fonksiyonu (konfor): Minimum yük
+S.53 Yetersiz su nedeniyle ürün bekleme süresinde / işletme blokajı fonksiyonunda (gidiş/dönüş devresi sıcaklık farkı
+çok fazla)
+S.54 Bekleme süresi: Devrede yetersiz su (gidiş/dönüş devresi sıcaklık farkı çok fazla)
+S.76 Bakım bildirimi: Su basıncını kontrol edin
+S.88 Ürün hava tahliyesi aktif
+S.91 Bakım: Demo modu
+
+-- 32 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 33
+Durum kodu Anlamı
+S.96 Otomatik test programı: Dönüş devresi sıcaklık sensörü, ısıtma talepleri bloke.
+S.97 Otomatik test programı: Su basınç sensörü, ısıtma talepleri bloke.
+S.98 Otomatik test programı: Dönüş devresi sıcaklık sensörü, ısıtma talepleri bloke.
+S.99 Dahili otomatik test programları
+S.108 Yanma hücresi havasının alınması, fan işletimde
+S.109 Ürünün bekleme konumu aktif
+D Arıza kodları – Genel bakış
+Bilgi
+Kod tablosu farklı ürünler için kullanıldığından, bazı kodlar ilgili üründe görünmeyebilir.
+Arıza kodu Anlamı Olası neden
+F.00 Arıza: Gidiş devresi sıcaklık sensörü NTC soketi takılı değil veya gevşek, elektronik kart üzerindeki çoklu soket
+tam olarak takılmamış, kablo demetinde kopukluk, NTC sensörü arızalı
+F.01 Arıza: Dönüş devresi sıcaklık sensörü NTC soketi takılı değil veya gevşek, elektronik kart üzerindeki çoklu soket
+tam olarak takılmamış, kablo demetinde kopukluk, NTC sensörü arızalı
+F.10 Kısa devre: Gidiş devresi sıcaklık sen-
+sörü
+NTC sensörü arızalı, kablo demetinde kısa devre, kablo/gövde
+F.11 Kısa devre: Dönüş devresi sıcaklık sen-
+sörü
+NTC sensörü arızalı, kablo demetinde kısa devre, kablo/gövde
+F.12 ve F.91 Kısa devre: Boyler sıcaklık sensörü NTC sensörü arızalı, kablo demetinde kısa devre, kablo/gövde
+F.13 Kısa devre: Sıcak su boyleri sıcaklık
+sensörü
+NTC sensörü arızalı, kablo demetinde kısa devre, kablo/gövde
+F.20 Emniyet kapatması: Aşırı ısıtma sıcaklı-
+ğına ulaşıldı
+Ürüne giden kablo demeti topraklama bağlantısı hatalı, gidiş veya dönüş
+suyu NTC arızalı (temassızlık), ateşleme kablosu, ateşleme soketi veya
+ateşleme elektrodu üzerinden kaçak nedeniyle deşarj
+F.22 Emniyet kapatması: Isıtma cihazında
+yetersiz su
+Üründe çok az su veya su yok, su basıncı sensörü arızalı, pompaya veya su
+basıncı sensörüne giden kablo gevşek/takılı değil/arızalı
+F.23 Emniyet kapatması: Sıcaklık yayılması
+çok fazla (NTC1/NTC2)
+Pompa bloke oluyor, pompa gücü az, üründe hava var, gidiş ve dönüş dev-
+resi NTC sensörleri karışmış
+F.24 Emniyet kapatması: Sıcaklık artışı çok
+hızlı
+Pompa bloke oldu, pompa gücü az, üründe hava, sistem basıncı çok düşük,
+çekvalf bloke olmuş/yanlış takılı
+F.25 Emniyet kapatması: Atık gaz sıcaklığı
+çok yüksek
+İsteğe bağlı atık gaz limit termostat (STB) soket bağlantısı kesik, kablo de-
+metinde kesinti
+F.27 Emniyet kapatması: Alev algılama arı-
+zası
+Elektronikte nem, elektronik (alev sensörü) arızalı, gaz manyetik valfi sızdırı-
+yor
+F.28 Arıza: Çalıştırma sırasındaki ateşleme
+başarısız
+Gaz sayacı arızalı veya gaz basıncı sensörü devrede, gazda hava var, gaz
+giriş basıncı çok düşük, termik kapatma düzeneği (TAE) devrede, yanlış gaz
+memesi, yanlış yedek parça gaz armatürü, gaz armatüründe arıza, elektronik
+kart üzerindeki çoklu soket doğru olarak takılmamış, kablo demetinde kesinti,
+ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi,
+ateşleme elektrodu) arızalı, iyonizasyon akımında (kablo, elektrot) kesinti,
+üründe hatalı topraklama, elektronik arızalı
+F.29 Arıza: Alev sönmesi Gaz girişi zaman zaman kesik, atık gaz resirkülasyonu, ürünün hatalı toprak-
+laması, ateşleme trafosunda ateşleme iptali
+F.32 Fanın donmaya karşı koruma fonksiyonu
+aktif: Fan devir sayısı tolerans değerleri
+dışında
+Fandaki soket doğru takılmamış, elektronik kart üzerindeki çoklu soket doğru
+olarak takılmamış, kablo demetinde kesinti, fan bloke oldu, Hall sensörü
+arızalı, elektronik arızalı
+F.49 e-Veri yolu arızası: Gerilim çok düşük eBUS'ta kısa devre, eBUS aşırı yüklenme veya eBUS'ta değişik polariteye
+sahip iki gerilim beslemesi
+F.61 Arıza: Gaz armatürü kumandası Gaz armatürüne giden kablo demetinde kısa devre/topraklama teması, gaz
+armatürü arızalı (Bobinlerin topraklama teması), elektronik arızalı
+F.62 Arıza: Gaz vanası kapatma kumandası Gaz armatürünün gecikmiş kapatması, alev sinyalinin gecikmeli sönmesi,
+gaz armatürü sızdırıyor, elektronik arızalı
+F.63 Arıza: EEPROM Elektronik arızalı
+F.64 Arıza: Elektronik / Sensör / Analog-Dijital
+dönüştürücü
+NTC gidiş suyu veya dönüş suyunda kısa devre, elektronik arızalı
+
+-- 33 of 44 --
+
+Ek
+34 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+Arıza kodu Anlamı Olası neden
+F.65 Arıza: Elektronik sıcaklığı çok yüksek Elektronik dış müdahaleler nedeniyle çok sıcak, elektronik arızalı
+F.67 ASIC tarafından geri gönderilen değer
+hatalı (alev sinyali)
+Normal olmayan alev sinyali, elektronik arızalı
+F.68 Arıza: Alev sabit değil (analog giriş) Gazda hava, gaz giriş basıncı çok düşük, yanlış hava fazlalık katsayısı,
+yanlış gaz memesi, iyonizasyon akımında kesinti (kablo, elektrot)
+F.70 Ürün kodu geçersiz (DSN) Ekran ve elektronik kart aynı zamanda değiştirildi ve cihaz tipi numarası
+yeniden ayarlanmadı, yanlış veya eksik güç kodlama direnci
+F.71 Arıza: Gidiş/Dönüş devresi sıcaklık sen-
+sörü
+Gidiş devresi sıcaklık sensörü sabit değer bildiriyor: Gidiş devresi sıcaklık
+sensörü gidiş borusuna doğru dayanmıyor, gidiş devresi sıcaklık sensörü
+arızalı
+F.72 Arıza: Su basıncı sensörü / Dönüş dev-
+resi sıcaklık sensörü sapması
+Gidiş/dönüş suyu NTC sıcaklık farkı çok büyük → Gidiş suyu ve/veya dönüş
+suyu sıcaklık sensörü arızalı
+F.73 Arıza: Su basıncı sensörü bağlı değil
+veya kısa devre söz konusu
+Su basıncı sensöründe kesinti/kısa devre, su basıncı sensörünün besleme
+hattında kesinti/toprak kısa devresi veya su basıncı sensörü arızalı
+F.74 Arıza: Su basıncı sensöründe elektrik
+arızası
+Su basıncı sensörüne giden hatlarda 5V/24V'a kısa devre var veya su ba-
+sıncı sensöründe dahili hata
+F.75 Arıza: Basınç sensörü Presostat arızalı
+F.76 Isı eşanjöründeki emniyet termostatı
+arızalı
+Emniyet termostatı geri bildirimi, gaz armatürü geri bildirimine uymuyor
+F.77 Arıza: Yoğuşma veya duman Geri bildirim yok, atık gaz klapesi arızalı
+F.78 Harici reglerde kullanım suyu çıkış sen-
+sörü kesintisi
+UK link box bağlı, fakat kullanım suyu NTC köprülenmemiş
+F.83 Arıza: Kuru yanma Brülör çalıştığında, gidiş veya dönüş devresi sıcaklık sensöründe çok küçük
+sıcaklık değişikliği kaydediliyor veya herhangi bir değişiklik kaydedilmiyor:
+Üründe çok az su, gidiş veya dönüş devresi sıcaklık sensörü boruya doğru
+dayanmıyor
+F.84 Arıza: Gidiş/Dönüş devresi sıcaklık sen-
+sörü
+Değerler uyumlu değil, fark < -6 K
+Gidiş ve dönüş devresi sıcaklık sensörü tutarsız değerler bildiriyor: Gidiş ve
+dönüş devresi sıcaklık sensörü birbiriyle karışmış, gidiş ve dönüş devresi
+sıcaklık sensörü doğru monte edilmedi
+F.85 Arıza: Sıcaklık sensörü Gidiş ve/veya dönüş devresi sıcaklık sensörü aynı / yanlış boruya monte
+edildi
+Sıcaklık sensörü bağlı değil veya doğru bağlanmamış
+F.86 Arıza: Yerden ısıtma kontağı Yerden ısıtma kontağı açık, sensör çözülmüş veya arızalı
+F.87 Arıza: Elektrotlar Elektrotlar bağlı değil veya doğru bağlanmamış, kablo demetinde kısa devre
+F.88 Arıza: Gaz armatürü Gaz armatürü bağlı değil veya doğru bağlanmamış, kablo demetinde kısa
+devre
+F.89 Arıza: Pompa Pompa bağlı değil veya doğru bağlanmamış, yanlış pompa bağlanmış, kablo
+demetinde kısa devre
+Connection Ana elektronik kartı ile kullanıcı ara birimi
+arasında iletişim yok
+Elektronik arızalı
+
+-- 34 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 35
+E Kablo bağlantı şeması: Kombi cihazı
+X2
+X14
+L
+N
+19
+10
+20
+2
+6
+3
+11
+13
+14
+18
+7
+17
+8
+X51
+X51
+X20
+16
+1
+9
+3
+15
+4
+5
+10
+11
+6
+13
+X51 	X35
+X20
+X40 	X51
+X30
+X2
+X21
+X41
+X22
+X14
+L
+N
+– +	24V=
+RT 	BUS
+	Burner
+off
+X1
+FUS
+ 
+X106
+X32
+X90
+X12
+X35
+X1
+X21
+L
+N
+4
+1
+3
+2
+eBUS
+RT 24V
+Burner off
+X106
+1
+3
+4
+1
+3
+3
+1
+2
+M
+1
+3
+4
+6
+1
+2
+3
+M
+5
+4
+2
+1
+2
+1
+2
+1
+N
+L
+24V
+230V~
+24V
+230V~
+2
+6
+7
+8
+9
+11
+10
+1
+3
+4
+5
+13
+12
+1 Ana kart
+2 Arayüz kartı
+3 Isıtma devresi gidiş hattındaki sıcaklık sensörü
+4 Isıtma devresi dönüş hattı sıcaklık sensörü
+5 Fan
+6 Gaz armatürü
+7 Değiştirme vanası
+8 Basınç sensörü
+9 Debimetre sensörü
+10 Harici ateşleme trafosu
+11 Kalorifer pompası
+12 İyonizasyon ve ateşleme elektrodu
+13 230-V-Regler için ana elektrik beslemesi ve bağlantı
+
+-- 35 of 44 --
+
+Ek
+36 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+F Kontrol ve bakım çalışmaları – Genel bakış
+Aşağıdaki tablo, minimum kontrol ve bakım aralıkları ile ilgili üretici taleplerini listelemektedir. Ulusal talimatlar ve yönergeler
+daha kısa kontrol ve bakım aralıkları öngörüyorsa, bu aralıklara uyun.
+No. Çalışmalar Kontrol
+(yıllık)
+Bakım
+(en az
+2 yılda bir)
+1 Yanma havası/atık gaz akım borusunun sızdırmazlığını ve doğru sabitlendiğini kontrol edin.
+Tıkalı veya hasar görmediğinden ve montaj kılavuzu ile doğru monte edildiğinden emin olun. X X
+2 Ürünün genel durumunu kontrol edin. Üründeki ve yanma hücresindeki kirleri temizleyin. X X
+3 Eşanjörün genel durumunu gözle kontrol edin. Bu esnada özellikle korozyon, pas ve diğer hasar
+belirtilerine dikkat edin. Hasarlar görürseniz, bakım gerçekleştirin. X X
+4 Gaz bağlantı basıncını maksimum ısıl yükte kontrol edin. Gaz bağlantı basıncı doğru aralıkta
+değilse, bir bakım gerçekleştirin. X X
+5 Ürünün CO₂ miktarını (hava karışım oranı) kontrol edin ve gerekirse yeniden ayarlayın. Bunu
+raporlayın. X X
+6 Ürünü elektrik şebekesinden ayırın. Elektrikli soket bağlantılarının ve bağlantıların doğru oturma-
+sını kontrol edin ve bunu gerekirse düzeltin. X X
+7 Gaz kesme vanasını ve servis vanalarını kapatın. X X
+8 Ürünü su tarafından boşaltın. Genleşme tankı hava basıncını kontrol edin, genleşme tankını
+gerekirse doldurun (sistem dolum basıncının yakl. 0,03 MPa/0,3 bar altında). X
+9 Gaz/hava bağlamını sökün. X
+10 Yanma bölümündeki contaları kontrol edin. Hasarlar tespit ederseniz, contaları değiştirin. Her iki
+brülör contasını her açma işleminde, yani her bakımda değiştirin. X
+11 Eşanjörü temizleyin. X
+12 Brülörü hasara karşı kontrol edin ve gerekirse değiştirin. X
+13 Üründeki yoğuşma suyu sifonunu kontrol edin, temizleyin ve gerekirse doldurun. X X
+14 Gaz hava bağlamını monte edin. Dikkat: Contaları değiştirin! X
+15 Su miktarı yetersizse veya ayarlanan sıcaklığa ulaşılamıyorsa ikincil eşanjörü değiştirin. X
+16
+Soğuk su girişindeki süzgeci temizleyin. Kirler artık yeterince temizlenemiyorsa veya süzgeç
+hasar görmüşse, süzgeci değiştirin. Bu durumda aqua sensörü de kire ve hasarlara karşı kontrol
+edin, sensörü temizleyin (basınçlı hava kullanmayın!) ve hasar durumunda değiştirin.
+X
+17 Gaz kesme vanasını açın, ürünü tekrar elektrik şebekesine bağlayın ve ürünü çalıştırın. X X
+18 Bakım vanalarını açın, ürün/ısıtma sistemini 0,05 - 0,3 MPa/0,5 - 3,0 bar (ısıtma sisteminin statik
+yüksekliğine göre) doldurun, P. hava tahliye programını başlatın. X
+19 Ürünü ve ısıtma sistemini (kullanım suyu hazırlama dahil) test için çalıştırın ve sistemin gerekirse
+bir kez daha havasını alın. X X
+20 Görsel olarak ateşleme ve brülör tutumunu kontrol edin. X X
+21 Yeniden ürünün CO₂ miktarını (hava karışım oranı) kontrol edin. X
+22 Ürünü gaz, atık gaz, sıcak su ve yoğuşma suyu tarafında sızıntılara karşı kontrol edin, gerekirse
+bunları giderin. X X
+23 Yürütülen kontrol/bakımı raporlayın. X X
+G Yanma havası/Atık gaz akım borusu uzunlukları
+G.1 C13 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: C13 tipi yanma havası/atık gaz akım borusu
+Yanma havası/atık gaz akım borusu
+çapı
+Ø 60/100 (L) Ø 80/125 (L)
+C13 tipi yanma
+havası/atık gaz
+akım borusu
+C13 tipi yanma
+havası/atık gaz
+akım borusu
+Atromix P20 ≤ 7 mt ≤ 18 mt
+Atromix P24 ≤ 10 mt ≤ 25 mt
+Atromix P28 ≤ 10 mt ≤ 25 mt
+
+-- 36 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 37
+G.2 C33 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: C33 tipi yanma havası/atık gaz akım borusu
+Yanma havası/atık gaz akım borusu
+çapı
+Ø 60/100 (L) Ø 80/125 (L)
+C33 tipi yanma
+havası/atık gaz
+akım borusu
+C33 tipi yanma
+havası/atık gaz
+akım borusu
+Atromix P20 ≤ 7 mt ≤ 18 mt
+Atromix P24 ≤ 10 mt ≤ 25 mt
+Atromix P28 ≤ 10 mt ≤ 25 mt
+G.3 C43 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: C43 tipi yanma havası/atık gaz akım borusu
+Yanma havası/atık gaz akım borusu
+çapı
+Ø 60/100 (L) Ø 80/125 (L)
+C43 tipi yanma
+havası/atık gaz
+akım borusu
+C43 tipi yanma
+havası/atık gaz
+akım borusu
+Atromix P20 ≤ 7 mt ≤ 7 mt
+Atromix P24 ≤ 10 mt ≤ 10 mt
+Atromix P28 ≤ 10 mt ≤ 10 mt
+G.4 C53 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: C53 tipi yanma havası/atık gaz akım borusu
+C53 tipi yanma havası/atık gaz akım
+borusu
+Ø 80 (L1+L2)
+min.
+Ø 80 (L1+L2)
+maks.
+Atromix P20 2 x 0,5 m 2 x18 m
+Atromix P24 2 x 0,5 m 2 x 20 m
+Atromix P28 2 x 0,5 m 2 x 20 m
+G.5 C83 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: C83 tipi yanma havası/atık gaz akım borusu
+C83 tipi yanma havası/atık gaz akım
+borusu
+Ø 80 (L1+L2)
+min.
+Ø 80 (L1+L2)
+maks.
+Atromix P20 2 x 0,5 m 2 x 18 m
+Atromix P24 2 x 0,5 m 2 x 20 m
+Atromix P28 2 x 0,5 m 2 x 20 m
+
+-- 37 of 44 --
+
+Ek
+38 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+G.6 B23P tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: B23P tipi yanma havası/atık gaz akım borusu
+B23P tipi yanma havası/atık gaz
+akım borusu
+Ø 60/100 (L1)
+min.
+L1 + L2 maks.
+Atromix P20 ≥ 1 mt ≥ 18 mt
+Atromix P24 ≥ 1 mt ≥ 18 mt
+Atromix P28 ≥ 1 mt ≥ 18 mt
+G.7 B33 tipi yanma havası/atık gaz akım borusu uzunluğu
+Geçerlilik: B33 tipi yanma havası/atık gaz akım borusu
+Yanma
+havası/atık gaz
+akım borusu çapı
+Ø 80/125 (L)
+B33 tipi yanma
+havası/atık gaz
+akım borusu
+Atromix P28 0,4 … 5 mt
+H Teknik veriler
+Teknik veriler – Isıtma
+Atromix P20 Atromix P24 Atromix P28
+Maksimum gidiş suyu sıcak-
+lığı
+75 ℃ 75 ℃ 75 ℃
+Maks. gidiş sıcaklığı ayar
+aralığı (fabrika ayarı: 75 °C)
+30 … 80 ℃ 30 … 80 ℃ 30 … 80 ℃
+İzin verilen maksimum ba-
+sınç
+0,3 MPa
+(3,0 bar)
+0,3 MPa
+(3,0 bar)
+0,3 MPa
+(3,0 bar)
+Talep edilen su debisi
+(ΔT = 30 K)
+570 l/sa 678 l/sa 798 l/sa
+50/30 °C için yoğuşma suyu
+hacmi yaklaşma değeri (pH
+değeri 3,5 ile 4,0 arasında)
+1,84 l/sa 2,47 l/sa 2,55 l/sa
+Nominal debi için ΔP ısıtma
+(ΔT = 20 K)
+0,025 MPa
+(0,250 bar)
+0,025 MPa
+(0,250 bar)
+0,025 MPa
+(0,250 bar)
+Teknik veriler – Güç/yük G20
+En küçük anma ısı gücü, sistemin / tesisatın tasarımına ve güncel işletme durumuna bağlı olarak Teknik Veriler'deki değer-
+den büyük olabilir.
+Atromix P20 Atromix P24 Atromix P28
+Maksimum ısıtma gücü 20,4 kW 24,7 kW 28,3 kW
+50/30 °C için verim aralığı
+(P)
+5,3 … 20,9 kW 6,3 … 25,4 kW 7,4 … 29,1 kW
+80/60 °C için verim aralığı
+(P)
+5,0 … 19,9 kW 5,9 … 24,1 kW 7,0 … 27,6 kW
+Sıcak su ısı gücü aralığı (P) 5,0 … 19,9 kW 5,9 … 24,1 kW 7,0 … 27,6 kW
+Maksimum ısıl yük - Isıtma
+(Q maks.)
+20,4 kW 24,7 kW 28,3 kW
+Minimum ısıl yük - Isıtma (Q
+min.)
+5,1 kW 6,1 kW 7,2 kW
+
+-- 38 of 44 --
+
+Ek
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 39
+Atromix P20 Atromix P24 Atromix P28
+Maksimum ısıl yük - sıcak
+su (Q maks.)
+20,4 kW 24,7 kW 28,3 kW
+Minimum ısıl yük - sıcak su
+(Q min.)
+5,1 kW 6,1 kW 7,2 kW
+Teknik veriler - Sıcak su
+Atromix P20 Atromix P24 Atromix P28
+EN 13203 uyarınca spesifik
+debi (D) (ΔT = 30 K)
+9,5 l/dk 11,3 l/dk 13,3 l/dk
+Devamlı akış (ΔT = 35 K) 488 l/sa 581 l/sa 684 l/sa
+Spesifik debi (ΔT = 35 K) 8,1 l/dk 9,6 l/dk 11,4 l/dk
+İzin verilen minimum basınç 0,03 MPa
+(0,30 bar)
+0,03 MPa
+(0,30 bar)
+0,03 MPa
+(0,30 bar)
+İzin verilen maksimum ba-
+sınç
+0,8 MPa
+(8,0 bar)
+0,8 MPa
+(8,0 bar)
+0,8 MPa
+(8,0 bar)
+Sıcaklık aralığı 35 … 60 ℃ 35 … 60 ℃ 35 … 60 ℃
+Akış miktarı sınırlayıcı 8 l/dk 8 l/dk 10 l/dk
+Teknik veriler – Genel
+Atromix P20 Atromix P24 Atromix P28
+Gaz kategorisi I2H I2H I2H
+Gaz borusu çapı 3/4 inç 3/4 inç 3/4 inç
+Isıtma bağlantıları çapı 3/4 inç 3/4 inç 3/4 inç
+Emniyet ventili bağlantı bo-
+rusu (min.)
+7 mm 7 mm 7 mm
+Yoğuşma suyu hattı (min.) 21,5 mm 21,5 mm 21,5 mm
+Gaz besleme basıncı G20 2,0 kPa
+(20,0 mbar)
+2,0 kPa
+(20,0 mbar)
+2,0 kPa
+(20,0 mbar)
+P maks. için gaz debisi -
+Sıcak su (G20)
+2,0 m³/sa 2,4 m³/sa 2,8 m³/sa
+CE Numarası (PIN) CE-0063CP3646 CE-0063CP3646 CE-0063CP3646
+İzin verilen sistem / tesisat
+tipleri
+C13, C33, C43, C53,
+C83, B23P, B33
+C13, C33, C43, C53,
+C83, B23P, B33
+C13, C33, C43, C53,
+C83, B23P, B33
+80/60 °C için talep edilen
+verimlilik
+% 97,5 % 97,7 % 97,6
+50/30 °C için talep edilen
+verimlilik
+% 102,5 % 102,6 % 102,9
+40/30 °C için kısmi yük işle-
+timinde talep edilen verimli-
+lik (% 30)
+% 107,5 % 108,7 % 108,8
+NOx sınıfı 5 5 5
+Ürün boyutları, genişlik 390 mm 390 mm 390 mm
+Ürün boyutları, derinlik 280 mm 280 mm 280 mm
+Ürün boyutları, yükseklik 700 mm 700 mm 700 mm
+Net ağırlık 29,2 kg 29,9 kg 29,9 kg
+Su dolu ağırlık 33,2 kg 34,4 kg 34,4 kg
+Teknik veriler – Elektrik
+Atromix P20 Atromix P24 Atromix P28
+Elektrik bağlantısı 230 V / 50 Hz 230 V / 50 Hz 230 V / 50 Hz
+Dahili sigorta (gecikmeli) T2/2A, 250V T2/2A, 250V T2/2A, 250V
+Maks. elektrik tüketimi 75 W 75 W 85 W
+Elektrik tüketimi Standby 2 W 2 W 2 W
+Koruma türü IPX4D IPX4D IPX4D
+
+-- 39 of 44 --
+
+Dizin
+40 Montaj ve bakım kılavuzu Atromix 0020242182_FT2
+Dizin
+A
+Açıklık .................................................................................... 6
+Ağırlık .................................................................................... 9
+Alet ........................................................................................ 6
+Amacına uygun kullanım ....................................................... 4
+Ana elektronik kartın değiştirilmesi...................................... 26
+Arıza hafızasının çağrılması................................................ 24
+Arıza kodları ........................................................................ 24
+Arıza sembolü ..................................................................... 16
+Ateşleme trafosunun sökülmesi .......................................... 22
+Atık gaz borusunun sökülmesi ............................................ 22
+Atık gaz kokusu ..................................................................... 5
+Atık gaz yolu...................................................................... 5–6
+B
+Baca ...................................................................................... 6
+Bacada kimyasal tortular ....................................................... 6
+Bakım çalışmaları.......................................................... 21, 36
+Bakım çalışmalarının tamamlanması .................................. 24
+Basınç sensörü.................................................................... 27
+Brülör bekleme süresinin ayarlanması ................................ 20
+Brülör bekleme süresinin geri alınması ............................... 20
+Brülör kapatma süresi ......................................................... 20
+Brülörün değiştirilmesi ......................................................... 25
+Brülörün kontrol edilmesi..................................................... 23
+Brülörün sökülmesi.............................................................. 22
+Buz oluşumu.......................................................................... 6
+C
+CE işareti............................................................................... 8
+CO₂ oranı
+kontrolü .................................................................... 19, 21
+Conta..................................................................................... 6
+D
+Debi sensörü ....................................................................... 27
+Değiştirme, genleşme tankı................................................. 26
+Dokümanlar ........................................................................... 8
+Doldurma
+Isıtma sistemi................................................................. 18
+Donma................................................................................... 6
+E
+Elektrik................................................................................... 5
+Elektrik beslemesi ............................................................... 15
+Emniyet donanımı ................................................................. 5
+Emniyet ventili ..................................................................... 27
+Eşanjörün değişimi .............................................................. 25
+Eşanjörün temizlenmesi ...................................................... 23
+G
+Gaz cinsi kontrolü
+yürütme.......................................................................... 16
+Gaz hava bağlamının sökülmesi ......................................... 22
+Gaz kokusu ........................................................................... 4
+Genleşme tankı ön basıncının kontrol edilmesi................... 24
+Genleşme tankının değiştirilmesi ........................................ 26
+Gerilim ................................................................................... 5
+Gres yağı............................................................................... 6
+H
+Hava emme borusunun sökülmesi ...................................... 22
+Hava purjörü........................................................................ 18
+Havanın alınması
+Isıtma sistemi................................................................. 18
+Hazırlama, tamir .................................................................. 25
+I
+Isıtma sistemi
+Doldurma ....................................................................... 18
+Havanın alınması........................................................... 18
+Isıtma suyunun hazırlanması ............................................. 16
+K
+Kaçak arama spreyi............................................................... 6
+Kapatma .............................................................................. 27
+Katı yakıt kazanı.................................................................... 6
+Kontrol çalışmaları......................................................... 21, 36
+Kontrol çalışmalarının tamamlanması ................................. 24
+Korozyon ........................................................................... 5–6
+Kullanıcı ara birimi, elektronik kartın değiştirilmesi.............. 26
+Kullanıcıya teslim etme ....................................................... 21
+kullanımı
+Kontrol programları ........................................................ 16
+M
+Mesafe................................................................................... 9
+Minimum mesafe ................................................................... 9
+Montaj yeri............................................................................. 5
+N
+Nakliye................................................................................... 5
+Nitelik..................................................................................... 4
+O
+Ortam havasına bağlı işletim................................................. 5
+Ön kapak, kapalı ................................................................... 5
+P
+Pompa ................................................................................. 20
+Pompa gücünün ayarlanması.............................................. 20
+R
+Regler.................................................................................. 15
+S
+Servis teşhis kodları ............................................................ 15
+Sıvı yakıtlı kazan ................................................................... 6
+Sızdırmazlık......................................................................... 20
+Ş
+Şebeke bağlantısı................................................................ 15
+Şema ..................................................................................... 5
+T
+Talimatlar............................................................................... 7
+Tamamlama, tamir .............................................................. 27
+Tamiri tamamlama............................................................... 27
+Tamirin hazırlanması........................................................... 25
+Test programları ................................................................ 28
+kullanımı ........................................................................ 16
+Tip etiketi ............................................................................... 8
+U
+Üründeki suyun boşaltılması ............................................... 24
+Ürünü açma......................................................................... 18
+Ürünün ambalajından çıkarılması.......................................... 8
+Ürünün devre dışı bırakılması ............................................. 27
+Ürünün duvara montajı.......................................................... 9
+Y
+Yan kapağın sökülmesi ....................................................... 10
+Yanma havası beslemesi .................................................. 5–6
+Yanma havası/Atık gaz akım borusu................................... 12
+Yanma havası/Atık gaz akım borusu, monte edilmiş ............ 5
+Yedek parçalar .................................................................... 21
+Yetkili bayi ............................................................................. 4
+Yıldırım çarpması .................................................................. 6
+
+-- 40 of 44 --
+
+Dizin
+0020242182_FT2 Atromix Montaj ve bakım kılavuzu 41
+Yoğuşma suyu hattı............................................................. 12
+Yoğuşma suyu sifonu .......................................................... 5
+Doldurma ....................................................................... 18
+Yoğuşma suyu sifonunun temizlenmesi .............................. 23
+yürütme
+Gaz cinsi kontrolü .......................................................... 16
+
+-- 41 of 44 --
+
+
+
+-- 42 of 44 --
+
+
+
+-- 43 of 44 --
+
+0020242182_FT2
+Yayınlayan/üretici
+TÜRK DEMIRDÖKÜM FABRIKALARI A.S.
+4 Eylül Mah. İsmet İnönü Cad. No: 263 ‒ 11300 / Bozüyük ‒ Bilecik
+www.demirdokum.com.tr
+0020242182_FT2 ‒ 16.10.2017
+tedarikçi
+Türk DemirDöküm Fabrikaları A.Ş.
+Bahçelievler Mah. Bosna Bulvarı No: 146 ‒ 34688 / Çengelköy, Üsküdar ‒ İstanbul
+Tel. 02 16 516‑2000 ‒ Faks 02 16 516‑2007
+Müşteri iletişim merkezi 444 1833
+info@demirdokum.com.tr ‒ www.demirdokum.com.tr
+© Bu kılavuzun veya kısımlarının, telif hakları korunmaktadır ve sadece üreticinin yazılı
+onayı ile çoğaltılabilir veya dağıtılabilir.
+Değişiklik yapma hakkı saklıdır.
+
+-- 44 of 44 --
+

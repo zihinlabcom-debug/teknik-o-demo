@@ -1,0 +1,407 @@
+EWA 20
+EWA 24
+DUVAR TİPİ GAZ ADAPTİF-PREMİX
+SİSTEMLİ YOĞUŞMALI KOMBİ
+MONTAJ VE KULLANIM KILAVUZU
+
+-- 1 of 36 --
+
+2	i 	warmhaus.com
+İÇİNDEKİLER
+1. 	DEĞERLİ WARMHAUS MÜŞTERİMİZ ................................................................................................................................................ 3
+1.1. 	GENEL UYARILAR .....................................................................................................................................................................................................................3
+1.2. 	GENEL GARANTI KOŞULLARI .................................................................................................................................................................................................3
+1.3. 	GAZ KAÇAKLARI ..................................................................................................................................................................................................................... 4
+2. 	MONTAJ PERSONELİ BÖLÜMÜ ......................................................................................................................................................... 4
+2.1. 	AMBALAJ KOLİSİ İÇERİKLERİ ................................................................................................................................................................................................ 4
+2.2. 	KOMBİ MONTAJ KURALLARI ................................................................................................................................................................................................. 5
+2.2.1. 	Kombinin Montajının Yapılacağı Yerler İçin Genel Kurallar ....................................................................................................................................................................5
+2.2.2. 	Hermetik Kombilerin Montajının Yapılamayacağı Yerler ........................................................................................................................................................................5
+2.2.3. 	Kombinin Duvara Montajı ve Montaj Yeri Seçimi ......................................................................................................................................................................................5
+2.2.4. 	Boyutlar ve Bağlantılar .....................................................................................................................................................................................................................................6
+2.2.5. 	Doğal Gaz ve LPG Bağlantısı (Cihaz Kategorisi I2H, II2H3P) ......................................................................................................................................................................6
+2.2.6. 	Yanıcı Gaz Kalitesi ..............................................................................................................................................................................................................................................6
+2.2.7. 	LPG Tankı Kullanılması Durumunda..............................................................................................................................................................................................................6
+2.2.8. 	Tüp Gaz Kullanımı Durumunda ......................................................................................................................................................................................................................7
+2.2.9. 	Kısmen Korunan Dış Mekânlara Montaj .......................................................................................................................................................................................................7
+2.3. 	HİDROLİK TESİSAT MONTAJ KURALLARI .............................................................................................................................................................................7
+2.3.1. 	Kalorifer ve Sıcak Kullanım Suyu Tesisatları...............................................................................................................................................................................................7
+2.3.2. 	Kalorifer Tesisatının Doldurulması/Boşaltılması .......................................................................................................................................................................................8
+2.3.3. 	Sirkülasyon Pompası .........................................................................................................................................................................................................................................8
+2.3.4. 	Yoğuşma Hattı için Sifonun Doldurulması ................................................................................................................................................................................................ 10
+2.4. 	KOMBİ BACA BAĞLANTILARI ................................................................................................................................................................................................11
+2.4.1. 	Atık Gaz Baca Boru Seti ve Aksesuarları Bağlantısı .............................................................................................................................................................................. 11
+2.4.2. 	Yatay Baca Setleri Ile Montaj ......................................................................................................................................................................................................................... 11
+2.4.3. 	Dikey Baca Setleri ile Montaj (Ø 60/100 mm) ........................................................................................................................................................
+[...document excerpt...]
+on başladıktan 12 dakika sonra sona erer , ancak fonksiyonu daha
+erken sonlandırmak (kapatmak) için, "RESET" ve ”-“ tekrar basınız ve ---
+çevriminin tamamlanmasını bekleyiniz.
+Şekil 44 Dış hava sıcaklık sensörü ve kombi bağlantısı
+Şekil 46 Hava Tahliye Fonksiyonunu aktif hale getirmek için RESET ve sıcaklık
+azaltma butonuna basma.	
+Şekil 45 Dış hava sıcaklık sensörü çalışma eğrileri
+Kombi Kalorifer Sıcaklık Ayarı °C
+Dış Hava Sıcaklığı °C
+1
+2
+20,0
+30,0
+40,0
+50,0
+60,0
+70,0
+80,0
+-25	-20	-15	-10	-5	0	5	10	15	20
+K=0,75
+K=1,5
+K=2,2	K=3	K=4,5	K=6	K=9
+
+-- 22 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	23
+3.3. HATA VE ARIZA DURUMLARININ ÇÖZÜMLENMESİ
+3.3.1. Arıza Kodları Tablosu
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 01 	Atık gaz Termostatı
+(Açık Yanma Odalı
+kombi)
+müdahalesi
+Kombi çalışmıyor, ekranda
+E01 hata kodu yanıp
+sönüyor
+• Atık gaz sensörü arızası 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 02 	Sistemde su basıncı
+düşük/sistem
+parametreleri yanlış
+ayarlanmış
+Kombi çalışmıyor, ekranda
+E02 hata kodu yanıp
+sönüyor
+• Kombide su basıncı yeterli değil
+• TsP parametresi yanlış ayarlanmış
+1. Kombiyi kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olarak
+doldurun, problem otomatik olarak ortadan kalkar.
+2. Kombinin sağ altında bulunan manometreden sistem basıncı 1,2 - 1,5
+bar mı kontrol edin
+3. Eğer sorun devam ederse yetkili servisi arayın
+4. RESET butonuna basarak kombiyi yeniden başlatın
+E 03 	Sistemde su basıncı
+yüksek
+Kombi çalışmıyor, ekranda
+E03 hata kodu yanıp
+sönüyor
+• Sistemde yüksek su basıncı 3,8
+• bardan yüksek
+1. Kombiyi kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olana kadar
+boşaltın ve problem otomatik olarak ortadan kalkar
+2. Kombinin sağ altında bulunan manometreden sistem basıncı 1,2 - 1,5
+bar mı kontrol edin
+3. Eğer sorun devam ederse yetkili servisi arayın.
+4. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden Başlatın
+E 04 	Sıcak Kullanım Suyu
+sıcaklık sensörü arızalı
+Kombi Sıcak Kullanım Suyu
+modunda çalışmıyor ancak
+Kalorifer ısıtma modunda
+çalışıyor, E04 hata kodu
+ekranda yanıp sönüyor
+• Sıcak Kullanım Suyu sıcaklık
+• sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 05 	Kalorifer ısıtma Gidiş
+Sıcaklık Sensörü hatalı
+Kombi çalışmıyor, ekranda
+E05 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma Gidiş Sıcaklık
+• Sensörü hatalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 06 	Ateşleme yok 	Kombi çalışmıyor, ekranda
+E06 hata kodu yanıp
+sönüyor
+• Gaz besleme arızası 	1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldüğünü kontrol edin
+2. Diğer gazlı cihazların çalışıp çalışmadığını kontrol edin.
+3. Ana gaz valfi açık mı değil mi kontrol edin.
+4. Kombinin altındaki kombi gaz vanası açık mı değil mi kontrol edin.
+5. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin.
+6. Sorun çözülmediyse yetkili servisi arayın.
+E 07 	Güvenlik/Emniyet
+Termostatı müdahalesi
+Kombi çalışmıyor, ekranda
+E07 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Donanım tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin
+2. Kombinin kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı.
+4. Kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun çözüldü mü
+kontrol edin.
+5. Sorun çözülmediyse yetkili servisi arayın.
+E 08 	Alev devresi arızası 	Yanma ya da elektrottan
+yanlış alev sinyali
+• Elektrotta yıpranma ya da pas
+• Elektrot pozisyonu
+• Kablolamada kopukluklar
+• Sıvı akış borusunda su tıkanması
+• Elektronik kart
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 09 	Sistemde su
+sirkülasyonu
+yok
+Kombi çalışmıyor, ekranda
+E09 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Tesisat tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın)ve sorun
+çözüldü mü kontrol edin.
+2. Kombi kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN ve sorun çözüldü mü kontrol edin
+E 11 	Gaz vanası modülatörü
+bağlı değil
+Kombi çalışmıyor, ekranda
+E11 hata kodu yanıp
+sönüyor
+• Gaz vanası hattı 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 13 	Atık Gaz Sıcaklık
+Sensörü
+aşırı sıcaklık alarmı
+Kombi çalışmıyor, ekranda
+E13 hata kodu yanıp
+sönüyor
+• Bacadaki aşırı gaz sıcaklık çıkış
+• değeri
+• 105 °C
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 14 	Atık Gaz (BACA)
+Sıcaklık
+Sensörü arızası
+Kombi çalışmıyor, ekranda
+E14 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma Atık Gaz Sıcaklık
+• Sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+
+-- 23 of 36 --
+
+24	i 	warmhaus.com
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 15 	Fan arızası (geri
+bildirim/
+tedarik)
+Kombi çalışmıyor, ekranda
+E15 hata kodu yanıp
+sönüyor
+• Fan tesisatı 	1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 16 	Kalorifer ısıtma
+sıcaklığı
+DÖNÜŞ sensörü arızalı
+Kombi çalışmıyor, ekranda
+E10 hata kodu yanıp
+sönüyor
+• Kalorifer ısıtma DÖNÜŞ sıcaklığı
+• sensörü arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 17 	GİDİŞ VE LİMİT NTC’si
+arasındaki sıcaklık farkı
+(Çift Isıtma sensörü)
+arızalı
+GİDİŞ VE LİMİT sensörü
+(ÇİFT NTC) arızası
+• GİDİŞ VE LİMİT Sensor (çift NTC)
+arızalı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 19 	Su akış metresi ile su
+akışı
+seçimi girdi okuması
+Talep üzerine dâhili ısıtma
+suyu eksikliği
+• TsP menüsünde yanlış parametreler
+• ayarlanmış
+1. lk olarak yetkili servisi arayın
+2. Yalnızca yetkili servis TsP Parametresini P01=0 varsayılan değeri ile
+ayarlamalı
+E 20 	Kalorifer Aşırı Sıcaklık
+Arızası, Kalorifer
+Isıtma Sıcaklığı, TSP
+81 sıcaklık °C ayar
+değerini aştı
+Kombi çalışmıyor, ekranda
+E81 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Tesisat tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın)ve sorun
+çözüldü mü kontrol edin
+2. Kombi merkezi ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN ve sorun çözüldü mü kontrol edin
+5. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 21 	Kalorifer Gidiş ve
+Dönüş sıcaklık farkı,
+TSP 82 delta sıcaklık
+°C ayar değerini aştı
+Kombi çalışmıyor, ekranda
+E21 hata kodu yanıp
+sönüyor
+• Sistemde su eksikliği
+• Pompa tıkanması
+• Pompa arızası
+• Pompa teçhizatı
+• Donanım tıkanması
+1. İlk olarak kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun
+çözüldü mü kontrol edin.
+2. Kombi kalorifer ısıtma vanaları açık mı kontrol edin, kapalılarsa
+hepsini açın.
+3. Tüm radyatör vanaları açık mı kontrol edin, kapalılarsa açın, en az 3
+metrelik radyatör açık olmalı
+4. Kombiyi SIFIRLAYIN (RESET butonuna basın) ve sorun çözüldü mü
+kontrol edin.
+5. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 28 	İzin verilen maksimum
+art
+arda Resetleme
+(sıfırlama)
+sayısına ulaşıldı
+Kullanılabilir SIFIRLAMA
+sayısına erişildi.
+• Diğer muhtemel sebepler nedeniyle
+• çok fazla art arda kilitleme arızası
+• (ardından sıfırlama)
+1. Kombi sigortasını kapatın ve 1 dakika sonra tekrar açıldığında kombi
+sıfırlanacaktır
+2. Çözmek için Hata kodunun temel nedenini kontrol edin
+3. Eğer hata yine devam ediyorsa yetkili servisi arayın.
+E 37 	Düşük voltajda
+anormallik
+Kombi çalışmıyor, ekranda
+E37 hata kodu yanıp
+sönüyor
+• Düşük voltaj < 165 VAC
+• Elektrik şebekesi işlem modunda
+• +/- %5 YA DA
+• Otomatik kalibrasyon modunda <
+• 182 VAC +/- %5
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 40 	Yanlış ağ frekans
+ölçümü
+Kombi çalışmıyor, ekranda
+E40 hata kodu yanıp
+sönüyor
+• Yanlış frekans ölçümü, tolerans 50
+• Hz'den farklı şebekede +/- %5
+1. Elektrik şebekesini sağlayan firmayı arayın
+2. Eğer gelen frekans 50 Hz +/- %5 ise hata ortadan kalkar
+E 41 	Art arda 6 kereden
+fazla
+ateşleme kaybı
+Kombi çalışmıyor, ekranda
+E41 hata kodu yanıp
+sönüyor
+• Kısa süre içinde çok fazla dâhili
+• ısıtma suyu talebi (1 dakika )
+• Düşük gaz basıncı
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 42 	Buton anormalliği 	Kombi çalışmıyor, ekranda
+E42 hata kodu yanıp
+sönüyor
+• TsP menüsünde yanlış parametreler
+• ayarlanmış
+1. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 43 	Oda termostatı
+(Opentherm) iletişim
+hatası
+Kombi çalışmıyor, 1
+dakikalık iletişim hatasının
+ardından ekranda E43 hata
+kodu yanıp sönüyor
+• Oda termostatı (Opentherm) hattı
+• bağlantısı kopuk
+1. Kombi sigortasını kapatın ve yaklaşık 1 dakika sonra tekrar açtığınızda
+E43 ortadan kalkacak ve kombi ve butonlar işlevsel hale gelecek
+2. Oda termostatının pillerini yenileriyle değiştirin ve oda termostatını
+sıfırlayın (RESET butonuna basın).
+3. Kombi ve oda termostatı arasındaki kablolamayı kontrol edin
+ve kopukluk varsa yeniden bağlayın, eğer bağlantı başarılı şekilde
+gerçekleştirilmişse ekranda 19 nolu sembol görünecektir
+4. Oda termostatı (Opentherm) bağlantısını yeniden bağlamak için
+yetkili servisi arayın
+rE 44 	Fazla sayıda aralıklı
+ateşlemeye rağmen
+brülörde yanmanın
+gerçekleşmemesi
+Fazla sayıda aralıklı
+ateşlemeye rağmen
+brülörde yanmanın
+gerçekleşmemesi
+• Kalibrasyon yapılmadı
+• PCB değiştirildi ancak çıkartılan
+• PCB’nin servis anahtarı kullanılmadı
+• Hizmet anahtarı hasarlı ya da bağlı
+• değil
+• Yazılım güncelleniyor (muhtemel)
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+
+-- 24 of 36 --
+
+EWA MONTAJ VE KULLANIM KILAVUZU • 15011606000135	25
+Hata
+Kodu 	Hata 	Arıza 	Muhtemel Sebep 	Çözüm(ler)
+E 62 	Kalibrasyon talebi 	Kombi çalışmıyor, ekranda
+E62 hata kodu yanıp
+sönüyor
+• Kalibrasyon yapılmadı
+• PCB değiştirildi ancak çıkartılan
+• PCB’nin servis anahtarı kullanılmadı
+• Hizmet anahtarı hasarlı ya da bağlı
+• değil
+• Yazılım güncelleniyor (muhtemel)
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Servisi arayın.
+E 72 	Ateşlemede Delta T
+sıcaklık farkı
+gerçekleşmedi
+Kombi çalışmıyor, ekranda
+E72 hata kodu yanıp
+sönüyor
+• GİDİŞ VEYA GERİ DONUŞ Sensorleri
+kontrol edilmeli
+1. Kombiyi Sıfırlayın (RESET butonuna basın) & Yeniden başlatın.
+2. Arıza devam ediyorsa Yetkili Se

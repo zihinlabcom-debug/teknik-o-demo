@@ -1,0 +1,2285 @@
+{
+  "startedAt": "2026-09-22T17:16:33.394Z",
+  "model": "gpt-4.1",
+  "method": "One uncached researchManufacturer call per identity, sequential; original document reader wrapped only for observation. No URLs or reference answers sent to the model.",
+  "approvedDomains": {
+    "vaillant": [
+      "vaillant.com.tr",
+      "vaillant.com",
+      "vaillant.co.uk"
+    ],
+    "bosch": [
+      "bosch-homecomfort.com",
+      "bosch-thermotechnology.com",
+      "bosch.com.tr"
+    ],
+    "demirdokum": [
+      "demirdokum.com.tr"
+    ],
+    "buderus": [
+      "buderus.com",
+      "buderus.com.tr"
+    ],
+    "baymak": [
+      "baymak.com.tr"
+    ],
+    "eca": [
+      "eca.com.tr"
+    ],
+    "ariston": [
+      "ariston.com"
+    ],
+    "viessmann": [
+      "viessmann.com.tr",
+      "viessmann.com"
+    ],
+    "ferroli": [
+      "ferroli.com"
+    ],
+    "immergas": [
+      "immergas.com",
+      "immergas.com.tr"
+    ],
+    "airfel": [
+      "airfel.com.tr"
+    ],
+    "arcelik": [
+      "arcelik.com.tr"
+    ],
+    "beko": [
+      "beko.com",
+      "beko.com.tr"
+    ],
+    "warmhaus": [
+      "warmhaus.com.tr",
+      "warmhaus.com"
+    ]
+  },
+  "productionFingerprintsBefore": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "5db7b05743d018d4523b647064379d6766feb53b3815607a29fe5651626dbbd1",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "c4c86b48de2005dc0ae97ba90543a96405f07a198c9e98dea9a6c7b7489bfa19",
+    "src/lib/manufacturer-evidence.ts": "0b265168623a2ea2c826fce5c5ec0a0fa10a23717d0ad7bd5cd38d2f0ae4d1c1",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "67e702d75b96710a0074cb1966f19b319ff02aef82b2332b06258fe4f4cc2dab"
+  },
+  "results": [
+    {
+      "identity": {
+        "brand": "Baymak",
+        "model": "DUOTEC",
+        "code": "E01"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 50167,
+      "sourceUrl": null,
+      "sourceUrls": [
+        "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+        "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+        "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+        "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf"
+      ],
+      "modelDocumentVerified": false,
+      "modelScope": null,
+      "coveredModels": [],
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı.",
+        "stages": [
+          {
+            "urls": [
+              "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf"
+            ],
+            "stage": "document_identity",
+            "error": "code_absent"
+          },
+          {
+            "urls": [
+              "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": false,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          {
+            "urls": [
+              "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          }
+        ]
+      },
+      "probes": [
+        {
+          "url": "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+              "status": 404
+            }
+          ]
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+          "finalUrl": "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+          "readable": true,
+          "modelTextMatch": false,
+          "codeTextMatch": false,
+          "documentFile": "baymak-2-document.txt"
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "finalUrl": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "baymak-3-document.txt"
+        },
+        {
+          "url": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf",
+          "finalUrl": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf",
+          "readable": true,
+          "modelTextMatch": false,
+          "codeTextMatch": true,
+          "documentFile": "baymak-4-document.txt"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:16:38.108Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+                "title": "Baymak Duotec Premix Tam Yoğuşmalı Kombi Kullanma Kılavuzu (hata kodları) – Rev.04 27.02.2020"
+              },
+              {
+                "url": "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf",
+                "title": "Baymak Duotec Premix Tam Yoğuşmalı Kombi Kullanma Kılavuzu (teknik genel bilgiler) – Rev.04 27.02.2020"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:16:38.432Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/4994/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:16:50.978Z",
+          "raw": {
+            "stage": "document_identity",
+            "error": "code_absent"
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/4608/baymak-duotec-premix-tam-yogusmali-kombi-kullanma-kılavuzu.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:16:55.549Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf",
+                "title": "Baymak DUOTEC DHW Tam Yoğuşmalı Kombi Kullanma Kılavuzu (hata kodları E01 dahil)"
+              },
+              {
+                "url": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf",
+                "title": "Dolcevita Felice Montaj & Kullanma Kılavuzu (hata kodları E01 dahil)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:17:08.800Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Baymak",
+            "model": "DUOTEC",
+            "code": "E01",
+            "meaning": "Başarısız ateşleme",
+            "title": "Baymak DUOTEC Hata Kodları",
+            "revision": "",
+            "modelEvidence": "Model DUOTEC, hata kodları tablosunda açıkça yer almaktadır.",
+            "codeEvidence": "E01 \tBaşarısız ateşleme",
+            "modelScope": "exact",
+            "coveredModels": [
+              "DUOTEC"
+            ],
+            "errorRecord": "E01 \tBaşarısız ateşleme",
+            "descriptionEvidence": "Başarısız ateşleme",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 18,
+            "candidates": [],
+            "questionIds": [
+              "gasSupply",
+              "ignitionSound",
+              "recentWork",
+              "flame"
+            ],
+            "url": "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:08.816Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": false,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/5477/baymak-duotec-dhw-tam-yogusmali-kombi-kullanma-kilavuzu.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:22.157Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Baymak",
+            "model": "DUOTEC",
+            "code": "E01",
+            "meaning": "Başarısız ateşleme",
+            "title": "Hata kodları",
+            "revision": "300032130 Rev.: 2 - 06.08.2018",
+            "modelEvidence": "7.1 Hata kodları\nBir hata oluştuğunda ekranda hata kodu görüntülenecektir (örneğin E01).",
+            "codeEvidence": "E01 \tBaşarısız ateşleme",
+            "modelScope": "ambiguous",
+            "coveredModels": [],
+            "errorRecord": "E01 \tBaşarısız ateşleme\nE02 \tHatalı alev oluşumu\nE03 \tAşırı ısınma hatası\nE04 \tPresostat arızası\nE05 \tPresostat arızası\nE06 \tPresostat arızası\nE07 \tTTB termostat arızası\nE09 \tGaz valfi geri besleme arızası\nE12 \tElektronik kart arızası\nE21 \tElektronik kart arızası\nF02 \tHatalı alev oluşumu\nF13 \tReset kilitlenmesi (cihaz elektrik beslemesini açıp kapatınız)\nF22 \tDüşük voltaj arızası\nF23 \tPresostat arızası\nF25 \tElektronik kart arızası\nF31 \tMerkezi ısıtma NTC sensör arızası\nF32 \tDış hava sensörü arızası\nF33 \tKullanım suyu NTC sensör arızası\nF37 \tDüşük su basınç arızası\nF59 \tGaz valfi arızası",
+            "descriptionEvidence": "Başarısız ateşleme",
+            "modelMatch": false,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 16,
+            "candidates": [],
+            "questionIds": [
+              "screen",
+              "gasSupply",
+              "ignitionSound",
+              "flame"
+            ],
+            "url": "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf"
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:22.193Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.baymak.com.tr/media/2895/300032130-kullanma-kilavuzu-dolcevita-felice_tr_r2.pdf"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Ariston",
+        "model": "CLAS ONE",
+        "code": "501"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 47710,
+      "sourceUrl": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+      "sourceUrls": [
+        "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+        "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+        "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+        "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf",
+        "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf",
+        "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf",
+        "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf",
+        "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf",
+        "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf"
+      ],
+      "modelDocumentVerified": false,
+      "modelScope": "family",
+      "coveredModels": [
+        "CLAS ONE L WIFI"
+      ],
+      "errorCodeDocumentVerified": false,
+      "meaning": "Mancanza fiamma (No flame detected)",
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı.",
+        "stages": [
+          {
+            "urls": [
+              "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf"
+            ],
+            "stage": "entailment",
+            "review": {
+              "modelScopeSupported": false,
+              "faultRecordSupported": true,
+              "candidates": [],
+              "reason": "Model scope is not fully supported: The document and error table are for the 'CLAS ONE L WIFI' (explicitly stated in the header and model evidence), but the proposed model scope is 'family' (CLAS ONE), which is broader and not explicitly supported by the document. The error record for code 501 ('5 01 Mancanza fiamma') is directly supported in the error table, so fault record support is correct. No candidates were provided for cause review."
+            }
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          {
+            "urls": [
+              "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "url": "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+              "status": 403,
+              "contentType": "text/html"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf",
+              "status": 404,
+              "contentType": "text/html; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf",
+              "status": 404,
+              "contentType": "text/plain"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf",
+              "status": 403,
+              "contentType": "text/html"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf",
+              "status": 403,
+              "contentType": "text/html"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf",
+              "status": 404,
+              "contentType": "text/html; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf",
+              "status": 403,
+              "contentType": "text/html"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+          "finalUrl": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "ariston-2-document.txt"
+        },
+        {
+          "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+          "finalUrl": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "ariston-3-document.txt"
+        },
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:17:26.712Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf",
+                "title": "Manuale installazione e manutenzione CLAS ONE (Italian installation and service manual)"
+              },
+              {
+                "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf",
+                "title": "Manuale uso CLAS ONE (Italian user manual)"
+              },
+              {
+                "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf",
+                "title": "Libretto installazione – includes error‑code table including code 501"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:17:27.174Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/it/products/boilers/condensation/clas-one/manuale-installazione-e-manutenzione-clas-one.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:39.005Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Ariston",
+            "model": "CLAS ONE",
+            "code": "501",
+            "meaning": "Mancanza fiamma (Flame failure)",
+            "title": "Tabella Errori per Blocco di Funzionamento",
+            "revision": "",
+            "modelEvidence": "CLAS One\nCLAS One L",
+            "codeEvidence": "Mancanza fiamma \t5 01",
+            "modelScope": "family",
+            "coveredModels": [
+              "CLAS One",
+              "CLAS One L"
+            ],
+            "errorRecord": "Mancanza fiamma \t5 01",
+            "descriptionEvidence": "Mancanza fiamma",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 9,
+            "candidates": [],
+            "questionIds": [
+              "screen",
+              "gasSupply",
+              "ignitionSound",
+              "flame"
+            ],
+            "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf"
+          },
+          "urls": [
+            "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:39.018Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one/manuale-uso-clas-one.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:17:58.441Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Ariston",
+            "model": "CLAS ONE",
+            "code": "501",
+            "meaning": "Mancanza fiamma (No flame detected)",
+            "title": "Tabella riepilogativa codici errore",
+            "revision": "420011260800 - Rev. 01 - 052022",
+            "modelEvidence": "CLAS ONE L WIFI",
+            "codeEvidence": "5 01 \tMancanza fiamma",
+            "modelScope": "family",
+            "coveredModels": [
+              "CLAS ONE L WIFI"
+            ],
+            "errorRecord": "5 01 \tMancanza fiamma\n5 02 \tRilevamento fiamma con valvola gas chiusa\n5 04 \tDistacco fiamma\n5 P1 \tPrimo tentativo di accensione fallito\n5 P2 \tSecondo tentativo di accensione fallito\n5 P3 \tDistacco fiamma",
+            "descriptionEvidence": "Mancanza fiamma",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 23,
+            "candidates": [],
+            "questionIds": [
+              "gasSupply",
+              "ignitionSound",
+              "flame",
+              "recentWork"
+            ],
+            "url": "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf"
+          },
+          "urls": [
+            "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:01.590Z",
+          "raw": {
+            "stage": "entailment",
+            "review": {
+              "modelScopeSupported": false,
+              "faultRecordSupported": true,
+              "candidates": [],
+              "reason": "Model scope is not fully supported: The document and error table are for the 'CLAS ONE L WIFI' (explicitly stated in the header and model evidence), but the proposed model scope is 'family' (CLAS ONE), which is broader and not explicitly supported by the document. The error record for code 501 ('5 01 Mancanza fiamma') is directly supported in the error table, so fault record support is correct. No candidates were provided for cause review."
+            }
+          },
+          "urls": [
+            "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:01.782Z",
+          "raw": {
+            "stage": "decision",
+            "status": "not_found",
+            "message": "Bu marka, model ve hata kodu için üretici bilgisi doğrulanamadı."
+          },
+          "urls": [
+            "https://www.ariston.com/content/dam/ariston/it/products/boilers/condensation/clas-one-30l-wifi/libretto-installazione-clas-one-l-wifi-30.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:06.209Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf",
+                "title": "Manuale installazione e manutenzione CLAS ONE SYSTEM (Ariston IT)"
+              },
+              {
+                "url": "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf",
+                "title": "Manual de instalação CLAS ONE SYSTEM (Ariston PT)"
+              },
+              {
+                "url": "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf",
+                "title": "Manuel installation 1 CLAS ONE (Ariston FR)"
+              },
+              {
+                "url": "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf",
+                "title": "Manual de instalación CLAS ONE (Ariston ES)"
+              },
+              {
+                "url": "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf",
+                "title": "Manuale installazione e manutenzione CLAS ONE IN (Ariston IT)"
+              },
+              {
+                "url": "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf",
+                "title": "Clas One & Clas System One Installation instructions (Ariston UK)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:18:06.687Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-system/manuale-installazione-e-manutenzione-clas-one-system.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:07.439Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/pt-pt/produtos/boilers/condensing-boilers/clas-one-system/22-manual-de-instalação-clas-one-system.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:07.962Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/fr-fr/produits/chauffage/chaudiere-a-gaz-a-condensation/clas-one/manuel-installation-1.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:08.440Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/es-ar/productos/caldera/caldera-de-condensacion/clas-one/manual_de_instalacion_clas_one.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:09.372Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/it-it/prodotti/caldaie/condensazione/clas-one-in/manuale-installazione-e-manutenzione-clas-one-in.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:09.921Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.ariston.com/en-uk/products/gas-boilers-uk/clas-one-&-clas-system-one-installation-instructions.pdf"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Immergas",
+        "model": "VICTRIX TERA",
+        "code": "27"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 68240,
+      "sourceUrl": null,
+      "sourceUrls": [
+        "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+        "https://www.immergas.com.tr/urun-ariza-kodlari/",
+        "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf",
+        "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf"
+      ],
+      "modelDocumentVerified": false,
+      "modelScope": null,
+      "coveredModels": [],
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı.",
+        "stages": [
+          {
+            "urls": [
+              "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          {
+            "urls": [
+              "https://www.immergas.com.tr/urun-ariza-kodlari/"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": false,
+              "codeEvidence": true
+            }
+          },
+          {
+            "urls": [
+              "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document too large"
+          },
+          {
+            "urls": [
+              "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf"
+            ],
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          }
+        ]
+      },
+      "probes": [
+        {
+          "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.immergas.com.tr/urun-ariza-kodlari/",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.immergas.com.tr/urun-ariza-kodlari/",
+              "status": 200,
+              "contentType": "text/html; charset=UTF-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "finalUrl": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "immergas-1-document.txt"
+        },
+        {
+          "url": "https://www.immergas.com.tr/urun-ariza-kodlari/",
+          "finalUrl": "https://www.immergas.com.tr/urun-ariza-kodlari/",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "immergas-2-document.txt"
+        },
+        {
+          "url": "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf",
+          "readable": false,
+          "error": "Manufacturer document too large"
+        },
+        {
+          "url": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf",
+          "finalUrl": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "immergas-4-document.txt"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:18:14.904Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf",
+                "title": "Immergas VICTRIX TERA – service/installation manual (Italian), error codes including 27"
+              },
+              {
+                "url": "https://www.immergas.com.tr/urun-ariza-kodlari/",
+                "title": "Immergas Türkiye – Ürün Arıza Kodları (includes VICTRIX TERA code 27)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:18:36.223Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Immergas",
+            "model": "VICTRIX TERA",
+            "code": "27",
+            "meaning": "Circolazione insufficiente",
+            "title": "Segnalazioni guasti ed anomalie",
+            "revision": "",
+            "modelEvidence": "La caldaia Victrix Tera segnala un eventuale anomalia mediante un codice visualizzato sul display di caldaia (19) secondo la tabella seguente:",
+            "codeEvidence": "27 Circolazione insufficiente\nSi verifica nel caso in cui vi è un surriscaldamento della caldaia dovuto a scarsa circolazione di acqua nel circuito primario; le cause possono essere:\n- scarsa circolazione impianto; verificare che non vi sia una intercettazione sul circuito di riscaldamento chiusa e che l’impianto sia perfettamente libero dall’aria (disaerato);\n- circolatore bloccato; occorre far provvedere allo sblocco del circolatore.\nPremere il pulsante di Reset (1).",
+            "modelScope": "exact",
+            "coveredModels": [
+              "VICTRIX TERA"
+            ],
+            "errorRecord": "27 Circolazione insufficiente\nSi verifica nel caso in cui vi è un surriscaldamento della caldaia dovuto a scarsa circolazione di acqua nel circuito primario; le cause possono essere:\n- scarsa circolazione impianto; verificare che non vi sia una intercettazione sul circuito di riscaldamento chiusa e che l’impianto sia perfettamente libero dall’aria (disaerato);\n- circolatore bloccato; occorre far provvedere allo sblocco del circolatore.\nPremere il pulsante di Reset (1).",
+            "descriptionEvidence": "Si verifica nel caso in cui vi è un surriscaldamento della caldaia dovuto a scarsa circolazione di acqua nel circuito primario;",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 28,
+            "candidates": [
+              {
+                "name": "Isıtma devresinde kapalı bir vana (intercettazione) olması",
+                "basis": "verificare che non vi sia una intercettazione sul circuito di riscaldamento chiusa",
+                "part": ""
+              },
+              {
+                "name": "Isıtma devresinde hava olması (hava alınmamış olması)",
+                "basis": "che l’impianto sia perfettamente libero dall’aria (disaerato)",
+                "part": ""
+              },
+              {
+                "name": "Sirkülasyon pompası (circolatore) blokajı",
+                "basis": "circolatore bloccato; occorre far provvedere allo sblocco del circolatore",
+                "part": "circolatore"
+              }
+            ],
+            "questionIds": [
+              "pressure",
+              "leak",
+              "onset",
+              "affected"
+            ],
+            "url": "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+          },
+          "urls": [
+            "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:36.958Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://webdav.immergas.com/webdav.usr/ro-guest/service.ba1811242196b1998c8d6ce2196f2a12/PdfImmergas/Libretti%20Istruzioni/LI_3.027373.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:45.392Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Immergas",
+            "model": "VICTRIX TERA",
+            "code": "27",
+            "meaning": "Yetersiz su sirkülasyonu",
+            "title": "Immergas Cihazlarında 27 Uyarısı Nedir ve Nasıl Çözülür?",
+            "revision": "",
+            "modelEvidence": "VICTRIX TERA 24 1 E",
+            "codeEvidence": "27 Uyarısı Nedir ve Nasıl Çözülür?       \n\t \n\t\t \n\t\t\t Yetersiz su sirkülasyon” uyarısıdır. Nedeni ana devrede yetersiz su sirkülasyonu olmasından ötürü oluşan aşırı ısınma halinde oluşur.",
+            "modelScope": "family",
+            "coveredModels": [
+              "VICTRIX TERA 24 1 E"
+            ],
+            "errorRecord": "27 Uyarısı Nedir ve Nasıl Çözülür?       \n\t \n\t\t \n\t\t\t Yetersiz su sirkülasyon” uyarısıdır. Nedeni ana devrede yetersiz su sirkülasyonu olmasından ötürü oluşan aşırı ısınma halinde oluşur. Resetleme yapınız. Tekrarlaması durumunda 444 88 22′ yi arayınız. Bu uyarı aşağıdaki cihazlar için geçerlidir: EOLO STAR 24 3 E, EOLO STAR 24 5 E, MINI EOLO STAR 24 3 E, EOLO MYTHOS, MAIOR EOLO, VICTRIX 26 2 ERP, VICTRIX ZEUS SUPERIOR 32 KW, VICTRIX TERA 24 1 E, VICTRIX SUPERIOR 32 X 2 ERP, VICTRIX SUPERIOR 32 2 ERP, VICTRIX EXA 28 1 ERP, VICTRIX EXA 32 1 ERP, HERCULES CONDENSING \n",
+            "descriptionEvidence": "Yetersiz su sirkülasyon” uyarısıdır.",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": false,
+            "page": null,
+            "candidates": [],
+            "questionIds": [
+              "pressure",
+              "leak",
+              "onset",
+              "recurrence"
+            ],
+            "url": "https://www.immergas.com.tr/urun-ariza-kodlari/"
+          },
+          "urls": [
+            "https://www.immergas.com.tr/urun-ariza-kodlari/"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:45.436Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": false,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.immergas.com.tr/urun-ariza-kodlari/"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:18:49.521Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf",
+                "title": "VICTRIX TERA V3 28 E — Installation / Service Manual (includes error code table)"
+              },
+              {
+                "url": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf",
+                "title": "Accessory technical sheet — Low Temperature Safety Thermostat Intervention (E27)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:19:01.684Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document too large"
+          },
+          "urls": [
+            "https://www.immergas.com/media/Prodotto/698c45e55257efadc7f2dac8/VICTRIX%20TERA%20V3%2028%20E%201.051305?ef=_ENG.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:17.663Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Immergas",
+            "model": "VICTRIX TERA",
+            "code": "27",
+            "meaning": "Blocco per surriscaldamento mandata bassa temperatura (Low temperature flow overheat lockout)",
+            "title": "INTERVENTO DEL TERMOSTATO DI SICUREZZA BASSA TEMPERATURA",
+            "revision": "Cod. 1.033477 - rev. ST.000880/014 - 02/26",
+            "modelEvidence": "• Victrix Tera - Victrix Tera V2",
+            "codeEvidence": "- (Fig. 27) l'apparecchio va in blocco visualizzando il codice errore E27.",
+            "modelScope": "family",
+            "coveredModels": [
+              "Victrix Tera",
+              "Victrix Tera V2"
+            ],
+            "errorRecord": "INTERVENTO DEL TERMOSTATO DI SICUREZZA BASSA TEMPERATURA.\nDurante il normale regime di funzionamento se per un’anomalia si verifica un eccessivo surriscaldamento della temperatura di mandata\nin bassa temperatura in base al collegamento elettrico previsto:\n- (Fig. 26) l'apparecchio va in blocco visualizzando il codice errore E46.\n- (Fig. 27) l'apparecchio va in blocco visualizzando il codice errore E27.\n- (Fig. 28) l'apparecchio va in blocco visualizzando il codice errore E27.\n- (Fig. 29) viene interrotta l'alimentazione elettrica dell'apparecchio\nDopo un opportuno raffreddamento è possibile resettare il termostato come descritto di seguito. Se il fenomeno si verifica frequen-\ntemente chiamare un tecnico abilitato (ad esempio il Servizio Assistenza Tecnica Immergas).",
+            "descriptionEvidence": "l'apparecchio va in blocco visualizzando il codice errore E27.",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 10,
+            "candidates": [],
+            "questionIds": [
+              "overheating",
+              "pressure",
+              "recurrence",
+              "affected"
+            ],
+            "url": "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf"
+          },
+          "urls": [
+            "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:17.734Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.immergas.com/media/Accessorio/63cc1ddd3fdcb6a15d9d0cc9/1_033477.pdf"
+          ]
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Demirdöküm",
+        "model": "Atromix",
+        "code": "F.28"
+      },
+      "researchStatus": "verified",
+      "elapsedMs": 35279,
+      "sourceUrl": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+      "sourceUrls": [
+        "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf",
+        "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf",
+        "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+        "https://www.demirdokum.com.tr/tuketici-destek/s-kca-sorulan-sorular/kombiler/"
+      ],
+      "modelDocumentVerified": true,
+      "modelScope": "family",
+      "coveredModels": [
+        "Atromix P20",
+        "Atromix P24",
+        "Atromix P28"
+      ],
+      "errorCodeDocumentVerified": true,
+      "meaning": "Çalıştırma sırasındaki ateşleme başarısız",
+      "candidateCount": 13,
+      "poolOnlyVerifiedDocument": true,
+      "failure": null,
+      "probes": [
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf",
+              "status": 404,
+              "contentType": "text/html;charset=UTF-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf",
+              "status": 404,
+              "contentType": "text/html;charset=UTF-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+              "status": 200,
+              "contentType": "application/pdf;charset=UTF-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.demirdokum.com.tr/tuketici-destek/s-kca-sorulan-sorular/kombiler/",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.demirdokum.com.tr/tuketici-destek/s-kca-sorulan-sorular/kombiler/",
+              "status": 200,
+              "contentType": "text/html;charset=UTF-8"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        },
+        {
+          "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "finalUrl": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "demirdokum-3-document.txt"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:19:24.797Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf",
+                "title": "Atromix Kullanma Kılavuzu — Arıza mesajı: F.28 nedeni ve müdahalesi (kullanma talimatı)"
+              },
+              {
+                "url": "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf",
+                "title": "Atromix Montaj ve Bakım Kılavuzu — F.28 hata kodu anlamı ve nedenleri (montaj/bakım kılavuzu)"
+              },
+              {
+                "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+                "title": "Atromix P20, P24, P28 Montaj ve Bakım Kılavuzu (TR)"
+              },
+              {
+                "url": "https://www.demirdokum.com.tr/tuketici-destek/s-kca-sorulan-sorular/kombiler/",
+                "title": "DemirDöküm Kombiler Sıkça Sorulan Sorular — Hata kodlarının genel listesi"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:19:25.422Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/products-2/atromix/atromix-0020242181-01-1499356.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:25.752Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/downloads/products-1/atromix-mk-0020242182-09-2556869.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:44.930Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Demirdöküm",
+            "model": "Atromix",
+            "code": "F.28",
+            "meaning": "Çalıştırma sırasındaki ateşleme başarısız",
+            "title": "F.28 Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "revision": "0020242182_FT2",
+            "modelEvidence": "Atromix P20 ≤ 7 mt ≤ 18 mt\nAtromix P24 ≤ 10 mt ≤ 25 mt\nAtromix P28 ≤ 10 mt ≤ 25 mt",
+            "codeEvidence": "F.28 Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "modelScope": "family",
+            "coveredModels": [
+              "Atromix P20",
+              "Atromix P24",
+              "Atromix P28"
+            ],
+            "errorRecord": "F.28 Arıza: Çalıştırma sırasındaki ateşleme\nbaşarısız\nGaz sayacı arızalı veya gaz basıncı sensörü devrede, gazda hava var, gaz\ngiriş basıncı çok düşük, termik kapatma düzeneği (TAE) devrede, yanlış gaz\nmemesi, yanlış yedek parça gaz armatürü, gaz armatüründe arıza, elektronik\nkart üzerindeki çoklu soket doğru olarak takılmamış, kablo demetinde kesinti,\nateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi,\nateşleme elektrodu) arızalı, iyonizasyon akımında (kablo, elektrot) kesinti,\nüründe hatalı topraklama, elektronik arızalı",
+            "descriptionEvidence": "Çalıştırma sırasındaki ateşleme başarısız",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 34,
+            "candidates": [
+              {
+                "name": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+                "basis": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+                "part": ""
+              },
+              {
+                "name": "Gazda hava var",
+                "basis": "gazda hava var",
+                "part": ""
+              },
+              {
+                "name": "Gaz giriş basıncı çok düşük",
+                "basis": "gaz giriş basıncı çok düşük",
+                "part": ""
+              },
+              {
+                "name": "Termik kapatma düzeneği (TAE) devrede",
+                "basis": "termik kapatma düzeneği (TAE) devrede",
+                "part": ""
+              },
+              {
+                "name": "Yanlış gaz memesi",
+                "basis": "yanlış gaz memesi",
+                "part": "gaz memesi"
+              },
+              {
+                "name": "Yanlış yedek parça gaz armatürü",
+                "basis": "yanlış yedek parça gaz armatürü",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Gaz armatüründe arıza",
+                "basis": "gaz armatüründe arıza",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+                "basis": "elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+                "part": ""
+              },
+              {
+                "name": "Kablo demetinde kesinti",
+                "basis": "kablo demetinde kesinti",
+                "part": ""
+              },
+              {
+                "name": "Ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+                "basis": "ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+                "part": "ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu"
+              },
+              {
+                "name": "İyonizasyon akımında (kablo, elektrot) kesinti",
+                "basis": "iyonizasyon akımında (kablo, elektrot) kesinti",
+                "part": "iyonizasyon kablosu, iyonizasyon elektrodu"
+              },
+              {
+                "name": "Üründe hatalı topraklama",
+                "basis": "üründe hatalı topraklama",
+                "part": ""
+              },
+              {
+                "name": "Elektronik arızalı",
+                "basis": "elektronik arızalı",
+                "part": "elektronik kart"
+              }
+            ],
+            "questionIds": [
+              "gasSupply",
+              "ignitionSound",
+              "recentWork",
+              "flame"
+            ],
+            "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:54.017Z",
+          "raw": {
+            "stage": "entailment",
+            "review": {
+              "modelScopeSupported": true,
+              "faultRecordSupported": true,
+              "candidates": [
+                {
+                  "index": 0,
+                  "supported": true,
+                  "reason": "The error record for F.28 explicitly lists 'Gaz sayacı arızalı veya gaz basıncı sensörü devrede' as a possible cause. This matches the candidate exactly."
+                },
+                {
+                  "index": 1,
+                  "supported": true,
+                  "reason": "'Gazda hava var' is directly listed in the error record as a possible cause for F.28."
+                },
+                {
+                  "index": 2,
+                  "supported": true,
+                  "reason": "'Gaz giriş basıncı çok düşük' is explicitly listed in the error record for F.28."
+                },
+                {
+                  "index": 3,
+                  "supported": true,
+                  "reason": "'Termik kapatma düzeneği (TAE) devrede' is directly listed in the error record for F.28."
+                },
+                {
+                  "index": 4,
+                  "supported": true,
+                  "reason": "'Yanlış gaz memesi' is explicitly listed in the error record for F.28, and the part is correctly identified as 'gaz memesi'."
+                },
+                {
+                  "index": 5,
+                  "supported": true,
+                  "reason": "'Yanlış yedek parça gaz armatürü' is directly listed in the error record for F.28, and the part is correctly identified as 'gaz armatürü'."
+                },
+                {
+                  "index": 6,
+                  "supported": true,
+                  "reason": "'Gaz armatüründe arıza' is explicitly listed in the error record for F.28, and the part is correctly identified as 'gaz armatürü'."
+                },
+                {
+                  "index": 7,
+                  "supported": true,
+                  "reason": "'Elektronik kart üzerindeki çoklu soket doğru olarak takılmamış' is directly listed in the error record for F.28."
+                },
+                {
+                  "index": 8,
+                  "supported": true,
+                  "reason": "'Kablo demetinde kesinti' is explicitly listed in the error record for F.28."
+                },
+                {
+                  "index": 9,
+                  "supported": true,
+                  "reason": "'Ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı' is directly listed in the error record for F.28, and the parts are correctly identified."
+                },
+                {
+                  "index": 10,
+                  "supported": true,
+                  "reason": "'İyonizasyon akımında (kablo, elektrot) kesinti' is explicitly listed in the error record for F.28, and the parts are correctly identified."
+                },
+                {
+                  "index": 11,
+                  "supported": true,
+                  "reason": "'Üründe hatalı topraklama' is directly listed in the error record for F.28."
+                },
+                {
+                  "index": 12,
+                  "supported": true,
+                  "reason": "'Elektronik arızalı' is explicitly listed in the error record for F.28, and the part is correctly identified as 'elektronik kart'."
+                }
+              ],
+              "reason": "The document is the official installation and service manual for Demirdöküm Atromix models P20, P24, and P28. The error code F.28 and its causes are explicitly listed in the fault table, and each candidate cause is directly supported by the text of the error record. Both the model scope and the error record are fully supported by the provided evidence."
+            }
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:19:54.115Z",
+          "raw": {
+            "stage": "decision",
+            "status": "verified"
+          },
+          "urls": [
+            "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf"
+          ]
+        }
+      ],
+      "result": {
+        "status": "verified",
+        "knowledge": {
+          "evidence": {
+            "version": 2,
+            "modelScope": "family",
+            "coveredModels": [
+              "Atromix P20",
+              "Atromix P24",
+              "Atromix P28"
+            ],
+            "modelEvidence": "Atromix P20 ≤ 7 mt ≤ 18 mt\nAtromix P24 ≤ 10 mt ≤ 25 mt\nAtromix P28 ≤ 10 mt ≤ 25 mt",
+            "errorRecord": "F.28 Arıza: Çalıştırma sırasındaki ateşleme\nbaşarısız\nGaz sayacı arızalı veya gaz basıncı sensörü devrede, gazda hava var, gaz\ngiriş basıncı çok düşük, termik kapatma düzeneği (TAE) devrede, yanlış gaz\nmemesi, yanlış yedek parça gaz armatürü, gaz armatüründe arıza, elektronik\nkart üzerindeki çoklu soket doğru olarak takılmamış, kablo demetinde kesinti,\nateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi,\nateşleme elektrodu) arızalı, iyonizasyon akımında (kablo, elektrot) kesinti,\nüründe hatalı topraklama, elektronik arızalı",
+            "codeEvidence": "F.28 Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "descriptionEvidence": "Çalıştırma sırasındaki ateşleme başarısız",
+            "candidates": [
+              {
+                "name": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+                "basis": "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+                "part": ""
+              },
+              {
+                "name": "Gazda hava var",
+                "basis": "gazda hava var",
+                "part": ""
+              },
+              {
+                "name": "Gaz giriş basıncı çok düşük",
+                "basis": "gaz giriş basıncı çok düşük",
+                "part": ""
+              },
+              {
+                "name": "Termik kapatma düzeneği (TAE) devrede",
+                "basis": "termik kapatma düzeneği (TAE) devrede",
+                "part": ""
+              },
+              {
+                "name": "Yanlış gaz memesi",
+                "basis": "yanlış gaz memesi",
+                "part": "gaz memesi"
+              },
+              {
+                "name": "Yanlış yedek parça gaz armatürü",
+                "basis": "yanlış yedek parça gaz armatürü",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Gaz armatüründe arıza",
+                "basis": "gaz armatüründe arıza",
+                "part": "gaz armatürü"
+              },
+              {
+                "name": "Elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+                "basis": "elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+                "part": ""
+              },
+              {
+                "name": "Kablo demetinde kesinti",
+                "basis": "kablo demetinde kesinti",
+                "part": ""
+              },
+              {
+                "name": "Ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+                "basis": "ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+                "part": "ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu"
+              },
+              {
+                "name": "İyonizasyon akımında (kablo, elektrot) kesinti",
+                "basis": "iyonizasyon akımında (kablo, elektrot) kesinti",
+                "part": "iyonizasyon kablosu, iyonizasyon elektrodu"
+              },
+              {
+                "name": "Üründe hatalı topraklama",
+                "basis": "üründe hatalı topraklama",
+                "part": ""
+              },
+              {
+                "name": "Elektronik arızalı",
+                "basis": "elektronik arızalı",
+                "part": "elektronik kart"
+              }
+            ]
+          },
+          "code": "F28",
+          "meaning": "Çalıştırma sırasındaki ateşleme başarısız",
+          "causes": [
+            "Gaz sayacı arızalı veya gaz basıncı sensörü devrede",
+            "Gazda hava var",
+            "Gaz giriş basıncı çok düşük",
+            "Termik kapatma düzeneği (TAE) devrede",
+            "Yanlış gaz memesi",
+            "Yanlış yedek parça gaz armatürü",
+            "Gaz armatüründe arıza",
+            "Elektronik kart üzerindeki çoklu soket doğru olarak takılmamış",
+            "Kablo demetinde kesinti",
+            "Ateşleme sistemi (ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu) arızalı",
+            "İyonizasyon akımında (kablo, elektrot) kesinti",
+            "Üründe hatalı topraklama",
+            "Elektronik arızalı"
+          ],
+          "parts": [
+            "gaz memesi",
+            "gaz armatürü",
+            "ateşleme trafosu, ateşleme kablosu, ateşleme soketi, ateşleme elektrodu",
+            "iyonizasyon kablosu, iyonizasyon elektrodu",
+            "elektronik kart"
+          ],
+          "questions": [
+            "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
+            "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
+            "Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?",
+            "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?"
+          ],
+          "questionIds": [
+            "gasSupply",
+            "ignitionSound",
+            "recentWork",
+            "flame"
+          ],
+          "page": 34,
+          "source": {
+            "url": "https://www.demirdokum.com.tr/products-2/atromix/atromix-montaj-klavuzu-1201423.pdf",
+            "title": "F.28 Arıza: Çalıştırma sırasındaki ateşleme başarısız",
+            "revision": "0020242182_FT2",
+            "reviewedAt": "2026-09-22T17:19:54.115Z"
+          }
+        }
+      }
+    },
+    {
+      "identity": {
+        "brand": "Buderus",
+        "model": "Logamax plus GB072",
+        "code": "6A"
+      },
+      "researchStatus": "not_found",
+      "elapsedMs": 12570,
+      "sourceUrl": null,
+      "sourceUrls": [
+        "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+        "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/"
+      ],
+      "modelDocumentVerified": false,
+      "modelScope": null,
+      "coveredModels": [],
+      "errorCodeDocumentVerified": false,
+      "meaning": null,
+      "candidateCount": 0,
+      "poolOnlyVerifiedDocument": false,
+      "failure": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı.",
+        "stages": [
+          {
+            "urls": [
+              "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf"
+            ],
+            "stage": "document_identity",
+            "error": "code_absent"
+          },
+          {
+            "urls": [
+              "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/"
+            ],
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          }
+        ]
+      },
+      "probes": [
+        {
+          "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/",
+          "accessible": false,
+          "chain": [
+            {
+              "url": "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/",
+              "status": 404,
+              "contentType": "text/html; charset=utf-8"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "finalUrl": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": false,
+          "documentFile": "buderus-1-document.txt"
+        },
+        {
+          "url": "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/",
+          "readable": false,
+          "error": "Manufacturer document unavailable"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:19:58.185Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf",
+                "title": "Montaj Kılavuzu – Logamax plus GB072 (Duvar Tipi Yoğuşmalı Kombi)"
+              },
+              {
+                "url": "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/",
+                "title": "6a Arıza Kodu – Buderus Türkiye (Web sayfası)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:20:04.883Z",
+          "raw": {
+            "stage": "document_identity",
+            "error": "code_absent"
+          },
+          "urls": [
+            "https://www.buderus.com/ocsmedia/optimized/full/o517753v272_Logamax_plus_GB072_-_Montaj_Klavuzu.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:05.000Z",
+          "raw": {
+            "stage": "document_or_analysis",
+            "error": "source_attempt_failed",
+            "message": "Manufacturer document unavailable"
+          },
+          "urls": [
+            "https://www.buderus.com/tr/tr/hizmetler/ariza-kodlari-ve-cozumleri/6a-ariza-kodu/"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:07.171Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": []
+          },
+          "urls": []
+        }
+      ],
+      "result": {
+        "status": "not_found",
+        "message": "Model, hata kaydı ve adaya özgü üretici kanıtı birlikte doğrulanamadı."
+      }
+    },
+    {
+      "identity": {
+        "brand": "Warmhaus",
+        "model": "Ewa",
+        "code": "E02"
+      },
+      "researchStatus": "verified",
+      "elapsedMs": 44649,
+      "sourceUrl": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+      "sourceUrls": [
+        "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+        "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+        "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+        "https://www.warmhaus.com/storage/product/July2024/ewa-system-boiler-user-manual.pdf"
+      ],
+      "modelDocumentVerified": true,
+      "modelScope": "family",
+      "coveredModels": [
+        "EWA SMART 20",
+        "EWA SMART 24"
+      ],
+      "errorCodeDocumentVerified": true,
+      "meaning": "Low water pressure in the system/system parameter wrongly setted",
+      "candidateCount": 1,
+      "poolOnlyVerifiedDocument": true,
+      "failure": null,
+      "probes": [
+        {
+          "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+              "status": 200,
+              "contentType": "text/html; charset=UTF-8"
+            }
+          ]
+        },
+        {
+          "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        },
+        {
+          "url": "https://www.warmhaus.com/storage/product/July2024/ewa-system-boiler-user-manual.pdf",
+          "accessible": true,
+          "chain": [
+            {
+              "url": "https://www.warmhaus.com/storage/product/July2024/ewa-system-boiler-user-manual.pdf",
+              "status": 200,
+              "contentType": "application/pdf"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "finalUrl": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "warmhaus-1-document.txt"
+        },
+        {
+          "url": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+          "finalUrl": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+          "readable": true,
+          "modelTextMatch": false,
+          "codeTextMatch": true,
+          "documentFile": "warmhaus-2-document.txt"
+        },
+        {
+          "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+          "finalUrl": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+          "readable": true,
+          "modelTextMatch": true,
+          "codeTextMatch": true,
+          "documentFile": "warmhaus-3-document.txt"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-09-22T17:20:12.869Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf",
+                "title": "EWA Montaj ve Kullanım Kılavuzu (Türkçe, TR)"
+              },
+              {
+                "url": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02",
+                "title": "Kombi Hata Kodu E02: Bu Hata Kodunda Ne Yapmalısınız? (Warmhaus blog)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:20:28.546Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Warmhaus",
+            "model": "Ewa",
+            "code": "E02",
+            "meaning": "Sistemde su basıncı düşük/sistem parametreleri yanlış ayarlanmış",
+            "title": "Arıza Kodları Tablosu",
+            "revision": "15011606000135",
+            "modelEvidence": "Ewa modelinde bu fonksiyonun aktif edilmesi, talebinize göre Yetkili Servisimiz tarafından parametrik ayar ile yapılır.",
+            "codeEvidence": "E 02 \tSistemde su basıncı\ndüşük/sistem\nparametreleri yanlış\nayarlanmış",
+            "modelScope": "family",
+            "coveredModels": [
+              "EWA 20",
+              "EWA 24"
+            ],
+            "errorRecord": "E 02 \tSistemde su basıncı\ndüşük/sistem\nparametreleri yanlış\nayarlanmış\nKombi çalışmıyor, ekranda\nE02 hata kodu yanıp\nsönüyor\n• Kombide su basıncı yeterli değil\n• TsP parametresi yanlış ayarlanmış\n1. Kombiyi kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olarak\ndoldurun, problem otomatik olarak ortadan kalkar.\n2. Kombinin sağ altında bulunan manometreden sistem basıncı 1,2 - 1,5\nbar mı kontrol edin\n3. Eğer sorun devam ederse yetkili servisi arayın\n4. RESET butonuna basarak kombiyi yeniden başlatın",
+            "descriptionEvidence": "Kombi çalışmıyor, ekranda\nE02 hata kodu yanıp\nsönüyor",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 23,
+            "candidates": [
+              {
+                "name": "Kombide su basıncı yeterli değil",
+                "basis": "• Kombide su basıncı yeterli değil",
+                "part": ""
+              },
+              {
+                "name": "TsP parametresi yanlış ayarlanmış",
+                "basis": "• TsP parametresi yanlış ayarlanmış",
+                "part": ""
+              }
+            ],
+            "questionIds": [
+              "pressure",
+              "leak",
+              "onset",
+              "recurrence"
+            ],
+            "url": "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf"
+          },
+          "urls": [
+            "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:28.592Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.warmhaus.com/storage/product/March2026/ewa-montaj-ve-kullanim-kilavuzu-tr-2026.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:32.886Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Warmhaus",
+            "model": "Ewa",
+            "code": "E02",
+            "meaning": "Sistemde su basıncı düşük",
+            "title": "Warmhaus Kombi Hata Kodu E02",
+            "revision": "05.07.2023",
+            "modelEvidence": "Warmhaus Kombi Hata Kodu E02",
+            "codeEvidence": "Hata Kodu:  E02    Hata:  Sistemde su basıncı düşük",
+            "modelScope": "ambiguous",
+            "coveredModels": [],
+            "errorRecord": "Hata Kodu:  E02    Hata:  Sistemde su basıncı düşük    Arıza:  Cihaz çalışmıyor, ekranda E02 hata kodu yanıp sönüyor.    Muhtemel Sebep:  Cihazdaki su basıncı yeterli değil    Çözümler:  1. Cihaz kullanım kılavuzunda belirtildiği gibi 1,2-1,5 bar olarak doldurun ve problem otomatik olarak ortadan kalkar. 2. Cihazın sağ altında bulunan manometreden sistem basıncı 1,2- 1,5 bar mı kontrol ediniz. 3. RESET butonuna basarak Cihazı yeniden başlatınız. 4. Problem devam ediyorsa 0850 225 15 15 Müşteri Memnuniyet Hattını arayarak destek alınız.",
+            "descriptionEvidence": "Hata:  Sistemde su basıncı düşük",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": null,
+            "candidates": [
+              {
+                "name": "Cihazdaki su basıncı yeterli değil",
+                "basis": "Muhtemel Sebep:  Cihazdaki su basıncı yeterli değil",
+                "part": ""
+              }
+            ],
+            "questionIds": [
+              "pressure",
+              "leak",
+              "onset",
+              "recurrence"
+            ],
+            "url": "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02"
+          },
+          "urls": [
+            "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:32.887Z",
+          "raw": {
+            "stage": "evidence",
+            "error": "literal_scope_or_candidate_record_invalid",
+            "checks": {
+              "modelEvidence": true,
+              "errorRecord": true,
+              "codeEvidence": true
+            }
+          },
+          "urls": [
+            "https://www.warmhaus.com/tr/blog/warmhaus-kombi-hata-kodu-e02"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:37.353Z",
+          "raw": {
+            "stage": "discovery",
+            "sources": [
+              {
+                "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+                "title": "Warmhaus EWA Condensing Combi Boiler - Installation & User Manual (English, Dec 2023)"
+              },
+              {
+                "url": "https://www.warmhaus.com/storage/product/July2024/ewa-system-boiler-user-manual.pdf",
+                "title": "EWA System Boiler – Installation & User Manual (English, Jul 2024)"
+              }
+            ]
+          },
+          "urls": []
+        },
+        {
+          "at": "2026-09-22T17:20:47.688Z",
+          "raw": {
+            "status": "verified",
+            "brand": "Warmhaus",
+            "model": "Ewa",
+            "code": "E02",
+            "meaning": "Low water pressure in the system/system parameter wrongly setted",
+            "title": "Failure Codes Table",
+            "revision": "15011606000196",
+            "modelEvidence": "EWA SMART 20\nEWA SMART 24\nCONDENSING COMBI BOILER\nINSTALLATION & USER MANUAL",
+            "codeEvidence": "E 02 \tLow water pressure in the\nsystem/system parameter\nwrongly setted",
+            "modelScope": "family",
+            "coveredModels": [
+              "EWA SMART 20",
+              "EWA SMART 24"
+            ],
+            "errorRecord": "E 02 \tLow water pressure in the\nsystem/system parameter\nwrongly setted\nBoiler does not work,\nE02 error code flashing\non the screen\n> Water pressure in the boiler not\nenough\n1-) Fill the boiler 1,2-1,5 bar according to manual page 28 or 29 problem\nwill automatically removed\n2-) Check if the system pressure 1,2 - 1,5 bar from the manometer\nlocated right & bottom of the boiler\n3-) Reset & Restart boiler\n4-) If problem persist Call for authorised service",
+            "descriptionEvidence": "Low water pressure in the\nsystem/system parameter\nwrongly setted",
+            "modelMatch": true,
+            "codeMatch": true,
+            "officialManufacturer": true,
+            "page": 30,
+            "candidates": [
+              {
+                "name": "Su basıncı düşük",
+                "basis": "> Water pressure in the boiler not\nenough",
+                "part": ""
+              }
+            ],
+            "questionIds": [
+              "pressure",
+              "leak",
+              "onset",
+              "recurrence"
+            ],
+            "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf"
+          },
+          "urls": [
+            "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:50.452Z",
+          "raw": {
+            "stage": "entailment",
+            "review": {
+              "modelScopeSupported": true,
+              "faultRecordSupported": true,
+              "candidates": [
+                {
+                  "index": 0,
+                  "supported": true,
+                  "reason": "The candidate 'Su basıncı düşük' (low water pressure) is directly supported by the error record's probable cause: '> Water pressure in the boiler not enough'. This is explicitly stated in the fault table for E02, matching both the description and the cause."
+                }
+              ],
+              "reason": "The model scope is explicitly for EWA SMART 20 and EWA SMART 24, which matches the proposed family. The error record for E02 is present in the fault table with the correct description and cause. The candidate cause is directly and explicitly supported by the error record."
+            }
+          },
+          "urls": [
+            "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf"
+          ]
+        },
+        {
+          "at": "2026-09-22T17:20:50.528Z",
+          "raw": {
+            "stage": "decision",
+            "status": "verified"
+          },
+          "urls": [
+            "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf"
+          ]
+        }
+      ],
+      "result": {
+        "status": "verified",
+        "knowledge": {
+          "evidence": {
+            "version": 2,
+            "modelScope": "family",
+            "coveredModels": [
+              "EWA SMART 20",
+              "EWA SMART 24"
+            ],
+            "modelEvidence": "EWA SMART 20\nEWA SMART 24\nCONDENSING COMBI BOILER\nINSTALLATION & USER MANUAL",
+            "errorRecord": "E 02 \tLow water pressure in the\nsystem/system parameter\nwrongly setted\nBoiler does not work,\nE02 error code flashing\non the screen\n> Water pressure in the boiler not\nenough\n1-) Fill the boiler 1,2-1,5 bar according to manual page 28 or 29 problem\nwill automatically removed\n2-) Check if the system pressure 1,2 - 1,5 bar from the manometer\nlocated right & bottom of the boiler\n3-) Reset & Restart boiler\n4-) If problem persist Call for authorised service",
+            "codeEvidence": "E 02 \tLow water pressure in the\nsystem/system parameter\nwrongly setted",
+            "descriptionEvidence": "Low water pressure in the\nsystem/system parameter\nwrongly setted",
+            "candidates": [
+              {
+                "name": "Su basıncı düşük",
+                "basis": "> Water pressure in the boiler not\nenough",
+                "part": ""
+              }
+            ]
+          },
+          "code": "E02",
+          "meaning": "Low water pressure in the system/system parameter wrongly setted",
+          "causes": [
+            "Su basıncı düşük"
+          ],
+          "parts": [],
+          "questions": [
+            "Ekranda görünen basınç değeri kaç bar?",
+            "Kombinin altında veya petek çevresinde su damlaması var mı?",
+            "Sorun ilk ne zaman başladı?",
+            "Sorun sürekli mi oluyor, yoksa arada düzeliyor mu?"
+          ],
+          "questionIds": [
+            "pressure",
+            "leak",
+            "onset",
+            "recurrence"
+          ],
+          "page": 30,
+          "source": {
+            "url": "https://www.warmhaus.com/storage/product/December2023/warmhaus-ewa-condensing-combi-boiler-user-manual.pdf",
+            "title": "Failure Codes Table",
+            "revision": "15011606000196",
+            "reviewedAt": "2026-09-22T17:20:50.526Z"
+          }
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-09-22T17:20:52.275Z",
+  "productionFingerprintsAfter": {
+    "next.config.ts": "32df8de80fab7c19844d6e92f7b14c00dfce4d71fdf440e563b77876c9bedbec",
+    "package-lock.json": "66a2b5a62ccf35dd4b1ec7d5740999ddb984b831c4a5d541de2a0020881cac5b",
+    "package.json": "a267caa0516a76c704f6febdf3fca7aea5b4edf32e369db63d8be99be1965f51",
+    "src/app/admin/page.tsx": "967ee36030ce16d07c8fb54dba08a9076563943a8ac734f48127e7c105536a64",
+    "src/app/api/chat/route.ts": "4fddafbd3295cc86a73271b236302f86e7f58d5da4ae80240ab3633dc2d763d5",
+    "src/app/api/diagnose/route.ts": "8a5991c638a18a2efb24400cfc200f0eab493ec9b25854b4bce7209b4a86ebbe",
+    "src/app/apple-icon.png": "a9605c3765bf7e2ef3940df3212bdf3715fb020283681f7354737877d32b2c6c",
+    "src/app/dashboard/page.tsx": "3390c8bb02ea307d03198c8ba0818e6bb50ad8ba6fd075a8e0f2347a80b98449",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "769edf77bd0d101a2d26e6c5656defba8cd885ff37d92279fa293a2756fe5651",
+    "src/app/icon.png": "a88b445b6377d2f57bf8e9768bda68cb0a3142869c27f7221e5790602fc2fa4b",
+    "src/app/kayit/page.tsx": "a1f929ec2e2825ff75fdeff97430af8a7df71f9eaa9b1c9c34b80214c5fcde46",
+    "src/app/layout.tsx": "763dad773eb3d7853046a41c517e5db2f8252d4d8cc44de7d334b3a55a77fec6",
+    "src/app/page.tsx": "907cb51f0ac42cf10382e6905666be24100b11f2b2ecd24c1d69c20fa6b83bb0",
+    "src/app/teshis/page.tsx": "dcb2c40e655dff4a65a826ccdd24461f5afde8ce583b4755fb92c2a604eef64d",
+    "src/app/usta/page.tsx": "9914f6a01c9d64abeb3de10686d4c4d7b0d52ea0cfb2236c5e930a829babedfd",
+    "src/components/diagnostic-outcome.tsx": "8e4d7bfc5fe41487efd546f3a44c99d0abbeda5a9ebc1a6e6bf738c0080fe1a1",
+    "src/lib/diagnosis.ts": "5db7b05743d018d4523b647064379d6766feb53b3815607a29fe5651626dbbd1",
+    "src/lib/diagnostic-knowledge.ts": "bb25789144b2921e4cc491d72fc265e46a04932f240ded4cc578a674efd550e2",
+    "src/lib/diagnostic-state.ts": "26d453f7a522c05fffaf573cbafdea7effae9e369b7b5662e60a1e9feed66b29",
+    "src/lib/manufacturer-document.ts": "c4c86b48de2005dc0ae97ba90543a96405f07a198c9e98dea9a6c7b7489bfa19",
+    "src/lib/manufacturer-evidence.ts": "0b265168623a2ea2c826fce5c5ec0a0fa10a23717d0ad7bd5cd38d2f0ae4d1c1",
+    "src/lib/manufacturer-manuals.ts": "4cf9496f0bc6e4aa2abd32e678b2df8b3b4855cca094ccc7946d2e13dacef819",
+    "src/lib/omf-engine.ts": "e34419136c24ee766bf9105016820d7c1a63acd946cbc5d73f057c8b5d30874f",
+    "src/lib/part-pricing.ts": "08971f79563a997c24758a5e67770427fe961befac1ffba260f24bdb84e25e47",
+    "src/lib/parts-catalog.ts": "13141850cff9a6c4ff46addcfce466e7d52d55db31bfc4198f91e7e73c98afe1",
+    "src/lib/research-json.ts": "d2dca7b0aabe2d97fbd98146410de13d4be2df5e8791d854ace133ac337aa1f3",
+    "src/lib/supabaseClient.ts": "b50b91a078120108e121f35e7c4231f3f66a03faf2ea829f347e1aac766e4f47",
+    "src/lib/technical-research.ts": "67e702d75b96710a0074cb1966f19b319ff02aef82b2332b06258fe4f4cc2dab"
+  },
+  "productionFilesUnchanged": true
+}

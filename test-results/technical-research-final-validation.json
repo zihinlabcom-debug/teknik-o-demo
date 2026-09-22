@@ -1,0 +1,22 @@
+[
+  {
+    "identity": {
+      "brand": "Vaillant",
+      "model": "ecoTEC intro",
+      "code": "F.28"
+    },
+    "liveStatus": "verified",
+    "finalValidatorStatus": "verified",
+    "candidates": 17
+  },
+  {
+    "identity": {
+      "brand": "Bosch",
+      "model": "Condens 2500 W",
+      "code": "EA"
+    },
+    "liveStatus": "verified",
+    "finalValidatorStatus": "verified",
+    "candidates": 13
+  }
+]
