@@ -1,3 +1,5 @@
+import { getResearchedKnowledge, researchKey, normalizeCode, type TechnicalKnowledge } from './technical-research';
+import { containsErrorCode } from './manufacturer-document';
 import { QUESTIONS, normalizeProbabilities, advanceDiagnosis, decodeMemory, encodeMemory, type QuestionId } from './diagnostic-state';
 import OpenAI from 'openai';
 import { getPartPrice } from './part-pricing';
@@ -34,6 +36,7 @@ Müşteri sorulmamış başka bir gözlem verirse onu da değerlendir. "Bilmiyor
 Her adayın supports ve contradicts dizilerine sadece SON müşteri mesajından birebir alıntılar yaz.
 Yüzdelerin toplamı 100 olsun. Bunlar adaylar arası göreli ağırlıktır, teşhis kesinliği değildir.
 Doğrulanmış kaynak yoksa hata kodunun anlamını uydurma. Üretici olası nedenlerini müşteri gözlemiyle karıştırma.
+Kaynakta verilen aday havuzu kapalıdır. Havuzun dışına yeni neden ekleme, aday isimlerini değiştirme.
 Soru bankasından ilgili, cevaplanmamış ve sorulmamış en fazla üç soruyu güçlü adayları en fazla ayırma sırasıyla nextQuestions'a yaz.
 Sorular müşteri gözlemi içindir; teknik ölçüm, kapak açma, elektrik/gaz bağlantısı veya reset denemesi yok.
 Gaz kokusu/duman gibi gerçek tehlike beyanında safetyStop=true yap. Tehlike yok beyanını tehlike sayma.
@@ -48,12 +51,12 @@ Bütün alanları içeren JSON döndür:
 "nextQuestions":[],"finish":false,"safetyStop":false,"needsOnsite":false,"isReadyForPrice":false,"confidence":0,
 "catalogKey":"","mostLikelyReason":"","supportingEvidence":[],"unresolvedAlternatives":[],"options":[]}`;
 
-export async function buildDiagnosisResult(parsed: Record<string, unknown>, history: DiagnosisMessage[], message: string, priceLookup = getPartPrice) {
+export async function buildDiagnosisResult(parsed: Record<string, unknown>, history: DiagnosisMessage[], message: string, priceLookup = getPartPrice, researchedKnowledge?: TechnicalKnowledge | null) {
   const evidence = [...history.filter(item => item.role === 'user').map(item => item.content), message].join(' ');
   const brand = text(parsed.brand), model = text(parsed.model), part = text(parsed.catalogKey);
   const identityKnown = hasEvidence(brand, evidence) && hasEvidence(model, evidence);
   const code = text(parsed.errorCode);
-  const knowledge = identityKnown ? lookupDiagnosticKnowledge(brand, model, code) : null;
+  const knowledge = identityKnown ? researchedKnowledge ?? lookupDiagnosticKnowledge(brand, model, code) : null;
   const observations = Array.isArray(parsed.supportingEvidence) ? [...new Set(parsed.supportingEvidence.filter((v): v is string => typeof v === 'string' && v.length >= 5 && hasEvidence(v, evidence)))] : [];
   const observedSummary = Array.isArray(parsed.observations) ? parsed.observations.filter((v): v is string =>
     typeof v === 'string' && v.length <= 180 && hasEvidence(v, evidence)).slice(-3).join('; ') : '';
@@ -93,7 +96,7 @@ export async function buildDiagnosisResult(parsed: Record<string, unknown>, hist
 }
 
 export async function diagnose(message: string, history: DiagnosisMessage[], stateToken?: unknown) {
-  const previous = decodeMemory(stateToken);
+  let previous = decodeMemory(stateToken);
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('OPENAI_API_KEY is missing');
   const client = new OpenAI({ apiKey, timeout: 30000, maxRetries: 1 });
@@ -103,21 +106,38 @@ export async function diagnose(message: string, history: DiagnosisMessage[], sta
       `Sohbetten yalnızca müşteri beyanlarını çıkar; teşhis koyma. Son düzeltme önceki bilgiyi geçersiz kılar.
 Marka ve TAM model eklerini koru (Arçelik DGK 26 H LCD). Asistan örneklerini cihaz kimliği sayma.
 JSON: {"brand":"","model":"","errorCode":"","observations":["müşteri gözlemleri"],"answeredTopics":[]}.
-answeredTopics yalnızca şu anahtarlardan oluşabilir: brand, model, code, screen, power, noise, overheating, pressure, leak, onset, recurrence, affected, trigger.
+answeredTopics yalnızca şu anahtarlardan oluşabilir: brand, model, code, screen, power, noise, overheating, pressure, leak, onset, recurrence, affected, trigger, gasSupply, ignitionSound, recentWork, flame.
 Örneğin marka, model ve kod verilmişse ["brand","model","code","screen"]. Kendiliğinden verilen gözlemleri de cevaplanmış say.
+Hata kodu yalnızca F ile başlamaz: EA, E9, 6A gibi harf/rakam kodları da olabilir. Hata kodunu model adına ekleme.
+Örneğin 'Bosch Condens 2500 W EA hatası' için model='Condens 2500 W', errorCode='EA'.
 Kod yoksa errorCode boş; F.76 gibi kodları olduğu gibi koru. Eksik kimliği uydurma.` }, ...conversation] });
   const state = JSON.parse(extracted.choices[0]?.message?.content || '{}');
   if (!state || typeof state !== 'object' || Array.isArray(state)) throw new Error('Invalid state');
   const customerEvidence = conversation.filter(m => m.role === 'user').map(m => m.content).join(' ');
   if (previous.evidence.some(e => !customerEvidence.includes(e.quote))) throw new Error('Diagnostic state does not match conversation');
-  const codes = [...customerEvidence.matchAll(/\bF[.\s]?\d{2,3}\b/gi)];
-  const lastCode = codes.at(-1)?.[0];
-  if (lastCode && !/hata kodu yok/i.test(message)) state.errorCode = lastCode;
-  // A code adjacent to a model is not a model suffix.
-  state.model = text(state.model).replace(/\s+F[.\s]?\d{2,3}$/i, '').trim();
+  const extractedCode = text(state.errorCode);
+  const codeInConversation = containsErrorCode(customerEvidence,extractedCode);
+  if(extractedCode && !codeInConversation) state.errorCode='';
+  const lastCode = text(state.errorCode);
+  const suffix = text(state.model).split(/\s+/).at(-1) ?? '';
+  if (lastCode && normalizeCode(suffix)===normalizeCode(lastCode)) state.model=text(state.model).slice(0,-suffix.length).trim();
   if (!hasEvidence(text(state.brand), customerEvidence)) state.brand = '';
   if (!hasEvidence(text(state.model), customerEvidence)) state.model = '';
-  const knowledge = lookupDiagnosticKnowledge(text(state.brand), text(state.model), text(state.errorCode));
+  // Exact extracted identity first; never reuse a code table across devices.
+  const identity = {brand:text(state.brand),model:text(state.model),code:text(state.errorCode)};
+  const key = researchKey(identity);
+  if(previous.poolKey && previous.poolKey!==key) previous = {...previous,candidates:[],information:0,asked:[],evidence:[],finished:false,technicalKnowledge:undefined};
+  previous.poolKey=key;
+  let knowledge = lookupDiagnosticKnowledge(identity.brand,identity.model,identity.code);
+  if(!knowledge && previous.technicalKnowledge && Date.now()-Date.parse(previous.technicalKnowledge.source.reviewedAt)<86400000) knowledge=previous.technicalKnowledge;
+  let researchStatus = knowledge ? 'verified' : 'not_needed';
+  let researchMessage = '';
+  if(!knowledge && identity.brand && identity.model && identity.code) {
+    const research = await getResearchedKnowledge(identity);
+    researchStatus = research.status;
+    if(research.status==='verified') knowledge=research.knowledge;
+    else researchMessage=research.message;
+  }
   const answered: QuestionId[] = [];
   if (state.brand) answered.push('brand');
   if (state.model) answered.push('model');
@@ -132,9 +152,16 @@ Kod yoksa errorCode boş; F.76 gibi kodları olduğu gibi koru. Eksik kimliği u
   if (Array.isArray(state.answeredTopics)) {
     for (const id of state.answeredTopics) if (typeof id === 'string' && Object.hasOwn(QUESTIONS,id)) answered.push(id as QuestionId);
   }
-  const relevantQuestions: QuestionId[] = !state.brand ? ['brand'] : !state.model ? ['model'] : knowledge?.code === 'F76'
-    ? ['noise','overheating','onset','recurrence','trigger','affected'] : knowledge
-      ? ['pressure','leak','recurrence','onset','affected'] : Object.keys(QUESTIONS) as QuestionId[];
+  const relevantQuestions: QuestionId[] = !state.brand ? ['brand'] : !state.model ? ['model'] : knowledge
+    ? knowledge.questionIds : Object.keys(QUESTIONS) as QuestionId[];
+  // Unknown codes do not get an invented candidate distribution.
+  if(identity.code && !knowledge && identity.brand && identity.model) {
+    previous.candidates=[];
+    const result=await buildDiagnosisResult({...state,aiText:researchMessage,isReadyForPrice:false,confidence:0},history,message);
+    return {...result,aiText:researchMessage,options:[],informationProgress:previous.information,
+      assessmentComplete:false,candidateProbabilities:[],stateToken:encodeMemory(previous),researchStatus,
+      evidenceUpdate:{informative:false,accepted:false}};
+  }
   if (!previous.candidates.length && knowledge) {
     previous.candidates = normalizeProbabilities(knowledge.causes.map(name=>({name,probability:1,supports:[],contradicts:[]})));
   }
@@ -145,22 +172,23 @@ Kod yoksa errorCode boş; F.76 gibi kodları olduğu gibi koru. Eksik kimliği u
   if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Invalid diagnosis');
   const proposedQuestions = Array.isArray(parsed.nextQuestions) ? parsed.nextQuestions.filter((id: QuestionId)=>relevantQuestions.includes(id)) : [];
   parsed.nextQuestions = [...proposedQuestions,...relevantQuestions];
-  if (!previous.evidence.length && lastCode && message.includes(lastCode) && knowledge) {
+  if (!previous.evidence.length && lastCode && normalizeCode(message).includes(normalizeCode(lastCode)) && knowledge) {
     parsed.informative = true;
-    parsed.newEvidence = [lastCode];
+    parsed.newEvidence = [message];
   }
-  const step = advanceDiagnosis(previous, parsed, message, answered);
+  const step = advanceDiagnosis(previous, parsed, message, answered, knowledge?.causes);
+  step.memory.technicalKnowledge=knowledge ?? undefined;
   const evidence = step.memory.evidence.map(e=>e.quote);
   const result = await buildDiagnosisResult({ ...parsed,
     supportingEvidence: evidence, observations: state.observations,
     needsOnsite: parsed.needsOnsite === true || step.memory.finished,
-    brand: state.brand, model: state.model, errorCode: state.errorCode }, history, message);
+    brand: state.brand, model: state.model, errorCode: state.errorCode }, history, message, getPartPrice, knowledge);
   const finished = step.memory.finished || result.isReadyForPrice || result.diagnosticStatus === 'needs_onsite' || result.diagnosticStatus === 'safety_stop' || result.assessment.sufficientBasis;
   step.memory.finished = finished;
   if (!finished && step.question) result.aiText = step.question;
   if (finished && result.aiText.includes('?')) result.aiText = 'Değerlendirme tamamlandı. Mevcut gözlemlerle hesaplanan göreli arıza olasılıklarını aşağıda görebilirsiniz.';
   result.options = [];
-  return { ...result, informationProgress: step.memory.information, assessmentComplete: finished,
+  return { ...result, researchStatus, informationProgress: step.memory.information, assessmentComplete: finished,
     evidenceUpdate: { informative: parsed.informative, proposedQuotes: parsed.newEvidence, accepted: step.informative },
     candidateProbabilities: finished ? step.memory.candidates : [], stateToken: encodeMemory(step.memory) };
 

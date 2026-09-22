@@ -1,0 +1,137 @@
+[
+  {
+    "identity": {
+      "brand": "Vaillant",
+      "model": "ecoTEC intro",
+      "code": "F.28"
+    },
+    "status": "verified",
+    "knowledge": {
+      "code": "F28",
+      "meaning": "Ateşleme başarısız",
+      "causes": [
+        "Gaz kesme vanası kapalı",
+        "Gaz sayacı arızalı",
+        "Gaz basıncı sensörü tetiklendi",
+        "Gaz hattında hava var",
+        "Gaz giriş basıncı çok düşük",
+        "Termik kapatma düzeneği tetiklenmiş",
+        "Yoğuşma suyu gider hattı tıkalı",
+        "Yanlış ET gaz armatürü",
+        "Yanlış gaz armatürü ofseti",
+        "Gaz armatürü arızalı",
+        "Çoklu soket takılmamış/gevşek",
+        "Kablo demetinde kesinti",
+        "Ateşleme sistemi arızalı",
+        "Topraklama hatalı",
+        "Elektronik arızalı",
+        "Yanma havası/atık gaz akım borusu tıkalı",
+        "Referans basınç tüpünün kısma vanası takımı tıkanmış"
+      ],
+      "parts": [
+        "gaz vanası",
+        "gaz sayacı",
+        "gaz basıncı sensörü",
+        "termik kapatma düzeneği",
+        "yoğuşma suyu gider hattı",
+        "gaz armatürü",
+        "ateşleme sistemi",
+        "elektronik kart",
+        "yanma havası/atık gaz borusu",
+        "referans basınç tüpü/kısma vanası"
+      ],
+      "questions": [
+        "Cihazınızın ekranı açık mı?",
+        "Evde diğer elektrikli cihazlar çalışıyor mu?",
+        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
+        "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
+        "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?",
+        "Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?",
+        "Ekranda görünen basınç değeri kaç bar?",
+        "Sorun ilk ne zaman başladı?",
+        "Sorun sürekli mi oluyor, yoksa arada düzeliyor mu?"
+      ],
+      "questionIds": [
+        "screen",
+        "power",
+        "gasSupply",
+        "ignitionSound",
+        "flame",
+        "recentWork",
+        "pressure",
+        "onset",
+        "recurrence"
+      ],
+      "page": 31,
+      "source": {
+        "url": "https://www.vaillant.com.tr/downloads/ecotec-intro-montaj-klavuzu-1953733.pdf",
+        "title": "Montaj ve bakım kılavuzu",
+        "revision": "0020289235_04",
+        "reviewedAt": "2026-09-22T10:05:32.044Z"
+      }
+    }
+  },
+  {
+    "identity": {
+      "brand": "Bosch",
+      "model": "Condens 2500 W",
+      "code": "EA"
+    },
+    "status": "verified",
+    "knowledge": {
+      "code": "EA",
+      "meaning": "Alev algılanmıyor.",
+      "causes": [
+        "Topraklama bağlantısı hatalı veya eksik",
+        "Gaz vanası kapalı",
+        "Gaz basıncı yetersiz veya ayarsız",
+        "Elektrik bağlantısı hatalı",
+        "Ateşleme elektrodu veya kabloları arızalı",
+        "Baca sistemi tıkalı veya arızalı",
+        "Gaz-hava karışımı hatalı",
+        "Gaz akış rölesi arızalı (doğalgazda)",
+        "Yanma havası eksik (oda havasından yanma için)",
+        "Kondens sifonu tıkalı",
+        "Fan karışım ünitesi membranı arızalı",
+        "Ana eşanjör kirli",
+        "Gaz valfi arızalı",
+        "Elektronik kart ile şebeke arasında topraklama sorunu (IT şebekede)"
+      ],
+      "parts": [
+        "topraklama",
+        "gaz vanası",
+        "gaz hattı",
+        "elektrik bağlantısı",
+        "ateşleme elektrodu",
+        "baca sistemi",
+        "gaz akış rölesi",
+        "kondens sifonu",
+        "fan karışım ünitesi membranı",
+        "eşanjör",
+        "gaz valfi",
+        "elektronik kart"
+      ],
+      "questions": [
+        "Cihazınızın ekranı açık mı?",
+        "Evde diğer elektrikli cihazlar çalışıyor mu?",
+        "Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?",
+        "Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?",
+        "Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?"
+      ],
+      "questionIds": [
+        "screen",
+        "power",
+        "gasSupply",
+        "ignitionSound",
+        "flame"
+      ],
+      "page": 54,
+      "source": {
+        "url": "https://www.bosch-homecomfort.com/ocsmedia/optimized/full/o575784v272_2500W_IM.pdf",
+        "title": "Bosch Condens 2500 W Hata Kodları",
+        "revision": "6720866193 (2021/04)",
+        "reviewedAt": "2026-09-22T10:05:44.322Z"
+      }
+    }
+  }
+]

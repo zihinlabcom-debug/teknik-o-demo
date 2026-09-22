@@ -1,5 +1,6 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { normalizePartText } from './parts-catalog';
+import type { TechnicalKnowledge } from './technical-research';
 
 export const QUESTIONS = {
   brand: 'Cihazınızın markası nedir?', model: 'Cihazınızın etikette yazan tam modeli nedir?',
@@ -12,12 +13,18 @@ export const QUESTIONS = {
   onset: 'Sorun ilk ne zaman başladı?', recurrence: 'Sorun sürekli mi oluyor, yoksa arada düzeliyor mu?',
   affected: 'Sorun sıcak suda mı, peteklerde mi, yoksa ikisinde de mi?',
   trigger: 'Sorun sıcak suyu kullanırken mi, petekler ısınırken mi ortaya çıkıyor?',
+  gasSupply: 'Bildiğiniz bir doğal gaz kesintisi veya sayaç uyarısı var mı?',
+  ignitionSound: 'Hata çıkmadan önce cihazdan ateşleme tıkırtısı duymuş muydunuz?',
+  recentWork: 'Sorun, bakım veya gaz kesintisinden hemen sonra mı başladı?',
+  flame: 'Hata çıkmadan önce ekranda alev simgesi görmüş müydünüz?',
 } as const;
 export type QuestionId = keyof typeof QUESTIONS;
 export interface Candidate { name: string; probability: number; supports: string[]; contradicts: string[] }
 export interface DiagnosticMemory {
   candidates: Candidate[]; information: number; asked: QuestionId[];
   evidence: { quote: string; question: string }[]; finished: boolean;
+  poolKey?: string;
+  technicalKnowledge?: TechnicalKnowledge;
 }
 export const emptyMemory = (): DiagnosticMemory => ({candidates:[],information:0,asked:[],evidence:[],finished:false});
 const validId = (v: unknown): v is QuestionId => typeof v === 'string' && Object.hasOwn(QUESTIONS,v);
@@ -35,7 +42,7 @@ export function normalizeProbabilities(candidates: Candidate[]): Candidate[] {
   return candidates.map((c,i)=>({...c,probability:integers[i]}));
 }
 
-export function advanceDiagnosis(previous: DiagnosticMemory, proposal: Record<string,unknown>, message: string, answered: QuestionId[] = []) {
+export function advanceDiagnosis(previous: DiagnosticMemory, proposal: Record<string,unknown>, message: string, answered: QuestionId[] = [], allowedCandidates?: readonly string[]) {
   const lastQuestion = previous.asked.at(-1) ?? 'initial';
   const unknown = /^(bilmiyorum|emin degilim|goremiyorum|hatirlamiyorum|tamam|tesekkurler|devam|fiyat nedir)$/.test(normalizePartText(message));
   const directAnswer = lastQuestion !== 'initial' && /^(evet|hayir)\b/.test(normalizePartText(message));
@@ -44,7 +51,7 @@ export function advanceDiagnosis(previous: DiagnosticMemory, proposal: Record<st
       (!/^(evet|hayir|var|yok)$/.test(normalizePartText(quote)) || e.question===lastQuestion)));
   const informative = !unknown && proposal.informative === true && freshEvidence.length > 0;
   const validAnswer = !unknown && freshEvidence.length > 0 && (informative || directAnswer);
-  let candidates = previous.candidates.map(c=>({...c}));
+  let candidates = previous.candidates.filter(c=>!allowedCandidates || allowedCandidates.includes(c.name)).map(c=>({...c}));
   if(informative && Array.isArray(proposal.candidates)) {
     const updates: Candidate[] = [];
     for(const item of proposal.candidates) {
@@ -52,6 +59,7 @@ export function advanceDiagnosis(previous: DiagnosticMemory, proposal: Record<st
         typeof item.probability !== 'number' || !Number.isFinite(item.probability) || item.probability < 0 || item.probability > 100) continue;
       const supports=quotes(item.supports,message), contradicts=quotes(item.contradicts,message);
       const old = candidates.find(c=>c.name===item.name.trim());
+      if(allowedCandidates && !allowedCandidates.includes(item.name.trim())) continue;
       // No weight change or new candidate without a customer quote supporting the update.
       if(!supports.length && !contradicts.length) continue;
       if(updates.some(c=>c.name===item.name.trim())) continue;
@@ -66,6 +74,7 @@ export function advanceDiagnosis(previous: DiagnosticMemory, proposal: Record<st
   const nextQuestion = suggested.find(id=>!previous.asked.includes(id) && !answered.includes(id));
   const finished = previous.finished || information >= 80 || proposal.finish === true || !nextQuestion;
   const memory: DiagnosticMemory = {candidates,information,finished,
+    ...(previous.poolKey ? {poolKey:previous.poolKey} : {}),
     asked: nextQuestion && !finished ? [...previous.asked,nextQuestion] : previous.asked,
     evidence: validAnswer ? [...previous.evidence,...freshEvidence.map(quote=>({quote,question:lastQuestion}))] : previous.evidence};
   return {memory,question:!finished && nextQuestion ? QUESTIONS[nextQuestion] : null,informative};

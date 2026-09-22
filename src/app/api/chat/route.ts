@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { diagnose, normalizeHistory } from '@/lib/diagnosis';
 
+export const maxDuration = 180;
+
 export async function POST(req: Request) {
   let body;
   try { body = await req.json(); } catch {
@@ -17,6 +19,7 @@ export async function POST(req: Request) {
     const result = await diagnose(message, history, body.stateToken);
     return NextResponse.json({
       replyMessage: result.aiText,
+      researchStatus: result.researchStatus,
       stateToken: result.stateToken,
       informationProgress: result.informationProgress,
       assessmentComplete: result.assessmentComplete,

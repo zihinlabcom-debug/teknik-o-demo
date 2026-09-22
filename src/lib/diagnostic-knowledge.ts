@@ -1,3 +1,4 @@
+import type { TechnicalKnowledge } from './technical-research';
 import { normalizePartText } from './parts-catalog';
 
 const source = {
@@ -16,10 +17,10 @@ const records = {
   F76: { meaning: 'Termik kapatma düzeneği arızası', causes: ['Kablo kesintisi', 'Termik kapatma düzeneği'], page: 33,
     questions: ['Arızadan önce aşırı ısınma veya olağandışı ses gözlemi', 'Hatanın ilk görülme zamanı'], parts: ['kablo/soket bağlantısı', 'termik kapatma düzeneği', 'eşanjör'] },
 };
-export function lookupDiagnosticKnowledge(brand: string, model: string, code: string) {
+export function lookupDiagnosticKnowledge(brand: string, model: string, code: string): TechnicalKnowledge | null {
   if (normalizePartText(brand) !== 'demirdokum' ||
       !/^nitromix(?: p ?(?:24|28|35)(?: ng(?: hep)?)?)?$/.test(normalizePartText(model))) return null;
   const key = code.toUpperCase().replace(/[.\s]/g, '');
   if (!Object.hasOwn(records, key)) return null;
-  return { code: key, ...records[key as keyof typeof records], source };
+  return { code: key, ...records[key as keyof typeof records], source, questionIds: key === 'F76' ? ['noise','overheating','onset','recurrence','trigger','affected'] : ['pressure','leak','recurrence','onset','affected'] };
 }
