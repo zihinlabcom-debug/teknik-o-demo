@@ -211,8 +211,15 @@ create or replace function pg_temp.ensure_fk(
   source_table regclass, source_column text, target_table regclass,
   target_column text, delete_action text, constraint_name text
 ) returns void language plpgsql as $$
-declare existing record;
+declare
+  existing record;
+  expected_action "char";
 begin
+  expected_action := case delete_action
+    when 'CASCADE' then 'c'
+    when 'RESTRICT' then 'r'
+    else 'a'
+  end;
   select c.confrelid, c.confdeltype, a2.attname as target_col into existing
   from pg_constraint c
   join pg_attribute a1 on a1.attrelid=c.conrelid and a1.attnum=c.conkey[1]
@@ -222,7 +229,7 @@ begin
   limit 1;
   if found then
     if existing.confrelid <> target_table or existing.target_col <> target_column
-      or existing.confdeltype <> case delete_action when 'CASCADE' then 'c' when 'RESTRICT' then 'r' else 'a' end then
+      or existing.confdeltype <> expected_action then
       raise exception 'Conflicting FK on %.%', source_table, source_column;
     end if;
     return;
