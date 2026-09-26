@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
 import { 
   Wrench, 
   User, 
@@ -16,22 +17,11 @@ import {
   ArrowLeft 
 } from 'lucide-react';
 
-// İl ve İlçe Katalog Verisi
-const CITIES_DATA: Record<string, string[]> = {
-  "İstanbul": ["Kadıköy", "Beşiktaş", "Üsküdar", "Şişli", "Bakırköy", "Beylikdüzü", "Ümraniye", "Pendik", "Maltepe", "Ataşehir", "Sarıyer"],
-  "Ankara": ["Çankaya", "Keçiören", "Yenimahalle", "Mamuk", "Etimesgut", "Sincan", "Gölbaşı"],
-  "İzmir": ["Karşıyaka", "Konak", "Bornova", "Buca", "Çiğli", "Gaziemir", "Bayraklı", "Urla"],
-  "Bursa": ["Nilüfer", "Osmangazi", "Yıldırım", "Mudanya", "İnegöl", "Gemlik"],
-  "Antalya": ["Muratpaşa", "Konyaaltı", "Kepez", "Alanya", "Manavgat"],
-  "Adana": ["Seyhan", "Çukurova", "Yüreğir", "Sarıçam"],
-  "Kocaeli": ["İzmit", "Gebze", "Darica", "Körfez", "Başiskele"],
-  "Gaziantep": ["Şahinbey", "Şehitkamil"],
-  "Konya": ["Selçuklu", "Meram", "Karatay"],
-  "Mersin": ["Yenişehir", "Mezitli", "Toroslar", "Akdeniz"]
-};
-
 export default function KayitPage() {
   const router = useRouter();
+  const [cities, setCities] = useState<{ id: number; name: string }[]>([]);
+  const [districts, setDistricts] = useState<{ id: number; city_id: number; name: string }[]>([]);
+  const [selectedCityId, setSelectedCityId] = useState<number | null>(null);
   const [authStep, setAuthStep] = useState<'form' | 'otp'>('form');
   const [formData, setFormData] = useState({
     fullName: '',
@@ -42,12 +32,34 @@ export default function KayitPage() {
     address: ''
   });
   const [otpCode, setOtpCode] = useState<string[]>(['', '', '', '']);
+  useEffect(() => {
+    const loadCities = async () => {
+      const { data, error } = await supabase.from('cities').select('id,name').eq('is_active', true).order('plate_code');
+      if (!error && data) setCities(data);
+    };
+    loadCities();
+  }, []);
+
+  useEffect(() => {
+    const loadDistricts = async () => {
+      if (!selectedCityId) {
+        setDistricts([]);
+        return;
+      }
+      const { data, error } = await supabase.from('districts').select('id,city_id,name').eq('city_id', selectedCityId).eq('is_active', true).order('name');
+      if (!error && data) setDistricts(data);
+    };
+    loadDistricts();
+  }, [selectedCityId]);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     
     // İl değiştiğinde ilçeyi sıfırla
     if (name === 'city') {
+      const cityId = value ? Number(value) : null;
+      setSelectedCityId(cityId);
       setFormData(prev => ({ ...prev, city: value, district: '' }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
@@ -104,7 +116,7 @@ export default function KayitPage() {
 
       <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl border border-slate-100">
         
-        {/* LOGO VE BAŞLIK */}
+        {/* LOGO VE BA�?LIK */}
         <div className="text-center mb-6">
           <div className="w-12 h-12 bg-amber-100 text-[#D97724] rounded-2xl flex items-center justify-center mx-auto mb-3">
             <Wrench className="w-6 h-6" />
@@ -179,9 +191,9 @@ export default function KayitPage() {
                   className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724] appearance-none text-slate-700 cursor-pointer"
                 >
                   <option value="">İl Seçiniz</option>
-                  {Object.keys(CITIES_DATA).map((cityName) => (
-                    <option key={cityName} value={cityName}>
-                      {cityName}
+                  {cities.map((city) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
                     </option>
                   ))}
                 </select>
@@ -203,10 +215,10 @@ export default function KayitPage() {
                   <option value="">
                     {formData.city ? 'İlçe Seçiniz' : 'Önce İl Seçiniz'}
                   </option>
-                  {formData.city &&
-                    CITIES_DATA[formData.city]?.map((districtName) => (
-                      <option key={districtName} value={districtName}>
-                        {districtName}
+                  {selectedCityId &&
+                    districts.map((district) => (
+                      <option key={district.id} value={district.id}>
+                        {district.name}
                       </option>
                     ))}
                 </select>
@@ -286,3 +298,12 @@ export default function KayitPage() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
