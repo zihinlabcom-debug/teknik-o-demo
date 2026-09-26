@@ -52,8 +52,11 @@ export function validateManufacturerEvidence(identity:{model:string;code:string}
 }
 
 export interface ManufacturerEvidence {
-  version:2;
+  version:2|3;
+  labelPolicy?:'manufacturer-source-extractive-v1';
+  descriptionVerified?:boolean;
+  record?:import('./error-record').ErrorRecord; documentHash?:string;
   modelScope:'exact'|'family'; coveredModels:string[]; modelEvidence:string;
   errorRecord:string; codeEvidence:string; descriptionEvidence:string;
-  candidates:Array<{name:string;basis:string;part:string}>;
+  candidates:Array<{name:string;basis:string;part:string;start?:number;end?:number}>;
 }

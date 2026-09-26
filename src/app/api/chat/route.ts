@@ -24,6 +24,7 @@ export async function POST(req: Request) {
       informationProgress: result.informationProgress,
       assessmentComplete: result.assessmentComplete,
       candidateProbabilities: result.candidateProbabilities,
+      diagnosticEvidence: result.assessmentComplete ? result.diagnosticEvidence : [],
       technicalSource: result.technicalSource,
       diagnosticStatus: result.diagnosticStatus,
       currentConfidenceScore: result.confidence,

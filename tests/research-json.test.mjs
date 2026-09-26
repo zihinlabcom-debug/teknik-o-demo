@@ -1,16 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseResearchJson, parseManualDiscovery } from '../src/lib/research-json.ts';
+import {extractErrorRecords} from '../src/lib/error-record.ts';
 import { researchManufacturer } from '../src/lib/technical-research.ts';
 
 const identity={brand:'Vaillant',model:'ecoTEC intro',code:'F.28'};
 const url='https://www.vaillant.com.tr/downloads/example.pdf';
 const discovery={url,title:'ecoTEC intro'};
-const report={status:'verified',...identity,modelMatch:true,codeMatch:true,officialManufacturer:true,
-  meaning:'Ateşleme başarısız',title:'ecoTEC intro',revision:'test',page:31,
-  modelScope:'exact',coveredModels:['ecoTEC intro'],descriptionEvidence:'Ateşleme başarısız',errorRecord:'F.28 Ateşleme başarısız\nGaz vanası kapalı',modelEvidence:'ecoTEC intro',codeEvidence:'F.28 Ateşleme başarısız',
-  candidates:[{name:'Gaz beslemesi',basis:'Gaz vanası kapalı',part:''}],questionIds:['gasSupply','ignitionSound']};
-const document={url,text:'ecoTEC intro\nF.28 Ateşleme başarısız\nGaz vanası kapalı'};
+const document={url,text:'ecoTEC intro\nFault codes\nF.28 Ateşleme başarısız\nGaz vanası kapalı'};
+const report={scopeId:'m0',recordId:extractErrorRecords(document.text,'F28')[0].id,candidates:[{name:'Gaz vanası kapalı',part:'',startSpan:'s0',endSpan:'s0'}],questionIds:['gasSupply','ignitionSound']};
 
 function fixture(discoveryText, verificationText=JSON.stringify(report), options={}) {
   let reads=0,verifications=0;
@@ -19,7 +17,7 @@ function fixture(discoveryText, verificationText=JSON.stringify(report), options
     assert.equal(request.text.format.strict,true);
     return {status:options.status??'completed',output:options.output??[],output_text:discoveryText};
   }},chat:{completions:{create:async request=>{
-    if(request.response_format.json_schema.name==='manufacturer_evidence_review') return {choices:[{finish_reason:'stop',message:{content:JSON.stringify(options.review??{modelScopeSupported:true,faultRecordSupported:true,reason:'fixture',candidates:[{index:0,supported:true,reason:'explicit cause'}]})}}]};
+    if(request.response_format.json_schema.name==='manufacturer_record_review') return {choices:[{finish_reason:'stop',message:{content:JSON.stringify(options.review??{modelVerified:true,errorCodeVerified:true,descriptionVerified:true,reason:'fixture',candidates:[{index:0,supported:true,reason:'explicit cause'}]})}}]};
     verifications++;
     return {choices:[{finish_reason:options.finishReason??'stop',message:{content:verificationText,refusal:options.refusal}}]};
   }}}};
@@ -50,7 +48,7 @@ test('wrapped discovery and verification require a downloaded matching manufactu
   const result=await researchManufacturer(identity,undefined,f.dependencies);
   assert.equal(result.status,'verified');
   assert.deepEqual(f.counts(),{reads:1,verifications:1});
-  assert.deepEqual(result.knowledge.causes,['Gaz beslemesi']);
+  assert.deepEqual(result.knowledge.causes,['Gaz vanası kapalı']);
 });
 
 test('invalid discovery never falls back to a manual hint or reaches document verification',async()=>{
@@ -78,7 +76,7 @@ test('a failed discovery URL continues to the next independently discovered sour
 
 test('a parseable report with invalid field types or extra fields does not become verified',async()=>{
   for(const changes of [{title:null},{page:'31'},{questionIds:['gasSupply','invented']},{modelMatch:'true'},
-    {extra:'unexpected'},{candidates:[{name:'Gaz beslemesi',basis:'Gaz vanası kapalı',part:12}]}]) {
+    {extra:'unexpected'},{candidates:[{name:'Gaz vanası kapalı',basis:'Gaz vanası kapalı',part:12}]}]) {
     const f=fixture(JSON.stringify(discovery),JSON.stringify({...report,...changes}));
     assert.notEqual((await researchManufacturer(identity,undefined,f.dependencies)).status,'verified');
   }
@@ -109,19 +107,38 @@ test('a reachable first PDF without the code does not end discovery',async()=>{
 });
 test('description-only records produce no verified manufacturer pool',async()=>{
   const raw={...report,candidates:[]};
-  const f=fixture(JSON.stringify(discovery),JSON.stringify(raw),{review:{modelScopeSupported:true,faultRecordSupported:true,reason:'description only',candidates:[]}});
+  const f=fixture(JSON.stringify(discovery),JSON.stringify(raw),{review:{modelVerified:true,errorCodeVerified:true,descriptionVerified:true,reason:'description only',candidates:[]}});
   const result=await researchManufacturer(identity,undefined,f.dependencies);
   assert.equal(result.status,'description_only');
   assert.equal(result.knowledge,undefined);
 });
 test('a literal quote does not bypass candidate entailment or numeric fault-context checks',async()=>{
   for(const review of [
-    {modelScopeSupported:true,faultRecordSupported:true,reason:'unsupported inference',candidates:[{index:0,supported:false,reason:'a closed valve does not imply PCB failure'}]},
-    {modelScopeSupported:true,faultRecordSupported:false,reason:'figure number, not a fault record',candidates:[{index:0,supported:true,reason:'literal'}]},
-    {modelScopeSupported:false,faultRecordSupported:true,reason:'variant not covered',candidates:[{index:0,supported:true,reason:'literal'}]},
-    {modelScopeSupported:true,faultRecordSupported:true,reason:'missing candidate decision',candidates:[]},
+    {modelVerified:true,errorCodeVerified:true,descriptionVerified:true,reason:'unsupported inference',candidates:[{index:0,supported:false,reason:'a closed valve does not imply PCB failure'}]},
+    {modelVerified:true,errorCodeVerified:false,descriptionVerified:false,reason:'figure number, not a fault record',candidates:[{index:0,supported:true,reason:'literal'}]},
+    {modelVerified:false,errorCodeVerified:true,descriptionVerified:true,reason:'variant not covered',candidates:[{index:0,supported:true,reason:'literal'}]},
+    {modelVerified:true,errorCodeVerified:true,descriptionVerified:true,reason:'missing candidate decision',candidates:[]},
   ]) {
     const f=fixture(JSON.stringify(discovery),JSON.stringify(report),{review});
     assert.notEqual((await researchManufacturer(identity,undefined,f.dependencies)).status,'verified');
   }
+});
+
+test('a later search outage does not erase a verified description',async()=>{
+ const f=fixture(JSON.stringify(discovery),JSON.stringify({...report,candidates:[]}),{review:{modelVerified:true,errorCodeVerified:true,descriptionVerified:true,reason:'description',candidates:[]}});
+ const first=f.dependencies.client.responses.create;let calls=0;
+ f.dependencies.client.responses.create=async request=>{if(++calls>1)throw Error('offline');return first(request);};
+ const result=await researchManufacturer(identity,undefined,f.dependencies);
+ assert.equal(result.status,'description_only');assert.equal(result.verification.descriptionVerified,true);
+ assert.equal(result.verification.manufacturerCandidateCount,0);
+});
+
+test('official page download links are followed, foreign links are never read',async()=>{
+ const f=fixture(JSON.stringify(discovery));let reads=0;
+ f.dependencies.readDocument=async(location,allowed)=>{
+  assert.equal(allowed(location),true);reads++;
+  if(reads===1)return {url:location,text:'ecoTEC intro\nDownload manuals',links:[{url:'https://seller.example/manual.pdf',title:'Service'},{url:'https://www.vaillant.com.tr/download.pdf',title:'Installation manual'}]};
+  return {...document,url:location,links:[]};
+ };
+ assert.equal((await researchManufacturer(identity,undefined,f.dependencies)).status,'verified');assert.equal(reads,2);
 });

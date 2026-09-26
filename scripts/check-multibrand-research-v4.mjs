@@ -8,8 +8,8 @@ import {normalizePartText} from '../src/lib/parts-catalog.ts';
 import {lookupDiagnosticKnowledge} from '../src/lib/diagnostic-knowledge.ts';
 import {MANUAL_HINTS} from '../src/lib/manufacturer-manuals.ts';
 
-const folder='test-results/multibrand-generalization-v2';
-try {await readFile(folder+'/results.json');throw Error('This one-round report already exists; refusing to overwrite or rerun.');} catch(error) {if(error.code!=='ENOENT')throw error;}
+const folder='test-results/multibrand-regression-v4';
+try {await readFile(folder+'/results.json');throw Error('This regression report already exists; refusing to overwrite.');} catch(error) {if(error.code!=='ENOENT')throw error;}
 await mkdir(folder,{recursive:true});
 const source=await readFile('src/lib/manufacturer-registry.ts','utf8');
 const domainBlock=source.match(/const DOMAINS:[\s\S]*?= \{([\s\S]*?)\n\};/)?.[1];
@@ -34,7 +34,7 @@ async function fingerprints() {
 }
 const baseline=await fingerprints();
 const run={startedAt:new Date().toISOString(),model:process.env.DIAGNOSTIC_RESEARCH_MODEL||'gpt-4.1',
-  method:'One uncached researchManufacturer call per identity, sequential; original document reader wrapped only for observation. No URLs or reference answers sent to the model.',
+  method:'Known development/regression set, not blind. One uncached researchManufacturer call per identity, sequential; original document reader wrapped only for observation. No URLs or reference answers sent to the model.',
   approvedDomains:domains,productionFingerprintsBefore:baseline,results:[]};
 await writeFile(folder+'/results.json',JSON.stringify(run,null,2));
 
@@ -83,15 +83,16 @@ for(const identity of identities) {
   for(const url of [...new Set([...urls,...documents.map(d=>d.finalUrl??d.url)])]) probes.push({url,...await probe(url,identity.brand)});
   const knowledge=result.status==='verified'?result.knowledge:null;
   const decision=events.findLast(e=>e.raw?.stage==='decision' && e.raw.status===result.status);
-  const report=decision?events.findLast(e=>e.raw?.errorRecord && e.urls[0]===decision.urls[0])?.raw:null;
+  const report=decision?.raw;
   const row={identity,researchStatus:result.status,elapsedMs:Date.now()-started,
-    sourceUrl:knowledge?.source.url??decision?.urls[0]??null,
-    sourceUrls:urls,modelDocumentVerified:Boolean(knowledge||result.status==='description_only'),
-    modelScope:knowledge?.evidence?.modelScope??report?.modelScope??null,
-    coveredModels:knowledge?.evidence?.coveredModels??report?.coveredModels??[],
-    errorCodeDocumentVerified:Boolean(knowledge||result.status==='description_only'),
-    meaning:knowledge?.meaning??report?.meaning??null,candidateCount:knowledge?.causes.length??0,
-    poolOnlyVerifiedDocument:Boolean(knowledge?.evidence?.version===2),
+    sourceUrl:knowledge?.source.url??result.source?.url??decision?.urls[0]??null,
+    verification:result.verification??null,
+    sourceUrls:urls,modelDocumentVerified:result.verification?.modelVerified===true,
+    modelScope:result.verification?.modelScope??'unknown',
+    coveredModels:result.verification?.coveredModels??[],
+    errorCodeDocumentVerified:result.verification?.errorCodeVerified===true,
+    meaning:result.description??knowledge?.meaning??null,candidateCount:knowledge?.causes.length??0,
+    poolOnlyVerifiedDocument:Boolean(knowledge?.evidence?.version===3),
     failure:knowledge?null:{status:result.status,message:result.message,stages:events.filter(e=>e.raw?.error||e.raw?.stage==='entailment').map(e=>({urls:e.urls,...e.raw}))},
     probes,documents,events,result};
   run.results.push(row);

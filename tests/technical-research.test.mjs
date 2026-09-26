@@ -38,8 +38,9 @@ test('cache separates brand, full model and code; expires without a stale fallba
   assert.equal(researchKey(identity),researchKey({...identity,code:'F28'}));
 });
 test('even quoted customer input cannot inject an unrelated cause into a closed pool',()=>{
-  const previous={...emptyMemory(),candidates:[{name:'Gaz beslemesi',probability:50,supports:[],contradicts:[]},{name:'Ateşleme sistemi',probability:50,supports:[],contradicts:[]}]};
-  const step=advanceDiagnosis(previous,{informative:true,newEvidence:['ses var'],candidates:[{name:'Basınç sensörü',probability:100,supports:['ses var']}],nextQuestions:['gasSupply']},'ses var',[],['Gaz beslemesi','Ateşleme sistemi']);
-  assert.deepEqual(step.memory.candidates,previous.candidates);
-  assert.equal(step.memory.candidates.reduce((sum,c)=>sum+c.probability,0),100);
+  const previous={...emptyMemory(),candidates:[{name:'Gaz beslemesi',probability:50},{name:'Ateşleme sistemi',probability:50}]};
+  assert.throws(()=>advanceDiagnosis(previous,{candidateAssessments:[{candidateIndex:2,weight:100,reason:'uydurma'},
+    {candidateIndex:1,weight:0,reason:'uydurma'}],nextQuestion:{topic:'gasSupply',text:'Gaz kesintisi var mı?',whyThisQuestion:'ayırır'},
+    canConclude:false,requiresTechnicianMeasurement:false},'ses var'));
+  assert.deepEqual(previous.candidates.map(c=>c.name),['Gaz beslemesi','Ateşleme sistemi']);
 });

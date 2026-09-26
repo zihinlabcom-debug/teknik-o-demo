@@ -29,6 +29,7 @@ export default function TeshisPage() {
   const [inputText, setInputText] = useState('');
   const stateToken = useRef<string | undefined>(undefined);
   const [candidateProbabilities, setCandidateProbabilities] = useState<Candidate[] | null>(null);
+  const [diagnosticEvidence, setDiagnosticEvidence] = useState<string[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<{
     possibleCause: string;
@@ -86,6 +87,7 @@ export default function TeshisPage() {
 
       stateToken.current = data.stateToken;
       setCandidateProbabilities(data.assessmentComplete ? data.candidateProbabilities ?? [] : null);
+      setDiagnosticEvidence(data.assessmentComplete ? (data.diagnosticEvidence ?? []).map((item:{quote:string})=>item.quote) : []);
       // Yanıtı işle
       const aiReplyText = data.replyMessage || 'Detayları aldım, süreci inceliyorum.';
       const confidenceScore = data.currentConfidenceScore || 50;
@@ -283,7 +285,7 @@ export default function TeshisPage() {
           </div>
         )}
 
-        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} />}
+        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} evidence={diagnosticEvidence} />}
         <div ref={chatEndRef} />
       </div>
 

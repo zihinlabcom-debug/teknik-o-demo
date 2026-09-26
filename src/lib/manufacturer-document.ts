@@ -35,14 +35,16 @@ export async function readManufacturerDocument(url: string, allowed: (url: strin
       const parser = new PDFParse({ data: new Uint8Array(bytes) });
       try {
         const result = await parser.getText();
-        return { url: target, text: result.text };
+        return { url: target, text: result.text,links:[] as Array<{url:string;title:string}> };
       } finally { await parser.destroy(); }
     }
     const type = response.headers['content-type'] ?? '';
     if (!/text\/(?:html|plain)/i.test(type)) throw new Error('Unsupported manufacturer document');
-    const text = bytes.toString('utf8').replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
-      .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&');
-    return { url: target, text };
+    const html=bytes.toString('utf8');
+    const links=[...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)].flatMap(m=>{try{return [{url:new URL(m[1].replace(/&amp;/g,'&'),target).href,title:m[2].replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim()}];}catch{return [];}});
+    const text = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
+      .replace(/<\/(?:tr|p|h[1-6]|li|div|section)>|<br\s*\/?>/gi,'\n').replace(/<\/(?:td|th)>/gi,'\t').replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&');
+    return { url: target, text,links };
   }
   throw new Error('Too many manufacturer redirects');
 }

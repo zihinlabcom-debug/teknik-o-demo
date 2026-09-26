@@ -58,6 +58,7 @@ interface DiagnoseResponse {
   informationProgress?: number;
   assessmentComplete?: boolean;
   candidateProbabilities?: Candidate[];
+  diagnosticEvidence?: {quote:string}[];
   diagnosticStatus?: string;
   deterministicOMF?: ReturnType<typeof calculateOMF>;
   technicalSource?: { title: string; url: string; page: number } | null;
@@ -83,6 +84,7 @@ export default function CustomerDashboard() {
   const stateToken = useRef<string | undefined>(undefined);
   const [informationProgress, setInformationProgress] = useState(0);
   const [candidateProbabilities, setCandidateProbabilities] = useState<Candidate[] | null>(null);
+  const [diagnosticEvidence, setDiagnosticEvidence] = useState<string[]>([]);
   
   // Teşhis Güven Düzeyi (%0 - %100)
 
@@ -148,6 +150,7 @@ export default function CustomerDashboard() {
       stateToken.current = data.stateToken;
       setInformationProgress(data.informationProgress ?? 0);
       setCandidateProbabilities(data.assessmentComplete ? data.candidateProbabilities ?? [] : null);
+      setDiagnosticEvidence(data.assessmentComplete ? (data.diagnosticEvidence ?? []).map(item=>item.quote) : []);
       setDiagnosticStatus(data.diagnosticStatus ?? 'diagnosing');
       const newConf = data.confidence ?? 0;
 
@@ -305,12 +308,12 @@ export default function CustomerDashboard() {
             <span>{isAnalyzing ? 'Yanıtınız değerlendiriliyor…' : diagnosticStatus === 'safety_stop' ? 'Güvenlik nedeniyle durduruldu' : candidateProbabilities !== null ? 'Değerlendirme tamamlandı' : 'Bilgi toplama'}</span>
             <span>%{informationProgress}</span>
           </div>
-          <div role="progressbar" aria-label="Bilgi toplama ilerlemesi" aria-valuemin={0} aria-valuemax={80} aria-valuenow={informationProgress}
-            aria-valuetext={`${informationProgress} bilgi puanı; 80 puanda sorular tamamlanır`}
+          <div role="progressbar" aria-label="Bilgi toplama ilerlemesi" aria-valuemin={0} aria-valuemax={100} aria-valuenow={informationProgress}
+            aria-valuetext={`${informationProgress} bilgi puanı`}
             className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
             <div className="h-full rounded-full transition-all duration-500 motion-reduce:transition-none"
-              style={{ width: `${informationProgress / 80 * 100}%`, background: 'linear-gradient(to right, #ef4444, #f59e0b, #22c55e)',
-                backgroundSize: `${informationProgress ? 8000 / informationProgress : 100}% 100%` }} />
+              style={{ width: `${informationProgress}%`, background: 'linear-gradient(to right, #ef4444, #f59e0b, #22c55e)',
+                backgroundSize: `${informationProgress ? 10000 / informationProgress : 100}% 100%` }} />
           </div>
         </div>
 
@@ -462,7 +465,7 @@ export default function CustomerDashboard() {
           </form>
         </div>
 
-        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} />}
+        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} evidence={diagnosticEvidence} />}
 
         {/* --- OMF TEKLİF KARTI (Yalnızca güven yeterliyse) --- */}
         {diagnostic && diagnostic.completed && diagnostic.confidence >= 75 && (
