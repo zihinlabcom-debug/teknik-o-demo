@@ -1,4 +1,5 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
+import { canAskBoilerQuestion, countAskedQuestions, countBoilerQuestionRequests } from './boiler-question-budget';
 import { containsErrorCode } from './manufacturer-document';
 import { normalizePartText } from './parts-catalog';
 import { inferObservedTopics } from './diagnostic-state';
@@ -21,7 +22,7 @@ interface BoilerState {
   version: 1; sessionId: string; brand: string; model: string; errorCode: string | null;
   familyId: string | null; officialModelId: string | null;
   codeAsked: boolean; pendingIdentity: 'brand' | 'model' | 'code' | null;
-  answers: BoilerAnswer[]; askedQuestionIds: string[];
+  answers: BoilerAnswer[]; askedQuestionIds: string[]; totalAskedQuestions: number;
   pendingQuestionId: string | null; pendingAskedAt: string | null;
   firstThresholdAt: number | null; finished: boolean; resultState: BoilerResultState;
 }
@@ -69,7 +70,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       (state.errorCode ?? '').toUpperCase().replace(/[.\s-]/g,'') !==
         (errorCode ?? '').toUpperCase().replace(/[.\s-]/g,''))) {
     await repository.updateSession(state.sessionId, { status: 'escalated',
-      questionCompletionPercent: Math.round(state.askedQuestionIds.length / MAX_BOILER_QUESTIONS * 10000) / 100,
+      questionCompletionPercent: Math.round(state.totalAskedQuestions / MAX_BOILER_QUESTIONS * 10000) / 100,
       confidenceBasis: { reason: 'device_identity_changed', calibrated: false },
       completedAt: new Date().toISOString(), brand: state.brand,
       familyId: state.familyId, officialModelId: state.officialModelId, errorCode: state.errorCode });
@@ -80,9 +81,12 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       familyId: null, officialModelId: null, errorCode });
     state = { version: 1, sessionId, brand, model, errorCode, codeAsked: false,
       familyId: null, officialModelId: null,
-      pendingIdentity: null, answers: [], askedQuestionIds: [], pendingQuestionId: null,
+      pendingIdentity: null, answers: [], askedQuestionIds: [], totalAskedQuestions: countAskedQuestions(history), pendingQuestionId: null,
       pendingAskedAt: null, firstThresholdAt: null, finished: false, resultState: 'diagnosing' };
   }
+  if (!Number.isInteger(state.totalAskedQuestions) || state.totalAskedQuestions < state.askedQuestionIds.length ||
+      state.totalAskedQuestions > MAX_BOILER_QUESTIONS)
+    state.totalAskedQuestions = Math.max(state.askedQuestionIds.length, countAskedQuestions(history));
   state.brand = brand; state.model = model; state.errorCode = errorCode;
   const result = async (reply: string, resultState: BoilerResultState, options: {
     assessments?: ReturnType<typeof calculateBoilerWeights>; price?: BoilerPrice | null;
@@ -93,7 +97,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     state!.resultState = resultState;
     await repository.updateSession(state!.sessionId, {
       status: resultState === 'safety_stop' || resultState === 'uncertain_price' ? 'escalated' : finished ? 'completed' : 'diagnosing',
-      questionCompletionPercent: Math.round(state!.askedQuestionIds.length / MAX_BOILER_QUESTIONS * 10000) / 100,
+      questionCompletionPercent: Math.round(state!.totalAskedQuestions / MAX_BOILER_QUESTIONS * 10000) / 100,
       confidenceBasis: { method: 'v1_relative_effect_factors', calibrated: false,
         topRelativeWeight: options.assessments?.length ? Math.max(...options.assessments.map(item => item.probability)) : null,
         candidateMode: options.mode ?? 'none', resultState },
@@ -105,7 +109,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       aiText: reply, stateToken: encodeBoilerState(state!), resultState,
       canRouteTechnician: finished, assessmentComplete: finished,
       candidateProbabilities: (options.assessments ?? []).map(item => ({ name: item.candidateName, probability: item.probability })),
-      informationProgress: Math.round(state!.askedQuestionIds.length / MAX_BOILER_QUESTIONS * 100),
+      informationProgress: Math.round(state!.totalAskedQuestions / MAX_BOILER_QUESTIONS * 100),
       researchStatus: options.assessments?.length ? 'verified' : 'not_found',
       diagnosticStatus: resultState === 'safety_stop' ? 'safety_stop' : finished ? 'needs_onsite' : 'diagnosing',
       pricingStatus: resultState === 'pricing_missing' ? 'pricing_missing' : resultState === 'priced_candidate' ? 'available' : resultState,
@@ -114,6 +118,13 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       faultTitle: null, basePartPrice: 0, diagnosticEvidence: state!.answers,
       stopReason: finished ? resultState : null, options: [],
     };
+  };
+  const ask = (text: string, options: Parameters<typeof result>[2] = {}) => {
+    if (!canAskBoilerQuestion(state!.totalAskedQuestions, text))
+      return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
+        'uncertain_price', options);
+    state!.totalAskedQuestions += countBoilerQuestionRequests(text);
+    return result(text, 'diagnosing', options);
   };
   if (state.finished) return result('Bu teşhis oturumu tamamlandı. Usta yönlendirmesi isteyebilirsiniz.', state.resultState);
   if (safety(message)) return result('Güvenliğiniz için teşhisi durduruyorum. Cihazı denemeyin, güvenli alana çıkın ve dışarıdan acil destek alın.', 'safety_stop');
@@ -126,15 +137,15 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if ((!brand && /(?:marka\w* bilmiyorum|marka\w* hatirlamiyorum)/.test(normalizedMessage)) ||
       (!model && /(?:model\w* bilmiyorum|model\w* hatirlamiyorum)/.test(normalizedMessage)))
     return result('Marka veya model bilinmediği için fiyat belirsiz. Yerinde kontrol için usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
-  if (!brand) { state.pendingIdentity = 'brand'; return result('Cihazınızın markası nedir?', 'diagnosing'); }
-  if (!model) { state.pendingIdentity = 'model'; return result('Cihazınızın etikette yazan modeli nedir?', 'diagnosing'); }
+  if (!brand) { state.pendingIdentity = 'brand'; return ask('Cihazınızın markası nedir?'); }
+  if (!model) { state.pendingIdentity = 'model'; return ask('Cihazınızın etikette yazan modeli nedir?'); }
   if (!errorCode && !state.codeAsked && !/(?:hata kodu yok|kod yok|hata gostermiyor)/.test(normalizePartText(customerText))) {
     state.pendingIdentity = 'code'; state.codeAsked = true;
-    return result('Ekranda hata kodu görünüyor mu? Yoksa “yok” yazabilirsiniz.', 'diagnosing');
+    return ask('Ekranda hata kodu görünüyor mu? Yoksa “yok” yazabilirsiniz.');
   }
 
   const device = await repository.resolveDevice(brand, model);
-  if (device === 'ambiguous') return result('Cihaz etiketindeki tam model adını paylaşır mısınız?', 'diagnosing');
+  if (device === 'ambiguous') return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?');
   if (!device) return result('Bu model için doğrulanmış teknik aday bulunamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
   state.familyId = device.familyId; state.officialModelId = device.officialModelId;
   const allCandidates = await repository.getCandidates(device.familyId);
@@ -193,18 +204,18 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   const top = [...assessments].sort((a, b) => b.probability - a.probability)[0];
   if (top.probability >= PRICE_CANDIDATE_THRESHOLD && state.firstThresholdAt === null)
-    state.firstThresholdAt = state.askedQuestionIds.length;
+    state.firstThresholdAt = state.totalAskedQuestions;
   const usedGroups = state.answers.map(item => item.evidenceGroup);
   const observedTopics = new Set<string>(customerMessages.flatMap(inferObservedTopics));
   const available = (safetyOnly: boolean) => eligibleQuestions(questions, effects,candidates.map(item => item.id),
     state!.askedQuestionIds, usedGroups, safetyOnly).filter(question => safeQuestion(question.question_text) &&
-      !observedTopics.has(question.question_key));
+      !observedTopics.has(question.question_key) && canAskBoilerQuestion(state!.totalAskedQuestions, question.question_text));
   const safetyQuestions = available(true);
   const diagnosticQuestions = available(false);
-  const canAsk = state.askedQuestionIds.length < MAX_BOILER_QUESTIONS;
+  const canAsk = state.totalAskedQuestions < MAX_BOILER_QUESTIONS;
   const nextOptions = canAsk ? (safetyQuestions.length ? safetyQuestions : diagnosticQuestions) : [];
   const price = top.probability >= PRICE_CANDIDATE_THRESHOLD ? await repository.getPricing(top.candidateId) : null;
-  const resultState = determineBoilerResult(assessments, state.askedQuestionIds.length,
+  const resultState = determineBoilerResult(assessments, state.totalAskedQuestions,
     state.firstThresholdAt, nextOptions.length > 0, price !== null);
   if (resultState === 'priced_candidate') return result(`En güçlü doğrulanmış aday ${top.candidateName}. Fiyat bilgisi hazır; usta yönlendirmesi isteyebilirsiniz.`,
     resultState,{ assessments, price, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
@@ -220,6 +231,10 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const question = nextOptions.find(item => item.id === selectedQuestionId);
   if (!question) return result('Güvenli ve ayırt edici bir müşteri sorusu seçilemedi. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price',{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
+  if (!canAskBoilerQuestion(state.totalAskedQuestions, question.question_text))
+    return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
+      'uncertain_price', { assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
+  state.totalAskedQuestions += countBoilerQuestionRequests(question.question_text);
   state.askedQuestionIds.push(question.id); state.pendingQuestionId = question.id;
   state.pendingAskedAt = new Date().toISOString();
   await repository.recordQuestionAsked(state.sessionId, question.id, state.pendingAskedAt);
