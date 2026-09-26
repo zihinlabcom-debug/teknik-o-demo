@@ -48,6 +48,8 @@ export function decodeBoilerState(token: unknown): BoilerState | null {
   return parsed.state;
 }
 const unknown = (message: string) => /^(bilmiyorum|emin degilim|goremiyorum|hata kodu yok|kod yok|hatirlamiyorum)[.!? ]*$/.test(normalizePartText(message));
+const ambiguousAnswer = (message: string) => /\b(?:belki|galiba|sanirim|emin degilim|tam emin degilim|olabilir)\b/.test(normalizePartText(message));
+const correction = (message: string) => /^(?:aslinda|duzeltiyorum|yanlis soyledim)\b/.test(normalizePartText(message));
 const safety = (message: string) => /(?:gaz kokusu (?:var|geliyor)|gaz kacagi var|gaz kokuyor|yanik kokusu (?:var|geliyor)|duman cikiyor|ciddi su kacagi var|elektrik carpti|asiri isinma (?:var|oluyor))/.test(normalizePartText(message));
 const safeQuestion = (value: string) => !/(?:multimetre|voltaj|direnc|ohm|gaz basinc|servis manometresi|baca gazi|yanma analizi|kart uzerinde|cihazi sok|kapagi ac|gaz valfi|gaz vanasini|gaz baglantisi|elektrik baglantisi|fi[sş]i cek)/.test(normalizePartText(value));
 const supportedKey = (question: BoilerQuestion, effects: BoilerQuestionEffect[]) => [...new Set([
@@ -55,38 +57,43 @@ const supportedKey = (question: BoilerQuestion, effects: BoilerQuestionEffect[])
 ])];
 
 export async function diagnoseBoiler(message: string, history: BoilerMessage[], token: unknown,
-  repository: BoilerRepository, ai: BoilerAI) {
+  repository: BoilerRepository, ai: BoilerAI, options: { budgetFloor?: number; rebuildFromHistory?: boolean;
+    identityFallback?: { brand: string; model: string; errorCode: string | null; codeAsked: boolean } } = {}) {
   let state = decodeBoilerState(token);
   const conversation = [...history, { role: 'user' as const, content: message }];
   const customerMessages = conversation.filter(item => item.role === 'user').map(item => item.content);
   const customerText = customerMessages.join(' ');
   const extracted = await ai.extractIdentity(conversation);
   const inText = (value: string) => value && ` ${normalizePartText(customerText)} `.includes(` ${normalizePartText(value)} `);
-  const brand = inText(extracted.brand) ? extracted.brand.trim() : state?.brand ?? '';
-  const model = inText(extracted.model) ? extracted.model.trim() : state?.model ?? '';
-  const errorCode = containsErrorCode(customerText, extracted.errorCode) ? extracted.errorCode.trim() : state?.errorCode ?? null;
-  if (state?.familyId && (normalizePartText(state.brand) !== normalizePartText(brand) ||
-      normalizePartText(state.model) !== normalizePartText(model) ||
-      (state.errorCode ?? '').toUpperCase().replace(/[.\s-]/g,'') !==
-        (errorCode ?? '').toUpperCase().replace(/[.\s-]/g,''))) {
+  const brand = inText(extracted.brand) ? extracted.brand.trim() : state?.brand ?? options.identityFallback?.brand ?? '';
+  const model = inText(extracted.model) ? extracted.model.trim() : state?.model ?? options.identityFallback?.model ?? '';
+  const errorCode = containsErrorCode(customerText, extracted.errorCode) ? extracted.errorCode.trim() :
+    state?.errorCode ?? options.identityFallback?.errorCode ?? null;
+  let budgetFloor = Math.max(0, Math.min(MAX_BOILER_QUESTIONS, options.budgetFloor ?? 0));
+  const changedIdentity = state && ((state.brand && brand && normalizePartText(state.brand) !== normalizePartText(brand)) ||
+    (state.model && model && normalizePartText(state.model) !== normalizePartText(model)) ||
+    (state.errorCode && errorCode && state.errorCode.toUpperCase().replace(/[.\s-]/g, '') !==
+      errorCode.toUpperCase().replace(/[.\s-]/g, '')));
+  if (changedIdentity && state) {
+    budgetFloor = Math.max(budgetFloor, state.totalAskedQuestions ?? state.askedQuestionIds.length);
     await repository.updateSession(state.sessionId, { status: 'escalated',
-      questionCompletionPercent: Math.round(state.totalAskedQuestions / MAX_BOILER_QUESTIONS * 10000) / 100,
+      questionCompletionPercent: Math.round(budgetFloor / MAX_BOILER_QUESTIONS * 10000) / 100,
       confidenceBasis: { reason: 'device_identity_changed', calibrated: false },
       completedAt: new Date().toISOString(), brand: state.brand,
-      familyId: state.familyId, officialModelId: state.officialModelId, errorCode: state.errorCode });
+      familyId: state.familyId ?? null, officialModelId: state.officialModelId ?? null, errorCode: state.errorCode });
     state = null;
   }
   if (!state) {
     const sessionId = await repository.createSession({ initialMessage: message, brand,
       familyId: null, officialModelId: null, errorCode });
-    state = { version: 1, sessionId, brand, model, errorCode, codeAsked: false,
-      familyId: null, officialModelId: null,
-      pendingIdentity: null, answers: [], askedQuestionIds: [], totalAskedQuestions: countAskedQuestions(history), pendingQuestionId: null,
+    state = { version: 1, sessionId, brand, model, errorCode, familyId: null, officialModelId: null,
+      codeAsked: options.identityFallback?.codeAsked ?? false,
+      pendingIdentity: null, answers: [], askedQuestionIds: [], totalAskedQuestions: Math.max(budgetFloor, countAskedQuestions(history)), pendingQuestionId: null,
       pendingAskedAt: null, firstThresholdAt: null, finished: false, resultState: 'diagnosing' };
   }
   if (!Number.isInteger(state.totalAskedQuestions) || state.totalAskedQuestions < state.askedQuestionIds.length ||
       state.totalAskedQuestions > MAX_BOILER_QUESTIONS)
-    state.totalAskedQuestions = Math.max(state.askedQuestionIds.length, countAskedQuestions(history));
+    state.totalAskedQuestions = Math.max(budgetFloor, state.askedQuestionIds.length, countAskedQuestions(history));
   state.brand = brand; state.model = model; state.errorCode = errorCode;
   const result = async (reply: string, resultState: BoilerResultState, options: {
     assessments?: ReturnType<typeof calculateBoilerWeights>; price?: BoilerPrice | null;
@@ -134,8 +141,8 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   }
   state.pendingIdentity = null;
   const normalizedMessage = normalizePartText(message);
-  if ((!brand && /(?:marka\w* bilmiyorum|marka\w* hatirlamiyorum)/.test(normalizedMessage)) ||
-      (!model && /(?:model\w* bilmiyorum|model\w* hatirlamiyorum)/.test(normalizedMessage)))
+  if ((!brand && /(?:marka\w* bilmiyorum|marka\w* belli degil|marka\w* hatirlamiyorum|^bilmiyorum[.!? ]*$)/.test(normalizedMessage)) ||
+      (!model && /(?:model\w* bilmiyorum|model\w* belli degil|model\w* hatirlamiyorum)/.test(normalizedMessage)))
     return result('Marka veya model bilinmediği için fiyat belirsiz. Yerinde kontrol için usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
   if (!brand) { state.pendingIdentity = 'brand'; return ask('Cihazınızın markası nedir?'); }
   if (!model) { state.pendingIdentity = 'model'; return ask('Cihazınızın etikette yazan modeli nedir?'); }
@@ -154,47 +161,68 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if (!candidates.length) return result('Bu cihaz için doğrulanmış kök neden havuzu bulunamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   const [questions, effects] = await Promise.all([repository.getQuestions(), repository.getEffects(candidates.map(item => item.id))]);
+  const saveAnswer = async (question: BoilerQuestion, rawAnswer: string, answerKey: string,
+    askedAt: string | null, source: 'customer' | 'ai_extracted') => {
+    const group = question.evidence_group || question.question_key;
+    const previous = state!.answers.find(item => item.evidenceGroup === group);
+    if (previous?.questionId !== question.id && previous)
+      await repository.deleteAnswer(state!.sessionId, previous.questionId);
+    state!.answers = state!.answers.filter(item => item.evidenceGroup !== group);
+    const effectiveAskedAt = askedAt ?? (previous?.questionId === question.id ? previous.askedAt ?? null : null);
+    state!.answers.push({ questionId: question.id, answerKey, evidenceGroup: group, askedAt: effectiveAskedAt });
+    const numericAnswer = Number(rawAnswer.replace(',', '.'));
+    await repository.recordAnswer({ sessionId: state!.sessionId, questionId: question.id, rawAnswer,
+      answerKey, numericAnswer: Number.isFinite(numericAnswer) && /^\s*\d+(?:[,.]\d+)?\s*$/.test(rawAnswer) ? numericAnswer : null,
+      askedAt: effectiveAskedAt, source });
+  };
+
+  if (options.rebuildFromHistory) {
+    for (let index = 0; index < history.length; index++) {
+      const entry = history[index];
+      if (entry.role !== 'assistant') continue;
+      const question = questions.find(item => item.question_text === entry.content);
+      if (!question || state.askedQuestionIds.includes(question.id)) continue;
+      const askedAt = new Date().toISOString();
+      await repository.recordQuestionAsked(state.sessionId, question.id, askedAt);
+      state.askedQuestionIds.push(question.id);
+      const response = conversation.slice(index + 1).find(item => item.role === 'user')?.content;
+      if (!response) continue;
+      const keys = supportedKey(question, effects);
+      const answerKey = unknown(response) || ambiguousAnswer(response) || correction(response) ? 'unknown' :
+        await ai.classifyAnswer(question, response, keys);
+      if (keys.includes(answerKey)) await saveAnswer(question, response, answerKey, askedAt, 'customer');
+    }
+  }
 
   if (state.pendingQuestionId) {
     const question = questions.find(item => item.id === state!.pendingQuestionId);
     if (!question) throw Error('Previously asked boiler question is no longer available');
     const keys = supportedKey(question, effects);
-    const answerKey = unknown(message) ? 'unknown' : await ai.classifyAnswer(question, message, keys);
+    const answerKey = unknown(message) || ambiguousAnswer(message) || correction(message) ? 'unknown' :
+      await ai.classifyAnswer(question, message, keys);
     if (!keys.includes(answerKey)) throw Error('AI supplied an unsupported boiler answer');
-    const group = question.evidence_group || question.question_key;
-    state.answers.push({ questionId: question.id, answerKey, evidenceGroup: group });
-    const numericAnswer = Number(message.replace(',', '.'));
-    await repository.recordAnswer({ sessionId: state.sessionId, questionId: question.id, rawAnswer: message,
-      answerKey, numericAnswer: Number.isFinite(numericAnswer) && /^\s*\d+(?:[,.]\d+)?\s*$/.test(message) ? numericAnswer : null,
-      askedAt: state.pendingAskedAt ?? new Date().toISOString(), source: 'customer' });
+    await saveAnswer(question, message, answerKey, state.pendingAskedAt ?? new Date().toISOString(), 'customer');
     state.pendingQuestionId = null; state.pendingAskedAt = null;
   }
   if (ai.extractObservedAnswers) {
-    const alreadyAnswered = new Set(state.answers.map(item => item.questionId));
-    const groups = new Set(state.answers.map(item => item.evidenceGroup));
     const extractable = questions.filter(question => question.is_active && question.customer_observable &&
-      safeQuestion(question.question_text) && !alreadyAnswered.has(question.id) &&
-      !groups.has(question.evidence_group || question.question_key) &&
+      safeQuestion(question.question_text) &&
       effects.some(effect => effect.question_id === question.id && effect.answer_key !== 'unknown'))
       .slice(0, 50).map(question => ({ id: question.id, text: question.question_text,
         allowedKeys: supportedKey(question, effects) }));
-    if (extractable.length) {
-      const extractedAnswers = await ai.extractObservedAnswers(message, extractable);
-      if (!Array.isArray(extractedAnswers) || extractedAnswers.length > extractable.length) throw Error('Invalid AI observations');
+    for (const sourceMessage of options.rebuildFromHistory && !changedIdentity ? customerMessages : [message]) {
+      const extractedAnswers = extractable.length ? await ai.extractObservedAnswers(sourceMessage, extractable) : [];
+      if (!Array.isArray(extractedAnswers) || extractedAnswers.length > extractable.length) continue;
       for (const observed of extractedAnswers) {
         const allowed = extractable.find(item => item.id === observed.questionId);
         const question = questions.find(item => item.id === observed.questionId);
         if (!allowed || !question || !allowed.allowedKeys.includes(observed.answerKey) ||
             observed.answerKey === 'unknown' || typeof observed.quote !== 'string' ||
-            observed.quote.trim().length < 3 || !message.includes(observed.quote))
-          throw Error('AI observation lacks customer evidence');
+            observed.quote.trim().length < 3 || !sourceMessage.includes(observed.quote) ||
+            /^(?:evet|hayır|hayir|bilmiyorum|emin değilim)$/i.test(observed.quote.trim())) continue;
         const group = question.evidence_group || question.question_key;
-        if (alreadyAnswered.has(question.id) || groups.has(group)) continue;
-        state.answers.push({ questionId: question.id, answerKey: observed.answerKey, evidenceGroup: group });
-        alreadyAnswered.add(question.id); groups.add(group);
-        await repository.recordAnswer({ sessionId: state.sessionId, questionId: question.id,
-          rawAnswer: observed.quote, answerKey: observed.answerKey, numericAnswer: null,
-          askedAt: null, source: 'ai_extracted' });
+        if (state.answers.some(item => item.evidenceGroup === group && item.answerKey === observed.answerKey)) continue;
+        await saveAnswer(question, observed.quote, observed.answerKey, null, 'ai_extracted');
       }
     }
   }
@@ -234,10 +262,11 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if (!canAskBoilerQuestion(state.totalAskedQuestions, question.question_text))
     return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
       'uncertain_price', { assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
+  const askedAt = new Date().toISOString();
+  await repository.recordQuestionAsked(state.sessionId, question.id, askedAt);
   state.totalAskedQuestions += countBoilerQuestionRequests(question.question_text);
   state.askedQuestionIds.push(question.id); state.pendingQuestionId = question.id;
-  state.pendingAskedAt = new Date().toISOString();
-  await repository.recordQuestionAsked(state.sessionId, question.id, state.pendingAskedAt);
+  state.pendingAskedAt = askedAt;
   return result(question.question_text, resultState, { assessments, familyId: device.familyId,
     officialModelId: device.officialModelId, mode: selected.mode });
 }

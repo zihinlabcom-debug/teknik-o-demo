@@ -18,7 +18,7 @@ export interface BoilerQuestionEffect {
   question_id: string; candidate_id: string; answer_key: string; effect: BoilerEffect;
 }
 export interface BoilerAnswer {
-  questionId: string; answerKey: string; evidenceGroup: string;
+  questionId: string; answerKey: string; evidenceGroup: string; askedAt?: string | null;
 }
 export interface BoilerAssessment {
   candidateId: string; candidateName: string; probability: number; rank: number;

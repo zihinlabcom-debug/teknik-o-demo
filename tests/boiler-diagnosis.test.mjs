@@ -17,6 +17,7 @@ function fakeStore({ candidates=[baseCandidate('c0'),baseCandidate('c1')], quest
     async getPricing(id){calls.pricing.push(id);return price;},
     async createSession(input){calls.sessions.push(input);return `session-${calls.sessions.length}`;},
     async recordQuestionAsked(sessionId,questionId,askedAt){calls.asked.push({sessionId,questionId,askedAt});},
+    async deleteAnswer(sessionId,questionId){calls.answers=calls.answers.filter(item=>item.sessionId!==sessionId||item.questionId!==questionId);},
     async recordAnswer(input){calls.answers.push(input);},
     async recordCandidates(id,items){calls.snapshots.push({id,items});},
     async updateSession(id,input){calls.updates.push({id,input});},
@@ -138,12 +139,12 @@ test('twelve diagnostic questions are the hard limit, including unknown answers'
   }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
 });
 
-test('missing server-only Supabase configuration fails closed without invented weights or price',async()=>{
+test('missing server-only Supabase configuration retries once and returns service_unavailable without invented weights or price',async()=>{
   const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.SUPABASE_SERVICE_ROLE_KEY;
   delete process.env.NEXT_PUBLIC_SUPABASE_URL;delete process.env.SUPABASE_SERVICE_ROLE_KEY;
   try{
     const result=await diagnose('Kombim arızalı.',[]);
-    assert.equal(result.resultState,'uncertain_price');
+    assert.equal(result.resultState,'service_unavailable');
     assert.equal(result.canRouteTechnician,true);
     assert.deepEqual(result.candidateProbabilities,[]);
     assert.equal(result.estimatedPrice,null);
@@ -184,13 +185,134 @@ test('an explicit spontaneous observation is counted once and the same topic is 
   }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
 });
 
-test('AI cannot attach an invented customer quote to an answer',async()=>{
+test('AI cannot attach an invented customer quote to an answer or change weights',async()=>{
   const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
   try{
     const {store,calls}=fakeStore();
     const provider={...ai(),async extractObservedAnswers(){return [
       {questionId:'q1',answerKey:'yes',quote:'Ocak çalışıyor'}];}};
-    await assert.rejects(turn(store,provider,'Test Model F28.'),/lacks customer evidence/);
+    const response=await turn(store,provider,'Test Model F28.');
     assert.equal(calls.answers.length,0);
+    assert.deepEqual(response.candidateProbabilities.map(item=>item.probability),[50,50]);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('a corrected identity starts another session without resetting the total question budget',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore();
+    const provider={...ai(),async extractIdentity(conversation){const latest=conversation.at(-1).content;
+      return {brand:'Test',model:latest.includes('Model2')?'Model2':'Model',errorCode:'F28'};}};
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    const corrected=await turn(store,provider,'Aslında Test Model2 F28.',[],first.stateToken);
+    assert.equal(calls.sessions.length,2);
+    assert.equal(decodeBoilerState(first.stateToken).totalAskedQuestions,1);
+    assert.equal(decodeBoilerState(corrected.stateToken).totalAskedQuestions,2);
+    assert.deepEqual(decodeBoilerState(corrected.stateToken).answers,[]);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('a corrected observation replaces the old answer and its probability effect',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore({effects:[
+      {question_id:'q1',candidate_id:'c0',answer_key:'yes',effect:'support'},
+      {question_id:'q1',candidate_id:'c0',answer_key:'no',effect:'weaken'},
+      {question_id:'q2',candidate_id:'c0',answer_key:'yes',effect:'support'},
+    ]});
+    const provider={...ai(),async classifyAnswer(_q,message){return message.startsWith('Aslında')?'unknown':'yes';},
+      async extractObservedAnswers(message){return message.includes('Ocak çalışmıyor')
+        ?[{questionId:'q1',answerKey:'no',quote:'Ocak çalışmıyor'}]:[];}};
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    const second=await turn(store,provider,'Evet',[],first.stateToken);
+    assert.deepEqual(second.candidateProbabilities.map(item=>item.probability),[66.67,33.33]);
+    const corrected=await turn(store,provider,'Aslında Ocak çalışmıyor.',[],second.stateToken);
+    assert.deepEqual(corrected.candidateProbabilities.map(item=>item.probability),[33.33,66.67]);
+    assert.equal(decodeBoilerState(corrected.stateToken).answers.find(item=>item.questionId==='q1').answerKey,'no');
+    assert.equal(calls.answers.at(-1).rawAnswer,'Ocak çalışmıyor');
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('ambiguous customer wording remains neutral even if AI would classify it as yes',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore();const provider=ai();
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    const answer=await turn(store,provider,'Galiba var ama emin değilim.',[],first.stateToken);
+    assert.equal(calls.answers[0].answerKey,'unknown');
+    assert.deepEqual(answer.candidateProbabilities.map(item=>item.probability),[50,50]);
+    assert.equal(decodeBoilerState(answer.stateToken).totalAskedQuestions,2);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('repeated spontaneous evidence is counted once and does not consume another question slot',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore({questions:[question(1),question(2),question(3)]});
+    const provider={...ai(),async classifyAnswer(){return 'unknown';},
+      async extractObservedAnswers(message){return message.includes('Ocak çalışıyor')
+        ?[{questionId:'q1',answerKey:'yes',quote:'Ocak çalışıyor'}]:[];}};
+    const first=await turn(store,provider,'Test Model F28. Ocak çalışıyor.');
+    const second=await turn(store,provider,'Ocak çalışıyor.',[],first.stateToken);
+    assert.deepEqual(second.candidateProbabilities.map(item=>item.probability),[66.67,33.33]);
+    assert.equal(decodeBoilerState(second.stateToken).answers.filter(item=>item.questionId==='q1').length,1);
+    assert.equal(calls.answers.filter(item=>item.questionId==='q1').length,1);
+    assert.equal(decodeBoilerState(second.stateToken).totalAskedQuestions,2);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('a failed technical lookup retries once, rebuilds explicit evidence and preserves the question budget',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore({questions:[question(1),question(2),question(3)]});
+    const provider={...ai(),async extractObservedAnswers(message){return message.includes('Ocak çalışıyor')
+      ?[{questionId:'q1',answerKey:'yes',quote:'Ocak çalışıyor'}]:[];}};
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    let attempts=0;
+    const result=await diagnose('Ocak çalışıyor.',[
+      {role:'user',content:'Test Model F28 arızalı.'},{role:'assistant',content:first.aiText}],first.stateToken,
+    {boiler:{repositoryFactory(){attempts++;return attempts===1?{
+      ...store,async getCandidates(){throw Error('Boiler data access failed: offline');}
+    }:store;},aiFactory(){return provider;}}});
+    assert.equal(attempts,2);
+    assert.equal(result.resultState,'diagnosing');
+    assert.deepEqual(result.candidateProbabilities.map(item=>item.probability),[66.67,33.33]);
+    assert.equal(decodeBoilerState(result.stateToken).totalAskedQuestions,2);
+    assert.equal(decodeBoilerState(result.stateToken).askedQuestionIds.length,2);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('two failed technical lookups return service_unavailable without candidates or price',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    let attempts=0;
+    const result=await diagnose('Test Model F28 arızalı.',[],null,{boiler:{
+      repositoryFactory(){attempts++;return null;},aiFactory(){return ai();}}});
+    assert.equal(attempts,2);
+    assert.equal(result.resultState,'service_unavailable');
+    assert.equal(result.canRouteTechnician,true);
+    assert.deepEqual(result.candidateProbabilities,[]);
+    assert.equal(result.pricingData,null);
+    assert.equal(result.estimatedPrice,null);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('retry rebuilds the answer to the last asked question without asking it twice',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore();const provider=ai();
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    let attempts=0;
+    const result=await diagnose('Evet',[
+      {role:'user',content:'Test Model F28 arızalı.'},{role:'assistant',content:first.aiText}],first.stateToken,
+    {boiler:{repositoryFactory(){attempts++;return attempts===1?{
+      ...store,async getCandidates(){throw Error('Boiler data access failed: offline');}
+    }:store;},aiFactory(){return provider;}}});
+    assert.equal(attempts,2);
+    assert.deepEqual(result.candidateProbabilities.map(item=>item.probability),[66.67,33.33]);
+    assert.equal(decodeBoilerState(result.stateToken).totalAskedQuestions,2);
+    assert.deepEqual(decodeBoilerState(result.stateToken).askedQuestionIds,['q1','q2']);
+    assert.equal(calls.asked.filter(item=>item.questionId==='q1').length,2); // one in each session
+    assert.equal(new Set(calls.asked.map(item=>`${item.sessionId}:${item.questionId}`)).size,calls.asked.length);
   }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
 });

@@ -9,9 +9,10 @@ import { getPartPrice } from './part-pricing';
 import { normalizePartText } from './parts-catalog';
 import { calculateOMF } from './omf-engine';
 import { lookupDiagnosticKnowledge } from './diagnostic-knowledge';
-import { diagnoseBoiler } from './boiler-diagnosis';
+import { diagnoseBoiler, decodeBoilerState, type BoilerAI } from './boiler-diagnosis';
 import { productionBoilerAI } from './boiler-ai';
-import { productionBoilerRepository } from './boiler-supabase';
+import { productionBoilerRepository, type BoilerRepository } from './boiler-supabase';
+import { countAskedQuestions } from './boiler-question-budget';
 
 export interface DiagnosisMessage { role: 'user' | 'assistant'; content: string }
 export function normalizeHistory(value: unknown): DiagnosisMessage[] {
@@ -129,21 +130,44 @@ function openAIProvider(apiKey:string):DiagnosisAIProvider {
 }
 
 export async function diagnose(message:string,history:DiagnosisMessage[],stateToken?:unknown,
-  options:{provider?:DiagnosisAIProvider;knowledge?:{identity:{brand:string;model:string;code:string};value:TechnicalKnowledge}}={}) {
+  options:{provider?:DiagnosisAIProvider;knowledge?:{identity:{brand:string;model:string;code:string};value:TechnicalKnowledge};
+    boiler?: { repositoryFactory: () => BoilerRepository | null; aiFactory: () => BoilerAI }}={}) {
   // The injectable legacy path remains for archived research regressions. Real
   // requests use only the closed, durable Supabase candidate/question/price pool.
   if (!options.provider && !options.knowledge) {
-    const repository = productionBoilerRepository();
-    if (!repository) return {
-      aiText:'Doğrulanmış teknik bilgi deposuna şu anda ulaşılamıyor. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
-      resultState:'uncertain_price' as const,canRouteTechnician:true,
-      stateToken:null,informationProgress:0,assessmentComplete:true,candidateProbabilities:[],
-      researchStatus:'unavailable',diagnosticStatus:'needs_onsite',pricingStatus:'unavailable',
-      pricingData:null,estimatedPrice:null,isReadyForPrice:false,priceSource:null,
-      deterministicOMF:null,confidence:0,technicalSource:null,faultTitle:null,
-      basePartPrice:0,diagnosticEvidence:[],stopReason:'knowledge_unavailable',options:[],
+    const repositoryFactory = options.boiler?.repositoryFactory ?? productionBoilerRepository;
+    const aiFactory = options.boiler?.aiFactory ?? productionBoilerAI;
+    const oldState = decodeBoilerState(stateToken);
+    const run = async (retry: boolean, budgetFloor: number) => {
+      const repository = repositoryFactory();
+      if (!repository) throw Error('Boiler technical data unavailable');
+      return diagnoseBoiler(message, history, retry ? null : stateToken, repository, aiFactory(),
+        { budgetFloor, rebuildFromHistory: retry, identityFallback: retry && oldState ? {
+          brand: oldState.brand, model: oldState.model, errorCode: oldState.errorCode, codeAsked: oldState.codeAsked,
+        } : undefined });
     };
-    return diagnoseBoiler(message, history, stateToken, repository, productionBoilerAI());
+    const accessError = (error: unknown) => error instanceof Error &&
+      /^(?:Boiler technical data unavailable|Boiler data access failed:|fetch failed)/i.test(error.message);
+    try {
+      return await run(false, 0);
+    } catch (error) {
+      if (!accessError(error)) throw error;
+      const budgetFloor = Math.max(oldState?.totalAskedQuestions ?? 0, countAskedQuestions(history));
+      try {
+        return await run(true, budgetFloor);
+      } catch (retryError) {
+        if (!accessError(retryError)) throw retryError;
+        return {
+          aiText:'Teknik veri hizmetine şu anda ulaşılamıyor. Bilgilerinizi yeniden sormadan usta yönlendirmesi isteyebilirsiniz.',
+          resultState:'service_unavailable' as const,canRouteTechnician:true,
+          stateToken:null,informationProgress:Math.round(budgetFloor / 12 * 100),assessmentComplete:true,
+          candidateProbabilities:[],researchStatus:'unavailable',diagnosticStatus:'needs_onsite',
+          pricingStatus:'unavailable',pricingData:null,estimatedPrice:null,isReadyForPrice:false,
+          priceSource:null,deterministicOMF:null,confidence:0,technicalSource:null,faultTitle:null,
+          basePartPrice:0,diagnosticEvidence:[],stopReason:'service_unavailable',options:[],
+        };
+      }
+    }
   }
   let previous=decodeMemory(stateToken);
   const apiKey=process.env.OPENAI_API_KEY;

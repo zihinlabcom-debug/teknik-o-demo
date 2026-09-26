@@ -23,6 +23,7 @@ export interface BoilerRepository {
   recordQuestionAsked(sessionId: string, questionId: string, askedAt: string): Promise<void>;
   recordAnswer(input: { sessionId: string; questionId: string; rawAnswer: string;
     answerKey: string; numericAnswer: number | null; askedAt: string | null; source: 'customer' | 'ai_extracted' }): Promise<void>;
+  deleteAnswer(sessionId: string, questionId: string): Promise<void>;
   recordCandidates(sessionId: string, assessments: BoilerAssessment[]): Promise<void>;
   updateSession(sessionId: string, input: { status: 'diagnosing' | 'completed' | 'escalated';
     questionCompletionPercent: number | null; confidenceBasis: Record<string, unknown> | null;
@@ -122,9 +123,9 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
       return result.data.id;
     },
     async recordQuestionAsked(sessionId, questionId, askedAt) {
-      const result = await db.from('boiler_diagnosis_answers').insert({
+      const result = await db.from('boiler_diagnosis_answers').upsert({
         session_id: sessionId, question_id: questionId, asked_at: askedAt,
-      });
+      }, { onConflict: 'session_id,question_id', ignoreDuplicates: true });
       fail(result.error);
     },
     async recordAnswer(input) {
@@ -134,6 +135,11 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         numeric_answer: input.numericAnswer, answer_source: input.source,
         asked_at: input.askedAt, answered_at: new Date().toISOString(),
       }, { onConflict: 'session_id,question_id' });
+      fail(result.error);
+    },
+    async deleteAnswer(sessionId, questionId) {
+      const result = await db.from('boiler_diagnosis_answers').delete()
+        .eq('session_id', sessionId).eq('question_id', questionId);
       fail(result.error);
     },
     async recordCandidates(sessionId, assessments) {
