@@ -19,6 +19,9 @@ export async function POST(req: Request) {
     const result = await diagnose(message, history, body.stateToken);
     return NextResponse.json({
       replyMessage: result.aiText,
+      resultState: 'resultState' in result ? result.resultState : null,
+      canRouteTechnician: 'canRouteTechnician' in result ? result.canRouteTechnician : false,
+      pricingData: 'pricingData' in result ? result.pricingData : null,
       researchStatus: result.researchStatus,
       stateToken: result.stateToken,
       informationProgress: result.informationProgress,

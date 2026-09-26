@@ -9,6 +9,9 @@ import { getPartPrice } from './part-pricing';
 import { normalizePartText } from './parts-catalog';
 import { calculateOMF } from './omf-engine';
 import { lookupDiagnosticKnowledge } from './diagnostic-knowledge';
+import { diagnoseBoiler } from './boiler-diagnosis';
+import { productionBoilerAI } from './boiler-ai';
+import { productionBoilerRepository } from './boiler-supabase';
 
 export interface DiagnosisMessage { role: 'user' | 'assistant'; content: string }
 export function normalizeHistory(value: unknown): DiagnosisMessage[] {
@@ -127,6 +130,21 @@ function openAIProvider(apiKey:string):DiagnosisAIProvider {
 
 export async function diagnose(message:string,history:DiagnosisMessage[],stateToken?:unknown,
   options:{provider?:DiagnosisAIProvider;knowledge?:{identity:{brand:string;model:string;code:string};value:TechnicalKnowledge}}={}) {
+  // The injectable legacy path remains for archived research regressions. Real
+  // requests use only the closed, durable Supabase candidate/question/price pool.
+  if (!options.provider && !options.knowledge) {
+    const repository = productionBoilerRepository();
+    if (!repository) return {
+      aiText:'Doğrulanmış teknik bilgi deposuna şu anda ulaşılamıyor. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
+      resultState:'uncertain_price' as const,canRouteTechnician:true,
+      stateToken:null,informationProgress:0,assessmentComplete:true,candidateProbabilities:[],
+      researchStatus:'unavailable',diagnosticStatus:'needs_onsite',pricingStatus:'unavailable',
+      pricingData:null,estimatedPrice:null,isReadyForPrice:false,priceSource:null,
+      deterministicOMF:null,confidence:0,technicalSource:null,faultTitle:null,
+      basePartPrice:0,diagnosticEvidence:[],stopReason:'knowledge_unavailable',options:[],
+    };
+    return diagnoseBoiler(message, history, stateToken, repository, productionBoilerAI());
+  }
   let previous=decodeMemory(stateToken);
   const apiKey=process.env.OPENAI_API_KEY;
   if(!apiKey)throw Error('OPENAI_API_KEY is missing');
