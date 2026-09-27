@@ -86,7 +86,7 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
     },
     async getQuestions() {
       const result = await db.from('boiler_diagnostic_questions')
-        .select('id,question_key,question_text,evidence_group,customer_observable,is_safety_question,is_active,priority')
+        .select('id,question_key,question_text,answer_options,evidence_group,customer_observable,is_safety_question,is_active,priority')
         .eq('is_active', true).eq('customer_observable', true).limit(1000);
       fail(result.error);
       if ((result.data?.length ?? 0) >= 1000) throw Error('Boiler question catalog exceeds lookup limit');

@@ -88,7 +88,7 @@ test('unknown code selects only verified symptom pool, with no fabricated price'
     const {store}=fakeStore({candidates:[baseCandidate('review',null,'needs_review'),baseCandidate('symptom',null)]
       ,questions:[],effects:[]});
     const response=await turn(store,ai({brand:'Test',model:'Model',errorCode:'E99'}),'Test Model E99 arızalı.');
-    assert.equal(response.resultState,'pricing_missing');
+    assert.equal(response.resultState,'uncertain_price');
     assert.deepEqual(response.candidateProbabilities,[{name:'symptom',probability:100}]);
     assert.equal(response.pricingData,null);
     assert.equal(response.estimatedPrice,null);
@@ -101,26 +101,46 @@ test('no displayed error code continues in the verified symptom pool without dem
     const {store}=fakeStore({candidates:[baseCandidate('symptom',null)],questions:[],effects:[]});
     const response=await turn(store,ai({brand:'Test',model:'Model',errorCode:''}),
       'Test Model hata kodu yok, sıcak su gelmiyor.');
-    assert.equal(response.resultState,'pricing_missing');
+    assert.equal(response.resultState,'uncertain_price');
     assert.deepEqual(response.candidateProbabilities,[{name:'symptom',probability:100}]);
     assert.doesNotMatch(response.aiText,/hangi hata kodu/i);
   }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
 });
 
-test('a priced candidate returns only stored pricing and safety stops before normal diagnosis',async()=>{
+test('a lone candidate without customer evidence never fetches stored pricing',async()=>{
   const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
   try{
     const storedPrice={id:'price-id',candidate_id:'c0',operation_name:'Kayıtlı işlem',pricing_mode:'range',
       currency:'TRY',labor_price_min:100,labor_price_max:200};
-    const {store}=fakeStore({candidates:[baseCandidate('c0')],questions:[],effects:[],price:storedPrice});
-    const priced=await turn(store,ai(),'Test Model F28 arızalı.');
-    assert.equal(priced.resultState,'priced_candidate');
-    assert.deepEqual(priced.pricingData,storedPrice);
-    assert.equal(priced.estimatedPrice,null);
-    const {store:safetyStore,calls}=fakeStore();
+    const {store,calls}=fakeStore({candidates:[baseCandidate('c0')],questions:[],effects:[],price:storedPrice});
+    const unconfirmed=await turn(store,ai(),'Test Model F28 arızalı.');
+    assert.equal(unconfirmed.resultState,'uncertain_price');
+    assert.deepEqual(unconfirmed.candidateProbabilities,[{name:'c0',probability:100}]);
+    assert.equal(unconfirmed.pricingData,null);
+    assert.deepEqual(calls.pricing,[]);
+    const {store:safetyStore,calls:safetyCalls}=fakeStore();
     const stopped=await turn(safetyStore,ai(),'Test Model F28, gaz kokusu var.');
     assert.equal(stopped.resultState,'safety_stop');
-    assert.equal(calls.snapshots.length,0);
+    assert.equal(safetyCalls.snapshots.length,0);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('customer-supported leader still enters the existing verification and stored-price flow',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const storedPrice={id:'price-id',candidate_id:'c0',operation_name:'Kayıtlı işlem',pricing_mode:'range',
+      currency:'TRY',labor_price_min:100,labor_price_max:200};
+    const {store,calls}=fakeStore({price:storedPrice});
+    const provider=ai();
+    const first=await turn(store,provider,'Test Model F28 arızalı.');
+    assert.equal(first.resultState,'diagnosing');
+    const second=await turn(store,provider,'Evet',[],first.stateToken);
+    assert.equal(second.resultState,'diagnosing');
+    const priced=await turn(store,provider,'Evet',[],second.stateToken);
+    assert.equal(priced.resultState,'priced_candidate');
+    assert.deepEqual(priced.candidateProbabilities.map(item=>item.probability),[80,20]);
+    assert.deepEqual(priced.pricingData,storedPrice);
+    assert.deepEqual(calls.pricing,['c0']);
   }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
 });
 

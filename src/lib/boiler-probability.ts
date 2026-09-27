@@ -12,6 +12,7 @@ export interface BoilerCandidate {
 }
 export interface BoilerQuestion {
   id: string; question_key: string; question_text: string; evidence_group: string | null;
+  answer_options?: string[] | null;
   customer_observable: boolean; is_safety_question: boolean; is_active: boolean; priority: number | null;
 }
 export interface BoilerQuestionEffect {
@@ -75,29 +76,39 @@ export function calculateBoilerWeights(candidates: BoilerCandidate[], answers: B
     probability: normalized[index], rank: rankByIndex.get(index)! }));
 }
 
+// A singleton's relative 100% comes from pool size, not diagnostic confirmation.
+// Multiple-candidate pools still need observed effects to move a leader above 75%.
+export function hasPricingEvidence(candidates: BoilerCandidate[], answers: BoilerAnswer[],
+  questions: BoilerQuestion[], effects: BoilerQuestionEffect[]): boolean {
+  if (candidates.length !== 1) return true;
+  const candidateId = candidates[0].id;
+  return answers.some(answer => {
+    if (answer.answerKey === 'unknown') return false;
+    const question = questions.find(item => item.id === answer.questionId);
+    return !!question && question.is_active && question.customer_observable && !question.is_safety_question &&
+      effects.some(effect => effect.question_id === question.id && effect.candidate_id === candidateId &&
+        effect.answer_key === answer.answerKey && effect.effect === 'support');
+  });
+}
+
 export function eligibleQuestions(questions: BoilerQuestion[], effects: BoilerQuestionEffect[],
   candidateIds: string[], askedIds: string[], usedGroups: string[], safetyOnly = false) {
   const asked = new Set(askedIds), groups = new Set(usedGroups);
   return questions.filter(question => question.is_active && question.customer_observable &&
     !asked.has(question.id) && !groups.has(question.evidence_group || question.question_key) &&
     (safetyOnly ? question.is_safety_question : !question.is_safety_question) &&
-    (safetyOnly || (() => {
-      const rows = effects.filter(effect => effect.question_id === question.id && effect.answer_key !== 'unknown');
-      const keys = [...new Set(rows.map(item => item.answer_key))];
-      return keys.some(key => {
-        const factors = candidateIds.map(id => BOILER_EFFECT_FACTOR[
-          rows.find(item => item.candidate_id === id && item.answer_key === key)?.effect ?? 'neutral']);
-        return candidateIds.length === 1 ? factors[0] !== 1 : new Set(factors).size > 1;
-      });
-    })()))
+    (safetyOnly || new Set(effects.filter(effect => effect.question_id === question.id &&
+      candidateIds.includes(effect.candidate_id) && effect.answer_key !== 'unknown' && effect.effect !== 'neutral')
+      .map(effect => effect.candidate_id)).size > 0))
     .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 }
 
 export function determineBoilerResult(assessments: BoilerAssessment[], questionCount: number,
-  firstThresholdAt: number | null, usefulQuestionAvailable: boolean, pricingAvailable: boolean): BoilerResultState {
+  firstThresholdAt: number | null, usefulQuestionAvailable: boolean, pricingAvailable: boolean,
+  pricingEvidenceReady: boolean): BoilerResultState {
   if (!assessments.length) return 'uncertain_price';
   const top = Math.max(...assessments.map(item => item.probability));
-  if (top >= PRICE_CANDIDATE_THRESHOLD) {
+  if (top >= PRICE_CANDIDATE_THRESHOLD && pricingEvidenceReady) {
     const remaining = firstThresholdAt === null ? Math.min(2, MAX_BOILER_QUESTIONS - questionCount)
       : Math.min(2, MAX_BOILER_QUESTIONS - firstThresholdAt) - (questionCount - firstThresholdAt);
     if (remaining > 0 && usefulQuestionAvailable) return 'verification';

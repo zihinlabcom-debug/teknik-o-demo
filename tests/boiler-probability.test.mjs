@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { calculateBoilerWeights, determineBoilerResult, eligibleQuestions, MAX_BOILER_QUESTIONS,
+import { calculateBoilerWeights, determineBoilerResult, eligibleQuestions, hasPricingEvidence, MAX_BOILER_QUESTIONS,
   selectCandidatePool, verifiedCandidates } from '../src/lib/boiler-probability.ts';
 
 const candidates = ['Eşanjör/dolaşım','Anakart','Soket/kablo','Fan'].map((candidate_name, index) => ({
@@ -41,16 +41,39 @@ test('verification consumes remaining slots at question 10, 11 and 12', () => {
   const leading = [{candidateId:'c0',candidateName:'A',probability:80,rank:1},
     {candidateId:'c1',candidateName:'B',probability:20,rank:2}];
   assert.equal(MAX_BOILER_QUESTIONS,12);
-  assert.equal(determineBoilerResult(leading,10,null,true,true),'verification');
-  assert.equal(determineBoilerResult(leading,11,10,true,true),'verification');
-  assert.equal(determineBoilerResult(leading,12,10,false,true),'priced_candidate');
-  assert.equal(determineBoilerResult(leading,11,null,true,true),'verification');
-  assert.equal(determineBoilerResult(leading,12,11,false,true),'priced_candidate');
-  assert.equal(determineBoilerResult(leading,12,null,false,true),'priced_candidate');
-  assert.equal(determineBoilerResult(leading,10,null,false,false),'pricing_missing');
-  assert.equal(determineBoilerResult(leading,12,10,false,false),'pricing_missing');
-  assert.equal(determineBoilerResult([{...leading[0],probability:70},{...leading[1],probability:30}],12,null,false,true),
+  assert.equal(determineBoilerResult(leading,10,null,true,true,true),'verification');
+  assert.equal(determineBoilerResult(leading,11,10,true,true,true),'verification');
+  assert.equal(determineBoilerResult(leading,12,10,false,true,true),'priced_candidate');
+  assert.equal(determineBoilerResult(leading,11,null,true,true,true),'verification');
+  assert.equal(determineBoilerResult(leading,12,11,false,true,true),'priced_candidate');
+  assert.equal(determineBoilerResult(leading,12,null,false,true,true),'priced_candidate');
+  assert.equal(determineBoilerResult(leading,10,null,false,false,true),'pricing_missing');
+  assert.equal(determineBoilerResult(leading,12,10,false,false,true),'pricing_missing');
+  assert.equal(determineBoilerResult([{...leading[0],probability:70},{...leading[1],probability:30}],12,null,false,true,true),
     'uncertain_price');
+});
+
+test('single relative 100 needs customer diagnostic support before the pricing gate', () => {
+  const singleton = [candidates[0]];
+  const relative = calculateBoilerWeights(singleton, [], []);
+  assert.deepEqual(relative.map(item=>item.probability),[100]);
+  const diagnostic = {id:'q',question_key:'pressure',question_text:'Basınç düşük mü?',
+    evidence_group:'pressure',customer_observable:true,is_safety_question:false,is_active:true,priority:1};
+  const safety = {...diagnostic,id:'s',question_key:'safety',is_safety_question:true};
+  const support = [{question_id:'q',candidate_id:'c0',answer_key:'yes',effect:'support'}];
+  const safetyEffect = [{question_id:'s',candidate_id:'c0',answer_key:'yes',effect:'support'}];
+  const answer = (questionId,answerKey='yes') => [{questionId,answerKey,evidenceGroup:'pressure'}];
+  assert.equal(hasPricingEvidence(singleton,[],[diagnostic],support),false);
+  assert.equal(hasPricingEvidence(singleton,answer('q','unknown'),[diagnostic],support),false);
+  assert.equal(hasPricingEvidence(singleton,answer('q'),[diagnostic],[]),false);
+  assert.equal(hasPricingEvidence(singleton,answer('q'),[diagnostic],
+    [{question_id:'q',candidate_id:'c0',answer_key:'yes',effect:'weaken'}]),false);
+  assert.equal(hasPricingEvidence(singleton,answer('s'),[safety],safetyEffect),false);
+  assert.equal(hasPricingEvidence(singleton,answer('q'),[diagnostic],support),true);
+  assert.equal(hasPricingEvidence(candidates,[],[diagnostic],support),true);
+  assert.equal(determineBoilerResult(relative,0,null,false,true,false),'uncertain_price');
+  assert.equal(determineBoilerResult(relative,0,null,true,true,false),'diagnosing');
+  assert.equal(determineBoilerResult(relative,1,null,false,true,true),'priced_candidate');
 });
 
 test('only active verified candidates enter code or symptom pools', () => {

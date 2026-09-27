@@ -68,17 +68,20 @@ test('identity supplied in the first message costs no question slots',()=>withSe
   assert.equal(state.askedQuestionIds.length,1);
 }));
 
-test('model clarification and post-threshold verification consume the same total budget',()=>withSecret(async()=>{
+test('model clarification and evidence-backed verification consume the same total budget',()=>withSecret(async()=>{
   const clarified=await run(['Test Model F28 arızalı.','Model Tam'],{ambiguous:true});
   assert.equal(clarified.replies[0].resultState,'diagnosing');
   assert.match(clarified.replies[0].aiText,/tam model/i);
   assert.equal(clarified.state.totalAskedQuestions,2);
   assert.equal(clarified.state.askedQuestionIds.length,1);
-  const verification=await run(['Test Model F28 arızalı.','Bilmiyorum','Bilmiyorum'],{oneCandidate:true});
-  assert.equal(verification.replies[0].resultState,'verification');
-  assert.equal(verification.replies[1].resultState,'verification');
-  assert.equal(verification.state.totalAskedQuestions,2);
-  assert.equal(verification.replies[2].resultState,'pricing_missing');
+  const verification=await run(['Test Model F28 arızalı.','Evet','Evet','Bilmiyorum','Bilmiyorum']);
+  assert.equal(verification.replies[2].resultState,'verification');
+  assert.equal(verification.replies[3].resultState,'verification');
+  assert.equal(verification.state.totalAskedQuestions,4);
+  assert.equal(verification.replies[4].resultState,'pricing_missing');
+  const singleton=await run(['Test Model F28 arızalı.','Bilmiyorum','Bilmiyorum'],{oneCandidate:true});
+  assert.deepEqual(singleton.replies.map(reply=>reply.resultState),['diagnosing','diagnosing','diagnosing']);
+  assert.equal(singleton.state.totalAskedQuestions,3);
 }));
 
 test('independent requests in one message each cost a slot and cannot exceed twelve',()=>{

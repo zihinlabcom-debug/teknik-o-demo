@@ -3,7 +3,7 @@ import { canAskBoilerQuestion, countAskedQuestions, countBoilerQuestionRequests 
 import { containsErrorCode } from './manufacturer-document';
 import { normalizePartText } from './parts-catalog';
 import { inferObservedTopics } from './diagnostic-state';
-import { calculateBoilerWeights, determineBoilerResult, eligibleQuestions, MAX_BOILER_QUESTIONS,
+import { calculateBoilerWeights, determineBoilerResult, eligibleQuestions, hasPricingEvidence, MAX_BOILER_QUESTIONS,
   PRICE_CANDIDATE_THRESHOLD, selectCandidatePool, type BoilerAnswer, type BoilerQuestion,
   type BoilerQuestionEffect, type BoilerResultState } from './boiler-probability';
 import type { BoilerRepository, BoilerPrice } from './boiler-supabase';
@@ -50,9 +50,16 @@ export function decodeBoilerState(token: unknown): BoilerState | null {
 const unknown = (message: string) => /^(bilmiyorum|emin degilim|goremiyorum|hata kodu yok|kod yok|hatirlamiyorum)[.!? ]*$/.test(normalizePartText(message));
 const ambiguousAnswer = (message: string) => /\b(?:belki|galiba|sanirim|emin degilim|tam emin degilim|olabilir)\b/.test(normalizePartText(message));
 const correction = (message: string) => /^(?:aslinda|duzeltiyorum|yanlis soyledim)\b/.test(normalizePartText(message));
-const safety = (message: string) => /(?:gaz kokusu (?:var|geliyor)|gaz kacagi var|gaz kokuyor|yanik kokusu (?:var|geliyor)|duman cikiyor|ciddi su kacagi var|elektrik carpti|asiri isinma (?:var|oluyor))/.test(normalizePartText(message));
-const safeQuestion = (value: string) => !/(?:multimetre|voltaj|direnc|ohm|gaz basinc|servis manometresi|baca gazi|yanma analizi|kart uzerinde|cihazi sok|kapagi ac|gaz valfi|gaz vanasini|gaz baglantisi|elektrik baglantisi|fi[sş]i cek)/.test(normalizePartText(value));
+const safety = (message: string) => {
+  const text = normalizePartText(message);
+  const gasConcern = [...text.matchAll(/gaz kokusu|gaz kacagi/g)].some(match =>
+    !/^\s*(?:yok|almiyorum|gelmiyor|hissetmiyorum)\b/.test(text.slice(match.index! + match[0].length)));
+  return gasConcern ||
+    /(?:yanik kokusu|duman cikiyor|ciddi su kacagi|elektrik carp|asiri isinma)/.test(text);
+};
+const safeQuestion = (value: string) => !/(?:multimetre|voltaj|direnc|ohm|gaz basinc|servis manometresi|baca gazi|yanma analizi|kart uzerinde|cihazi sok|kapagi ac|gaz valfi)/.test(normalizePartText(value));
 const supportedKey = (question: BoilerQuestion, effects: BoilerQuestionEffect[]) => [...new Set([
+  ...(Array.isArray(question.answer_options) ? question.answer_options.filter((key): key is string => typeof key === 'string') : []),
   ...effects.filter(item => item.question_id === question.id).map(item => item.answer_key), 'unknown',
 ])];
 
@@ -190,7 +197,11 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       const keys = supportedKey(question, effects);
       const answerKey = unknown(response) || ambiguousAnswer(response) || correction(response) ? 'unknown' :
         await ai.classifyAnswer(question, response, keys);
-      if (keys.includes(answerKey)) await saveAnswer(question, response, answerKey, askedAt, 'customer');
+      if (keys.includes(answerKey)) {
+        await saveAnswer(question, response, answerKey, askedAt, 'customer');
+        if (question.is_safety_question && answerKey === 'yes')
+          return result('Güvenliğiniz için teşhisi durduruyorum. Cihazı denemeyin, güvenli alana çıkın ve dışarıdan acil destek alın.', 'safety_stop');
+      }
     }
   }
 
@@ -203,6 +214,8 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     if (!keys.includes(answerKey)) throw Error('AI supplied an unsupported boiler answer');
     await saveAnswer(question, message, answerKey, state.pendingAskedAt ?? new Date().toISOString(), 'customer');
     state.pendingQuestionId = null; state.pendingAskedAt = null;
+    if (question.is_safety_question && answerKey === 'yes')
+      return result('Güvenliğiniz için teşhisi durduruyorum. Cihazı denemeyin, güvenli alana çıkın ve dışarıdan acil destek alın.', 'safety_stop');
   }
   if (ai.extractObservedAnswers) {
     const extractable = questions.filter(question => question.is_active && question.customer_observable &&
@@ -231,7 +244,9 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if (!assessments.length) return result('Doğrulanmış adayların tamamı verilen yanıtlarla dışlandı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   const top = [...assessments].sort((a, b) => b.probability - a.probability)[0];
-  if (top.probability >= PRICE_CANDIDATE_THRESHOLD && state.firstThresholdAt === null)
+  const pricingEvidenceReady = hasPricingEvidence(candidates, state.answers, questions, effects);
+  if (!pricingEvidenceReady) state.firstThresholdAt = null;
+  if (pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD && state.firstThresholdAt === null)
     state.firstThresholdAt = state.totalAskedQuestions;
   const usedGroups = state.answers.map(item => item.evidenceGroup);
   const observedTopics = new Set<string>(customerMessages.flatMap(inferObservedTopics));
@@ -242,9 +257,10 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const diagnosticQuestions = available(false);
   const canAsk = state.totalAskedQuestions < MAX_BOILER_QUESTIONS;
   const nextOptions = canAsk ? (safetyQuestions.length ? safetyQuestions : diagnosticQuestions) : [];
-  const price = top.probability >= PRICE_CANDIDATE_THRESHOLD ? await repository.getPricing(top.candidateId) : null;
+  const price = pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD ?
+    await repository.getPricing(top.candidateId) : null;
   const resultState = determineBoilerResult(assessments, state.totalAskedQuestions,
-    state.firstThresholdAt, nextOptions.length > 0, price !== null);
+    state.firstThresholdAt, nextOptions.length > 0, price !== null, pricingEvidenceReady);
   if (resultState === 'priced_candidate') return result(`En güçlü doğrulanmış aday ${top.candidateName}. Fiyat bilgisi hazır; usta yönlendirmesi isteyebilirsiniz.`,
     resultState,{ assessments, price, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   if (resultState === 'pricing_missing') return result(`En güçlü doğrulanmış aday ${top.candidateName}; ancak güncel fiyat kaydı yok. Fiyat belirsiz, usta yönlendirmesi isteyebilirsiniz.`,
