@@ -1,4 +1,4 @@
-import { sourceContains, containsErrorCode } from './manufacturer-document';
+import { sourceContains, containsErrorCode } from './manufacturer-document-text';
 
 function normalized(value:string) {
   return value.normalize('NFKC').toUpperCase().replace(/İ/g,'I').replace(/[‐‑–—]/g,'-').replace(/\s+/g,' ').trim();

@@ -1,6 +1,6 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { canAskBoilerQuestion, countAskedQuestions, countBoilerQuestionRequests } from './boiler-question-budget';
-import { containsErrorCode } from './manufacturer-document';
+import { containsErrorCode } from './manufacturer-document-text';
 import { normalizePartText } from './parts-catalog';
 import { canonicalManufacturer } from './verified-knowledge';
 import { DOMAINS } from './manufacturer-registry';

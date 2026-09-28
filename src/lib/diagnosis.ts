@@ -1,7 +1,7 @@
-import { getResearchedKnowledge, verifiedKnowledgeRepository, researchKey, normalizeCode, type TechnicalKnowledge } from './technical-research';
+import type { TechnicalKnowledge } from './technical-research';
 import {toVerifiedKnowledge} from './verified-knowledge';
 import {toResearchContext} from './research-context';
-import { containsErrorCode } from './manufacturer-document';
+import { containsErrorCode } from './manufacturer-document-text';
 import { QUESTIONS, MIN_CONFIDENT_INFORMATION, RejectedDiagnosticQuestion, canonicalTopic, extractCustomerObservations, inferObservedTopics, isUsableDiagnosticAnswer, advanceDiagnosis, decodeMemory, encodeMemory, type AIDiagnosticAssessment, type AIQuestion, type CustomerEvidence, type QuestionId } from './diagnostic-state';
 import {matchVerifiedModel} from './model-name-match';
 import OpenAI from 'openai';
@@ -169,6 +169,8 @@ export async function diagnose(message:string,history:DiagnosisMessage[],stateTo
       }
     }
   }
+  // Archived/injected research is outside the production Supabase import path.
+  const { getResearchedKnowledge, verifiedKnowledgeRepository, researchKey, normalizeCode } = await import('./technical-research');
   let previous=decodeMemory(stateToken);
   const apiKey=process.env.OPENAI_API_KEY;
   if(!apiKey)throw Error('OPENAI_API_KEY is missing');

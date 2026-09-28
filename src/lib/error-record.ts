@@ -1,4 +1,4 @@
-import {sourceContains} from './manufacturer-document';
+import {sourceContains} from './manufacturer-document-text';
 export interface TextSpan {id:string;start:number;end:number;text:string}
 export interface ErrorRecord {
  id:string;normalizedCode:string;originalCode:string;start:number;end:number;text:string;
