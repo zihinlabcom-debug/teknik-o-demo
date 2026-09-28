@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { decodeHTMLStrict } from 'entities';
 import { canonicalManufacturer, normalizedModel } from './verified-knowledge';
 import type { BoilerCandidate, BoilerQuestion, BoilerQuestionEffect, BoilerAssessment } from './boiler-probability';
 import { normalizeBoilerErrorCode } from './boiler-probability';
@@ -125,7 +126,9 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         .eq('family_id', familyId).eq('verification_status', 'verified').eq('is_active', true).limit(1000);
       fail(result.error);
       if ((result.data?.length ?? 0) >= 1000) throw Error('Boiler candidate catalog exceeds lookup limit');
-      return result.data ?? [];
+      // Catalog labels are plain text throughout consensus, API and React.
+      // Decode character references as text; never interpret them as markup.
+      return (result.data ?? []).map(row => ({ ...row, candidate_name: decodeHTMLStrict(row.candidate_name) }));
     },
     async getErrorCodeModelIds(familyId, errorCode) {
       const [family, models] = await Promise.all([

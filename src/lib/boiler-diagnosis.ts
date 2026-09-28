@@ -247,7 +247,9 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       ? [{kind:formerCurrent.timing,quote:formerCurrent.quote}]:[];
     const historical=[...new Map([...(oldTimeline?.historical??[]),...previousTiming,...newTimeline.historical]
       .map(e=>[e.kind+'|'+e.quote,e])).values()];
-    state.timeline={...newTimeline,historical,needsClarification:newTimeline.needsClarification||
+    state.timeline={...newTimeline,historical,current:{...newTimeline.current,
+      persistent:newTimeline.current.persistent||!!(oldTimeline?.needsClarification&&state.timelineClarificationAsked&&formerCurrent?.persistent&&newTimeline.current.timing)},
+      needsClarification:newTimeline.needsClarification||
       historical.length>0&&newTimeline.current.persistent&&!newTimeline.current.timing&&!unknown(message)&&!ambiguousAnswer(message)};
   }
   const result = async (reply: string, resultState: BoilerResultState, options: {
@@ -433,6 +435,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     const isTiming=question.question_key==='fault_timing_after_start';
     const answerKey = isTiming&&(newTimeline.needsClarification||newTimeline.current.persistent&&!newTimeline.current.timing)?'unknown':
       isTiming&&newTimeline.current.timing?newTimeline.current.timing:
+      isTiming&&state.timelineClarificationAsked?'unknown':
       unknown(message) || ambiguousAnswer(message) || correction(message) ? 'unknown' :
       await ai.classifyAnswer(question, message, keys);
     if (!keys.includes(answerKey)) throw Error('AI supplied an unsupported boiler answer');
@@ -455,7 +458,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
         const allowed = extractable.find(item => item.id === observed.questionId);
         const question = questions.find(item => item.id === observed.questionId);
         if(question?.question_key==='fault_timing_after_start'&&
-          (sourceTimeline.historical.length||sourceTimeline.needsClarification||sourceTimeline.current.persistent&&!sourceTimeline.current.timing)&&
+          (state.timelineClarificationAsked||sourceTimeline.historical.length||sourceTimeline.needsClarification||sourceTimeline.current.persistent&&!sourceTimeline.current.timing)&&
           (!sourceTimeline.current.timing||observed.answerKey!==sourceTimeline.current.timing))continue;
         if (!allowed || !question || !allowed.allowedKeys.includes(observed.answerKey) ||
             observed.answerKey === 'unknown' || typeof observed.quote !== 'string' ||
