@@ -9,6 +9,11 @@ import { calculateBoilerWeights, consensusQuestionEffects, determineBoilerResult
   PRICE_CANDIDATE_THRESHOLD, selectCandidatePool, type BoilerAnswer, type BoilerQuestion,
   type BoilerCandidateMode, type BoilerQuestionEffect, type BoilerResultState } from './boiler-probability';
 import type { BoilerRepository, BoilerPrice } from './boiler-supabase';
+import { candidateAllowedForFuel, questionAllowedForFuel, type BoilerFuelType } from './boiler-fuel';
+import {suggestBrands,suggestModels,type BoilerIdentityCatalog} from './boiler-identity-suggestions';
+import {reviewedBoilerEffects} from './boiler-effects';
+import {extractBoilerTimeline,type BoilerTimeline} from './boiler-timeline';
+import {buildBoilerGroups,questionDiscrimination,type BoilerGroupAssessment} from './boiler-groups';
 
 export interface BoilerMessage { role: 'user' | 'assistant'; content: string }
 export interface BoilerAI {
@@ -18,15 +23,21 @@ export interface BoilerAI {
     Promise<{ questionId: string; answerKey: string; quote: string }[]>;
   chooseQuestion(input: { brand: string; model: string; errorCode: string | null;
     candidates: { id: string; name: string; probability: number }[];
-    questions: BoilerQuestion[]; effects: BoilerQuestionEffect[]; customerMessages: string[] }): Promise<string | null>;
+    questions: BoilerQuestion[]; effects: BoilerQuestionEffect[]; customerMessages: string[];
+    groups?:BoilerGroupAssessment[];questionValue?:ReturnType<typeof questionDiscrimination> }): Promise<string | null>;
 }
 interface BoilerState {
   version: 1; sessionId: string; brand: string; model: string; errorCode: string | null;
   familyId: string | null; officialModelId: string | null;
+  fuelType?: BoilerFuelType;
   codeAsked: boolean; pendingIdentity: 'brand' | 'model' | 'code' | null;
   answers: BoilerAnswer[]; askedQuestionIds: string[]; totalAskedQuestions: number;
   pendingQuestionId: string | null; pendingAskedAt: string | null;
   firstThresholdAt: number | null; finished: boolean; resultState: BoilerResultState;
+  identityConfirmation?: {fields: ('brand'|'model')[]; text: string;
+    choices: {brand: string; model: string}[]};
+  timeline?:BoilerTimeline;
+  timelineClarificationAsked?:boolean;
 }
 const secret = () => process.env.DIAGNOSIS_STATE_SECRET || process.env.OPENAI_API_KEY;
 export function encodeBoilerState(state: BoilerState) {
@@ -128,6 +139,25 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   repository: BoilerRepository, ai: BoilerAI, options: { budgetFloor?: number; rebuildFromHistory?: boolean;
     identityFallback?: { brand: string; model: string; errorCode: string | null; codeAsked: boolean } } = {}) {
   let state = decodeBoilerState(token);
+  let assessmentGroups:BoilerGroupAssessment[]=[];
+  const confirmation=state?.identityConfirmation;
+  let confirmationRejected=false,confirmationUnanswered=false;
+  if(state&&confirmation){
+    const answer=normalizePartText(message);
+    const numbered=/^[1-4]$/.test(answer)?confirmation.choices[Number(answer)-1]:undefined;
+    const named=confirmation.choices.filter(choice=>normalizePartText(choice.model)===answer||
+      (confirmation.fields.length===1&&confirmation.fields[0]==='brand'&&canonicalManufacturer(choice.brand)===canonicalManufacturer(message)));
+    const accepted=numbered??(named.length===1?named[0]:undefined)??
+      (/^(?:evet|dogru|evet dogru|aynen)$/.test(answer)&&confirmation.choices.length===1?confirmation.choices[0]:undefined);
+    if(accepted){
+      state.brand=accepted.brand;state.model=accepted.model;state.pendingIdentity=null;delete state.identityConfirmation;
+    }else if(/^(?:hayir|degil|bilmiyorum|emin degilim)$/.test(answer)){
+      confirmationRejected=true;
+      if(confirmation.fields.includes('brand'))state.brand='';
+      if(confirmation.fields.includes('model'))state.model='';
+      delete state.identityConfirmation;
+    }else confirmationUnanswered=true;
+  }
   const conversation = [...history, { role: 'user' as const, content: message }];
   const customerMessages = conversation.filter(item => item.role === 'user').map(item => item.content);
   const customerText = customerMessages.join(' ');
@@ -145,7 +175,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   };
   const mentionedBrand = pendingIdentity === 'brand' ? mentionedManufacturer(message) : '';
   const extractedBrand = brandInText(extracted.brand) ? extracted.brand.trim() : '';
-  const brand = state?.brand && !correction(message) ? state.brand :
+  let brand = confirmationRejected&&confirmation?.fields.includes('brand')?'':state?.brand && !correction(message) ? state.brand :
     mentionedBrand || extractedBrand || state?.brand || options.identityFallback?.brand || '';
   const rawModel = extracted.model.trim();
   // A code-shaped suffix can be a real catalog model identifier. Confirm the
@@ -169,7 +199,19 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const modelWithoutCode = catalogModel || withoutTrailingCode(rawModel, errorCode);
   const extractedModel = inText(modelWithoutCode) && canonicalManufacturer(modelWithoutCode) !== canonicalManufacturer(brand) &&
     normalizePartText(modelWithoutCode) !== normalizePartText(errorCode ?? '') ? modelWithoutCode : '';
-  const model = state?.model && !correction(message) && pendingIdentity !== 'model' ? state.model : extractedModel ||
+  // A customer may answer a proposal with the actual label instead of yes/no.
+  // Only a catalog-exact label in this message can replace the proposal.
+  if (state && confirmationUnanswered && extractedModel &&
+      ` ${normalizePartText(message)} `.includes(` ${normalizePartText(extractedModel)} `)) {
+    const label = await repository.resolveDevice(brand, extractedModel);
+    if (label && label !== 'ambiguous' &&
+        normalizePartText(label.officialModelName || label.familyName) === normalizePartText(extractedModel)) {
+      state.brand = label.brand || brand; state.model = extractedModel;
+      state.pendingIdentity = null; delete state.identityConfirmation;
+      confirmationUnanswered = false;
+    }
+  }
+  const model = confirmationRejected&&confirmation?.fields.includes('model')?'':state?.model && !correction(message) && pendingIdentity !== 'model' ? state.model : extractedModel ||
     (pendingIdentity === 'model' ? pendingModelAnswer(message, errorCode) : '') || state?.model || options.identityFallback?.model || '';
   let budgetFloor = Math.max(0, Math.min(MAX_BOILER_QUESTIONS, options.budgetFloor ?? 0));
   const changedIdentity = state && ((state.brand && brand && canonicalManufacturer(state.brand) !== canonicalManufacturer(brand)) ||
@@ -197,6 +239,17 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       state.totalAskedQuestions > MAX_BOILER_QUESTIONS)
     state.totalAskedQuestions = Math.max(budgetFloor, state.askedQuestionIds.length, countAskedQuestions(history));
   state.brand = brand; state.model = model; state.errorCode = errorCode;
+  const newTimeline=extractBoilerTimeline(message);
+  const oldTimeline=state.timeline;
+  if(newTimeline.historical.length||newTimeline.current.quote){
+    const formerCurrent=oldTimeline?.current;
+    const previousTiming=formerCurrent?.timing&&formerCurrent.quote&&newTimeline.current.persistent&&!newTimeline.current.timing
+      ? [{kind:formerCurrent.timing,quote:formerCurrent.quote}]:[];
+    const historical=[...new Map([...(oldTimeline?.historical??[]),...previousTiming,...newTimeline.historical]
+      .map(e=>[e.kind+'|'+e.quote,e])).values()];
+    state.timeline={...newTimeline,historical,needsClarification:newTimeline.needsClarification||
+      historical.length>0&&newTimeline.current.persistent&&!newTimeline.current.timing&&!unknown(message)&&!ambiguousAnswer(message)};
+  }
   const result = async (reply: string, resultState: BoilerResultState, options: {
     assessments?: ReturnType<typeof calculateBoilerWeights>; price?: BoilerPrice | null;
     familyId?: string | null; officialModelId?: string | null; mode?: BoilerCandidateMode | 'none';
@@ -209,7 +262,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       questionCompletionPercent: Math.round(state!.totalAskedQuestions / MAX_BOILER_QUESTIONS * 10000) / 100,
       confidenceBasis: { method: 'v1_relative_effect_factors', calibrated: false,
         topRelativeWeight: options.assessments?.length ? Math.max(...options.assessments.map(item => item.probability)) : null,
-        candidateMode: options.mode ?? 'none', resultState },
+        candidateMode: options.mode ?? 'none', resultState,technicalGroups:assessmentGroups },
       completedAt: finished ? new Date().toISOString() : null,
       brand: state!.brand, familyId: options.familyId ?? state!.familyId,
       officialModelId: options.officialModelId ?? state!.officialModelId, errorCode: state!.errorCode,
@@ -218,6 +271,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       aiText: reply, stateToken: encodeBoilerState(state!), resultState,
       canRouteTechnician: finished, assessmentComplete: finished,
       candidateProbabilities: (options.assessments ?? []).map(item => ({ name: item.candidateName, probability: item.probability })),
+      groupProbabilities:assessmentGroups,
       informationProgress: Math.round(state!.totalAskedQuestions / MAX_BOILER_QUESTIONS * 100),
       researchStatus: options.assessments?.length ? 'verified' : 'not_found',
       diagnosticStatus: resultState === 'safety_stop' ? 'safety_stop' : finished ? 'needs_onsite' : 'diagnosing',
@@ -228,16 +282,35 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       stopReason: finished ? resultState : null, options: [],
     };
   };
-  const ask = (text: string, options: Parameters<typeof result>[2] = {}, repeatedIdentity = false) => {
+  const ask = (text: string, options: Parameters<typeof result>[2] = {}, repeatedIdentity = false, requests?:number) => {
     if (repeatedIdentity) return result(text, 'diagnosing', options);
-    if (!canAskBoilerQuestion(state!.totalAskedQuestions, text))
+    const count=requests??countBoilerQuestionRequests(text);
+    if (!canAskBoilerQuestion(state!.totalAskedQuestions, text)||state!.totalAskedQuestions+count>MAX_BOILER_QUESTIONS)
       return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
         'uncertain_price', options);
-    state!.totalAskedQuestions += countBoilerQuestionRequests(text);
+    state!.totalAskedQuestions += count;
     return result(text, 'diagnosing', options);
   };
   if (state.finished) return result('Bu teşhis oturumu tamamlandı. Usta yönlendirmesi isteyebilirsiniz.', state.resultState);
   if (safety(message)) return result('Güvenliğiniz için teşhisi durduruyorum. Cihazı denemeyin, güvenli alana çıkın ve dışarıdan acil destek alın.', 'safety_stop');
+  if(confirmationUnanswered&&confirmation)return result(confirmation.text,'diagnosing');
+  if(confirmationRejected){
+    state.pendingIdentity=confirmation?.fields.includes('brand')?'brand':'model';
+    return ask(state.pendingIdentity==='brand'?'Cihaz etiketindeki marka adını paylaşır mısınız?':'Cihaz etiketindeki tam model adını paylaşır mısınız?');
+  }
+  let catalog:BoilerIdentityCatalog|undefined;
+  const identityCatalog=async()=>catalog??(catalog=await repository.getIdentityCatalog!());
+  const confirmIdentity=(choices:{brand:string;model:string}[],fields:('brand'|'model')[])=>{
+    // A family and its same-named official model are one label to confirm;
+    // resolveDevice still decides the exact/family scope afterwards.
+    choices=[...new Map(choices.map(choice=>[
+      canonicalManufacturer(choice.brand)+'|'+normalizePartText(choice.model),choice])).values()];
+    const labels=choices.map(c=>fields.includes('brand')?`${c.brand}${c.model?' '+c.model:''}`:c.model);
+    const text=choices.length===1?`${labels[0]} cihazını mı kastediyorsunuz?`:
+      `Cihazınız hangisi: ${labels.map((label,index)=>`${index+1}) ${label}`).join('; ')}? Etiketteki adı da yazabilirsiniz.`;
+    state!.identityConfirmation={choices,fields,text};
+    return ask(text,{},false,fields.length);
+  };
   if (state.pendingIdentity && unknown(message)) {
     if (state.pendingIdentity !== 'code') return result('Marka veya model bilinmediği için fiyat belirsiz. Yerinde kontrol için usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
     state.codeAsked = true;
@@ -247,6 +320,23 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if ((!brand && /(?:marka\w* bilmiyorum|marka\w* belli degil|marka\w* hatirlamiyorum|^bilmiyorum[.!? ]*$)/.test(normalizedMessage)) ||
       (!model && /(?:model\w* bilmiyorum|model\w* belli degil|model\w* hatirlamiyorum)/.test(normalizedMessage)))
     return result('Marka veya model bilinmediği için fiyat belirsiz. Yerinde kontrol için usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
+  if (repository.getIdentityCatalog&&(!brand||!Object.hasOwn(DOMAINS,canonicalManufacturer(brand)))) {
+    const cat=await identityCatalog();
+    const spans=brand?[brand]:[...message.matchAll(/[\p{L}]+(?:[.-][\p{L}]+)*/gu)].map(hit=>hit[0]);
+    const proposals=spans.flatMap(span=>suggestBrands(cat,span));
+    const closest=Math.min(...proposals.map(item=>item.distance));
+    const brands=[...new Map(proposals.filter(item=>item.distance===closest).map(item=>[item.name,item])).values()].slice(0,4);
+    if(brands.length===1&&brands[0].exact){brand=brands[0].name;state.brand=brand;}
+    else if(brands.length){
+      const models=brands.length===1&&model?suggestModels(cat,brands[0].name,model):[];
+      const fields:('brand'|'model')[]=['brand'];
+      if(models.length&&!models.every(m=>m.exact))fields.push('model');
+      const choices=models.length?models.map(m=>({brand:brands[0].name,model:m.name})):
+        brands.map(b=>({brand:b.name,model}));
+      brand='';state.brand='';
+      return confirmIdentity(choices,fields);
+    }else {brand='';state.brand='';}
+  }
   if (!brand) { state.pendingIdentity = 'brand'; return ask('Cihazınızın markası nedir?', {}, pendingIdentity === 'brand'); }
   if (!model) { state.pendingIdentity = 'model'; return ask('Cihazınızın etikette yazan modeli nedir?', {}, pendingIdentity === 'model'); }
   if (!errorCode && !state.codeAsked && !/(?:hata kodu yok|kod yok|hata gostermiyor)/.test(normalizePartText(customerText))) {
@@ -255,6 +345,12 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   }
 
   const device = await repository.resolveDevice(brand, model, message);
+  if(!device&&repository.getIdentityCatalog){
+    const suggestions=suggestModels(await identityCatalog(),brand,model);
+    if(suggestions.length)return confirmIdentity(suggestions.map(m=>({brand:m.brand,model:m.name})),['model']);
+    state.pendingIdentity='model';
+    return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?',{},pendingIdentity==='model');
+  }
   if (device === 'ambiguous') {
     state.pendingIdentity = 'model';
     return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?', {}, pendingIdentity === 'model');
@@ -263,7 +359,9 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if (device.brand && canonicalManufacturer(device.brand) === canonicalManufacturer(brand)) state.brand = device.brand;
   if (device.officialModelName) state.model = device.officialModelName;
   state.familyId = device.familyId; state.officialModelId = device.officialModelId;
-  const allCandidates = await repository.getCandidates(device.familyId);
+  state.fuelType = device.fuelType ?? 'gas';
+  const allCandidates = (await repository.getCandidates(device.familyId))
+    .filter(candidate => candidateAllowedForFuel(candidate, state!.fuelType!));
   let selected = selectCandidatePool(allCandidates, device.familyId, device.officialModelId, errorCode);
   if (device.officialModelId === null && errorCode && selected.mode !== 'error_code' && repository.getErrorCodeModelIds) {
     const coveredModels = await repository.getErrorCodeModelIds(device.familyId, errorCode);
@@ -278,8 +376,19 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   const familyConsensus = selected.mode === 'family_code_consensus';
   const effectCandidateIds = [...new Set(candidates.flatMap(item => item.sourceCandidateIds ?? [item.id]))];
-  const [questions, storedEffects] = await Promise.all([repository.getQuestions(), repository.getEffects(effectCandidateIds)]);
-  const effects = familyConsensus ? consensusQuestionEffects(candidates, storedEffects) : storedEffects;
+  const [catalogQuestions, storedEffects] = await Promise.all([repository.getQuestions(), repository.getEffects(effectCandidateIds)]);
+  const questions = catalogQuestions.filter(question => questionAllowedForFuel(question, state!.fuelType!));
+  const allowedQuestionIds = new Set(questions.map(question => question.id));
+  // Retain historical answers/budget, but never process a combustion question
+  // or its effects after the catalog identifies an electric device.
+  if (catalogQuestions.some(question => question.id === state.pendingQuestionId &&
+      !questionAllowedForFuel(question, state!.fuelType!))) {
+    state.pendingQuestionId = null; state.pendingAskedAt = null;
+  }
+  const reviewedEffects=reviewedBoilerEffects(allCandidates,catalogQuestions,storedEffects);
+  const fuelEffects = state.fuelType === 'gas' ? reviewedEffects :
+    reviewedEffects.filter(effect => allowedQuestionIds.has(effect.question_id));
+  const effects = familyConsensus ? consensusQuestionEffects(candidates, fuelEffects) : fuelEffects;
   const saveAnswer = async (question: BoilerQuestion, rawAnswer: string, answerKey: string,
     askedAt: string | null, source: 'customer' | 'ai_extracted') => {
     const group = question.evidence_group || question.question_key;
@@ -321,7 +430,10 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     const question = questions.find(item => item.id === state!.pendingQuestionId);
     if (!question) throw Error('Previously asked boiler question is no longer available');
     const keys = supportedKey(question, effects);
-    const answerKey = unknown(message) || ambiguousAnswer(message) || correction(message) ? 'unknown' :
+    const isTiming=question.question_key==='fault_timing_after_start';
+    const answerKey = isTiming&&(newTimeline.needsClarification||newTimeline.current.persistent&&!newTimeline.current.timing)?'unknown':
+      isTiming&&newTimeline.current.timing?newTimeline.current.timing:
+      unknown(message) || ambiguousAnswer(message) || correction(message) ? 'unknown' :
       await ai.classifyAnswer(question, message, keys);
     if (!keys.includes(answerKey)) throw Error('AI supplied an unsupported boiler answer');
     await saveAnswer(question, message, answerKey, state.pendingAskedAt ?? new Date().toISOString(), 'customer');
@@ -336,11 +448,15 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       .slice(0, 50).map(question => ({ id: question.id, text: question.question_text,
         allowedKeys: supportedKey(question, effects) }));
     for (const sourceMessage of options.rebuildFromHistory && !changedIdentity ? customerMessages : [message]) {
+      const sourceTimeline=extractBoilerTimeline(sourceMessage);
       const extractedAnswers = extractable.length ? await ai.extractObservedAnswers(sourceMessage, extractable) : [];
       if (!Array.isArray(extractedAnswers) || extractedAnswers.length > extractable.length) continue;
       for (const observed of extractedAnswers) {
         const allowed = extractable.find(item => item.id === observed.questionId);
         const question = questions.find(item => item.id === observed.questionId);
+        if(question?.question_key==='fault_timing_after_start'&&
+          (sourceTimeline.historical.length||sourceTimeline.needsClarification||sourceTimeline.current.persistent&&!sourceTimeline.current.timing)&&
+          (!sourceTimeline.current.timing||observed.answerKey!==sourceTimeline.current.timing))continue;
         if (!allowed || !question || !allowed.allowedKeys.includes(observed.answerKey) ||
             observed.answerKey === 'unknown' || typeof observed.quote !== 'string' ||
             observed.quote.trim().length < 3 || !sourceMessage.includes(observed.quote) ||
@@ -351,7 +467,20 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       }
     }
   }
+  const timingQuestion=questions.find(q=>q.question_key==='fault_timing_after_start');
+  if(timingQuestion&&newTimeline.current.persistent&&!newTimeline.current.timing){
+    const previous=state.answers.find(a=>a.evidenceGroup===(timingQuestion.evidence_group||timingQuestion.question_key));
+    if(previous&&previous.answerKey!=='unknown')
+      await saveAnswer(timingQuestion,newTimeline.current.quote||message,'unknown',previous.askedAt??null,'ai_extracted');
+  }
+  if(timingQuestion&&newTimeline.current.timing&&newTimeline.current.quote&&!unknown(message)&&!ambiguousAnswer(message)&&
+      effects.some(e=>e.question_id===timingQuestion.id&&e.answer_key===newTimeline.current.timing)){
+    const previous=state.answers.find(a=>a.evidenceGroup===(timingQuestion.evidence_group||timingQuestion.question_key));
+    if(previous?.answerKey!==newTimeline.current.timing)
+      await saveAnswer(timingQuestion,newTimeline.current.quote,newTimeline.current.timing,previous?.askedAt??null,'ai_extracted');
+  }
   const assessments = calculateBoilerWeights(candidates, state.answers, effects);
+  assessmentGroups=buildBoilerGroups(candidates,assessments,state.fuelType);
   await repository.recordCandidates(state.sessionId, assessments);
   if (!assessments.length) return result('Doğrulanmış adayların tamamı verilen yanıtlarla dışlandı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
@@ -366,9 +495,16 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     state!.askedQuestionIds, usedGroups, safetyOnly).filter(question => safeQuestion(question.question_text) &&
       !observedTopics.has(question.question_key) && canAskBoilerQuestion(state!.totalAskedQuestions, question.question_text));
   const safetyQuestions = available(true);
-  const diagnosticQuestions = available(false);
+  const diagnosticOptions=available(false);
+  const questionValue=questionDiscrimination(candidates,assessments,diagnosticOptions,effects,state.fuelType);
+  const diagnosticQuestions=diagnosticOptions.filter(q=>{
+    const value=questionValue[q.id];
+    return value.candidateDiscriminative||value.groupDiscriminative||value.supportsSingleton;
+  });
   const canAsk = state.totalAskedQuestions < MAX_BOILER_QUESTIONS;
-  const nextOptions = canAsk ? (safetyQuestions.length ? safetyQuestions : diagnosticQuestions) : [];
+  const clarifyTiming=canAsk&&!safetyQuestions.length&&!!state.timeline?.needsClarification&&!state.timelineClarificationAsked&&
+    !!timingQuestion&&effects.some(e=>e.question_id===timingQuestion.id&&e.effect!=='neutral')&&safeQuestion(timingQuestion.question_text);
+  const nextOptions = canAsk ? (safetyQuestions.length ? safetyQuestions : clarifyTiming&&timingQuestion?[timingQuestion]:diagnosticQuestions) : [];
   const price = !familyConsensus && pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD ?
     await repository.getPricing(top.candidateId) : null;
   let resultState = determineBoilerResult(assessments, state.totalAskedQuestions,
@@ -385,20 +521,23 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     resultState,{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   if (!nextOptions.length) return result('Müşterinin güvenle yanıtlayabileceği ayırt edici soru kalmadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price',{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
-  const selectedQuestionId = await ai.chooseQuestion({ brand, model, errorCode, candidates: assessments.map(item => ({
+  const selectedQuestionId = clarifyTiming?timingQuestion!.id:await ai.chooseQuestion({ brand, model, errorCode, candidates: assessments.map(item => ({
     id: item.candidateId, name: item.candidateName, probability: item.probability })),
-    questions: nextOptions, effects, customerMessages });
+    questions: nextOptions, effects, customerMessages,groups:assessmentGroups,questionValue });
   const question = nextOptions.find(item => item.id === selectedQuestionId);
   if (!question) return result('Güvenli ve ayırt edici bir müşteri sorusu seçilemedi. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price',{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
-  if (!canAskBoilerQuestion(state.totalAskedQuestions, question.question_text))
+  const questionText=clarifyTiming?'Şu anda resetten sonra bir süre çalışıyor mu, yoksa hata hemen tekrar mı geliyor?':question.question_text;
+  const questionCost=clarifyTiming?1:countBoilerQuestionRequests(questionText);
+  if (state.totalAskedQuestions+questionCost>MAX_BOILER_QUESTIONS)
     return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
       'uncertain_price', { assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   const askedAt = new Date().toISOString();
   await repository.recordQuestionAsked(state.sessionId, question.id, askedAt);
-  state.totalAskedQuestions += countBoilerQuestionRequests(question.question_text);
+  state.totalAskedQuestions += questionCost;
+  if(clarifyTiming)state.timelineClarificationAsked=true;
   state.askedQuestionIds.push(question.id); state.pendingQuestionId = question.id;
   state.pendingAskedAt = askedAt;
-  return result(question.question_text, resultState, { assessments, familyId: device.familyId,
+  return result(questionText, resultState, { assessments, familyId: device.familyId,
     officialModelId: device.officialModelId, mode: selected.mode });
 }

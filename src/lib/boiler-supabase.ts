@@ -2,11 +2,14 @@ import { createClient } from '@supabase/supabase-js';
 import { canonicalManufacturer, normalizedModel } from './verified-knowledge';
 import type { BoilerCandidate, BoilerQuestion, BoilerQuestionEffect, BoilerAssessment } from './boiler-probability';
 import { normalizeBoilerErrorCode } from './boiler-probability';
+import type { BoilerFuelType } from './boiler-fuel';
+import type { BoilerIdentityCatalog } from './boiler-identity-suggestions';
 
 export interface BoilerDevice {
   brand?: string;
   familyId: string; familyName: string; officialModelId: string | null;
   officialModelName: string | null;
+  fuelType?: BoilerFuelType;
 }
 export interface BoilerPrice {
   id: string; candidate_id: string; operation_name: string; operation_description: string | null;
@@ -15,6 +18,7 @@ export interface BoilerPrice {
   part_name: string | null; valid_from: string | null; valid_until: string | null;
 }
 export interface BoilerRepository {
+  getIdentityCatalog?(): Promise<BoilerIdentityCatalog>;
   resolveDevice(brand: string, model: string, customerMessage?: string): Promise<BoilerDevice | 'ambiguous' | null>;
   getCandidates(familyId: string): Promise<BoilerCandidate[]>;
   getErrorCodeModelIds?(familyId: string, errorCode: string): Promise<string[]>;
@@ -43,8 +47,25 @@ const redactPII = (value: string) => value
 export function createSupabaseBoilerRepository(url: string, serviceRoleKey: string): BoilerRepository {
   const db = createClient(url, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
   return {
+    async getIdentityCatalog() {
+      const [fs,ms,als]=await Promise.all([
+        db.from('boiler_model_families').select('id,brand,family_name').eq('is_active',true).limit(1000),
+        db.from('boiler_official_models').select('id,family_id,official_model_name').eq('is_active',true).limit(1000),
+        db.from('boiler_model_aliases').select('family_id,official_model_id,normalized_alias').eq('is_verified',true).limit(1000),
+      ]);
+      fail(fs.error);fail(ms.error);fail(als.error);
+      if([fs,ms,als].some(r=>(r.data?.length??0)>=1000))throw Error('Incomplete identity suggestion catalog');
+      const families=fs.data??[],models=ms.data??[],aliases=als.data??[];
+      return {brands:[...new Set(families.map(f=>f.brand))],models:families.flatMap(f=>[
+        {brand:f.brand,name:f.family_name,familyId:f.id,officialModelId:null,
+          aliases:aliases.filter(a=>a.family_id===f.id&&!a.official_model_id).map(a=>a.normalized_alias)},
+        ...models.filter(m=>m.family_id===f.id).map(m=>({brand:f.brand,name:m.official_model_name,
+          familyId:f.id,officialModelId:m.id,aliases:aliases.filter(a=>a.official_model_id===m.id).map(a=>a.normalized_alias)})),
+      ])};
+    },
     async resolveDevice(brand, model, customerMessage) {
-      const familiesResult = await db.from('boiler_model_families').select('id,brand,family_name,normalized_name')
+      // Selecting the catalog row also works before the additive fuel migration.
+      const familiesResult = await db.from('boiler_model_families').select('*')
         .eq('is_active', true).limit(5001);
       fail(familiesResult.error);
       const allFamilies = familiesResult.data ?? [];
@@ -71,6 +92,13 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         ...familyMatches.map(row => ({ familyId: row.id, modelId: null })),
       ];
       let distinct = [...new Map(matches.map(row => [`${row.familyId}|${row.modelId ?? ''}`, row])).values()];
+      // The catalog may store the very same official label at family level.
+      // Keep its explicit model identity; an alias to a different variant must
+      // still remain ambiguous and cannot acquire exact scope here.
+      const exactOfficial = (modelsResult.data ?? []).filter(row =>
+        normalizedModel(row.official_model_name) === target);
+      distinct = distinct.filter(match => match.modelId !== null || !exactOfficial.some(row =>
+        row.family_id === match.familyId && distinct.some(other => other.modelId === row.id)));
       if (!distinct.length && customerMessage) {
         // AI may omit an explicitly supplied variant suffix. Only a complete
         // official catalog name present in the customer's message can repair it.
@@ -85,7 +113,10 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
       const match = distinct[0], family = families.find(row => row.id === match.familyId)!;
       const official = match.modelId ? (modelsResult.data ?? []).find(row => row.id === match.modelId) : null;
       if (match.modelId && !official) return null;
+      if (family.fuel_type != null && !['gas', 'electric'].includes(family.fuel_type))
+        throw Error('Boiler data access failed: invalid device fuel type');
       return { brand: family.brand, familyId: family.id, familyName: family.family_name,
+        fuelType: family.fuel_type ?? 'gas',
         officialModelId: official?.id ?? null, officialModelName: official?.official_model_name ?? null };
     },
     async getCandidates(familyId) {

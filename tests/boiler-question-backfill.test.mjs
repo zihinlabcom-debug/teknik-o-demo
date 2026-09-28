@@ -75,13 +75,13 @@ test('F76 safety no keeps all candidates and now continues with a diagnostic tim
   assert.equal(run.calls.prices, 0);
 }));
 
-test('F76 after-running evidence supports thermal/exchanger and weakens wiring without reaching 75', async () => signed(async () => {
+test('F76 after-running evidence supports thermal/exchanger and leaves wiring neutral without reaching 75', async () => signed(async () => {
   const run = fixture(); const { second, history } = await start(run);
   const third = await diagnoseBoiler('Bir süre çalıştıktan sonra hata veriyor.', history, second.stateToken, run.repo, run.ai);
-  assert.deepEqual(byName(third.candidateProbabilities), { [exchanger]: 44.45, [cable]: 11.11, [termic]: 44.44 });
+  assert.deepEqual(byName(third.candidateProbabilities), { [exchanger]: 40, [cable]: 20, [termic]: 40 });
   assert.equal(decodeBoilerState(third.stateToken).pendingQuestionId, 'display_temperature_rise');
   const fourth = await diagnoseBoiler('Evet, ekrandaki sıcaklık normalden çok hızlı yükseliyor.', history, third.stateToken, run.repo, run.ai);
-  assert.deepEqual(byName(fourth.candidateProbabilities), { [exchanger]: 47.06, [cable]: 5.88, [termic]: 47.06 });
+  assert.deepEqual(byName(fourth.candidateProbabilities), { [exchanger]: 44.45, [cable]: 11.11, [termic]: 44.44 });
   assert.equal(fourth.resultState, 'uncertain_price'); assert.equal(fourth.pricingData, null);
   assert.equal(run.calls.prices, 0);
 }));

@@ -39,7 +39,7 @@ OFFICIAL_HOSTS = {
     "buderus.com", "demirdokum.com.tr", "ariston.com", "baymak.com.tr",
     "eca.com.tr", "ecateknikurunler.com.tr", "ecaboilers.co.uk",
     "immergas.com.tr", "immergas.com", "immergas.com.gr", "viessmann.com.tr",
-    "viessmann.ca", "viessmann-us.com", "viessmann.co.uk", "warmhaus.com",
+    "viessmann.ca", "viessmann-us.com", "viessmann.co.uk", "warmhaus.com", "copa.com.tr",
 }
 TRUSTED_HOSTS = {
     "manualslib.com", "manualslib.de", "manualslib.es", "manualzz.com",
@@ -133,6 +133,44 @@ RULES = [
     Rule("cable", r"(?:kablo\w*|kablolama\w*|kablo\s+demet\w*|soket\w*|fiş\w*|konnektör\w*|klemens\w*|cihaz\s+bağlantı\w*|yanlış\s+bağlan\w*)", "Kablolama/soket/bağlantı sorunu", "electrical"),
 ]
 COMPILED_RULES = [(rule, re.compile(rule.pattern, re.I)) for rule in RULES]
+# Fuel-aware imports use this reusable vocabulary extension. The historical
+# 00016-00031 generator profile remains reproducible without fuel metadata.
+FUEL_RULES = [
+    Rule("probe_pairing", r"(?:CH\s+)?(?:akış|gidiş|dönüş)\s+NTC.{0,100}değiştirme\s+testi", "NTC gidiş/dönüş eşleşme-kontrol noktası", "installation"),
+    Rule("gas_supply", r"gaz\s+akış\w*\s+(?:sorun\w*|problem\w*|kesinti\w*)|gazın\s+açık\s+olduğ\w*\s+kontrol", "Gaz beslemesi sorunu", "gas_supply"),
+    Rule("sensor_supply", r"CH\s+(?:akış\w*|gidiş\w*)\s+(?:NTC\s+)?(?:prob\w*|sensör\w*)", "Gidiş sıcaklık sensörü sorunu", "sensor"),
+    Rule("sensor_return", r"(?:CH\s+)?dönüş\s+NTC\s+(?:prob\w*|sensör\w*)", "Dönüş sıcaklık sensörü sorunu", "sensor"),
+    Rule("sensor_dhw", r"DHW\s+NTC\s+(?:prob\w*|sensör\w*)", "Kullanım suyu sıcaklık sensörü sorunu", "sensor"),
+    Rule("sensor_outside", r"dış(?:\s+mekan|\s+hava)?\s+NTC(?:\s+prob\w*)?", "Dış sıcaklık sensörü sorunu", "sensor"),
+    Rule("sensor_flue", r"baca\s+gazı(?:nda)?\s+NTC(?:\s+prob\w*)?", "Baca gazı sensörü sorunu", "sensor"),
+    Rule("sensor_heating", r"tesisat\s+(?:sıcaklık\s+)?sensör\w*", "Tesisat sıcaklık sensörü sorunu", "sensor"),
+    Rule("fan_feedback", r"fan(?:\s+sensör\w*|\s+enkoder\w*|\s+kodlayıcı\w*)?\s+(?:hız\w*\s+)?sinyal\w*|fan\s+(?:enkoder\w*|kodlayıcı\w*)", "Fan hız/sinyal geri bildirimi sorunu", "electrical"),
+    Rule("pump_feedback", r"pompa\s+(?:enkoder\w*\s+)?sinyal\w*", "Pompa hız/sinyal geri bildirimi sorunu", "electrical"),
+    Rule("expansion", r"genleşme\s+tan[kğ]\w*", "Genleşme kabı sorunu", "hydraulic"),
+    Rule("high_limit", r"yüksek\s+limit\s+sıcaklık\s+koruma\w*|(?:NTC\s+)?(?:aşırı|yüksek)\s+sıcakl[ıi][kğ]\w*", "Yüksek limit / termik koruma noktası", "electrical"),
+    Rule("water_leak", r"(?:su|tesisat)\s+kaça[kğ]\w*", "Su kaçağı/sızıntısı sorunu", "hydraulic"),
+    Rule("group_flame_feedback", r"alev\s+tespiti\s+sinyal\w*.{0,45}aral[ıi][kğ]\w*\s+dış\w*", "Alev algılama/geri bildirim grubu", "ignition"),
+    Rule("circuit_breaker_feedback", r"devre\s+kesici\w*.{0,100}(?:geri\s+bildirim|geri\s+besleme)|(?:yanlış\s+)?CB\s+geri\s+bildirim\w*", "Devre kesici geri bildirim/kontrol noktası", "electrical"),
+    Rule("gas_valve_feedback", r"gaz\s+(?:vana\w*|valf\w*)\s+(?:tahrik\w*\s+ve\s+)?geri\s+bildirim\w*", "Gaz vanası geri bildirim/kontrol devresi sorunu", "electronic"),
+]
+COMPILED_FUEL_RULES = [(rule, re.compile(rule.pattern, re.I)) for rule in FUEL_RULES]
+FUEL_CONTROL = re.compile(r"kontrolü\s+(?:gerek\w*|için)|kontrol\s+edilmeli\w*", re.I)
+# General enrichment is explicit so applied historical seeds stay reproducible.
+# Systems named as independent action control points run alongside components.
+GENERAL_RULES = [
+    Rule('sensor_supply', r'\b(?:gidiş|akış)\s+(?:NTC\s+)?prob\w*', 'Gidiş sıcaklık sensörü sorunu', 'sensor'),
+    Rule('sensor_return', r'\bdönüş\s+(?:NTC\s+)?prob\w*', 'Dönüş sıcaklık sensörü sorunu', 'sensor'),
+    Rule('ignition_system', r'\bateşleme\b(?!\s+(?:traf\w*|transformat\w*|elektro\w*|devres\w*))', 'Ateşleme sistemi sorunu', 'ignition'),
+    Rule('thermal_cutoff', r'termik\s+kapatma(?:\s+düzene\w*)?', 'Termik kapatma düzeneği sorunu', 'electrical'),
+    Rule('condensate_drain', r'yoğuşma\s+(?:su(?:yu)?\s+)?(?:gider\w*|tahliye\w*|sifon\w*)', 'Yoğuşma suyu gideri sorunu', 'hydraulic'),
+    Rule('circulation_system', r'\b(?:hidrolik\s+)?(?:dolaşım|sirkülasyon)\b(?!\s+pompa)', 'Hidrolik dolaşım noktası', 'hydraulic'),
+    Rule('air_pressure_system', r'hava\s+basın(?:ç|cı)\s+sistem\w*', 'Hava basınç sistemi sorunu', 'combustion_air'),
+    Rule('recuperator', r'reküperatör\w*', 'Reküperatör/ısı geri kazanımı noktası', 'mechanical'),
+    Rule('valve_feedback', r'(?<!gaz\s)\bvalf\s+geri\s+bildirim\w*', 'Valf geri bildirim/kontrol noktası', 'electronic'),
+    Rule('voltage', r'\b\d{2,3}\s*V(?:AC|DC)?\b.*(?:besleme\s+gerilimi|şebeke)', 'Elektrik besleme/gerilim sorunu', 'electrical'),
+]
+COMPILED_GENERAL_RULES = [(rule,re.compile(rule.pattern,re.I)) for rule in GENERAL_RULES]
+ACTION_ONLY_SYSTEM_KEYS = {'ignition_system','circulation_system','air_pressure_system','recuperator'}
 # These broad labels describe a source-named diagnostic system, not a failed part.
 # They are used only when no component/control-point candidate was extracted.
 GROUP_RULES = [
@@ -298,13 +336,15 @@ def clauses(text: str, *, split_semicolon: bool = True) -> list[str]:
     return [part.strip() for part in re.split(boundary, text or "") if part.strip()]
 
 
-def components(clause: str) -> list[tuple[Rule, str]]:
+def components(clause: str, *, fuel_aware: bool = False, independent_systems: bool = False) -> list[tuple[Rule, str]]:
     matches = []
-    for rule, pattern in COMPILED_RULES:
+    for rule, pattern in COMPILED_RULES + (COMPILED_FUEL_RULES if fuel_aware else []) + (COMPILED_GENERAL_RULES if independent_systems else []):
         for hit in pattern.finditer(clause):
+            if independent_systems and hit.start()>0 and clause[hit.start()-1].isalpha() and hit[0][0].isalpha():
+                continue
             matches.append((hit.start(), hit.end(), rule))
     # Prefer the most specific overlapping term; allow distinct nearby items.
-    matches.sort(key=lambda item: (0 if item[2].key == "sensor_connection" else 1,
+    matches.sort(key=lambda item: (0 if item[2].key == "sensor_connection" or (independent_systems and item[2].key in ('sensor_supply','sensor_return')) else 1,
                                    -(item[1] - item[0]), item[0]))
     chosen = []
     for start, end, rule in matches:
@@ -318,6 +358,32 @@ def components(clause: str) -> list[tuple[Rule, str]]:
         or rule.key in ("pressure_differential", "pressure_air", "pressure_gas_sensor", "pressure_water_sensor", "air_mass_flow", "flow_meter")
     }
     for start, end, rule in sorted(chosen, key=lambda item: (item[0], item[1])):
+        if independent_systems and rule.key == 'voltage' and re.match(
+            r'\s+(?:kes\w*|kapat\w*|aç\w*)', clause[end:], re.I):
+            continue  # Switching power for reset/safety is not a supply fault.
+        if independent_systems and rule.key == 'burner' and re.match(
+            r'\s+(?:termostat\w*|sensör\w*|termik\w*)', clause[end:], re.I):
+            continue  # The burner is the thermostat's location, not its cause.
+        if independent_systems and rule.key in ('pcb','electronics') and re.match(
+            r'\s+(?:üzerinde\w*|fiş\w*|soket\w*|bağlantı\w*)',clause[end:],re.I):
+            continue
+        if independent_systems and rule.key=='high_limit' and not re.search(
+            r'termik|yüksek\s+limit|sıcaklık\s+koruma|limit\s+termostat',clause,re.I):
+            continue
+        if fuel_aware and rule.key.startswith('pressure_') and re.match(r'\s+yapılandır\w*', clause[end:], re.I):
+            continue  # A configured pressure sensor is not a documented failed sensor.
+        if fuel_aware and rule.key in ('pump', 'fan') and re.match(
+            r'\s+(?:çalış(?:abilir|ır|ıyor)|(?:ON\s*)?\(?AÇIK\)?|açık(?:ken)?)\b', clause[end:], re.I
+        ):
+            continue
+        if fuel_aware and rule.key == 'burner' and re.search(
+            r'brülör\s+(?:yanma\s+hatası|devre\s+dışı|kapalı)', clause, re.I
+        ):
+            continue
+        if fuel_aware and rule.fault_class == 'sensor' and re.search(
+            r'(?:yüksek|aşırı)\s+sıcakl[ıi][kğ]\w*|\d+\s*°?\s*C.{0,35}(?:üst|üzer|alt|yüksek)', clause, re.I
+        ) and not re.search(r'arızalı|hasar|açık\s*[/ ]\s*kısa|kısa\s+devre|açık\s+devre', clause, re.I):
+            continue  # A probe reporting a temperature limit is not a failed probe.
         if re.match(r"\s+(?:kapalıyken|çalışırken|açıkken)\b", clause[end:], re.I):
             continue  # A component's operating state is context for a different fault.
         if re.match(r"\s+ile\s+iletişim\s+(?:yok|kesil\w*)", clause[end:], re.I):
@@ -372,12 +438,24 @@ def eligible_description(clause: str) -> bool:
     return bool(FAULT.search(clause) or CONTROL.search(clause)) and not bool(SYMPTOM.fullmatch(clause.rstrip(". ")))
 
 
-def extract(raw: Raw) -> list[Candidate]:
+def extract(raw: Raw, *, fuel_type: str | None = None, include_groups: bool = True,
+            independent_action_systems: bool = False) -> list[Candidate]:
+    if fuel_type not in (None, 'gas', 'electric'):
+        raise ValueError('Unsupported boiler fuel type')
     candidates: dict[str, Candidate] = {}
     provenance = source_type(raw.url)
 
     def add(rule: Rule, field: str, phrase: str, exact_component: str) -> None:
+        if independent_action_systems and rule.key in ACTION_ONLY_SYSTEM_KEYS:
+            if field!='action' or not (CONTROL.search(phrase) or FUEL_CONTROL.search(phrase)):
+                return
+        if fuel_type == 'electric' and (rule.fault_class in ('gas_supply', 'ignition', 'combustion_air') or
+                re.search(r'\b(?:gaz|baca|yanma|ateşleme|iyonizasyon|alev|brülör)\b', rule.name, re.I)):
+            return
         key = rule.key
+        if fuel_type and key == 'water_pressure' and re.search(
+                r'yüksek\s+(?:su|tesisat|sistem)\s+basın|(?:su|tesisat|sistem)\s+basın\w*\s+(?:çok\s+)?yüksek', raw.description, re.I):
+            rule = Rule(rule.key, rule.pattern, 'Yüksek tesisat su basıncı sorunu', rule.fault_class)
         if key == "sensor_temperature" and field == "description":
             if re.search(r"\bgidiş\b", phrase, re.I) and not re.search(r"\bdönüş\b", phrase, re.I):
                 key = "sensor_supply"
@@ -386,18 +464,18 @@ def extract(raw: Raw) -> list[Candidate]:
             elif re.search(r"\b(?:sıcak\s+su|kullanım\s+suyu)\b", phrase, re.I):
                 key = "sensor_dhw"
             if key != rule.key:
-                rule = next(item for item in RULES if item.key == key)
+                rule = next(item for item in RULES + FUEL_RULES + GENERAL_RULES if item.key == key)
         if key in ("sensor_temperature", "sensor_general"):
             specific = [k for k, existing in candidates.items()
                         if existing.fault_class == "sensor" and k not in ("sensor_temperature", "sensor_general")]
             if len(specific) == 1:
                 key = specific[0]
-                rule = next(item for item in RULES if item.key == key)
+                rule = next(item for item in RULES + FUEL_RULES + GENERAL_RULES if item.key == key)
         if key not in candidates:
             digest = hashlib.sha1("\0".join((raw.brand, raw.model, raw.code, key)).encode()).hexdigest()[:20]
             prefix = re.sub(r"[^a-z0-9]+", "_", raw.brand.lower().replace("ö", "o").replace("ü", "u").replace("ı", "i").replace("ç", "c").replace("ş", "s").replace("ğ", "g")).strip("_")
             candidates[key] = Candidate(raw, f"stage3_{prefix}_{digest}", rule.name, rule.fault_class, provenance,
-                                        level="group" if key.startswith("group_") else "component")
+                                        level="group" if key.startswith("group_") or (independent_action_systems and key in ACTION_ONLY_SYSTEM_KEYS) else "component")
         candidate = candidates[key]
         if field == "description" and not candidate.description_phrase:
             candidate.description_phrase = phrase
@@ -407,17 +485,30 @@ def extract(raw: Raw) -> list[Candidate]:
             candidate.action_token = exact_component
 
     for phrase in clauses(raw.description):
-        if eligible_description(phrase):
-            for rule, exact_component in components(phrase):
+        if eligible_description(phrase) or (fuel_type and (
+                any(pattern.search(phrase) for _, pattern in COMPILED_FUEL_RULES) or
+                re.search(r'termostat\w*\s+açık', phrase, re.I))):
+            for rule, exact_component in components(phrase, fuel_aware=fuel_type is not None,
+                                                   independent_systems=independent_action_systems):
                 add(rule, "description", phrase, exact_component)
-    action_has_control = bool(CONTROL.search(raw.action))
+    action_has_control = bool(CONTROL.search(raw.action) or (fuel_type and FUEL_CONTROL.search(raw.action)))
     for phrase in clauses(raw.action, split_semicolon=not action_has_control):
-        if FAULT.search(phrase) or CONTROL.search(phrase):
-            for rule, exact_component in components(phrase):
+        if FAULT.search(phrase) or CONTROL.search(phrase) or (independent_action_systems and
+                re.search(r'\d{2,3}\s*V(?:AC|DC)?\s+besleme\s+gerilimi\s+oluştur',phrase,re.I)) or (fuel_type and (
+                re.search(r'hasar\w*', phrase, re.I) or FUEL_CONTROL.search(phrase))):
+            for rule, exact_component in components(phrase, fuel_aware=fuel_type is not None,
+                                                   independent_systems=independent_action_systems):
                 if rule.key == "fuse" and re.search(r"sigorta\w*\s+(?:kapat|aç|çıkar)\w*", phrase, re.I):
                     continue  # Switching the household fuse is a reset instruction.
                 add(rule, "action", phrase, exact_component)
-    if not candidates:
+    if independent_action_systems:
+        # Description and action may name the same temperature point at two
+        # levels. Do not make the unspecific label a second possible cause.
+        specific_temperature = set(candidates) & {'sensor_supply','sensor_return','sensor_dhw','sensor_tank','sensor_flue','sensor_outside','sensor_collector'}
+        if specific_temperature:
+            for generic in ('sensor_temperature','temperature_probe'):
+                candidates.pop(generic,None)
+    if not candidates and include_groups:
         for field, text in (("description", raw.description), ("action", raw.action)):
             for phrase in clauses(text):
                 for rule, pattern in COMPILED_GROUP_RULES:
@@ -435,10 +526,13 @@ def extract(raw: Raw) -> list[Candidate]:
     return list(candidates.values())
 
 
-def migration_sql(number: int, brand: str, candidates: list[Candidate]) -> str:
+def migration_sql(number: int, brand: str, candidates: list[Candidate], *,
+                  raw_row_count: int | None = 5879, migration_name: str | None = None,
+                  raw_brand_count: int | None = None) -> str:
     slug = MIGRATION_BRANDS[number][1] if number in MIGRATION_BRANDS else "candidate_coverage_backfill"
     file_name = (f"202609270000{number}_seed_{slug}_fault_candidates.sql" if number in MIGRATION_BRANDS
                  else f"202609270000{number}_backfill_boiler_candidate_coverage.sql")
+    file_name = migration_name or file_name
     display_brand = "Immergas + Alpha" if number == 23 else brand
     values = []
     for c in candidates:
@@ -451,6 +545,12 @@ def migration_sql(number: int, brand: str, candidates: list[Candidate]) -> str:
     if not values:
         raise ValueError(f"No candidates for {brand}")
     count = len(values)
+    raw_guard = (f"  IF (SELECT count(*) FROM public.official_error_codes_raw) <> {raw_row_count} THEN\n"
+                 f"    RAISE EXCEPTION 'Stage 3 stopped: official_error_codes_raw count is not {raw_row_count}';\n"
+                 "  END IF;") if raw_row_count is not None else ""
+    if raw_brand_count is not None:
+        raw_guard += (f"\n  IF (SELECT count(*) FROM public.official_error_codes_raw WHERE brand={sql_quote(brand)}) <> {raw_brand_count} THEN\n"
+                      "    RAISE EXCEPTION 'Stage 3 stopped: manufacturer raw scope differs';\n  END IF;")
     return f"""-- Teknik-O Stage 3: {display_brand} için açıklama + işlem kaynaklı olası teknik arıza noktaları.
 -- Bir kontrol noktası kesin parça arızası değil, kaynağın bu hata ile ilişkilendirdiği olası adaydır.
 -- Ham açıklama, işlem, URL ve her adayın exact support phrase'i transaction içinde doğrulanır.
@@ -474,9 +574,7 @@ INSERT INTO stage3_candidate_seed VALUES
 DO $$
 DECLARE v_bad bigint;
 BEGIN
-  IF (SELECT count(*) FROM public.official_error_codes_raw) <> 5879 THEN
-    RAISE EXCEPTION 'Stage 3 stopped: official_error_codes_raw count is not 5879';
-  END IF;
+{raw_guard}
   IF (SELECT count(*) FROM stage3_candidate_seed) <> {count} THEN
     RAISE EXCEPTION 'Stage 3 stopped: {slug} seed count differs from {count}';
   END IF;

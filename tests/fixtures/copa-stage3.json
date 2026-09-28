@@ -1,0 +1,5194 @@
+{
+  "families": [
+    {
+      "id": "eomix",
+      "brand": "COPA",
+      "family_name": "Eomix",
+      "normalized_name": "eomix",
+      "fuel_type": "gas",
+      "is_active": true
+    },
+    {
+      "id": "eomix plus",
+      "brand": "COPA",
+      "family_name": "Eomix Plus",
+      "normalized_name": "eomix plus",
+      "fuel_type": "gas",
+      "is_active": true
+    },
+    {
+      "id": "ultimix",
+      "brand": "COPA",
+      "family_name": "Ultimix",
+      "normalized_name": "ultimix",
+      "fuel_type": "gas",
+      "is_active": true
+    },
+    {
+      "id": "nexa",
+      "brand": "COPA",
+      "family_name": "Nexa",
+      "normalized_name": "nexa",
+      "fuel_type": "gas",
+      "is_active": true
+    },
+    {
+      "id": "e lecto",
+      "brand": "COPA",
+      "family_name": "e-Lecto",
+      "normalized_name": "e-lecto",
+      "fuel_type": "electric",
+      "is_active": true
+    }
+  ],
+  "models": [
+    {
+      "id": "eomix 20",
+      "family_id": "eomix",
+      "official_model_name": "Eomix 20",
+      "normalized_name": "eomix 20",
+      "is_active": true
+    },
+    {
+      "id": "eomix 24",
+      "family_id": "eomix",
+      "official_model_name": "Eomix 24",
+      "normalized_name": "eomix 24",
+      "is_active": true
+    },
+    {
+      "id": "eomix 35",
+      "family_id": "eomix",
+      "official_model_name": "Eomix 35",
+      "normalized_name": "eomix 35",
+      "is_active": true
+    },
+    {
+      "id": "eomix plus 24 kw",
+      "family_id": "eomix plus",
+      "official_model_name": "Eomix Plus 24 kW",
+      "normalized_name": "eomix plus 24 kw",
+      "is_active": true
+    },
+    {
+      "id": "eomix plus 35 kw",
+      "family_id": "eomix plus",
+      "official_model_name": "Eomix Plus 35 kW",
+      "normalized_name": "eomix plus 35 kw",
+      "is_active": true
+    },
+    {
+      "id": "eomix plus 42 kw",
+      "family_id": "eomix plus",
+      "official_model_name": "Eomix Plus 42 kW",
+      "normalized_name": "eomix plus 42 kw",
+      "is_active": true
+    },
+    {
+      "id": "ultimix 18",
+      "family_id": "ultimix",
+      "official_model_name": "Ultimix 18",
+      "normalized_name": "ultimix 18",
+      "is_active": true
+    },
+    {
+      "id": "ultimix 24",
+      "family_id": "ultimix",
+      "official_model_name": "Ultimix 24",
+      "normalized_name": "ultimix 24",
+      "is_active": true
+    },
+    {
+      "id": "nexa 20 kw",
+      "family_id": "nexa",
+      "official_model_name": "Nexa 20 kW",
+      "normalized_name": "nexa 20 kw",
+      "is_active": true
+    },
+    {
+      "id": "nexa 24 kw",
+      "family_id": "nexa",
+      "official_model_name": "Nexa 24 kW",
+      "normalized_name": "nexa 24 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 24 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 24 kW",
+      "normalized_name": "e lecto 24 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 9 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 9 kW",
+      "normalized_name": "e lecto 9 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 12 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 12 kW",
+      "normalized_name": "e lecto 12 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 15 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 15 kW",
+      "normalized_name": "e lecto 15 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 18 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 18 kW",
+      "normalized_name": "e lecto 18 kw",
+      "is_active": true
+    },
+    {
+      "id": "e lecto 21 kw",
+      "family_id": "e lecto",
+      "official_model_name": "e-Lecto 21 kW",
+      "normalized_name": "e lecto 21 kw",
+      "is_active": true
+    }
+  ],
+  "aliases": [
+    {
+      "family_id": "eomix",
+      "official_model_id": null,
+      "normalized_alias": "eomix",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "normalized_alias": "eomix 20",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "normalized_alias": "eomix 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "normalized_alias": "eomix 35",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": null,
+      "normalized_alias": "eomix plus",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": null,
+      "normalized_alias": "eomixplus",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "normalized_alias": "eomix plus 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "normalized_alias": "eomix plus 24 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "normalized_alias": "eomixplus 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "normalized_alias": "eomix plus 35",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "normalized_alias": "eomix plus 35 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "normalized_alias": "eomixplus 35",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "normalized_alias": "eomix plus 42",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "normalized_alias": "eomix plus 42 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "normalized_alias": "eomixplus 42",
+      "is_verified": true
+    },
+    {
+      "family_id": "nexa",
+      "official_model_id": null,
+      "normalized_alias": "nexa",
+      "is_verified": true
+    },
+    {
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "normalized_alias": "nexa 20",
+      "is_verified": true
+    },
+    {
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "normalized_alias": "nexa 20 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "normalized_alias": "nexa 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "normalized_alias": "nexa 24 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "ultimix",
+      "official_model_id": null,
+      "normalized_alias": "ultimix",
+      "is_verified": true
+    },
+    {
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "normalized_alias": "ultimix 18",
+      "is_verified": true
+    },
+    {
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "normalized_alias": "ultimix 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": null,
+      "normalized_alias": "e lecto",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": null,
+      "normalized_alias": "electo",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 12 kw",
+      "normalized_alias": "e lecto 12",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 12 kw",
+      "normalized_alias": "e lecto 12 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 12 kw",
+      "normalized_alias": "electo 12",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 15 kw",
+      "normalized_alias": "e lecto 15",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 15 kw",
+      "normalized_alias": "e lecto 15 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 15 kw",
+      "normalized_alias": "electo 15",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 18 kw",
+      "normalized_alias": "e lecto 18",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 18 kw",
+      "normalized_alias": "e lecto 18 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 18 kw",
+      "normalized_alias": "electo 18",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 21 kw",
+      "normalized_alias": "e lecto 21",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 21 kw",
+      "normalized_alias": "e lecto 21 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 21 kw",
+      "normalized_alias": "electo 21",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "normalized_alias": "e lecto 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "normalized_alias": "e lecto 24 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "normalized_alias": "electo 24",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 9 kw",
+      "normalized_alias": "e lecto 9",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 9 kw",
+      "normalized_alias": "e lecto 9 kw",
+      "is_verified": true
+    },
+    {
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 9 kw",
+      "normalized_alias": "electo 9",
+      "is_verified": true
+    }
+  ],
+  "raw": [
+    {
+      "id": 1,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E01"
+    },
+    {
+      "id": 2,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E03"
+    },
+    {
+      "id": 3,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E04"
+    },
+    {
+      "id": 4,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E06"
+    },
+    {
+      "id": 5,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E08"
+    },
+    {
+      "id": 6,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E09"
+    },
+    {
+      "id": 7,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E10"
+    },
+    {
+      "id": 8,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E17"
+    },
+    {
+      "id": 9,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E45"
+    },
+    {
+      "id": 10,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E24"
+    },
+    {
+      "id": 11,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E25"
+    },
+    {
+      "id": 12,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E30"
+    },
+    {
+      "id": 13,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E40"
+    },
+    {
+      "id": 14,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E41"
+    },
+    {
+      "id": 15,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E42"
+    },
+    {
+      "id": 16,
+      "brand": "COPA",
+      "official_model": "Eomix 20",
+      "error_code": "E44"
+    },
+    {
+      "id": 17,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E01"
+    },
+    {
+      "id": 18,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E03"
+    },
+    {
+      "id": 19,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E04"
+    },
+    {
+      "id": 20,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E06"
+    },
+    {
+      "id": 21,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E08"
+    },
+    {
+      "id": 22,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E09"
+    },
+    {
+      "id": 23,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E10"
+    },
+    {
+      "id": 24,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E17"
+    },
+    {
+      "id": 25,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E45"
+    },
+    {
+      "id": 26,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E24"
+    },
+    {
+      "id": 27,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E25"
+    },
+    {
+      "id": 28,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E30"
+    },
+    {
+      "id": 29,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E40"
+    },
+    {
+      "id": 30,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E41"
+    },
+    {
+      "id": 31,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E42"
+    },
+    {
+      "id": 32,
+      "brand": "COPA",
+      "official_model": "Eomix 24",
+      "error_code": "E44"
+    },
+    {
+      "id": 33,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E01"
+    },
+    {
+      "id": 34,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E03"
+    },
+    {
+      "id": 35,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E04"
+    },
+    {
+      "id": 36,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E06"
+    },
+    {
+      "id": 37,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E08"
+    },
+    {
+      "id": 38,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E09"
+    },
+    {
+      "id": 39,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E10"
+    },
+    {
+      "id": 40,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E17"
+    },
+    {
+      "id": 41,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E45"
+    },
+    {
+      "id": 42,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E24"
+    },
+    {
+      "id": 43,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E25"
+    },
+    {
+      "id": 44,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E30"
+    },
+    {
+      "id": 45,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E40"
+    },
+    {
+      "id": 46,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E41"
+    },
+    {
+      "id": 47,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E42"
+    },
+    {
+      "id": 48,
+      "brand": "COPA",
+      "official_model": "Eomix 35",
+      "error_code": "E44"
+    },
+    {
+      "id": 49,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E01"
+    },
+    {
+      "id": 50,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 51,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 52,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E06"
+    },
+    {
+      "id": 53,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E08"
+    },
+    {
+      "id": 54,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E09"
+    },
+    {
+      "id": 55,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E10"
+    },
+    {
+      "id": 56,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E17"
+    },
+    {
+      "id": 57,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E24"
+    },
+    {
+      "id": 58,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E25"
+    },
+    {
+      "id": 59,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E30"
+    },
+    {
+      "id": 60,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E40"
+    },
+    {
+      "id": 61,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E41"
+    },
+    {
+      "id": 62,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E42"
+    },
+    {
+      "id": 63,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E43"
+    },
+    {
+      "id": 64,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E44"
+    },
+    {
+      "id": 65,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E45"
+    },
+    {
+      "id": 66,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 24 kW",
+      "error_code": "E46"
+    },
+    {
+      "id": 67,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E01"
+    },
+    {
+      "id": 68,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 69,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 70,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E06"
+    },
+    {
+      "id": 71,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E08"
+    },
+    {
+      "id": 72,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E09"
+    },
+    {
+      "id": 73,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E10"
+    },
+    {
+      "id": 74,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E17"
+    },
+    {
+      "id": 75,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E24"
+    },
+    {
+      "id": 76,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E25"
+    },
+    {
+      "id": 77,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E30"
+    },
+    {
+      "id": 78,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E40"
+    },
+    {
+      "id": 79,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E41"
+    },
+    {
+      "id": 80,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E42"
+    },
+    {
+      "id": 81,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E43"
+    },
+    {
+      "id": 82,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E44"
+    },
+    {
+      "id": 83,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E45"
+    },
+    {
+      "id": 84,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 35 kW",
+      "error_code": "E46"
+    },
+    {
+      "id": 85,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E01"
+    },
+    {
+      "id": 86,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 87,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 88,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E06"
+    },
+    {
+      "id": 89,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E08"
+    },
+    {
+      "id": 90,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E09"
+    },
+    {
+      "id": 91,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E10"
+    },
+    {
+      "id": 92,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E17"
+    },
+    {
+      "id": 93,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E24"
+    },
+    {
+      "id": 94,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E25"
+    },
+    {
+      "id": 95,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E30"
+    },
+    {
+      "id": 96,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E40"
+    },
+    {
+      "id": 97,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E41"
+    },
+    {
+      "id": 98,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E42"
+    },
+    {
+      "id": 99,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E43"
+    },
+    {
+      "id": 100,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E44"
+    },
+    {
+      "id": 101,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E45"
+    },
+    {
+      "id": 102,
+      "brand": "COPA",
+      "official_model": "Eomix Plus 42 kW",
+      "error_code": "E46"
+    },
+    {
+      "id": 103,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E01"
+    },
+    {
+      "id": 104,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E03"
+    },
+    {
+      "id": 105,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E04"
+    },
+    {
+      "id": 106,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E06"
+    },
+    {
+      "id": 107,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E08"
+    },
+    {
+      "id": 108,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E09"
+    },
+    {
+      "id": 109,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E10"
+    },
+    {
+      "id": 110,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E17"
+    },
+    {
+      "id": 111,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E24"
+    },
+    {
+      "id": 112,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E25"
+    },
+    {
+      "id": 113,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E30"
+    },
+    {
+      "id": 114,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E40"
+    },
+    {
+      "id": 115,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E41"
+    },
+    {
+      "id": 116,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E42"
+    },
+    {
+      "id": 117,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E44"
+    },
+    {
+      "id": 118,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E45"
+    },
+    {
+      "id": 119,
+      "brand": "COPA",
+      "official_model": "Ultimix 18",
+      "error_code": "E46"
+    },
+    {
+      "id": 120,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E01"
+    },
+    {
+      "id": 121,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E03"
+    },
+    {
+      "id": 122,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E04"
+    },
+    {
+      "id": 123,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E06"
+    },
+    {
+      "id": 124,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E08"
+    },
+    {
+      "id": 125,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E09"
+    },
+    {
+      "id": 126,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E10"
+    },
+    {
+      "id": 127,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E17"
+    },
+    {
+      "id": 128,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E24"
+    },
+    {
+      "id": 129,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E25"
+    },
+    {
+      "id": 130,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E30"
+    },
+    {
+      "id": 131,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E40"
+    },
+    {
+      "id": 132,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E41"
+    },
+    {
+      "id": 133,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E42"
+    },
+    {
+      "id": 134,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E44"
+    },
+    {
+      "id": 135,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E45"
+    },
+    {
+      "id": 136,
+      "brand": "COPA",
+      "official_model": "Ultimix 24",
+      "error_code": "E46"
+    },
+    {
+      "id": 137,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E01"
+    },
+    {
+      "id": 138,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 139,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 140,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E06"
+    },
+    {
+      "id": 141,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E08"
+    },
+    {
+      "id": 142,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E09"
+    },
+    {
+      "id": 143,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E10"
+    },
+    {
+      "id": 144,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E17"
+    },
+    {
+      "id": 145,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E24"
+    },
+    {
+      "id": 146,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E25"
+    },
+    {
+      "id": 147,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E30"
+    },
+    {
+      "id": 148,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E40"
+    },
+    {
+      "id": 149,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E41"
+    },
+    {
+      "id": 150,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E42"
+    },
+    {
+      "id": 151,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E44"
+    },
+    {
+      "id": 152,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E45"
+    },
+    {
+      "id": 153,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E46"
+    },
+    {
+      "id": 154,
+      "brand": "COPA",
+      "official_model": "Nexa 20 kW",
+      "error_code": "E51"
+    },
+    {
+      "id": 155,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E01"
+    },
+    {
+      "id": 156,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 157,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 158,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E06"
+    },
+    {
+      "id": 159,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E08"
+    },
+    {
+      "id": 160,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E09"
+    },
+    {
+      "id": 161,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E10"
+    },
+    {
+      "id": 162,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E17"
+    },
+    {
+      "id": 163,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E24"
+    },
+    {
+      "id": 164,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E25"
+    },
+    {
+      "id": 165,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E30"
+    },
+    {
+      "id": 166,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E40"
+    },
+    {
+      "id": 167,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E41"
+    },
+    {
+      "id": 168,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E42"
+    },
+    {
+      "id": 169,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E44"
+    },
+    {
+      "id": 170,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E45"
+    },
+    {
+      "id": 171,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E46"
+    },
+    {
+      "id": 172,
+      "brand": "COPA",
+      "official_model": "Nexa 24 kW",
+      "error_code": "E51"
+    },
+    {
+      "id": 173,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "E03"
+    },
+    {
+      "id": 174,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "E04"
+    },
+    {
+      "id": 175,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F33"
+    },
+    {
+      "id": 176,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F35"
+    },
+    {
+      "id": 177,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "E80"
+    },
+    {
+      "id": 178,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F13"
+    },
+    {
+      "id": 179,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F37"
+    },
+    {
+      "id": 180,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F39"
+    },
+    {
+      "id": 181,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F40"
+    },
+    {
+      "id": 182,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F47"
+    },
+    {
+      "id": 183,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F52"
+    },
+    {
+      "id": 184,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F70"
+    },
+    {
+      "id": 185,
+      "brand": "COPA",
+      "official_model": "e-Lecto 24 kW",
+      "error_code": "F34"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "stage3_copa_acbf8425541a4f44f522",
+      "candidate_key": "stage3_copa_acbf8425541a4f44f522",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c14455871e2eee24dcb1",
+      "candidate_key": "stage3_copa_c14455871e2eee24dcb1",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e307241f56e8b455b588",
+      "candidate_key": "stage3_copa_e307241f56e8b455b588",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d3709c862c5bec515de5",
+      "candidate_key": "stage3_copa_d3709c862c5bec515de5",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f6d554cdc3d884a490e9",
+      "candidate_key": "stage3_copa_f6d554cdc3d884a490e9",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_41ddb1267d0748652e39",
+      "candidate_key": "stage3_copa_41ddb1267d0748652e39",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5ba2aeb022ac2d8ec392",
+      "candidate_key": "stage3_copa_5ba2aeb022ac2d8ec392",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2f7e535a8df83b7af9a1",
+      "candidate_key": "stage3_copa_2f7e535a8df83b7af9a1",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c7ed335e0935146f7602",
+      "candidate_key": "stage3_copa_c7ed335e0935146f7602",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6ef3ef3d8fd83c0d9b59",
+      "candidate_key": "stage3_copa_6ef3ef3d8fd83c0d9b59",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0d9ad1d4360664e11ac2",
+      "candidate_key": "stage3_copa_0d9ad1d4360664e11ac2",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0c7f310decd4cd315db8",
+      "candidate_key": "stage3_copa_0c7f310decd4cd315db8",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b0f44804459b053eab44",
+      "candidate_key": "stage3_copa_b0f44804459b053eab44",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_33e7ca0d616087f4636d",
+      "candidate_key": "stage3_copa_33e7ca0d616087f4636d",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_95b36552a68837e9f2c3",
+      "candidate_key": "stage3_copa_95b36552a68837e9f2c3",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5163b01d844938993889",
+      "candidate_key": "stage3_copa_5163b01d844938993889",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_247117c7d83f375e5d7b",
+      "candidate_key": "stage3_copa_247117c7d83f375e5d7b",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1d542ba1c8af363c684e",
+      "candidate_key": "stage3_copa_1d542ba1c8af363c684e",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ffd9e074550c00856259",
+      "candidate_key": "stage3_copa_ffd9e074550c00856259",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_77699005b25c07174d8a",
+      "candidate_key": "stage3_copa_77699005b25c07174d8a",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c3433041b83c7dfa3462",
+      "candidate_key": "stage3_copa_c3433041b83c7dfa3462",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9ed1e1acb6abb0479420",
+      "candidate_key": "stage3_copa_9ed1e1acb6abb0479420",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e4531b5d9551394c05a5",
+      "candidate_key": "stage3_copa_e4531b5d9551394c05a5",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_abf7081f4107df82b4ba",
+      "candidate_key": "stage3_copa_abf7081f4107df82b4ba",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_81cd8134494a9636c2b5",
+      "candidate_key": "stage3_copa_81cd8134494a9636c2b5",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_479af4cb593027503eb6",
+      "candidate_key": "stage3_copa_479af4cb593027503eb6",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fa471b6066d16cf925ae",
+      "candidate_key": "stage3_copa_fa471b6066d16cf925ae",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 20",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7c04a1bac035e7f63c62",
+      "candidate_key": "stage3_copa_7c04a1bac035e7f63c62",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_92d7b5adb2cda8732726",
+      "candidate_key": "stage3_copa_92d7b5adb2cda8732726",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5d3395cf54d487faa13e",
+      "candidate_key": "stage3_copa_5d3395cf54d487faa13e",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_803dfe4c75f294c17ab6",
+      "candidate_key": "stage3_copa_803dfe4c75f294c17ab6",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a0699a20befddd159803",
+      "candidate_key": "stage3_copa_a0699a20befddd159803",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7db3b5fcd8ca3aa32fda",
+      "candidate_key": "stage3_copa_7db3b5fcd8ca3aa32fda",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e2e50545be6cc4389cca",
+      "candidate_key": "stage3_copa_e2e50545be6cc4389cca",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f6d12b860568c311a5ee",
+      "candidate_key": "stage3_copa_f6d12b860568c311a5ee",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_07198ae0bd10d43c4b79",
+      "candidate_key": "stage3_copa_07198ae0bd10d43c4b79",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8067dc6d207ab6628499",
+      "candidate_key": "stage3_copa_8067dc6d207ab6628499",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a897556e8c7c1cd9b4b9",
+      "candidate_key": "stage3_copa_a897556e8c7c1cd9b4b9",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0dcb9c06ea2154b884ae",
+      "candidate_key": "stage3_copa_0dcb9c06ea2154b884ae",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_823c7d579a0b29c92da2",
+      "candidate_key": "stage3_copa_823c7d579a0b29c92da2",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_eaa9dbf6d03c8fd7748f",
+      "candidate_key": "stage3_copa_eaa9dbf6d03c8fd7748f",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ce34307c938cd5d0e5fa",
+      "candidate_key": "stage3_copa_ce34307c938cd5d0e5fa",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_424825cbef7492c03238",
+      "candidate_key": "stage3_copa_424825cbef7492c03238",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1203b60df13986830f5c",
+      "candidate_key": "stage3_copa_1203b60df13986830f5c",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8f947be5271860ef116c",
+      "candidate_key": "stage3_copa_8f947be5271860ef116c",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a68ed2760cb9cd82db92",
+      "candidate_key": "stage3_copa_a68ed2760cb9cd82db92",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_621867be8a99d1adfa97",
+      "candidate_key": "stage3_copa_621867be8a99d1adfa97",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3b06490efb582b43c27b",
+      "candidate_key": "stage3_copa_3b06490efb582b43c27b",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bc4a6252544ade8810d4",
+      "candidate_key": "stage3_copa_bc4a6252544ade8810d4",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6a63908b21a1d4f44416",
+      "candidate_key": "stage3_copa_6a63908b21a1d4f44416",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_30dd27d83398b569abcd",
+      "candidate_key": "stage3_copa_30dd27d83398b569abcd",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_195a1e3920602ded4c28",
+      "candidate_key": "stage3_copa_195a1e3920602ded4c28",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_81f0c210425167927c77",
+      "candidate_key": "stage3_copa_81f0c210425167927c77",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b0303bec3bc377f7172b",
+      "candidate_key": "stage3_copa_b0303bec3bc377f7172b",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 24",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_4f22aa0471248b785665",
+      "candidate_key": "stage3_copa_4f22aa0471248b785665",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7b5fcb27677c01a355f1",
+      "candidate_key": "stage3_copa_7b5fcb27677c01a355f1",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d88b7a90a6f668963295",
+      "candidate_key": "stage3_copa_d88b7a90a6f668963295",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_06910e3d83044905c1be",
+      "candidate_key": "stage3_copa_06910e3d83044905c1be",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6abde38ae540971af65a",
+      "candidate_key": "stage3_copa_6abde38ae540971af65a",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f010a1c9b56e1b95eadb",
+      "candidate_key": "stage3_copa_f010a1c9b56e1b95eadb",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_49d314c3a32ac359c6e5",
+      "candidate_key": "stage3_copa_49d314c3a32ac359c6e5",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_4ef97aed67778c132854",
+      "candidate_key": "stage3_copa_4ef97aed67778c132854",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3c6f81f0848f5ca380fd",
+      "candidate_key": "stage3_copa_3c6f81f0848f5ca380fd",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d05a088816639ddff8fa",
+      "candidate_key": "stage3_copa_d05a088816639ddff8fa",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c5e20b58b70f0dc7fc38",
+      "candidate_key": "stage3_copa_c5e20b58b70f0dc7fc38",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_41476b9f14cf7d87e0fe",
+      "candidate_key": "stage3_copa_41476b9f14cf7d87e0fe",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ba9c3d52b520949a5284",
+      "candidate_key": "stage3_copa_ba9c3d52b520949a5284",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b02f78429bab869c1bec",
+      "candidate_key": "stage3_copa_b02f78429bab869c1bec",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3dfbe2122a7d217b17f0",
+      "candidate_key": "stage3_copa_3dfbe2122a7d217b17f0",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_12c7bdea1432ad680f55",
+      "candidate_key": "stage3_copa_12c7bdea1432ad680f55",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b07370bd0581160fe430",
+      "candidate_key": "stage3_copa_b07370bd0581160fe430",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_189d050cc4d36e3b3d2c",
+      "candidate_key": "stage3_copa_189d050cc4d36e3b3d2c",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_35e75387f9588aa81831",
+      "candidate_key": "stage3_copa_35e75387f9588aa81831",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_4f60e41eff292c435a42",
+      "candidate_key": "stage3_copa_4f60e41eff292c435a42",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c96240d7b8878d5ce629",
+      "candidate_key": "stage3_copa_c96240d7b8878d5ce629",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fcc5ea311aeccd1e0bb3",
+      "candidate_key": "stage3_copa_fcc5ea311aeccd1e0bb3",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_55d8866156b64857777d",
+      "candidate_key": "stage3_copa_55d8866156b64857777d",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e0aea9d078b4b64ca1a1",
+      "candidate_key": "stage3_copa_e0aea9d078b4b64ca1a1",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3da82f2cc018db098d7c",
+      "candidate_key": "stage3_copa_3da82f2cc018db098d7c",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e88969ad1a03abcccd6e",
+      "candidate_key": "stage3_copa_e88969ad1a03abcccd6e",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_288104be25c9193c2c09",
+      "candidate_key": "stage3_copa_288104be25c9193c2c09",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "eomix",
+      "official_model_id": "eomix 35",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_4027d130a5a28d842286",
+      "candidate_key": "stage3_copa_4027d130a5a28d842286",
+      "candidate_name": "Gidiş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_824bff6daeb8c057f4c9",
+      "candidate_key": "stage3_copa_824bff6daeb8c057f4c9",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_64233575a20dfcea4a8d",
+      "candidate_key": "stage3_copa_64233575a20dfcea4a8d",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e1cc4cea18419b689e03",
+      "candidate_key": "stage3_copa_e1cc4cea18419b689e03",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c11043e784f78b8c2d87",
+      "candidate_key": "stage3_copa_c11043e784f78b8c2d87",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f12d834f243fe9c81256",
+      "candidate_key": "stage3_copa_f12d834f243fe9c81256",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f028dd70c62a84a1771f",
+      "candidate_key": "stage3_copa_f028dd70c62a84a1771f",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2dd7d8a4bbf122a601ee",
+      "candidate_key": "stage3_copa_2dd7d8a4bbf122a601ee",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f6f024bc1c1248d497e2",
+      "candidate_key": "stage3_copa_f6f024bc1c1248d497e2",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_16f3b3acc085472178f3",
+      "candidate_key": "stage3_copa_16f3b3acc085472178f3",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ab0ad056464e6635e44e",
+      "candidate_key": "stage3_copa_ab0ad056464e6635e44e",
+      "candidate_name": "Alev algılama/geri bildirim grubu",
+      "fault_class": "ignition",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b0fcef0922217a6f4fb7",
+      "candidate_key": "stage3_copa_b0fcef0922217a6f4fb7",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E43",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8c3a93705a5596224eda",
+      "candidate_key": "stage3_copa_8c3a93705a5596224eda",
+      "candidate_name": "Gaz vanası geri bildirim/kontrol devresi sorunu",
+      "fault_class": "electronic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_cb4bc32fca9eb908b6ca",
+      "candidate_key": "stage3_copa_cb4bc32fca9eb908b6ca",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7f4c5e5247e50c49da02",
+      "candidate_key": "stage3_copa_7f4c5e5247e50c49da02",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 24 kw",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fd9cb8a6dd895186a432",
+      "candidate_key": "stage3_copa_fd9cb8a6dd895186a432",
+      "candidate_name": "Gidiş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2a085279de852e6e5ec4",
+      "candidate_key": "stage3_copa_2a085279de852e6e5ec4",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_20bbb1636608ce57cf0e",
+      "candidate_key": "stage3_copa_20bbb1636608ce57cf0e",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_df5b7f1e6c31e914046a",
+      "candidate_key": "stage3_copa_df5b7f1e6c31e914046a",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8b454518226be9725d68",
+      "candidate_key": "stage3_copa_8b454518226be9725d68",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5f21ac362ac725fa8fe1",
+      "candidate_key": "stage3_copa_5f21ac362ac725fa8fe1",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_606727b36f4c437d5606",
+      "candidate_key": "stage3_copa_606727b36f4c437d5606",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_111b17e0d20e02002d2d",
+      "candidate_key": "stage3_copa_111b17e0d20e02002d2d",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_eed9711b1a1650ef75e7",
+      "candidate_key": "stage3_copa_eed9711b1a1650ef75e7",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6fea50aedd61306070d1",
+      "candidate_key": "stage3_copa_6fea50aedd61306070d1",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c99c3c808dbe3ed01b85",
+      "candidate_key": "stage3_copa_c99c3c808dbe3ed01b85",
+      "candidate_name": "Alev algılama/geri bildirim grubu",
+      "fault_class": "ignition",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0a766a95f70f99116d1a",
+      "candidate_key": "stage3_copa_0a766a95f70f99116d1a",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E43",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e7608174ee5a0938dcdc",
+      "candidate_key": "stage3_copa_e7608174ee5a0938dcdc",
+      "candidate_name": "Gaz vanası geri bildirim/kontrol devresi sorunu",
+      "fault_class": "electronic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9945177c5f98256ac42e",
+      "candidate_key": "stage3_copa_9945177c5f98256ac42e",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3bea9a90bc8d5c088f87",
+      "candidate_key": "stage3_copa_3bea9a90bc8d5c088f87",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 35 kw",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1b24747664da9e2aceac",
+      "candidate_key": "stage3_copa_1b24747664da9e2aceac",
+      "candidate_name": "Gidiş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3e1bf7c73bdf459783a9",
+      "candidate_key": "stage3_copa_3e1bf7c73bdf459783a9",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c8c1652bf34eb72a6b15",
+      "candidate_key": "stage3_copa_c8c1652bf34eb72a6b15",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6bd0d10e5dbcd305215d",
+      "candidate_key": "stage3_copa_6bd0d10e5dbcd305215d",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e4a931e3988a61283989",
+      "candidate_key": "stage3_copa_e4a931e3988a61283989",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_289da4211465cad858f6",
+      "candidate_key": "stage3_copa_289da4211465cad858f6",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_478cc7d1de6c1fb11c4b",
+      "candidate_key": "stage3_copa_478cc7d1de6c1fb11c4b",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1d29da07dd1fa3910429",
+      "candidate_key": "stage3_copa_1d29da07dd1fa3910429",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bf8069d3a1fed0cbef19",
+      "candidate_key": "stage3_copa_bf8069d3a1fed0cbef19",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d1110dc595c22d4b8475",
+      "candidate_key": "stage3_copa_d1110dc595c22d4b8475",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_970f641571d85a65ed30",
+      "candidate_key": "stage3_copa_970f641571d85a65ed30",
+      "candidate_name": "Alev algılama/geri bildirim grubu",
+      "fault_class": "ignition",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_31e4ed31ddd30532dc28",
+      "candidate_key": "stage3_copa_31e4ed31ddd30532dc28",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E43",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_76f241c3bef1dd390571",
+      "candidate_key": "stage3_copa_76f241c3bef1dd390571",
+      "candidate_name": "Gaz vanası geri bildirim/kontrol devresi sorunu",
+      "fault_class": "electronic",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2dbbfc86cf5ac732d82a",
+      "candidate_key": "stage3_copa_2dbbfc86cf5ac732d82a",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7304fecff7c2a43841d9",
+      "candidate_key": "stage3_copa_7304fecff7c2a43841d9",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "eomix plus",
+      "official_model_id": "eomix plus 42 kw",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8975c656f1faabfd6d2d",
+      "candidate_key": "stage3_copa_8975c656f1faabfd6d2d",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7f4624466f68c61beb04",
+      "candidate_key": "stage3_copa_7f4624466f68c61beb04",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_34215e4dd8e7feaf9edc",
+      "candidate_key": "stage3_copa_34215e4dd8e7feaf9edc",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_da85578c948a98e1efcb",
+      "candidate_key": "stage3_copa_da85578c948a98e1efcb",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_26e2c2b6dd26156bcabd",
+      "candidate_key": "stage3_copa_26e2c2b6dd26156bcabd",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_aa26ad5d51265f4cb0d0",
+      "candidate_key": "stage3_copa_aa26ad5d51265f4cb0d0",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7997c4be5f42e2a6b2ef",
+      "candidate_key": "stage3_copa_7997c4be5f42e2a6b2ef",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fb28319c81eb1d3da42d",
+      "candidate_key": "stage3_copa_fb28319c81eb1d3da42d",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d721b4e6eeb066f15a9d",
+      "candidate_key": "stage3_copa_d721b4e6eeb066f15a9d",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_04ffc92aca9153012c0e",
+      "candidate_key": "stage3_copa_04ffc92aca9153012c0e",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8546666b5c361948e3fd",
+      "candidate_key": "stage3_copa_8546666b5c361948e3fd",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ac76beb1368d944ac8bf",
+      "candidate_key": "stage3_copa_ac76beb1368d944ac8bf",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_39b4e17c23f4d95a4563",
+      "candidate_key": "stage3_copa_39b4e17c23f4d95a4563",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c549756457c08f16a8b7",
+      "candidate_key": "stage3_copa_c549756457c08f16a8b7",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3e4613e990693c96deed",
+      "candidate_key": "stage3_copa_3e4613e990693c96deed",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bb996487a635dd03e31b",
+      "candidate_key": "stage3_copa_bb996487a635dd03e31b",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_283b4d6fab1cf76903a3",
+      "candidate_key": "stage3_copa_283b4d6fab1cf76903a3",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_06557e03c360f1e9435c",
+      "candidate_key": "stage3_copa_06557e03c360f1e9435c",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fc6a9520b8b06b40a157",
+      "candidate_key": "stage3_copa_fc6a9520b8b06b40a157",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9d22b6f65272d3fce233",
+      "candidate_key": "stage3_copa_9d22b6f65272d3fce233",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ba32a6ee4c7c25e1ee18",
+      "candidate_key": "stage3_copa_ba32a6ee4c7c25e1ee18",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7ab6b819bcce4d19fcdf",
+      "candidate_key": "stage3_copa_7ab6b819bcce4d19fcdf",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9fdca7217ee624fcb836",
+      "candidate_key": "stage3_copa_9fdca7217ee624fcb836",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_70bfdb2603b3510dbb5f",
+      "candidate_key": "stage3_copa_70bfdb2603b3510dbb5f",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_862007c548bfb40cfe76",
+      "candidate_key": "stage3_copa_862007c548bfb40cfe76",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_91ec0b255e42ec7c4559",
+      "candidate_key": "stage3_copa_91ec0b255e42ec7c4559",
+      "candidate_name": "Pompa hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 18",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5ba93e3337fb767262ae",
+      "candidate_key": "stage3_copa_5ba93e3337fb767262ae",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f6e1d3a8911d619eeb8e",
+      "candidate_key": "stage3_copa_f6e1d3a8911d619eeb8e",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d1da5ca41c7c4575db7a",
+      "candidate_key": "stage3_copa_d1da5ca41c7c4575db7a",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d43e5cb816ebd4e9e749",
+      "candidate_key": "stage3_copa_d43e5cb816ebd4e9e749",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b1d9b33e3fe0ff1ecb16",
+      "candidate_key": "stage3_copa_b1d9b33e3fe0ff1ecb16",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_90f86b5f594ead5250bd",
+      "candidate_key": "stage3_copa_90f86b5f594ead5250bd",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1e02dc5e06382a6dc705",
+      "candidate_key": "stage3_copa_1e02dc5e06382a6dc705",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c4b2f208df6ed05c9070",
+      "candidate_key": "stage3_copa_c4b2f208df6ed05c9070",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_510f50f05b6e5f0864f8",
+      "candidate_key": "stage3_copa_510f50f05b6e5f0864f8",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8de367b36a1e81770cff",
+      "candidate_key": "stage3_copa_8de367b36a1e81770cff",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e898600e7c74ecf3044a",
+      "candidate_key": "stage3_copa_e898600e7c74ecf3044a",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_35743d4d7ee8fe3a3464",
+      "candidate_key": "stage3_copa_35743d4d7ee8fe3a3464",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_83a3910c90a4befc2ad1",
+      "candidate_key": "stage3_copa_83a3910c90a4befc2ad1",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_350a7e696e137590186a",
+      "candidate_key": "stage3_copa_350a7e696e137590186a",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b05d2b1eb01df67ce4a4",
+      "candidate_key": "stage3_copa_b05d2b1eb01df67ce4a4",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ceed11d170dd3fc261ce",
+      "candidate_key": "stage3_copa_ceed11d170dd3fc261ce",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_84f36d097170f20333d4",
+      "candidate_key": "stage3_copa_84f36d097170f20333d4",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ab2c2f78e8363f86f796",
+      "candidate_key": "stage3_copa_ab2c2f78e8363f86f796",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8f7907b32303899f6d8f",
+      "candidate_key": "stage3_copa_8f7907b32303899f6d8f",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_81fc82d3351e7bfa636a",
+      "candidate_key": "stage3_copa_81fc82d3351e7bfa636a",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_064a9e227f3a4aac61c5",
+      "candidate_key": "stage3_copa_064a9e227f3a4aac61c5",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_259d065d1d1b2c836184",
+      "candidate_key": "stage3_copa_259d065d1d1b2c836184",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_96c41bc721170ef2c563",
+      "candidate_key": "stage3_copa_96c41bc721170ef2c563",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_30a0b3da6ce0108a5252",
+      "candidate_key": "stage3_copa_30a0b3da6ce0108a5252",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e13ad797b2df3da30fba",
+      "candidate_key": "stage3_copa_e13ad797b2df3da30fba",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_90c65e0225a6f518fbf6",
+      "candidate_key": "stage3_copa_90c65e0225a6f518fbf6",
+      "candidate_name": "Pompa hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "ultimix",
+      "official_model_id": "ultimix 24",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_43a69147da28abca16a8",
+      "candidate_key": "stage3_copa_43a69147da28abca16a8",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f93d143b428f0e46ca3d",
+      "candidate_key": "stage3_copa_f93d143b428f0e46ca3d",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0b25184066c8fde07079",
+      "candidate_key": "stage3_copa_0b25184066c8fde07079",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c28188d66b595a90f2a1",
+      "candidate_key": "stage3_copa_c28188d66b595a90f2a1",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9464915c35f0bcd81b57",
+      "candidate_key": "stage3_copa_9464915c35f0bcd81b57",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_76ceeba6a588e1e69c0b",
+      "candidate_key": "stage3_copa_76ceeba6a588e1e69c0b",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_81fb8f7637ab926b4b19",
+      "candidate_key": "stage3_copa_81fb8f7637ab926b4b19",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_73a27f19c00ad418c3bb",
+      "candidate_key": "stage3_copa_73a27f19c00ad418c3bb",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_9d1df720baf11e7538f1",
+      "candidate_key": "stage3_copa_9d1df720baf11e7538f1",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2e9f147396ded42f5560",
+      "candidate_key": "stage3_copa_2e9f147396ded42f5560",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_cc7d04ae732a1a0a3810",
+      "candidate_key": "stage3_copa_cc7d04ae732a1a0a3810",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_423a932e8affc3f5f1aa",
+      "candidate_key": "stage3_copa_423a932e8affc3f5f1aa",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_94bc26d8b88d5d5698eb",
+      "candidate_key": "stage3_copa_94bc26d8b88d5d5698eb",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f889cab6aba96d7539c2",
+      "candidate_key": "stage3_copa_f889cab6aba96d7539c2",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_1bf6ffe838f568e5b60e",
+      "candidate_key": "stage3_copa_1bf6ffe838f568e5b60e",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7d9fe9fe274a4f91849f",
+      "candidate_key": "stage3_copa_7d9fe9fe274a4f91849f",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f878a2e94eeca614df56",
+      "candidate_key": "stage3_copa_f878a2e94eeca614df56",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_364734a8ca49edeb35c7",
+      "candidate_key": "stage3_copa_364734a8ca49edeb35c7",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bdca8216d5a5660b38b5",
+      "candidate_key": "stage3_copa_bdca8216d5a5660b38b5",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0351d68006bf91e077ac",
+      "candidate_key": "stage3_copa_0351d68006bf91e077ac",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_81cc81c829093178ee68",
+      "candidate_key": "stage3_copa_81cc81c829093178ee68",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_adacb8de92003d9cc633",
+      "candidate_key": "stage3_copa_adacb8de92003d9cc633",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d6f39a9670f75a3aa6c8",
+      "candidate_key": "stage3_copa_d6f39a9670f75a3aa6c8",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5040f8e633eb36ab797a",
+      "candidate_key": "stage3_copa_5040f8e633eb36ab797a",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_92b9d3498e85bda699f7",
+      "candidate_key": "stage3_copa_92b9d3498e85bda699f7",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d605357135e1d7f9fa9a",
+      "candidate_key": "stage3_copa_d605357135e1d7f9fa9a",
+      "candidate_name": "Pompa hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a190040a5d8112cfe6c8",
+      "candidate_key": "stage3_copa_a190040a5d8112cfe6c8",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E51",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_54c704834b667b294341",
+      "candidate_key": "stage3_copa_54c704834b667b294341",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 20 kw",
+      "error_code": "E51",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e4bef446bcea28a1739d",
+      "candidate_key": "stage3_copa_e4bef446bcea28a1739d",
+      "candidate_name": "Gaz beslemesi sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E01",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_54c78ef069d7148fefe6",
+      "candidate_key": "stage3_copa_54c78ef069d7148fefe6",
+      "candidate_name": "Tesisat sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_86df2ee2f39988df4f93",
+      "candidate_key": "stage3_copa_86df2ee2f39988df4f93",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_4be874cafcda46703ad8",
+      "candidate_key": "stage3_copa_4be874cafcda46703ad8",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_045bf09ae2ddb9eff9c1",
+      "candidate_key": "stage3_copa_045bf09ae2ddb9eff9c1",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_e7f28969ef20eca699f8",
+      "candidate_key": "stage3_copa_e7f28969ef20eca699f8",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E06",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_dcf29470031cb73f89df",
+      "candidate_key": "stage3_copa_dcf29470031cb73f89df",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a97aa65465a078ebdda1",
+      "candidate_key": "stage3_copa_a97aa65465a078ebdda1",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c1e00f9c46b5a8fd732d",
+      "candidate_key": "stage3_copa_c1e00f9c46b5a8fd732d",
+      "candidate_name": "Su kaçağı/sızıntısı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E08",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_dc5c09b4e806e9bc37f5",
+      "candidate_key": "stage3_copa_dc5c09b4e806e9bc37f5",
+      "candidate_name": "Termostat/sıcaklık sınırlayıcısı sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6cf5ac7af9208c86d3ef",
+      "candidate_key": "stage3_copa_6cf5ac7af9208c86d3ef",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_ec1999a86e26ccf74019",
+      "candidate_key": "stage3_copa_ec1999a86e26ccf74019",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E09",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5f1918a85acd14eb50a8",
+      "candidate_key": "stage3_copa_5f1918a85acd14eb50a8",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_7596b628ab009837d5f9",
+      "candidate_key": "stage3_copa_7596b628ab009837d5f9",
+      "candidate_name": "Genleşme kabı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E10",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0160a866439e5c6c13d6",
+      "candidate_key": "stage3_copa_0160a866439e5c6c13d6",
+      "candidate_name": "Baca gazı sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bb68163426894c3eb9b4",
+      "candidate_key": "stage3_copa_bb68163426894c3eb9b4",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b9fd9b8235859a5dd7fb",
+      "candidate_key": "stage3_copa_b9fd9b8235859a5dd7fb",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E17",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_42145fec65efaf1c5a31",
+      "candidate_key": "stage3_copa_42145fec65efaf1c5a31",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E24",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_58499628cce9c7c52235",
+      "candidate_key": "stage3_copa_58499628cce9c7c52235",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_a438145f6bddef015697",
+      "candidate_key": "stage3_copa_a438145f6bddef015697",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E30",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0a46fcf0ed0075308827",
+      "candidate_key": "stage3_copa_0a46fcf0ed0075308827",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_2707e101b7697866fc20",
+      "candidate_key": "stage3_copa_2707e101b7697866fc20",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E41",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_43e0e5df12ac88fd649d",
+      "candidate_key": "stage3_copa_43e0e5df12ac88fd649d",
+      "candidate_name": "Ateşleme/iyonizasyon elektrodu sorunu",
+      "fault_class": "ignition",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E42",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fcd03ef42dfb3987b775",
+      "candidate_key": "stage3_copa_fcd03ef42dfb3987b775",
+      "candidate_name": "Gaz valfi/armatürü sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E44",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_3fe1ffcc8f272dfb7485",
+      "candidate_key": "stage3_copa_3fe1ffcc8f272dfb7485",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E45",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_22894a13ebc3612b18d5",
+      "candidate_key": "stage3_copa_22894a13ebc3612b18d5",
+      "candidate_name": "Pompa hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E46",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_01ae9dbab70d0b1147b4",
+      "candidate_key": "stage3_copa_01ae9dbab70d0b1147b4",
+      "candidate_name": "Fan sorunu",
+      "fault_class": "mechanical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E51",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_6f54f489c0f195799d44",
+      "candidate_key": "stage3_copa_6f54f489c0f195799d44",
+      "candidate_name": "Fan hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "nexa",
+      "official_model_id": "nexa 24 kw",
+      "error_code": "E51",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c24ccf9cba1a285650c0",
+      "candidate_key": "stage3_copa_c24ccf9cba1a285650c0",
+      "candidate_name": "Yüksek limit / termik koruma noktası",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_fd608f2d87df2d81d88f",
+      "candidate_key": "stage3_copa_fd608f2d87df2d81d88f",
+      "candidate_name": "Devre kesici geri bildirim/kontrol noktası",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "E03",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_0b53473c6679b44b1676",
+      "candidate_key": "stage3_copa_0b53473c6679b44b1676",
+      "candidate_name": "Devre kesici geri bildirim/kontrol noktası",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "E04",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_d540b6f73d074988151a",
+      "candidate_key": "stage3_copa_d540b6f73d074988151a",
+      "candidate_name": "Dönüş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F33",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_04c28cfdefb64e97b9cf",
+      "candidate_key": "stage3_copa_04c28cfdefb64e97b9cf",
+      "candidate_name": "Gidiş sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F35",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_b2afd6f7eeb51c2503d5",
+      "candidate_key": "stage3_copa_b2afd6f7eeb51c2503d5",
+      "candidate_name": "NTC gidiş/dönüş eşleşme-kontrol noktası",
+      "fault_class": "installation",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "E80",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_c556f791d895f016eac6",
+      "candidate_key": "stage3_copa_c556f791d895f016eac6",
+      "candidate_name": "Tesisat su basıncı/eksik su sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F37",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_20ef88ee44ad3b53137d",
+      "candidate_key": "stage3_copa_20ef88ee44ad3b53137d",
+      "candidate_name": "Dış sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F39",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5bd4ba7d7fa3ddde2d73",
+      "candidate_key": "stage3_copa_5bd4ba7d7fa3ddde2d73",
+      "candidate_name": "Yüksek tesisat su basıncı sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F40",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_8c4e4ece7a5dd7682580",
+      "candidate_key": "stage3_copa_8c4e4ece7a5dd7682580",
+      "candidate_name": "Su basınç sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F47",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f94222ddd418183c69d3",
+      "candidate_key": "stage3_copa_f94222ddd418183c69d3",
+      "candidate_name": "Kablolama/soket/bağlantı sorunu",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F47",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_5188a96891defdf961fc",
+      "candidate_key": "stage3_copa_5188a96891defdf961fc",
+      "candidate_name": "Kullanım suyu sıcaklık sensörü sorunu",
+      "fault_class": "sensor",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F52",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_bf9ae1d6ccca0554f2b3",
+      "candidate_key": "stage3_copa_bf9ae1d6ccca0554f2b3",
+      "candidate_name": "Pompa hız/sinyal geri bildirimi sorunu",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F70",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_copa_f389a504056ab9608a61",
+      "candidate_key": "stage3_copa_f389a504056ab9608a61",
+      "candidate_name": "Elektrik besleme/gerilim sorunu",
+      "fault_class": "electrical",
+      "family_id": "e lecto",
+      "official_model_id": "e lecto 24 kw",
+      "error_code": "F34",
+      "verification_status": "verified",
+      "is_active": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "gas_other_appliance",
+      "question_key": "gas_other_appliance",
+      "question_text": "Evinizdeki başka bir gazlı cihaz (örneğin ocak) normal çalışıyor mu?",
+      "evidence_group": "household_gas_availability",
+      "is_safety_question": 0,
+      "priority": 80,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "display_low_water_pressure",
+      "question_key": "display_low_water_pressure",
+      "question_text": "Cihazın kullanıcı göstergesinde su basıncı düşük görünüyor mu?",
+      "evidence_group": "display_water_pressure",
+      "is_safety_question": 0,
+      "priority": 70,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "visible_water_leak",
+      "question_key": "visible_water_leak",
+      "question_text": "Cihazın dışından görülebilen su kaçağı var mı?",
+      "evidence_group": "visible_water_leak",
+      "is_safety_question": 0,
+      "priority": 60,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "abnormal_fan_noise",
+      "question_key": "abnormal_fan_noise",
+      "question_text": "Cihaz çalışmaya çalışırken olağandışı sürtme veya uğultu sesi duyuyor musunuz?",
+      "evidence_group": "abnormal_running_noise",
+      "is_safety_question": 0,
+      "priority": 50,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "safety_gas_smell",
+      "question_key": "safety_gas_smell",
+      "question_text": "Gaz kokusu alıyor musunuz?",
+      "evidence_group": "safety_gas_smell",
+      "is_safety_question": 1,
+      "priority": 100,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "fault_timing_after_start",
+      "question_key": "fault_timing_after_start",
+      "question_text": "Hata ortaya çıkmadan önce cihazın çalışma durumu hangisine uyuyor: başlar başlamaz, bir süre çalıştıktan sonra, yoksa aralıklı?",
+      "evidence_group": "fault_timing_after_start",
+      "is_safety_question": false,
+      "priority": 78,
+      "answer_options": [
+        "immediate",
+        "after_some_time",
+        "intermittent",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "display_temperature_rise",
+      "question_key": "display_temperature_rise",
+      "question_text": "Hata öncesinde ekrandaki sıcaklığın normalden çok hızlı yükseldiğini gözlüyor musunuz?",
+      "evidence_group": "display_temperature_rise",
+      "is_safety_question": false,
+      "priority": 76,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "ignition_attempt_sequence",
+      "question_key": "ignition_attempt_sequence",
+      "question_text": "Cihazın ısı vermeye çalışırkenki davranışı hangisine uyuyor: tık sesleri var ama ısı yok, sessizken hemen hata, yoksa kısa süre ısı verip kesilme?",
+      "evidence_group": "ignition_attempt_sequence",
+      "is_safety_question": false,
+      "priority": 75,
+      "answer_options": [
+        "clicks_no_heat",
+        "silent_immediate",
+        "brief_heat_then_fault",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    },
+    {
+      "id": "heating_dhw_scope",
+      "question_key": "heating_dhw_scope",
+      "question_text": "Sorun hangi kullanımda görülüyor: yalnız kalorifer, yalnız sıcak su, yoksa her ikisinde?",
+      "evidence_group": "heating_dhw_scope",
+      "is_safety_question": false,
+      "priority": 74,
+      "answer_options": [
+        "heating_only",
+        "dhw_only",
+        "both",
+        "unknown"
+      ],
+      "is_active": true,
+      "customer_observable": true
+    }
+  ],
+  "effects": [
+    {
+      "candidate_id": "stage3_copa_01ae9dbab70d0b1147b4",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0351d68006bf91e077ac",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_045bf09ae2ddb9eff9c1",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_04ffc92aca9153012c0e",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_04ffc92aca9153012c0e",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_06910e3d83044905c1be",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_06910e3d83044905c1be",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_07198ae0bd10d43c4b79",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0b25184066c8fde07079",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0b25184066c8fde07079",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_0c7f310decd4cd315db8",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0c7f310decd4cd315db8",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0d9ad1d4360664e11ac2",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0dcb9c06ea2154b884ae",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_0dcb9c06ea2154b884ae",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_12c7bdea1432ad680f55",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_20bbb1636608ce57cf0e",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_20bbb1636608ce57cf0e",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_26e2c2b6dd26156bcabd",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_2e9f147396ded42f5560",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_2e9f147396ded42f5560",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_34215e4dd8e7feaf9edc",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_34215e4dd8e7feaf9edc",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_35743d4d7ee8fe3a3464",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_35743d4d7ee8fe3a3464",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_35e75387f9588aa81831",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_3c6f81f0848f5ca380fd",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_41476b9f14cf7d87e0fe",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_41476b9f14cf7d87e0fe",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_41ddb1267d0748652e39",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_41ddb1267d0748652e39",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_423a932e8affc3f5f1aa",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_423a932e8affc3f5f1aa",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_424825cbef7492c03238",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_43a69147da28abca16a8",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_43a69147da28abca16a8",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_4be874cafcda46703ad8",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_4be874cafcda46703ad8",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_4f22aa0471248b785665",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_4f22aa0471248b785665",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_510f50f05b6e5f0864f8",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_5163b01d844938993889",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_55d8866156b64857777d",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_5ba93e3337fb767262ae",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_5ba93e3337fb767262ae",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_5d3395cf54d487faa13e",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_5d3395cf54d487faa13e",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_64233575a20dfcea4a8d",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_64233575a20dfcea4a8d",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_6a63908b21a1d4f44416",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_6abde38ae540971af65a",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_6cf5ac7af9208c86d3ef",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_6ef3ef3d8fd83c0d9b59",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_6ef3ef3d8fd83c0d9b59",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_76ceeba6a588e1e69c0b",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_76ceeba6a588e1e69c0b",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_7c04a1bac035e7f63c62",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_7c04a1bac035e7f63c62",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_7d9fe9fe274a4f91849f",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_7db3b5fcd8ca3aa32fda",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_7db3b5fcd8ca3aa32fda",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_803dfe4c75f294c17ab6",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_803dfe4c75f294c17ab6",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_8067dc6d207ab6628499",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_8067dc6d207ab6628499",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_81fc82d3351e7bfa636a",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_8546666b5c361948e3fd",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_86df2ee2f39988df4f93",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_86df2ee2f39988df4f93",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_8975c656f1faabfd6d2d",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_8975c656f1faabfd6d2d",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_8de367b36a1e81770cff",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_8de367b36a1e81770cff",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_90f86b5f594ead5250bd",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_90f86b5f594ead5250bd",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_9464915c35f0bcd81b57",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_9d1df720baf11e7538f1",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_9d22b6f65272d3fce233",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_a0699a20befddd159803",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_a190040a5d8112cfe6c8",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_a438145f6bddef015697",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_a68ed2760cb9cd82db92",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_a897556e8c7c1cd9b4b9",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_aa26ad5d51265f4cb0d0",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_aa26ad5d51265f4cb0d0",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ac76beb1368d944ac8bf",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ac76beb1368d944ac8bf",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_acbf8425541a4f44f522",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_acbf8425541a4f44f522",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_b1d9b33e3fe0ff1ecb16",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_bb68163426894c3eb9b4",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_bb996487a635dd03e31b",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c1e00f9c46b5a8fd732d",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c28188d66b595a90f2a1",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c28188d66b595a90f2a1",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c556f791d895f016eac6",
+      "question_id": "display_low_water_pressure",
+      "answer_key": "no",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_c556f791d895f016eac6",
+      "question_id": "display_low_water_pressure",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c5e20b58b70f0dc7fc38",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c7ed335e0935146f7602",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c8c1652bf34eb72a6b15",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_c8c1652bf34eb72a6b15",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_cc7d04ae732a1a0a3810",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ceed11d170dd3fc261ce",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d05a088816639ddff8fa",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d05a088816639ddff8fa",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d1da5ca41c7c4575db7a",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d1da5ca41c7c4575db7a",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_d3709c862c5bec515de5",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d3709c862c5bec515de5",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d43e5cb816ebd4e9e749",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d43e5cb816ebd4e9e749",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d721b4e6eeb066f15a9d",
+      "question_id": "visible_water_leak",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d88b7a90a6f668963295",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_d88b7a90a6f668963295",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_da85578c948a98e1efcb",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_da85578c948a98e1efcb",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_dc5c09b4e806e9bc37f5",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_dc5c09b4e806e9bc37f5",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e307241f56e8b455b588",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "dhw_only",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e307241f56e8b455b588",
+      "question_id": "heating_dhw_scope",
+      "answer_key": "heating_only",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_e4531b5d9551394c05a5",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e4bef446bcea28a1739d",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e4bef446bcea28a1739d",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_copa_e7f28969ef20eca699f8",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e7f28969ef20eca699f8",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_e898600e7c74ecf3044a",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ec1999a86e26ccf74019",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ec1999a86e26ccf74019",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_f010a1c9b56e1b95eadb",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_f010a1c9b56e1b95eadb",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_f6d554cdc3d884a490e9",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_copa_ffd9e074550c00856259",
+      "question_id": "abnormal_fan_noise",
+      "answer_key": "yes",
+      "effect": "support"
+    }
+  ]
+}

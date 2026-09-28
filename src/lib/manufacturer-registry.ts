@@ -5,6 +5,7 @@ export const DOMAINS: Record<string,string[]> = {
   bosch:['bosch-homecomfort.com','bosch-thermotechnology.com','bosch.com.tr'],
   demirdokum:['demirdokum.com.tr'], buderus:['buderus.com','buderus.com.tr'],
   baymak:['baymak.com.tr'], eca:['eca.com.tr'], ariston:['ariston.com'],
+  copa:['copa.com.tr'],
   viessmann:['viessmann.com.tr','viessmann.com'], ferroli:['ferroli.com'],
   immergas:['immergas.com','immergas.com.tr'], airfel:['airfel.com.tr'],
   arcelik:['arcelik.com.tr'], beko:['beko.com','beko.com.tr'], warmhaus:['warmhaus.com.tr','warmhaus.com'],
