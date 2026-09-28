@@ -1,0 +1,471 @@
+{
+  "provenance": "Applied 00014–00030, plus unapplied 00031; offline QA only",
+  "candidates": [
+    {
+      "id": "stage3_demirdokum_249bfb883189fb1cfa67",
+      "candidate_name": "Termik kapatma düzeneği sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P28 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_33b8f1fd8c2634ba566f",
+      "candidate_name": "Kablolama/soket/bağlantı sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P28 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_4699dded4f7ca6bad8e5",
+      "candidate_name": "Termik kapatma düzeneği sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P24 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_52401d108cf01a3429af",
+      "candidate_name": "Kablolama/soket/bağlantı sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P35 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_a33f331f3a840ec42843",
+      "candidate_name": "Termik kapatma düzeneği sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P35 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_b39ffa2f13dc7b391d33",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P35 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_bf05626043f7bd4db563",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P24 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_d93c5f4bff50d677f821",
+      "candidate_name": "Kablolama/soket/bağlantı sorunu",
+      "fault_class": "electrical",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P24 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "stage3_demirdokum_fee2d8b01ab7cfd23c8c",
+      "candidate_name": "Eşanjör/ısı bloğu sorunu",
+      "fault_class": "hydraulic",
+      "family_id": "nitromix",
+      "official_model_id": "nitromiX P28 NG (HEP)",
+      "error_code": "F.76",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_electronics",
+      "candidate_name": "Elektronik kontrol arızası",
+      "fault_class": "electronic",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_flue",
+      "candidate_name": "Atık gaz yolu sorunu",
+      "fault_class": "combustion_air",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_gas_supply",
+      "candidate_name": "Gaz beslemesi veya giriş basıncı sorunu",
+      "fault_class": "gas_supply",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_gas_valve",
+      "candidate_name": "Gaz armatürü arızası",
+      "fault_class": "gas_supply",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_grounding",
+      "candidate_name": "Topraklama veya elektrik bağlantısı sorunu",
+      "fault_class": "electrical",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    },
+    {
+      "id": "vaillant_ecotec_intro_f28_ignition",
+      "candidate_name": "Ateşleme sistemi arızası",
+      "fault_class": "ignition",
+      "family_id": "ecotec intro",
+      "official_model_id": null,
+      "error_code": "F.28",
+      "verification_status": "verified",
+      "is_active": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "gas_other_appliance",
+      "question_key": "gas_other_appliance",
+      "question_text": "Evinizdeki başka bir gazlı cihaz (örneğin ocak) normal çalışıyor mu?",
+      "evidence_group": "household_gas_availability",
+      "is_safety_question": false,
+      "priority": 80,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "display_low_water_pressure",
+      "question_key": "display_low_water_pressure",
+      "question_text": "Cihazın kullanıcı göstergesinde su basıncı düşük görünüyor mu?",
+      "evidence_group": "display_water_pressure",
+      "is_safety_question": false,
+      "priority": 70,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "visible_water_leak",
+      "question_key": "visible_water_leak",
+      "question_text": "Cihazın dışından görülebilen su kaçağı var mı?",
+      "evidence_group": "visible_water_leak",
+      "is_safety_question": false,
+      "priority": 60,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "abnormal_fan_noise",
+      "question_key": "abnormal_fan_noise",
+      "question_text": "Cihaz çalışmaya çalışırken olağandışı sürtme veya uğultu sesi duyuyor musunuz?",
+      "evidence_group": "abnormal_running_noise",
+      "is_safety_question": false,
+      "priority": 50,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "safety_gas_smell",
+      "question_key": "safety_gas_smell",
+      "question_text": "Gaz kokusu alıyor musunuz?",
+      "evidence_group": "safety_gas_smell",
+      "is_safety_question": true,
+      "priority": 100,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "fault_timing_after_start",
+      "question_key": "fault_timing_after_start",
+      "question_text": "Hata ortaya çıkmadan önce cihazın çalışma durumu hangisine uyuyor: başlar başlamaz, bir süre çalıştıktan sonra, yoksa aralıklı?",
+      "evidence_group": "fault_timing_after_start",
+      "is_safety_question": false,
+      "priority": 78,
+      "answer_options": [
+        "immediate",
+        "after_some_time",
+        "intermittent",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "display_temperature_rise",
+      "question_key": "display_temperature_rise",
+      "question_text": "Hata öncesinde ekrandaki sıcaklığın normalden çok hızlı yükseldiğini gözlüyor musunuz?",
+      "evidence_group": "display_temperature_rise",
+      "is_safety_question": false,
+      "priority": 76,
+      "answer_options": [
+        "yes",
+        "no",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "ignition_attempt_sequence",
+      "question_key": "ignition_attempt_sequence",
+      "question_text": "Cihazın ısı vermeye çalışırkenki davranışı hangisine uyuyor: tık sesleri var ama ısı yok, sessizken hemen hata, yoksa kısa süre ısı verip kesilme?",
+      "evidence_group": "ignition_attempt_sequence",
+      "is_safety_question": false,
+      "priority": 75,
+      "answer_options": [
+        "clicks_no_heat",
+        "silent_immediate",
+        "brief_heat_then_fault",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    },
+    {
+      "id": "heating_dhw_scope",
+      "question_key": "heating_dhw_scope",
+      "question_text": "Sorun hangi kullanımda görülüyor: yalnız kalorifer, yalnız sıcak su, yoksa her ikisinde?",
+      "evidence_group": "heating_dhw_scope",
+      "is_safety_question": false,
+      "priority": 74,
+      "answer_options": [
+        "heating_only",
+        "dhw_only",
+        "both",
+        "unknown"
+      ],
+      "customer_observable": true,
+      "is_active": true
+    }
+  ],
+  "effects": [
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_supply",
+      "question_id": "gas_other_appliance",
+      "answer_key": "no",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_supply",
+      "question_id": "gas_other_appliance",
+      "answer_key": "yes",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_249bfb883189fb1cfa67",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_249bfb883189fb1cfa67",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_33b8f1fd8c2634ba566f",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_33b8f1fd8c2634ba566f",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "immediate",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_4699dded4f7ca6bad8e5",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_4699dded4f7ca6bad8e5",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_52401d108cf01a3429af",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_52401d108cf01a3429af",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "immediate",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_a33f331f3a840ec42843",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_a33f331f3a840ec42843",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_b39ffa2f13dc7b391d33",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_b39ffa2f13dc7b391d33",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_bf05626043f7bd4db563",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_bf05626043f7bd4db563",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_d93c5f4bff50d677f821",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_d93c5f4bff50d677f821",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "immediate",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_fee2d8b01ab7cfd23c8c",
+      "question_id": "display_temperature_rise",
+      "answer_key": "yes",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "stage3_demirdokum_fee2d8b01ab7cfd23c8c",
+      "question_id": "fault_timing_after_start",
+      "answer_key": "after_some_time",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_electronics",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "clicks_no_heat",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_electronics",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "silent_immediate",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_supply",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "clicks_no_heat",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_supply",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "silent_immediate",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_valve",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "clicks_no_heat",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_gas_valve",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "silent_immediate",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_ignition",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "brief_heat_then_fault",
+      "effect": "weaken"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_ignition",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "clicks_no_heat",
+      "effect": "support"
+    },
+    {
+      "candidate_id": "vaillant_ecotec_intro_f28_ignition",
+      "question_id": "ignition_attempt_sequence",
+      "answer_key": "silent_immediate",
+      "effect": "support"
+    }
+  ]
+}

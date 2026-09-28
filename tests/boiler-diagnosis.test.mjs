@@ -30,6 +30,230 @@ const ai = (identity={brand:'Test',model:'Model',errorCode:'F28'})=>({
 });
 const turn = (store,provider,message,history=[],token=null)=>diagnoseBoiler(message,history,token,store,provider);
 
+test('a lone source-named group without diagnostic questions never opens pricing',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const group={...baseCandidate('group','F28'),candidate_name:'Ateşleme/alev oluşumu grubu',fault_class:'ignition'};
+    const {store,calls}=fakeStore({candidates:[group],questions:[],effects:[],price:{amount:900}});
+    const response=await turn(store,ai(),'Test Model F28 arızalı.');
+    assert.equal(response.resultState,'uncertain_price');
+    assert.equal(calls.pricing.length,0);
+    assert.equal(response.isReadyForPrice,false);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('DemirDöküm Nitromix F.76 keeps an explicitly stated brand when AI inserts a brand space',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore();
+    store.resolveDevice=async()=> 'ambiguous';
+    const response=await turn(store,ai({brand:'Demir Döküm',model:'Nitromix',errorCode:'F.76'}),
+      'DemirDöküm Nitromix kombim F.76 hatası veriyor.');
+    const state=decodeBoilerState(response.stateToken);
+    assert.equal(state.brand,'Demir Döküm');
+    assert.equal(state.model,'Nitromix');
+    assert.equal(state.errorCode,'F.76');
+    assert.match(response.aiText,/tam model adını/i);
+    assert.doesNotMatch(response.aiText,/markası nedir/i);
+    assert.equal(calls.sessions[0].brand,'Demir Döküm');
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('DemirDöküm nitromiX F.76 accepts model case and spaced canonical brand',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore();
+    const response=await turn(store,ai({brand:'Demir Döküm',model:'Nitromix',errorCode:'F.76'}),
+      'DemirDöküm nitromiX kombim F.76 hatası veriyor.');
+    const state=decodeBoilerState(response.stateToken);
+    assert.equal(state.brand,'Demir Döküm');
+    assert.equal(state.model,'Nitromix');
+    assert.equal(state.errorCode,'F.76');
+    assert.doesNotMatch(response.aiText,/markası nedir|modeli nedir|hata kodu/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('Demirdokum Nitromix F76 matches Turkish spelling and code punctuation',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore();
+    const response=await turn(store,ai({brand:'DemirDöküm',model:'Nitromix',errorCode:'F.76'}),
+      'Demirdokum Nitromix F76');
+    const state=decodeBoilerState(response.stateToken);
+    assert.equal(state.brand,'DemirDöküm');
+    assert.equal(state.model,'Nitromix');
+    assert.equal(state.errorCode,'F.76');
+    assert.doesNotMatch(response.aiText,/markası nedir|modeli nedir|hata kodu/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('Vaillant ecoTEC intro F.28 identity remains accepted',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore();
+    const response=await turn(store,ai({brand:'Vaillant',model:'ecoTEC intro',errorCode:'F.28'}),
+      'Vaillant ecoTEC intro kombim F.28 hatası veriyor.');
+    const state=decodeBoilerState(response.stateToken);
+    assert.equal(state.brand,'Vaillant');
+    assert.equal(state.model,'ecoTEC intro');
+    assert.equal(state.errorCode,'F.28');
+    assert.doesNotMatch(response.aiText,/markası nedir|modeli nedir|hata kodu/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('missing or AI-invented identity still requests the missing customer fact',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store:missingBrand}=fakeStore();
+    const first=await turn(missingBrand,ai({brand:'Bosch',model:'Nitromix',errorCode:'F.76'}),
+      'Nitromix F.76 hatası veriyor.');
+    assert.match(first.aiText,/markası nedir/i);
+    assert.equal(decodeBoilerState(first.stateToken).brand,'');
+    const {store:missingModel}=fakeStore();
+    const second=await turn(missingModel,ai({brand:'DemirDöküm',model:'Nitromix',errorCode:'F.76'}),
+      'DemirDöküm F.76 hatası veriyor.');
+    assert.match(second.aiText,/modeli nedir/i);
+    assert.equal(decodeBoilerState(second.stateToken).model,'');
+    const {store:splitBrand}=fakeStore();
+    const third=await turn(splitBrand,ai({brand:'DemirDöküm',model:'Nitromix',errorCode:'F.76'}),
+      'Döküm Nitromix F.76',[{role:'user',content:'Demir'}]);
+    assert.match(third.aiText,/markası nedir/i);
+    assert.equal(decodeBoilerState(third.stateToken).brand,'');
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('equivalent DemirDöküm brand spacing does not restart an active diagnosis session',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore();
+    const provider={...ai(),async extractIdentity(conversation){return {
+      brand:conversation.at(-1).content==='Hayır'?'DemirDöküm':'Demir Döküm',
+      model:'Nitromix',errorCode:'F.76'};}};
+    const initial='DemirDöküm Nitromix kombim F.76 hatası veriyor.';
+    const first=await turn(store,provider,initial);
+    const second=await turn(store,provider,'Hayır',[{role:'user',content:initial}],first.stateToken);
+    assert.equal(calls.sessions.length,1);
+    assert.equal(decodeBoilerState(second.stateToken).sessionId,decodeBoilerState(first.stateToken).sessionId);
+    assert.equal(calls.updates.some(row=>row.input.confidenceBasis?.reason==='device_identity_changed'),false);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('stateToken-only brand, model and code replies advance without replacing confirmed identity',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store,calls}=fakeStore({candidates:[baseCandidate('c0','F.76'),baseCandidate('c1','F.76')]});
+    const provider={...ai(),async extractIdentity(conversation){
+      const latest=conversation.at(-1).content;
+      if(latest==='Kombim bozuldu')return {brand:'',model:'',errorCode:''};
+      if(latest==='DemirDöküm')return {brand:'DemirDöküm',model:'',errorCode:''};
+      if(latest==='nitromiX')return {brand:'NitromiX',model:'',errorCode:''};
+      return {brand:'',model:'',errorCode:'F.76'};
+    }};
+    const first=await turn(store,provider,'Kombim bozuldu');
+    assert.match(first.aiText,/markası nedir/i);
+    assert.equal(decodeBoilerState(first.stateToken).totalAskedQuestions,1);
+    const second=await turn(store,provider,'DemirDöküm',[],first.stateToken);
+    assert.match(second.aiText,/modeli nedir/i);
+    assert.equal(decodeBoilerState(second.stateToken).totalAskedQuestions,2);
+    const third=await turn(store,provider,'nitromiX',[],second.stateToken);
+    assert.match(third.aiText,/hata kodu/i);
+    assert.deepEqual([decodeBoilerState(third.stateToken).brand,decodeBoilerState(third.stateToken).model,
+      decodeBoilerState(third.stateToken).totalAskedQuestions],['DemirDöküm','nitromiX',3]);
+    const fourth=await turn(store,provider,'F.76',[],third.stateToken);
+    const state=decodeBoilerState(fourth.stateToken);
+    assert.deepEqual([state.brand,state.model,state.errorCode,state.pendingIdentity,state.totalAskedQuestions],
+      ['DemirDöküm','nitromiX','F.76',null,4]);
+    assert.match(fourth.aiText,/gözlemi/i);
+    assert.equal(calls.sessions.length,1);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('a pending brand accepts explicit labelled and spaced answers even if AI omits the brand',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    for(const reply of ['Markası DemirDöküm','Demir Döküm']){
+      const {store}=fakeStore();
+      const provider={...ai(),async extractIdentity(){return {brand:'',model:'',errorCode:''};}};
+      const first=await turn(store,provider,'Kombim bozuldu');
+      const second=await turn(store,provider,reply,[],first.stateToken);
+      const state=decodeBoilerState(second.stateToken);
+      assert.equal(state.brand,reply==='Demir Döküm'?'Demir Döküm':'DemirDöküm');
+      assert.equal(state.pendingIdentity,'model');
+      assert.equal(state.totalAskedQuestions,2);
+      assert.match(second.aiText,/modeli nedir/i);
+    }
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('pending brand captures brand, model and code supplied together without extra identity questions',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore({candidates:[baseCandidate('c0','F.76'),baseCandidate('c1','F.76')]});
+    const provider={...ai(),async extractIdentity(conversation){return conversation.at(-1).content==='Kombim bozuldu'
+      ?{brand:'',model:'',errorCode:''}:{brand:'DemirDöküm',model:'nitromiX F.76',errorCode:''};}};
+    const first=await turn(store,provider,'Kombim bozuldu');
+    const second=await turn(store,provider,'DemirDöküm nitromiX F.76',[],first.stateToken);
+    const state=decodeBoilerState(second.stateToken);
+    assert.deepEqual([state.brand,state.model,state.errorCode,state.pendingIdentity,state.totalAskedQuestions],
+      ['DemirDöküm','nitromiX','F.76',null,2]);
+    assert.match(second.aiText,/gözlemi/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('pending model captures model and code together without asking for code again',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore({candidates:[baseCandidate('c0','F.76'),baseCandidate('c1','F.76')]});
+    const provider={...ai(),async extractIdentity(conversation){return conversation.at(-1).content==='nitromiX F.76'
+      ?{brand:'nitromiX',model:'',errorCode:''}:{brand:'DemirDöküm',model:'',errorCode:''};}};
+    const first=await turn(store,provider,'DemirDöküm kombim bozuldu.');
+    assert.match(first.aiText,/modeli nedir/i);
+    const second=await turn(store,provider,'nitromiX F.76',[],first.stateToken);
+    const state=decodeBoilerState(second.stateToken);
+    assert.deepEqual([state.brand,state.model,state.errorCode,state.pendingIdentity,state.totalAskedQuestions],
+      ['DemirDöküm','nitromiX','F.76',null,2]);
+    assert.match(second.aiText,/gözlemi/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('spontaneous full identity costs no identity slots and missing code can be answered yok',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const candidates=[baseCandidate('c0','F.76'),baseCandidate('c1','F.76')];
+    const {store:completeStore}=fakeStore({candidates});
+    const complete=await turn(completeStore,ai({brand:'DemirDöküm',model:'nitromiX',errorCode:'F.76'}),
+      'DemirDöküm nitromiX F.76 hatası veriyor.');
+    const completeState=decodeBoilerState(complete.stateToken);
+    assert.equal(completeState.totalAskedQuestions,1);
+    assert.equal(completeState.pendingIdentity,null);
+    assert.match(complete.aiText,/gözlemi/i);
+    const {store:symptomStore}=fakeStore({candidates:[baseCandidate('symptom',null),...candidates],
+      effects:[{question_id:'q1',candidate_id:'symptom',answer_key:'yes',effect:'support'}]});
+    const provider={...ai(),async extractIdentity(){return {brand:'DemirDöküm',model:'nitromiX',errorCode:''};}};
+    const codeQuestion=await turn(symptomStore,provider,'DemirDöküm nitromiX kombim bozuldu.');
+    assert.equal(decodeBoilerState(codeQuestion.stateToken).pendingIdentity,'code');
+    const symptom=await turn(symptomStore,provider,'yok',[],codeQuestion.stateToken);
+    const symptomState=decodeBoilerState(symptom.stateToken);
+    assert.equal(symptomState.errorCode,null);
+    assert.equal(symptomState.codeAsked,true);
+    assert.equal(symptomState.pendingIdentity,null);
+    assert.equal(symptomState.totalAskedQuestions,2);
+    assert.match(symptom.aiText,/gözlemi/i);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
+test('an unrecognized repeat of the same pending identity question does not spend another slot',async()=>{
+  const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
+  try{
+    const {store}=fakeStore();
+    const provider={...ai(),async extractIdentity(){return {brand:'',model:'',errorCode:''};}};
+    const first=await turn(store,provider,'Kombim bozuldu');
+    const repeated=await turn(store,provider,'?',[],first.stateToken);
+    assert.match(repeated.aiText,/markası nedir/i);
+    assert.equal(decodeBoilerState(repeated.stateToken).totalAskedQuestions,1);
+  }finally{if(saved===undefined)delete process.env.OPENAI_API_KEY;else process.env.OPENAI_API_KEY=saved;}
+});
+
 test('real backend path persists a session, customer answers, unknown and candidate snapshots without AI percentages',async()=>{
   const saved=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='test-signing-secret';
   try{

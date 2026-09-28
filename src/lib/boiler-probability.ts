@@ -1,3 +1,5 @@
+import { normalizePartText } from './parts-catalog';
+
 // V1 diagnostic weights are provisional relative weights, never calibrated
 // probabilities. Keep all coefficients here so field evidence can replace them.
 export const BOILER_EFFECT_FACTOR = { support: 2, weaken: 0.5, neutral: 1, eliminate: 0 } as const;
@@ -9,6 +11,9 @@ export type BoilerResultState = 'diagnosing' | 'verification' | 'priced_candidat
 export interface BoilerCandidate {
   id: string; candidate_name: string; verification_status: string; is_active: boolean;
   family_id: string | null; official_model_id: string | null; error_code: string | null;
+  fault_class?: string;
+  // Runtime-only provenance for one logical candidate shared by model variants.
+  sourceCandidateIds?: string[];
 }
 export interface BoilerQuestion {
   id: string; question_key: string; question_text: string; evidence_group: string | null;
@@ -23,19 +28,76 @@ export interface BoilerAnswer {
 }
 export interface BoilerAssessment {
   candidateId: string; candidateName: string; probability: number; rank: number;
+  sourceCandidateIds?: string[];
 }
 
 export function verifiedCandidates(rows: BoilerCandidate[]) {
   return rows.filter(row => row.verification_status === 'verified' && row.is_active);
 }
 
-export function selectCandidatePool(rows: BoilerCandidate[], familyId: string, modelId: string | null, errorCode: string | null) {
-  const scoped = verifiedCandidates(rows).filter(row => row.family_id === familyId &&
+export const normalizeBoilerErrorCode = (value: string) => value.toUpperCase().replace(/[.\s-]/g, '');
+export type BoilerCandidateMode = 'error_code' | 'family_code_consensus' | 'symptom';
+export interface BoilerCandidatePool {
+  candidates: BoilerCandidate[]; mode: BoilerCandidateMode; requiresExactModel: boolean;
+}
+
+export function selectCandidatePool(rows: BoilerCandidate[], familyId: string, modelId: string | null,
+  errorCode: string | null, errorCodeModelIds: string[] = []): BoilerCandidatePool {
+  const familyRows = verifiedCandidates(rows).filter(row => row.family_id === familyId);
+  const scoped = familyRows.filter(row =>
     (row.official_model_id === null || row.official_model_id === modelId));
-  const normalize = (value: string) => value.toUpperCase().replace(/[.\s-]/g, '');
-  const byCode = errorCode ? scoped.filter(row => row.error_code && normalize(row.error_code) === normalize(errorCode)) : [];
-  return { candidates: byCode.length ? byCode : scoped.filter(row => row.error_code === null),
-    mode: byCode.length ? 'error_code' as const : 'symptom' as const };
+  const matchesCode = (row: BoilerCandidate) => !!errorCode && !!row.error_code &&
+    normalizeBoilerErrorCode(row.error_code) === normalizeBoilerErrorCode(errorCode);
+  const byCode = scoped.filter(matchesCode);
+  if (byCode.length) return { candidates: byCode, mode: 'error_code', requiresExactModel: false };
+
+  if (modelId === null && errorCode) {
+    const variantRows = familyRows.filter(row => row.official_model_id !== null && matchesCode(row));
+    const relevantModels = [...new Set(errorCodeModelIds)].sort();
+    if (relevantModels.length) {
+      const perModel = relevantModels.map(id => variantRows.filter(row => row.official_model_id === id));
+      const signature = (row: BoilerCandidate) => row.fault_class?.trim() && normalizePartText(row.candidate_name)
+        ? `${normalizePartText(row.candidate_name)}|${row.fault_class}` : null;
+      const sets = perModel.map(pool => new Set(pool.map(signature)));
+      const first = sets[0];
+      if (first.size && !first.has(null) && sets.every(set => set.size === first.size &&
+          [...first].every(value => set.has(value)))) {
+        const groups = new Map<string, BoilerCandidate[]>();
+        for (const row of perModel.flat()) {
+          const key = signature(row)!;
+          groups.set(key, [...(groups.get(key) ?? []), row]);
+        }
+        const candidates = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([, members]) => {
+          const ordered = [...members].sort((a, b) => a.id.localeCompare(b.id));
+          // A real, stable DB id keeps snapshot FK compatibility. It is only a
+          // representative: effects use every source id and pricing is blocked.
+          return { ...ordered[0], sourceCandidateIds: [...new Set(ordered.map(row => row.id))] };
+        });
+        return { candidates, mode: 'family_code_consensus', requiresExactModel: false };
+      }
+      return { candidates: [], mode: 'symptom', requiresExactModel: true };
+    }
+    if (variantRows.length) return { candidates: [], mode: 'symptom', requiresExactModel: true };
+  }
+  return { candidates: scoped.filter(row => row.error_code === null), mode: 'symptom', requiresExactModel: false };
+}
+
+export function consensusQuestionEffects(candidates: BoilerCandidate[], effects: BoilerQuestionEffect[]): BoilerQuestionEffect[] {
+  return candidates.flatMap(candidate => {
+    const members = candidate.sourceCandidateIds ?? [candidate.id];
+    const related = effects.filter(effect => members.includes(effect.candidate_id));
+    const pairs = new Map(related.map(effect => [JSON.stringify([effect.question_id, effect.answer_key]), effect]));
+    return [...pairs.values()].map(pair => {
+      const perMember = members.map(id => {
+        const values = related.filter(effect => effect.candidate_id === id &&
+          effect.question_id === pair.question_id && effect.answer_key === pair.answer_key).map(effect => effect.effect);
+        return values.length === 1 ? values[0] : 'neutral';
+      });
+      const effect = pair.answer_key !== 'unknown' && perMember.every(value => value === perMember[0])
+        ? perMember[0] : 'neutral';
+      return { question_id: pair.question_id, candidate_id: candidate.id, answer_key: pair.answer_key, effect };
+    });
+  });
 }
 
 export function normalizeProbabilities(weights: number[]): number[] {
@@ -73,7 +135,8 @@ export function calculateBoilerWeights(candidates: BoilerCandidate[], answers: B
     .sort((a, b) => b.probability - a.probability || a.index - b.index);
   const rankByIndex = new Map(ranks.map((item, rank) => [item.index, rank + 1]));
   return candidates.map((candidate, index) => ({ candidateId: candidate.id, candidateName: candidate.candidate_name,
-    probability: normalized[index], rank: rankByIndex.get(index)! }));
+    probability: normalized[index], rank: rankByIndex.get(index)!,
+    ...(candidate.sourceCandidateIds ? { sourceCandidateIds: candidate.sourceCandidateIds } : {}) }));
 }
 
 // A singleton's relative 100% comes from pool size, not diagnostic confirmation.

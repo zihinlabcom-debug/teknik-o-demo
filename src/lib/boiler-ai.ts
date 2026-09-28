@@ -6,10 +6,11 @@ export function productionBoilerAI(): BoilerAI {
   if (!apiKey) throw Error('OPENAI_API_KEY is missing');
   const client = new OpenAI({ apiKey, timeout: 30000, maxRetries: 1 });
   return {
-    async extractIdentity(conversation) {
+    async extractIdentity(conversation, pendingIdentity) {
       const response = await client.chat.completions.create({ model: 'gpt-4o-mini', temperature: 0,
         response_format: { type: 'json_object' }, messages: [
-          { role: 'system', content: 'Yalnız müşteri mesajlarından kombi marka, etiketteki model veya model ailesi ve varsa hata kodunu çıkar. Müşterinin söylemediği bilgiyi uydurma. Önceki asistan örneklerini kanıt sayma. En son müşteri düzeltmesini kullan. Kod yoksa boş bırak. JSON: {"brand":"","model":"","errorCode":""}.' },
+          { role: 'system', content: 'Yalnız müşteri mesajlarından kombi marka, etiketteki model veya model ailesi ve varsa hata kodunu çıkar. Müşterinin söylemediği bilgiyi uydurma. Önceki asistan örneklerini kanıt sayma. En son müşteri düzeltmesini kullan. Son sorulan kimlik alanı: ' +
+            (pendingIdentity ?? 'yok') + '. Son müşteri mesajı tek kelime veya kısa ifade ise bunu son sorulan alana cevap olarak yorumla; aynı mesajda açıkça verilen diğer kimlik alanlarını da çıkar. Kod yoksa boş bırak. JSON: {"brand":"","model":"","errorCode":""}.' },
           ...conversation,
         ] });
       const parsed = JSON.parse(response.choices[0]?.message?.content || '{}');

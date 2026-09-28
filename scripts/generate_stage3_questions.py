@@ -2,7 +2,7 @@
 
 Reads the existing candidate generator as data; never rewrites candidate migrations.
 Only explicit customer-observable links below can yield effects. A fault class by
-itself never does. Run directly to write migrations 00028/00029 and a JSON report.
+itself never does. Applied 00028/00029 are frozen; use the additive backfill script.
 """
 
 from __future__ import annotations
@@ -49,7 +49,9 @@ def sql(value: str) -> str:
 
 
 def load_items() -> list[Item]:
-    batches, _, families = source.prepare()
+    # Question/effect seed 00028/00029 was designed against the already applied
+    # candidate set. A later coverage backfill must not silently change it.
+    batches, families = source.read_applied_seeds(), source.read_families()
     items = [Item(c.raw.brand, c.raw.model, families[(c.raw.brand, c.raw.model)],
                   c.raw.code, c.key, c.name, c.fault_class, c.raw.description,
                   c.raw.action, c.raw.url)
@@ -122,121 +124,11 @@ def build_effects(items: list[Item]):
 
 
 def write_catalog() -> None:
-    values = ",\n".join("  (" + ", ".join([
-        sql(key), sql(text), sql(group), "true" if safety else "false", str(priority),
-        sql(json.dumps(options, ensure_ascii=False)) + "::jsonb"]
-    ) + ")" for key, text, group, safety, priority, options in QUESTIONS)
-    content = f"""-- Small reusable customer-observable Stage 3 question catalog.
-BEGIN;
-CREATE TEMP TABLE stage3_question_seed (
-  question_key text PRIMARY KEY, question_text text NOT NULL,
-  evidence_group text NOT NULL, is_safety_question boolean NOT NULL,
-  priority integer NOT NULL, answer_options jsonb NOT NULL,
-  CHECK (length(trim(question_text)) > 0),
-  CHECK (length(trim(evidence_group)) > 0),
-  CHECK (jsonb_typeof(answer_options) = 'array')
-) ON COMMIT DROP;
-INSERT INTO stage3_question_seed VALUES
-{values};
-DO $$ BEGIN
-  IF (SELECT count(*) FROM stage3_question_seed) <> {len(QUESTIONS)} THEN
-    RAISE EXCEPTION 'Stage 3 question count differs';
-  END IF;
-  IF EXISTS (SELECT 1 FROM stage3_question_seed s CROSS JOIN LATERAL jsonb_array_elements_text(s.answer_options) a(answer_key)
-             WHERE a.answer_key NOT IN ('yes','no','unknown')) THEN
-    RAISE EXCEPTION 'Invalid Stage 3 answer key';
-  END IF;
-  IF EXISTS (SELECT 1 FROM stage3_question_seed s JOIN public.boiler_diagnostic_questions q USING(question_key)
-             WHERE q.question_text <> s.question_text OR q.evidence_group <> s.evidence_group
-               OR q.answer_options <> s.answer_options OR q.is_safety_question <> s.is_safety_question
-               OR q.answer_type <> 'single_choice' OR q.priority <> s.priority
-               OR q.customer_observable <> true OR q.is_active <> true) THEN
-    RAISE EXCEPTION 'Existing Stage 3 question conflicts with seed';
-  END IF;
-  IF EXISTS (SELECT 1 FROM stage3_question_seed s JOIN public.boiler_diagnostic_questions q
-             ON q.evidence_group=s.evidence_group AND q.question_key<>s.question_key) THEN
-    RAISE EXCEPTION 'Existing question duplicates a Stage 3 evidence group';
-  END IF;
-END $$;
-INSERT INTO public.boiler_diagnostic_questions
-  (question_key,question_text,answer_type,answer_options,evidence_group,
-   customer_observable,is_safety_question,priority,is_active)
-SELECT s.question_key,s.question_text,'single_choice',s.answer_options,s.evidence_group,
-  true,s.is_safety_question,s.priority,true
-FROM stage3_question_seed s
-WHERE NOT EXISTS (SELECT 1 FROM public.boiler_diagnostic_questions q WHERE q.question_key=s.question_key);
-DO $$ BEGIN
-  IF (SELECT count(*) FROM public.boiler_diagnostic_questions q JOIN stage3_question_seed s USING(question_key)) <> {len(QUESTIONS)} THEN
-    RAISE EXCEPTION 'Stage 3 questions missing after seed';
-  END IF;
-END $$;
-COMMIT;
-"""
-    (MIGRATIONS / "20260927000028_seed_boiler_question_catalog.sql").write_text(content, encoding="utf-8")
+    raise RuntimeError("00028 is an applied migration; use generate_stage3_question_backfill.py")
 
 
 def write_effects(effects) -> None:
-    values = ",\n".join("  (" + ", ".join(sql(v) for v in
-        (item.key, item.name, item.code, question, answer, effect, basis, item.url)) + ")"
-        for item, question, answer, effect, basis in effects)
-    content = f"""-- Conservative observable effects. Missing rows mean neutral; unknown is always neutral.
-BEGIN;
-CREATE TEMP TABLE stage3_effect_seed (
-  candidate_key text NOT NULL, candidate_name text NOT NULL, error_code text NOT NULL,
-  question_key text NOT NULL, answer_key text NOT NULL, effect text NOT NULL,
-  basis_phrase text NOT NULL, source_url text NOT NULL,
-  PRIMARY KEY(candidate_key,question_key,answer_key),
-  CHECK (answer_key IN ('yes','no')),
-  CHECK (effect IN ('support','weaken','eliminate','neutral')),
-  CHECK (length(trim(basis_phrase))>0)
-) ON COMMIT DROP;
-INSERT INTO stage3_effect_seed VALUES
-{values};
-DO $$ DECLARE v_bad bigint; BEGIN
-  IF (SELECT count(*) FROM stage3_effect_seed) <> {len(effects)} THEN
-    RAISE EXCEPTION 'Stage 3 effect row count differs';
-  END IF;
-  SELECT count(*) INTO v_bad FROM stage3_effect_seed s
-  LEFT JOIN public.boiler_fault_candidates c ON c.candidate_key=s.candidate_key
-  LEFT JOIN public.official_error_codes_raw r ON r.id=c.official_error_record_id
-  LEFT JOIN public.boiler_diagnostic_questions q ON q.question_key=s.question_key
-  WHERE c.id IS NULL OR q.id IS NULL OR c.verification_status<>'verified' OR c.is_active<>true
-    OR c.candidate_name<>s.candidate_name OR c.error_code<>s.error_code
-    OR c.evidence_url<>s.source_url OR length(trim(c.evidence_note))=0
-    OR r.id IS NULL OR position(lower(s.basis_phrase) in lower(coalesce(r.official_description,'') || ' | ' || coalesce(r.official_action,'')))=0
-    OR q.is_safety_question=true OR q.is_active<>true OR q.customer_observable<>true
-    OR q.answer_options IS NULL OR NOT (q.answer_options ? s.answer_key)
-    OR length(trim(q.question_text))=0 OR length(trim(q.evidence_group))=0;
-  IF v_bad<>0 THEN RAISE EXCEPTION 'Stage 3 effect integrity failures: %',v_bad; END IF;
-  IF EXISTS (SELECT 1 FROM stage3_effect_seed s
-    JOIN public.boiler_question_effects e ON e.candidate_id=(SELECT id FROM public.boiler_fault_candidates WHERE candidate_key=s.candidate_key)
-    JOIN public.boiler_diagnostic_questions q ON q.id=e.question_id AND q.question_key=s.question_key
-    WHERE e.answer_key=s.answer_key AND (e.effect<>s.effect OR e.source_url<>s.source_url)) THEN
-    RAISE EXCEPTION 'Existing Stage 3 effect conflicts with seed';
-  END IF;
-END $$;
-INSERT INTO public.boiler_question_effects
-  (question_id,candidate_id,answer_key,effect,evidence_note,source_url)
-SELECT q.id,c.id,s.answer_key,s.effect,
-  'Adayın kaynak ifadesi: "' || s.basis_phrase || '". Müşteri gözlemi, bu aday için göreli ve kesin olmayan kanıttır.',
-  s.source_url
-FROM stage3_effect_seed s
-JOIN public.boiler_fault_candidates c ON c.candidate_key=s.candidate_key
-JOIN public.boiler_diagnostic_questions q ON q.question_key=s.question_key
-WHERE NOT EXISTS (SELECT 1 FROM public.boiler_question_effects e
-                  WHERE e.question_id=q.id AND e.candidate_id=c.id AND e.answer_key=s.answer_key);
-DO $$ BEGIN
-  IF (SELECT count(*) FROM stage3_effect_seed s
-      JOIN public.boiler_fault_candidates c ON c.candidate_key=s.candidate_key
-      JOIN public.boiler_diagnostic_questions q ON q.question_key=s.question_key
-      JOIN public.boiler_question_effects e ON e.candidate_id=c.id AND e.question_id=q.id AND e.answer_key=s.answer_key
-      WHERE e.effect=s.effect AND length(trim(e.evidence_note))>0) <> {len(effects)} THEN
-    RAISE EXCEPTION 'Stage 3 effects missing after seed';
-  END IF;
-END $$;
-COMMIT;
-"""
-    (MIGRATIONS / "20260927000029_seed_boiler_question_effects.sql").write_text(content, encoding="utf-8")
+    raise RuntimeError("00029 is an applied migration; use generate_stage3_question_backfill.py")
 
 
 def report(items, pools, effects):
@@ -289,12 +181,7 @@ def report(items, pools, effects):
 
 
 def main():
-    items = load_items()
-    pools, effects = build_effects(items)
-    write_catalog()
-    write_effects(effects)
-    data = report(items,pools,effects)
-    print(json.dumps({k:v for k,v in data.items() if k != "spot_checks"},ensure_ascii=False,indent=2))
+    raise SystemExit("00028/00029 are applied and cannot be regenerated. Run generate_stage3_question_backfill.py instead.")
 
 
 if __name__ == "__main__":

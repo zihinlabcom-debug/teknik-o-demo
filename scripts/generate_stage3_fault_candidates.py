@@ -1,4 +1,4 @@
-"""Regenerate the unapplied Stage 3 candidate seeds from their raw evidence.
+"""Extract Stage 3 candidates and prepare an additive backfill from raw evidence.
 
 This deliberately uses only the imported description/action fields. A candidate
 names a manufacturer-linked fault point, not a confirmed broken part. The
@@ -60,6 +60,25 @@ class Rule:
 # Component vocabulary is independent of brand, model, and error code. Longer,
 # more specific matches take priority over a generic word in the same span.
 RULES = [
+    Rule("thermal_cutoff", r"termik\s+(?:kapatma\s+düzeneğ\w*|sigorta\w*)", "Termik kapatma düzeneği sorunu", "electrical"),
+    Rule("gas_valve_driver", r"(?:elektronik\s+)?gaz\s+valfi\s+(?:sürücüs\w*|devres\w*)", "Gaz valfi kontrol devresi sorunu", "electronic"),
+    Rule("air_measurement", r"hava\s+ölçüm\s+cihaz\w*", "Hava ölçüm cihazı sorunu", "sensor"),
+    Rule("control_panel", r"(?:tuş\s+takım\w*|tuş\s+panel\w*|kontrol\s+panel\w*|buton\w*)", "Kontrol paneli/tuş takımı sorunu", "electronic"),
+    Rule("coding_resistor", r"kodlama\s+direnc\w*", "Kodlama direnci sorunu", "electrical"),
+    Rule("control_module", r"\b(?:UBA\s*3|KIM|BCC)\b", "Kontrol modülü sorunu", "electronic"),
+    Rule("coding_key", r"kod\s+anahtar\w*", "Kod anahtarı sorunu", "electronic"),
+    Rule("selection_switch", r"(?:seçim\s+şalter\w*|\bDIP\s+Switch\b)", "Seçim şalteri sorunu", "electrical"),
+    Rule("operating_unit", r"(?:kumanda\s*/\s*işletim|işletim|kumanda)\s+ünite\w*", "Kumanda/işletim ünitesi sorunu", "electronic"),
+    Rule("sensor_connection", r"(?:sensör\w*|prob(?:u|un|unda|ları)?|elektrik)\s+bağlantı\w*", "Sensör/elektrik bağlantısı sorunu", "electrical"),
+    Rule("pump_connection", r"(?:elektrik\s+)?pompa\s+bağlantı\w*", "Pompa elektrik bağlantısı sorunu", "electrical"),
+    Rule("backflow_safety", r"geri\s+tepme\s+emniyet\s+tertibat\w*", "Geri tepme emniyet tertibatı sorunu", "combustion_air"),
+    Rule("heat_management_unit", r"(?:\bHBMU\b|ısı\s+yönetim\s+ünite\w*)", "Isı yönetim ünitesi sorunu", "electronic"),
+    Rule("adc", r"(?:analog\s*[-/]\s*dijital\s+çevirici\w*|\bADC\b)", "Analog-dijital çevirici sorunu", "electronic"),
+    Rule("clock_module", r"(?:gerçek\s+zaman\s+saati|saat\s+modül\w*)", "Gerçek zaman saati/modülü sorunu", "electronic"),
+    Rule("three_way_valve", r"(?:3|üç)\s+yollu\s+(?:motorlu\s+)?vana\w*", "Üç yollu vana sorunu", "hydraulic"),
+    Rule("fuse", r"(?:\bF\d+\s+)?sigorta\w*", "Elektrik sigortası sorunu", "electrical"),
+    Rule("siphon", r"\bsifon\w*", "Kondens sifonu sorunu", "hydraulic"),
+    Rule("temperature_probe", r"(?:gidiş|dönüş|boyler|baca\s+gazı|atık\s+gaz)\s+prob(?:u|un|unda|ları)?\b|\bprob(?:u|un|unda|ları)\b", "Sıcaklık probu sorunu", "sensor"),
     Rule("pressure_differential", r"diferansiyel\s+basın(?:ç|c[ıi])\s+sensör\w*", "Diferansiyel basınç sensörü sorunu", "sensor"),
     Rule("pressure_air", r"(?:hava\s+basın(?:ç|c[ıi])\s+(?:anahtar|şalter|sensör)\w*|presostat\w*)", "Hava basınç şalteri/sensörü sorunu", "sensor"),
     Rule("pressure_gas_sensor", r"gaz\s+(?:giriş\s+)?basın(?:ç|c[ıi])\s+sensör\w*", "Gaz basınç sensörü sorunu", "sensor"),
@@ -77,7 +96,7 @@ RULES = [
     Rule("sensor_temperature", r"(?:sıcaklık\s+sensör\w*|\bNTC\b)", "Sıcaklık sensörü sorunu", "sensor"),
     Rule("sensor_general", r"\bsensör\w*", "Sensör sorunu", "sensor"),
     Rule("thermostat", r"(?:emniyet|limit|güvenlik|oda|atık\s+gaz)?\s*termostat\w*|sıcaklık\s+sınırlayıcı\w*|\bSTB\b", "Termostat/sıcaklık sınırlayıcısı sorunu", "sensor"),
-    Rule("voltage", r"(?:elektrik|şebeke|besleme|giriş)\s+(?:besleme\w*|gerilim\w*|voltaj\w*)|\bvoltaj\w*|\bgerilim\w*|\b24\s*V\b", "Elektrik besleme/gerilim sorunu", "electrical"),
+    Rule("voltage", r"(?:elektrik|şebeke|besleme|giriş)\s+(?:gerilim\w*|voltaj\w*)|elektrik\s+besleme\w*|\bvoltaj\w*|\bgerilim\w*|\b24\s*V\b", "Elektrik besleme/gerilim sorunu", "electrical"),
     Rule("earthing", r"topraklama\w*", "Topraklama sorunu", "electrical"),
     Rule("coding", r"(?:kodlama\s+(?:fiş|kart)\w*|EEPROM\w*)", "Kodlama/EEPROM sorunu", "electronic"),
     Rule("pcb", r"(?:elektronik|ana|baskı\s+devre|kontrol|devre)\s+kart\w*|\bPCB\b|kontrol\s+ünite\w*|elektronik\s+ünite\w*", "Elektronik kart/kontrol ünitesi sorunu", "electronic"),
@@ -85,11 +104,12 @@ RULES = [
     Rule("programming_unit", r"programlama\s+ünite\w*", "Programlama ünitesi sorunu", "electronic"),
     Rule("extension_module", r"(?:uzatma\s+kit\w*|kontrol\s+modül\w*|iletişim\s+modül\w*|\bVitosolic\b)", "Kontrol/uzatma modülü sorunu", "electronic"),
     Rule("bus", r"(?:\b(?:EMS|KM|IMG|LON|e)?-?BUS\b|haberleşme\s+hatt\w*)", "BUS/haberleşme hattı sorunu", "electrical"),
-    Rule("ignition_electrode", r"(?:ateşleme|iyonizasyon|alev)\s+elektrot\w*|\belektrot\w*", "Ateşleme/iyonizasyon elektrodu sorunu", "ignition"),
+    Rule("ignition_electrode", r"(?:ateşleme|iyonizasyon|alev|ayarlama)\s+elektro(?:t|d)\w*|\belektro(?:t|d)\w*", "Ateşleme/iyonizasyon elektrodu sorunu", "ignition"),
     Rule("ignition_transformer", r"ateşleme\s+(?:trafosu|transformatörü)\w*", "Ateşleme trafosu sorunu", "ignition"),
-    Rule("ignition_circuit", r"(?:ateşleme|iyonizasyon)\s+devre\w*|iyonizasyon\s+sinyal\w*", "Ateşleme/iyonizasyon devresi sorunu", "ignition"),
+    Rule("ignition_circuit", r"(?:ateşleme|iyonizasyon|alev)\s+devres\w*|iyonizasyon\s+sinyal\w*", "Ateşleme/iyonizasyon devresi sorunu", "ignition"),
     Rule("burner", r"\bbrülör\w*", "Brülör/yanma sorunu", "ignition"),
-    Rule("gas_valve", r"gaz\s+(?:valf\w*|vanas\w*|armatür\w*|manyetik\s+valf\w*)", "Gaz valfi/armatürü sorunu", "gas_supply"),
+    Rule("gas_valve", r"(?:(?:gaz|yakıt|LPG)(?:\s*/\s*modülasyon|\s+emniyet)?\s+(?:valf\w*|vanas\w*|armatür\w*|manyetik\s+valf\w*|solenoid\s+valf\w*)|(?:modülasyon|solenoid)\s+valf\w*)", "Gaz valfi/armatürü sorunu", "gas_supply"),
+    Rule("gas_train", r"gaz\s+tren\w*", "Gaz treni sorunu", "gas_supply"),
     Rule("gas_nozzle", r"gaz\s+meme\w*", "Gaz memesi sorunu", "gas_supply"),
     Rule("gas_air_ratio", r"gaz[-\s]+hava\s+oran\w*|\bCO₂\s+ayar\w*", "Gaz/hava karışım ayarı sorunu", "combustion_air"),
     Rule("gas_pressure", r"gaz\s+(?:giriş|bağlantı)?\s*basın(?:ç|c[ıi])\w*", "Gaz giriş basıncı sorunu", "gas_supply"),
@@ -110,18 +130,56 @@ RULES = [
     Rule("condensate", r"kondens\s+(?:tahliye\w*|gider\w*|sifon\w*)", "Kondens tahliyesi sorunu", "hydraulic"),
     Rule("hose", r"(?:bağlantı\s+)?hortum\w*", "Bağlantı hortumu sorunu", "mechanical"),
     Rule("fan", r"\bfan\w*", "Fan sorunu", "mechanical"),
-    Rule("cable", r"(?:kablo\w*|kablolama\w*|kablo\s+demet\w*|soket\w*|fiş\w*|konnektör\w*|klemens\w*)", "Kablolama/soket/bağlantı sorunu", "electrical"),
+    Rule("cable", r"(?:kablo\w*|kablolama\w*|kablo\s+demet\w*|soket\w*|fiş\w*|konnektör\w*|klemens\w*|cihaz\s+bağlantı\w*|yanlış\s+bağlan\w*)", "Kablolama/soket/bağlantı sorunu", "electrical"),
 ]
 COMPILED_RULES = [(rule, re.compile(rule.pattern, re.I)) for rule in RULES]
+# These broad labels describe a source-named diagnostic system, not a failed part.
+# They are used only when no component/control-point candidate was extracted.
+GROUP_RULES = [
+    Rule("group_flame_detection", r"(?:alev|iyonizasyon|iyon)\s+(?:algıla\w*|sinyal\w*|denetim\w*|kontrol\w*|akım\w*|bildirim\w*|bileşen\w*|komponent\w*|hata\w*|arız\w*|sahte\b)|sahte\s+alev|alev\s+kapatmas\w*.*algıla\w*", "Alev algılama grubu", "ignition"),
+    Rule("group_flame_process", r"alev\s+(?:kayb\w*|yok\b|oluş\w*|sön\w*|sabit\b|stabilizasyon\w*.*sön\w*)|yanma\s+değer\w*", "Alev oluşumu/sürekliliği grubu", "ignition"),
+    Rule("group_dry_firing", r"kuru\s+yanma", "Kuru çalışma/termik koruma grubu", "hydraulic"),
+    Rule("group_temperature_difference", r"(?:Delta\s*T|ΔT|sıcaklık\s+(?:fark\w*|yayıl\w*))", "Sıcaklık farkı/ısı transferi grubu", "hydraulic"),
+    Rule("group_combustion_quality", r"kötü\s+yanma|yanma\s+kalite\w*", "Yanma kalitesi grubu", "ignition"),
+    Rule("group_combustion_feedback", r"(?:yanma|yakıt)\s+(?:geri\s*bildirim\s+)?sinyal\w*", "Yanma geri bildirim grubu", "ignition"),
+    Rule("group_ignition", r"ateşle\w*|yanma\s+(?:oluş\w*|kilit\w*|geri\s*bildirim\w*)", "Ateşleme/alev oluşumu grubu", "ignition"),
+    Rule("group_overheat", r"(?:aşırı\s+(?:ısın\w*|sıcak\w*)|yüksek\s+sıcaklık|sıcaklık\s+(?:artış\w*|fark\w*|limit\w*|sınırlayıc\w*)|çalışma\s+sıcaklığ\w*\s+aşıl\w*|limit\s+termostat|emniyet\s+termostat|termik\s+koruma)", "Aşırı sıcaklık/termik koruma grubu", "hydraulic"),
+    Rule("group_gas_control", r"gaz\s+(?:armatür\w*|vana\w*|valf\w*)\s+(?:kumanda\w*|kontrol\w*|sürücü\w*|ofset\w*|kademe\w*)|gaz\s+(?:valf\w*|vana\w*).*(?:geri\s+bildirim|uzun\s+süre|beklenenden|aralık\s+dışı\s+akım)", "Gaz armatürü kontrol grubu", "electronic"),
+    Rule("group_gas_path", r"gaz(?:ın)?\s+(?:besleme\w*|kesil\w*|grub\w*|yol\w*|tür\w*|giriş\w*|basın\w*)", "Gaz besleme/yolu grubu", "gas_supply"),
+    Rule("group_water_pressure", r"(?:su|tesisat|sistem|kalorifer|pompa|tesisat\s+suyu|dolum)\s+basın\w*|basınç\s+(?:artış\w*|fark\w*|düş\w*)|düşük\s+basınç|(?:çok\s+az|yetersiz)\s+su", "Su basıncı/hidrolik grubu", "hydraulic"),
+    Rule("group_circulation", r"sirkülasyon\w*|dolaşım\w*|pompa\w*\s+(?:çalış\w*|kuru\w*)", "Pompa/dolaşım grubu", "hydraulic"),
+    Rule("group_filling", r"(?:otomatik\s+)?(?:su\s+)?doldurma\w*", "Su doldurma/hidrolik grubu", "hydraulic"),
+    Rule("group_water_flow", r"(?:su|tesisat|sistem|kalorifer)\s+akış\w*|hacimsel\s+debi\w*", "Su akışı/debi grubu", "hydraulic"),
+    Rule("group_hydraulic", r"hidrolik\s+(?:sensör\w*|komponent\w*|test\w*)", "Hidrolik sistem grubu", "hydraulic"),
+    Rule("group_differential_pressure", r"diferansiyel\s+basınç|fark\s+basınc\w*", "Diferansiyel basınç algılama grubu", "sensor"),
+    Rule("group_fan_air", r"fan\w*|yanma\s+havas\w*|hava\s+(?:akış\w*|ölç\w*|fazlalık\w*)|havasızlık", "Fan/yanma havası grubu", "combustion_air"),
+    Rule("group_flue", r"(?:atık|baca|duman)\s+gaz\w*|baca\w*|duman\s+boru\w*", "Atık gaz/baca grubu", "combustion_air"),
+    Rule("group_temperature", r"sıcaklık\w*|sıcaklığ\w*|\bNTC\b", "Sıcaklık algılama grubu", "sensor"),
+    Rule("group_sensor_signal", r"sensör\s+sinyal\w*", "Sensör sinyali/algılama grubu", "sensor"),
+    Rule("group_communication", r"(?:iletişim|haberleşme|veri\s+yol\w*|\bBUS\b|\bLON\b|OpenTherm)", "Elektronik haberleşme grubu", "electronic"),
+    Rule("group_control", r"(?:cihaz\s+(?:kod\w*|tipi\s+tanımlan\w*)|\bDSN\b|konfigürasyon\w*|kalibrasyon\w*|parametre\w*|yazılım\w*|regülasyon\w*|\bUBA\b|\bEEPROM\b|dahili\s+veri\w*|veri\s+belleğ\w*|bellek\s+checksum|saat\s*/\s*tarih|yanma\s+ayar\w*|ayarlama\s+modül\w*)", "Elektronik kontrol/ayar grubu", "electronic"),
+    Rule("group_electrical_connection", r"elektrik\s+(?:bağlant\w*|tesisat\w*)", "Elektrik bağlantısı grubu", "electrical"),
+    Rule("group_electrical", r"(?:elektrik|şebeke|gerilim|voltaj|güç\s+kaynağ\w*|ağ\s+frekans\w*)", "Elektrik besleme grubu", "electrical"),
+    Rule("group_external_device", r"harici\s+cihaz\w*", "Harici cihaz/bağlantı grubu", "electronic"),
+    Rule("group_recovery_unit", r"reküperatör\w*", "Reküperatör/ısı geri kazanımı grubu", "mechanical"),
+    Rule("group_scot", r"\bSCOT\s+(?:sistem\w*|aktüatör\w*|kontrol\w*)", "SCOT kontrol grubu", "electronic"),
+    Rule("group_dhw", r"(?:sıcak\s+su|kullanım\s+suy\w*|boyler\w*)", "Kullanım suyu grubu", "hydraulic"),
+    Rule("group_heating", r"(?:ısıtma\s+devre\w*|kalorifer\s+devre\w*|yerden\s+ısıtma\w*)", "Isıtma devresi grubu", "hydraulic"),
+    Rule("group_condensate", r"(?:kondens\w*|yoğuşma\s+suy\w*)", "Kondens tahliyesi grubu", "hydraulic"),
+]
+COMPILED_GROUP_RULES = [(rule, re.compile(rule.pattern, re.I)) for rule in GROUP_RULES]
 FAULT = re.compile(
-    r"arız\w*|hata\w*|kısa\s+devre|açık\s+devre|kopuk\w*|kesinti\w*|"
+    r"arız\w*|hata\w*|kısa\s+devre|açık\s+devre|kopuk\w*|kesinti\w*|kesil\w*|"
     r"gevşek|takılı\s+değil|bloke|tıkan\w*|sızıntı\w*|kaçak\w*|"
     r"yanlış|hatalı|düşük|yüksek|yetersiz|eksik|problem|temassız|"
-    r"oksit\w*|vermiyor|sızdır\w*|bağlı\s+değil|arıza\s+yapt\w*", re.I,
+    r"oksit\w*|vermiyor|sızdır\w*|bağlı\s+değil|arıza\s+yapt\w*|"
+    r"işlevsiz|(?:açma|kapatma)\s+gecikmes\w*|geç\s+kapan\w*|algılanmıyor|algılanmad\w*|"
+    r"geçersiz|kullanılamaz|uygun\s+değil|uyumlu\s+değil|başarısız|hareket\s+etmiyor|açılmıyor|kapanmıyor|"
+    r"takılmamış|\byok\b|anormalliğ\w*|sorun\w*", re.I,
 )
 CONTROL = re.compile(
     r"kontrol\s+et\w*|kontrol\s+ed\w*|kontrol\s+ettir\w*|"
-    r"değiştir\w*|temizle\w*|onar\w*|ölç\w*|doğrula\w*|"
+    r"değiştir\w*|temizle\w*|onar\w*|yükselt\w*|ölç(?:ün|ül\w*|tür\w*)|doğrula\w*|"
     r"sağla\w*|doldur\w*|havalandır\w*|basınçlandır\w*|"
     r"açık\s+olduğ\w*\s+(?:emin|kontrol)|emin\s+ol\w*", re.I,
 )
@@ -155,6 +213,7 @@ class Candidate:
     action_phrase: str = ""
     description_token: str = ""
     action_token: str = ""
+    level: str = "component"
 
     @property
     def support_kind(self) -> str:
@@ -201,6 +260,24 @@ def read_families() -> dict[tuple[str, str], str]:
     return result
 
 
+def read_applied_seeds() -> dict[tuple[str, str, str], list[Candidate]]:
+    """Read the frozen 00016–00026 seed rows; never regenerate those migrations."""
+    by_identity: dict[tuple[str, str, str], list[Candidate]] = defaultdict(list)
+    db = sqlite3.connect(":memory:")
+    for number, (_, slug) in MIGRATION_BRANDS.items():
+        path = MIGRATIONS / f"202609270000{number}_seed_{slug}_fault_candidates.sql"
+        text = path.read_text(encoding="utf-8")
+        match = re.search(r"INSERT INTO stage3_candidate_seed VALUES\n(.*?);\n\nDO", text, re.S)
+        if not match:
+            raise ValueError(f"Applied seed values not found: {path.name}")
+        for row in db.execute("SELECT * FROM (VALUES " + match[1] + ")"):
+            brand, model, code, key, name, fault_class, description, action, url, provenance, d_phrase, a_phrase, d_token, a_token = row
+            candidate = Candidate(Raw(brand, model, code, description, action, url), key, name, fault_class,
+                                  provenance, d_phrase, a_phrase, d_token, a_token)
+            by_identity[(brand, model, code)].append(candidate)
+    return by_identity
+
+
 def source_type(url: str) -> str:
     parts = urlsplit(url)
     host = (parts.hostname or "").lower()
@@ -227,7 +304,8 @@ def components(clause: str) -> list[tuple[Rule, str]]:
         for hit in pattern.finditer(clause):
             matches.append((hit.start(), hit.end(), rule))
     # Prefer the most specific overlapping term; allow distinct nearby items.
-    matches.sort(key=lambda item: (-(item[1] - item[0]), item[0]))
+    matches.sort(key=lambda item: (0 if item[2].key == "sensor_connection" else 1,
+                                   -(item[1] - item[0]), item[0]))
     chosen = []
     for start, end, rule in matches:
         if any(start < used_end and end > used_start for used_start, used_end, _ in chosen):
@@ -240,6 +318,10 @@ def components(clause: str) -> list[tuple[Rule, str]]:
         or rule.key in ("pressure_differential", "pressure_air", "pressure_gas_sensor", "pressure_water_sensor", "air_mass_flow", "flow_meter")
     }
     for start, end, rule in sorted(chosen, key=lambda item: (item[0], item[1])):
+        if re.match(r"\s+(?:kapalıyken|çalışırken|açıkken)\b", clause[end:], re.I):
+            continue  # A component's operating state is context for a different fault.
+        if re.match(r"\s+ile\s+iletişim\s+(?:yok|kesil\w*)", clause[end:], re.I):
+            continue  # An unreachable communication endpoint is not established as faulty.
         if rule.key in ("sensor_temperature", "sensor_general") and specific_sensors:
             continue
         if rule.key == "electronics" and any(other_rule.key in ("pcb", "coding") for _, _, other_rule in chosen):
@@ -248,6 +330,27 @@ def components(clause: str) -> list[tuple[Rule, str]]:
             r"\s*\d+\)", clause[end:]
         ):
             continue  # A parenthesized connector number is an identifier, not a fault.
+        if rule.key == "gas_valve" and re.match(
+            r"\s+(?:kontrol\s+(?:eden|blokaj|devre|sinyal|bileşen)\w*|aralık\s+dışı\s+akım\b|geri\s+bildirim\b|ofset\s+ayar\w*)",
+            clause[end:], re.I
+        ):
+            continue  # Valve-control feedback does not establish a failed valve.
+        if rule.fault_class == "sensor" and re.search(r"\b(?:ölçüm\s+yaparsa|ölçerse)\b", clause[end:end+60], re.I) and not re.search(
+            r"(?:arız|hatalı|kopuk|kısa\s+devre)", clause[end:end+35], re.I
+        ):
+            continue  # A sensor reporting a measured condition is not itself diagnosed as faulty.
+        if rule.fault_class == "sensor" and "ΔT" in clause and re.search(r"\b(?:prob\w*|sensör\w*)\s+ile\b", clause, re.I):
+            continue  # A probe used to compare temperatures is not a source-backed failed probe.
+        if rule.fault_class == "sensor" and re.search(r"sensör\w*\s+arasındaki\s+sıcaklık", clause, re.I):
+            continue  # A discrepancy between two readings is not proof of either sensor failing.
+        if rule.fault_class == "sensor" and re.search(
+            r"prob\w*\s+(?:yer\s+değiştir\w*|değişim\w*)|yanlış\s+bağlan\w*", clause, re.I
+        ) and not re.search(r"prob\w*\s+(?:arız\w*|hatalı|kısa\s+devre|kopuk\w*)", clause, re.I):
+            continue  # Swapped or miswired probes support a connection issue, not a failed probe.
+        if rule.key == "pump" and re.search(r"pompa\w*\s+çalış\w*", clause, re.I) and re.search(
+            r"basınç\s+(?:artış\w*|fark\w*)\s+algılanmıyor", clause, re.I
+        ):
+            continue  # A running pump is context for the pressure fault, not pump-failure evidence.
         # A location is not automatically the failed item: "eşanjöründeki
         # termostat arızalı" supports the thermostat, not the exchanger.
         if re.search(r"(?:deki|daki|ndeki|ndaki)$", clause[start:end], re.I) and any(
@@ -266,7 +369,7 @@ def components(clause: str) -> list[tuple[Rule, str]]:
 
 
 def eligible_description(clause: str) -> bool:
-    return bool(FAULT.search(clause)) and not bool(SYMPTOM.fullmatch(clause.rstrip(". ")))
+    return bool(FAULT.search(clause) or CONTROL.search(clause)) and not bool(SYMPTOM.fullmatch(clause.rstrip(". ")))
 
 
 def extract(raw: Raw) -> list[Candidate]:
@@ -293,7 +396,8 @@ def extract(raw: Raw) -> list[Candidate]:
         if key not in candidates:
             digest = hashlib.sha1("\0".join((raw.brand, raw.model, raw.code, key)).encode()).hexdigest()[:20]
             prefix = re.sub(r"[^a-z0-9]+", "_", raw.brand.lower().replace("ö", "o").replace("ü", "u").replace("ı", "i").replace("ç", "c").replace("ş", "s").replace("ğ", "g")).strip("_")
-            candidates[key] = Candidate(raw, f"stage3_{prefix}_{digest}", rule.name, rule.fault_class, provenance)
+            candidates[key] = Candidate(raw, f"stage3_{prefix}_{digest}", rule.name, rule.fault_class, provenance,
+                                        level="group" if key.startswith("group_") else "component")
         candidate = candidates[key]
         if field == "description" and not candidate.description_phrase:
             candidate.description_phrase = phrase
@@ -310,13 +414,31 @@ def extract(raw: Raw) -> list[Candidate]:
     for phrase in clauses(raw.action, split_semicolon=not action_has_control):
         if FAULT.search(phrase) or CONTROL.search(phrase):
             for rule, exact_component in components(phrase):
+                if rule.key == "fuse" and re.search(r"sigorta\w*\s+(?:kapat|aç|çıkar)\w*", phrase, re.I):
+                    continue  # Switching the household fuse is a reset instruction.
                 add(rule, "action", phrase, exact_component)
+    if not candidates:
+        for field, text in (("description", raw.description), ("action", raw.action)):
+            for phrase in clauses(text):
+                for rule, pattern in COMPILED_GROUP_RULES:
+                    hit = pattern.search(phrase)
+                    if not hit:
+                        continue
+                    tail = phrase[hit.end():hit.end()+45]
+                    control = re.search(r"(?:kontrol|temizle|değiştir|onar|yükselt|gider|ayarla)\w*", tail, re.I)
+                    action_supported = (bool(control) and not re.search(
+                        r"çıkar\w*|kapat\w*|aç\w*|kes\w*|reset\w*|sıfırla\w*", tail[:control.start()], re.I
+                    )) or bool(re.search(r"(?:çok\s+az|yetersiz)\s+su", hit.group(), re.I))
+                    if field == "description" or action_supported:
+                        add(rule, field, phrase, hit.group())
+                        return list(candidates.values())
     return list(candidates.values())
 
 
 def migration_sql(number: int, brand: str, candidates: list[Candidate]) -> str:
-    slug = MIGRATION_BRANDS[number][1]
-    file_name = f"202609270000{number}_seed_{slug}_fault_candidates.sql"
+    slug = MIGRATION_BRANDS[number][1] if number in MIGRATION_BRANDS else "candidate_coverage_backfill"
+    file_name = (f"202609270000{number}_seed_{slug}_fault_candidates.sql" if number in MIGRATION_BRANDS
+                 else f"202609270000{number}_backfill_boiler_candidate_coverage.sql")
     display_brand = "Immergas + Alpha" if number == 23 else brand
     values = []
     for c in candidates:
@@ -400,6 +522,7 @@ SELECT r.id, f.id, m.id, s.error_code, s.candidate_key, s.candidate_name,
   'Kaynağın bu hatayla ilişkilendirdiği olası teknik arıza noktası: ' || s.candidate_name,
   s.fault_class, 'verified', s.evidence_source_type, r.source_url,
   concat_ws(E'\\n',
+    CASE WHEN s.candidate_name LIKE '% grubu' THEN 'candidate level: source-named system/group; not a verified failed part' END,
     CASE WHEN s.description_support<>'' THEN 'description support: "' || s.description_token || '"; context: "' || s.description_support || '"' END,
     CASE WHEN s.action_support<>'' THEN 'action support: "' || s.action_token || '"; context: "' || s.action_support || '"' END),
   true, false, true
@@ -453,6 +576,61 @@ def prepare() -> tuple[dict[int, list[Candidate]], dict[int, list[Raw]], dict[tu
     return by_number, considered, families
 
 
+def prepare_backfill() -> tuple[list[Candidate], list[Candidate]]:
+    """Only new, non-overlapping evidence is backfilled; old seeds aid recovery."""
+    applied = read_applied_seeds()
+    families = read_families()
+    new: list[Candidate] = []
+    recovery: list[Candidate] = []
+    for raw in read_raw():
+        if raw.brand == "Vaillant" and families[(raw.brand, raw.model)] == "ecotec intro":
+            continue  # Family-level 00014/00015 candidates already cover both variants.
+        previous = applied.get((raw.brand, raw.model, raw.code), [])
+        old_keys = {candidate.key for candidate in previous}
+        selected = []
+        for candidate in extract(raw):
+            if candidate.key in old_keys or (candidate.level == "group" and previous):
+                continue
+            if previous and not candidate.description_phrase:
+                continue  # Existing pools are expanded only by independently described points.
+            if previous and candidate.name in ("Sensör sorunu", "Sıcaklık probu sorunu") and any(
+                existing.fault_class == "sensor" and (
+                    candidate.name == "Sensör sorunu" or
+                    not re.search(r"\b(?:gidiş|dönüş|boyler|baca)\b", candidate.description_token, re.I) or
+                    any(term in candidate.description_token.casefold() and term in
+                        (existing.description_token + " " + existing.action_token).casefold()
+                        for term in ("gidiş", "dönüş", "boyler", "baca"))
+                ) for existing in previous
+            ):
+                continue
+            if previous and candidate.name == "Kod anahtarı sorunu" and any(
+                "Kodlama/EEPROM" in existing.name for existing in previous
+            ):
+                continue
+            if previous and candidate.name == "Sensör/elektrik bağlantısı sorunu" and any(
+                existing.fault_class == "electrical" and re.search(r"kablo|soket|bağlantı", existing.name, re.I)
+                for existing in previous
+            ):
+                continue
+            if previous and candidate.name == "Yanma havası/akış sorunu" and any(
+                existing.fault_class == "sensor" and "akış" in existing.name.casefold() for existing in previous
+            ):
+                continue
+            new_tokens = [token.casefold() for token in (candidate.description_token, candidate.action_token) if token]
+            old_tokens = [token.casefold() for existing in previous
+                          for token in (existing.description_token, existing.action_token) if token]
+            if any(a in b or b in a for a in new_tokens for b in old_tokens):
+                continue  # Do not seed a second label for the same evidenced physical point.
+            selected.append(candidate)
+        if selected:
+            new.extend(selected)
+            recovery.extend(previous)  # An idempotent repair if an applied seed row is absent in live DB.
+    keys = [candidate.key for candidate in new + recovery]
+    if len(keys) != len(set(keys)):
+        raise ValueError("Backfill candidate_key is not unique")
+    return new, recovery
+
+
 def report(by_number: dict[int, list[Candidate]], considered: dict[int, list[Raw]], families: dict[tuple[str, str], str]) -> None:
     for number, (brand, _) in MIGRATION_BRANDS.items():
         brands = ("Alpha", "Immergas") if number == 23 else (brand,)
@@ -483,8 +661,9 @@ def report(by_number: dict[int, list[Candidate]], considered: dict[int, list[Raw
 
 
 if __name__ == "__main__":
-    by_number, considered, families = prepare()
-    for number, (brand, slug) in MIGRATION_BRANDS.items():
-        path = MIGRATIONS / f"202609270000{number}_seed_{slug}_fault_candidates.sql"
-        path.write_text(migration_sql(number, brand, by_number[number]), encoding="utf-8", newline="\n")
-    report(by_number, considered, families)
+    new, recovery = prepare_backfill()
+    path = MIGRATIONS / "20260927000030_backfill_boiler_candidate_coverage.sql"
+    path.write_text(migration_sql(30, "tüm markalar", new + recovery), encoding="utf-8", newline="\n")
+    print(f"backfill={path.name} new_component={sum(c.level == 'component' for c in new)} "
+          f"new_group={sum(c.level == 'group' for c in new)} recovery={len(recovery)} "
+          f"total_seed={len(new) + len(recovery)}")

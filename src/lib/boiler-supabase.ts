@@ -1,8 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 import { canonicalManufacturer, normalizedModel } from './verified-knowledge';
 import type { BoilerCandidate, BoilerQuestion, BoilerQuestionEffect, BoilerAssessment } from './boiler-probability';
+import { normalizeBoilerErrorCode } from './boiler-probability';
 
 export interface BoilerDevice {
+  brand?: string;
   familyId: string; familyName: string; officialModelId: string | null;
   officialModelName: string | null;
 }
@@ -13,8 +15,9 @@ export interface BoilerPrice {
   part_name: string | null; valid_from: string | null; valid_until: string | null;
 }
 export interface BoilerRepository {
-  resolveDevice(brand: string, model: string): Promise<BoilerDevice | 'ambiguous' | null>;
+  resolveDevice(brand: string, model: string, customerMessage?: string): Promise<BoilerDevice | 'ambiguous' | null>;
   getCandidates(familyId: string): Promise<BoilerCandidate[]>;
+  getErrorCodeModelIds?(familyId: string, errorCode: string): Promise<string[]>;
   getQuestions(): Promise<BoilerQuestion[]>;
   getEffects(candidateIds: string[]): Promise<BoilerQuestionEffect[]>;
   getPricing(candidateId: string): Promise<BoilerPrice | null>;
@@ -40,7 +43,7 @@ const redactPII = (value: string) => value
 export function createSupabaseBoilerRepository(url: string, serviceRoleKey: string): BoilerRepository {
   const db = createClient(url, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
   return {
-    async resolveDevice(brand, model) {
+    async resolveDevice(brand, model, customerMessage) {
       const familiesResult = await db.from('boiler_model_families').select('id,brand,family_name,normalized_name')
         .eq('is_active', true).limit(5001);
       fail(familiesResult.error);
@@ -67,22 +70,53 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         ...aliases.map(row => ({ familyId: row.family_id, modelId: row.official_model_id })),
         ...familyMatches.map(row => ({ familyId: row.id, modelId: null })),
       ];
-      const distinct = [...new Map(matches.map(row => [`${row.familyId}|${row.modelId ?? ''}`, row])).values()];
+      let distinct = [...new Map(matches.map(row => [`${row.familyId}|${row.modelId ?? ''}`, row])).values()];
+      if (!distinct.length && customerMessage) {
+        // AI may omit an explicitly supplied variant suffix. Only a complete
+        // official catalog name present in the customer's message can repair it.
+        const explicit = ` ${normalizedModel(customerMessage)} `;
+        distinct = (modelsResult.data ?? []).filter(row => {
+          const name = normalizedModel(row.official_model_name);
+          return name && explicit.includes(` ${name} `);
+        }).map(row => ({ familyId: row.family_id, modelId: row.id }));
+      }
       if (distinct.length > 1) return 'ambiguous';
       if (!distinct.length) return null;
       const match = distinct[0], family = families.find(row => row.id === match.familyId)!;
       const official = match.modelId ? (modelsResult.data ?? []).find(row => row.id === match.modelId) : null;
       if (match.modelId && !official) return null;
-      return { familyId: family.id, familyName: family.family_name,
+      return { brand: family.brand, familyId: family.id, familyName: family.family_name,
         officialModelId: official?.id ?? null, officialModelName: official?.official_model_name ?? null };
     },
     async getCandidates(familyId) {
       const result = await db.from('boiler_fault_candidates')
-        .select('id,candidate_name,verification_status,is_active,family_id,official_model_id,error_code')
+        .select('id,candidate_name,fault_class,verification_status,is_active,family_id,official_model_id,error_code')
         .eq('family_id', familyId).eq('verification_status', 'verified').eq('is_active', true).limit(1000);
       fail(result.error);
       if ((result.data?.length ?? 0) >= 1000) throw Error('Boiler candidate catalog exceeds lookup limit');
       return result.data ?? [];
+    },
+    async getErrorCodeModelIds(familyId, errorCode) {
+      const [family, models] = await Promise.all([
+        db.from('boiler_model_families').select('brand').eq('id', familyId).eq('is_active', true).single(),
+        db.from('boiler_official_models').select('id,official_model_name')
+          .eq('family_id', familyId).eq('is_active', true).limit(1000),
+      ]);
+      fail(family.error); fail(models.error);
+      if (!family.data || (models.data?.length ?? 0) >= 1000)
+        throw Error('Boiler data access failed: incomplete family model coverage');
+      const officialModels = models.data ?? [];
+      if (!officialModels.length) return [];
+      const raw = await db.from('official_error_codes_raw').select('id,official_model,error_code')
+        .eq('brand', family.data.brand).in('official_model', officialModels.map(model => model.official_model_name))
+        .order('id').limit(1000);
+      fail(raw.error);
+      // Never declare consensus from a potentially truncated raw catalog.
+      if ((raw.data?.length ?? 0) >= 1000)
+        throw Error('Boiler data access failed: incomplete raw model/code coverage');
+      const coveredNames = new Set((raw.data ?? []).filter(row => typeof row.error_code === 'string' &&
+        normalizeBoilerErrorCode(row.error_code) === normalizeBoilerErrorCode(errorCode)).map(row => row.official_model));
+      return officialModels.filter(model => coveredNames.has(model.official_model_name)).map(model => model.id).sort();
     },
     async getQuestions() {
       const result = await db.from('boiler_diagnostic_questions')
@@ -148,7 +182,8 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         session_id: sessionId, candidate_id: item.candidateId,
         status: item.rank === 1 ? 'leading' : item.probability === 0 ? 'eliminated' : 'active',
         probability_percent: item.probability,
-        evidence_summary: { method: 'v1_effect_factors', calibrated: false }, rank: item.rank,
+        evidence_summary: { method: 'v1_effect_factors', calibrated: false,
+          ...(item.sourceCandidateIds ? { familyConsensusCandidateIds: item.sourceCandidateIds } : {}) }, rank: item.rank,
       })), { onConflict: 'session_id,candidate_id' });
       fail(result.error);
     },

@@ -2,15 +2,17 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { canAskBoilerQuestion, countAskedQuestions, countBoilerQuestionRequests } from './boiler-question-budget';
 import { containsErrorCode } from './manufacturer-document';
 import { normalizePartText } from './parts-catalog';
+import { canonicalManufacturer } from './verified-knowledge';
+import { DOMAINS } from './manufacturer-registry';
 import { inferObservedTopics } from './diagnostic-state';
-import { calculateBoilerWeights, determineBoilerResult, eligibleQuestions, hasPricingEvidence, MAX_BOILER_QUESTIONS,
+import { calculateBoilerWeights, consensusQuestionEffects, determineBoilerResult, eligibleQuestions, hasPricingEvidence, MAX_BOILER_QUESTIONS,
   PRICE_CANDIDATE_THRESHOLD, selectCandidatePool, type BoilerAnswer, type BoilerQuestion,
-  type BoilerQuestionEffect, type BoilerResultState } from './boiler-probability';
+  type BoilerCandidateMode, type BoilerQuestionEffect, type BoilerResultState } from './boiler-probability';
 import type { BoilerRepository, BoilerPrice } from './boiler-supabase';
 
 export interface BoilerMessage { role: 'user' | 'assistant'; content: string }
 export interface BoilerAI {
-  extractIdentity(conversation: BoilerMessage[]): Promise<{ brand: string; model: string; errorCode: string }>;
+  extractIdentity(conversation: BoilerMessage[], pendingIdentity?: 'brand' | 'model' | 'code' | null): Promise<{ brand: string; model: string; errorCode: string }>;
   classifyAnswer(question: BoilerQuestion, message: string, allowedKeys: string[]): Promise<string>;
   extractObservedAnswers?(message: string, questions: { id: string; text: string; allowedKeys: string[] }[]):
     Promise<{ questionId: string; answerKey: string; quote: string }[]>;
@@ -50,6 +52,65 @@ export function decodeBoilerState(token: unknown): BoilerState | null {
 const unknown = (message: string) => /^(bilmiyorum|emin degilim|goremiyorum|hata kodu yok|kod yok|hatirlamiyorum)[.!? ]*$/.test(normalizePartText(message));
 const ambiguousAnswer = (message: string) => /\b(?:belki|galiba|sanirim|emin degilim|tam emin degilim|olabilir)\b/.test(normalizePartText(message));
 const correction = (message: string) => /^(?:aslinda|duzeltiyorum|yanlis soyledim)\b/.test(normalizePartText(message));
+const mentionedManufacturer = (message: string) => {
+  const words = [...message.matchAll(/[\p{L}\p{N}]+/gu)];
+  const matches: { name: string; canonical: string }[] = [];
+  for (let index = 0; index < words.length; index++) {
+    for (const count of [1, 2]) {
+      if (index + count > words.length) continue;
+      const first = words[index], last = words[index + count - 1];
+      const name = message.slice(first.index, last.index! + last[0].length);
+      const canonical = canonicalManufacturer(name);
+      if (Object.hasOwn(DOMAINS, canonical)) matches.push({ name, canonical });
+    }
+  }
+  return new Set(matches.map(item => item.canonical)).size === 1 ? matches[0]?.name ?? '' : '';
+};
+const withoutTrailingCode = (value: string, errorCode: string | null) => {
+  if (errorCode) {
+    const chars = errorCode.toUpperCase().replace(/[.\s-]/g, '').split('');
+    if (chars.length && chars.every(char => /[A-Z0-9]/.test(char)))
+      value = value.replace(new RegExp(`\\s+${chars.join('[.\\s-]*')}\\s*$`, 'i'), '').trim();
+  }
+  return value;
+};
+const pendingModelAnswer = (message: string, errorCode: string | null) => {
+  const value = withoutTrailingCode(message.trim().replace(/^(?:model(?:im|i|iniz)?\s*[:\-]?\s*)/iu, ''), errorCode);
+  const normalized = normalizePartText(value);
+  return value.length <= 80 && normalized && normalized.split(' ').length <= 5 &&
+    !/\b(?:bilmiyorum|emin degilim|yok|kombim|bozuldu|ariza|hata)\b/.test(normalized) ? value : '';
+};
+const pendingCodeAnswer = (message: string) => {
+  const value = message.trim();
+  return /^(?:[A-Za-z]{1,3}[.\s-]?\d{1,3}|\d{1,3}[A-Za-z]{1,2}|\d(?:[. -]?\d){0,3}|[A-Za-z]{2})$/.test(value) &&
+    !/^(?:su|ve|bu|da|de|mi|mu|ya|yok)$/.test(normalizePartText(value)) ? value : '';
+};
+const codeTokens = (message: string) => [...message.matchAll(
+  /(?<![\p{L}\p{N}])(?:[A-Za-z]{1,3}[.\s-]?\d{1,3}|\d{1,3}[A-Za-z]{1,2}|\d(?:[. -]?\d){0,3}|[A-Za-z]{2})(?![\p{L}\p{N}])/gu,
+)];
+const outsideModel = (message: string, catalogModel: string) => {
+  const text = ` ${normalizePartText(message)} `;
+  const model = normalizePartText(catalogModel);
+  return model ? text.split(` ${model} `).join(' ') : text;
+};
+const explicitCodeInMessage = (message: string, catalogModel = '') => {
+  const outside = outsideModel(message, catalogModel);
+  const candidates = codeTokens(message).flatMap(match => {
+    const code = pendingCodeAnswer(match[0]);
+    if (!code || !containsErrorCode(outside, code)) return [];
+    const before = normalizePartText(message.slice(0, match.index));
+    const after = normalizePartText(message.slice(match.index! + match[0].length));
+    const rank = /(?:^| )(?:hata kodu|ariza kodu|kod|kodu)$/.test(before) ? 3 :
+      /^(?:hata|hatasi|ariza|arizasi|kod|kodu)\b/.test(after) ? 2 :
+      (/[A-Za-z]/.test(code) && /\d/.test(code)) ||
+        (/^[A-Z]{2}$/.test(code) && !after) ? 1 : 0;
+    return rank ? [{code, rank}] : [];
+  });
+  // Fault wording outranks unlabelled model tokens such as P24. In an
+  // unlabelled identity, the fault code normally follows the model variant.
+  return candidates.reduce((best, candidate) => !best || candidate.rank >= best.rank ? candidate : best,
+      null as {code: string; rank: number} | null)?.code ?? '';
+};
 const safety = (message: string) => {
   const text = normalizePartText(message);
   const gasConcern = [...text.matchAll(/gaz kokusu|gaz kacagi/g)].some(match =>
@@ -70,14 +131,48 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const conversation = [...history, { role: 'user' as const, content: message }];
   const customerMessages = conversation.filter(item => item.role === 'user').map(item => item.content);
   const customerText = customerMessages.join(' ');
-  const extracted = await ai.extractIdentity(conversation);
+  const pendingIdentity = state?.pendingIdentity ?? null;
+  const extracted = await ai.extractIdentity(conversation, pendingIdentity);
   const inText = (value: string) => value && ` ${normalizePartText(customerText)} `.includes(` ${normalizePartText(value)} `);
-  const brand = inText(extracted.brand) ? extracted.brand.trim() : state?.brand ?? options.identityFallback?.brand ?? '';
-  const model = inText(extracted.model) ? extracted.model.trim() : state?.model ?? options.identityFallback?.model ?? '';
-  const errorCode = containsErrorCode(customerText, extracted.errorCode) ? extracted.errorCode.trim() :
-    state?.errorCode ?? options.identityFallback?.errorCode ?? null;
+  const brandInText = (value: string) => {
+    const canonical = canonicalManufacturer(value);
+    if (!canonical) return false;
+    return customerMessages.some(customerMessage => {
+      const words = normalizePartText(customerMessage).split(' ');
+      return words.some((word, index) => word === canonical ||
+        (index + 1 < words.length && word + words[index + 1] === canonical));
+    });
+  };
+  const mentionedBrand = pendingIdentity === 'brand' ? mentionedManufacturer(message) : '';
+  const extractedBrand = brandInText(extracted.brand) ? extracted.brand.trim() : '';
+  const brand = state?.brand && !correction(message) ? state.brand :
+    mentionedBrand || extractedBrand || state?.brand || options.identityFallback?.brand || '';
+  const rawModel = extracted.model.trim();
+  // A code-shaped suffix can be a real catalog model identifier. Confirm the
+  // complete model without the message fallback before treating it as a code.
+  const catalogDevice = brand && inText(rawModel) && codeTokens(rawModel).length
+    ? await repository.resolveDevice(brand, rawModel) : null;
+  const catalogModel = catalogDevice && catalogDevice !== 'ambiguous' &&
+    (catalogDevice.officialModelId || normalizePartText(catalogDevice.familyName) === normalizePartText(rawModel))
+    ? rawModel : '';
+  const extractedCode = pendingCodeAnswer(extracted.errorCode) &&
+    customerMessages.some(text => containsErrorCode(outsideModel(text, catalogModel), extracted.errorCode))
+    ? extracted.errorCode.trim() : '';
+  const explicitCode = explicitCodeInMessage(message, catalogModel) ||
+    (pendingIdentity === 'code' ? pendingCodeAnswer(outsideModel(message, catalogModel)) : '');
+  // Preserve equivalent AI formatting, but never let an invalid/different AI
+  // value replace a code explicitly supplied by the customer.
+  const sameCode = explicitCode && extractedCode &&
+    explicitCode.toUpperCase().replace(/[.\s-]/g, '') === extractedCode.toUpperCase().replace(/[.\s-]/g, '');
+  const errorCode = (sameCode ? extractedCode : explicitCode) || extractedCode ||
+    pendingCodeAnswer(state?.errorCode ?? '') || pendingCodeAnswer(options.identityFallback?.errorCode ?? '') || null;
+  const modelWithoutCode = catalogModel || withoutTrailingCode(rawModel, errorCode);
+  const extractedModel = inText(modelWithoutCode) && canonicalManufacturer(modelWithoutCode) !== canonicalManufacturer(brand) &&
+    normalizePartText(modelWithoutCode) !== normalizePartText(errorCode ?? '') ? modelWithoutCode : '';
+  const model = state?.model && !correction(message) && pendingIdentity !== 'model' ? state.model : extractedModel ||
+    (pendingIdentity === 'model' ? pendingModelAnswer(message, errorCode) : '') || state?.model || options.identityFallback?.model || '';
   let budgetFloor = Math.max(0, Math.min(MAX_BOILER_QUESTIONS, options.budgetFloor ?? 0));
-  const changedIdentity = state && ((state.brand && brand && normalizePartText(state.brand) !== normalizePartText(brand)) ||
+  const changedIdentity = state && ((state.brand && brand && canonicalManufacturer(state.brand) !== canonicalManufacturer(brand)) ||
     (state.model && model && normalizePartText(state.model) !== normalizePartText(model)) ||
     (state.errorCode && errorCode && state.errorCode.toUpperCase().replace(/[.\s-]/g, '') !==
       errorCode.toUpperCase().replace(/[.\s-]/g, '')));
@@ -104,7 +199,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   state.brand = brand; state.model = model; state.errorCode = errorCode;
   const result = async (reply: string, resultState: BoilerResultState, options: {
     assessments?: ReturnType<typeof calculateBoilerWeights>; price?: BoilerPrice | null;
-    familyId?: string | null; officialModelId?: string | null; mode?: 'error_code' | 'symptom' | 'none';
+    familyId?: string | null; officialModelId?: string | null; mode?: BoilerCandidateMode | 'none';
   } = {}) => {
     const finished = ['priced_candidate','pricing_missing','uncertain_price','safety_stop'].includes(resultState);
     state!.finished = finished;
@@ -133,7 +228,8 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       stopReason: finished ? resultState : null, options: [],
     };
   };
-  const ask = (text: string, options: Parameters<typeof result>[2] = {}) => {
+  const ask = (text: string, options: Parameters<typeof result>[2] = {}, repeatedIdentity = false) => {
+    if (repeatedIdentity) return result(text, 'diagnosing', options);
     if (!canAskBoilerQuestion(state!.totalAskedQuestions, text))
       return result('Toplam 12 soru sınırına ulaşıldı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
         'uncertain_price', options);
@@ -151,23 +247,39 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   if ((!brand && /(?:marka\w* bilmiyorum|marka\w* belli degil|marka\w* hatirlamiyorum|^bilmiyorum[.!? ]*$)/.test(normalizedMessage)) ||
       (!model && /(?:model\w* bilmiyorum|model\w* belli degil|model\w* hatirlamiyorum)/.test(normalizedMessage)))
     return result('Marka veya model bilinmediği için fiyat belirsiz. Yerinde kontrol için usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
-  if (!brand) { state.pendingIdentity = 'brand'; return ask('Cihazınızın markası nedir?'); }
-  if (!model) { state.pendingIdentity = 'model'; return ask('Cihazınızın etikette yazan modeli nedir?'); }
+  if (!brand) { state.pendingIdentity = 'brand'; return ask('Cihazınızın markası nedir?', {}, pendingIdentity === 'brand'); }
+  if (!model) { state.pendingIdentity = 'model'; return ask('Cihazınızın etikette yazan modeli nedir?', {}, pendingIdentity === 'model'); }
   if (!errorCode && !state.codeAsked && !/(?:hata kodu yok|kod yok|hata gostermiyor)/.test(normalizePartText(customerText))) {
     state.pendingIdentity = 'code'; state.codeAsked = true;
-    return ask('Ekranda hata kodu görünüyor mu? Yoksa “yok” yazabilirsiniz.');
+    return ask('Ekranda hata kodu görünüyor mu? Yoksa “yok” yazabilirsiniz.', {}, pendingIdentity === 'code');
   }
 
-  const device = await repository.resolveDevice(brand, model);
-  if (device === 'ambiguous') return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?');
+  const device = await repository.resolveDevice(brand, model, message);
+  if (device === 'ambiguous') {
+    state.pendingIdentity = 'model';
+    return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?', {}, pendingIdentity === 'model');
+  }
   if (!device) return result('Bu model için doğrulanmış teknik aday bulunamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
+  if (device.brand && canonicalManufacturer(device.brand) === canonicalManufacturer(brand)) state.brand = device.brand;
+  if (device.officialModelName) state.model = device.officialModelName;
   state.familyId = device.familyId; state.officialModelId = device.officialModelId;
   const allCandidates = await repository.getCandidates(device.familyId);
-  const selected = selectCandidatePool(allCandidates, device.familyId, device.officialModelId, errorCode);
+  let selected = selectCandidatePool(allCandidates, device.familyId, device.officialModelId, errorCode);
+  if (device.officialModelId === null && errorCode && selected.mode !== 'error_code' && repository.getErrorCodeModelIds) {
+    const coveredModels = await repository.getErrorCodeModelIds(device.familyId, errorCode);
+    selected = selectCandidatePool(allCandidates, device.familyId, null, errorCode, coveredModels);
+  }
+  if (selected.requiresExactModel) {
+    state.pendingIdentity = 'model';
+    return ask('Cihaz etiketindeki tam model adını paylaşır mısınız?', {}, pendingIdentity === 'model');
+  }
   const candidates = selected.candidates;
   if (!candidates.length) return result('Bu cihaz için doğrulanmış kök neden havuzu bulunamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price', { familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
-  const [questions, effects] = await Promise.all([repository.getQuestions(), repository.getEffects(candidates.map(item => item.id))]);
+  const familyConsensus = selected.mode === 'family_code_consensus';
+  const effectCandidateIds = [...new Set(candidates.flatMap(item => item.sourceCandidateIds ?? [item.id]))];
+  const [questions, storedEffects] = await Promise.all([repository.getQuestions(), repository.getEffects(effectCandidateIds)]);
+  const effects = familyConsensus ? consensusQuestionEffects(candidates, storedEffects) : storedEffects;
   const saveAnswer = async (question: BoilerQuestion, rawAnswer: string, answerKey: string,
     askedAt: string | null, source: 'customer' | 'ai_extracted') => {
     const group = question.evidence_group || question.question_key;
@@ -257,15 +369,19 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const diagnosticQuestions = available(false);
   const canAsk = state.totalAskedQuestions < MAX_BOILER_QUESTIONS;
   const nextOptions = canAsk ? (safetyQuestions.length ? safetyQuestions : diagnosticQuestions) : [];
-  const price = pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD ?
+  const price = !familyConsensus && pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD ?
     await repository.getPricing(top.candidateId) : null;
-  const resultState = determineBoilerResult(assessments, state.totalAskedQuestions,
+  let resultState = determineBoilerResult(assessments, state.totalAskedQuestions,
     state.firstThresholdAt, nextOptions.length > 0, price !== null, pricingEvidenceReady);
+  if (familyConsensus && (resultState === 'priced_candidate' || resultState === 'pricing_missing'))
+    resultState = 'uncertain_price';
   if (resultState === 'priced_candidate') return result(`En güçlü doğrulanmış aday ${top.candidateName}. Fiyat bilgisi hazır; usta yönlendirmesi isteyebilirsiniz.`,
     resultState,{ assessments, price, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   if (resultState === 'pricing_missing') return result(`En güçlü doğrulanmış aday ${top.candidateName}; ancak güncel fiyat kaydı yok. Fiyat belirsiz, usta yönlendirmesi isteyebilirsiniz.`,
     resultState,{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
-  if (resultState === 'uncertain_price') return result('Olası arızalar güvenilir biçimde yeterince ayrılamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
+  if (resultState === 'uncertain_price') return result(familyConsensus && pricingEvidenceReady && top.probability >= PRICE_CANDIDATE_THRESHOLD
+    ? 'Ortak aile adayları değerlendirildi; tam model bilinmeden güvenli fiyat verilemiyor. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.'
+    : 'Olası arızalar güvenilir biçimde yeterince ayrılamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     resultState,{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
   if (!nextOptions.length) return result('Müşterinin güvenle yanıtlayabileceği ayırt edici soru kalmadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.',
     'uncertain_price',{ assessments, familyId: device.familyId, officialModelId: device.officialModelId, mode: selected.mode });
