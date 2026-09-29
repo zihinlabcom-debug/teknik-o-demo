@@ -12,7 +12,7 @@ registerHooks({resolve(specifier,context,next){
 const diagnose=await import('../src/app/api/diagnose/route.ts');
 const chat=await import('../src/app/api/chat/route.ts');
 
-test('both actual API routes isolate all five non-boiler cards and free text without network requests',async()=>{
+test('both actual API routes isolate the four unavailable cards and free text without network requests',async()=>{
  const savedSecret=process.env.DIAGNOSIS_STATE_SECRET,savedFetch=globalThis.fetch;
  process.env.DIAGNOSIS_STATE_SECRET='offline-category-api-secret';
  let calls=0;
@@ -21,7 +21,7 @@ test('both actual API routes isolate all five non-boiler cards and free text wit
   const examples={painting:'3+1 evimi boyatmak istiyorum',cleaning:'boş ev temizliği istiyorum',moving:'evimi başka eve taşıyacağım',
    sofa_cleaning:'koltuk takımımı yıkatacağım',carpet_cleaning:'6 metrekare halı yıkatacağım'};
   for(const route of [diagnose,chat]){
-   for(const category of ACTIVE_SERVICE_CATEGORIES.filter(c=>c.id!=='boiler')){
+   for(const category of ACTIVE_SERVICE_CATEGORIES.filter(c=>!['boiler','painting'].includes(c.id))){
     for(const selected of [true,false]){
      const body=selected?{message:category.label,category:category.id,categorySelected:true,stateToken:'boiler.old-state'}:{message:examples[category.id]};
      const res=await route.POST(new Request('http://localhost/api/test',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}));
@@ -32,6 +32,15 @@ test('both actual API routes isolate all five non-boiler cards and free text wit
      assert.equal(decodeConversationState(result.conversationToken).boilerStateToken,null);
      assert.doesNotMatch(result.aiText,/markası|modeli|hata kodu/);
     }
+   }
+   for(const body of [{message:'Boya',category:'painting',categorySelected:true},{message:'3+1 evimi boyatmak istiyorum'}]){
+    const painting=await route.POST(new Request('http://localhost/api/test',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}));
+    assert.equal(painting.status,200);const result=await painting.json();
+    assert.equal(result.category,'painting');assert.equal(result.resultState,'painting_service_selection');
+    assert.equal(result.aiText,'Hangi boya hizmetine ihtiyacınız var?');
+    assert.deepEqual(result.options,['Duvar Boyama','Mobilya Boyama','Dış Cephe Boyama']);
+    assert.equal(result.stateToken,null);assert.equal(result.estimatedPrice,null);
+    assert.equal(decodeConversationState(result.conversationToken).boilerStateToken,null);
    }
    const res=await route.POST(new Request('http://localhost/api/test',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({message:'Yardım istiyorum'})}));
    const result=await res.json();assert.equal(result.category,null);assert.equal(result.resultState,'category_clarification');

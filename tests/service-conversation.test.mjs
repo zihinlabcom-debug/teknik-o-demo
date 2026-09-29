@@ -29,15 +29,62 @@ test('six active categories and free-text examples classify without a boiler def
  for(const message of ['Yardım istiyorum','Bosch klimam EA veriyor','Evimi boyatıp koltukları yıkatacağım'])
   assert.equal(classifyServiceCategory(message),null,message);
 });
-test('every non-boiler card has isolated category state and never invokes the boiler engine',()=>signed(async()=>{
+test('every unavailable non-boiler card has isolated category state and never invokes the boiler engine',()=>signed(async()=>{
  const forbidden=async()=>{throw Error('Non-boiler engine fallback forbidden');};
- for(const c of ACTIVE_SERVICE_CATEGORIES.filter(c=>c.id!=='boiler')){
+ for(const c of ACTIVE_SERVICE_CATEGORIES.filter(c=>!['boiler','painting'].includes(c.id))){
   const result=await diagnoseService(c.label+' hizmeti istiyorum',[],null,{category:c.id,categorySelected:true,boiler:forbidden,turnId:c.id});
   assert.equal(result.category,c.id);assert.equal(result.categoryState.category,c.id);
   assert.equal(result.stateToken,null);assert.deepEqual(result.candidateProbabilities,[]);
   assert.doesNotMatch(result.aiText,/markası|modeli|hata kodu/);
   assert.equal(result.answeredSystemQuestions,0);assert.equal(result.visualProgress,0);
   const state=decodeConversationState(result.conversationToken);assert.equal(state.category,c.id);assert.equal(state.boilerStateToken,null);
+ }
+}));
+test('painting card requires one of three subservices before the wall engine can start',()=>signed(async()=>{
+ const calls=[];const wall=async(message,history,token)=>{
+  calls.push({message,history,token});return {aiText:'Duvar Boyama V1 başladı',stateToken:'painting.fake',resultState:'painting_question'};
+ };
+ const first=await diagnoseService('Boya hizmeti için yardım istiyorum.',[],null,
+  {category:'painting',categorySelected:true,painting:wall,turnId:'paint-card'});
+ assert.equal(first.aiText,'Hangi boya hizmetine ihtiyacınız var?');
+ assert.deepEqual(first.options,['Duvar Boyama','Mobilya Boyama','Dış Cephe Boyama']);
+ assert.equal(first.resultState,'painting_service_selection');assert.equal(first.stateToken,null);
+ assert.equal(first.answeredSystemQuestions,0);assert.equal(first.visualProgress,0);
+ assert.equal(calls.length,0);
+ const duplicate=await diagnoseService('Boya hizmeti için yardım istiyorum.',[],null,
+  {category:'painting',categorySelected:true,conversationToken:first.conversationToken,painting:wall,turnId:'paint-card'});
+ assert.equal(duplicate.resultState,'painting_service_selection');assert.equal(calls.length,0);
+ const waiting=decodeConversationState(first.conversationToken);
+ assert.equal(waiting.paintingServiceType,null);assert.equal(waiting.paintingStateToken,null);
+ const invalid=await diagnoseService('Metal korkuluk boyama',[],null,
+  {conversationToken:first.conversationToken,painting:wall,turnId:'wrong-service'});
+ assert.equal(invalid.resultState,'painting_service_selection');assert.deepEqual(invalid.options,first.options);
+ assert.equal(calls.length,0);
+ const selected=await diagnoseService('Duvar Boyama',[],null,
+  {conversationToken:invalid.conversationToken,painting:wall,turnId:'wall-service'});
+ assert.equal(selected.aiText,'Duvar Boyama V1 başladı');assert.equal(calls.length,1);
+ assert.equal(calls[0].token,null);assert.notEqual(calls[0].message,'Duvar Boyama');
+ assert.equal(decodeConversationState(selected.conversationToken).paintingServiceType,'wall_painting');
+ const restarted=await diagnoseService('Boya hizmeti için yardım istiyorum.',
+  [{role:'user',content:'Önceki boyama isteğim 400 metrekareydi.'}],null,
+  {category:'painting',categorySelected:true,conversationToken:selected.conversationToken,painting:wall});
+ assert.equal(restarted.resultState,'painting_service_selection');assert.equal(calls.length,1);
+ assert.equal(decodeConversationState(restarted.conversationToken).paintingServiceType,null);
+ assert.equal(decodeConversationState(restarted.conversationToken).paintingStateToken,null);
+ const fresh=await diagnoseService('Duvar Boyama',[],null,{conversationToken:restarted.conversationToken,painting:wall});
+ assert.equal(calls.length,2);assert.ok(!calls[1].history.some(item=>item.content.includes('400 metrekare')));
+ assert.equal(decodeConversationState(fresh.conversationToken).paintingServiceType,'wall_painting');
+}));
+test('furniture and exterior painting stay unavailable without invoking the wall engine',()=>signed(async()=>{
+ const wall=async()=>{throw Error('Wall engine must not run for other painting services');};
+ for(const [label,type] of [['Mobilya Boyama','furniture_painting'],['Dış Cephe Boyama','exterior_painting']]){
+  const start=await diagnoseService('Boya',[],null,{category:'painting',categorySelected:true,painting:wall});
+  const result=await diagnoseService(label,[],null,{conversationToken:start.conversationToken,painting:wall});
+  assert.equal(result.resultState,'category_unavailable');assert.equal(result.stateToken,null);
+  assert.equal(result.isReadyForPrice,false);assert.equal(result.estimatedPrice,null);
+  assert.match(result.aiText,/geliştirme aşamasında/);
+  const state=decodeConversationState(result.conversationToken);
+  assert.equal(state.paintingServiceType,type);assert.equal(state.paintingStateToken,null);
  }
 }));
 test('ambiguous/unsupported messages ask for a category; an explicit selection routes to boiler',()=>signed(async()=>{

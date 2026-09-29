@@ -1,0 +1,1077 @@
+{
+  "sha256": "d1e608505bd2b987d3ba29b40cfd7956284e3682d253746f033ed9cba241f288",
+  "sheets": [
+    {
+      "name": "Analiz Basitleştirilmiş",
+      "rows": 253,
+      "cols": 6
+    },
+    {
+      "name": "Fiyat Özeti",
+      "rows": 25,
+      "cols": 2
+    },
+    {
+      "name": "Soru Ağacı",
+      "rows": 45,
+      "cols": 1
+    }
+  ],
+  "positions": [
+    {
+      "summaryRow": 5,
+      "nameCell": "B2",
+      "priceCell": "F10",
+      "description": "Eski boyalı yüzeylere üç kat beyaz kireç badana yapılması (iç cephe)",
+      "unitPriceM2": 100.695,
+      "priceFormula": "=SUM(F5:F9)*1.2",
+      "ingredients": [
+        {
+          "row": 5,
+          "label": "Kalsiyum kireci CL 80S sönmüş toz kireç",
+          "unit": "Ton",
+          "quantity": 0.00025,
+          "unitPrice": 2870,
+          "amount": 0.7175
+        },
+        {
+          "row": 6,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 7,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.2,
+          "unitPrice": 3.09,
+          "amount": 0.618
+        },
+        {
+          "row": 9,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.33,
+          "unitPrice": 250,
+          "amount": 82.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 6,
+      "nameCell": "B13",
+      "priceCell": "F23",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat su bazlı silikonlu mat iç cephe",
+      "unitPriceM2": 107.97780000000002,
+      "priceFormula": "=SUM(F16:F22)*1.2",
+      "ingredients": [
+        {
+          "row": 16,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 17,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 18,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 19,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 20,
+          "label": "Su bazlı  Silikonlu Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.135,
+          "unitPrice": 120,
+          "amount": 16.200000000000003
+        },
+        {
+          "row": 22,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 7,
+      "nameCell": "B26",
+      "priceCell": "F36",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı Plastik Mat İç Cephe Boyası",
+      "unitPriceM2": 107.00580000000001,
+      "priceFormula": "=SUM(F29:F35)*1.2",
+      "ingredients": [
+        {
+          "row": 29,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 30,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 31,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 32,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 33,
+          "label": "Su bazlı Plastik Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.135,
+          "unitPrice": 114,
+          "amount": 15.39
+        },
+        {
+          "row": 35,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 8,
+      "nameCell": "B39",
+      "priceCell": "F49",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı Silikonlu  İpek Mat İç Cephe Boyası",
+      "unitPriceM2": 111.5778,
+      "priceFormula": "=SUM(F42:F48)*1.2",
+      "ingredients": [
+        {
+          "row": 42,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 43,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 44,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 45,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 46,
+          "label": "Su bazlı Silikonlu  İpek Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 160,
+          "amount": 19.2
+        },
+        {
+          "row": 48,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 9,
+      "nameCell": "B52",
+      "priceCell": "F62",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı  Silikonlu Yarı Mat İç Cephe Boyası",
+      "unitPriceM2": 116.1858,
+      "priceFormula": "=SUM(F55:F61)*1.2",
+      "ingredients": [
+        {
+          "row": 55,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 56,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 57,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 58,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 59,
+          "label": "Su bazlı  Silikonlu Yarı Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 192,
+          "amount": 23.04
+        },
+        {
+          "row": 61,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 10,
+      "nameCell": "B65",
+      "priceCell": "F76",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı Silikonlu Mat Antibakteriyel İç Cephe Boyası",
+      "unitPriceM2": 125.4798,
+      "priceFormula": "=SUM(F68:F75)*1.2",
+      "ingredients": [
+        {
+          "row": 68,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 69,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 70,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 71,
+          "label": "Akrilik esaslı su bazlı antibakteriyel solüsyon",
+          "unit": "lt",
+          "quantity": 0.15,
+          "unitPrice": 45,
+          "amount": 6.75
+        },
+        {
+          "row": 72,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 73,
+          "label": "Su bazlı Silikonlu Mat Antibakteriyel İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.135,
+          "unitPrice": 141,
+          "amount": 19.035
+        },
+        {
+          "row": 75,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.27,
+          "unitPrice": 250,
+          "amount": 67.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 11,
+      "nameCell": "B79",
+      "priceCell": "F90",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı Silikonlu İpek Mat Antibakteriyel İç Cephe Boyası",
+      "unitPriceM2": 128.7018,
+      "priceFormula": "=SUM(F82:F89)*1.2",
+      "ingredients": [
+        {
+          "row": 82,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 83,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 84,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 85,
+          "label": "Akrilik esaslı su bazlı antibakteriyel solüsyon",
+          "unit": "lt",
+          "quantity": 0.15,
+          "unitPrice": 45,
+          "amount": 6.75
+        },
+        {
+          "row": 86,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 87,
+          "label": "Su bazlı Silikonlu İpek Mat Antibakteriyel İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 181,
+          "amount": 21.72
+        },
+        {
+          "row": 89,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.27,
+          "unitPrice": 250,
+          "amount": 67.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 12,
+      "nameCell": "B93",
+      "priceCell": "F104",
+      "description": "Eski boyalı yüzeylere astar uygulanarak iki kat Su bazlı Plastik Antibakteriyel İç Cephe Boyası",
+      "unitPriceM2": 139.47299999999998,
+      "priceFormula": "=SUM(F96:F103)*1.2",
+      "ingredients": [
+        {
+          "row": 96,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 97,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 98,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 99,
+          "label": "Akrilik esaslı su bazlı antibakteriyel solüsyon",
+          "unit": "lt",
+          "quantity": 0.15,
+          "unitPrice": 45,
+          "amount": 6.75
+        },
+        {
+          "row": 100,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 101,
+          "label": "Su bazlı Plastik Antibakteriyel İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.144,
+          "unitPrice": 109,
+          "amount": 15.695999999999998
+        },
+        {
+          "row": 103,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.33,
+          "unitPrice": 250,
+          "amount": 82.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 13,
+      "nameCell": "B107",
+      "priceCell": "F117",
+      "description": "Eski boyalı yüzeylere macun ve astar uygulanarak iki kat sentetik esaslı parlak boya yapılması (iç cephe)",
+      "unitPriceM2": 148.8378,
+      "priceFormula": "=SUM(F110:F116)*1.2",
+      "ingredients": [
+        {
+          "row": 110,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 111,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 112,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 113,
+          "label": "Sentetik boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 120,
+          "amount": 8.4
+        },
+        {
+          "row": 114,
+          "label": "Sentetik esaslı parlak boya",
+          "unit": "lt",
+          "quantity": 0.132,
+          "unitPrice": 200,
+          "amount": 26.400000000000002
+        },
+        {
+          "row": 116,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.33,
+          "unitPrice": 250,
+          "amount": 82.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 14,
+      "nameCell": "B120",
+      "priceCell": "F130",
+      "description": "Eski boyalı yüzeylere macun ve astar uygulanarak iki kat sentetik esaslı mat boya yapılması (iç cephe)",
+      "unitPriceM2": 138.5418,
+      "priceFormula": "=SUM(F123:F129)*1.2",
+      "ingredients": [
+        {
+          "row": 123,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 124,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 125,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 126,
+          "label": "Sentetik boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 120,
+          "amount": 8.4
+        },
+        {
+          "row": 127,
+          "label": "Sentetik esaslı mat boya",
+          "unit": "lt",
+          "quantity": 0.132,
+          "unitPrice": 135,
+          "amount": 17.82
+        },
+        {
+          "row": 129,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.33,
+          "unitPrice": 250,
+          "amount": 82.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 15,
+      "nameCell": "B133",
+      "priceCell": "F142",
+      "description": "Yeni sıva yüzeylere macun ve astar uygulanarak iki kat Su bazlı Silikonlu Mat İç Cephe Boyası",
+      "unitPriceM2": 174.564,
+      "priceFormula": "=SUM(F136:F141)*1.2",
+      "ingredients": [
+        {
+          "row": 136,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 137,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 138,
+          "label": "Su bazlı iç cephe macunu",
+          "unit": "kg",
+          "quantity": 0.643,
+          "unitPrice": 40,
+          "amount": 25.72
+        },
+        {
+          "row": 139,
+          "label": "Su bazlı  Silikonlu Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.135,
+          "unitPrice": 120,
+          "amount": 16.200000000000003
+        },
+        {
+          "row": 141,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.37,
+          "unitPrice": 250,
+          "amount": 92.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 16,
+      "nameCell": "B145",
+      "priceCell": "F154",
+      "description": "Yeni sıva yüzeylere macun ve astar uygulanarak iki kat Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+      "unitPriceM2": 177.01199999999997,
+      "priceFormula": "=SUM(F148:F153)*1.2",
+      "ingredients": [
+        {
+          "row": 148,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 149,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 150,
+          "label": "Su bazlı iç cephe macunu",
+          "unit": "kg",
+          "quantity": 0.643,
+          "unitPrice": 40,
+          "amount": 25.72
+        },
+        {
+          "row": 151,
+          "label": "Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 152,
+          "amount": 18.24
+        },
+        {
+          "row": 153,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.37,
+          "unitPrice": 250,
+          "amount": 92.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 17,
+      "nameCell": "B157",
+      "priceCell": "F166",
+      "description": "Yeni sıva yüzeylere macun ve astar uygulanarak iki kat Su bazlı Plastik Mat İç Cephe Boyası",
+      "unitPriceM2": 171.54,
+      "priceFormula": "=SUM(F160:F165)*1.2",
+      "ingredients": [
+        {
+          "row": 160,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 161,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 162,
+          "label": "Su bazlı iç cephe macunu",
+          "unit": "kg",
+          "quantity": 0.643,
+          "unitPrice": 40,
+          "amount": 25.72
+        },
+        {
+          "row": 163,
+          "label": "Su bazlı Plastik Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 114,
+          "amount": 13.68
+        },
+        {
+          "row": 165,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.37,
+          "unitPrice": 250,
+          "amount": 92.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 18,
+      "nameCell": "B169",
+      "priceCell": "F177",
+      "description": "Yeni sıva yüzeylere astar uygulanarak iki kat Su bazlı Silikonlu Mat İç Cephe Boyası",
+      "unitPriceM2": 106.98,
+      "priceFormula": "=SUM(F172:F176)*1.2",
+      "ingredients": [
+        {
+          "row": 172,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 173,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 174,
+          "label": "Su bazlı  Silikonlu Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.13,
+          "unitPrice": 120,
+          "amount": 15.600000000000001
+        },
+        {
+          "row": 176,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 19,
+      "nameCell": "B180",
+      "priceCell": "F188",
+      "description": "Yeni sıva yüzeylere astar uygulanarak iki kat Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+      "unitPriceM2": 111.972,
+      "priceFormula": "=SUM(F183:F187)*1.2",
+      "ingredients": [
+        {
+          "row": 183,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 184,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 185,
+          "label": "Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.13,
+          "unitPrice": 152,
+          "amount": 19.76
+        },
+        {
+          "row": 187,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 20,
+      "nameCell": "B191",
+      "priceCell": "F199",
+      "description": "Yeni sıva yüzeylere astar uygulanarak iki kat Su bazlı Plastik Mat İç Cephe Boyası",
+      "unitPriceM2": 106.044,
+      "priceFormula": "=SUM(F194:F198)*1.2",
+      "ingredients": [
+        {
+          "row": 194,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 195,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 196,
+          "label": "Su bazlı Plastik Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.13,
+          "unitPrice": 114,
+          "amount": 14.82
+        },
+        {
+          "row": 198,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 21,
+      "nameCell": "B202",
+      "priceCell": "F209",
+      "description": "Saten alçılı ve alçıpanel yüzeylere astar uygulanarak iki kat Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+      "unitPriceM2": 93.34799999999998,
+      "priceFormula": "=SUM(F205:F208)*1.2",
+      "ingredients": [
+        {
+          "row": 205,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 206,
+          "label": "Su bazlı  Silikonlu Soft Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 152,
+          "amount": 18.24
+        },
+        {
+          "row": 208,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.22,
+          "unitPrice": 250,
+          "amount": 55
+        }
+      ]
+    },
+    {
+      "summaryRow": 22,
+      "nameCell": "B212",
+      "priceCell": "F219",
+      "description": "Saten alçılı ve alçıpanel yüzeylere astar uygulanarak iki kat Su bazlı Plastik Mat İç Cephe Boyası",
+      "unitPriceM2": 87.876,
+      "priceFormula": "=SUM(F215:F218)*1.2",
+      "ingredients": [
+        {
+          "row": 215,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 216,
+          "label": "Su bazlı Plastik Mat İç Cephe Boyası",
+          "unit": "lt",
+          "quantity": 0.12,
+          "unitPrice": 114,
+          "amount": 13.68
+        },
+        {
+          "row": 218,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.22,
+          "unitPrice": 250,
+          "amount": 55
+        }
+      ]
+    },
+    {
+      "summaryRow": 23,
+      "nameCell": "B222",
+      "priceCell": "F231",
+      "description": "Eski boyalı tavan yüzeylere iki kat Su bazlı Tavan Boyası",
+      "unitPriceM2": 99.2778,
+      "priceFormula": "=SUM(F225:F230)*1.2",
+      "ingredients": [
+        {
+          "row": 225,
+          "label": "İnce Uygulanabilir Alçı (Saten Alçı)",
+          "unit": "kg",
+          "quantity": 0.05,
+          "unitPrice": 3.09,
+          "amount": 0.1545
+        },
+        {
+          "row": 226,
+          "label": "Su",
+          "unit": "m³",
+          "quantity": 0.002,
+          "unitPrice": 38.5,
+          "amount": 0.077
+        },
+        {
+          "row": 227,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 228,
+          "label": "Su bazlı Tavan Boyası",
+          "unit": "Kg",
+          "quantity": 0.3,
+          "unitPrice": 45,
+          "amount": 13.5
+        },
+        {
+          "row": 230,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    },
+    {
+      "summaryRow": 24,
+      "nameCell": "B234",
+      "priceCell": "F241",
+      "description": "Yeni sıvalı tavan yüzeylere iki kat Su bazlı Tavan Boyası",
+      "unitPriceM2": 111.66,
+      "priceFormula": "=SUM(F237:F240)*1.2",
+      "ingredients": [
+        {
+          "row": 237,
+          "label": "Su bazlı boya astarı",
+          "unit": "lt",
+          "quantity": 0.07,
+          "unitPrice": 65,
+          "amount": 4.550000000000001
+        },
+        {
+          "row": 238,
+          "label": "Su bazlı Tavan Boyası",
+          "unit": "Kg",
+          "quantity": 0.3,
+          "unitPrice": 45,
+          "amount": 13.5
+        },
+        {
+          "row": 240,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.3,
+          "unitPrice": 250,
+          "amount": 75
+        }
+      ]
+    },
+    {
+      "summaryRow": 25,
+      "nameCell": "B244",
+      "priceCell": "F252",
+      "description": "Saten alçılı tavan yüzeylere iki kat Su bazlı Tavan Boyası",
+      "unitPriceM2": 99,
+      "priceFormula": "=SUM(F248:F251)*1.2",
+      "ingredients": [
+        {
+          "row": 248,
+          "label": "Zımpara kağıdı",
+          "unit": "Adet",
+          "quantity": 1,
+          "unitPrice": 6.5,
+          "amount": 6.5
+        },
+        {
+          "row": 249,
+          "label": "Su bazlı Tavan Boyası",
+          "unit": "Kg",
+          "quantity": 0.3,
+          "unitPrice": 45,
+          "amount": 13.5
+        },
+        {
+          "row": 251,
+          "label": "Usta",
+          "unit": "Saat",
+          "quantity": 0.25,
+          "unitPrice": 250,
+          "amount": 62.5
+        }
+      ]
+    }
+  ],
+  "extraPuttyComponentsM2": [
+    66.86399999999999,
+    66.86399999999999,
+    66.86399999999999
+  ]
+}

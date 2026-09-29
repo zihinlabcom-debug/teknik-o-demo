@@ -3,6 +3,7 @@ import type {BoilerPrice} from './boiler-supabase';
 import type {PriceSource} from './part-pricing';
 import type {calculateOMF} from './omf-engine';
 import type {ServiceCategory} from './service-categories';
+import type {PaintingQuote} from './painting-types';
 
 // Display metadata only. None of these fields are inputs to the boiler engine.
 export interface ServiceResponse {
@@ -17,6 +18,7 @@ export interface ServiceResponse {
   pricingData:BoilerPrice|null; estimatedPrice:string|null; priceSource:PriceSource|null;
   deterministicOMF:ReturnType<typeof calculateOMF>|null; confidence:number;
   faultTitle:string|null; basePartPrice:number; technicalSource:{title:string;url:string;page:number|null}|null;
+  paintingQuote?:PaintingQuote|null;
 }
 export const visualProgress = (answeredSystemQuestions:number) =>
   Math.min(100,Math.max(0,Math.floor(answeredSystemQuestions))*13);
@@ -36,6 +38,8 @@ function priceRange(min:number|null,max:number|null,currency:string){
 export function servicePricePresentation(reply:Pick<ServiceResponse,'resultState'|'estimatedPrice'|'pricingData'|'deterministicOMF'>):ServicePricePresentation|null {
   if(!terminalPriceStates.has(reply.resultState))return null;
   if(reply.resultState==='uncertain_price'||reply.resultState==='pricing_missing')return {title:'Fiyat',amount:null,lines:[]};
+  if('category' in reply&&reply.category==='painting'&&reply.resultState==='priced')
+    return {title:'Nihai boya hizmeti fiyatı',amount:reply.estimatedPrice,lines:[]};
   const total=reply.deterministicOMF?.breakdown.total;
   const amount=reply.estimatedPrice||(typeof total==='number'&&Number.isFinite(total)?money(total,'TRY'):null);
   if(amount)return {title:'Tahmini servis tutarı',amount,lines:[]};
