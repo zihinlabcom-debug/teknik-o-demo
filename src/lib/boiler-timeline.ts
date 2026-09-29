@@ -4,6 +4,7 @@ export interface BoilerTimeline {
   historical:{kind:BoilerTiming|'reset_temporarily_helped';quote:string}[];
   current:{timing:BoilerTiming|null;persistent:boolean;quote:string|null};
   needsClarification:boolean;
+  startupContext?:'first_cold_start'|'recurrence'|'unresolved';
 }
 export function extractBoilerTimeline(message:string):BoilerTimeline {
   // Split before normalization so quoted spans retain their original offsets.
@@ -22,6 +23,12 @@ export function extractBoilerTimeline(message:string):BoilerTimeline {
   if(old&&/reset.{0,35}duzel(?:di|iyordu|iyormus|iyor)\b/.test(old)&&/tekrar/.test(old))historical.push({kind:'reset_temporarily_helped',quote:historyQuote});
   const persistent=/\b(?:kalici|surekli|hep)\b/.test(current);
   const timing=uncertain?null:immediate.test(current)?'immediate':after.test(current)?'after_some_time':intermittent.test(current)?'intermittent':null;
+  const full=normalizePartText(message);
+  const priorRun=after.test(full)||/\b(?:normal calis(?:iyor|iyordu|ti)|calisiyordu|calisti|isi veriyordu)\b/.test(full);
+  const recurrence=persistent||historical.length>0||priorRun||/\b(?:reset\w*|tekrar|yeniden)\b/.test(full);
+  const cold=/\bsoguk\w*\b/.test(current)&&/\bilk calistirma\w*\b|\bilk baslatma\w*\b|\bilk acilis\w*\b/.test(current);
+  const startupContext=recurrence?'recurrence':!uncertain&&timing==='immediate'&&cold?'first_cold_start':'unresolved';
   return {historical,current:{timing,persistent,quote:timing||persistent?currentQuote:null},
+    startupContext,
     needsClarification:!!originalBoundary&&historical.length>0&&persistent&&!timing&&!uncertain};
 }

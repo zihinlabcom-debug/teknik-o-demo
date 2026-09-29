@@ -43,18 +43,34 @@ def recover(tables):
         family=families[model['family_id']];fuel=family.get('fuel_type','gas')
         source=gen.Raw(r['brand'],r['official_model'],r['error_code'],r['official_description'] or '',r['official_action'] or '',r['source_url'] or '')
         proposed=gen.extract(source,fuel_type=fuel,include_groups=False,independent_action_systems=True)
-        existing=by_raw[r['id']];covered=set().union(*(point_keys(c['candidate_name']) for c in existing)) if existing else set()
+        existing=list(by_raw[r['id']]);covered=set().union(*(point_keys(c['candidate_name']) for c in existing)) if existing else set()
         if gen.source_type(source.url) not in ('official_manufacturer','trusted_third_party'):
             proposed=[]
         for c in proposed:
             points=point_keys(c.name)
             if covered&points:continue
-            # A newly generic point must not count again if the same named
-            # source span already supports a more specific component candidate.
-            if c.name in ('Sensör sorunu','Sıcaklık sensörü sorunu','Sıcaklık probu sorunu') and any(x['fault_class']=='sensor' for x in existing):continue
-            if c.fault_class=='sensor' and any(point_keys(x['candidate_name'])&{'sensor_general','sensor_temperature','temperature_probe'}
-                    for x in existing if x['fault_class']=='sensor'):continue
+            # Parent/specific overlap is safe only with one known physical point.
+            # A pressure sensor must never suppress a different temperature NTC.
+            generic={'Sensör sorunu','Sıcaklık sensörü sorunu','Sıcaklık probu sorunu'}
+            named={x['candidate_name'] for x in existing if x['fault_class']=='sensor' and x['candidate_name'] not in generic}
+            named.update(p.name for p in proposed if p.fault_class=='sensor' and p.name not in generic)
+            temperature={'Sıcaklık sensörü sorunu','Sıcaklık probu sorunu'}
+            only_temperature={name for name in named if 'sıcaklık' in name.lower() or 'probu' in name.lower()}
+            def compatible(existing_candidate):
+                note=existing_candidate.get('evidence_note','')
+                if not note or len(gen.source_identifiers(source.description+' '+source.action))>1:return False
+                old_point=gen.source_point_markers(note)
+                new_point=gen.source_point_markers(c.description_phrase+' '+c.action_phrase)
+                return not (old_point and new_point and old_point!=new_point)
+            if c.name in generic and any(x['fault_class']=='sensor' for x in existing):
+                potential=named if c.name=='Sensör sorunu' else only_temperature
+                if len(potential)==1 and any(x['candidate_name'] in potential and compatible(x) for x in existing):continue
+            if c.fault_class=='sensor' and c.name not in generic and len(named)==1 and any(
+                x['candidate_name']=='Sensör sorunu' or x['candidate_name'] in temperature and c.name in only_temperature
+                for x in existing if x['fault_class']=='sensor' and compatible(x)):continue
             recovered.append((r,model,family,c));covered.update(points)
+            # Check the complete existing + proposed batch, not just old DB rows.
+            existing.append(dict(candidate_name=c.name,fault_class=c.fault_class,evidence_note=c.description_phrase+' '+c.action_phrase))
             scan.append(dict(raw_id=r['id'],brand=r['brand'],model=r['official_model'],code=r['error_code'],
               candidate_key=c.key,candidate_name=c.name,source_type=c.source_type,source_url=c.raw.url,
               description_support=c.description_phrase,action_support=c.action_phrase,

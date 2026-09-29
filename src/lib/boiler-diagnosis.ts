@@ -1,6 +1,6 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { canAskBoilerQuestion, countAskedQuestions, countBoilerQuestionRequests } from './boiler-question-budget';
-import { containsErrorCode } from './manufacturer-document-text';
+import {containsBoilerErrorCode as containsErrorCode,isBoilerErrorCode,boilerCodeTokens} from './boiler-error-code';
 import { normalizePartText } from './parts-catalog';
 import { canonicalManufacturer } from './verified-knowledge';
 import { DOMAINS } from './manufacturer-registry';
@@ -80,8 +80,8 @@ const mentionedManufacturer = (message: string) => {
 const withoutTrailingCode = (value: string, errorCode: string | null) => {
   if (errorCode) {
     const chars = errorCode.toUpperCase().replace(/[.\s-]/g, '').split('');
-    if (chars.length && chars.every(char => /[A-Z0-9]/.test(char)))
-      value = value.replace(new RegExp(`\\s+${chars.join('[.\\s-]*')}\\s*$`, 'i'), '').trim();
+    if (chars.length && chars.every(char => /[A-Z0-9/]/.test(char)))
+      value = value.replace(new RegExp(`\\s+${chars.map(char=>char==='/'?'\\s*/\\s*':char).join('[.\\s-]*')}\\s*$`, 'i'), '').trim();
   }
   return value;
 };
@@ -93,12 +93,9 @@ const pendingModelAnswer = (message: string, errorCode: string | null) => {
 };
 const pendingCodeAnswer = (message: string) => {
   const value = message.trim();
-  return /^(?:[A-Za-z]{1,3}[.\s-]?\d{1,3}|\d{1,3}[A-Za-z]{1,2}|\d(?:[. -]?\d){0,3}|[A-Za-z]{2})$/.test(value) &&
-    !/^(?:su|ve|bu|da|de|mi|mu|ya|yok)$/.test(normalizePartText(value)) ? value : '';
+  return isBoilerErrorCode(value)?value:'';
 };
-const codeTokens = (message: string) => [...message.matchAll(
-  /(?<![\p{L}\p{N}])(?:[A-Za-z]{1,3}[.\s-]?\d{1,3}|\d{1,3}[A-Za-z]{1,2}|\d(?:[. -]?\d){0,3}|[A-Za-z]{2})(?![\p{L}\p{N}])/gu,
-)];
+const codeTokens = boilerCodeTokens;
 const outsideModel = (message: string, catalogModel: string) => {
   const text = ` ${normalizePartText(message)} `;
   const model = normalizePartText(catalogModel);
@@ -241,13 +238,16 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   state.brand = brand; state.model = model; state.errorCode = errorCode;
   const newTimeline=extractBoilerTimeline(message);
   const oldTimeline=state.timeline;
-  if(newTimeline.historical.length||newTimeline.current.quote){
+  const previousRecurrence=!changedIdentity&&customerMessages.slice(0,-1).some(text=>extractBoilerTimeline(text).startupContext==='recurrence');
+  if(newTimeline.historical.length||newTimeline.current.quote||newTimeline.startupContext==='recurrence'){
     const formerCurrent=oldTimeline?.current;
     const previousTiming=formerCurrent?.timing&&formerCurrent.quote&&newTimeline.current.persistent&&!newTimeline.current.timing
       ? [{kind:formerCurrent.timing,quote:formerCurrent.quote}]:[];
     const historical=[...new Map([...(oldTimeline?.historical??[]),...previousTiming,...newTimeline.historical]
       .map(e=>[e.kind+'|'+e.quote,e])).values()];
-    state.timeline={...newTimeline,historical,current:{...newTimeline.current,
+    const startupContext=previousRecurrence||oldTimeline?.startupContext==='recurrence'||newTimeline.startupContext==='recurrence'||historical.length>0
+      ?'recurrence':newTimeline.startupContext;
+    state.timeline={...newTimeline,startupContext,historical,current:{...newTimeline.current,
       persistent:newTimeline.current.persistent||!!(oldTimeline?.needsClarification&&state.timelineClarificationAsked&&formerCurrent?.persistent&&newTimeline.current.timing)},
       needsClarification:newTimeline.needsClarification||
       historical.length>0&&newTimeline.current.persistent&&!newTimeline.current.timing&&!unknown(message)&&!ambiguousAnswer(message)};
@@ -387,10 +387,11 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       !questionAllowedForFuel(question, state!.fuelType!))) {
     state.pendingQuestionId = null; state.pendingAskedAt = null;
   }
-  const reviewedEffects=reviewedBoilerEffects(allCandidates,catalogQuestions,storedEffects);
+  const reviewedEffects=reviewedBoilerEffects(allCandidates,catalogQuestions,storedEffects,state.timeline);
   const fuelEffects = state.fuelType === 'gas' ? reviewedEffects :
     reviewedEffects.filter(effect => allowedQuestionIds.has(effect.question_id));
-  const effects = familyConsensus ? consensusQuestionEffects(candidates, fuelEffects) : fuelEffects;
+  const baseEffects = candidates.some(c=>c.sourceCandidateIds)?consensusQuestionEffects(candidates,fuelEffects):fuelEffects;
+  const effects=reviewedBoilerEffects(candidates,questions,baseEffects,state.timeline);
   const saveAnswer = async (question: BoilerQuestion, rawAnswer: string, answerKey: string,
     askedAt: string | null, source: 'customer' | 'ai_extracted') => {
     const group = question.evidence_group || question.question_key;

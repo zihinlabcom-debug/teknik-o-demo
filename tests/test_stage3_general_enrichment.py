@@ -3,9 +3,43 @@ import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import generate_stage3_fault_candidates as gen
+import prepare_stage3_general_enrichment as enrichment
+
+
+class ExistingBatchOverlapTest(unittest.TestCase):
+ def test_existing_parent_does_not_suppress_new_distinct_sensor(self):
+  tables=dict(official_error_codes_raw=[dict(id=1,brand='Other',official_model='Model',error_code='X99',
+    official_description='S1 sensörü arızası.',official_action='S2 gidiş NTC sensörünü kontrol edin.',source_url='https://www.copa.com.tr/manual.pdf')],
+    boiler_model_families=[dict(id='family',brand='Other',is_active=True)],
+    boiler_official_models=[dict(id='model',family_id='family',official_model_name='Model',is_active=True)],
+    boiler_fault_candidates=[dict(official_error_record_id=1,candidate_name='Sensör sorunu',fault_class='sensor',
+      verification_status='verified',is_active=True,evidence_note='description support: "S1 sensörü arızası."')])
+  recovered,_=enrichment.recover(tables)
+  self.assertIn('Gidiş sıcaklık sensörü sorunu',{c.name for _,_,_,c in recovered})
 
 
 class GeneralExtractionTest(unittest.TestCase):
+ def test_general_sensor_and_ntc_across_fields_are_one_source_point(self):
+  cs=self.extract('NTC sıcaklık dalgalanması hatası','Sistem basıncı, sensörlerin boruya teması ve sistemdeki su miktarı kontrol edilir.')
+  self.assertEqual({c.name for c in cs},{'Sıcaklık sensörü sorunu','Tesisat su basıncı/eksik su sorunu'})
+  sensor=next(c for c in cs if c.fault_class=='sensor')
+  self.assertTrue(sensor.description_phrase);self.assertTrue(sensor.action_phrase)
+ def test_general_electronic_and_pcb_across_fields_are_one_source_point(self):
+  cs=self.extract('Elektronik izleme/kontrol problemi.','Topraklama ve kart bağlantılarını kontrol edin; ana kartı kontrol edin/değiştirin.')
+  self.assertEqual(sum(c.fault_class=='electronic' for c in cs),1)
+  pcb=next(c for c in cs if c.fault_class=='electronic')
+  self.assertEqual(pcb.name,'Elektronik kart/kontrol ünitesi sorunu')
+  self.assertTrue(pcb.description_phrase);self.assertTrue(pcb.action_phrase)
+ def test_distinct_temperature_and_pressure_sensors_are_not_merged(self):
+  cs=self.extract('Su basınç sensörü arızası.','NTC sıcaklık sensörünü ve su basınç sensörünü kontrol edin.')
+  self.assertIn('Sıcaklık sensörü sorunu',{c.name for c in cs})
+  self.assertIn('Su basınç sensörü sorunu',{c.name for c in cs})
+ def test_distinct_sensor_identifiers_are_not_parent_specific_aliases(self):
+  cs=self.extract('S1 sensörü arızası.','S2 NTC sensörünü kontrol edin.')
+  self.assertEqual(sum(c.fault_class=='sensor' for c in cs),2)
+ def test_action_generic_sensor_does_not_attach_to_other_description_sensor(self):
+  cs=self.extract('S1 gidiş NTC arızası.','S2 NTC sensörünü kontrol edin.')
+  self.assertEqual(sum(c.fault_class=='sensor' for c in cs),2)
  def extract(self,description,action,fuel='gas'):
   raw=gen.Raw('Unseen manufacturer','Unseen model','X99',description,action,'https://www.copa.com.tr/manual.pdf')
   return gen.extract(raw,fuel_type=fuel,include_groups=False,independent_action_systems=True)

@@ -102,12 +102,22 @@ test('a code-like official model token and a separate real code coexist safely',
 });
 
 test('deterministic extraction supports existing code formats even when AI returns a word', async () => {
-  for (const code of ['F 76','E01','EA','C4','6A','A7','C6','501','5 01','5-01','5.01']) {
+  for (const code of ['F 76','E01','EA','C4','6A','A7','C6','501','5 01','5-01','5.01','1P1','6A/227']) {
     const {state, result} = await run(`Bosch Example ${code} hatası veriyor.`,
       {brand:'Bosch', model:`Example ${code}`, errorCode:'hatasi', actualCode:code},
       {family:'Example', officialModels:[]});
     assert.equal(state.model, 'Example', code); assert.equal(state.errorCode, code);
     assert.equal(result.resultState, 'diagnosing', code);
+  }
+});
+
+test('model identifiers P24/P28/P35, 236/286 and 2500/2300 survive the new fault grammar',async()=>{
+  for(const [brand,family,model] of [['DemirDöküm','nitromiX','nitromiX P24 NG HEP'],['DemirDöküm','nitromiX','nitromiX P28 NG HEP'],
+    ['DemirDöküm','nitromiX','nitromiX P35 NG HEP'],['Vaillant','ecoTEC plus','ecoTEC plus 236'],['Vaillant','ecoTEC plus','ecoTEC plus 286'],
+    ['Bosch','Condens','Condens 2500 W'],['Bosch','Condens','Condens 2300 W']]){
+    const {state}=await run(`${brand} ${model} F28 hatası`,{brand,model:`${model} F28`,errorCode:'Hatası',actualCode:'F28'},
+      {family,officialModels:[model]});
+    assert.equal(state.model,model);assert.equal(state.officialModelId,'exact');assert.equal(state.errorCode,'F28');
   }
 });
 

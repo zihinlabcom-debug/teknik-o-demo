@@ -388,7 +388,8 @@ def components(clause: str, *, fuel_aware: bool = False, independent_systems: bo
             continue  # A component's operating state is context for a different fault.
         if re.match(r"\s+ile\s+iletişim\s+(?:yok|kesil\w*)", clause[end:], re.I):
             continue  # An unreachable communication endpoint is not established as faulty.
-        if rule.key in ("sensor_temperature", "sensor_general") and specific_sensors:
+        temperature_sensors = specific_sensors & {'sensor_supply','sensor_return','sensor_dhw','sensor_tank','sensor_flue','sensor_outside','sensor_collector'}
+        if rule.key == 'sensor_general' and specific_sensors or rule.key == 'sensor_temperature' and temperature_sensors:
             continue
         if rule.key == "electronics" and any(other_rule.key in ("pcb", "coding") for _, _, other_rule in chosen):
             continue
@@ -438,6 +439,14 @@ def eligible_description(clause: str) -> bool:
     return bool(FAULT.search(clause) or CONTROL.search(clause)) and not bool(SYMPTOM.fullmatch(clause.rstrip(". ")))
 
 
+def source_identifiers(text):
+    return {token.casefold() for token in re.findall(r'\b(?:S\d+|NTC\d+|X\d+)\b',text,re.I)}
+
+
+def source_point_markers(text):
+    return source_identifiers(text)|{token.casefold() for token in re.findall(r'\b(?:gidiş|dönüş|boyler)\b',text,re.I)}
+
+
 def extract(raw: Raw, *, fuel_type: str | None = None, include_groups: bool = True,
             independent_action_systems: bool = False) -> list[Candidate]:
     if fuel_type not in (None, 'gas', 'electric'):
@@ -467,8 +476,11 @@ def extract(raw: Raw, *, fuel_type: str | None = None, include_groups: bool = Tr
                 rule = next(item for item in RULES + FUEL_RULES + GENERAL_RULES if item.key == key)
         if key in ("sensor_temperature", "sensor_general"):
             specific = [k for k, existing in candidates.items()
-                        if existing.fault_class == "sensor" and k not in ("sensor_temperature", "sensor_general")]
-            if len(specific) == 1:
+                        if existing.fault_class == "sensor" and k not in ("sensor_temperature", "sensor_general") and
+                        (key == 'sensor_general' or k in {'sensor_supply','sensor_return','sensor_dhw','sensor_tank','sensor_flue','sensor_outside','sensor_collector'})]
+            point=source_point_markers(phrase)
+            existing_point=source_point_markers(candidates[specific[0]].description_phrase+' '+candidates[specific[0]].action_phrase) if len(specific)==1 else set()
+            if len(specific) == 1 and not (point and existing_point and point!=existing_point):
                 key = specific[0]
                 rule = next(item for item in RULES + FUEL_RULES + GENERAL_RULES if item.key == key)
         if key not in candidates:
@@ -501,13 +513,39 @@ def extract(raw: Raw, *, fuel_type: str | None = None, include_groups: bool = Tr
                 if rule.key == "fuse" and re.search(r"sigorta\w*\s+(?:kapat|aç|çıkar)\w*", phrase, re.I):
                     continue  # Switching the household fuse is a reset instruction.
                 add(rule, "action", phrase, exact_component)
-    if independent_action_systems:
-        # Description and action may name the same temperature point at two
-        # levels. Do not make the unspecific label a second possible cause.
-        specific_temperature = set(candidates) & {'sensor_supply','sensor_return','sensor_dhw','sensor_tank','sensor_flue','sensor_outside','sensor_collector'}
-        if specific_temperature:
-            for generic in ('sensor_temperature','temperature_probe'):
-                candidates.pop(generic,None)
+    # Merge across description/action after both fields have been extracted.
+    # Evidence stays in exact raw fields; distinct sensor/connector tokens remain.
+    for generic in ('sensor_general','sensor_temperature','temperature_probe','electronics'):
+        parent=candidates.get(generic)
+        if not parent:
+            continue
+        children=[(key,c) for key,c in candidates.items() if key!=generic and c.fault_class==parent.fault_class]
+        if generic in ('sensor_temperature','temperature_probe'):
+            children=[(key,c) for key,c in children if key in {'sensor_supply','sensor_return','sensor_dhw','sensor_tank','sensor_flue','sensor_outside','sensor_collector','sensor_temperature'}]
+        if generic=='electronics':
+            children=[(key,c) for key,c in children if key=='pcb'] if len(children)==1 else []
+        parent_point=source_point_markers(parent.description_phrase+' '+parent.action_phrase)
+        children=[(key,c) for key,c in children if not (parent_point and
+            source_point_markers(c.description_phrase+' '+c.action_phrase) and
+            parent_point!=source_point_markers(c.description_phrase+' '+c.action_phrase))]
+        if len(children)!=1:
+            continue
+        child=children[0][1]
+        def markers(candidate):
+            return source_point_markers(candidate.description_phrase+' '+candidate.action_phrase)
+        parent_ids=source_identifiers(parent.description_phrase+' '+parent.action_phrase)
+        child_ids=source_identifiers(child.description_phrase+' '+child.action_phrase)
+        if generic!='electronics' and len(source_identifiers(raw.description+' '+raw.action))>1 and not (len(parent_ids)==1 and parent_ids==child_ids):
+            continue
+        if markers(parent) and markers(child) and markers(parent)!=markers(child):
+            continue
+        for field in ('description','action'):
+            phrase=getattr(parent,field+'_phrase');existing=getattr(child,field+'_phrase')
+            if phrase:
+                setattr(child,field+'_phrase',getattr(raw,field) if existing and phrase!=existing else existing or phrase)
+                if not getattr(child,field+'_token'):
+                    setattr(child,field+'_token',getattr(parent,field+'_token'))
+        del candidates[generic]
     if not candidates and include_groups:
         for field, text in (("description", raw.description), ("action", raw.action)):
             for phrase in clauses(text):

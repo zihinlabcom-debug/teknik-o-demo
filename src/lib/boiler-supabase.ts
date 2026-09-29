@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { decodeHTMLStrict } from 'entities';
 import { canonicalManufacturer, normalizedModel } from './verified-knowledge';
 import type { BoilerCandidate, BoilerQuestion, BoilerQuestionEffect, BoilerAssessment } from './boiler-probability';
-import { normalizeBoilerErrorCode } from './boiler-probability';
+import {matchesBoilerErrorCode} from './boiler-error-code';
 import type { BoilerFuelType } from './boiler-fuel';
 import type { BoilerIdentityCatalog } from './boiler-identity-suggestions';
 
@@ -122,13 +122,19 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
     },
     async getCandidates(familyId) {
       const result = await db.from('boiler_fault_candidates')
-        .select('id,candidate_name,fault_class,verification_status,is_active,family_id,official_model_id,error_code')
+        .select('id,candidate_name,fault_class,verification_status,is_active,family_id,official_model_id,error_code,official_error_record_id,evidence_note,evidence_url,evidence_source_type')
         .eq('family_id', familyId).eq('verification_status', 'verified').eq('is_active', true).limit(1000);
       fail(result.error);
       if ((result.data?.length ?? 0) >= 1000) throw Error('Boiler candidate catalog exceeds lookup limit');
       // Catalog labels are plain text throughout consensus, API and React.
       // Decode character references as text; never interpret them as markup.
-      return (result.data ?? []).map(row => ({ ...row, candidate_name: decodeHTMLStrict(row.candidate_name) }));
+      const rows=result.data??[],recordIds=[...new Set(rows.map(row=>row.official_error_record_id).filter(id=>id!=null))];
+      const records=recordIds.length?await db.from('official_error_codes_raw')
+        .select('id,official_description,official_action,source_url').in('id',recordIds).limit(1000):null;
+      if(records)fail(records.error);
+      const byId=new Map((records?.data??[]).map(record=>[String(record.id),record]));
+      return rows.map(row => ({ ...row, candidate_name: decodeHTMLStrict(row.candidate_name),
+        sourceRecord:byId.get(String(row.official_error_record_id)) }));
     },
     async getErrorCodeModelIds(familyId, errorCode) {
       const [family, models] = await Promise.all([
@@ -149,7 +155,7 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
       if ((raw.data?.length ?? 0) >= 1000)
         throw Error('Boiler data access failed: incomplete raw model/code coverage');
       const coveredNames = new Set((raw.data ?? []).filter(row => typeof row.error_code === 'string' &&
-        normalizeBoilerErrorCode(row.error_code) === normalizeBoilerErrorCode(errorCode)).map(row => row.official_model));
+        matchesBoilerErrorCode(row.error_code,errorCode)).map(row => row.official_model));
       return officialModels.filter(model => coveredNames.has(model.official_model_name)).map(model => model.id).sort();
     },
     async getQuestions() {
@@ -163,7 +169,7 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
     async getEffects(candidateIds) {
       if (!candidateIds.length) return [];
       const result = await db.from('boiler_question_effects')
-        .select('question_id,candidate_id,answer_key,effect').in('candidate_id', candidateIds).limit(10000);
+        .select('id,question_id,candidate_id,answer_key,effect,evidence_note,source_url').in('candidate_id', candidateIds).limit(10000);
       fail(result.error);
       if ((result.data?.length ?? 0) >= 10000) throw Error('Boiler effect catalog exceeds lookup limit');
       return (result.data ?? []) as BoilerQuestionEffect[];
@@ -217,7 +223,9 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         status: item.rank === 1 ? 'leading' : item.probability === 0 ? 'eliminated' : 'active',
         probability_percent: item.probability,
         evidence_summary: { method: 'v1_effect_factors', calibrated: false,
-          ...(item.sourceCandidateIds ? { familyConsensusCandidateIds: item.sourceCandidateIds } : {}) }, rank: item.rank,
+          ...(item.sourceCandidateIds ? { sourceCandidateIds:item.sourceCandidateIds,
+            sourceCandidateGroups:item.sourceCandidateGroups,sourceEvidence:item.sourceEvidence,
+            familyConsensusCandidateIds: item.sourceCandidateIds } : {}) }, rank: item.rank,
       })), { onConflict: 'session_id,candidate_id' });
       fail(result.error);
     },

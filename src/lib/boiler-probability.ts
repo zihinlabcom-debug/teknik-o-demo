@@ -1,4 +1,7 @@
 import { normalizePartText } from './parts-catalog';
+import {matchesBoilerErrorCode} from './boiler-error-code';
+import {candidateSourceEvidence,deduplicateSourceCandidates} from './boiler-candidate-dedup';
+export {normalizeBoilerErrorCode} from './boiler-error-code';
 
 // V1 diagnostic weights are provisional relative weights, never calibrated
 // probabilities. Keep all coefficients here so field evidence can replace them.
@@ -14,6 +17,15 @@ export interface BoilerCandidate {
   fault_class?: string;
   // Runtime-only provenance for one logical candidate shared by model variants.
   sourceCandidateIds?: string[];
+  sourceCandidateGroups?: string[][];
+  official_error_record_id?: number | string;
+  evidence_note?: string; evidence_url?: string; evidence_source_type?: string;
+  sourceRecord?: {id:number|string;official_description:string|null;official_action:string|null;source_url:string};
+  sourceEvidence?: BoilerSourceEvidence[];
+}
+export interface BoilerSourceEvidence {
+  candidateId:string;candidateName:string;official_error_record_id:number|string;
+  evidence_note:string;evidence_url:string;evidence_source_type?:string;
 }
 export interface BoilerQuestion {
   id: string; question_key: string; question_text: string; evidence_group: string | null;
@@ -21,6 +33,8 @@ export interface BoilerQuestion {
   customer_observable: boolean; is_safety_question: boolean; is_active: boolean; priority: number | null;
 }
 export interface BoilerQuestionEffect {
+  id?: string; evidence_note?: string; source_url?: string;
+  sourceEffects?: BoilerQuestionEffect[];
   question_id: string; candidate_id: string; answer_key: string; effect: BoilerEffect;
 }
 export interface BoilerAnswer {
@@ -29,13 +43,14 @@ export interface BoilerAnswer {
 export interface BoilerAssessment {
   candidateId: string; candidateName: string; probability: number; rank: number;
   sourceCandidateIds?: string[];
+  sourceCandidateGroups?: string[][];
+  sourceEvidence?: BoilerSourceEvidence[];
 }
 
 export function verifiedCandidates(rows: BoilerCandidate[]) {
   return rows.filter(row => row.verification_status === 'verified' && row.is_active);
 }
 
-export const normalizeBoilerErrorCode = (value: string) => value.toUpperCase().replace(/[.\s-]/g, '');
 export type BoilerCandidateMode = 'error_code' | 'family_code_consensus' | 'symptom';
 export interface BoilerCandidatePool {
   candidates: BoilerCandidate[]; mode: BoilerCandidateMode; requiresExactModel: boolean;
@@ -43,11 +58,11 @@ export interface BoilerCandidatePool {
 
 export function selectCandidatePool(rows: BoilerCandidate[], familyId: string, modelId: string | null,
   errorCode: string | null, errorCodeModelIds: string[] = []): BoilerCandidatePool {
-  const familyRows = verifiedCandidates(rows).filter(row => row.family_id === familyId);
+  const familyRows = deduplicateSourceCandidates(verifiedCandidates(rows).filter(row => row.family_id === familyId));
   const scoped = familyRows.filter(row =>
     (row.official_model_id === null || row.official_model_id === modelId));
   const matchesCode = (row: BoilerCandidate) => !!errorCode && !!row.error_code &&
-    normalizeBoilerErrorCode(row.error_code) === normalizeBoilerErrorCode(errorCode);
+    matchesBoilerErrorCode(row.error_code,errorCode);
   const byCode = scoped.filter(matchesCode);
   if (byCode.length) return { candidates: byCode, mode: 'error_code', requiresExactModel: false };
 
@@ -71,7 +86,9 @@ export function selectCandidatePool(rows: BoilerCandidate[], familyId: string, m
           const ordered = [...members].sort((a, b) => a.id.localeCompare(b.id));
           // A real, stable DB id keeps snapshot FK compatibility. It is only a
           // representative: effects use every source id and pricing is blocked.
-          return { ...ordered[0], sourceCandidateIds: [...new Set(ordered.map(row => row.id))] };
+          return { ...ordered[0], sourceCandidateIds: [...new Set(ordered.flatMap(row=>row.sourceCandidateIds??[row.id]))],
+            sourceCandidateGroups:ordered.map(row=>row.sourceCandidateIds??[row.id]),
+            sourceEvidence:ordered.flatMap(candidateSourceEvidence) };
         });
         return { candidates, mode: 'family_code_consensus', requiresExactModel: false };
       }
@@ -88,14 +105,15 @@ export function consensusQuestionEffects(candidates: BoilerCandidate[], effects:
     const related = effects.filter(effect => members.includes(effect.candidate_id));
     const pairs = new Map(related.map(effect => [JSON.stringify([effect.question_id, effect.answer_key]), effect]));
     return [...pairs.values()].map(pair => {
-      const perMember = members.map(id => {
-        const values = related.filter(effect => effect.candidate_id === id &&
-          effect.question_id === pair.question_id && effect.answer_key === pair.answer_key).map(effect => effect.effect);
+      const perMember = (candidate.sourceCandidateGroups??members.map(id=>[id])).map(ids => {
+        const values = [...new Set(related.filter(effect => ids.includes(effect.candidate_id) &&
+          effect.question_id === pair.question_id && effect.answer_key === pair.answer_key).map(effect => effect.effect))];
         return values.length === 1 ? values[0] : 'neutral';
       });
       const effect = pair.answer_key !== 'unknown' && perMember.every(value => value === perMember[0])
         ? perMember[0] : 'neutral';
-      return { question_id: pair.question_id, candidate_id: candidate.id, answer_key: pair.answer_key, effect };
+      return { question_id: pair.question_id, candidate_id: candidate.id, answer_key: pair.answer_key, effect,
+        sourceEffects:related.filter(e=>e.question_id===pair.question_id&&e.answer_key===pair.answer_key) };
     });
   });
 }
@@ -136,7 +154,8 @@ export function calculateBoilerWeights(candidates: BoilerCandidate[], answers: B
   const rankByIndex = new Map(ranks.map((item, rank) => [item.index, rank + 1]));
   return candidates.map((candidate, index) => ({ candidateId: candidate.id, candidateName: candidate.candidate_name,
     probability: normalized[index], rank: rankByIndex.get(index)!,
-    ...(candidate.sourceCandidateIds ? { sourceCandidateIds: candidate.sourceCandidateIds } : {}) }));
+    ...(candidate.sourceCandidateIds ? { sourceCandidateIds: candidate.sourceCandidateIds,
+      sourceCandidateGroups:candidate.sourceCandidateGroups,sourceEvidence:candidate.sourceEvidence } : {}) }));
 }
 
 // A singleton's relative 100% comes from pool size, not diagnostic confirmation.

@@ -110,7 +110,8 @@ test('timing correction replaces old evidence and recomputes from scratch in the
   const state = decodeBoilerState(fourth.stateToken);
   assert.equal(state.answers.filter(a => a.evidenceGroup === 'fault_timing_after_start').length, 1);
   assert.equal(state.answers.find(a => a.evidenceGroup === 'fault_timing_after_start').answerKey, 'immediate');
-  assert.deepEqual(byName(fourth.candidateProbabilities), { [exchanger]: 25, [cable]: 50, [termic]: 25 });
+  // Corrected timing is preserved, but a bare immediate is not first/cold startup proof.
+  assert.deepEqual(byName(fourth.candidateProbabilities), byName(probabilities([])));
   assert.equal(state.totalAskedQuestions, 3);
 }));
 
