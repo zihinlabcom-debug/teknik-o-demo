@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { diagnose, normalizeHistory } from '@/lib/diagnosis';
+import { normalizeHistory } from '@/lib/diagnosis';
+import { diagnoseService } from '@/lib/service-conversation';
 
 export const maxDuration = 180;
 
@@ -16,7 +17,10 @@ export async function POST(req: Request) {
   // Compatibility with clients that include the current message in history.
   if (history.at(-1)?.role === 'user' && history.at(-1)?.content === message) history.pop();
   try {
-    return NextResponse.json(await diagnose(message, history, body.stateToken), { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json(await diagnoseService(message, history, body.stateToken, {
+      category: body.category, categorySelected: body.categorySelected === true,
+      conversationToken: body.conversationToken, turnId: body.turnId,
+    }), { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('AI teşhis hatası:', error);
     return NextResponse.json({ error: 'Teşhis hizmetine ulaşılamadı. Lütfen yeniden deneyin.',

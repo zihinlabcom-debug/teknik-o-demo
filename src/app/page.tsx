@@ -3,21 +3,21 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {ACTIVE_SERVICE_CATEGORIES,type ServiceCategory} from '@/lib/service-categories';
 
 // Kategori Listesi
-const categories = [
-  { id: 'kombi', name: 'Kombi', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=300&q=80' },
-  { id: 'klima', name: 'Klima', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=300&q=80' },
-  { id: 'tesisat', name: 'Tesisat', img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=300&q=80' },
-  { id: 'elektrik', name: 'Elektrik', img: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=300&q=80' },
-  { id: 'beyaz-esya', name: 'Beyaz Eşya', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80' },
-  { id: 'temizlik', name: 'Temizlik', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80' },
-  { id: 'boya', name: 'Boya / Bad...', img: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80' },
-  { id: 'cilingir', name: 'Çilingir', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80' },
-];
+const images={
+  boiler:'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=300&q=80',
+  painting:'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80',
+  cleaning:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80',
+  moving:'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=300&q=80',
+  sofa_cleaning:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80',
+  carpet_cleaning:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80',
+};
+const categories=ACTIVE_SERVICE_CATEGORIES.map(c=>({id:c.id,name:c.label,img:images[c.id]}));
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ServiceCategory | null>(null);
 
   return (
     <div className="min-h-screen bg-white text-slate-800 flex flex-col justify-between max-w-md mx-auto px-6 py-8 relative shadow-xl font-sans">
@@ -51,7 +51,10 @@ export default function Home() {
         {categories.map((item) => (
           <button
             key={item.id}
-            onClick={() => setSelectedCategory(item.id)}
+            onClick={() => {
+              setSelectedCategory(item.id);
+              try {localStorage.setItem('tekniko_service_category',item.id);} catch {/* Storage may be disabled. */}
+            }}
             className={`flex flex-col items-center bg-white border border-slate-100 rounded-2xl p-2 shadow-sm transition-all hover:shadow-md ${
               selectedCategory === item.id ? 'ring-2 ring-[#D97724]' : ''
             }`}

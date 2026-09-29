@@ -1,169 +1,29 @@
 'use client';
 
-import { DiagnosticOutcome } from '@/components/diagnostic-outcome';
-import type { Candidate } from '@/lib/diagnostic-state';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
-import type { PriceSource } from '@/lib/part-pricing';
-import { 
-  ArrowLeft, 
-  Send, 
-  Sparkles, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Bot,
-  User,
-  Wrench
-} from 'lucide-react';
-
-interface Message {
-  id: string;
-  sender: 'ai' | 'user';
-  text: string;
-  time: string;
-  technicalSource?: { url: string; page: number } | null;
-}
+import {ArrowLeft, Send, Sparkles, Bot, User, Wrench} from 'lucide-react';
+import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
+import {DiagnosisDebug} from '@/components/diagnosis-debug';
+import {useServiceConversation} from '@/components/use-service-conversation';
+import {servicePricePresentation} from '@/lib/service-presentation';
 
 export default function TeshisPage() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState('');
-  const stateToken = useRef<string | undefined>(undefined);
-  const [candidateProbabilities, setCandidateProbabilities] = useState<Candidate[] | null>(null);
-  const [diagnosticEvidence, setDiagnosticEvidence] = useState<string[]>([]);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisResult, setAnalysisResult] = useState<{
-    possibleCause: string;
-    estimatedCost: string;
-    urgency: string;
-    confidence: string;
-    priceSource: PriceSource;
-  } | null>(null);
-
+  const {messages, input:inputText, setInput:setInputText, isAnalyzing, response, submit,
+    resultDismissed, dismissResult} = useServiceConversation('/api/chat');
+  const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
-
+  const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
+  useEffect(() => {chatEndRef.current?.scrollIntoView({behavior:'smooth'});}, [messages, isAnalyzing]);
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isAnalyzing]);
-
-  useEffect(() => {
-    if (!analysisResult) return;
-    const timer = window.setTimeout(() => {
-      setAnalysisResult(null);
-      setMessages(prev => [...prev, { id: `expired-${Date.now()}`, sender: 'ai',
-        text: 'Fiyatın geçerlilik süresi doldu. Güncel fiyat için yeniden mesaj gönderin.',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
-    }, Math.max(0, Date.parse(analysisResult.priceSource.expiresAt) - Date.now()));
-    return () => window.clearTimeout(timer);
-  }, [analysisResult]);
-
-  // GERÇEK GEMINI API BAĞLANTISI
-  const callGeminiAPI = useCallback(async (userMessageText: string, currentMessages: Message[]) => {
-    setIsAnalyzing(true);
-    setAnalysisResult(null);
-    try {
-      // Backend route.ts'in beklediği formatta geçmişi hazırla
-      const history = currentMessages.slice(0, -1).map(msg => ({
-        role: msg.sender === 'ai' ? 'assistant' : 'user',
-        content: msg.text
-      }));
-
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userMessage: userMessageText,
-          stateToken: stateToken.current,
-          history: history
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.details || data.error || 'API yanıt veremedi.');
-      }
-
-      stateToken.current = data.stateToken;
-      setCandidateProbabilities(data.assessmentComplete ? data.candidateProbabilities ?? [] : null);
-      setDiagnosticEvidence(data.assessmentComplete ? (data.diagnosticEvidence ?? []).map((item:{quote:string})=>item.quote) : []);
-      // Yanıtı işle
-      const aiReplyText = data.replyMessage || 'Detayları aldım, süreci inceliyorum.';
-      const confidenceScore = data.currentConfidenceScore || 50;
-
-      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const aiMsg: Message = {
-        id: Date.now().toString(),
-        sender: 'ai',
-        text: aiReplyText,
-        technicalSource: data.technicalSource,
-        time: now
-      };
-
-      setMessages(prev => [...prev, aiMsg]);
-
-      // Eğer teşhis tamamlandıysa veya güven skoru yüksekse sonuç kartını güncelle
-      if (data.isDiagnosisComplete && data.diagnosisDetails?.estimatedCost > 0 && data.priceSource) {
-        setAnalysisResult({
-          possibleCause: data.diagnosisDetails.primaryFault || 'Teknik Arıza Tespiti',
-          estimatedCost: `${data.diagnosisDetails.estimatedCost.toLocaleString('tr-TR')} TL`,
-          urgency: 'Orta / Müdahale Önerilir',
-          confidence: `%${confidenceScore}`,
-          priceSource: data.priceSource,
-        });
-      } else {
-        setAnalysisResult(null);
-      }
-
-    } catch (error) {
-      console.error('Teşhis Hatası:', error);
-      const errorMsg: Message = {
-        id: Date.now().toString(),
-        sender: 'ai',
-        text: 'Bağlantı sırasında anlık bir sorun oluştu, lütfen sorunuzu tekrar yazın.',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-      setMessages(prev => [...prev, errorMsg]);
-    } finally {
-      setIsAnalyzing(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const initialProblem = localStorage.getItem('tekniko_current_problem') || 'Kombi su sızdırıyor ve basınç düşüyor.';
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const initialMessages: Message[] = [{ id: '1', sender: 'user', text: initialProblem, time: now }];
-
-    const timer = window.setTimeout(() => {
-      setMessages(initialMessages);
-      void callGeminiAPI(initialProblem, initialMessages);
+    const timer=window.setTimeout(() => {
+      let initial:string|null=null;
+      try {initial=localStorage.getItem('tekniko_current_problem');localStorage.removeItem('tekniko_current_problem');} catch {}
+      if(initial)void submit(initial);
     }, 0);
-
     return () => window.clearTimeout(timer);
-  }, [callGeminiAPI]);
-
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputText.trim() || isAnalyzing) return;
-
-    const userQuery = inputText;
-    setInputText('');
-
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const userMsg: Message = {
-      id: Date.now().toString(),
-      sender: 'user',
-      text: userQuery,
-      time: now
-    };
-
-    const updatedMessages = [...messages, userMsg];
-    setMessages(updatedMessages);
-
-    // Gerçek API'ye gönder
-    callGeminiAPI(userQuery, updatedMessages);
-  };
+  }, [submit]);
+  const handleSendMessage = (e:React.FormEvent) => {e.preventDefault();void submit(inputText);};
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto relative shadow-2xl font-sans text-slate-900">
@@ -187,8 +47,9 @@ export default function TeshisPage() {
         </div>
 
         <button 
-          onClick={() => alert('Teknisyen yönlendirme talebiniz onaylandı. Usta sizinle iletişime geçecek!')}
-          className="bg-[#EE6C13] hover:bg-[#d85e0e] text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5"
+          onClick={() => setIsTechnicianDialogOpen(true)}
+          disabled={!resultCard || isAnalyzing}
+          className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5 disabled:opacity-50"
         >
           <Wrench className="w-3.5 h-3.5" />
           <span>Usta Çağır</span>
@@ -198,6 +59,8 @@ export default function TeshisPage() {
       {/* CHAT VE ANALİZ ALANI */}
       <div className="flex-1 p-4 overflow-y-auto space-y-4 pb-24">
         
+        <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
+
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -231,63 +94,23 @@ export default function TeshisPage() {
           </div>
         ))}
 
-        {/* ANALİZ YÜKLENİYOR SİMÜLASYONU */}
+        {/* YANIT BEKLENİYOR */}
         {isAnalyzing && (
           <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-center gap-3 animate-pulse">
             <div className="w-6 h-6 border-2 border-[#EE6C13] border-t-transparent rounded-full animate-spin"></div>
             <div>
-              <p className="text-xs font-bold text-slate-800">Yapay zekâ arızayı inceliyor...</p>
-              <p className="text-[10px] text-slate-500">Veritabanındaki benzer vakalar ve parça fiyatları taranıyor.</p>
+              <p className="text-xs font-bold text-slate-800">Yanıtınız değerlendiriliyor…</p>
+              <p className="text-[10px] text-slate-500">Lütfen bekleyin.</p>
             </div>
           </div>
         )}
 
-        {/* AI TEŞHİS SONUÇ KARTI */}
-        {analysisResult && (
-          <div className="bg-white border-2 border-[#EE6C13]/40 rounded-2xl p-4 shadow-md space-y-3">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-              <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                Yapay Zekâ Teşhis Raporu
-              </span>
-              <span className="text-[10px] bg-orange-100 text-[#EE6C13] font-bold px-2 py-0.5 rounded-full">
-                90 gün garanti
-              </span>
-            </div>
-
-            <div className="space-y-2 text-xs">
-              <div>
-                <span className="text-slate-400 block text-[10px]">Olası Arıza Nedeni</span>
-                <span className="font-bold text-slate-800">{analysisResult.possibleCause}</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                <div className="bg-orange-50/50 p-2.5 rounded-xl border border-orange-100">
-                  <span className="text-slate-500 block text-[10px]">Garantili Tavan Fiyat</span>
-                  <span className="font-extrabold text-[#EE6C13] text-sm">{analysisResult.estimatedCost}</span>
-                </div>
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <span className="text-slate-500 block text-[10px]">Aciliyet / Süreç</span>
-                  <span className="font-semibold text-slate-700">{analysisResult.urgency}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-1 flex items-center gap-2 text-[10px] text-slate-500">
-              <a href={analysisResult.priceSource.url} target="_blank" rel="noopener noreferrer" className="underline">
-                One Yedek Parça · {analysisResult.priceSource.sku} · {new Date(analysisResult.priceSource.checkedAt).toLocaleString('tr-TR')}
-              </a>
-            </div>
-            <div className="pt-1 flex items-center gap-2 text-[10px] text-slate-500">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#EE6C13]" />
-              <span>Sürpriz yok: Usta bu fiyatın üzerine çıkamaz.</span>
-            </div>
-          </div>
-        )}
-
-        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} evidence={diagnosticEvidence} />}
+        <ServiceResultCard result={resultCard} onRequestTechnician={() => setIsTechnicianDialogOpen(true)} onReject={dismissResult} />
+        <DiagnosisDebug response={response} />
         <div ref={chatEndRef} />
       </div>
+
+      {isTechnicianDialogOpen && <TechnicianHandoffNotice onClose={() => setIsTechnicianDialogOpen(false)} />}
 
       {/* ALT MESAJ YAZMA BAR */}
       <form

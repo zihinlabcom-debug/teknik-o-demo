@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { diagnose, normalizeHistory } from '@/lib/diagnosis';
+import { normalizeHistory } from '@/lib/diagnosis';
+import { diagnoseService } from '@/lib/service-conversation';
 
 export const maxDuration = 180;
 
@@ -16,9 +17,22 @@ export async function POST(req: Request) {
   const history = normalizeHistory(body.history ?? body.messages);
   if (history.at(-1)?.role === 'user' && history.at(-1)?.content === message) history.pop();
   try {
-    const result = await diagnose(message, history, body.stateToken);
+    const result = await diagnoseService(message, history, body.stateToken, {
+      category: body.category, categorySelected: body.categorySelected === true,
+      conversationToken: body.conversationToken, turnId: body.turnId,
+    });
     return NextResponse.json({
+      ...result,
       replyMessage: result.aiText,
+      category: result.category,
+      categoryState: result.categoryState,
+      conversationToken: result.conversationToken,
+      answeredSystemQuestions: result.answeredSystemQuestions,
+      visualProgress: result.visualProgress,
+      questionCount: result.questionCount,
+      awaitingAnswer: result.awaitingAnswer,
+      groupProbabilities: result.groupProbabilities,
+      estimatedPrice: result.estimatedPrice,
       resultState: 'resultState' in result ? result.resultState : null,
       canRouteTechnician: 'canRouteTechnician' in result ? result.canRouteTechnician : false,
       pricingData: 'pricingData' in result ? result.pricingData : null,

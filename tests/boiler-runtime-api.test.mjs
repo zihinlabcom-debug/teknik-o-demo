@@ -44,16 +44,17 @@ test('real diagnose route preserves timeline clarification and serializes Unicod
     }
     return Response.json({id:'offline-completion',object:'chat.completion',choices:[{index:0,message:{role:'assistant',content:JSON.stringify(reply)},finish_reason:'stop'}]});
    };
-   const post=async(message,stateToken=null)=>{
+   const post=async(message,stateToken=null,conversationToken=null,turnId=message)=>{
     const response=await POST(new Request('http://localhost/api/diagnose',{method:'POST',headers:{'content-type':'application/json'},
-     body:JSON.stringify({message,stateToken,chatHistory:[]})}));
+     body:JSON.stringify({message,stateToken,conversationToken,turnId,chatHistory:[]})}));
     assert.equal(response.status,200);const serialized=await response.text();
     assert.doesNotMatch(serialized,/&#x75;|&amp;#x75;/i);return JSON.parse(serialized);
    };
    const first=await post('Demirdöküm nitromiX F76');
-   const second=await post('Hayır',first.stateToken);
-   const third=await post('Hayır',second.stateToken);
-   const fourth=await post(story,third.stateToken),state=decodeBoilerState(fourth.stateToken);
+   const second=await post('Hayır',first.stateToken,first.conversationToken,'safety-answer');
+   const third=await post('Hayır',second.stateToken,second.conversationToken,'temperature-answer');
+   const fourth=await post(story,third.stateToken,third.conversationToken,'timeline-answer'),state=decodeBoilerState(fourth.stateToken);
+   assert.deepEqual([first,second,third,fourth].map(r=>r.visualProgress),[0,13,26,39]);
    assert.equal(fourth.aiText,'Şu anda resetten sonra bir süre çalışıyor mu, yoksa hata hemen tekrar mı geliyor?');
    assert.equal(fourth.resultState,'diagnosing');assert.equal(state.totalAskedQuestions,4);
    assert.equal(state.timeline.current.timing,null);assert.equal(state.timeline.current.persistent,true);
@@ -61,7 +62,10 @@ test('real diagnose route preserves timeline clarification and serializes Unicod
    assert.deepEqual(fourth.candidateProbabilities.map(c=>c.name).sort(),[
     'Eşanjör/ısı bloğu sorunu','Kablolama/soket/bağlantı sorunu','Termik kapatma düzeneği sorunu',
    ].sort());
-   const fifth=await post('hemen tekrar geliyor',fourth.stateToken),resolved=decodeBoilerState(fifth.stateToken);
+   const fifth=await post('hemen tekrar geliyor',fourth.stateToken,fourth.conversationToken,'clarification-answer'),resolved=decodeBoilerState(fifth.stateToken);
+   assert.equal(fifth.visualProgress,52);assert.equal(fifth.answeredSystemQuestions,4);
+   const repeated=await post('hemen tekrar geliyor',fifth.stateToken,fifth.conversationToken,'clarification-answer');
+   assert.equal(repeated.visualProgress,52);assert.equal(repeated.stateToken,fifth.stateToken);
    assert.equal(resolved.timeline.current.timing,'immediate');assert.equal(resolved.totalAskedQuestions,4);
    assert.equal(resolved.answers.filter(a=>a.evidenceGroup==='fault_timing_after_start').length,1);
    assert.ok(fakeAICalls>0);assert.ok(calls.every(c=>c.host==='copa-fixture.supabase.co'));

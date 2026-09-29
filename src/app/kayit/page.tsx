@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
+import {RegistrationHeader} from '@/components/registration-header';
 import { 
-  Wrench, 
   User, 
   Phone, 
   Mail, 
@@ -116,16 +116,7 @@ export default function KayitPage() {
 
       <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl border border-slate-100">
         
-        {/* LOGO VE BA�?LIK */}
-        <div className="text-center mb-6">
-          <div className="w-12 h-12 bg-amber-100 text-[#D97724] rounded-2xl flex items-center justify-center mx-auto mb-3">
-            <Wrench className="w-6 h-6" />
-          </div>
-          <h1 className="text-2xl font-extrabold text-slate-900">
-            Teknik<span className="text-[#D97724]">-o</span> Müşteri Kaydı
-          </h1>
-          <p className="text-xs text-slate-500 mt-1">Arıza ve servis hizmeti almak için kayıt oluşturun.</p>
-        </div>
+        <RegistrationHeader />
 
         {authStep === 'form' ? (
           <form onSubmit={handleFormSubmit} className="space-y-3.5">

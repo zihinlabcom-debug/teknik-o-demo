@@ -1,276 +1,35 @@
 'use client';
 
-import { DiagnosticOutcome } from '@/components/diagnostic-outcome';
-import type { Candidate } from '@/lib/diagnostic-state';
-import React, { useState, useRef, useEffect } from 'react';
-import type { calculateOMF } from '@/lib/omf-engine';
-import type { PriceSource } from '@/lib/part-pricing';
-import { 
-  Paperclip, 
-  Send, 
-  Sparkles, 
-  ShieldCheck, 
-  Tag, 
-  Lock, 
-  ChevronRight, 
-  Zap, 
-  Flame, 
-  Snowflake, 
-  Paintbrush, 
-  Home as HomeIcon, 
-  Truck,
-  Bot,
-  User,
-  Wrench,
-  RefreshCw,
-  CheckCircle2,
-  X,
-  FileCheck,
-  AlertTriangle,
-  ArrowRight,
-  Info
-} from 'lucide-react';
-
-interface ChatMessage {
-  id: string;
-  sender: 'user' | 'ai';
-  text: string;
-  options?: string[];
-  technicalSource?: { title: string; url: string; page: number } | null;
-}
-
-interface DiagnosticState {
-  priceSource: PriceSource;
-  completed: boolean;
-  confidence: number;
-  faultTitle: string;
-  faultDescription: string;
-  price: string;
-  warranty: string;
-  partsIncluded: string[];
-  partPriceNum: number;
-  riskSumNum: number;
-  breakdown: ReturnType<typeof calculateOMF>["breakdown"];
-}
-
-interface DiagnoseResponse {
-  stateToken?: string;
-  informationProgress?: number;
-  assessmentComplete?: boolean;
-  candidateProbabilities?: Candidate[];
-  diagnosticEvidence?: {quote:string}[];
-  diagnosticStatus?: string;
-  deterministicOMF?: ReturnType<typeof calculateOMF>;
-  technicalSource?: { title: string; url: string; page: number } | null;
-  isReadyForPrice?: boolean;
-  priceSource?: PriceSource | null;
-  aiText: string;
-  confidence?: number;
-  estimatedPrice?: string | null;
-  basePartPrice?: number;
-  partPrice?: number;
-  riskSum?: number;
-  faultTitle?: string;
-  options?: string[];
-}
-
-const FIXED_LABOR_TL = 2000;
+import React, {useEffect, useRef, useState} from 'react';
+import {Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
+import {ServiceCategoryCards} from '@/components/service-category-cards';
+import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
+import {DiagnosisDebug} from '@/components/diagnosis-debug';
+import {useServiceConversation} from '@/components/use-service-conversation';
+import {serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
+import {servicePricePresentation} from '@/lib/service-presentation';
 
 export default function CustomerDashboard() {
-  const [problemDescription, setProblemDescription] = useState('');
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [diagnosticStatus, setDiagnosticStatus] = useState('diagnosing');
-  const stateToken = useRef<string | undefined>(undefined);
-  const [informationProgress, setInformationProgress] = useState(0);
-  const [candidateProbabilities, setCandidateProbabilities] = useState<Candidate[] | null>(null);
-  const [diagnosticEvidence, setDiagnosticEvidence] = useState<string[]>([]);
-  
-  // Teşhis Güven Düzeyi (%0 - %100)
-
-  const [estimatedPrice, setEstimatedPrice] = useState<string | null>(null);
-
-  // OMF (En Olası Maliyet Fiyatı) Teşhis State'i
-  const [diagnostic, setDiagnostic] = useState<DiagnosticState | null>(null);
-  const [showBreakdown, setShowBreakdown] = useState(false);
-
-  // Randevu Modalı State'leri
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [appointmentDate, setAppointmentDate] = useState('');
-  const [isCompleted, setIsCompleted] = useState(false);
-
+  const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
+    response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
+  const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const messageId = useRef(0);
-
-  const nextMessageId = () => {
-    messageId.current += 1;
-    return String(messageId.current);
+  const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
+  useEffect(() => {chatEndRef.current?.scrollIntoView({behavior:'smooth'});}, [chatHistory, isAnalyzing, response]);
+  const handleSubmit = (e?:React.FormEvent, customText?:string) => {
+    e?.preventDefault();void submit(customText ?? problemDescription);
   };
-
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [chatHistory, isAnalyzing, diagnostic]);
-
-  useEffect(() => {
-    if (!diagnostic) return;
-    const timer = window.setTimeout(() => {
-      setDiagnostic(null);
-      setEstimatedPrice(null);
-      setIsBookingOpen(false);
-      setChatHistory(prev => [...prev, { id: `expired-${Date.now()}`, sender: 'ai',
-        text: 'Fiyatın geçerlilik süresi doldu. Güncel teklif için fiyatı tekrar kontrol edin.',
-        options: ['Fiyatı tekrar kontrol et'] }]);
-    }, Math.max(0, Date.parse(diagnostic.priceSource.expiresAt) - Date.now()));
-    return () => window.clearTimeout(timer);
-  }, [diagnostic]);
-
-  const processAIResponse = async (userText: string, currentHistory: ChatMessage[]) => {
-    setIsAnalyzing(true);
-    setDiagnostic(null);
-    setEstimatedPrice(null);
-    setIsBookingOpen(false);
-
-    try {
-      const response = await fetch('/api/diagnose', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: userText,
-          stateToken: stateToken.current,
-          chatHistory: currentHistory.slice(0, -1).map(m => ({ sender: m.sender, text: m.text }))
-        }),
-      });
-      if (!response.ok) throw new Error('Teşhis hizmetine ulaşılamadı.');
-      const data = (await response.json()) as DiagnoseResponse;
-
-      stateToken.current = data.stateToken;
-      setInformationProgress(data.informationProgress ?? 0);
-      setCandidateProbabilities(data.assessmentComplete ? data.candidateProbabilities ?? [] : null);
-      setDiagnosticEvidence(data.assessmentComplete ? (data.diagnosticEvidence ?? []).map(item=>item.quote) : []);
-      setDiagnosticStatus(data.diagnosticStatus ?? 'diagnosing');
-      const newConf = data.confidence ?? 0;
-
-
-      setChatHistory(prev => [
-        ...prev,
-        {
-          id: nextMessageId(),
-          sender: 'ai',
-          text: data.aiText,
-          technicalSource: data.technicalSource,
-          options: data.options && data.options.length > 0 ? data.options : undefined
-        }
-      ]);
-
-      if (data.isReadyForPrice && data.priceSource && data.estimatedPrice && data.deterministicOMF && newConf >= 75) {
-        const partPrice = data.priceSource.price;
-        const riskSum = Number(data.riskSum || 0);
-        const formattedOMF = data.estimatedPrice;
-
-        setEstimatedPrice(formattedOMF);
-
-        setDiagnostic({
-          priceSource: data.priceSource,
-          completed: true,
-          confidence: newConf,
-          faultTitle: data.faultTitle || 'Kombi Teknik Müdahale Paketi',
-          faultDescription: `KDV dahil parça + Sabit İşçilik (${FIXED_LABOR_TL.toLocaleString('tr-TR')} ₺)`,
-          price: formattedOMF,
-          warranty: '90 Gün Parça & İşçilik Garantisi',
-          partPriceNum: partPrice,
-          riskSumNum: riskSum,
-          breakdown: data.deterministicOMF.breakdown,
-          partsIncluded: [
-            `Yedek Parça (${partPrice.toLocaleString('tr-TR')} ₺)`,
-            `Sabit İşçilik (${FIXED_LABOR_TL.toLocaleString('tr-TR')} ₺)`,
-            ...(riskSum > 0 ? [`Risk Güvence Primi (${riskSum.toLocaleString('tr-TR')} ₺)`] : ['Standart Güvence Primi'])
-          ]
-        });
-      }
-    } catch (error) {
-      console.error('API İletişim Hatası:', error);
-      setChatHistory(prev => [
-        ...prev,
-        {
-          id: nextMessageId(),
-          sender: 'ai',
-          text: 'Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'
-        }
-      ]);
-    } finally {
-      setIsAnalyzing(false);
-    }
+  const handleOptionClick = (text:string) => handleSubmit(undefined, text);
+  const handleCategoryClick = (selected:ServiceCategory) => {
+    setIsTechnicianDialogOpen(false);
+    void submit(`${serviceCategoryLabel(selected)} hizmeti için yardım istiyorum.`, selected);
   };
-
-  const handleSubmit = (e?: React.FormEvent, customText?: string) => {
-    if (e) e.preventDefault();
-    const textToSend = customText || problemDescription;
-    if (!textToSend.trim() || isAnalyzing) return;
-
-    const userMsg: ChatMessage = {
-      id: nextMessageId(),
-      sender: 'user',
-      text: textToSend
-    };
-
-    const updatedHistory = [...chatHistory, userMsg];
-    setChatHistory(updatedHistory);
-    setProblemDescription('');
-    processAIResponse(textToSend, updatedHistory);
+  const handleResetChat = () => {reset();setIsTechnicianDialogOpen(false);};
+  const handleFileUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const file=e.target.files?.[0];
+    if(file)handleSubmit(undefined, `[Görsel/Dosya Yüklendi: ${file.name}] İnceleyebilir misiniz?`);
   };
-
-  const handleOptionClick = (optionText: string) => {
-    handleSubmit(undefined, optionText);
-  };
-
-  const handleCategoryClick = (label: string) => {
-    const selectedProblem = `${label} ile ilgili teknik desteğe ihtiyacım var. Arıza tespiti başlatabilir miyiz?`;
-    handleSubmit(undefined, selectedProblem);
-  };
-
-  const handleResetChat = () => {
-    if (isAnalyzing) return;
-    setChatHistory([]);
-    setDiagnosticStatus('diagnosing');
-    stateToken.current = undefined;
-    setInformationProgress(0);
-    setCandidateProbabilities(null);
-
-    setEstimatedPrice(null);
-    setDiagnostic(null);
-    setProblemDescription('');
-    setIsCompleted(false);
-    setShowBreakdown(false);
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      handleSubmit(undefined, `[Görsel/Dosya Yüklendi: ${file.name}] Arızalı parçayı veya etiketini inceleyebilir misiniz?`);
-    }
-  };
-
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!diagnostic || Date.parse(diagnostic.priceSource.expiresAt) <= Date.now()) {
-      setIsBookingOpen(false);
-      setDiagnostic(null);
-      setEstimatedPrice(null);
-      alert('Fiyatın geçerlilik süresi doldu. Lütfen fiyatı tekrar kontrol edin.');
-      return;
-    }
-    if (!fullName || !phone || !address || !appointmentDate) {
-      alert('Lütfen tüm alanları doldurun.');
-      return;
-    }
-    setIsCompleted(true);
-  };
-
-
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between max-w-md mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto">
@@ -303,19 +62,7 @@ export default function CustomerDashboard() {
           </p>
         </div>
 
-        <div className="mt-4 mb-3 rounded-2xl bg-white border border-slate-200 p-3">
-          <div className="flex justify-between text-[11px] text-slate-600 mb-2" aria-live="polite">
-            <span>{isAnalyzing ? 'Yanıtınız değerlendiriliyor…' : diagnosticStatus === 'safety_stop' ? 'Güvenlik nedeniyle durduruldu' : candidateProbabilities !== null ? 'Değerlendirme tamamlandı' : 'Bilgi toplama'}</span>
-            <span>%{informationProgress}</span>
-          </div>
-          <div role="progressbar" aria-label="Bilgi toplama ilerlemesi" aria-valuemin={0} aria-valuemax={100} aria-valuenow={informationProgress}
-            aria-valuetext={`${informationProgress} bilgi puanı`}
-            className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
-            <div className="h-full rounded-full transition-all duration-500 motion-reduce:transition-none"
-              style={{ width: `${informationProgress}%`, background: 'linear-gradient(to right, #ef4444, #f59e0b, #22c55e)',
-                backgroundSize: `${informationProgress ? 10000 / informationProgress : 100}% 100%` }} />
-          </div>
-        </div>
+        <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
 
         {/* CANLI SOHBET ALANI */}
         <div className="bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] rounded-3xl p-4 shadow-md transition-all flex flex-col justify-between min-h-[220px]">
@@ -380,24 +127,7 @@ export default function CustomerDashboard() {
             {isAnalyzing && (
               <div className="flex items-center gap-2 text-slate-400 text-[11px] animate-pulse">
                 <Bot className="w-4 h-4 text-[#EE6C13]" />
-                <span>Yapay zekâ teşhis analizi yapıyor...</span>
-              </div>
-            )}
-
-            {estimatedPrice && (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 mt-2 flex items-center justify-between text-emerald-900">
-                <div>
-                  <span className="block text-[10px] font-semibold text-emerald-600">Güvenilir Tek Fiyat</span>
-                  <span className="text-base font-black text-emerald-700">{estimatedPrice}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsBookingOpen(true)}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1 shadow-sm transition-all active:scale-95"
-                >
-                  <Wrench className="w-3.5 h-3.5" />
-                  <span>Usta Çağır</span>
-                </button>
+                <span>Yanıtınız değerlendiriliyor…</span>
               </div>
             )}
 
@@ -465,93 +195,8 @@ export default function CustomerDashboard() {
           </form>
         </div>
 
-        {candidateProbabilities !== null && <DiagnosticOutcome candidates={candidateProbabilities} evidence={diagnosticEvidence} />}
-
-        {/* --- OMF TEKLİF KARTI (Yalnızca güven yeterliyse) --- */}
-        {diagnostic && diagnostic.completed && diagnostic.confidence >= 75 && (
-          <div className="mt-4 bg-white rounded-2xl border-2 border-[#EE6C13] shadow-lg overflow-hidden transition-all">
-            <div className="bg-[#EE6C13] text-white px-4 py-2.5 flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <FileCheck className="w-4 h-4" />
-                <span className="font-bold text-xs">Normal Müdahale Teklifi</span>
-              </div>
-              <button 
-                type="button"
-                onClick={() => setShowBreakdown(!showBreakdown)}
-                className="text-[10px] bg-white/20 hover:bg-white/30 px-2 py-0.5 rounded-full font-medium flex items-center gap-1 transition-colors"
-              >
-                <Info className="w-3 h-3" />
-                {showBreakdown ? 'Kapat' : 'Maliyet Kırılımı'}
-              </button>
-            </div>
-
-            <div className="p-4 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">{diagnostic.faultTitle}</h3>
-                  <p className="text-[11px] text-slate-600 mt-0.5">{diagnostic.faultDescription}</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-[10px] text-slate-500 font-medium">NET BEDEL</div>
-                  <div className="text-lg font-black text-[#EE6C13]">{diagnostic.price}</div>
-                </div>
-              </div>
-
-              {/* Maliyet Kırılımı Detay (Toggle) */}
-              <p className="text-[10px] text-slate-500">
-                <a href={diagnostic.priceSource.url} target="_blank" rel="noopener noreferrer" className="underline">
-                  One Yedek Parça · {diagnostic.priceSource.sku}
-                </a>
-                {' · Kontrol: '}{new Date(diagnostic.priceSource.checkedAt).toLocaleString('tr-TR')}
-              </p>
-              {showBreakdown && (
-                <div className="bg-orange-50/50 border border-orange-100 p-2.5 rounded-xl text-[10px] text-slate-700 space-y-1 animate-in fade-in">
-                  <div className="flex justify-between"><span>Yedek Parça (oneyedekparca.com):</span> <b>{diagnostic.partPriceNum.toLocaleString('tr-TR')} ₺</b></div>
-                  <div className="flex justify-between"><span>Sabit Saha İşçiliği:</span> <b>{FIXED_LABOR_TL.toLocaleString('tr-TR')} ₺</b></div>
-                  <div className="flex justify-between"><span>OMF (parça + işçilik):</span><b>{diagnostic.breakdown.OMF.toLocaleString('tr-TR')} ₺</b></div>
-                  <div className="flex justify-between"><span>OMF üzerinden %20 risk:</span> <b>{diagnostic.riskSumNum.toLocaleString('tr-TR')} ₺</b></div>
-                  <div className="flex justify-between"><span>Hizmet bedeli (%15, en az 300 ₺):</span> <b>{diagnostic.breakdown.service.toLocaleString('tr-TR')} ₺</b></div>
-                  <div className="border-t border-orange-200 pt-1 mt-1 flex justify-between font-bold text-orange-900">
-                    <span>Toplam Teklif:</span>
-                    <span>{diagnostic.price}</span>
-                  </div>
-                </div>
-              )}
-
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
-                <div className="text-[11px] font-semibold text-slate-700 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Pakete Dahil İşlemler / Parçalar
-                </div>
-                <ul className="space-y-1 text-[11px] text-slate-600">
-                  {diagnostic.partsIncluded.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-[#EE6C13]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex items-center justify-between text-[11px] text-slate-600 bg-amber-50 border border-amber-200 px-3 py-2 rounded-xl">
-                <div className="flex items-center gap-1.5 text-amber-800">
-                  <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                  <span>Keşif ücreti yok (Sabit İşçilik)</span>
-                </div>
-                <span className="font-semibold text-amber-900">{diagnostic.warranty}</span>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => { setEstimatedPrice(diagnostic.price); setIsBookingOpen(true); }}
-                className="w-full bg-[#0B1727] hover:bg-slate-800 text-white py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95"
-              >
-                <span>Teklifi Onayla ve Randevu Al</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-        )}
+        <ServiceResultCard result={resultCard} onRequestTechnician={() => setIsTechnicianDialogOpen(true)} onReject={dismissResult} />
+        <DiagnosisDebug response={response} />
 
         {/* ÜÇLÜ GÜVENİLİRLİK ÖZELLİKLERİ KARTLARI */}
         <div className="grid grid-cols-3 gap-2 bg-white border border-slate-100 rounded-2xl p-2.5 my-4 shadow-sm text-center">
@@ -592,129 +237,12 @@ export default function CustomerDashboard() {
             </button>
           </div>
 
-          <div className="grid grid-cols-5 gap-1.5">
-            {[
-              { id: 'kombi', label: 'Kombi', icon: Flame },
-              { id: 'klima', label: 'Klima', icon: Snowflake },
-              { id: 'boya', label: 'Boya', icon: Paintbrush },
-              { id: 'temizlik', label: 'Temizlik', icon: HomeIcon },
-              { id: 'nakliye', label: 'Nakliye', icon: Truck },
-            ].map((item) => {
-              const IconComponent = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => handleCategoryClick(item.label)}
-                  className="bg-white border border-slate-100 rounded-xl p-2 flex flex-col items-center gap-1.5 shadow-sm hover:border-orange-300 transition-all text-slate-700 active:scale-95"
-                >
-                  <div className="w-6 h-6 text-[#EE6C13] flex items-center justify-center">
-                    <IconComponent className="w-5 h-5" />
-                  </div>
-                  <span className="text-[9px] font-semibold text-center truncate w-full">
-                    {item.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+          <ServiceCategoryCards onSelect={handleCategoryClick} selected={category} />
         </div>
 
       </div>
 
-      {/* USTA ÇAĞIR / RANDEVU MODALI */}
-      {isBookingOpen && (
-        <div className="fixed inset-0 bg-black/65 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button 
-              type="button"
-              onClick={() => { setIsBookingOpen(false); setIsCompleted(false); }}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {!isCompleted ? (
-              <form onSubmit={handleBookingSubmit} className="space-y-4">
-                <div className="text-center mb-4">
-                  <div className="w-10 h-10 bg-orange-100 text-[#EE6C13] rounded-2xl flex items-center justify-center mx-auto mb-2">
-                    <Wrench className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-base font-black text-slate-900">Servis Randevusu Oluştur</h3>
-                  <p className="text-xs text-slate-500 mt-0.5">Güvenilir Tek Fiyat: <span className="font-bold text-emerald-600">{estimatedPrice}</span></p>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Ad Soyad</label>
-                  <input 
-                    type="text" 
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Adınız ve Soyadınız"
-                    className="w-full text-xs border border-slate-200 rounded-xl p-2.5 focus:outline-none focus:border-[#EE6C13] bg-slate-50"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Telefon Numarası</label>
-                  <input 
-                    type="tel" 
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="05XX XXX XX XX"
-                    className="w-full text-xs border border-slate-200 rounded-xl p-2.5 focus:outline-none focus:border-[#EE6C13] bg-slate-50"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Servis Adresi</label>
-                  <textarea 
-                    rows={2}
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder="Açık adresinizi giriniz..."
-                    className="w-full text-xs border border-slate-200 rounded-xl p-2.5 focus:outline-none focus:border-[#EE6C13] bg-slate-50 resize-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">İstenen Tarih ve Saat</label>
-                  <input 
-                    type="datetime-local" 
-                    value={appointmentDate}
-                    onChange={(e) => setAppointmentDate(e.target.value)}
-                    className="w-full text-xs border border-slate-200 rounded-xl p-2.5 focus:outline-none focus:border-[#EE6C13] bg-slate-50"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#EE6C13] hover:bg-[#d85e0e] text-white py-3 rounded-xl font-bold text-xs shadow-lg shadow-orange-500/25 transition-all active:scale-95 mt-2"
-                >
-                  Randevuyu Onayla ve Usta Çağır
-                </button>
-              </form>
-            ) : (
-              <div className="text-center py-6 space-y-3">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-7 h-7" />
-                </div>
-                <h3 className="text-base font-black text-slate-900">Randevunuz Başarıyla Oluşturuldu!</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  En yakın onaylı teknisyenimiz belirtilen tarih ve saatte adresinize yönlendirilecektir. Sabit işçilik ve OMF şartları geçerlidir.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => { setIsBookingOpen(false); setIsCompleted(false); handleResetChat(); }}
-                  className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-4"
-                >
-                  Yeni Teşhis Başlat
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {isTechnicianDialogOpen && <TechnicianHandoffNotice onClose={() => setIsTechnicianDialogOpen(false)} />}
 
       {/* FOOTER */}
       <footer className="bg-[#0A182E] text-white py-3 px-6 rounded-t-3xl flex items-center justify-between text-xs font-semibold shrink-0">
