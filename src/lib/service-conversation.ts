@@ -10,6 +10,7 @@ export interface CategoryConversationState {
   version:1; category:ServiceCategory|null; boilerStateToken:string|null;
   categoryState:ServiceResponse['categoryState']; answeredQuestionKeys:string[]; pendingQuestionKey:string|null;
   lastTurnId:string|null; lastResponse:Omit<ServiceResponse,'conversationToken'>|null;
+  pendingCategoryHistory?:DiagnosisMessage[];
 }
 const secret=()=>process.env.DIAGNOSIS_STATE_SECRET||process.env.OPENAI_API_KEY;
 function encodeConversationState(state:CategoryConversationState){
@@ -28,6 +29,9 @@ export function decodeConversationState(token:unknown):CategoryConversationState
   if(parsed.expires<Date.now()||state?.version!==1||state.category!==null&&!isServiceCategory(state.category)||
       !Array.isArray(state.answeredQuestionKeys)||state.answeredQuestionKeys.length>32||
       state.answeredQuestionKeys.some((id:unknown)=>typeof id!=='string'))throw Error('Invalid service conversation state');
+  if(state.pendingCategoryHistory!==undefined&&(!Array.isArray(state.pendingCategoryHistory)||state.pendingCategoryHistory.length>8||
+    state.pendingCategoryHistory.some((m:DiagnosisMessage)=>!m||!['user','assistant'].includes(m.role)||typeof m.content!=='string'||m.content.length>6000)))
+    throw Error('Invalid pending category history');
   return state;
 }
 function emptyConversation(category:ServiceCategory|null):CategoryConversationState {
@@ -40,6 +44,11 @@ const emptyReply = ():Omit<ServiceResponse,'conversationToken'> => ({
   pricingStatus:'not_available',pricingData:null,estimatedPrice:null,priceSource:null,deterministicOMF:null,confidence:0,
   faultTitle:null,basePartPrice:0,technicalSource:null,
 });
+function mergeCategoryHistory(saved:DiagnosisMessage[],history:DiagnosisMessage[]){
+  let overlap=Math.min(saved.length,history.length);
+  while(overlap&&!saved.slice(-overlap).every((m,i)=>m.role===history[i].role&&m.content===history[i].content))overlap--;
+  return [...saved.slice(0,saved.length-overlap),...history];
+}
 
 export async function diagnoseService(message:string,history:DiagnosisMessage[],legacyToken?:unknown,options:{
   category?:unknown; categorySelected?:boolean; conversationToken?:unknown; turnId?:unknown; boiler?:CategoryEngine;
@@ -74,12 +83,18 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
   let reply=emptyReply();
   if(category==='boiler'){
     const run:CategoryEngine=options.boiler??diagnose;
-    const engine=await run(message,changed?[]:history,state.boilerStateToken??(!previous&&!changed?legacyToken:null));
+    const engineHistory=mergeCategoryHistory(state.pendingCategoryHistory??[],changed?[]:history);
+    const engine=await run(message,engineHistory,state.boilerStateToken??(!previous&&!changed?legacyToken:null));
     reply={...reply,...engine,category,resultState:engine.resultState??'diagnosing'};
     const child=decodeBoilerState(reply.stateToken);
     reply.questionCount=child?.totalAskedQuestions??engine.questionCount??0;
     reply.awaitingAnswer=['diagnosing','verification'].includes(reply.resultState)&&!reply.assessmentComplete&&reply.questionCount>0;
     state.boilerStateToken=reply.stateToken;
+    if(child)delete state.pendingCategoryHistory;
+    else{
+      const context=[...engineHistory,{role:'user' as const,content:message}];
+      state.pendingCategoryHistory=context.length>8?[context[0],...context.slice(-7)]:context;
+    }
     state.categoryState=null;
     state.pendingQuestionKey=reply.awaitingAnswer?`${child?.sessionId??'boiler'}:${reply.questionCount}`:null;
     if(hidesFinalTechnicalText(reply.resultState))reply.aiText='';
@@ -87,6 +102,7 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
     // These catalog/card definitions had no implemented question/price engines.
     // A separate start state is ready for a future category-specific engine.
     state.boilerStateToken=null;state.categoryState={category,stage:'start'};
+    delete state.pendingCategoryHistory;
     reply={...reply,category,categoryState:state.categoryState,resultState:'category_unavailable',
       aiText:`${serviceCategoryLabel(category)} için çevrim içi teklif şu anda sunulamıyor.`};
   }else{
@@ -94,6 +110,11 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
     reply={...reply,aiText:'Hangi hizmet için yardım istiyorsunuz?',options:ACTIVE_SERVICE_CATEGORIES.map(c=>c.label),
       awaitingAnswer:true,questionCount:1};
     state.pendingQuestionKey='category-selection';
+    const context=[...mergeCategoryHistory(state.pendingCategoryHistory??[],changed?[]:history),
+      {role:'user' as const,content:message},{role:'assistant' as const,content:reply.aiText}];
+    // Keep the initial request plus recent clarification turns, bounded in the
+    // signed token; repeated user answers are not deduplicated by their text.
+    state.pendingCategoryHistory=context.length>8?[context[0],...context.slice(-7)]:context;
   }
   reply.answeredSystemQuestions=state.answeredQuestionKeys.length;
   reply.visualProgress=visualProgress(reply.answeredSystemQuestions);

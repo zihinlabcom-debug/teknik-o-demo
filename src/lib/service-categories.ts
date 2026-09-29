@@ -1,5 +1,6 @@
 import {normalizePartText} from './parts-catalog';
 import {DOMAINS} from './manufacturer-registry';
+import {boilerCodeTokens,isBoilerErrorCode} from './boiler-error-code';
 
 export const ACTIVE_SERVICE_CATEGORIES = [
   {id:'boiler',label:'Kombi'}, {id:'painting',label:'Boya'},
@@ -22,7 +23,8 @@ export function inspectServiceCategory(message:string) {
   const unsupported=/\b(?:klima\w*|buzdolab\w*|camasir\w*|bulasik\w*|cilingir\w*)/.test(text);
   const words=text.split(' ');
   const manufacturer=words.some((word,i)=>[word,word+(words[i+1]??'')].some(w=>Object.hasOwn(DOMAINS,w)));
-  const faultCode=/\b(?:[a-z]\s*\d{1,3}|ea|a7|c6|6a)\b/.test(text);
+  const faultCode=boilerCodeTokens(message).some(hit=>isBoilerErrorCode(hit[0])&&
+    (/[a-z]/i.test(hit[0])||/^(?:hata|hatasi|ariza|arizasi|kod|kodu)\b/.test(normalizePartText(message.slice(hit.index!+hit[0].length)))));
   if(/\bkombi\w*/.test(text)||!unsupported&&manufacturer&&faultCode)categories.push('boiler');
   const explicitSelection=ACTIVE_SERVICE_CATEGORIES.some(c=>normalizePartText(c.label)===text);
   const explicitRequest=explicitSelection||/\b(?:istiyorum|istiyoruz|ihtiyac\w*|hizmet\w*|yaptirmak|yikatmak|yikatac\w*|boyatmak|boyatac\w*|tasiyac\w*|tasinac\w*|tasiniyorum|tasimak|gecelim)\b/.test(text);

@@ -10,8 +10,8 @@ import { calculateBoilerWeights, consensusQuestionEffects, determineBoilerResult
   type BoilerCandidateMode, type BoilerQuestionEffect, type BoilerResultState } from './boiler-probability';
 import type { BoilerRepository, BoilerPrice } from './boiler-supabase';
 import { candidateAllowedForFuel, questionAllowedForFuel, type BoilerFuelType } from './boiler-fuel';
-import {suggestBrands,suggestModels,type BoilerIdentityCatalog} from './boiler-identity-suggestions';
-import {reviewedBoilerEffects} from './boiler-effects';
+import {suggestBrands,suggestModels,mentionedCatalogModel,type BoilerIdentityCatalog} from './boiler-identity-suggestions';
+import {reviewedBoilerEffects,reviewedBoilerQuestions} from './boiler-effects';
 import {extractBoilerTimeline,type BoilerTimeline} from './boiler-timeline';
 import {buildBoilerGroups,questionDiscrimination,type BoilerGroupAssessment} from './boiler-groups';
 
@@ -158,6 +158,8 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const conversation = [...history, { role: 'user' as const, content: message }];
   const customerMessages = conversation.filter(item => item.role === 'user').map(item => item.content);
   const customerText = customerMessages.join(' ');
+  let catalog:BoilerIdentityCatalog|undefined;
+  const identityCatalog=async()=>catalog??(catalog=await repository.getIdentityCatalog!());
   const pendingIdentity = state?.pendingIdentity ?? null;
   const extracted = await ai.extractIdentity(conversation, pendingIdentity);
   const inText = (value: string) => value && ` ${normalizePartText(customerText)} `.includes(` ${normalizePartText(value)} `);
@@ -172,9 +174,16 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   };
   const mentionedBrand = pendingIdentity === 'brand' ? mentionedManufacturer(message) : '';
   const extractedBrand = brandInText(extracted.brand) ? extracted.brand.trim() : '';
+  const customerBrands=customerMessages.map(mentionedManufacturer).filter(Boolean);
+  const retainedBrand=new Set(customerBrands.map(canonicalManufacturer)).size===1?customerBrands.at(-1):'';
   let brand = confirmationRejected&&confirmation?.fields.includes('brand')?'':state?.brand && !correction(message) ? state.brand :
-    mentionedBrand || extractedBrand || state?.brand || options.identityFallback?.brand || '';
-  const rawModel = extracted.model.trim();
+    mentionedBrand || extractedBrand || retainedBrand || state?.brand || options.identityFallback?.brand || '';
+  let rawModel = extracted.model.trim();
+  if(brand&&repository.getIdentityCatalog&&(!state?.model||pendingIdentity==='model'||correction(message))){
+    const tentativeCode=[...customerMessages].reverse().map(text=>explicitCodeInMessage(text)).find(Boolean)??null;
+    const mentioned=mentionedCatalogModel(await identityCatalog(),brand,customerMessages,tentativeCode);
+    if(mentioned&&(!inText(rawModel)||normalizePartText(rawModel).length<normalizePartText(mentioned).length))rawModel=mentioned;
+  }
   // A code-shaped suffix can be a real catalog model identifier. Confirm the
   // complete model without the message fallback before treating it as a code.
   const catalogDevice = brand && inText(rawModel) && codeTokens(rawModel).length
@@ -186,7 +195,8 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     customerMessages.some(text => containsErrorCode(outsideModel(text, catalogModel), extracted.errorCode))
     ? extracted.errorCode.trim() : '';
   const explicitCode = explicitCodeInMessage(message, catalogModel) ||
-    (pendingIdentity === 'code' ? pendingCodeAnswer(outsideModel(message, catalogModel)) : '');
+    (pendingIdentity === 'code' ? pendingCodeAnswer(outsideModel(message, catalogModel)) : '')||
+    (!state?.errorCode?[...customerMessages].reverse().map(text=>explicitCodeInMessage(text,catalogModel)).find(Boolean)??'':'');
   // Preserve equivalent AI formatting, but never let an invalid/different AI
   // value replace a code explicitly supplied by the customer.
   const sameCode = explicitCode && extractedCode &&
@@ -236,7 +246,12 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
       state.totalAskedQuestions > MAX_BOILER_QUESTIONS)
     state.totalAskedQuestions = Math.max(budgetFloor, state.askedQuestionIds.length, countAskedQuestions(history));
   state.brand = brand; state.model = model; state.errorCode = errorCode;
-  const newTimeline=extractBoilerTimeline(message);
+  let newTimeline=extractBoilerTimeline(message);
+  if(!changedIdentity&&!state.timeline&&!newTimeline.current.quote&&!newTimeline.historical.length){
+    const previousTimeline=[...customerMessages.slice(0,-1)].reverse().map(extractBoilerTimeline)
+      .find(t=>t.current.quote||t.historical.length||t.startupContext==='recurrence');
+    if(previousTimeline)newTimeline=previousTimeline;
+  }
   const oldTimeline=state.timeline;
   const previousRecurrence=!changedIdentity&&customerMessages.slice(0,-1).some(text=>extractBoilerTimeline(text).startupContext==='recurrence');
   if(newTimeline.historical.length||newTimeline.current.quote||newTimeline.startupContext==='recurrence'){
@@ -300,8 +315,6 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     state.pendingIdentity=confirmation?.fields.includes('brand')?'brand':'model';
     return ask(state.pendingIdentity==='brand'?'Cihaz etiketindeki marka adını paylaşır mısınız?':'Cihaz etiketindeki tam model adını paylaşır mısınız?');
   }
-  let catalog:BoilerIdentityCatalog|undefined;
-  const identityCatalog=async()=>catalog??(catalog=await repository.getIdentityCatalog!());
   const confirmIdentity=(choices:{brand:string;model:string}[],fields:('brand'|'model')[])=>{
     // A family and its same-named official model are one label to confirm;
     // resolveDevice still decides the exact/family scope afterwards.
@@ -359,7 +372,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   }
   if (!device) return result('Bu model için doğrulanmış teknik aday bulunamadı. Fiyat belirsiz; usta yönlendirmesi isteyebilirsiniz.', 'uncertain_price');
   if (device.brand && canonicalManufacturer(device.brand) === canonicalManufacturer(brand)) state.brand = device.brand;
-  if (device.officialModelName) state.model = device.officialModelName;
+  if (device.officialModelName) state.model = device.matchedModelLabel??device.officialModelName;
   state.familyId = device.familyId; state.officialModelId = device.officialModelId;
   state.fuelType = device.fuelType ?? 'gas';
   const allCandidates = (await repository.getCandidates(device.familyId))
@@ -379,7 +392,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
   const familyConsensus = selected.mode === 'family_code_consensus';
   const effectCandidateIds = [...new Set(candidates.flatMap(item => item.sourceCandidateIds ?? [item.id]))];
   const [catalogQuestions, storedEffects] = await Promise.all([repository.getQuestions(), repository.getEffects(effectCandidateIds)]);
-  const questions = catalogQuestions.filter(question => questionAllowedForFuel(question, state!.fuelType!));
+  let questions = catalogQuestions.filter(question => questionAllowedForFuel(question, state!.fuelType!));
   const allowedQuestionIds = new Set(questions.map(question => question.id));
   // Retain historical answers/budget, but never process a combustion question
   // or its effects after the catalog identifies an electric device.
@@ -392,6 +405,7 @@ export async function diagnoseBoiler(message: string, history: BoilerMessage[], 
     reviewedEffects.filter(effect => allowedQuestionIds.has(effect.question_id));
   const baseEffects = candidates.some(c=>c.sourceCandidateIds)?consensusQuestionEffects(candidates,fuelEffects):fuelEffects;
   const effects=reviewedBoilerEffects(candidates,questions,baseEffects,state.timeline);
+  questions=reviewedBoilerQuestions(candidates,questions,effects);
   const saveAnswer = async (question: BoilerQuestion, rawAnswer: string, answerKey: string,
     askedAt: string | null, source: 'customer' | 'ai_extracted') => {
     const group = question.evidence_group || question.question_key;

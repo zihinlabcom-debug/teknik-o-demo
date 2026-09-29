@@ -4,12 +4,13 @@ import { canonicalManufacturer, normalizedModel } from './verified-knowledge';
 import type { BoilerCandidate, BoilerQuestion, BoilerQuestionEffect, BoilerAssessment } from './boiler-probability';
 import {matchesBoilerErrorCode} from './boiler-error-code';
 import type { BoilerFuelType } from './boiler-fuel';
-import type { BoilerIdentityCatalog } from './boiler-identity-suggestions';
+import {officialModelLabelAlternatives,type BoilerIdentityCatalog} from './boiler-identity-suggestions';
 
 export interface BoilerDevice {
   brand?: string;
   familyId: string; familyName: string; officialModelId: string | null;
   officialModelName: string | null;
+  matchedModelLabel?: string;
   fuelType?: BoilerFuelType;
 }
 export interface BoilerPrice {
@@ -61,7 +62,8 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         {brand:f.brand,name:f.family_name,familyId:f.id,officialModelId:null,
           aliases:aliases.filter(a=>a.family_id===f.id&&!a.official_model_id).map(a=>a.normalized_alias)},
         ...models.filter(m=>m.family_id===f.id).map(m=>({brand:f.brand,name:m.official_model_name,
-          familyId:f.id,officialModelId:m.id,aliases:aliases.filter(a=>a.official_model_id===m.id).map(a=>a.normalized_alias)})),
+          familyId:f.id,officialModelId:m.id,aliases:[...aliases.filter(a=>a.official_model_id===m.id).map(a=>a.normalized_alias),
+            ...officialModelLabelAlternatives(m.official_model_name)]})),
       ])};
     },
     async resolveDevice(brand, model, customerMessage) {
@@ -84,7 +86,9 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
       if ((modelsResult.data?.length ?? 0) > 5000 || (aliasesResult.data?.length ?? 0) > 5000)
         throw Error('Boiler model catalog exceeds lookup limit');
       const target = normalizedModel(model);
-      const models = (modelsResult.data ?? []).filter(row => normalizedModel(row.normalized_name) === target);
+      const matchesLabel=(row:{official_model_name:string;normalized_name?:string})=>normalizedModel(row.normalized_name??row.official_model_name)===target||
+        officialModelLabelAlternatives(row.official_model_name).some(label=>normalizedModel(label)===target);
+      const models = (modelsResult.data ?? []).filter(matchesLabel);
       const aliases = (aliasesResult.data ?? []).filter(row => normalizedModel(row.normalized_alias) === target);
       const familyMatches = families.filter(row => normalizedModel(row.normalized_name) === target);
       const matches = [
@@ -97,7 +101,7 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
       // Keep its explicit model identity; an alias to a different variant must
       // still remain ambiguous and cannot acquire exact scope here.
       const exactOfficial = (modelsResult.data ?? []).filter(row =>
-        normalizedModel(row.official_model_name) === target);
+        normalizedModel(row.official_model_name) === target||officialModelLabelAlternatives(row.official_model_name).some(label=>normalizedModel(label)===target));
       distinct = distinct.filter(match => match.modelId !== null || !exactOfficial.some(row =>
         row.family_id === match.familyId && distinct.some(other => other.modelId === row.id)));
       if (!distinct.length && customerMessage) {
@@ -118,7 +122,9 @@ export function createSupabaseBoilerRepository(url: string, serviceRoleKey: stri
         throw Error('Boiler data access failed: invalid device fuel type');
       return { brand: family.brand, familyId: family.id, familyName: family.family_name,
         fuelType: family.fuel_type ?? 'gas',
-        officialModelId: official?.id ?? null, officialModelName: official?.official_model_name ?? null };
+        officialModelId: official?.id ?? null, officialModelName: official?.official_model_name ?? null,
+        ...(official&&officialModelLabelAlternatives(official.official_model_name).some(label=>normalizedModel(label)===target)
+          ?{matchedModelLabel:model}: {}) };
     },
     async getCandidates(familyId) {
       const result = await db.from('boiler_fault_candidates')

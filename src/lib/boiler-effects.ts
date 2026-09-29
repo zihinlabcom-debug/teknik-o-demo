@@ -16,3 +16,21 @@ export function reviewedBoilerEffects(candidates:BoilerCandidate[],questions:Boi
       startupPoints.has(e.candidate_id)&&e.answer_key==='immediate'&&e.effect==='support')
     ?{...e,effect:'neutral' as const,sourceEffects:e.sourceEffects??[e]}:e);
 }
+
+// Use the existing catalog priority, not a new diagnosis/information score.
+// An observable pressure check explicitly requested in the fault's action is
+// more direct than broad thermal/timing observations. Never create an effect
+// or promote this question where the selected pool lacks that source point.
+export function reviewedBoilerQuestions(candidates:BoilerCandidate[],questions:BoilerQuestion[],effects:BoilerQuestionEffect[]) {
+  return questions.map(question=>{
+    if(question.question_key!=='display_low_water_pressure'||question.is_safety_question)return question;
+    const sourceBacked=candidates.some(candidate=>{
+      const action=normalizePartText(candidate.sourceRecord?.official_action??'');
+      return /\b(?:su|tesisat|sistem|devre)\w* basinc\w*/.test(normalizePartText(candidate.candidate_name))&&
+        /\b(?:su|tesisat|sistem|devre)\w* basinc\w*/.test(action)&&/\bkontrol\w*/.test(action)&&
+        effects.some(effect=>effect.question_id===question.id&&effect.candidate_id===candidate.id&&
+          effect.answer_key!=='unknown'&&effect.effect!=='neutral');
+    });
+    return sourceBacked?{...question,priority:Math.max(question.priority??0,81)}:question;
+  });
+}

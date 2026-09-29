@@ -1,5 +1,6 @@
 import {normalizePartText} from './parts-catalog';
 import {canonicalManufacturer} from './verified-knowledge';
+import {boilerCodeTokens,normalizeBoilerErrorCode} from './boiler-error-code';
 
 export interface BoilerCatalogModel {
   brand: string; name: string; familyId: string; officialModelId: string | null;
@@ -11,6 +12,45 @@ const normalized = (value: string) => normalizePartText(value);
 const phonetic = (value: string) => value.replace(/ie/g,'i').replace(/x/g,'ks').replace(/([a-z])\1+/g,'$1');
 const numbers = (value: string):string[] => value.match(/\d+/g) ?? [];
 const roman = (value: string) => value.split(' ').filter(word=>/^(?:[ivx]+|l|c|d|m)$/.test(word));
+
+// Only complete alternative labels, never capacity lists or structural slashes.
+export function officialModelLabelAlternatives(name:string) {
+  const parts=name.split(/\s*\/\s*/);
+  const stem=normalized(parts[0]).split(' ')[0];
+  return parts.length>1&&parts.every(part=>/^\p{L}/u.test(part)&&normalized(part).split(' ').length>=2&&
+    normalized(part).split(' ')[0]===stem)?parts:[];
+}
+
+export function mentionedCatalogModel(catalog:BoilerIdentityCatalog,brand:string,messages:string[],code:string|null) {
+  for(const message of [...messages].reverse()){
+    const words=[...message.matchAll(/[\p{L}\p{N}]+/gu)];
+    const matches=catalog.models.filter(m=>canonicalManufacturer(m.brand)===canonicalManufacturer(brand)).flatMap(model=>
+      [model.name,...(model.aliases??[])].flatMap(label=>{
+        const tokens=normalized(label).split(' ');const results:{model:BoilerCatalogModel;literal:string;length:number}[]=[];
+        for(let i=0;i<=words.length-tokens.length;i++){
+          if(!tokens.every((token,j)=>normalized(words[i+j][0])===token))continue;
+          const next=words[i+tokens.length]?.[0];
+          const start=words[i].index!,last=words[i+tokens.length-1];
+          const following=message.slice(last.index!+last[0].length).trimStart();
+          const codeBoundary=!!code&&boilerCodeTokens(following).some(hit=>hit.index===0&&
+            normalizeBoilerErrorCode(hit[0])===normalizeBoilerErrorCode(code));
+          // A model prefix followed by an unknown capacity/variant is not an
+          // exact label. Only an actual fault code or ordinary symptom wording
+          // can delimit a recovered catalog label.
+          if(next&&!codeBoundary&&!/^(?:kombi\w*|hata\w*|ariza\w*|veriy\w*|gosteriy\w*|calis\w*|sorun\w*|cihaz\w*|icin|var|ve)$/.test(normalized(next)))continue;
+          results.push({model,literal:message.slice(start,last.index!+last[0].length),length:tokens.length});
+        }
+        return results;
+      }));
+    if(!matches.length)continue;
+    const longest=Math.max(...matches.map(m=>m.length));let best=matches.filter(m=>m.length===longest);
+    best=best.filter(m=>m.model.officialModelId!==null||!best.some(other=>other.model.familyId===m.model.familyId&&
+      other.model.officialModelId!==null&&normalized(other.literal)===normalized(m.literal)));
+    const scopes=new Set(best.map(m=>m.model.familyId+'|'+m.model.officialModelId));
+    return scopes.size===1?best[0].literal:null;
+  }
+  return null;
+}
 
 // Optimal string alignment: bounded local transposition/insertion/deletion.
 export function identityDistance(a: string,b: string) {

@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   if (!message || message.length > 6000) {
     return NextResponse.json({ error: 'Mesaj 1–6000 karakter olmalıdır.' }, { status: 400 });
   }
-  const history = normalizeHistory(body.history ?? body.messages);
+  const history = normalizeHistory(body.history ?? body.chatHistory ?? body.messages);
   if (history.at(-1)?.role === 'user' && history.at(-1)?.content === message) history.pop();
   try {
     const result = await diagnoseService(message, history, body.stateToken, {

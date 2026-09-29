@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   if (!message || message.length > 6000) {
     return NextResponse.json({ error: 'Mesaj 1–6000 karakter olmalıdır.' }, { status: 400 });
   }
-  const history = normalizeHistory(body.chatHistory);
+  const history = normalizeHistory(body.chatHistory ?? body.history ?? body.messages);
   // Compatibility with clients that include the current message in history.
   if (history.at(-1)?.role === 'user' && history.at(-1)?.content === message) history.pop();
   try {
