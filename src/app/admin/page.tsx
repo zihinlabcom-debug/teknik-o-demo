@@ -1,9 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {AdminDataPool,type AdminDataPoolKind} from '@/components/admin-data-pools';
+
+type AdminTab='finance'|'appointments'|'field'|'completed'|'pools'|'complaints'|AdminDataPoolKind;
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'finance' | 'appointments' | 'field' | 'completed' | 'pools' | 'complaints'>('finance');
+  const [activeTab, setActiveTab] = useState<AdminTab>('finance');
 
   // Örnek Finansal Veriler
   const [finances] = useState({
@@ -85,30 +89,39 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 text-gray-800 sm:p-6">
       {/* Üst Header */}
-      <header className="mb-8 border-b pb-4 flex justify-between items-center">
+      <header className="mb-8 flex flex-col items-start gap-3 border-b pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-black tracking-wider text-orange-600">TEKNİK-O</h1>
+          <h1><TeknikOBrand size="standard" /></h1>
           <p className="text-sm font-medium text-gray-500 uppercase tracking-widest">Yönetim Paneli</p>
         </div>
         <div className="bg-orange-100 text-orange-700 px-4 py-2 rounded-lg font-semibold text-sm">
-          Sistem Durumu: Aktif 🟢
+          Demo Görünümü
         </div>
       </header>
 
+      <p role="note" className="mb-6 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-orange-900">
+        Bu paneldeki mevcut finans, randevu, saha, usta ve şikâyet kayıtları örnek gösterimdir; gerçek operasyon verisi değildir. Yeni veri havuzlarına DB bağlantısı henüz açılmadı.
+      </p>
+
       {/* Navigasyon Sekmeleri */}
-      <div className="flex gap-2 overflow-x-auto pb-4 mb-6">
+      <div className="mb-6 flex gap-2 overflow-x-auto pb-4 [&>button]:shrink-0 [&>button]:whitespace-nowrap">
         <button onClick={() => setActiveTab('finance')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'finance' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>💰 Finans & Havuzlar</button>
         <button onClick={() => setActiveTab('appointments')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'appointments' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>📅 Randevu Bekleyenler</button>
         <button onClick={() => setActiveTab('field')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'field' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>🛠️ Sahada Olanlar (Aktif)</button>
         <button onClick={() => setActiveTab('completed')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'completed' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>✅ Tamamlanan İşler</button>
         <button onClick={() => setActiveTab('pools')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'pools' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>👷 Usta Havuzları</button>
         <button onClick={() => setActiveTab('complaints')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'complaints' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>⚠️ Şikayetler</button>
+        <button onClick={() => setActiveTab('customers')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'customers' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>Müşteriler</button>
+        <button onClick={() => setActiveTab('category_demand')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'category_demand' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>Talep Havuzu</button>
+        <button onClick={() => setActiveTab('hr_applications')} className={`px-4 py-2 rounded-lg font-medium text-sm transition ${activeTab === 'hr_applications' ? 'bg-orange-600 text-white shadow' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>İK Havuzu</button>
       </div>
 
       {/* İçerik Alanları */}
-      <main className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+      <main className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
+        {(['customers','category_demand','hr_applications'] as const).includes(activeTab as AdminDataPoolKind)&&
+          <AdminDataPool kind={activeTab as AdminDataPoolKind}/>}
         
         {/* 1. FİNANS & HAKEDİŞLER */}
         {activeTab === 'finance' && (
@@ -120,7 +133,7 @@ export default function AdminDashboard() {
                 <p className="text-2xl font-bold text-gray-900">{finances.totalRevenue.toLocaleString()} TL</p>
               </div>
               <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-                <p className="text-sm text-blue-600 font-semibold">Teknik-O Geliri (%15)</p>
+                <p className="text-sm text-blue-600 font-semibold">TEKNİK-O Geliri (%15)</p>
                 <p className="text-2xl font-bold text-gray-900">{finances.platformFee.toLocaleString()} TL</p>
               </div>
               <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">

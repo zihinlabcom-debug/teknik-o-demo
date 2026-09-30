@@ -76,8 +76,9 @@ test('diagnosing, verification and safety stop have no normal price/service resu
 });
 test('registration header uses existing logo and uppercase brand above secondary heading',()=>{
  const html=render(RegistrationHeader);
- assert.ok(html.includes('logo-icon.png'));assert.ok(html.includes('Teknik-O logo'));assert.ok(html.includes('TEKNİK'));
- assert.ok(html.includes('-O'));assert.ok(html.includes('Müşteri Kaydı'));assert.ok(!html.includes('Teknik-o Müşteri Kaydı'));
+ assert.ok(html.includes('logo-icon.png'));assert.ok(html.includes('TEKNİK-'));
+ assert.ok(html.includes('text-[#D97724]'));assert.ok(html.includes('Müşteri Kaydı'));
+ assert.ok(!html.includes('Teknik-O logo'));assert.ok(!html.includes('Teknik-o Müşteri Kaydı'));
  assert.ok(html.indexOf('</h1>')<html.indexOf('Müşteri Kaydı'));
 });
 test('technician action notice never claims a fake booking or assignment',()=>{

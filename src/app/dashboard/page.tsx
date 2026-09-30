@@ -1,23 +1,46 @@
 'use client';
 
-import React, {useEffect, useRef, useState} from 'react';
-import {Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
+import React, {Suspense, useEffect, useRef, useState} from 'react';
+import Link from 'next/link';
+import {useRouter,useSearchParams} from 'next/navigation';
+import {ArrowLeft, Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
 import {ServiceCategoryCards} from '@/components/service-category-cards';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
+import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
-import {serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
+import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
 
 export default function CustomerDashboard() {
+  return <Suspense fallback={null}><DashboardContent /></Suspense>;
+}
+
+function DashboardContent() {
+  const router=useRouter();
+  const requested=useSearchParams().get('category');
   const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const selectedCategoryStarted = useRef(false);
+  const customerStatus=useCustomerSession();
+  const navigationReady=customerStatus==='authenticated'&&isServiceCategory(requested);
   const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
+  useEffect(()=>{
+    if(customerStatus==='guest')router.replace('/');
+    else if(customerStatus==='authenticated'&&!isServiceCategory(requested))router.replace('/hizmetler');
+  },[customerStatus,requested,router]);
   useEffect(() => {chatEndRef.current?.scrollIntoView({behavior:'smooth'});}, [chatHistory, isAnalyzing, response]);
+  useEffect(() => {
+    if(!navigationReady)return;
+    if(!isServiceCategory(requested)||selectedCategoryStarted.current)return;
+    selectedCategoryStarted.current=true;
+    void submit(`${serviceCategoryLabel(requested)} hizmeti için yardım istiyorum.`,requested);
+  },[navigationReady,requested,submit]);
   const handleSubmit = (e?:React.FormEvent, customText?:string) => {
     e?.preventDefault();void submit(customText ?? problemDescription);
   };
@@ -32,25 +55,20 @@ export default function CustomerDashboard() {
     if(file)handleSubmit(undefined, `[Görsel/Dosya Yüklendi: ${file.name}] İnceleyebilir misiniz?`);
   };
 
+  if(!navigationReady)return null;
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between max-w-md mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto">
       
       {/* İÇERİK ALANI */}
       <div className="px-5 pt-6 pb-6 flex-1 flex flex-col justify-between">
+        <Link href="/kategoriler" className="mb-4 inline-flex items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]">
+          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
+        </Link>
         
         {/* LOGO VE SLOGAN ALANI */}
         <div className="flex flex-col items-center text-center">
-          <div className="w-24 h-24 relative mb-1 flex items-center justify-center">
-            <img 
-              src="/teknik-o-logo.png" 
-              alt="Teknik-O Logo" 
-              className="w-full h-full object-contain"
-              onError={(e) => {
-                // Görsel yüklenemezse fallback ikon
-                (e.currentTarget as HTMLElement).style.display = 'none';
-              }}
-            />
-          </div>
+          <TeknikOBrand size="standard" className="mb-4" />
 
           <h1 className="text-2xl font-black text-[#0B1727] tracking-tight leading-tight">
             Sürpriz fiyat yok<br />
@@ -96,7 +114,7 @@ export default function CustomerDashboard() {
                     </div>
 
                     <div
-                      className={`p-2.5 rounded-2xl leading-relaxed ${
+                      className={`min-w-0 break-words p-2.5 rounded-2xl leading-relaxed ${
                         msg.sender === 'user'
                           ? 'bg-[#0B1727] text-white rounded-tr-none'
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
@@ -164,12 +182,12 @@ export default function CustomerDashboard() {
               accept="image/*,.pdf"
             />
 
-            <div className="flex items-center justify-between pt-2">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-slate-600 transition-colors"
+                  className="flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold text-slate-400 hover:text-slate-600 transition-colors"
                 >
                   <Paperclip className="w-3.5 h-3.5 text-[#EE6C13]" />
                   <span>Dosya / Foto</span>
@@ -190,7 +208,7 @@ export default function CustomerDashboard() {
               <button
                 type="submit"
                 disabled={isAnalyzing}
-                className="flex items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-4 py-2 rounded-xl font-bold text-xs shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
+                  className="flex shrink-0 items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-4 py-2 rounded-xl font-bold text-xs shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
               >
                 <span>Gönder</span>
                 <Send className="w-3.5 h-3.5" />
