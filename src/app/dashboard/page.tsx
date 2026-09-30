@@ -5,6 +5,7 @@ import {Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bo
 import {ServiceCategoryCards} from '@/components/service-category-cards';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
+import {PaintingColorCatalog} from '@/components/painting-color-catalog';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
@@ -133,6 +134,9 @@ export default function CustomerDashboard() {
 
             <div ref={chatEndRef} />
           </div>
+
+          {response?.resultState==='painting_color_catalog'&&
+            <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}
 
           {/* Form / Metin Girişi */}
           <form onSubmit={(e) => handleSubmit(e)} className="border-t-2 border-slate-300 pt-3">

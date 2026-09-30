@@ -2,6 +2,7 @@ import {createHmac,timingSafeEqual} from 'node:crypto';
 import type {DiagnosisMessage} from './diagnosis';
 import {normalizePartText} from './parts-catalog';
 import {EXTRA_PUTTY_PRICE_M2,OLD_PAINTED_CEILING_POZ,PAINTING_POSITIONS,type PaintingPoz,type PaintingType} from './painting-price-data';
+import {findDyoWallColor} from './painting-color-catalog-dyo';
 import type {PaintingFields,PaintingQuestionKey,PaintingQuote,PaintingState} from './painting-types';
 
 export const BASE_WALL_COEFFICIENT=3;
@@ -9,6 +10,10 @@ export const REFERENCE_CEILING_HEIGHT_M=2.5;
 export const PAINTING_RISK_RATE=0.15;
 export const PAINTING_SERVICE_FEE_RATE=0.15;
 export const REGIONAL_COEFFICIENT=1 as const;
+export const DYO_CATALOG_OPTION='DYO renk kataloğundan seç';
+export const MANUAL_COLOR_OPTION='Marka ve renk kodunu kendim yazacağım';
+export const CONFIRM_DYO_COLOR_OPTION='Bu renkle devam et';
+export const CHANGE_DYO_COLOR_OPTION='Rengi değiştir';
 const secret=()=>process.env.DIAGNOSIS_STATE_SECRET||process.env.OPENAI_API_KEY;
 const text=(value:string)=>normalizePartText(value);
 const money=(value:number)=>`${new Intl.NumberFormat('tr-TR',{minimumFractionDigits:2,
@@ -166,6 +171,9 @@ function parseBrandColor(message:string,prior:PaintingFields):Pick<PaintingField
  const brand=s.match(/^marka\s+(.+)$/i),color=s.match(/^renk(?:\s+kodu)?\s+(.+)$/i);
  if(brand)return {paintBrand:brand[1].trim()};
  if(color)return {colorCode:color[1].trim()};
+ const brandWithSuffix=s.match(/^(.+?\bBoya)\s+(.+\d[\p{L}\p{N} -]*)$/iu);
+ if(brandWithSuffix&&brandWithSuffix[1].length<=80&&brandWithSuffix[2].length<=80)
+  return {paintBrand:brandWithSuffix[1].trim(),colorCode:brandWithSuffix[2].trim()};
  if(prior.paintBrand&&s.length<=80)return {colorCode:s};
  const one=s.match(/^(\S+)\s+(\d[\p{L}\p{N} -]{1,79})$/u);
  return one?{paintBrand:one[1],colorCode:one[2].trim()}:{};
@@ -185,8 +193,27 @@ function apply(state:PaintingState,key:PaintingQuestionKey,message:string,pendin
    if(v!==null&&v<=wall){fields.extraPuttyM2=v;return true;}return false;}
   case 'oldColorTone':case 'newColorTone':{const v=parseTone(message,key,pending);if(v){fields[key]=v;return true;}return false;}
   case 'paintType':{const v=parsePaintType(message,availablePaintingTypes(fields.surfaceType));if(v){fields.paintType=v;return true;}return false;}
-  case 'brandColor':{const parsed=parseBrandColor(message,fields);Object.assign(fields,parsed);
-   return !!fields.paintBrand?.trim()&&!!fields.colorCode?.trim();}
+  case 'brandColor':{
+   if(message.trim()===DYO_CATALOG_OPTION){
+    fields.colorSelectionSource='dyo_catalog';fields.paintBrand='DYO';
+    fields.colorCode=undefined;fields.colorName=undefined;return false;
+   }
+   if(message.trim()===MANUAL_COLOR_OPTION){
+    fields.colorSelectionSource='manual';fields.paintBrand=undefined;
+    fields.colorCode=undefined;fields.colorName=undefined;return false;
+   }
+   if(fields.colorSelectionSource==='dyo_catalog'){
+    const code=message.trim().match(/^DYO renk kodu:\s*([A-Za-z0-9]+)$/u)?.[1];
+    const selected=code?findDyoWallColor(code):undefined;
+    if(!selected)return false;
+    fields.paintBrand='DYO';fields.colorCode=selected.colorCode;fields.colorName=selected.colorName;
+    state.stage='confirming_color';return true;
+   }
+   const parsed=parseBrandColor(message,fields);Object.assign(fields,parsed);
+   const complete=!!fields.paintBrand?.trim()&&!!fields.colorCode?.trim();
+   if(complete){fields.colorSelectionSource='manual';fields.colorName=undefined;}
+   return complete;
+  }
  }
 }
 function extractSpontaneous(state:PaintingState,message:string){
@@ -237,16 +264,34 @@ function prompt(key:PaintingQuestionKey,fields:PaintingFields){
   case 'newColorTone':return {aiText:'İstediğiniz yeni renk açık ton mu, koyu ton mu?',options:['Açık','Koyu']};
   case 'paintType':return {aiText:'Hangi boya türünü istiyorsunuz?',options:availablePaintingTypes(fields.surfaceType).map(type=>typeLabels[type])};
   case 'brandColor':return {aiText:fields.paintBrand?'Renk kodunu paylaşır mısınız?':
-   fields.colorCode?'Boya markası nedir?':'Boya markası ve renk kodu nedir?',options:[]};
+   fields.colorCode?'Boya markası nedir?':'Boya markası ve renk kodu nedir?',
+   options:fields.colorSelectionSource==='manual'?[]:[DYO_CATALOG_OPTION,MANUAL_COLOR_OPTION]};
  }
 }
 export async function diagnosePainting(message:string,history:DiagnosisMessage[],token?:unknown){
  const state=decodePaintingState(token)??{version:1 as const,fields:{},currentQuestionKey:null,answeredQuestionKeys:[],
   answeredSystemQuestions:0,stage:'collecting' as const} satisfies PaintingState;
- if(state.stage==='collecting'){
+ let handledConfirmation=false;
+ if(state.stage==='priced'&&state.fields.colorSelectionSource==='dyo_catalog'&&
+   message.trim()===CHANGE_DYO_COLOR_OPTION){
+  state.stage='collecting';state.fields.colorCode=undefined;state.fields.colorName=undefined;
+  state.currentQuestionKey='brandColor';handledConfirmation=true;
+ }
+ if(state.stage==='confirming_color'){
+  handledConfirmation=true;
+  if(message.trim()===CONFIRM_DYO_COLOR_OPTION)state.stage='collecting';
+  else if(message.trim()===CHANGE_DYO_COLOR_OPTION){
+   state.stage='collecting';state.fields.colorCode=undefined;state.fields.colorName=undefined;
+   state.currentQuestionKey='brandColor';
+  }
+ }
+ if(state.stage==='collecting'&&!handledConfirmation){
   if(state.currentQuestionKey){
    if(apply(state,state.currentQuestionKey,message,true)){
-    state.answeredQuestionKeys.push(state.currentQuestionKey);state.answeredSystemQuestions++;state.currentQuestionKey=null;
+    if(!state.answeredQuestionKeys.includes(state.currentQuestionKey)){
+     state.answeredQuestionKeys.push(state.currentQuestionKey);state.answeredSystemQuestions++;
+    }
+    state.currentQuestionKey=null;
     extractSpontaneous(state,message);
    }
   }else{
@@ -261,6 +306,21 @@ export async function diagnosePainting(message:string,history:DiagnosisMessage[]
    options:[],stateToken:encode(state),resultState:'painting_manual_review',isReadyForPrice:false,
    paintingQuote:null,answeredSystemQuestions:state.answeredSystemQuestions,questionCount:state.answeredSystemQuestions,
    assessmentComplete:true,estimatedPrice:null};
+ }
+ if(state.stage==='confirming_color'){
+  const name=state.fields.colorName?`${state.fields.colorName} — `:'';
+  return {aiText:`Seçtiğiniz renk: DYO — ${name}${state.fields.colorCode}. Bu renkle devam edelim mi?`,
+   options:[CONFIRM_DYO_COLOR_OPTION,CHANGE_DYO_COLOR_OPTION],stateToken:encode(state),
+   resultState:'painting_color_confirmation',isReadyForPrice:false,paintingQuote:null,
+   answeredSystemQuestions:state.answeredSystemQuestions,questionCount:state.answeredSystemQuestions+1,
+   assessmentComplete:false,estimatedPrice:null};
+ }
+ if(question==='brandColor'&&state.fields.colorSelectionSource==='dyo_catalog'){
+  state.currentQuestionKey=question;
+  return {aiText:'DYO renk kataloğundan bir renk seçin.',options:[MANUAL_COLOR_OPTION],
+   stateToken:encode(state),resultState:'painting_color_catalog',isReadyForPrice:false,
+   paintingQuote:null,answeredSystemQuestions:state.answeredSystemQuestions,
+   questionCount:state.answeredSystemQuestions+1,assessmentComplete:false,estimatedPrice:null};
  }
  if(question){
   state.currentQuestionKey=question;

@@ -90,6 +90,7 @@ test('wide putty source components add only the entered correction area; serious
   'Ciddi sıva / derin hasar var'])r=await diagnosePainting(answer,[],r.stateToken);
  assert.equal(r.resultState,'painting_manual_review');assert.equal(r.isReadyForPrice,false);
  assert.equal(r.estimatedPrice,null);assert.equal(r.paintingQuote,null);
+ assert.equal(r.aiText,'Ciddi sıva veya derin hasar standart Boya V1 fiyatına dahil değil. Yerinde inceleme gerekir.');
 }));
 test('compatible paint options come only from the selected Excel surface, without fabricated variants',()=>signed(async()=>{
  assert.equal(availablePaintingTypes('old_painted').length,10);

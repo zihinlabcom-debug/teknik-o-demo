@@ -143,7 +143,8 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
       reply={...reply,...engine,category,resultState:engine.resultState??'painting_question'};
       reply.answeredSystemQuestions=engine.answeredSystemQuestions??0;
       reply.questionCount=engine.questionCount??0;
-      reply.awaitingAnswer=reply.resultState==='painting_question';
+      reply.awaitingAnswer=['painting_question','painting_color_catalog','painting_color_confirmation']
+        .includes(reply.resultState);
       state.paintingStateToken=reply.stateToken;
       delete state.pendingCategoryHistory;
     }

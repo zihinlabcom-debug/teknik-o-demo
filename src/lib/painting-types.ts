@@ -9,14 +9,15 @@ export interface PaintingFields {
   surfaceType?:Extract<PaintingSurface,'old_painted'|'new_plaster'|'satin_plaster_drywall'>;
   repairStatus?:RepairStatus;extraPuttyM2?:number;
   oldColorTone?:ColorTone;newColorTone?:ColorTone;paintType?:PaintingType;
-  paintBrand?:string;colorCode?:string;
+  paintBrand?:string;colorCode?:string;colorName?:string|null;
+  colorSelectionSource?:'manual'|'dyo_catalog';
 }
 export type PaintingQuestionKey='scopeType'|'netAreaM2'|'paintedRoomCount'|'furnished'|'ceilingHeightM'|
  'surfaces'|'surfaceType'|'repairStatus'|'extraPuttyM2'|'oldColorTone'|'newColorTone'|'paintType'|'brandColor';
 export interface PaintingState {
  version:1;fields:PaintingFields;currentQuestionKey:PaintingQuestionKey|null;
  answeredQuestionKeys:PaintingQuestionKey[];answeredSystemQuestions:number;
- stage:'collecting'|'priced'|'manual_review';
+ stage:'collecting'|'confirming_color'|'priced'|'manual_review';
 }
 export interface PaintingQuote {
  wallAreaM2:number;ceilingAreaM2:number;totalPaintAreaM2:number;

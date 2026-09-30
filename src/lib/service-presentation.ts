@@ -36,6 +36,7 @@ function priceRange(min:number|null,max:number|null,currency:string){
   const value=min??max;return value!==null&&Number.isFinite(value)?money(value,currency):null;
 }
 export function servicePricePresentation(reply:Pick<ServiceResponse,'resultState'|'estimatedPrice'|'pricingData'|'deterministicOMF'>):ServicePricePresentation|null {
+  if(reply.resultState==='painting_manual_review')return {title:'Fiyat',amount:null,lines:[]};
   if(!terminalPriceStates.has(reply.resultState))return null;
   if(reply.resultState==='uncertain_price'||reply.resultState==='pricing_missing')return {title:'Fiyat',amount:null,lines:[]};
   if('category' in reply&&reply.category==='painting'&&reply.resultState==='priced')

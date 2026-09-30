@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {ArrowLeft, Send, Sparkles, Bot, User, Wrench} from 'lucide-react';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
+import {PaintingColorCatalog} from '@/components/painting-color-catalog';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {servicePricePresentation} from '@/lib/service-presentation';
 
@@ -90,9 +91,19 @@ export default function TeshisPage() {
               <span className="text-[9px] block mt-1 text-right text-slate-400">
                 {msg.time}
               </span>
+              {response?.category==='painting'&&msg.sender==='ai'&&msg.options&&msg.options.length>0&&
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {msg.options.map(option=><button key={option} type="button" onClick={()=>void submit(option)}
+                    className="rounded-xl border border-orange-200 bg-orange-50 px-2.5 py-1 text-[10px] font-semibold text-[#EE6C13]">
+                    {option}
+                  </button>)}
+                </div>}
             </div>
           </div>
         ))}
+
+        {response?.resultState==='painting_color_catalog'&&
+          <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}
 
         {/* YANIT BEKLENİYOR */}
         {isAnalyzing && (

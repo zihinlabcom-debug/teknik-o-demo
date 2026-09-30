@@ -50,6 +50,25 @@ test('both actual API routes complete a painting quote without network calls or 
  }finally{globalThis.fetch=originalFetch;
   if(secret===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;else process.env.DIAGNOSIS_STATE_SECRET=secret;}
 });
+test('both painting API routes retain manual review without a price and expose the shared result card',async()=>{
+ const secret=process.env.DIAGNOSIS_STATE_SECRET;
+ process.env.DIAGNOSIS_STATE_SECRET='painting-manual-review-api-secret';
+ try{
+  for(const route of routes){
+   let result=await post(route,{message:'Boya',category:'painting',categorySelected:true});
+   result=await post(route,{message:'Duvar Boyama',conversationToken:result.conversationToken});
+   for(const answer of ['Komple ev','100 m²','3','Boş','2,5 metre','Yalnız duvarlar','Eski boyalı','Ciddi sıva / derin hasar var'])
+    result=await post(route,{message:answer,conversationToken:result.conversationToken,stateToken:result.stateToken});
+   assert.equal(result.resultState,'painting_manual_review');
+   assert.equal(result.aiText,'Ciddi sıva veya derin hasar standart Boya V1 fiyatına dahil değil. Yerinde inceleme gerekir.');
+   assert.equal(result.estimatedPrice,null);assert.equal(result.paintingQuote,null);
+   assert.equal(result.isReadyForPrice,false);
+   assert.deepEqual(servicePricePresentation(result),{title:'Fiyat',amount:null,lines:[]});
+  }
+ }finally{
+  if(secret===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;else process.env.DIAGNOSIS_STATE_SECRET=secret;
+ }
+});
 test('category confirmation carries a prior floor-area observation into the painting engine',async()=>{
  const secret=process.env.DIAGNOSIS_STATE_SECRET;process.env.DIAGNOSIS_STATE_SECRET='painting-api-context-secret';
  try{
@@ -62,4 +81,38 @@ test('category confirmation carries a prior floor-area observation into the pain
   assert.equal(decodePaintingState(third.stateToken).fields.netAreaM2,100);
   assert.match(third.aiText,/Boya işi komple ev için mi/);
  }finally{if(secret===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;else process.env.DIAGNOSIS_STATE_SECRET=secret;}
+});
+test('both API routes validate DYO catalog codes and carry the confirmed source color into the unchanged quote',async()=>{
+ const secret=process.env.DIAGNOSIS_STATE_SECRET,originalFetch=globalThis.fetch;
+ process.env.DIAGNOSIS_STATE_SECRET='painting-dyo-api-secret';
+ let networkCalls=0;globalThis.fetch=async()=>{networkCalls++;throw Error('Catalog must be offline');};
+ try{
+  for(const route of routes){
+   let result=await post(route,{message:'Boya',category:'painting',categorySelected:true});
+   result=await post(route,{message:'Duvar Boyama',conversationToken:result.conversationToken});
+   for(const answer of ['Komple ev','100 m²','3','Eşyalı','2,5 metre','Yalnız duvarlar',
+    'Eski boyalı','Yok','Koyu','Açık','Silikonlu mat'])
+    result=await post(route,{message:answer,conversationToken:result.conversationToken});
+   assert.equal(result.aiText,'Boya markası ve renk kodu nedir?');
+   assert.deepEqual(result.options,['DYO renk kataloğundan seç','Marka ve renk kodunu kendim yazacağım']);
+   result=await post(route,{message:'DYO renk kataloğundan seç',conversationToken:result.conversationToken});
+   assert.equal(result.resultState,'painting_color_catalog');
+   assert.equal(decodePaintingState(result.stateToken).fields.colorCode,undefined);
+   result=await post(route,{message:'DYO renk kodu: 9999',conversationToken:result.conversationToken,
+    colorCode:'6269',colorName:'DENİZ ATI',previewHex:'#000000'});
+   assert.equal(result.resultState,'painting_color_catalog');
+   assert.equal(decodePaintingState(result.stateToken).fields.colorCode,undefined);
+   result=await post(route,{message:'DYO renk kodu: 6269',conversationToken:result.conversationToken,
+    colorName:'SAHTE',previewHex:'#000000'});
+   assert.equal(result.resultState,'painting_color_confirmation');
+   assert.match(result.aiText,/DYO — DENİZ ATI — 6269/);
+   const fields=decodePaintingState(result.stateToken).fields;
+   assert.equal(fields.paintBrand,'DYO');assert.equal(fields.colorCode,'6269');
+   assert.equal(fields.colorName,'DENİZ ATI');assert.equal(fields.colorSelectionSource,'dyo_catalog');
+   result=await post(route,{message:'Bu renkle devam et',conversationToken:result.conversationToken});
+   assert.equal(result.resultState,'priced');assert.equal(result.estimatedPrice,'46.011,34 TL');
+  }
+  assert.equal(networkCalls,0);
+ }finally{globalThis.fetch=originalFetch;
+  if(secret===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;else process.env.DIAGNOSIS_STATE_SECRET=secret;}
 });
