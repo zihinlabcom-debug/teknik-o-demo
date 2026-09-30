@@ -2,7 +2,8 @@
 
 import React, {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
-import {ArrowLeft, Send, Sparkles, Bot, User, Wrench} from 'lucide-react';
+import {ArrowLeft, Send, Bot, User, Wrench} from 'lucide-react';
+import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
@@ -36,13 +37,10 @@ export default function TeshisPage() {
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#EE6C13]" />
-              <h1 className="font-bold text-sm text-slate-900">Teknik-O AI Teşhis</h1>
-            </div>
+            <h1><TeknikOBrand size="compact" /></h1>
             <p className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-              Canlı Analiz Sistemi
+              AI Teşhis · Canlı Analiz Sistemi
             </p>
           </div>
         </div>

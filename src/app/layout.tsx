@@ -13,19 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Teknik-O",
+  title: "TEKNİK-O",
   description: "Teknik Servis Çağrı ve Takip Platformu",
-  applicationName: "Teknik-O",
+  applicationName: "TEKNİK-O",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Teknik-O",
+    title: "TEKNİK-O",
   },
 };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="tr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

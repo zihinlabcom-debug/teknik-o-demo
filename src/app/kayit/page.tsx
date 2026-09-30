@@ -98,7 +98,7 @@ export default function KayitPage() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('tekniko_customer', JSON.stringify(formData));
     }
-    router.push('/dashboard');
+    router.push('/hizmetler');
   };
 
   return (

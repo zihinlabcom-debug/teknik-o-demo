@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 export default function UstaPanelFixed() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -51,14 +52,14 @@ export default function UstaPanelFixed() {
     return (
       <main className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8 font-sans">
         <div className="max-w-3xl mx-auto">
-          <header className="flex justify-between items-center mb-6 bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-700/50">
-            <div>
-              <h1 className="text-lg font-bold text-[#D97724]">TEKNİK-O Usta Paneli</h1>
+          <header className="mb-6 flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-slate-700/50 bg-slate-800 p-4 shadow-lg sm:items-center">
+            <div className="min-w-0">
+              <h1 className="flex flex-wrap items-center gap-2"><TeknikOBrand size="compact" onDark /><span className="text-sm font-bold text-slate-300">Usta Paneli</span></h1>
               <p className="text-xs text-slate-400">Bölge: Bursa / Nilüfer</p>
             </div>
             <button 
               onClick={() => { setStep("home"); setJobStatus("pool"); setCustomerApproved(null); setSystemCalculatedPrice(null); }}
-              className="text-xs text-red-400 font-medium hover:bg-red-500/10 px-3 py-1.5 rounded-lg transition cursor-pointer"
+              className="shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium text-red-400 transition hover:bg-red-500/10 cursor-pointer"
             >
               Çıkış Yap
             </button>
@@ -103,14 +104,14 @@ export default function UstaPanelFixed() {
                 {poolJobs.length > 0 ? (
                   poolJobs.map((job) => (
                     <div key={job.id} className="border border-slate-700 bg-slate-900/50 rounded-2xl p-5 hover:border-[#D97724] transition space-y-4 shadow-sm">
-                      <div className="flex justify-between items-start">
-                        <div>
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0">
                           <span className="bg-[#0E7490]/20 text-[#0E7490] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">{job.category}</span>
                           <h3 className="text-sm font-bold text-white mt-2">{job.title}</h3>
                         </div>
-                        <div className="text-right">
+                        <div className="shrink-0 text-left sm:text-right">
                           <span className="text-[10px] text-slate-400 block uppercase font-bold">Net İşçilik + Parça</span>
-                          <span className="text-lg font-extrabold text-[#D97724]">{job.price}</span>
+                          <span className="whitespace-nowrap text-lg font-extrabold text-[#D97724]">{job.price}</span>
                         </div>
                       </div>
 
@@ -361,11 +362,7 @@ export default function UstaPanelFixed() {
       <div className="w-full max-w-md bg-slate-800 rounded-3xl shadow-2xl border border-slate-700/50 flex flex-col items-center p-6 text-center my-auto">
         
         <div className="mt-2 mb-4">
-          <h1 className="text-5xl font-black tracking-tight uppercase">
-            <span className="text-[#D97724]">TEKNİK</span>
-            <span className="text-slate-500">-</span>
-            <span className="text-[#0E7490]">O</span>
-          </h1>
+          <h1><span className="sm:hidden"><TeknikOBrand size="standard" onDark /></span><span className="hidden sm:inline"><TeknikOBrand size="hero" onDark /></span></h1>
           <p className="text-sm font-bold tracking-widest text-slate-300 uppercase mt-2">Usta Paneli</p>
           <p className="text-[11px] text-slate-400 mt-1 px-2">Tüm emekleriniz ve kazancınız TEKNİK-O güvencesi altında</p>
         </div>
