@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
+import React, {useState, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import Link from 'next/link';
 import {ArrowLeft, Send, Bot, User, Wrench} from 'lucide-react';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
@@ -15,13 +15,65 @@ export default function TeshisPage() {
   const {messages, input:inputText, setInput:setInputText, isAnalyzing, response, submit,
     resultDismissed, dismissResult} = useServiceConversation('/api/chat');
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
+  const [visualViewportHeight, setVisualViewportHeight] = useState<number|null>(null);
   const messageScrollRef = useRef<HTMLDivElement>(null);
+  const lastAssistantRef = useRef<HTMLParagraphElement>(null);
   const followLatestRef = useRef(true);
+  const programmaticScrollRef = useRef(false);
+  const programmaticScrollTimerRef = useRef<number|undefined>(undefined);
+  const scrollMetricsRef = useRef({height:0, distanceFromBottom:0});
   const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
+  const lastAssistantId = [...messages].reverse().find(message => message.sender === 'ai')?.id;
+  const latestIsAssistant = messages.at(-1)?.sender === 'ai';
+  const markProgrammaticScroll = useCallback(() => {
+    programmaticScrollRef.current = true;
+    window.clearTimeout(programmaticScrollTimerRef.current);
+    programmaticScrollTimerRef.current = window.setTimeout(() => { programmaticScrollRef.current = false; }, 100);
+  }, []);
   useLayoutEffect(() => {
     const area = messageScrollRef.current;
-    if (area && followLatestRef.current) area.scrollTop = area.scrollHeight;
-  }, [messages.length]);
+    if (area && followLatestRef.current) {
+      markProgrammaticScroll();
+      area.scrollTop = area.scrollHeight;
+      if (latestIsAssistant) keepQuestionVisible(area, lastAssistantRef.current);
+    }
+    if (area) scrollMetricsRef.current = {
+      height:area.clientHeight,
+      distanceFromBottom:area.scrollHeight - area.scrollTop - area.clientHeight,
+    };
+  }, [messages.length, latestIsAssistant, markProgrammaticScroll]);
+  useEffect(() => {
+    const area = messageScrollRef.current;
+    if (!area) return;
+    const observer = new ResizeObserver(() => {
+      const previous = scrollMetricsRef.current;
+      if (area.clientHeight !== previous.height && followLatestRef.current && previous.distanceFromBottom <= 96) {
+        markProgrammaticScroll();
+        area.scrollTop = area.scrollHeight;
+        keepQuestionVisible(area, lastAssistantRef.current);
+      }
+      scrollMetricsRef.current = {
+        height:area.clientHeight,
+        distanceFromBottom:area.scrollHeight - area.scrollTop - area.clientHeight,
+      };
+    });
+    observer.observe(area);
+    return () => { observer.disconnect(); window.clearTimeout(programmaticScrollTimerRef.current); };
+  }, [markProgrammaticScroll]);
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    const updateHeight = () => {
+      setVisualViewportHeight(viewport.height < window.innerHeight - 16 ? Math.floor(viewport.height) : null);
+    };
+    updateHeight();
+    viewport.addEventListener('resize', updateHeight);
+    window.addEventListener('resize', updateHeight);
+    return () => {
+      viewport.removeEventListener('resize', updateHeight);
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
   useEffect(() => {
     const timer=window.setTimeout(() => {
       let initial:string|null=null;
@@ -33,7 +85,7 @@ export default function TeshisPage() {
   const handleSendMessage = (e:React.FormEvent) => {e.preventDefault();void submit(inputText);};
 
   return (
-    <div className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
+    <div style={visualViewportHeight ? {height:visualViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
       
       {/* HEADER */}
       <header className="shrink-0 bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
@@ -63,7 +115,14 @@ export default function TeshisPage() {
       {/* CHAT VE ANALİZ ALANI */}
       <div ref={messageScrollRef} onScroll={() => {
         const area = messageScrollRef.current;
-        if (area) followLatestRef.current = area.scrollHeight - area.scrollTop - area.clientHeight < 96;
+        if (!area || area.clientHeight !== scrollMetricsRef.current.height) return;
+        const distanceFromBottom = area.scrollHeight - area.scrollTop - area.clientHeight;
+        if (programmaticScrollRef.current) {
+          scrollMetricsRef.current = {height:area.clientHeight, distanceFromBottom};
+          return;
+        }
+        followLatestRef.current = distanceFromBottom <= 96;
+        scrollMetricsRef.current = {height:area.clientHeight, distanceFromBottom};
       }} className="min-w-0 min-h-0 flex-1 p-3 sm:p-5 lg:p-8 overflow-y-auto overscroll-contain space-y-4">
         
         <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
@@ -92,7 +151,7 @@ export default function TeshisPage() {
                   : 'bg-white border border-slate-200 text-slate-800 rounded-tl-none shadow-sm'
               }`}
             >
-              <p>{msg.text}</p>
+              <p ref={msg.id === lastAssistantId ? lastAssistantRef : undefined}>{msg.text}</p>
 
               <span className="text-[9px] block mt-1 text-right text-slate-400">
                 {msg.time}
@@ -155,4 +214,15 @@ export default function TeshisPage() {
 
     </div>
   );
+}
+
+function keepQuestionVisible(area:HTMLDivElement, question:HTMLElement|null) {
+  if (!question) return;
+  const areaRect = area.getBoundingClientRect();
+  const questionRect = question.getBoundingClientRect();
+  const margin = Math.max(0, Math.min(8, (areaRect.height - questionRect.height) / 2));
+  if (questionRect.top < areaRect.top + margin)
+    area.scrollTop += questionRect.top - areaRect.top - margin;
+  else if (questionRect.bottom > areaRect.bottom - margin)
+    area.scrollTop += questionRect.bottom - areaRect.bottom + margin;
 }

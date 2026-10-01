@@ -1,6 +1,6 @@
 'use client';
 
-import React, {Suspense, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 import {useRouter,useSearchParams} from 'next/navigation';
 import {ArrowLeft, Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
@@ -25,40 +25,102 @@ function DashboardContent() {
   const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
+  const [compactViewportHeight, setCompactViewportHeight] = useState<number|null>(null);
   const pageScrollRef = useRef<HTMLDivElement>(null);
   const messageScrollRef = useRef<HTMLDivElement>(null);
+  const lastAssistantRef = useRef<HTMLDivElement>(null);
   const followLatestRef = useRef(true);
+  const programmaticScrollRef = useRef(false);
+  const programmaticScrollTimerRef = useRef<number|undefined>(undefined);
+  const scrollMetricsRef = useRef({height:0, distanceFromBottom:0});
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const selectedCategoryStarted = useRef(false);
   const customerStatus=useCustomerSession();
   const navigationReady=customerStatus==='authenticated'&&isServiceCategory(requested);
   const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
+  const lastAssistantId = [...chatHistory].reverse().find(message => message.sender === 'ai')?.id;
+  const latestIsAssistant = chatHistory.at(-1)?.sender === 'ai';
+  const markProgrammaticScroll = useCallback(() => {
+    programmaticScrollRef.current = true;
+    window.clearTimeout(programmaticScrollTimerRef.current);
+    programmaticScrollTimerRef.current = window.setTimeout(() => { programmaticScrollRef.current = false; }, 100);
+  }, []);
+  const alignFocusedInput = useCallback(() => {
+    if (document.activeElement !== inputRef.current) return;
+    const viewport = window.visualViewport;
+    const page = pageScrollRef.current;
+    const formBottom = inputRef.current?.closest('form')?.getBoundingClientRect().bottom;
+    if (!page || formBottom === undefined) return;
+    const visibleBottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
+    const distance = formBottom - visibleBottom + 8;
+    const compact = window.innerWidth <= 640 && (viewport?.height ?? window.innerHeight) <= 600;
+    if (distance > 0 || (compact && distance < -8)) page.scrollTop += distance;
+  }, []);
   useEffect(()=>{
     if(customerStatus==='guest')router.replace('/');
     else if(customerStatus==='authenticated'&&!isServiceCategory(requested))router.replace('/hizmetler');
   },[customerStatus,requested,router]);
   useLayoutEffect(() => {
     const area = messageScrollRef.current;
-    if (area && followLatestRef.current) area.scrollTop = area.scrollHeight;
-  }, [chatHistory.length]);
+    if (area && followLatestRef.current) {
+      markProgrammaticScroll();
+      area.scrollTop = area.scrollHeight;
+      if (latestIsAssistant) keepQuestionVisible(area, lastAssistantRef.current);
+    }
+    if (area) scrollMetricsRef.current = {
+      height:area.clientHeight,
+      distanceFromBottom:area.scrollHeight - area.scrollTop - area.clientHeight,
+    };
+  }, [chatHistory.length, latestIsAssistant, markProgrammaticScroll]);
+  useEffect(() => {
+    const area = messageScrollRef.current;
+    if (!area) return;
+    const observer = new ResizeObserver(() => {
+      const previous = scrollMetricsRef.current;
+      if (area.clientHeight !== previous.height && followLatestRef.current && previous.distanceFromBottom <= 96) {
+        markProgrammaticScroll();
+        area.scrollTop = area.scrollHeight;
+        keepQuestionVisible(area, lastAssistantRef.current);
+      }
+      scrollMetricsRef.current = {
+        height:area.clientHeight,
+        distanceFromBottom:area.scrollHeight - area.scrollTop - area.clientHeight,
+      };
+    });
+    observer.observe(area);
+    return () => { observer.disconnect(); window.clearTimeout(programmaticScrollTimerRef.current); };
+  }, [markProgrammaticScroll]);
   useEffect(() => {
     const viewport = window.visualViewport;
     if (!viewport) return;
     let frame = 0;
     const keepFocusedInputVisible = () => {
+      setCompactViewportHeight(window.innerWidth <= 640 && viewport.height <= 600 ? Math.floor(viewport.height) : null);
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
         if (document.activeElement !== inputRef.current) return;
-        const bottom = inputRef.current?.closest('form')?.getBoundingClientRect().bottom;
-        const visibleBottom = viewport.offsetTop + viewport.height;
-        if (bottom && bottom > visibleBottom - 8 && pageScrollRef.current)
-          pageScrollRef.current.scrollTop += bottom - visibleBottom + 8;
+        const area = messageScrollRef.current;
+        if (area && followLatestRef.current) {
+          markProgrammaticScroll();
+          area.scrollTop = area.scrollHeight;
+          keepQuestionVisible(area, lastAssistantRef.current);
+        }
+        alignFocusedInput();
       });
     };
+    keepFocusedInputVisible();
     viewport.addEventListener('resize', keepFocusedInputVisible);
-    return () => { viewport.removeEventListener('resize', keepFocusedInputVisible); window.cancelAnimationFrame(frame); };
-  }, []);
+    window.addEventListener('resize', keepFocusedInputVisible);
+    return () => {
+      viewport.removeEventListener('resize', keepFocusedInputVisible);
+      window.removeEventListener('resize', keepFocusedInputVisible);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [alignFocusedInput, markProgrammaticScroll]);
+  useLayoutEffect(() => {
+    if (compactViewportHeight !== null && followLatestRef.current) alignFocusedInput();
+  }, [alignFocusedInput, chatHistory.length, compactViewportHeight]);
   useEffect(() => {
     if(!navigationReady)return;
     if(!isServiceCategory(requested)||selectedCategoryStarted.current)return;
@@ -82,24 +144,24 @@ function DashboardContent() {
   if(!navigationReady)return null;
 
   return (
-    <div ref={pageScrollRef} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto overscroll-contain">
+    <div ref={pageScrollRef} style={compactViewportHeight ? {height:compactViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto overscroll-contain">
       
       {/* İÇERİK ALANI */}
-      <div className="min-w-0 px-3 pt-6 pb-6 sm:px-5 lg:px-8 flex-1 flex flex-col justify-between">
-        <Link href="/kategoriler" className="mb-4 inline-flex items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]">
+      <div className={`min-w-0 px-3 sm:px-5 lg:px-8 flex-1 flex flex-col ${compactViewportHeight ? 'pt-2 pb-3 justify-start' : 'pt-6 pb-6 justify-between'}`}>
+        <Link href="/kategoriler" className={`${compactViewportHeight ? 'mb-1' : 'mb-4'} inline-flex items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]`}>
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
         
         {/* LOGO VE SLOGAN ALANI */}
         <div className="flex flex-col items-center text-center">
-          <TeknikOBrand size="standard" className="mb-4" />
+          <TeknikOBrand size={compactViewportHeight ? 'compact' : 'standard'} className={compactViewportHeight ? 'mb-1' : 'mb-4'} />
 
-          <h1 className="text-2xl font-black text-[#0B1727] tracking-tight leading-tight">
+          <h1 className={`${compactViewportHeight ? 'text-lg' : 'text-2xl'} font-black text-[#0B1727] tracking-tight leading-tight`}>
             Sürpriz fiyat yok<br />
             sorunu yaz <span className="text-[#EE6C13]">fiyatını al.</span>
           </h1>
 
-          <p className="text-xs text-slate-500 font-medium mt-1 max-w-xs leading-relaxed">
+          <p className={`${compactViewportHeight ? 'hidden' : 'mt-1'} text-xs text-slate-500 font-medium max-w-xs leading-relaxed`}>
             Alacağın hizmetin ücretini hemen öğren.<br />
             Sürpriz fiyatlarla belirsizlikle uğraşma.
           </p>
@@ -108,11 +170,18 @@ function DashboardContent() {
         <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
 
         {/* CANLI SOHBET ALANI */}
-        <div className="min-w-0 h-[min(54dvh,560px)] min-h-[330px] bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] rounded-3xl p-3 sm:p-5 shadow-md transition-colors flex flex-col">
+        <div style={compactViewportHeight ? {height:330} : undefined} className="min-w-0 h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] rounded-3xl p-3 sm:p-5 shadow-md transition-colors flex flex-col">
           
           <div ref={messageScrollRef} onScroll={() => {
             const area = messageScrollRef.current;
-            if (area) followLatestRef.current = area.scrollHeight - area.scrollTop - area.clientHeight < 96;
+            if (!area || area.clientHeight !== scrollMetricsRef.current.height) return;
+            const distanceFromBottom = area.scrollHeight - area.scrollTop - area.clientHeight;
+            if (programmaticScrollRef.current) {
+              scrollMetricsRef.current = {height:area.clientHeight, distanceFromBottom};
+              return;
+            }
+            followLatestRef.current = distanceFromBottom <= 96;
+            scrollMetricsRef.current = {height:area.clientHeight, distanceFromBottom};
           }} className="min-w-0 min-h-0 flex-1 overflow-y-auto overscroll-contain space-y-4 pr-1 text-sm mb-4">
             {chatHistory.length === 0 ? (
               <div className="text-center py-6 text-slate-400">
@@ -141,6 +210,7 @@ function DashboardContent() {
                     </div>
 
                     <div
+                      ref={msg.id === lastAssistantId ? lastAssistantRef : undefined}
                       className={`min-w-0 break-words [overflow-wrap:anywhere] p-3 sm:p-3.5 rounded-2xl leading-relaxed text-sm sm:text-base ${
                         msg.sender === 'user'
                           ? 'bg-[#0B1727] text-white rounded-tr-none'
@@ -191,6 +261,7 @@ function DashboardContent() {
             <label htmlFor="customer-message" className="block mb-2 text-sm font-semibold text-slate-700">Mesajınız</label>
             <textarea
               ref={inputRef}
+              onFocus={() => window.requestAnimationFrame(alignFocusedInput)}
               id="customer-message"
               rows={2}
               value={problemDescription}
@@ -317,4 +388,15 @@ function DashboardContent() {
 
     </div>
   );
+}
+
+function keepQuestionVisible(area:HTMLDivElement, question:HTMLElement|null) {
+  if (!question) return;
+  const areaRect = area.getBoundingClientRect();
+  const questionRect = question.getBoundingClientRect();
+  const margin = Math.max(0, Math.min(8, (areaRect.height - questionRect.height) / 2));
+  if (questionRect.top < areaRect.top + margin)
+    area.scrollTop += questionRect.top - areaRect.top - margin;
+  else if (questionRect.bottom > areaRect.bottom - margin)
+    area.scrollTop += questionRect.bottom - areaRect.bottom + margin;
 }
