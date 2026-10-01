@@ -10,11 +10,14 @@ import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
 import {CleaningInputSelector} from '@/components/cleaning-input-selector';
 import {CleaningCarpetInputSelector} from '@/components/cleaning-carpet-input-selector';
+import {changeCarpetQuantity,setCarpetArea,type CarpetSelection} from '@/components/cleaning-carpet-input-selector';
+import {CarpetServiceConfigurator} from '@/components/carpet-service-configurator';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
+import type {CarpetKey} from '@/lib/cleaning-carpet';
 
 export default function CustomerDashboard() {
   return <Suspense fallback={null}><DashboardContent /></Suspense>;
@@ -26,6 +29,7 @@ function DashboardContent() {
   const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
+  const [carpetSelection,setCarpetSelection]=useState<CarpetSelection>({});
   const [chatViewport, setChatViewport] = useState<{height:number; top:number}|null>(null);
   const openViewportRef = useRef<{width:number; height:number}|null>(null);
   const messageScrollRef = useRef<HTMLDivElement>(null);
@@ -148,6 +152,29 @@ function DashboardContent() {
   };
 
   if(!navigationReady)return null;
+
+  if(requested==='carpet_cleaning'||category==='carpet_cleaning'){
+    const lastMessage=chatHistory.at(-1);
+    const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
+      lastMessage.text:null;
+    return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
+      <div className="mx-auto w-full max-w-[1240px] min-w-0 px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
+        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#D97724]">
+          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
+        </Link>
+        <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
+        <CarpetServiceConfigurator selection={carpetSelection}
+          onQuantityChange={(key:CarpetKey,delta:number)=>setCarpetSelection(current=>changeCarpetQuantity(current,key,delta))}
+          onAreaChange={(key:CarpetKey,index:number,value:string)=>setCarpetSelection(current=>setCarpetArea(current,key,index,value))}
+          onCalculate={answer=>void submit(answer)}
+          ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='carpet_items'}
+          busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
+          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          errorText={connectionError} />
+      </div>
+      {isTechnicianDialogOpen&&<TechnicianHandoffNotice onClose={()=>setIsTechnicianDialogOpen(false)} />}
+    </div>;
+  }
 
   return (
     <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
