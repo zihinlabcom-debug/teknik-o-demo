@@ -1,6 +1,7 @@
 import {advanceHomeCleaning, type HomeState} from './cleaning-home';
 import {advanceApartmentCleaning, type ApartmentState} from './cleaning-apartment';
 import {advanceUpholsteryCleaning, type UpholsteryState} from './cleaning-upholstery';
+import {advanceCarpetCleaning, type CarpetState} from './cleaning-carpet';
 import {CLEANING_SERVICES, moneyTRY, type CleaningQuote, type CleaningServiceType} from './cleaning-types';
 
 export interface CleaningState {
@@ -8,6 +9,7 @@ export interface CleaningState {
   home: HomeState | null;
   apartment: ApartmentState | null;
   upholstery: UpholsteryState | null;
+  carpet: CarpetState | null;
 }
 export interface CleaningReply {
   state: CleaningState;
@@ -22,10 +24,10 @@ export interface CleaningReply {
   assessmentComplete: boolean;
   isReadyForPrice: boolean;
   canRouteTechnician: boolean;
-  cleaningInputMode?: 'home_extras' | 'upholstery_items';
+  cleaningInputMode?: 'home_extras' | 'upholstery_items' | 'carpet_items';
 }
 
-const fresh = (): CleaningState => ({serviceType: null, home: null, apartment: null, upholstery: null});
+const fresh = (): CleaningState => ({serviceType: null, home: null, apartment: null, upholstery: null, carpet: null});
 function selectedService(message: string): CleaningServiceType | null {
   const text = message.trim().toLocaleLowerCase('tr-TR');
   const exact = CLEANING_SERVICES.find(service => service.label.toLocaleLowerCase('tr-TR') === text);
@@ -33,6 +35,7 @@ function selectedService(message: string): CleaningServiceType | null {
   if (/\bev temizliğ[^ ]*/u.test(text) || /evimi temizlet/u.test(text)) return 'home_cleaning';
   if (/apartman temizliğ/u.test(text)) return 'apartment_cleaning';
   if (/(?:koltuk|yatak|berjer|çekyat).*(?:yıkama|yıkat)/u.test(text)) return 'upholstery_cleaning';
+  if (/(?:halı|hali|perde|yorgan|battaniye).*(?:yıkama|yıkat)/u.test(text)) return 'carpet_cleaning';
   return null;
 }
 export function runCleaning(message: string, previous?: CleaningState | null,
@@ -49,16 +52,18 @@ export function runCleaning(message: string, previous?: CleaningState | null,
     awaitingAnswer: true, assessmentComplete: false, isReadyForPrice: false, canRouteTechnician: false};
   const turn = state.serviceType === 'home_cleaning' ?
     advanceHomeCleaning(message, state.home ?? undefined) :
-    state.serviceType === 'apartment_cleaning' ?
-      advanceApartmentCleaning(message, state.apartment ?? undefined) :
-      advanceUpholsteryCleaning(message, state.upholstery ?? undefined);
+    state.serviceType === 'apartment_cleaning' ? advanceApartmentCleaning(message, state.apartment ?? undefined) :
+      state.serviceType === 'upholstery_cleaning' ? advanceUpholsteryCleaning(message, state.upholstery ?? undefined) :
+        advanceCarpetCleaning(message, state.carpet ?? undefined);
   if (state.serviceType === 'home_cleaning') state.home = turn.state as HomeState;
   else if (state.serviceType === 'apartment_cleaning') state.apartment = turn.state as ApartmentState;
-  else state.upholstery = turn.state as UpholsteryState;
+  else if (state.serviceType === 'upholstery_cleaning') state.upholstery = turn.state as UpholsteryState;
+  else state.carpet = turn.state as CarpetState;
   // The other child states stay empty even after switching services.
   if (!turn.finished) return {state, aiText: turn.text, options: turn.options, resultState: 'cleaning_question',
     cleaningInputMode: state.serviceType === 'home_cleaning' && state.home?.step === 'extras' ? 'home_extras' :
-      state.serviceType === 'upholstery_cleaning' && state.upholstery?.step === 'items' ? 'upholstery_items' : undefined,
+      state.serviceType === 'upholstery_cleaning' && state.upholstery?.step === 'items' ? 'upholstery_items' :
+        state.serviceType === 'carpet_cleaning' && state.carpet?.step === 'items' ? 'carpet_items' : undefined,
     estimatedPrice: null, cleaningQuote: null, answeredSystemQuestions: turn.answered,
     questionCount: turn.answered + 1, awaitingAnswer: true, assessmentComplete: false,
     isReadyForPrice: false, canRouteTechnician: false};

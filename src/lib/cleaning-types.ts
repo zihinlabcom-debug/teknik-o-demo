@@ -1,9 +1,10 @@
-export type CleaningServiceType = 'home_cleaning' | 'apartment_cleaning' | 'upholstery_cleaning';
+export type CleaningServiceType = 'home_cleaning' | 'apartment_cleaning' | 'upholstery_cleaning' | 'carpet_cleaning';
 
 export const CLEANING_SERVICES = [
   {type: 'home_cleaning', label: 'Ev Temizliği'},
   {type: 'apartment_cleaning', label: 'Apartman Temizliği'},
   {type: 'upholstery_cleaning', label: 'Koltuk / Yatak Yıkama'},
+  {type: 'carpet_cleaning', label: 'Halı Yıkama'},
 ] as const;
 
 export interface CleaningQuote {

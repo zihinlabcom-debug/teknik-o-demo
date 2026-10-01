@@ -8,6 +8,7 @@ import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/c
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
 import {CleaningInputSelector} from '@/components/cleaning-input-selector';
+import {CleaningCarpetInputSelector} from '@/components/cleaning-carpet-input-selector';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {servicePricePresentation} from '@/lib/service-presentation';
 
@@ -168,8 +169,10 @@ export default function TeshisPage() {
         ))}
 
         {response?.cleaningInputMode && response.resultState==='cleaning_question' &&
-          <CleaningInputSelector key={`${response.conversationToken}:${response.cleaningInputMode}`}
-            mode={response.cleaningInputMode} disabled={isAnalyzing} onContinue={answer=>void submit(answer)} />}
+          (response.cleaningInputMode==='carpet_items'?
+            <CleaningCarpetInputSelector key={`${response.category}:carpet`} disabled={isAnalyzing} onContinue={answer=>void submit(answer)} />:
+            <CleaningInputSelector key={`${response.conversationToken}:${response.cleaningInputMode}`}
+              mode={response.cleaningInputMode} disabled={isAnalyzing} onContinue={answer=>void submit(answer)} />)}
 
         {response?.resultState==='painting_color_catalog'&&
           <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}

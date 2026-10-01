@@ -28,7 +28,7 @@ test('both actual API routes isolate cleaning and the remaining unavailable card
      assert.equal(res.status,200);
      const result=await res.json();assert.equal(result.category,category.id);assert.equal(result.categoryState.category,category.id);
      const expected=category.id==='cleaning'?(selected?'cleaning_service_selection':'cleaning_question'):
-      category.id==='sofa_cleaning'?'cleaning_question':'category_unavailable';
+      ['sofa_cleaning','carpet_cleaning'].includes(category.id)?'cleaning_question':'category_unavailable';
      assert.equal(result.resultState,expected);assert.equal(result.stateToken,null);
      assert.equal(result.answeredSystemQuestions,0);assert.deepEqual(result.candidateProbabilities,[]);
      assert.equal(decodeConversationState(result.conversationToken).boilerStateToken,null);

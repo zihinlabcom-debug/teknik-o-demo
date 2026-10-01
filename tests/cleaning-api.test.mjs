@@ -28,12 +28,12 @@ async function signed(run){
  }
 }
 
-test('Temizlik asks for one of three services before starting a child motor',()=>signed(async()=>{
+test('Temizlik asks for one of four services before starting a child motor',()=>signed(async()=>{
  for(const route of routes){
   const first=await post(route,'Temizlik hizmeti için yardım istiyorum.');
   assert.equal(first.resultState,'cleaning_service_selection');
   assert.equal(first.aiText,'Hangi temizlik hizmetine ihtiyacınız var?');
-  assert.deepEqual(first.options,['Ev Temizliği','Apartman Temizliği','Koltuk / Yatak Yıkama']);
+  assert.deepEqual(first.options,['Ev Temizliği','Apartman Temizliği','Koltuk / Yatak Yıkama','Halı Yıkama']);
   assert.equal(decodeConversationState(first.conversationToken).cleaningState.serviceType,null);
   assert.equal(first.estimatedPrice,null);
  }
@@ -150,4 +150,38 @@ test('direct Koltuk Yıkama card starts upholstery without a home/apartment stat
  const saved=decodeConversationState(result.conversationToken);
  assert.equal(saved.cleaningState.serviceType,'upholstery_cleaning');
  assert.equal(saved.cleaningState.home,null);assert.equal(saved.cleaningState.apartment,null);
+}));
+
+test('Halı Yıkama subservice and direct card use isolated basket state and one final price',()=>signed(async()=>{
+ for(const route of routes){
+  let result=await post(route,'Temizlik');
+  result=await post(route,'Halı Yıkama',result);
+  assert.equal(result.category,'cleaning');assert.equal(result.cleaningInputMode,'carpet_items');
+  let saved=decodeConversationState(result.conversationToken);
+  assert.equal(saved.cleaningState.serviceType,'carpet_cleaning');
+  assert.equal(saved.cleaningState.home,null);assert.equal(saved.cleaningState.apartment,null);
+  assert.equal(saved.cleaningState.upholstery,null);
+  result=await post(route,'Akrilik Halı Yıkama: 4.2 m²; Stor Perde Yıkama: 2.2 m² + 3.1 m²; Battaniye Yıkama: 1 adet',result);
+  assert.equal(result.resultState,'priced');
+  assert.equal(result.cleaningQuote.baseTotal,600+297+396+499);
+  assert.equal(result.cleaningQuote.finalPrice,result.cleaningQuote.baseTotal*1.15*1.15);
+  assert.equal(servicePricePresentation(result).title,'Halı, Perde ve Ev Tekstili Yıkama');
+  saved=decodeConversationState(result.conversationToken);
+  assert.equal(saved.cleaningState.carpet.items.length,3);
+  const direct=await post(route,'Halı Yıkama hizmeti için yardım istiyorum.',null,
+   {category:'carpet_cleaning',categorySelected:true});
+  assert.equal(direct.resultState,'cleaning_question');assert.equal(direct.cleaningInputMode,'carpet_items');
+  assert.equal(decodeConversationState(direct.conversationToken).cleaningState.serviceType,'carpet_cleaning');
+ }
+}));
+
+test('carpet unknown product stays price-uncertain and switching services clears its child state',()=>signed(async()=>{
+ let result=await post(routes[0],'Temizlik');
+ result=await post(routes[0],'Halı Yıkama',result);
+ result=await post(routes[0],'Bilinmeyen Halı: 4 m²',result);
+ assert.equal(result.resultState,'uncertain_price');assert.equal(result.estimatedPrice,null);
+ assert.equal(result.canRouteTechnician,true);
+ result=await post(routes[0],'Ev Temizliği',result);
+ const saved=decodeConversationState(result.conversationToken);
+ assert.equal(saved.cleaningState.serviceType,'home_cleaning');assert.equal(saved.cleaningState.carpet,null);
 }));

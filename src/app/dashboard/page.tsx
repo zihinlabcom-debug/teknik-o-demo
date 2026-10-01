@@ -9,6 +9,7 @@ import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/c
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
 import {CleaningInputSelector} from '@/components/cleaning-input-selector';
+import {CleaningCarpetInputSelector} from '@/components/cleaning-carpet-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
@@ -253,8 +254,10 @@ function DashboardContent() {
             )}
 
             {response?.cleaningInputMode && response.resultState === 'cleaning_question' &&
-              <CleaningInputSelector key={`${response.conversationToken}:${response.cleaningInputMode}`}
-                mode={response.cleaningInputMode} disabled={isAnalyzing} onContinue={handleOptionClick} />}
+              (response.cleaningInputMode==='carpet_items'?
+                <CleaningCarpetInputSelector key={`${response.category}:carpet`} disabled={isAnalyzing} onContinue={handleOptionClick} />:
+                <CleaningInputSelector key={`${response.conversationToken}:${response.cleaningInputMode}`}
+                  mode={response.cleaningInputMode} disabled={isAnalyzing} onContinue={handleOptionClick} />)}
 
             {response?.resultState==='painting_color_catalog'&&
               <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}

@@ -21,7 +21,7 @@ export interface ServiceResponse {
   faultTitle:string|null; basePartPrice:number; technicalSource:{title:string;url:string;page:number|null}|null;
   paintingQuote?:PaintingQuote|null;
   cleaningQuote?:CleaningQuote|null;
-  cleaningInputMode?:'home_extras'|'upholstery_items';
+  cleaningInputMode?:'home_extras'|'upholstery_items'|'carpet_items';
 }
 export const visualProgress = (answeredSystemQuestions:number) =>
   Math.min(100,Math.max(0,Math.floor(answeredSystemQuestions))*13);

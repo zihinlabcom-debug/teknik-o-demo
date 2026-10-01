@@ -3,6 +3,7 @@ import {diagnose,type DiagnosisMessage} from './diagnosis';
 import {decodeBoilerState} from './boiler-diagnosis';
 import {diagnosePainting} from './painting-engine';
 import {runCleaning,type CleaningState} from './cleaning-engine';
+import {CLEANING_SERVICES} from './cleaning-types';
 import {parseHomeExtras} from './cleaning-home';
 import {ACTIVE_SERVICE_CATEGORIES,inspectServiceCategory,isServiceCategory,serviceCategoryLabel,type ServiceCategory} from './service-categories';
 import {hidesFinalTechnicalText,visualProgress,type ServiceResponse} from './service-presentation';
@@ -43,8 +44,8 @@ export function decodeConversationState(token:unknown):CategoryConversationState
       state.paintingServiceType!==undefined&&state.paintingServiceType!==null&&
         !paintingServices.some(service=>service.type===state.paintingServiceType)||
       state.cleaningState!==undefined&&state.cleaningState!==null&&
-        (!['home_cleaning','apartment_cleaning','upholstery_cleaning',null].includes(state.cleaningState.serviceType)||
-          !['home','apartment','upholstery'].every(key=>state.cleaningState[key]===null||
+        (!['home_cleaning','apartment_cleaning','upholstery_cleaning','carpet_cleaning',null].includes(state.cleaningState.serviceType)||
+          !['home','apartment','upholstery','carpet'].every(key=>state.cleaningState[key]==null||
             typeof state.cleaningState[key]==='object'))||
       !Array.isArray(state.answeredQuestionKeys)||state.answeredQuestionKeys.length>32||
       state.answeredQuestionKeys.some((id:unknown)=>typeof id!=='string'))throw Error('Invalid service conversation state');
@@ -89,17 +90,19 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
     }
   }
   const active=previous?.category??supplied;
+  const cleaningServiceAnswer=active==='cleaning'&&previous?.lastResponse?.resultState==='cleaning_service_selection'&&
+    CLEANING_SERVICES.some(service=>service.label.toLocaleLowerCase('tr-TR')===message.trim().toLocaleLowerCase('tr-TR'));
   const cleaningExtraAnswer=active==='cleaning'&&previous?.cleaningState?.serviceType==='home_cleaning'&&
     previous.cleaningState.home?.step==='extras'&&parseHomeExtras(message)!==null;
   const ambiguous=(detected.unsupported&&!cleaningExtraAnswer)||
     (!active||detected.explicitRequest)&&detected.categories.length>1||
     options.category!==undefined&&!isServiceCategory(options.category);
-  const category=options.categorySelected?supplied:ambiguous?null:
+  const category=options.categorySelected?supplied:cleaningServiceAnswer?'cleaning':ambiguous?null:
     active&&!detected.explicitRequest?active:detected.category??active;
   const changed=!!previous&&previous.category!==null&&previous.category!==category;
   const restartedPainting=category==='painting'&&previous?.category==='painting'&&
     options.categorySelected===true&&supplied==='painting';
-  const restartedCleaning=(category==='cleaning'||category==='sofa_cleaning')&&previous?.category===category&&
+  const restartedCleaning=(category==='cleaning'||category==='sofa_cleaning'||category==='carpet_cleaning')&&previous?.category===category&&
     options.categorySelected===true&&supplied===category;
   const state=changed||restartedPainting||restartedCleaning?emptyConversation(category):previous??emptyConversation(category);
   state.category=category;
@@ -107,7 +110,7 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
   if(!changed&&turnId&&previous?.lastTurnId===turnId&&previous.lastResponse)
     return {...previous.lastResponse,conversationToken:encodeConversationState(previous)};
   const awaitingPaintingService=state.pendingQuestionKey==='painting-service-selection';
-  if(state.pendingQuestionKey&&!['painting','cleaning','sofa_cleaning'].includes(state.category??'')&&
+  if(state.pendingQuestionKey&&!['painting','cleaning','sofa_cleaning','carpet_cleaning'].includes(state.category??'')&&
       !state.answeredQuestionKeys.includes(state.pendingQuestionKey))
     state.answeredQuestionKeys.push(state.pendingQuestionKey);
   state.pendingQuestionKey=null;
@@ -162,10 +165,11 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
       state.paintingStateToken=reply.stateToken;
       delete state.pendingCategoryHistory;
     }
-  }else if(category==='cleaning'||category==='sofa_cleaning'){
+  }else if(category==='cleaning'||category==='sofa_cleaning'||category==='carpet_cleaning'){
     state.boilerStateToken=null;state.paintingStateToken=null;state.paintingServiceType=null;
     state.categoryState={category,stage:'start'};
-    const engine=runCleaning(message,state.cleaningState,category==='sofa_cleaning'?'upholstery_cleaning':undefined);
+    const engine=runCleaning(message,state.cleaningState,category==='sofa_cleaning'?'upholstery_cleaning':
+      category==='carpet_cleaning'?'carpet_cleaning':undefined);
     state.cleaningState=engine.state;
     delete state.pendingCategoryHistory;
     const {state:childState,...cleaningReply}=engine;
@@ -189,7 +193,7 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
     // signed token; repeated user answers are not deduplicated by their text.
     state.pendingCategoryHistory=context.length>8?[context[0],...context.slice(-7)]:context;
   }
-  if(!['painting','cleaning','sofa_cleaning'].includes(category??''))reply.answeredSystemQuestions=state.answeredQuestionKeys.length;
+  if(!['painting','cleaning','sofa_cleaning','carpet_cleaning'].includes(category??''))reply.answeredSystemQuestions=state.answeredQuestionKeys.length;
   reply.visualProgress=visualProgress(reply.answeredSystemQuestions);
   state.lastTurnId=turnId;state.lastResponse=reply;
   return {...reply,conversationToken:encodeConversationState(state)};
