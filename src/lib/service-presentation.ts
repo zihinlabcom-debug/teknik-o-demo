@@ -4,6 +4,7 @@ import type {PriceSource} from './part-pricing';
 import type {calculateOMF} from './omf-engine';
 import type {ServiceCategory} from './service-categories';
 import type {PaintingQuote} from './painting-types';
+import type {CleaningQuote} from './cleaning-types';
 
 // Display metadata only. None of these fields are inputs to the boiler engine.
 export interface ServiceResponse {
@@ -19,6 +20,8 @@ export interface ServiceResponse {
   deterministicOMF:ReturnType<typeof calculateOMF>|null; confidence:number;
   faultTitle:string|null; basePartPrice:number; technicalSource:{title:string;url:string;page:number|null}|null;
   paintingQuote?:PaintingQuote|null;
+  cleaningQuote?:CleaningQuote|null;
+  cleaningInputMode?:'home_extras'|'upholstery_items';
 }
 export const visualProgress = (answeredSystemQuestions:number) =>
   Math.min(100,Math.max(0,Math.floor(answeredSystemQuestions))*13);
@@ -35,12 +38,20 @@ function priceRange(min:number|null,max:number|null,currency:string){
     return `${money(min,currency)} – ${money(max,currency)}`;
   const value=min??max;return value!==null&&Number.isFinite(value)?money(value,currency):null;
 }
-export function servicePricePresentation(reply:Pick<ServiceResponse,'resultState'|'estimatedPrice'|'pricingData'|'deterministicOMF'>):ServicePricePresentation|null {
+export function servicePricePresentation(reply:Pick<ServiceResponse,'resultState'|'estimatedPrice'|'pricingData'|'deterministicOMF'> &
+  Partial<Pick<ServiceResponse,'category'|'cleaningQuote'>>):ServicePricePresentation|null {
   if(reply.resultState==='painting_manual_review')return {title:'Fiyat',amount:null,lines:[]};
   if(!terminalPriceStates.has(reply.resultState))return null;
   if(reply.resultState==='uncertain_price'||reply.resultState==='pricing_missing')return {title:'Fiyat',amount:null,lines:[]};
   if('category' in reply&&reply.category==='painting'&&reply.resultState==='priced')
     return {title:'Nihai boya hizmeti fiyatı',amount:reply.estimatedPrice,lines:[]};
+  if(reply.cleaningQuote&&reply.resultState==='priced')return {
+    title:reply.cleaningQuote.serviceLabel,amount:reply.estimatedPrice,
+    lines:reply.cleaningQuote.days&&reply.cleaningQuote.personnel ? [
+      {label:'Planlanan süre',value:`${reply.cleaningQuote.days} gün`},
+      {label:'Gerekli personel',value:`${reply.cleaningQuote.personnel} kişi`},
+    ] : [],
+  };
   const total=reply.deterministicOMF?.breakdown.total;
   const amount=reply.estimatedPrice||(typeof total==='number'&&Number.isFinite(total)?money(total,'TRY'):null);
   if(amount)return {title:'Tahmini servis tutarı',amount,lines:[]};

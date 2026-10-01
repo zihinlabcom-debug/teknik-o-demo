@@ -12,7 +12,7 @@ registerHooks({resolve(specifier,context,next){
 const diagnose=await import('../src/app/api/diagnose/route.ts');
 const chat=await import('../src/app/api/chat/route.ts');
 
-test('both actual API routes isolate the four unavailable cards and free text without network requests',async()=>{
+test('both actual API routes isolate cleaning and the remaining unavailable cards without network requests',async()=>{
  const savedSecret=process.env.DIAGNOSIS_STATE_SECRET,savedFetch=globalThis.fetch;
  process.env.DIAGNOSIS_STATE_SECRET='offline-category-api-secret';
  let calls=0;
@@ -27,7 +27,9 @@ test('both actual API routes isolate the four unavailable cards and free text wi
      const res=await route.POST(new Request('http://localhost/api/test',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}));
      assert.equal(res.status,200);
      const result=await res.json();assert.equal(result.category,category.id);assert.equal(result.categoryState.category,category.id);
-     assert.equal(result.resultState,'category_unavailable');assert.equal(result.stateToken,null);
+     const expected=category.id==='cleaning'?(selected?'cleaning_service_selection':'cleaning_question'):
+      category.id==='sofa_cleaning'?'cleaning_question':'category_unavailable';
+     assert.equal(result.resultState,expected);assert.equal(result.stateToken,null);
      assert.equal(result.answeredSystemQuestions,0);assert.deepEqual(result.candidateProbabilities,[]);
      assert.equal(decodeConversationState(result.conversationToken).boilerStateToken,null);
      assert.doesNotMatch(result.aiText,/markası|modeli|hata kodu/);

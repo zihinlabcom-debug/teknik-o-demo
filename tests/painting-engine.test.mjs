@@ -159,7 +159,7 @@ test('painting progress counts accepted requested answers, ignores extraction/re
  assert.equal(r.resultState,'priced');assert.equal(visualProgress(r.answeredSystemQuestions),100);
  assert.equal(r.answeredSystemQuestions,11);
 }));
-test('painting and boiler child states are isolated; other four cards keep unavailable behavior',()=>signed(async()=>{
+test('painting and boiler child states are isolated; only moving and carpet remain unavailable',()=>signed(async()=>{
  const forbidden=async()=>{throw Error('Boiler engine must not run for painting');};
  const painting=await diagnoseService('3+1 evimi boyatmak istiyorum',[],null,{boiler:forbidden});
  assert.equal(painting.category,'painting');assert.equal(painting.resultState,'painting_service_selection');
@@ -173,9 +173,14 @@ test('painting and boiler child states are isolated; other four cards keep unava
     assert.equal(token,null);assert.deepEqual(history,[]);return {aiText:'Marka nedir?',resultState:'diagnosing'};
    }});
  assert.equal(boiler.category,'boiler');assert.equal(decodeConversationState(boiler.conversationToken).paintingStateToken,null);
- for(const category of ['cleaning','moving','sofa_cleaning','carpet_cleaning']){
+ for(const category of ['moving','carpet_cleaning']){
   const r=await diagnoseService(category,[],null,{category,categorySelected:true,boiler:forbidden});
   assert.equal(r.category,category);assert.equal(r.resultState,'category_unavailable');
+ }
+ for(const [category,expected] of [['cleaning','cleaning_service_selection'],['sofa_cleaning','cleaning_question']]){
+  const r=await diagnoseService(category,[],null,{category,categorySelected:true,boiler:forbidden});
+  assert.equal(r.category,category);assert.equal(r.resultState,expected);
+  assert.equal(decodeConversationState(r.conversationToken).boilerStateToken,null);
  }
  const back=await diagnoseService('Boya',[],null,{category:'painting',categorySelected:true,boiler:forbidden});
  assert.equal(back.category,'painting');assert.equal(back.resultState,'painting_service_selection');

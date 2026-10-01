@@ -1,6 +1,6 @@
 'use client';
 
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import React, {Suspense, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import Link from 'next/link';
 import {useRouter,useSearchParams} from 'next/navigation';
 import {ArrowLeft, Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
@@ -8,6 +8,7 @@ import {ServiceCategoryCards} from '@/components/service-category-cards';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
+import {CleaningInputSelector} from '@/components/cleaning-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
@@ -24,7 +25,10 @@ function DashboardContent() {
   const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const pageScrollRef = useRef<HTMLDivElement>(null);
+  const messageScrollRef = useRef<HTMLDivElement>(null);
+  const followLatestRef = useRef(true);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const selectedCategoryStarted = useRef(false);
   const customerStatus=useCustomerSession();
@@ -34,7 +38,27 @@ function DashboardContent() {
     if(customerStatus==='guest')router.replace('/');
     else if(customerStatus==='authenticated'&&!isServiceCategory(requested))router.replace('/hizmetler');
   },[customerStatus,requested,router]);
-  useEffect(() => {chatEndRef.current?.scrollIntoView({behavior:'smooth'});}, [chatHistory, isAnalyzing, response]);
+  useLayoutEffect(() => {
+    const area = messageScrollRef.current;
+    if (area && followLatestRef.current) area.scrollTop = area.scrollHeight;
+  }, [chatHistory.length]);
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+    let frame = 0;
+    const keepFocusedInputVisible = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        if (document.activeElement !== inputRef.current) return;
+        const bottom = inputRef.current?.closest('form')?.getBoundingClientRect().bottom;
+        const visibleBottom = viewport.offsetTop + viewport.height;
+        if (bottom && bottom > visibleBottom - 8 && pageScrollRef.current)
+          pageScrollRef.current.scrollTop += bottom - visibleBottom + 8;
+      });
+    };
+    viewport.addEventListener('resize', keepFocusedInputVisible);
+    return () => { viewport.removeEventListener('resize', keepFocusedInputVisible); window.cancelAnimationFrame(frame); };
+  }, []);
   useEffect(() => {
     if(!navigationReady)return;
     if(!isServiceCategory(requested)||selectedCategoryStarted.current)return;
@@ -58,10 +82,10 @@ function DashboardContent() {
   if(!navigationReady)return null;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-between max-w-md mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto">
+    <div ref={pageScrollRef} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto relative shadow-2xl font-sans text-slate-900 overflow-y-auto overscroll-contain">
       
       {/* İÇERİK ALANI */}
-      <div className="px-5 pt-6 pb-6 flex-1 flex flex-col justify-between">
+      <div className="min-w-0 px-3 pt-6 pb-6 sm:px-5 lg:px-8 flex-1 flex flex-col justify-between">
         <Link href="/kategoriler" className="mb-4 inline-flex items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]">
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
@@ -84,9 +108,12 @@ function DashboardContent() {
         <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
 
         {/* CANLI SOHBET ALANI */}
-        <div className="bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] rounded-3xl p-4 shadow-md transition-all flex flex-col justify-between min-h-[220px]">
+        <div className="min-w-0 h-[min(54dvh,560px)] min-h-[330px] bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] rounded-3xl p-3 sm:p-5 shadow-md transition-colors flex flex-col">
           
-          <div className="max-h-[240px] overflow-y-auto space-y-3 pr-1 text-xs mb-3">
+          <div ref={messageScrollRef} onScroll={() => {
+            const area = messageScrollRef.current;
+            if (area) followLatestRef.current = area.scrollHeight - area.scrollTop - area.clientHeight < 96;
+          }} className="min-w-0 min-h-0 flex-1 overflow-y-auto overscroll-contain space-y-4 pr-1 text-sm mb-4">
             {chatHistory.length === 0 ? (
               <div className="text-center py-6 text-slate-400">
                 <p className="text-xs font-medium">Arızanızı veya ihtiyacınızı aşağıya yazın.</p>
@@ -99,7 +126,7 @@ function DashboardContent() {
                   className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                 >
                   <div
-                    className={`flex items-start gap-2 max-w-[88%] ${
+                    className={`flex min-w-0 items-start gap-2 max-w-full sm:max-w-[90%] ${
                       msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'
                     }`}
                   >
@@ -114,7 +141,7 @@ function DashboardContent() {
                     </div>
 
                     <div
-                      className={`min-w-0 break-words p-2.5 rounded-2xl leading-relaxed ${
+                      className={`min-w-0 break-words [overflow-wrap:anywhere] p-3 sm:p-3.5 rounded-2xl leading-relaxed text-sm sm:text-base ${
                         msg.sender === 'user'
                           ? 'bg-[#0B1727] text-white rounded-tr-none'
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
@@ -126,13 +153,13 @@ function DashboardContent() {
                   </div>
 
                   {msg.options && (
-                    <div className="flex flex-wrap gap-1.5 mt-2 ml-8">
+                    <div className="flex min-w-0 flex-wrap gap-2 mt-2 ml-8">
                       {msg.options.map((opt, i) => (
                         <button
                           key={i}
                           type="button"
                           onClick={() => handleOptionClick(opt)}
-                          className="bg-orange-50 hover:bg-orange-100 border border-orange-200 text-[#EE6C13] text-[10px] font-semibold px-2.5 py-1 rounded-xl transition-all active:scale-95"
+                          className="min-h-11 min-w-0 break-words bg-orange-50 hover:bg-orange-100 border border-orange-200 text-[#EE6C13] text-sm font-semibold px-3 py-2 rounded-xl transition-all active:scale-95"
                         >
                           {opt}
                         </button>
@@ -150,16 +177,20 @@ function DashboardContent() {
               </div>
             )}
 
-            <div ref={chatEndRef} />
+            {response?.cleaningInputMode && response.resultState === 'cleaning_question' &&
+              <CleaningInputSelector key={`${response.conversationToken}:${response.cleaningInputMode}`}
+                mode={response.cleaningInputMode} disabled={isAnalyzing} onContinue={handleOptionClick} />}
+
+            {response?.resultState==='painting_color_catalog'&&
+              <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}
+
           </div>
 
-          {response?.resultState==='painting_color_catalog'&&
-            <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}
-
           {/* Form / Metin Girişi */}
-          <form onSubmit={(e) => handleSubmit(e)} className="border-t-2 border-slate-300 pt-3">
-            <label htmlFor="customer-message" className="block mb-1.5 text-xs font-semibold text-slate-700">Mesajınız</label>
+          <form onSubmit={(e) => handleSubmit(e)} className="min-w-0 shrink-0 border-t-2 border-slate-300 pt-3">
+            <label htmlFor="customer-message" className="block mb-2 text-sm font-semibold text-slate-700">Mesajınız</label>
             <textarea
+              ref={inputRef}
               id="customer-message"
               rows={2}
               value={problemDescription}
@@ -171,7 +202,7 @@ function DashboardContent() {
                 }
               }}
               placeholder="Mesajınızı veya cevabınızı yazın..."
-              className="w-full rounded-xl border-2 border-slate-300 bg-slate-50 p-3 text-sm text-slate-900 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 focus:bg-white resize-none leading-relaxed transition-colors"
+              className="h-16 w-full min-w-0 rounded-xl border-2 border-slate-300 bg-slate-50 p-3 text-base text-slate-900 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 focus:bg-white resize-none leading-relaxed transition-colors"
             />
 
             <input 
@@ -187,7 +218,7 @@ function DashboardContent() {
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold text-slate-400 hover:text-slate-600 transition-colors"
+                  className="flex min-h-11 items-center gap-1 whitespace-nowrap text-sm font-semibold text-slate-500 hover:text-slate-700 transition-colors"
                 >
                   <Paperclip className="w-3.5 h-3.5 text-[#EE6C13]" />
                   <span>Dosya / Foto</span>
@@ -197,7 +228,7 @@ function DashboardContent() {
                   <button
                     type="button"
                     onClick={handleResetChat}
-                    className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-red-500 transition-colors ml-2"
+                    className="flex min-h-11 items-center gap-1 text-sm text-slate-500 hover:text-red-500 transition-colors ml-2"
                   >
                     <RefreshCw className="w-3 h-3" />
                     <span>Sıfırla</span>
@@ -208,7 +239,7 @@ function DashboardContent() {
               <button
                 type="submit"
                 disabled={isAnalyzing}
-                  className="flex shrink-0 items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-4 py-2 rounded-xl font-bold text-xs shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
+                  className="flex min-h-11 shrink-0 items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-5 py-2 rounded-xl font-bold text-sm shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
               >
                 <span>Gönder</span>
                 <Send className="w-3.5 h-3.5" />
