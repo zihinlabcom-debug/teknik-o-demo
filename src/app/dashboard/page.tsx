@@ -12,12 +12,17 @@ import {CleaningInputSelector} from '@/components/cleaning-input-selector';
 import {CleaningCarpetInputSelector} from '@/components/cleaning-carpet-input-selector';
 import {changeCarpetQuantity,setCarpetArea,type CarpetSelection} from '@/components/cleaning-carpet-input-selector';
 import {CarpetServiceConfigurator} from '@/components/carpet-service-configurator';
+import {UpholsteryServiceConfigurator,type UpholsterySelection} from '@/components/upholstery-service-configurator';
+import {ApartmentServiceConfigurator,EMPTY_APARTMENT_SELECTION,type ApartmentSelection} from '@/components/apartment-service-configurator';
+import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
 import type {CarpetKey} from '@/lib/cleaning-carpet';
+import type {UpholsteryKey} from '@/lib/cleaning-upholstery';
+import {CLEANING_SERVICES} from '@/lib/cleaning-types';
 
 export default function CustomerDashboard() {
   return <Suspense fallback={null}><DashboardContent /></Suspense>;
@@ -30,6 +35,13 @@ function DashboardContent() {
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
   const [carpetSelection,setCarpetSelection]=useState<CarpetSelection>({});
+  const [upholsterySelection,setUpholsterySelection]=useState<UpholsterySelection>({});
+  const [apartmentSelection,setApartmentSelection]=useState<ApartmentSelection>(EMPTY_APARTMENT_SELECTION);
+  const [selectedCleaningConfigurator,setSelectedCleaningConfigurator]=useState<'carpet_cleaning'|'upholstery_cleaning'|'apartment_cleaning'|null>(null);
+  const [apartmentQueue,setApartmentQueue]=useState<{answers:string[];next:number;sent:boolean}|null>(null);
+  const [apartmentSubmitError,setApartmentSubmitError]=useState<string|null>(null);
+  const [apartmentAttempt,setApartmentAttempt]=useState(0);
+  const apartmentSending=useRef(false);
   const [chatViewport, setChatViewport] = useState<{height:number; top:number}|null>(null);
   const openViewportRef = useRef<{width:number; height:number}|null>(null);
   const messageScrollRef = useRef<HTMLDivElement>(null);
@@ -137,12 +149,50 @@ function DashboardContent() {
     selectedCategoryStarted.current=true;
     void submit(`${serviceCategoryLabel(requested)} hizmeti için yardım istiyorum.`,requested);
   },[navigationReady,requested,submit]);
+  // The apartment form advances only after each signed backend response; this effect is its small submission state machine.
+  /* eslint-disable react-hooks/set-state-in-effect -- Queue transitions here follow external API responses, not derived render state. */
+  useEffect(()=>{
+    if(!apartmentQueue||apartmentSending.current||isAnalyzing)return;
+    const answered=response?.answeredSystemQuestions??-1;
+    if(answered>apartmentQueue.next){
+      setApartmentQueue(current=>current?{...current,next:answered,sent:false}:null);
+      return;
+    }
+    if(answered!==apartmentQueue.next||apartmentQueue.sent){
+      setApartmentSubmitError('Bilgiler gönderilemedi. Lütfen tekrar deneyin.');
+      setApartmentQueue(null);
+      return;
+    }
+    if(apartmentQueue.next===apartmentQueue.answers.length){
+      setApartmentQueue(null);
+      return;
+    }
+    if(response?.resultState!=='cleaning_question'||response.category!=='cleaning'){
+      setApartmentSubmitError('Hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setApartmentQueue(null);
+      return;
+    }
+    apartmentSending.current=true;
+    setApartmentQueue(current=>current?{...current,sent:true}:null);
+    void submit(apartmentQueue.answers[apartmentQueue.next]).finally(()=>{
+      apartmentSending.current=false;
+      setApartmentAttempt(current=>current+1);
+    });
+  },[apartmentQueue,apartmentAttempt,isAnalyzing,response,submit]);
+  /* eslint-enable react-hooks/set-state-in-effect */
   const handleSubmit = (e?:React.FormEvent, customText?:string) => {
     e?.preventDefault();void submit(customText ?? problemDescription);
   };
-  const handleOptionClick = (text:string) => handleSubmit(undefined, text);
+  const handleOptionClick = (text:string) => {
+    if(category==='cleaning'&&response?.resultState==='cleaning_service_selection'){
+      const service=CLEANING_SERVICES.find(item=>item.label===text)?.type;
+      setSelectedCleaningConfigurator(service==='carpet_cleaning'||service==='upholstery_cleaning'||service==='apartment_cleaning'?service:null);
+    }
+    handleSubmit(undefined,text);
+  };
   const handleCategoryClick = (selected:ServiceCategory) => {
     setIsTechnicianDialogOpen(false);
+    setSelectedCleaningConfigurator(null);
     void submit(`${serviceCategoryLabel(selected)} hizmeti için yardım istiyorum.`, selected);
   };
   const handleResetChat = () => {reset();setIsTechnicianDialogOpen(false);};
@@ -153,7 +203,10 @@ function DashboardContent() {
 
   if(!navigationReady)return null;
 
-  if(requested==='carpet_cleaning'||category==='carpet_cleaning'){
+  const configurator=requested==='carpet_cleaning'||category==='carpet_cleaning'||selectedCleaningConfigurator==='carpet_cleaning'?'carpet_cleaning':
+    requested==='sofa_cleaning'||category==='sofa_cleaning'||selectedCleaningConfigurator==='upholstery_cleaning'?'upholstery_cleaning':
+      selectedCleaningConfigurator==='apartment_cleaning'?'apartment_cleaning':null;
+  if(configurator){
     const lastMessage=chatHistory.at(-1);
     const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
       lastMessage.text:null;
@@ -163,14 +216,33 @@ function DashboardContent() {
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
         <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
-        <CarpetServiceConfigurator selection={carpetSelection}
+        {configurator==='carpet_cleaning'?<CarpetServiceConfigurator selection={carpetSelection}
           onQuantityChange={(key:CarpetKey,delta:number)=>setCarpetSelection(current=>changeCarpetQuantity(current,key,delta))}
           onAreaChange={(key:CarpetKey,index:number,value:string)=>setCarpetSelection(current=>setCarpetArea(current,key,index,value))}
           onCalculate={answer=>void submit(answer)}
           ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='carpet_items'}
           busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
-          errorText={connectionError} />
+          errorText={connectionError} />:configurator==='upholstery_cleaning'?<UpholsteryServiceConfigurator
+          selection={upholsterySelection}
+          onQuantityChange={(key:UpholsteryKey,delta:number)=>setUpholsterySelection(current=>changeUpholsteryQuantity(current,key,delta))}
+          onCalculate={answer=>void submit(answer)}
+          ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='upholstery_items'}
+          busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
+          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          errorText={connectionError} />:<ApartmentServiceConfigurator
+          selection={apartmentSelection} onChange={setApartmentSelection}
+          onCalculate={answers=>{
+            if(apartmentQueue||isAnalyzing)return;
+            setApartmentSubmitError(null);
+            setApartmentQueue({answers,next:response?.answeredSystemQuestions??0,sent:false});
+          }}
+          ready={response?.resultState==='cleaning_question'&&response.category==='cleaning'}
+          busy={isAnalyzing||apartmentQueue!==null}
+          fieldsLocked={(response?.answeredSystemQuestions??0)>0}
+          finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
+          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          errorText={apartmentSubmitError??connectionError} />}
       </div>
       {isTechnicianDialogOpen&&<TechnicianHandoffNotice onClose={()=>setIsTechnicianDialogOpen(false)} />}
     </div>;
