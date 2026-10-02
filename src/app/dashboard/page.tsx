@@ -15,12 +15,13 @@ import {CarpetServiceConfigurator} from '@/components/carpet-service-configurato
 import {UpholsteryServiceConfigurator,type UpholsterySelection} from '@/components/upholstery-service-configurator';
 import {ApartmentServiceConfigurator,EMPTY_APARTMENT_SELECTION,type ApartmentSelection} from '@/components/apartment-service-configurator';
 import {HomeCleaningServiceConfigurator,EMPTY_HOME_CLEANING_SELECTION,type HomeCleaningSelection} from '@/components/home-cleaning-service-configurator';
+import {PaintingServiceConfigurator,EMPTY_PAINTING_SELECTION,type PaintingSelection,type PaintingSubmissionStep} from '@/components/painting-service-configurator';
 import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
-import {servicePricePresentation} from '@/lib/service-presentation';
+import {servicePricePresentation,type ServiceResponse} from '@/lib/service-presentation';
 import type {CarpetKey} from '@/lib/cleaning-carpet';
 import type {UpholsteryKey} from '@/lib/cleaning-upholstery';
 import {CLEANING_SERVICES} from '@/lib/cleaning-types';
@@ -39,6 +40,14 @@ function DashboardContent() {
   const [upholsterySelection,setUpholsterySelection]=useState<UpholsterySelection>({});
   const [apartmentSelection,setApartmentSelection]=useState<ApartmentSelection>(EMPTY_APARTMENT_SELECTION);
   const [homeSelection,setHomeSelection]=useState<HomeCleaningSelection>(EMPTY_HOME_CLEANING_SELECTION);
+  const [paintingSelection,setPaintingSelection]=useState<PaintingSelection>(EMPTY_PAINTING_SELECTION);
+  const [paintingServiceOptions,setPaintingServiceOptions]=useState<string[]>([]);
+  const [paintingQueue,setPaintingQueue]=useState<{
+    steps:PaintingSubmissionStep[];next:number;sent:boolean;fromResponse:ServiceResponse|null;
+  }|null>(null);
+  const [paintingSubmitError,setPaintingSubmitError]=useState<string|null>(null);
+  const [paintingAttempt,setPaintingAttempt]=useState(0);
+  const paintingSending=useRef(false);
   const [selectedCleaningConfigurator,setSelectedCleaningConfigurator]=useState<'carpet_cleaning'|'upholstery_cleaning'|'apartment_cleaning'|'home_cleaning'|null>(null);
   const [apartmentQueue,setApartmentQueue]=useState<{answers:string[];next:number;sent:boolean}|null>(null);
   const [apartmentSubmitError,setApartmentSubmitError]=useState<string|null>(null);
@@ -217,6 +226,49 @@ function DashboardContent() {
       setHomeAttempt(current=>current+1);
     });
   },[homeQueue,homeAttempt,isAnalyzing,response,submit]);
+  useEffect(()=>{
+    if(!paintingQueue||paintingSending.current||isAnalyzing)return;
+    const step=paintingQueue.steps[paintingQueue.next];
+    if(paintingQueue.sent){
+      const expected=(paintingQueue.fromResponse?.answeredSystemQuestions??0)+step.expectedDelta;
+      const terminal=response?.resultState==='priced'||response?.resultState==='uncertain_price'||
+        response?.resultState==='painting_manual_review';
+      const valid=response&&response!==paintingQueue.fromResponse&&response.category==='painting'&&
+        response.answeredSystemQuestions===expected&&
+        (terminal||step.kind==='dyo_code'&&response.resultState==='painting_color_confirmation'||
+          step.kind==='catalog_choice'&&response.resultState==='painting_color_catalog'||
+          step.kind==='manual_choice'&&response.resultState==='painting_question'||
+          !step.kind&&response.resultState==='painting_question');
+      if(!valid){
+        setPaintingSubmitError('Boya bilgileri gönderilemedi. Lütfen sayfayı yenileyip tekrar deneyin.');
+        setPaintingQueue(null);
+        return;
+      }
+      if(terminal||response.resultState==='painting_color_confirmation'){
+        setPaintingQueue(null);
+        return;
+      }
+      if(paintingQueue.next===paintingQueue.steps.length-1){
+        setPaintingSubmitError('Boya değerlendirmesi tamamlanamadı. Lütfen tekrar deneyin.');
+        setPaintingQueue(null);
+        return;
+      }
+      setPaintingQueue(current=>current?{...current,next:current.next+1,sent:false,fromResponse:null}:null);
+      return;
+    }
+    if(!response||response.category!=='painting'||
+      (response.resultState!=='painting_question'&&response.resultState!=='painting_color_catalog')){
+      setPaintingSubmitError('Boya hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setPaintingQueue(null);
+      return;
+    }
+    paintingSending.current=true;
+    setPaintingQueue(current=>current?{...current,sent:true,fromResponse:response}:null);
+    void submit(step.answer).finally(()=>{
+      paintingSending.current=false;
+      setPaintingAttempt(current=>current+1);
+    });
+  },[paintingQueue,paintingAttempt,isAnalyzing,response,submit]);
   /* eslint-enable react-hooks/set-state-in-effect */
   const handleSubmit = (e?:React.FormEvent, customText?:string) => {
     e?.preventDefault();void submit(customText ?? problemDescription);
@@ -241,7 +293,8 @@ function DashboardContent() {
 
   if(!navigationReady)return null;
 
-  const configurator=requested==='carpet_cleaning'||category==='carpet_cleaning'||selectedCleaningConfigurator==='carpet_cleaning'?'carpet_cleaning':
+  const configurator=requested==='painting'||category==='painting'?'painting':
+    requested==='carpet_cleaning'||category==='carpet_cleaning'||selectedCleaningConfigurator==='carpet_cleaning'?'carpet_cleaning':
     requested==='sofa_cleaning'||category==='sofa_cleaning'||selectedCleaningConfigurator==='upholstery_cleaning'?'upholstery_cleaning':
       selectedCleaningConfigurator==='apartment_cleaning'?'apartment_cleaning':
         selectedCleaningConfigurator==='home_cleaning'?'home_cleaning':null;
@@ -255,7 +308,57 @@ function DashboardContent() {
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
         <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
-        {configurator==='carpet_cleaning'?<CarpetServiceConfigurator selection={carpetSelection}
+        {configurator==='painting'?<PaintingServiceConfigurator selection={paintingSelection}
+          onChange={setPaintingSelection}
+          serviceOptions={response?.resultState==='painting_service_selection'?response.options:paintingServiceOptions}
+          onSelectService={label=>{
+            if(isAnalyzing||response?.resultState!=='painting_service_selection'||!response.options.includes(label))return;
+            setPaintingServiceOptions(response.options);
+            setPaintingSelection({...EMPTY_PAINTING_SELECTION,serviceType:label});
+            setPaintingSubmitError(null);
+            void submit(label);
+          }}
+          onSelectColorSource={source=>{
+            if(isAnalyzing||paintingQueue)return;
+            setPaintingSelection(current=>({...current,colorSelectionSource:source,selectedDyoColor:null}));
+            if((response?.resultState==='painting_color_catalog'||
+              (response?.resultState==='painting_question'&&(response.answeredSystemQuestions??0)>0))&&
+              paintingSelection.colorSelectionSource!==source)
+              void submit(source==='manual'?'Marka ve renk kodunu kendim yazacağım':'DYO renk kataloğundan seç');
+          }}
+          onCalculate={steps=>{
+            if(paintingQueue||isAnalyzing)return;
+            setPaintingSubmitError(null);
+            if(response?.resultState==='painting_color_catalog'&&paintingSelection.selectedDyoColor){
+              void submit(`DYO renk kodu: ${paintingSelection.selectedDyoColor.colorCode}`);
+              return;
+            }
+            if(response?.resultState==='painting_question'&&(response.answeredSystemQuestions??0)>0&&
+              paintingSelection.colorSelectionSource==='manual'){
+              void submit(`Marka: ${paintingSelection.paintBrand.trim()}, renk kodu: ${paintingSelection.colorCode.trim()}`);
+              return;
+            }
+            setPaintingQueue({steps,next:0,sent:false,fromResponse:null});
+          }}
+          onConfirmColor={()=>{if(!isAnalyzing)void submit('Bu renkle devam et');}}
+          onChangeColor={()=>{
+            if(isAnalyzing)return;
+            setPaintingSelection(current=>({...current,selectedDyoColor:null}));
+            void submit('Rengi değiştir');
+          }}
+          ready={response?.resultState==='painting_question'||response?.resultState==='painting_color_catalog'}
+          busy={isAnalyzing||paintingQueue!==null}
+          fieldsLocked={(response?.answeredSystemQuestions??0)>0}
+          awaitingColorConfirmation={response?.resultState==='painting_color_confirmation'}
+          awaitingCatalogColor={response?.resultState==='painting_color_catalog'}
+          allowFinalColorEdit={response?.resultState==='painting_question'&&
+            (response.answeredSystemQuestions??0)>0&&paintingSelection.colorSelectionSource==='manual'}
+          finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'||
+            response?.resultState==='painting_manual_review'}
+          unavailableText={response?.resultState==='category_unavailable'?response.aiText:null}
+          resultExplanation={response?.resultState==='painting_manual_review'?response.aiText:null}
+          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          errorText={paintingSubmitError??connectionError} />:configurator==='carpet_cleaning'?<CarpetServiceConfigurator selection={carpetSelection}
           onQuantityChange={(key:CarpetKey,delta:number)=>setCarpetSelection(current=>changeCarpetQuantity(current,key,delta))}
           onAreaChange={(key:CarpetKey,index:number,value:string)=>setCarpetSelection(current=>setCarpetArea(current,key,index,value))}
           onCalculate={answer=>void submit(answer)}
