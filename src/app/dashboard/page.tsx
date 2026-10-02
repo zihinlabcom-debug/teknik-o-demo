@@ -14,6 +14,7 @@ import {changeCarpetQuantity,setCarpetArea,type CarpetSelection} from '@/compone
 import {CarpetServiceConfigurator} from '@/components/carpet-service-configurator';
 import {UpholsteryServiceConfigurator,type UpholsterySelection} from '@/components/upholstery-service-configurator';
 import {ApartmentServiceConfigurator,EMPTY_APARTMENT_SELECTION,type ApartmentSelection} from '@/components/apartment-service-configurator';
+import {HomeCleaningServiceConfigurator,EMPTY_HOME_CLEANING_SELECTION,type HomeCleaningSelection} from '@/components/home-cleaning-service-configurator';
 import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 import {useCustomerSession} from '@/components/use-customer-session';
@@ -37,11 +38,16 @@ function DashboardContent() {
   const [carpetSelection,setCarpetSelection]=useState<CarpetSelection>({});
   const [upholsterySelection,setUpholsterySelection]=useState<UpholsterySelection>({});
   const [apartmentSelection,setApartmentSelection]=useState<ApartmentSelection>(EMPTY_APARTMENT_SELECTION);
-  const [selectedCleaningConfigurator,setSelectedCleaningConfigurator]=useState<'carpet_cleaning'|'upholstery_cleaning'|'apartment_cleaning'|null>(null);
+  const [homeSelection,setHomeSelection]=useState<HomeCleaningSelection>(EMPTY_HOME_CLEANING_SELECTION);
+  const [selectedCleaningConfigurator,setSelectedCleaningConfigurator]=useState<'carpet_cleaning'|'upholstery_cleaning'|'apartment_cleaning'|'home_cleaning'|null>(null);
   const [apartmentQueue,setApartmentQueue]=useState<{answers:string[];next:number;sent:boolean}|null>(null);
   const [apartmentSubmitError,setApartmentSubmitError]=useState<string|null>(null);
   const [apartmentAttempt,setApartmentAttempt]=useState(0);
   const apartmentSending=useRef(false);
+  const [homeQueue,setHomeQueue]=useState<{answers:string[];next:number;sent:boolean}|null>(null);
+  const [homeSubmitError,setHomeSubmitError]=useState<string|null>(null);
+  const [homeAttempt,setHomeAttempt]=useState(0);
+  const homeSending=useRef(false);
   const [chatViewport, setChatViewport] = useState<{height:number; top:number}|null>(null);
   const openViewportRef = useRef<{width:number; height:number}|null>(null);
   const messageScrollRef = useRef<HTMLDivElement>(null);
@@ -179,6 +185,38 @@ function DashboardContent() {
       setApartmentAttempt(current=>current+1);
     });
   },[apartmentQueue,apartmentAttempt,isAnalyzing,response,submit]);
+  useEffect(()=>{
+    if(!homeQueue||homeSending.current||isAnalyzing)return;
+    if(response?.resultState==='priced'||response?.resultState==='uncertain_price'){
+      setHomeQueue(null);
+      return;
+    }
+    const answered=response?.answeredSystemQuestions??-1;
+    if(answered>homeQueue.next){
+      setHomeQueue(current=>current?{...current,next:answered,sent:false}:null);
+      return;
+    }
+    if(answered!==homeQueue.next||homeQueue.sent){
+      setHomeSubmitError('Bilgiler gönderilemedi. Lütfen tekrar deneyin.');
+      setHomeQueue(null);
+      return;
+    }
+    if(homeQueue.next===homeQueue.answers.length){
+      setHomeQueue(null);
+      return;
+    }
+    if(response?.resultState!=='cleaning_question'||response.category!=='cleaning'){
+      setHomeSubmitError('Hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setHomeQueue(null);
+      return;
+    }
+    homeSending.current=true;
+    setHomeQueue(current=>current?{...current,sent:true}:null);
+    void submit(homeQueue.answers[homeQueue.next]).finally(()=>{
+      homeSending.current=false;
+      setHomeAttempt(current=>current+1);
+    });
+  },[homeQueue,homeAttempt,isAnalyzing,response,submit]);
   /* eslint-enable react-hooks/set-state-in-effect */
   const handleSubmit = (e?:React.FormEvent, customText?:string) => {
     e?.preventDefault();void submit(customText ?? problemDescription);
@@ -186,7 +224,7 @@ function DashboardContent() {
   const handleOptionClick = (text:string) => {
     if(category==='cleaning'&&response?.resultState==='cleaning_service_selection'){
       const service=CLEANING_SERVICES.find(item=>item.label===text)?.type;
-      setSelectedCleaningConfigurator(service==='carpet_cleaning'||service==='upholstery_cleaning'||service==='apartment_cleaning'?service:null);
+      setSelectedCleaningConfigurator(service==='carpet_cleaning'||service==='upholstery_cleaning'||service==='apartment_cleaning'||service==='home_cleaning'?service:null);
     }
     handleSubmit(undefined,text);
   };
@@ -205,7 +243,8 @@ function DashboardContent() {
 
   const configurator=requested==='carpet_cleaning'||category==='carpet_cleaning'||selectedCleaningConfigurator==='carpet_cleaning'?'carpet_cleaning':
     requested==='sofa_cleaning'||category==='sofa_cleaning'||selectedCleaningConfigurator==='upholstery_cleaning'?'upholstery_cleaning':
-      selectedCleaningConfigurator==='apartment_cleaning'?'apartment_cleaning':null;
+      selectedCleaningConfigurator==='apartment_cleaning'?'apartment_cleaning':
+        selectedCleaningConfigurator==='home_cleaning'?'home_cleaning':null;
   if(configurator){
     const lastMessage=chatHistory.at(-1);
     const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
@@ -230,7 +269,7 @@ function DashboardContent() {
           ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='upholstery_items'}
           busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
-          errorText={connectionError} />:<ApartmentServiceConfigurator
+          errorText={connectionError} />:configurator==='apartment_cleaning'?<ApartmentServiceConfigurator
           selection={apartmentSelection} onChange={setApartmentSelection}
           onCalculate={answers=>{
             if(apartmentQueue||isAnalyzing)return;
@@ -242,7 +281,19 @@ function DashboardContent() {
           fieldsLocked={(response?.answeredSystemQuestions??0)>0}
           finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
-          errorText={apartmentSubmitError??connectionError} />}
+          errorText={apartmentSubmitError??connectionError} />:<HomeCleaningServiceConfigurator
+          selection={homeSelection} onChange={setHomeSelection}
+          onCalculate={answers=>{
+            if(homeQueue||isAnalyzing)return;
+            setHomeSubmitError(null);
+            setHomeQueue({answers,next:response?.answeredSystemQuestions??0,sent:false});
+          }}
+          ready={response?.resultState==='cleaning_question'&&response.category==='cleaning'}
+          busy={isAnalyzing||homeQueue!==null}
+          fieldsLocked={(response?.answeredSystemQuestions??0)>0}
+          finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
+          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          errorText={homeSubmitError??connectionError} />}
       </div>
       {isTechnicianDialogOpen&&<TechnicianHandoffNotice onClose={()=>setIsTechnicianDialogOpen(false)} />}
     </div>;
