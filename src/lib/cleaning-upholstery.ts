@@ -54,8 +54,6 @@ export function advanceUpholsteryCleaning(message: string, previous?: Upholstery
   const state: UpholsteryState = previous ? {step: previous.step, items: [...previous.items], answered: previous.answered} :
     {step: 'items', items: [], answered: 0};
   if (!previous) return {state, text: question, options: [], finished: false, quote: null, answered: 0};
-  if (state.step === 'done') return {state, text: 'Koltuk / Yatak Yıkama fiyatı hazır.', options: [],
-    finished: true, quote: quoteUpholsteryCleaning(state.items), answered: state.answered};
   const items = parseUpholsteryItems(message);
   if (!items) return {state, text: `Ürün veya adet net değil. ${question}`, options: [],
     finished: false, quote: null, answered: state.answered};

@@ -77,7 +77,7 @@ export function quoteCarpetCleaning(items:CarpetItem[]):CarpetQuote|null {
       lines.push({key:item.key,label:product.label,quantity:item.quantity,total:item.quantity*product.price});
     }
   }
-  const baseTotal=lines.reduce((total,line)=>total+line.total,0),hakEdis=Math.max(baseTotal,1000);
+  const baseTotal=lines.reduce((total,line)=>total+line.total,0),hakEdis=baseTotal;
   if(!Number.isSafeInteger(baseTotal))return null;
   return {serviceType:'carpet_cleaning',serviceLabel:'Halı, Perde ve Ev Tekstili Yıkama',
     baseTotal,hakEdis,finalPrice:hakEdis*1.15*1.15,items:lines};
@@ -88,8 +88,6 @@ export function advanceCarpetCleaning(message:string,previous?:CarpetState):Clea
   const state:CarpetState=previous?{step:previous.step,items:[...previous.items],answered:previous.answered}:
     {step:'items',items:[],answered:0};
   if(!previous)return {state,text:question,options:[],finished:false,quote:null,answered:0};
-  if(state.step==='done')return {state,text:'Halı, Perde ve Ev Tekstili Yıkama fiyatı hazır.',options:[],
-    finished:true,quote:quoteCarpetCleaning(state.items),answered:state.answered};
   const parsed=parseCarpetBasket(message);
   if(parsed.unknown)return {state,text:'Ürün türü doğrulanamadı. Bu ürün için otomatik fiyat verilemiyor; yerinde değerlendirme gerekir.',
     options:[],finished:true,quote:null,answered:state.answered};

@@ -60,24 +60,41 @@ test('missing m² and pending requests prevent submission',()=>{
 });
 
 test('backend result uses the shared price card and no client-side price preview',()=>{
- const selection=setCarpetArea(changeCarpetQuantity({},'non_slip',1),'non_slip',0,'3');
+ const selection=setCarpetArea(setCarpetArea(changeCarpetQuantity(changeCarpetQuantity({},'acrylic',1),'acrylic',1),
+  'acrylic',0,'4.2'),'acrylic',1,'6.1');
  const before=render(selection);
  assert.ok(before.includes('Henüz fiyat hesaplanmadı'));
- assert.ok(!before.includes('1.322'));
- const result=servicePricePresentation({category:'carpet_cleaning',resultState:'priced',estimatedPrice:'1.322,50 ₺',
-  pricingData:null,deterministicOMF:null,cleaningQuote:{serviceType:'carpet_cleaning',serviceLabel:'Halı, Perde ve Ev Tekstili Yıkama',finalPrice:1322.5}});
+ assert.ok(!before.includes('1.904'));
+ const result=servicePricePresentation({category:'carpet_cleaning',resultState:'priced',estimatedPrice:'1.904,40 ₺',
+  pricingData:null,deterministicOMF:null,cleaningQuote:{serviceType:'carpet_cleaning',serviceLabel:'Halı, Perde ve Ev Tekstili Yıkama',finalPrice:1904.4}});
  const html=render(selection,{finished:true,result});
  assert.ok(html.includes('Değerlendirme tamamlandı.'));
- assert.ok(html.includes('1.322,50 ₺'));
+ assert.ok(html.includes('1.904,40 ₺'));
  assert.ok(html.includes('Usta çağır'));
  assert.ok(html.includes('Talebi reddet'));
  assert.ok(calculateButton(html).includes('disabled=""'));
+ assert.ok(!render(selection,{busy:true,finished:false,result:null}).includes('Usta çağır'));
+});
+
+test('below-minimum carpet basket shows only warning and remains editable for another item',()=>{
+ const selection=setCarpetArea(changeCarpetQuantity({},'machine',1),'machine',0,'4');
+ const message='Minimum sipariş tutarı 1.000 TL’dir. Bu tutarın altındaki siparişleri alamıyoruz.';
+ const html=render(selection,{minimumOrderMessage:message});
+ assert.ok(html.includes('Minimum sipariş tutarı'));
+ assert.ok(html.includes(message));
+ assert.ok(!html.includes('Usta çağır'));
+ assert.ok(!html.includes('523,71'));
+ assert.ok(!html.includes('1.322,50'));
+ assert.ok(!calculateButton(html).includes('disabled=""'));
+ const increaseButton=html.match(/<button[^>]*aria-label="Makina Halısı Yıkama artır"[^>]*>/)?.[0]??'';
+ assert.ok(increaseButton);
+ assert.ok(!increaseButton.includes('disabled=""'));
 });
 
 test('configurator answers retain locked single, per-item area and mixed-basket prices',()=>{
  const start=advanceCarpetCleaning('Halı Yıkama');
  const cases=[
-  [setCarpetArea(changeCarpetQuantity({},'non_slip',1),'non_slip',0,'3'),1322.5],
+  [setCarpetArea(changeCarpetQuantity({},'non_slip',1),'non_slip',0,'3'),396.75],
   [setCarpetArea(setCarpetArea(changeCarpetQuantity(changeCarpetQuantity({},'acrylic',1),'acrylic',1),'acrylic',0,'4.2'),'acrylic',1,'6.1'),1904.4],
  ];
  for(const [selection,expected] of cases){

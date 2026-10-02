@@ -362,16 +362,26 @@ function DashboardContent() {
           onQuantityChange={(key:CarpetKey,delta:number)=>setCarpetSelection(current=>changeCarpetQuantity(current,key,delta))}
           onAreaChange={(key:CarpetKey,index:number,value:string)=>setCarpetSelection(current=>setCarpetArea(current,key,index,value))}
           onCalculate={answer=>void submit(answer)}
-          ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='carpet_items'}
-          busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
-          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          ready={response?.cleaningInputMode==='carpet_items'&&
+            (response.resultState==='cleaning_question'||response.resultState==='minimum_order_not_met')||
+            resultDismissed&&(response?.category==='carpet_cleaning'||response?.category==='cleaning')&&
+            (response.resultState==='priced'||response.resultState==='uncertain_price')}
+          busy={isAnalyzing} finished={!isAnalyzing&&!resultDismissed&&
+            (response?.resultState==='priced'||response?.resultState==='uncertain_price')}
+          minimumOrderMessage={!isAnalyzing&&response?.resultState==='minimum_order_not_met'?response.aiText:null}
+          result={isAnalyzing?null:resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
           errorText={connectionError} />:configurator==='upholstery_cleaning'?<UpholsteryServiceConfigurator
           selection={upholsterySelection}
           onQuantityChange={(key:UpholsteryKey,delta:number)=>setUpholsterySelection(current=>changeUpholsteryQuantity(current,key,delta))}
           onCalculate={answer=>void submit(answer)}
-          ready={response?.resultState==='cleaning_question'&&response.cleaningInputMode==='upholstery_items'}
-          busy={isAnalyzing} finished={response?.resultState==='priced'||response?.resultState==='uncertain_price'}
-          result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
+          ready={response?.cleaningInputMode==='upholstery_items'&&
+            (response.resultState==='cleaning_question'||response.resultState==='minimum_order_not_met')||
+            resultDismissed&&(response?.category==='sofa_cleaning'||response?.category==='cleaning')&&
+            (response.resultState==='priced'||response.resultState==='uncertain_price')}
+          busy={isAnalyzing} finished={!isAnalyzing&&!resultDismissed&&
+            (response?.resultState==='priced'||response?.resultState==='uncertain_price')}
+          minimumOrderMessage={!isAnalyzing&&response?.resultState==='minimum_order_not_met'?response.aiText:null}
+          result={isAnalyzing?null:resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
           errorText={connectionError} />:configurator==='apartment_cleaning'?<ApartmentServiceConfigurator
           selection={apartmentSelection} onChange={setApartmentSelection}
           onCalculate={answers=>{

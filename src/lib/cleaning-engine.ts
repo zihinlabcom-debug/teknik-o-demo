@@ -15,7 +15,7 @@ export interface CleaningReply {
   state: CleaningState;
   aiText: string;
   options: string[];
-  resultState: 'cleaning_service_selection' | 'cleaning_question' | 'priced' | 'uncertain_price';
+  resultState: 'cleaning_service_selection' | 'cleaning_question' | 'priced' | 'uncertain_price' | 'minimum_order_not_met';
   estimatedPrice: string | null;
   cleaningQuote: CleaningQuote | null;
   answeredSystemQuestions: number;
@@ -26,6 +26,9 @@ export interface CleaningReply {
   canRouteTechnician: boolean;
   cleaningInputMode?: 'home_extras' | 'upholstery_items' | 'carpet_items';
 }
+
+export const MINIMUM_CLEANING_ORDER_TL=1000;
+export const MINIMUM_CLEANING_ORDER_MESSAGE='Minimum sipariş tutarı 1.000 TL’dir. Bu tutarın altındaki siparişleri alamıyoruz.';
 
 const fresh = (): CleaningState => ({serviceType: null, home: null, apartment: null, upholstery: null, carpet: null});
 function selectedService(message: string): CleaningServiceType | null {
@@ -68,6 +71,13 @@ export function runCleaning(message: string, previous?: CleaningState | null,
     questionCount: turn.answered + 1, awaitingAnswer: true, assessmentComplete: false,
     isReadyForPrice: false, canRouteTechnician: false};
   const quote = turn.quote;
+  if(quote&&(state.serviceType==='upholstery_cleaning'||state.serviceType==='carpet_cleaning')&&
+    quote.finalPrice<MINIMUM_CLEANING_ORDER_TL)return {
+    state,aiText:MINIMUM_CLEANING_ORDER_MESSAGE,options:[],resultState:'minimum_order_not_met',
+    estimatedPrice:null,cleaningQuote:null,answeredSystemQuestions:turn.answered,
+    questionCount:turn.answered+1,awaitingAnswer:true,assessmentComplete:false,isReadyForPrice:false,
+    canRouteTechnician:false,cleaningInputMode:state.serviceType==='upholstery_cleaning'?'upholstery_items':'carpet_items',
+  };
   return {state, aiText: turn.text, options: [], resultState: quote ? 'priced' : 'uncertain_price',
     estimatedPrice: quote ? moneyTRY(quote.finalPrice) : null, cleaningQuote: quote,
     answeredSystemQuestions: turn.answered, questionCount: turn.answered, awaitingAnswer: false,

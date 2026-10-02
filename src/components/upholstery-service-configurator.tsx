@@ -4,17 +4,17 @@ import {UPHOLSTERY_PRODUCTS,type UpholsteryKey} from '@/lib/cleaning-upholstery'
 import type {ServicePricePresentation} from '@/lib/service-presentation';
 import {upholsterySelectionAnswer} from './cleaning-input-selector';
 import {ServiceConfiguratorShell} from './service-configurator-shell';
-import {ServiceResultCard} from './service-result';
+import {MinimumOrderNotice,ServiceResultCard} from './service-result';
 
 export type UpholsterySelection=Partial<Record<UpholsteryKey,number>>;
 
 export function UpholsteryServiceConfigurator({selection,onQuantityChange,onCalculate,ready,busy,finished,
-  result,onRequestTechnician,onReject,errorText}:{
+  result,onRequestTechnician,onReject,errorText,minimumOrderMessage}:{
   selection:UpholsterySelection;
   onQuantityChange:(key:UpholsteryKey,delta:number)=>void;
   onCalculate:(answer:string)=>void;
   ready:boolean;busy:boolean;finished:boolean;
-  result:ServicePricePresentation|null;
+  result:ServicePricePresentation|null;minimumOrderMessage?:string|null;
   onRequestTechnician:()=>void;onReject:()=>void;errorText?:string|null;
 }){
   const selected=UPHOLSTERY_PRODUCTS.filter(product=>(selection[product.key]??0)>0);
@@ -49,7 +49,8 @@ export function UpholsteryServiceConfigurator({selection,onQuantityChange,onCalc
         {busy?'Hesaplanıyor…':'Fiyatı Hesapla'}
       </button>
     </div>}
-    result={<ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} />}>
+    result={<><MinimumOrderNotice message={minimumOrderMessage??null} />
+      <ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} /></>}>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Yıkanacak ürünler">
       <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Yıkanacak ürünler</h2>
       <div className="grid min-w-0 gap-3 xl:grid-cols-2">

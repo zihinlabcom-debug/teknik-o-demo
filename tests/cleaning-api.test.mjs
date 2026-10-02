@@ -185,3 +185,40 @@ test('carpet unknown product stays price-uncertain and switching services clears
  const saved=decodeConversationState(result.conversationToken);
  assert.equal(saved.cleaningState.serviceType,'home_cleaning');assert.equal(saved.cleaningState.carpet,null);
 }));
+
+test('minimum upholstery order stays editable through signed API state and becomes priced after increasing quantity',()=>signed(async()=>{
+ for(const route of routes){
+  let result=await post(route,'Koltuk Yıkama hizmeti için yardım istiyorum.',null,
+   {category:'sofa_cleaning',categorySelected:true});
+  result=await post(route,'1 berjer',result);
+  assert.equal(result.resultState,'minimum_order_not_met');
+  assert.equal(result.aiText,'Minimum sipariş tutarı 1.000 TL’dir. Bu tutarın altındaki siparişleri alamıyoruz.');
+  assert.equal(result.estimatedPrice,null);assert.equal(result.cleaningQuote,null);
+  assert.equal(result.canRouteTechnician,false);
+  assert.equal(servicePricePresentation(result),null);
+  assert.deepEqual(decodeConversationState(result.conversationToken).cleaningState.upholstery.items,
+   [{key:'armchair',quantity:1}]);
+  result=await post(route,'2 berjer',result);
+  assert.equal(result.resultState,'priced');
+  assert.equal(result.cleaningQuote.finalPrice,1322.5);
+  assert.deepEqual(decodeConversationState(result.conversationToken).cleaningState.upholstery.items,
+   [{key:'armchair',quantity:2}]);
+ }
+}));
+
+test('a dismissed priced carpet result can be replaced with a new basket, including a below-minimum one',()=>signed(async()=>{
+ for(const route of routes){
+  let result=await post(route,'Halı Yıkama hizmeti için yardım istiyorum.',null,
+   {category:'carpet_cleaning',categorySelected:true});
+  result=await post(route,'Akrilik Halı Yıkama: 4,2 m² + 6,1 m²',result);
+  assert.equal(result.resultState,'priced');
+  result=await post(route,'Makina Halısı Yıkama: 4 m²',result);
+  assert.equal(result.resultState,'minimum_order_not_met');
+  assert.equal(result.estimatedPrice,null);assert.equal(result.canRouteTechnician,false);
+  assert.deepEqual(decodeConversationState(result.conversationToken).cleaningState.carpet.items,
+   [{key:'machine',areasM2:[4]}]);
+  result=await post(route,'Makina Halısı Yıkama: 4 m²; Battaniye Yıkama: 1 adet',result);
+  assert.equal(result.resultState,'priced');
+  assert.ok(Math.abs(result.cleaningQuote.finalPrice-(396+499)*1.15*1.15)<1e-8);
+ }
+}));

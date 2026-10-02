@@ -48,20 +48,37 @@ test('mixed basket keeps set and extras independent with quantity limits and bac
 });
 
 test('priced and uncertain results use the shared card; no client price preview',()=>{
- const selection={armchair:1};
+ const selection={armchair:2};
  const before=render(selection);
  assert.ok(before.includes('Henüz fiyat hesaplanmadı.'));
- assert.ok(!before.includes('661,25'));
- const result=servicePricePresentation({category:'sofa_cleaning',resultState:'priced',estimatedPrice:'₺661,25',
-  pricingData:null,deterministicOMF:null,cleaningQuote:{serviceType:'upholstery_cleaning',serviceLabel:'Koltuk / Yatak Yıkama',finalPrice:661.25}});
+ assert.ok(!before.includes('1.322,50'));
+ const result=servicePricePresentation({category:'sofa_cleaning',resultState:'priced',estimatedPrice:'₺1.322,50',
+  pricingData:null,deterministicOMF:null,cleaningQuote:{serviceType:'upholstery_cleaning',serviceLabel:'Koltuk / Yatak Yıkama',finalPrice:1322.5}});
  const html=render(selection,{finished:true,result});
- assert.ok(html.includes('₺661,25'));
+ assert.ok(html.includes('₺1.322,50'));
  assert.ok(html.includes('Usta çağır'));
  assert.ok(html.includes('Talebi reddet'));
  assert.ok(calculateButton(html).includes('disabled=""'));
  const uncertain=servicePricePresentation({resultState:'uncertain_price',estimatedPrice:null,pricingData:null,deterministicOMF:null});
  assert.ok(render(selection,{finished:true,result:uncertain}).includes('Belirsiz'));
  assert.ok(render(selection,{busy:true}).includes('Hesaplanıyor'));
+ assert.ok(!render(selection,{busy:true,finished:false,result:null}).includes('Usta çağır'));
+});
+
+test('minimum notice has no price or technician action and keeps the selected armchair editable',()=>{
+ const message='Minimum sipariş tutarı 1.000 TL’dir. Bu tutarın altındaki siparişleri alamıyoruz.';
+ const html=render({armchair:1},{minimumOrderMessage:message});
+ assert.ok(html.includes('Minimum sipariş tutarı'));
+ assert.ok(html.includes(message));
+ assert.ok(!html.includes('Usta çağır'));
+ assert.ok(!html.includes('₺661,25'));
+ assert.ok(!calculateButton(html).includes('disabled=""'));
+ const increaseButton=html.match(/<button[^>]*aria-label="Berjer artır"[^>]*>/)?.[0]??'';
+ assert.ok(increaseButton);
+ assert.ok(!increaseButton.includes('disabled=""'));
+ const afterReject=render({armchair:2},{finished:false,result:null});
+ assert.ok(afterReject.includes('2 adet'));
+ assert.ok(!calculateButton(afterReject).includes('disabled=""'));
 });
 
 test('source product prices remain unchanged for berjer, double bed and set',()=>{

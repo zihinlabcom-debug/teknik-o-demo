@@ -21,14 +21,15 @@ test('each physical m² item is rounded separately, without monetary rounding',(
  const multi=quoteCarpetCleaning([{key:'acrylic',areasM2:[4.2,6.1]}]);
  assert.deepEqual(multi.items[0].billableM2,[5,7]);assert.equal(multi.baseTotal,1440);
 });
-test('mixed basket has one minimum and one risk/service application',()=>{
+test('mixed basket has one final-price threshold and one risk/service application',()=>{
  const first=quoteCarpetCleaning([{key:'acrylic',areasM2:[4.2]},{key:'non_slip',areasM2:[3.1]}]);
  assert.equal(first.baseTotal,1000);assert.equal(first.hakEdis,1000);assert.equal(first.finalPrice,1322.5);
  const second=quoteCarpetCleaning([{key:'roller_blind',areasM2:[2.2,3.1]},{key:'blanket',quantity:1}]);
  assert.deepEqual(second.items[0].billableM2,[3,4]);
  assert.equal(second.baseTotal,1192);assert.ok(Math.abs(second.finalPrice-1576.42)<1e-9);
  const minimum=quoteCarpetCleaning([{key:'non_slip',areasM2:[3]}]);
- assert.equal(minimum.baseTotal,300);assert.equal(minimum.hakEdis,1000);assert.equal(minimum.finalPrice,1322.5);
+ assert.equal(minimum.baseTotal,300);assert.equal(minimum.hakEdis,300);
+ assert.ok(Math.abs(minimum.finalPrice-396.75)<1e-9);
  const mixed=quoteCarpetCleaning([{key:'acrylic',areasM2:[4.2]},{key:'roller_blind',areasM2:[2.2,3.1]},{key:'blanket',quantity:1}]);
  assert.equal(mixed.baseTotal,600+297+396+499);
  assert.equal(mixed.finalPrice,mixed.baseTotal*1.15*1.15);
@@ -54,5 +55,12 @@ test('unknown free text ends uncertain; incomplete m² asks for the precise phys
  const unknown=advanceCarpetCleaning('İran halısı: 4 m²',start.state);
  assert.equal(unknown.finished,true);assert.equal(unknown.quote,null);
  const good=advanceCarpetCleaning('Kaymaz Halı: 3 m²',start.state);
- assert.equal(good.finished,true);assert.equal(good.quote.finalPrice,1322.5);
+ assert.equal(good.finished,true);assert.ok(Math.abs(good.quote.finalPrice-396.75)<1e-9);
+});
+
+test('four square metres of machine carpet keep the unraised final amount for the server acceptance gate',()=>{
+ const quote=quoteCarpetCleaning([{key:'machine',areasM2:[4]}]);
+ assert.equal(quote.baseTotal,396);
+ assert.equal(quote.hakEdis,396);
+ assert.equal(Number(quote.finalPrice.toFixed(2)),523.71);
 });

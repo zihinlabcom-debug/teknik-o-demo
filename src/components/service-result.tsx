@@ -28,6 +28,14 @@ export function ServiceResultCard({result,onRequestTechnician,onReject}:{result:
     </div>
   </section>;
 }
+export function MinimumOrderNotice({message}:{message:string|null}){
+  if(!message)return null;
+  return <section aria-label="Minimum sipariş uyarısı" role="status"
+    className="mt-4 rounded-2xl border-2 border-amber-300 bg-amber-50 p-4 text-slate-900 shadow-sm">
+    <h3 className="text-sm font-bold">Minimum sipariş tutarı</h3>
+    <p className="mt-2 text-sm leading-6">{message}</p>
+  </section>;
+}
 export function DiagnosisDebugPanel({enabled,response}:{enabled:boolean;response:ServiceResponse|null}){
   if(!enabled)return null;
   return <section aria-label="Teşhis debug" className="mt-3 rounded-2xl border border-slate-200 bg-white p-3 text-xs text-slate-600">

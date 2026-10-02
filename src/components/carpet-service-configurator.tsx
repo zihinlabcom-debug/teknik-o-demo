@@ -2,7 +2,7 @@
 
 import {CARPET_PRODUCTS,type CarpetKey} from '@/lib/cleaning-carpet';
 import type {ServicePricePresentation} from '@/lib/service-presentation';
-import {ServiceResultCard} from './service-result';
+import {MinimumOrderNotice,ServiceResultCard} from './service-result';
 import {ServiceConfiguratorShell} from './service-configurator-shell';
 import {carpetSelectionAnswer,carpetSelectionMissing,type CarpetSelection} from './cleaning-carpet-input-selector';
 
@@ -13,13 +13,13 @@ const groups=[
 ];
 
 export function CarpetServiceConfigurator({selection,onQuantityChange,onAreaChange,onCalculate,ready,busy,finished,
-  result,onRequestTechnician,onReject,errorText}:{
+  result,onRequestTechnician,onReject,errorText,minimumOrderMessage}:{
   selection:CarpetSelection;
   onQuantityChange:(key:CarpetKey,delta:number)=>void;
   onAreaChange:(key:CarpetKey,index:number,value:string)=>void;
   onCalculate:(answer:string)=>void;
   ready:boolean;busy:boolean;finished:boolean;
-  result:ServicePricePresentation|null;
+  result:ServicePricePresentation|null;minimumOrderMessage?:string|null;
   onRequestTechnician:()=>void;onReject:()=>void;errorText?:string|null;
 }){
   const missing=carpetSelectionMissing(selection);
@@ -60,7 +60,8 @@ export function CarpetServiceConfigurator({selection,onQuantityChange,onAreaChan
         {busy?'Hesaplanıyor…':'Fiyatı Hesapla'}
       </button>
     </div>}
-    result={<ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} />}>
+    result={<><MinimumOrderNotice message={minimumOrderMessage??null} />
+      <ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} /></>}>
     {groups.map(group=><section key={group.name} className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label={group.name}>
       <h2 className="mb-4 text-lg font-bold text-[#0B1727]">{group.name}</h2>
       <div className="grid min-w-0 gap-3 xl:grid-cols-2">
