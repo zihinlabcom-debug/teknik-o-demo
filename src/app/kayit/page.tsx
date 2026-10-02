@@ -31,7 +31,9 @@ export default function KayitPage() {
     district: '',
     address: ''
   });
-  const [otpCode, setOtpCode] = useState<string[]>(['', '', '', '']);
+  const [otpCode, setOtpCode] = useState<string[]>(Array(6).fill(''));
+  const [notice,setNotice]=useState('');
+  const [busy,setBusy]=useState(false);
   useEffect(() => {
     const loadCities = async () => {
       const { data, error } = await supabase.from('cities').select('id,name').eq('is_active', true).order('plate_code');
@@ -66,13 +68,21 @@ export default function KayitPage() {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone) {
       alert('Lütfen zorunlu alanları (Ad Soyad ve Telefon) doldurunuz.');
       return;
     }
-    setAuthStep('otp');
+    setBusy(true);setNotice('');
+    try{
+      const response=await fetch('/api/auth/otp/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:formData.phone,fullName:formData.fullName,mode:'signup'})});
+      const result=await response.json();
+      if(!response.ok){setNotice(result.error||'Doğrulama başlatılamadı.');return;}
+      setAuthStep('otp');
+      if(result.delivery==='test')setNotice('Test hesabı için yapılandırılmış test kodunu girin. SMS gönderilmedi.');
+    }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
+    finally{setBusy(false);}
   };
 
   const handleOtpChange = (index: number, value: string) => {
@@ -81,7 +91,7 @@ export default function KayitPage() {
     newOtp[index] = value;
     setOtpCode(newOtp);
 
-    if (value && index < 3) {
+    if (value && index < otpCode.length-1) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       nextInput?.focus();
     }
@@ -94,11 +104,15 @@ export default function KayitPage() {
     }
   };
 
-  const handleVerifyOtp = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('tekniko_customer', JSON.stringify(formData));
-    }
-    router.push('/hizmetler');
+  const handleVerifyOtp = async () => {
+    setBusy(true);setNotice('');
+    try{
+      const response=await fetch('/api/auth/otp/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:formData.phone,token:otpCode.join('')})});
+      const result=await response.json();
+      if(!response.ok){setNotice(result.error||'Kod doğrulanamadı.');return;}
+      router.replace(result.redirect||'/hizmetler');router.refresh();
+    }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
+    finally{setBusy(false);}
   };
 
   return (
@@ -234,11 +248,13 @@ export default function KayitPage() {
 
             <button
               type="submit"
+              disabled={busy}
               className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm mt-3"
             >
               <span>Doğrulama Kodu Gönder</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+            <p className="text-xs leading-5 text-slate-500">Bu aşamada hesap için adınız ve telefonunuz kaydedilir. E-posta ve adres bilgileriniz henüz kaydedilmez.</p>
           </form>
         ) : (
           <div className="space-y-5 text-center">
@@ -248,7 +264,7 @@ export default function KayitPage() {
             <div>
               <h3 className="text-xl font-bold text-slate-900">Doğrulama Kodu</h3>
               <p className="text-xs text-slate-500 mt-1">
-                <span className="font-semibold text-slate-700">{formData.phone}</span> numarasına gönderilen 4 haneli kodu giriniz.
+                <span className="font-semibold text-slate-700">{formData.phone}</span> için doğrulama kodunu giriniz.
               </p>
             </div>
 
@@ -272,6 +288,7 @@ export default function KayitPage() {
             <div className="space-y-2">
               <button
                 onClick={handleVerifyOtp}
+                disabled={busy}
                 className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md text-sm"
               >
                 Kayıt Oluştur ve Giriş Yap
@@ -285,6 +302,7 @@ export default function KayitPage() {
             </div>
           </div>
         )}
+        {notice&&<p role="status" className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-3 text-sm text-orange-900">{notice}</p>}
       </div>
     </div>
   );

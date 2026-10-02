@@ -18,7 +18,6 @@ import {HomeCleaningServiceConfigurator,EMPTY_HOME_CLEANING_SELECTION,type HomeC
 import {PaintingServiceConfigurator,EMPTY_PAINTING_SELECTION,type PaintingSelection,type PaintingSubmissionStep} from '@/components/painting-service-configurator';
 import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
-import {useCustomerSession} from '@/components/use-customer-session';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation,type ServiceResponse} from '@/lib/service-presentation';
@@ -68,8 +67,7 @@ function DashboardContent() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const selectedCategoryStarted = useRef(false);
-  const customerStatus=useCustomerSession();
-  const navigationReady=customerStatus==='authenticated'&&isServiceCategory(requested);
+  const navigationReady=isServiceCategory(requested);
   const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
   const lastAssistantId = [...chatHistory].reverse().find(message => message.sender === 'ai')?.id;
   const latestIsAssistant = chatHistory.at(-1)?.sender === 'ai';
@@ -79,9 +77,8 @@ function DashboardContent() {
     programmaticScrollTimerRef.current = window.setTimeout(() => { programmaticScrollRef.current = false; }, 100);
   }, []);
   useEffect(()=>{
-    if(customerStatus==='guest')router.replace('/');
-    else if(customerStatus==='authenticated'&&!isServiceCategory(requested))router.replace('/hizmetler');
-  },[customerStatus,requested,router]);
+    if(!isServiceCategory(requested))router.replace('/hizmetler');
+  },[requested,router]);
   useLayoutEffect(() => {
     const area = messageScrollRef.current;
     if (area && followLatestRef.current) {

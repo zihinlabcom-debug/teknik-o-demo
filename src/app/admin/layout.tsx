@@ -1,5 +1,7 @@
 import type {ReactNode} from 'react';
 import {OperationPanelShell} from '@/components/operation-panel';
+import {currentAccount} from '@/lib/account-supabase';
+import {redirect} from 'next/navigation';
 
 const links=[
   {href:'/admin',label:'Operasyon özeti'},
@@ -14,6 +16,8 @@ const links=[
   {href:'/admin/ik-havuzu',label:'İK havuzu'},
 ] as const;
 
-export default function AdminLayout({children}:{children:ReactNode}){
-  return <OperationPanelShell area="Yönetim paneli" subtitle="Veri entegrasyonu bekleniyor" links={links}>{children}</OperationPanelShell>;
+export default async function AdminLayout({children}:{children:ReactNode}){
+  const account=await currentAccount();
+  if(account?.role!=='admin')redirect(account?'/'+(account.role==='technician'?'usta':'hizmetler'):'/giris');
+  return <OperationPanelShell area="Yönetim paneli" subtitle="Veri entegrasyonu bekleniyor" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
 }

@@ -1,5 +1,7 @@
 import type {ReactNode} from 'react';
 import {OperationPanelShell} from '@/components/operation-panel';
+import {currentAccount} from '@/lib/account-supabase';
+import {redirect} from 'next/navigation';
 
 const links=[
   {href:'/usta',label:'Ana panel'},
@@ -8,6 +10,8 @@ const links=[
   {href:'/usta/ek-maliyet',label:'Ek maliyet talebi'},
 ] as const;
 
-export default function ProviderLayout({children}:{children:ReactNode}){
-  return <OperationPanelShell area="Usta paneli" subtitle="Operasyon alanı" links={links}>{children}</OperationPanelShell>;
+export default async function ProviderLayout({children}:{children:ReactNode}){
+  const account=await currentAccount();
+  if(account?.role!=='technician')redirect(account?'/'+(account.role==='admin'?'admin':'hizmetler'):'/giris');
+  return <OperationPanelShell area="Usta paneli" subtitle="Operasyon alanı" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
 }

@@ -4,21 +4,23 @@ import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 export type PanelLink={href:string;label:string};
 
-export function OperationPanelShell({area,subtitle,links,children}:{
-  area:string;subtitle:string;links:readonly PanelLink[];children:ReactNode;
+export function OperationPanelShell({area,subtitle,links,children,isTest}:{
+  area:string;subtitle:string;links:readonly PanelLink[];children:ReactNode;isTest?:boolean;
 }){
   return <div className="min-h-screen bg-slate-50 text-[#0B1727]">
     <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col lg:flex-row">
       <aside className="shrink-0 border-b border-slate-200 bg-white px-4 py-5 lg:w-64 lg:border-b-0 lg:border-r lg:px-5 lg:py-8" aria-label={`${area} menüsü`}>
-        <Link href="/hizmetler" className="inline-flex max-w-full items-center"><TeknikOBrand size="compact"/></Link>
+        <Link href={links[0]?.href??'/'} className="inline-flex max-w-full items-center"><TeknikOBrand size="compact"/></Link>
         <p className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-[#D97724]">{area}</p>
         <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
+        {typeof isTest==='boolean'&&<div className="mt-3"><RecordTypeBadge kind={isTest?'TEST':'GERÇEK'}/></div>}
         <nav aria-label={`${area} navigasyonu`} className="mt-5 flex max-w-full gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
           {links.map(link=><Link key={link.href} href={link.href}
             className="shrink-0 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-orange-50 hover:text-[#B75D17] lg:shrink">
             {link.label}
           </Link>)}
         </nav>
+        <form action="/api/auth/logout" method="post" className="mt-5"><button type="submit" className="text-sm font-semibold text-slate-600 hover:text-[#B75D17]">Çıkış Yap</button></form>
       </aside>
       <main className="min-w-0 flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-10">{children}</main>
     </div>
