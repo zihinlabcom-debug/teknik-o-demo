@@ -69,6 +69,12 @@ test('auth routes forward only identity fields; role and is_test are never clien
   assert.doesNotMatch(route,/role:body\.role|is_test:body\.is_test/);
 });
 
+test('verified auth profile is checked by trusted server client',()=>{
+  const otp=readFileSync(new URL('../src/lib/account-otp.ts',import.meta.url),'utf8');
+  assert.match(otp,/const profileDb=adminSupabase\(\)/);
+  assert.match(otp,/profileDb\.from\('users'\).*\.eq\('id',userId\)/);
+});
+
 test('session establishment and logout require writable SSR cookies',()=>{
   const otp=readFileSync(new URL('../src/lib/account-otp.ts',import.meta.url),'utf8');
   const logout=readFileSync(new URL('../src/app/api/auth/logout/route.ts',import.meta.url),'utf8');

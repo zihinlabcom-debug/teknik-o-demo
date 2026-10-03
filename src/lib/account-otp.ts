@@ -64,7 +64,8 @@ export async function verifyOtp(input:{phone:string;token:string}):Promise<OtpRe
       if(error||!data.user)return {ok:false,error:'Doğrulama kodu geçersiz veya süresi dolmuş.'};
       userId=data.user.id;
     }
-    const {data:profile,error:profileError}=await db.from('users').select('role,is_active').eq('id',userId).maybeSingle();
+    const profileDb=adminSupabase();
+    const {data:profile,error:profileError}=await profileDb.from('users').select('role,is_active').eq('id',userId).maybeSingle();
     if(profileError||!profile||profile.is_active!==true||!['customer','technician','admin'].includes(profile.role)){
       await db.auth.signOut();
       return {ok:false,error:'Hesap profili doğrulanamadı. Destek ile iletişime geçin.'};
