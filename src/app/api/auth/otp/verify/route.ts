@@ -13,12 +13,5 @@ export async function POST(request:Request){
   );
   const response=NextResponse.json(result,{status:result.ok?200:400});
   pendingCookies.forEach(({name,value,options})=>response.cookies.set(name,value,options));
-  console.info('[stage1-auth] verify response',{
-    ok:result.ok,
-    pendingCookieCount:pendingCookies.length,
-    pendingCookieNames:pendingCookies.map(cookie=>cookie.name),
-    responseCookieCount:response.cookies.getAll().length,
-    responseCookieNames:response.cookies.getAll().map(cookie=>cookie.name),
-  });
   return response;
 }
