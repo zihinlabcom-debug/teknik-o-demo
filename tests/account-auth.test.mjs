@@ -75,10 +75,16 @@ test('verified auth profile is checked by trusted server client',()=>{
   assert.match(otp,/profileDb\.from\('users'\).*\.eq\('id',userId\)/);
 });
 
+test('OTP route forwards Supabase session cookies to its HTTP response',()=>{
+  const route=readFileSync(new URL('../src/app/api/auth/otp/verify/route.ts',import.meta.url),'utf8');
+  assert.match(route,/const pendingCookies:PendingCookie\[\]=\[\]/);
+  assert.match(route,/response\.cookies\.set\(name,value,options\)/);
+});
+
 test('session establishment and logout require writable SSR cookies',()=>{
   const otp=readFileSync(new URL('../src/lib/account-otp.ts',import.meta.url),'utf8');
   const logout=readFileSync(new URL('../src/app/api/auth/logout/route.ts',import.meta.url),'utf8');
-  assert.match(otp,/verifyOtp[\s\S]*serverSupabase\(\{writeCookies:true\}\)/);
+  assert.match(otp,/verifyOtp[\s\S]*serverSupabase\(\{writeCookies:true,onCookies\}\)/);
   assert.match(logout,/serverSupabase\(\{writeCookies:true\}\)/);
   assert.match(logout,/if\(error\)return NextResponse\.json/);
 });

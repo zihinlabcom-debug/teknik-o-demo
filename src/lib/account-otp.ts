@@ -1,4 +1,4 @@
-import {adminSupabase,serverSupabase} from './account-supabase';
+import {adminSupabase,serverSupabase,type PendingCookie} from './account-supabase';
 import {accountDestination,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment} from './account-auth';
 
 type Mode='signup'|'login';
@@ -39,12 +39,12 @@ export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string}
   }catch{return {ok:false,error:'Doğrulama hizmetine şu anda ulaşılamıyor.'};}
 }
 
-export async function verifyOtp(input:{phone:string;token:string}):Promise<OtpResult>{
+export async function verifyOtp(input:{phone:string;token:string},onCookies?:(values:PendingCookie[])=>void):Promise<OtpResult>{
   const phone=normalizePhone(input.phone);
   const token=input.token.trim();
   if(!phone||!/^\d{4,10}$/.test(token))return {ok:false,error:'Geçerli bir doğrulama kodu girin.'};
   try{
-    const db=await serverSupabase({writeCookies:true});
+    const db=await serverSupabase({writeCookies:true,onCookies});
     let userId:string|undefined;
     if(testOtpEnvironment(environment())){
       const account=await testAccount(phone);
