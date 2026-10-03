@@ -16,7 +16,17 @@ export async function proxy(request:NextRequest){
     },
   }});
   try{
+    console.info('[stage1-auth] proxy request',{
+      path:request.nextUrl.pathname,
+      requestCookieCount:request.cookies.getAll().length,
+      requestCookieNames:request.cookies.getAll().map(cookie=>cookie.name),
+    });
     const {data:{user},error:userError}=await db.auth.getUser();
+    console.info('[stage1-auth] proxy user',{
+      path:request.nextUrl.pathname,
+      hasUser:Boolean(user),
+      hasUserError:Boolean(userError),
+    });
     let account=null;
     if(user&&!userError){
       const {data,error}=await db.from('users').select('id,role,is_test,is_active').eq('id',user.id).maybeSingle();
