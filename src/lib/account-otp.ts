@@ -1,5 +1,5 @@
 import {adminSupabase,serverSupabase} from './account-supabase';
-import {accountDestination,normalizePhone,testOtpAllowed,testOtpEnvironment} from './account-auth';
+import {accountDestination,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment} from './account-auth';
 
 type Mode='signup'|'login';
 type OtpResult={ok:true;delivery:'sms'|'test';redirect?:string}|{ok:false;error:string};
@@ -9,7 +9,7 @@ function environment(){return {nodeEnv:process.env.NODE_ENV,vercelEnv:process.en
 
 async function knownAccount(phone:string){
   const db=adminSupabase();
-  const {data,error}=await db.from('users').select('id,email,is_test,is_active').eq('phone',phone).limit(2);
+  const {data,error}=await db.from('users').select('id,email,is_test,is_active').in('phone',phoneLookupVariants(phone)).limit(2);
   if(error)throw new Error('Account lookup failed');
   if(data?.length!==1||data[0].is_active!==true)return null;
   return data[0] as {id:string;email:string|null;is_test:boolean;is_active:true};

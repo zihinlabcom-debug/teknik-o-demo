@@ -32,6 +32,22 @@ export function normalizePhone(value:string):string|null {
   return /^5\d{9}$/.test(local)?`+90${local}`:null;
 }
 
+export function phoneLookupVariants(value:string):string[] {
+  const canonical=normalizePhone(value);
+  if(!canonical)return [];
+  const local=canonical.slice(3);
+  const grouped=`${local.slice(0,3)} ${local.slice(3,6)} ${local.slice(6,8)} ${local.slice(8,10)}`;
+  return [...new Set([
+    canonical,
+    `90${local}`,
+    `0${local}`,
+    local,
+    `+90 ${grouped}`,
+    `0${grouped}`,
+    grouped,
+  ])];
+}
+
 export function testOtpEnvironment(input:{nodeEnv:string|undefined;vercelEnv:string|undefined;appEnv:string|undefined;enabled:string|undefined}):boolean {
   return input.enabled==='true'&&input.vercelEnv!=='production'&&
     (input.nodeEnv==='development'||input.nodeEnv==='test'||

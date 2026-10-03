@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {authorizePath,normalizePhone,testOtpAllowed,testOtpEnvironment,accountDestination} from '../src/lib/account-auth.ts';
+import {authorizePath,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment,accountDestination} from '../src/lib/account-auth.ts';
 
 const customer={id:'c',role:'customer',is_test:false,is_active:true};
 const technician={id:'t',role:'technician',is_test:true,is_active:true};
@@ -26,6 +26,20 @@ test('Turkish phone normalization accepts equivalent safe formats',()=>{
   assert.equal(normalizePhone('05XX XXX XX XX'),null);
   assert.equal(normalizePhone('0532 123 45 67'),'+905321234567');
   assert.equal(normalizePhone('+90 532 123 45 67'),'+905321234567');
+});
+
+test('phone lookup accepts canonical and common stored Turkish formats',()=>{
+  const variants=phoneLookupVariants('+90 500 000 01 01');
+  assert.ok(variants.includes('+905000000101'));
+  assert.ok(variants.includes('+90 500 000 01 01'));
+  assert.ok(variants.includes('0500 000 01 01'));
+  assert.equal(new Set(variants).size,variants.length);
+});
+
+test('account lookup remains fail-closed when more than one phone variant matches',()=>{
+  const otp=readFileSync(new URL('../src/lib/account-otp.ts',import.meta.url),'utf8');
+  assert.match(otp,/\.in\('phone',phoneLookupVariants\(phone\)\)\.limit\(2\)/);
+  assert.match(otp,/data\?\.length!==1/);
 });
 
 test('fixed OTP works only for enabled test accounts outside production',()=>{
