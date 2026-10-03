@@ -26,10 +26,6 @@ export async function proxy(request:NextRequest){
       path:request.nextUrl.pathname,
       hasUser:Boolean(user),
       hasUserError:Boolean(userError),
-      userErrorName:userError?.name ?? null,
-      userErrorStatus:userError?.status ?? null,
-      userErrorCode:userError?.code ?? null,
-      userErrorMessage:userError?.message ?? null,
     });
     let account=null;
     if(user&&!userError){
