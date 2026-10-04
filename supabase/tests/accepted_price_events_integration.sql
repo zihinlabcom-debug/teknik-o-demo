@@ -210,11 +210,16 @@ do $$ declare job uuid; begin
   perform pg_temp.assert_ok((select count(*)=1 from public.operational_events where entity_id=pg_temp.test_id('appointment') and event_type='appointment.confirmed'),'appointment status event idempotent');
   perform pg_temp.assert_ok((select count(*)=1 from public.operational_events where entity_id=pg_temp.test_id('appointment') and event_type='appointment.cancelled'),'appointment cancellation event');
 
-  update public.service_jobs
-    set status='cancelled',cancelled_at=now()
-    where id=job;
-  perform pg_temp.assert_ok((select count(*)=1 from public.operational_events
-    where job_id=job and event_type='job.cancelled'),'job cancellation event');
+  begin
+    update public.service_jobs
+      set status='cancelled',cancelled_at=now()
+      where id=job;
+    raise exception 'Completed job cancellation allowed';
+  exception when raise_exception then
+    if sqlerrm <> 'Terminal job status is immutable' then raise; end if;
+  end;
+  perform pg_temp.assert_ok((select count(*)=0 from public.operational_events
+    where job_id=job and event_type='job.cancelled'),'completed job cannot emit cancellation event');
 
   begin
     update public.operational_events set event_type='tampered' where job_id=job;

@@ -1,9 +1,19 @@
-import {EmptyPanelState,EventTimelineEmpty,FieldOutline,PanelCard,PanelHeading} from '@/components/operation-panel';
+export const dynamic = 'force-dynamic';
 
-export default function CustomerRequestDetail(){
-  return <><PanelHeading title="Talep detayı" description="Talep bilgileri gerçek hizmet kaydı bağlandığında burada görüntülenecek."/>
-    <div className="space-y-4"><EmptyPanelState>Bu talep için görüntülenebilir bir kayıt bulunmuyor.</EmptyPanelState>
-      <PanelCard title="Talep bilgileri"><FieldOutline labels={['Hizmet / kategori','Talep durumu','Oluşturulma zamanı','Fiyat','Atanan usta','Hizmet adresi']}/></PanelCard>
-      <EventTimelineEmpty/>
-    </div></>;
+import {notFound} from 'next/navigation';
+import {EmptyPanelState,PanelCard,PanelHeading} from '@/components/operation-panel';
+import {OperationActionButton} from '@/components/operation-action-button';
+import {customerRequestDetail,OperationError} from '@/lib/operation-server';
+
+export default async function CustomerRequestDetail({params}:{params:Promise<{id:string}>}){
+  const {id}=await params; let d;
+  try{d=await customerRequestDetail(id);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
+  const accepted=d.quotes.find(q=>q.status==='accepted');
+  const offered=d.quotes.find(q=>q.status==='offered'&&(!q.expires_at||new Date(q.expires_at)>new Date()));
+  return <><PanelHeading title="Talep detayı" description="Talep, fiyat ve atama durumunuz."/><div className="space-y-4">
+    <PanelCard title="Talep bilgileri"><dl className="grid gap-3 sm:grid-cols-2"><div><dt className="font-bold">Hizmet</dt><dd>{d.category_name}</dd></div><div><dt className="font-bold">Durum</dt><dd>{d.status}</dd></div><div><dt className="font-bold">Oluşturulma</dt><dd>{new Date(d.created_at).toLocaleString('tr-TR')}</dd></div><div><dt className="font-bold">Adres</dt><dd>{d.address?.address_line||d.address?.label||'—'}</dd></div><div><dt className="font-bold">Usta</dt><dd>{d.technician?.name||'Henüz atanmadı'}</dd></div><div><dt className="font-bold">Fiyat</dt><dd>{accepted?`${accepted.total_amount} ${accepted.currency}`:offered?`${offered.total_amount} ${offered.currency}`:'—'}</dd></div></dl></PanelCard>
+    {offered&&!accepted&&<PanelCard title="Fiyat teklifi"><p className="mb-4 text-sm">{offered.total_amount} {offered.currency}</p><OperationActionButton endpoint={`/api/operations/quotes/${offered.id}/accept`} label="Teklifi kabul et" confirmText="Bu fiyat teklifini kabul ediyor musunuz?"/></PanelCard>}
+    <PanelCard title="Randevu">{d.appointments.length?d.appointments.map(a=><p key={a.id} className="text-sm">{a.status} — {new Date(a.starts_at).toLocaleString('tr-TR')}</p>):<EmptyPanelState>Henüz randevu yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Durum zaman çizelgesi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {e.event_type}</p>):<EmptyPanelState>Henüz olay kaydı yok.</EmptyPanelState>}</PanelCard>
+  </div></>;
 }

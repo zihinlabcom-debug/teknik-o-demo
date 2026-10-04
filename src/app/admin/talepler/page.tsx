@@ -1,12 +1,10 @@
-import {PanelHeading,PanelTable} from '@/components/operation-panel';
+export const dynamic = 'force-dynamic';
 
-export default function AdminRequests(){
-  return <><PanelHeading title="Talepler" description="Hizmet talepleri gerçek kayıt entegrasyonundan sonra burada izlenecek."/>
-    <section aria-label="Talep filtreleri" className="mb-4 flex flex-wrap gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-      {['Durum','Kategori','TEST / GERÇEK'].map(label=><label key={label} className="min-w-0 flex-1 text-sm font-semibold sm:min-w-40">{label}
-        <select disabled aria-label={label} className="mt-1 block w-full rounded-xl border border-slate-300 bg-slate-50 p-2.5 text-slate-500"><option>Veri bağlantısı bekleniyor</option></select>
-      </label>)}
-    </section>
-    <PanelTable title="Talep listesi" columns={['Talep ID','Tarih','Müşteri','Kategori','Durum','Fiyat','Usta','TEST / GERÇEK']}
-      empty="Henüz görüntülenecek hizmet talebi bulunmuyor."/></>;
+import Link from 'next/link';
+import {EmptyPanelState,PanelCard,PanelHeading,RecordTypeBadge} from '@/components/operation-panel';
+import {adminRequestList} from '@/lib/operation-server';
+
+export default async function AdminRequests(){
+  const rows=await adminRequestList();
+  return <><PanelHeading title="Talepler" description="Gerçek operasyon talepleri."/><PanelCard title="Talep listesi">{!rows.length?<EmptyPanelState>Henüz görüntülenecek talep yok.</EmptyPanelState>:<div className="overflow-x-auto"><table className="w-full min-w-max text-left text-sm"><thead><tr className="border-b">{['Talep','Tarih','Müşteri','Kategori','Durum','Fiyat','TEST / GERÇEK'].map(x=><th key={x} className="px-3 py-2">{x}</th>)}</tr></thead><tbody>{rows.map(r=><tr key={r.id} className="border-b border-slate-100"><td className="px-3 py-3"><Link className="font-bold text-[#B75D17]" href={`/admin/talepler/${r.id}`}>{r.id.slice(0,8)}</Link></td><td className="px-3 py-3">{new Date(r.created_at).toLocaleString('tr-TR')}</td><td className="px-3 py-3">{r.customer?.name||'—'}</td><td className="px-3 py-3">{r.category?.name||'—'}</td><td className="px-3 py-3">{r.status}</td><td className="px-3 py-3">{r.quote?`${r.quote.total_amount} ${r.quote.currency}`:'—'}</td><td className="px-3 py-3"><RecordTypeBadge kind={r.customer?.is_test?'TEST':'GERÇEK'}/></td></tr>)}</tbody></table></div>}</PanelCard></>;
 }
