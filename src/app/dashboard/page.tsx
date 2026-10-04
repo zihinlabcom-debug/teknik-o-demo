@@ -159,7 +159,7 @@ function DashboardContent() {
     if(!navigationReady)return;
     if(!isServiceCategory(requested)||selectedCategoryStarted.current)return;
     selectedCategoryStarted.current=true;
-    void submit(`${serviceCategoryLabel(requested)} hizmeti için yardım istiyorum.`,requested);
+    void submit(`${serviceCategoryLabel(requested)} hizmeti iÃ§in yardÄ±m istiyorum.`,requested);
   },[navigationReady,requested,submit]);
   // The apartment form advances only after each signed backend response; this effect is its small submission state machine.
   /* eslint-disable react-hooks/set-state-in-effect -- Queue transitions here follow external API responses, not derived render state. */
@@ -171,7 +171,7 @@ function DashboardContent() {
       return;
     }
     if(answered!==apartmentQueue.next||apartmentQueue.sent){
-      setApartmentSubmitError('Bilgiler gönderilemedi. Lütfen tekrar deneyin.');
+      setApartmentSubmitError('Bilgiler gÃ¶nderilemedi. LÃ¼tfen tekrar deneyin.');
       setApartmentQueue(null);
       return;
     }
@@ -180,7 +180,7 @@ function DashboardContent() {
       return;
     }
     if(response?.resultState!=='cleaning_question'||response.category!=='cleaning'){
-      setApartmentSubmitError('Hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setApartmentSubmitError('Hizmet akÄ±ÅŸÄ± beklenmedik ÅŸekilde deÄŸiÅŸti. LÃ¼tfen tekrar deneyin.');
       setApartmentQueue(null);
       return;
     }
@@ -203,7 +203,7 @@ function DashboardContent() {
       return;
     }
     if(answered!==homeQueue.next||homeQueue.sent){
-      setHomeSubmitError('Bilgiler gönderilemedi. Lütfen tekrar deneyin.');
+      setHomeSubmitError('Bilgiler gÃ¶nderilemedi. LÃ¼tfen tekrar deneyin.');
       setHomeQueue(null);
       return;
     }
@@ -212,7 +212,7 @@ function DashboardContent() {
       return;
     }
     if(response?.resultState!=='cleaning_question'||response.category!=='cleaning'){
-      setHomeSubmitError('Hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setHomeSubmitError('Hizmet akÄ±ÅŸÄ± beklenmedik ÅŸekilde deÄŸiÅŸti. LÃ¼tfen tekrar deneyin.');
       setHomeQueue(null);
       return;
     }
@@ -237,7 +237,7 @@ function DashboardContent() {
           step.kind==='manual_choice'&&response.resultState==='painting_question'||
           !step.kind&&response.resultState==='painting_question');
       if(!valid){
-        setPaintingSubmitError('Boya bilgileri gönderilemedi. Lütfen sayfayı yenileyip tekrar deneyin.');
+        setPaintingSubmitError('Boya bilgileri gÃ¶nderilemedi. LÃ¼tfen sayfayÄ± yenileyip tekrar deneyin.');
         setPaintingQueue(null);
         return;
       }
@@ -246,7 +246,7 @@ function DashboardContent() {
         return;
       }
       if(paintingQueue.next===paintingQueue.steps.length-1){
-        setPaintingSubmitError('Boya değerlendirmesi tamamlanamadı. Lütfen tekrar deneyin.');
+        setPaintingSubmitError('Boya deÄŸerlendirmesi tamamlanamadÄ±. LÃ¼tfen tekrar deneyin.');
         setPaintingQueue(null);
         return;
       }
@@ -255,7 +255,7 @@ function DashboardContent() {
     }
     if(!response||response.category!=='painting'||
       (response.resultState!=='painting_question'&&response.resultState!=='painting_color_catalog')){
-      setPaintingSubmitError('Boya hizmet akışı beklenmedik şekilde değişti. Lütfen tekrar deneyin.');
+      setPaintingSubmitError('Boya hizmet akÄ±ÅŸÄ± beklenmedik ÅŸekilde deÄŸiÅŸti. LÃ¼tfen tekrar deneyin.');
       setPaintingQueue(null);
       return;
     }
@@ -280,12 +280,12 @@ function DashboardContent() {
   const handleCategoryClick = (selected:ServiceCategory) => {
     setIsTechnicianDialogOpen(false);
     setSelectedCleaningConfigurator(null);
-    void submit(`${serviceCategoryLabel(selected)} hizmeti için yardım istiyorum.`, selected);
+    void submit(`${serviceCategoryLabel(selected)} hizmeti iÃ§in yardÄ±m istiyorum.`, selected);
   };
   const handleResetChat = () => {reset();setIsTechnicianDialogOpen(false);};
   const handleFileUpload = (e:React.ChangeEvent<HTMLInputElement>) => {
     const file=e.target.files?.[0];
-    if(file)handleSubmit(undefined, `[Görsel/Dosya Yüklendi: ${file.name}] İnceleyebilir misiniz?`);
+    if(file)handleSubmit(undefined, `[GÃ¶rsel/Dosya YÃ¼klendi: ${file.name}] Ä°nceleyebilir misiniz?`);
   };
 
   if(!navigationReady)return null;
@@ -297,12 +297,12 @@ function DashboardContent() {
         selectedCleaningConfigurator==='home_cleaning'?'home_cleaning':null;
   if(configurator){
     const lastMessage=chatHistory.at(-1);
-    const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
+    const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='BaÄŸlantÄ± sÄ±rasÄ±nda bir hata oluÅŸtu. LÃ¼tfen tekrar deneyin.'?
       lastMessage.text:null;
     return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
       <div className="mx-auto w-full max-w-[1240px] min-w-0 px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
         <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#D97724]">
-          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
+          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dÃ¶n
         </Link>
         <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
         {configurator==='painting'?<PaintingServiceConfigurator selection={paintingSelection}
@@ -321,7 +321,7 @@ function DashboardContent() {
             if((response?.resultState==='painting_color_catalog'||
               (response?.resultState==='painting_question'&&(response.answeredSystemQuestions??0)>0))&&
               paintingSelection.colorSelectionSource!==source)
-              void submit(source==='manual'?'Marka ve renk kodunu kendim yazacağım':'DYO renk kataloğundan seç');
+              void submit(source==='manual'?'Marka ve renk kodunu kendim yazacaÄŸÄ±m':'DYO renk kataloÄŸundan seÃ§');
           }}
           onCalculate={steps=>{
             if(paintingQueue||isAnalyzing)return;
@@ -341,7 +341,7 @@ function DashboardContent() {
           onChangeColor={()=>{
             if(isAnalyzing)return;
             setPaintingSelection(current=>({...current,selectedDyoColor:null}));
-            void submit('Rengi değiştir');
+            void submit('Rengi deÄŸiÅŸtir');
           }}
           ready={response?.resultState==='painting_question'||response?.resultState==='painting_color_catalog'}
           busy={isAnalyzing||paintingQueue!==null}
@@ -405,17 +405,17 @@ function DashboardContent() {
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
           errorText={homeSubmitError??connectionError} />}
       </div>
-      {isTechnicianDialogOpen&&<TechnicianHandoffNotice onClose={()=>setIsTechnicianDialogOpen(false)} />}
+      {isTechnicianDialogOpen&&<TechnicianHandoffNotice response={response} onClose={()=>setIsTechnicianDialogOpen(false)} />}
     </div>;
   }
 
   return (
     <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
       
-      {/* İÇERİK ALANI */}
+      {/* Ä°Ã‡ERÄ°K ALANI */}
       <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-6 pb-6 justify-between'}`}>
         <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]`}>
-          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
+          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dÃ¶n
         </Link>
         
         {/* LOGO VE SLOGAN ALANI */}
@@ -423,13 +423,13 @@ function DashboardContent() {
           <TeknikOBrand size="standard" className="mb-4" />
 
           <h1 className="text-2xl font-black text-[#0B1727] tracking-tight leading-tight">
-            Sürpriz fiyat yok<br />
-            sorunu yaz <span className="text-[#EE6C13]">fiyatını al.</span>
+            SÃ¼rpriz fiyat yok<br />
+            sorunu yaz <span className="text-[#EE6C13]">fiyatÄ±nÄ± al.</span>
           </h1>
 
           <p className="mt-1 text-xs text-slate-500 font-medium max-w-xs leading-relaxed">
-            Alacağın hizmetin ücretini hemen öğren.<br />
-            Sürpriz fiyatlarla belirsizlikle uğraşma.
+            AlacaÄŸÄ±n hizmetin Ã¼cretini hemen Ã¶ÄŸren.<br />
+            SÃ¼rpriz fiyatlarla belirsizlikle uÄŸraÅŸma.
           </p>
         </div>
 
@@ -451,8 +451,8 @@ function DashboardContent() {
           }} className="min-w-0 min-h-0 flex-1 overflow-y-auto overscroll-contain space-y-4 pr-1 text-sm mb-4">
             {chatHistory.length === 0 ? (
               <div className="text-center py-6 text-slate-400">
-                <p className="text-xs font-medium">Arızanızı veya ihtiyacınızı aşağıya yazın.</p>
-                <p className="text-[10px] mt-1 text-slate-300">Teşhis sonucu doğrudan burada görüntülenecektir.</p>
+                <p className="text-xs font-medium">ArÄ±zanÄ±zÄ± veya ihtiyacÄ±nÄ±zÄ± aÅŸaÄŸÄ±ya yazÄ±n.</p>
+                <p className="text-[10px] mt-1 text-slate-300">TeÅŸhis sonucu doÄŸrudan burada gÃ¶rÃ¼ntÃ¼lenecektir.</p>
               </div>
             ) : (
               chatHistory.map((msg) => (
@@ -509,7 +509,7 @@ function DashboardContent() {
             {isAnalyzing && (
               <div className="flex items-center gap-2 text-slate-400 text-[11px] animate-pulse">
                 <Bot className="w-4 h-4 text-[#EE6C13]" />
-                <span>Yanıtınız değerlendiriliyor…</span>
+                <span>YanÄ±tÄ±nÄ±z deÄŸerlendiriliyorâ€¦</span>
               </div>
             )}
 
@@ -524,9 +524,9 @@ function DashboardContent() {
 
           </div>
 
-          {/* Form / Metin Girişi */}
+          {/* Form / Metin GiriÅŸi */}
           <form onSubmit={(e) => handleSubmit(e)} className="min-w-0 shrink-0 border-t-2 border-slate-300 pt-3">
-            <label htmlFor="customer-message" className="block mb-2 text-sm font-semibold text-slate-700">Mesajınız</label>
+            <label htmlFor="customer-message" className="block mb-2 text-sm font-semibold text-slate-700">MesajÄ±nÄ±z</label>
             <textarea
               ref={inputRef}
               onFocus={updateChatViewport}
@@ -541,7 +541,7 @@ function DashboardContent() {
                   handleSubmit();
                 }
               }}
-              placeholder="Mesajınızı veya cevabınızı yazın..."
+              placeholder="MesajÄ±nÄ±zÄ± veya cevabÄ±nÄ±zÄ± yazÄ±n..."
               className="h-16 w-full min-w-0 rounded-xl border-2 border-slate-300 bg-slate-50 p-3 text-base text-slate-900 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 focus:bg-white resize-none leading-relaxed transition-colors"
             />
 
@@ -571,7 +571,7 @@ function DashboardContent() {
                     className="flex min-h-11 items-center gap-1 text-sm text-slate-500 hover:text-red-500 transition-colors ml-2"
                   >
                     <RefreshCw className="w-3 h-3" />
-                    <span>Sıfırla</span>
+                    <span>SÄ±fÄ±rla</span>
                   </button>
                 )}
               </div>
@@ -581,7 +581,7 @@ function DashboardContent() {
                 disabled={isAnalyzing}
                   className="flex min-h-11 shrink-0 items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-5 py-2 rounded-xl font-bold text-sm shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
               >
-                <span>Gönder</span>
+                <span>GÃ¶nder</span>
                 <Send className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -591,14 +591,14 @@ function DashboardContent() {
         {!chatViewport && <ServiceResultCard result={resultCard} onRequestTechnician={() => setIsTechnicianDialogOpen(true)} onReject={dismissResult} />}
         {!chatViewport && <DiagnosisDebug response={response} />}
 
-        {/* ÜÇLÜ GÜVENİLİRLİK ÖZELLİKLERİ KARTLARI */}
+        {/* ÃœÃ‡LÃœ GÃœVENÄ°LÄ°RLÄ°K Ã–ZELLÄ°KLERÄ° KARTLARI */}
         <div className={`${chatViewport ? 'hidden' : 'grid'} grid-cols-3 gap-2 bg-white border border-slate-100 rounded-2xl p-2.5 my-4 shadow-sm text-center`}>
           <div className="flex flex-col items-center gap-1 px-1">
             <div className="text-[#EE6C13]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <span className="text-[10px] font-bold text-slate-800 leading-tight">
-              Yapay zekâ destekli
+              Yapay zekÃ¢ destekli
             </span>
           </div>
 
@@ -616,17 +616,17 @@ function DashboardContent() {
               <Lock className="w-5 h-5" />
             </div>
             <span className="text-[10px] font-bold text-slate-800 leading-tight">
-              Onayın olmadan işlem yok
+              OnayÄ±n olmadan iÅŸlem yok
             </span>
           </div>
         </div>
 
-        {/* POPÜLER HİZMETLER */}
+        {/* POPÃœLER HÄ°ZMETLER */}
         <div className={chatViewport ? 'hidden' : undefined}>
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xs font-bold text-slate-900">Popüler Hizmetler</h3>
+            <h3 className="text-xs font-bold text-slate-900">PopÃ¼ler Hizmetler</h3>
             <button type="button" className="text-[11px] font-semibold text-[#EE6C13] flex items-center gap-0.5 hover:underline">
-              Tümünü Gör <ChevronRight className="w-3 h-3" />
+              TÃ¼mÃ¼nÃ¼ GÃ¶r <ChevronRight className="w-3 h-3" />
             </button>
           </div>
 
@@ -635,23 +635,23 @@ function DashboardContent() {
 
       </div>
 
-      {isTechnicianDialogOpen && <TechnicianHandoffNotice onClose={() => setIsTechnicianDialogOpen(false)} />}
+      {isTechnicianDialogOpen && <TechnicianHandoffNotice response={response} onClose={() => setIsTechnicianDialogOpen(false)} />}
 
       {/* FOOTER */}
       <footer className={`${chatViewport ? 'hidden' : 'flex'} bg-[#0A182E] text-white py-3 px-6 rounded-t-3xl items-center justify-between text-xs font-semibold shrink-0`}>
         <div className="flex items-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-[#EE6C13]" />
-          <span>Güvenli</span>
+          <span>GÃ¼venli</span>
         </div>
         <span className="text-slate-600">|</span>
         <div className="flex items-center gap-1.5">
           <Zap className="w-4 h-4 text-[#EE6C13]" />
-          <span>Hızlı</span>
+          <span>HÄ±zlÄ±</span>
         </div>
         <span className="text-slate-600">|</span>
         <div className="flex items-center gap-1.5">
           <Sparkles className="w-4 h-4 text-[#EE6C13]" />
-          <span>Şeffaf</span>
+          <span>Åeffaf</span>
         </div>
       </footer>
 

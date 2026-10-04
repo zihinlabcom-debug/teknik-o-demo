@@ -1,5 +1,7 @@
 import 'server-only';
+import {createHash} from 'node:crypto';
 import {adminSupabase,currentAccount} from '@/lib/account-supabase';
+import {decodeConversationState} from '@/lib/service-conversation';
 
 type Role='customer'|'technician'|'admin';
 type DbError={message?:string}|null;
@@ -11,43 +13,79 @@ export class OperationError extends Error{
 async function requireRole(role:Role){
   const account=await currentAccount();
   if(!account)throw new OperationError('unauthenticated',401,'Aktif oturum gerekli.');
-  if(account.role!==role)throw new OperationError('forbidden',403,'Bu işlem için yetkiniz yok.');
+  if(account.role!==role)throw new OperationError('forbidden',403,'Bu iÅŸlem iÃ§in yetkiniz yok.');
   return account;
 }
-function requireId(value:string){if(!uuid.test(value))throw new OperationError('invalid_id',400,'Geçersiz kayıt kimliği.');}
+function requireId(value:string){if(!uuid.test(value))throw new OperationError('invalid_id',400,'GeÃ§ersiz kayÄ±t kimliÄŸi.');}
 function failDb(error:DbError,context:string):never{
   const raw=error?.message??'';
-  if(/capacity reached/i.test(raw))throw new OperationError('capacity_reached',409,'Ustanın aktif iş kapasitesi dolu.');
-  if(/closed for acceptance|already accepted|another quote/i.test(raw))throw new OperationError('conflict',409,'Kayıt artık kabul edilebilir durumda değil.');
-  if(/not available|invalid job status|terminal job|not available to/i.test(raw))throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');
-  if(/not found/i.test(raw))throw new OperationError('not_found',404,'Kayıt bulunamadı.');
-  throw new OperationError('operation_failed',500,`${context} tamamlanamadı.`);
+  if(/capacity reached/i.test(raw))throw new OperationError('capacity_reached',409,'UstanÄ±n aktif iÅŸ kapasitesi dolu.');
+  if(/closed for acceptance|already accepted|another quote/i.test(raw))throw new OperationError('conflict',409,'KayÄ±t artÄ±k kabul edilebilir durumda deÄŸil.');
+  if(/not available|invalid job status|terminal job|not available to/i.test(raw))throw new OperationError('invalid_state',409,'Ä°ÅŸlem mevcut durumda yapÄ±lamaz.');
+  if(/not found/i.test(raw))throw new OperationError('not_found',404,'KayÄ±t bulunamadÄ±.');
+  throw new OperationError('operation_failed',500,`${context} tamamlanamadÄ±.`);
 }
 export function operationErrorResponse(error:unknown){
   if(error instanceof OperationError)return {status:error.status,body:{error:error.message,code:error.code}};
-  return {status:500,body:{error:'İşlem tamamlanamadı.',code:'operation_failed'}};
+  return {status:500,body:{error:'Ä°ÅŸlem tamamlanamadÄ±.',code:'operation_failed'}};
 }
 
+export async function createCustomerServiceRequest(input:{conversationToken:string}){
+  const account=await requireRole('customer'); const db=adminSupabase();
+  const token=input.conversationToken.trim();
+  if(!token||token.length>250000)throw new OperationError('invalid_conversation',400,'Geçersiz hizmet değerlendirmesi.');
+
+  let conversation:ReturnType<typeof decodeConversationState>;
+  try{conversation=decodeConversationState(token);}catch{throw new OperationError('invalid_conversation',400,'Hizmet değerlendirmesi doğrulanamadı.');}
+  const category=conversation?.category,final=conversation?.lastResponse;
+  if(!category||!final||final.assessmentComplete!==true)
+    throw new OperationError('assessment_required',409,'Hizmet değerlendirmesi henüz tamamlanmadı.');
+  const routeable=final.canRouteTechnician===true||(category==='painting'&&final.assessmentComplete===true);
+  if(!routeable)throw new OperationError('routing_unavailable',409,'Bu değerlendirme için henüz usta talebi oluşturulamaz.');
+
+  const categoryMap:Record<string,string>={boiler:'boiler',painting:'painting',cleaning:'cleaning',sofa_cleaning:'upholstery_carpet',carpet_cleaning:'upholstery_carpet'};
+  const categoryCode=categoryMap[category];
+  if(!categoryCode)throw new OperationError('category_unavailable',409,'Bu hizmet kategorisi henüz talep oluşturmaya açık değil.');
+
+  const fingerprint=createHash('sha256').update(token).digest('hex');
+  const requestKey=`conversation:${fingerprint}`;
+  const pricingReference=`conversation-sha256:${fingerprint}`;
+  const issueTitle=final.faultTitle?.trim()||'Hizmet talebi';
+  const problemDescription=final.faultTitle?.trim()||null;
+
+  const {data:addresses,error:addressError}=await db.from('customer_addresses')
+    .select('id,is_default,created_at').eq('customer_id',account.id).order('is_default',{ascending:false}).order('created_at',{ascending:true}).limit(10);
+  if(addressError)failDb(addressError,'Adres kontrolü');
+  const defaultAddress=(addresses??[]).find(a=>a.is_default)??((addresses??[]).length===1?addresses![0]:null);
+  if(!defaultAddress)throw new OperationError('address_required',409,'Hizmet talebi için kayıtlı bir varsayılan adres gerekli.');
+
+  const {data,error}=await db.rpc('create_service_request',{
+    p_customer_id:account.id,p_category_code:categoryCode,p_address_id:defaultAddress.id,
+    p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
+  });
+  if(error)failDb(error,'Hizmet talebi');
+  return {id:data as string};
+}
 export async function acceptCustomerQuote(quoteId:string){
   requireId(quoteId); const account=await requireRole('customer'); const db=adminSupabase();
   const {data,error}=await db.rpc('accept_service_quote',{p_quote_id:quoteId,p_customer_id:account.id});
-  if(error)failDb(error,'Teklif kabulü'); return {id:data};
+  if(error)failDb(error,'Teklif kabulÃ¼'); return {id:data};
 }
 export async function acceptTechnicianDispatch(dispatchId:string){
   requireId(dispatchId); const account=await requireRole('technician'); const db=adminSupabase();
   const key=`dispatch:${dispatchId}:${account.id}`;
   const {data,error}=await db.rpc('accept_service_dispatch',{p_dispatch_id:dispatchId,p_technician_id:account.id,p_idempotency_key:key});
-  if(error)failDb(error,'İş kabulü'); return {id:data};
+  if(error)failDb(error,'Ä°ÅŸ kabulÃ¼'); return {id:data};
 }
 export async function startTechnicianJob(jobId:string){
   requireId(jobId); const account=await requireRole('technician'); const db=adminSupabase();
   const {data,error}=await db.rpc('start_service_job',{p_job_id:jobId,p_technician_id:account.id});
-  if(error)failDb(error,'İş başlatma'); return {id:data};
+  if(error)failDb(error,'Ä°ÅŸ baÅŸlatma'); return {id:data};
 }
 export async function completeTechnicianJob(jobId:string){
   requireId(jobId); const account=await requireRole('technician'); const db=adminSupabase();
   const {data,error}=await db.rpc('complete_service_job',{p_job_id:jobId,p_technician_id:account.id});
-  if(error)failDb(error,'İş tamamlama'); return {id:data};
+  if(error)failDb(error,'Ä°ÅŸ tamamlama'); return {id:data};
 }
 
 export async function customerRequestList(){
@@ -70,7 +108,7 @@ export async function customerRequestList(){
 export async function customerRequestDetail(id:string){
   requireId(id); const account=await requireRole('customer'); const db=adminSupabase();
   const {data:r,error}=await db.from('service_requests').select('id,status,created_at,category_id,address_id,customer_id').eq('id',id).eq('customer_id',account.id).maybeSingle();
-  if(error)failDb(error,'Talep detayı'); if(!r)throw new OperationError('not_found',404,'Talep bulunamadı.');
+  if(error)failDb(error,'Talep detayÄ±'); if(!r)throw new OperationError('not_found',404,'Talep bulunamadÄ±.');
   const [{data:quotes},{data:jobs},{data:category},{data:address},{data:events}]=await Promise.all([
     db.from('service_quotes').select('id,status,total_amount,currency,version,accepted_at,offered_at,expires_at').eq('service_request_id',id).order('version',{ascending:false}),
     db.from('service_jobs').select('id,status,technician_id,assigned_at,started_at,completed_at,cancelled_at').eq('service_request_id',id).order('created_at',{ascending:false}),
@@ -87,7 +125,7 @@ export async function customerRequestDetail(id:string){
 export async function technicianOffers(){
   const account=await requireRole('technician'); const db=adminSupabase();
   const {data:cands,error}=await db.from('service_dispatch_candidates').select('dispatch_id,offered_at').eq('technician_id',account.id).eq('status','offered').order('offered_at',{ascending:false});
-  if(error)failDb(error,'Yeni işler'); const dispatchIds=(cands??[]).map(c=>c.dispatch_id); if(!dispatchIds.length)return [];
+  if(error)failDb(error,'Yeni iÅŸler'); const dispatchIds=(cands??[]).map(c=>c.dispatch_id); if(!dispatchIds.length)return [];
   const {data:dispatches}=await db.from('service_dispatches').select('id,service_request_id,quote_id,status').in('id',dispatchIds).in('status',['pending','broadcasting']);
   const requestIds=(dispatches??[]).map(d=>d.service_request_id), quoteIds=(dispatches??[]).map(d=>d.quote_id).filter(Boolean);
   const [{data:reqs},{data:quotes}]=await Promise.all([
@@ -100,7 +138,7 @@ export async function technicianOffers(){
 export async function technicianActiveJobs(){
   const account=await requireRole('technician'); const db=adminSupabase();
   const {data,error}=await db.from('service_jobs').select('id,service_request_id,status,accepted_quote_id,assigned_at,started_at').eq('technician_id',account.id).in('status',['assigned','in_progress']).order('assigned_at',{ascending:false});
-  if(error)failDb(error,'Aktif işler'); const quoteIds=(data??[]).map(j=>j.accepted_quote_id).filter(Boolean);
+  if(error)failDb(error,'Aktif iÅŸler'); const quoteIds=(data??[]).map(j=>j.accepted_quote_id).filter(Boolean);
   const {data:quotes}=quoteIds.length?await db.from('service_quotes').select('id,total_amount,currency').in('id',quoteIds):{data:[]};
   return (data??[]).map(j=>({...j,quote:(quotes??[]).find(q=>q.id===j.accepted_quote_id)??null}));
 }
@@ -108,7 +146,7 @@ export async function technicianActiveJobs(){
 export async function technicianJobDetail(id:string){
   requireId(id); const account=await requireRole('technician'); const db=adminSupabase();
   const {data:job,error}=await db.from('service_jobs').select('id,service_request_id,dispatch_id,accepted_quote_id,technician_id,status,assigned_at,started_at,completed_at,cancelled_at').eq('id',id).eq('technician_id',account.id).maybeSingle();
-  if(error)failDb(error,'İş detayı'); if(!job)throw new OperationError('not_found',404,'İş bulunamadı.');
+  if(error)failDb(error,'Ä°ÅŸ detayÄ±'); if(!job)throw new OperationError('not_found',404,'Ä°ÅŸ bulunamadÄ±.');
   const [{data:req},{data:quote},{data:appointments}]=await Promise.all([
     db.from('service_requests').select('id,category_id,address_id').eq('id',job.service_request_id).maybeSingle(),
     db.from('service_quotes').select('id,total_amount,currency,status').eq('id',job.accepted_quote_id).maybeSingle(),
@@ -137,7 +175,7 @@ export async function adminRequestList(){
 export async function adminRequestDetail(id:string){
   requireId(id); await requireRole('admin'); const db=adminSupabase();
   const {data:request,error}=await db.from('service_requests').select('id,customer_id,category_id,status,created_at').eq('id',id).maybeSingle();
-  if(error)failDb(error,'Talep detayı'); if(!request)throw new OperationError('not_found',404,'Talep bulunamadı.');
+  if(error)failDb(error,'Talep detayÄ±'); if(!request)throw new OperationError('not_found',404,'Talep bulunamadÄ±.');
   const [{data:customer},{data:category},{data:dispatches},{data:jobs},{data:quotes},{data:events}]=await Promise.all([
     request.customer_id?db.from('users').select('id,name,is_test').eq('id',request.customer_id).maybeSingle():Promise.resolve({data:null}),
     request.category_id?db.from('service_categories').select('id,name').eq('id',request.category_id).maybeSingle():Promise.resolve({data:null}),

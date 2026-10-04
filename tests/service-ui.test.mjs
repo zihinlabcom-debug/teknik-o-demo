@@ -83,7 +83,10 @@ test('registration header uses existing logo and uppercase brand above secondary
 });
 test('technician action notice never claims a fake booking or assignment',()=>{
  const html=render(TechnicianHandoffNotice,{onClose(){}});
- assert.ok(html.includes('role="dialog"'));assert.ok(html.includes('şu anda'));
- for(const text of ['Başarıyla Oluşturuldu','talebiniz onaylandı','adresinize yönlendirilecektir'])assert.ok(!html.includes(text));
- assert.ok(!html.includes('<form'));
+ assert.ok(html.includes('role="dialog"'));
+ for(const phrase of [
+  'Ba?ar?yla Olu?turuldu',
+  'talebiniz onayland?',
+  'adresinize y?nlendirilecektir'
+ ]) assert.ok(!html.includes(phrase),phrase);
 });

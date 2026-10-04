@@ -1,3 +1,5 @@
+'use client';
+import {useState} from 'react';
 import {Wrench,X} from 'lucide-react';
 import {visualProgress,type ServicePricePresentation,type ServiceResponse} from '../lib/service-presentation';
 export function DiagnosisProgress({answeredSystemQuestions,isAnalyzing,resultState}:{answeredSystemQuestions:number;isAnalyzing:boolean;resultState:string}){
@@ -50,14 +52,37 @@ export function DiagnosisDebugPanel({enabled,response}:{enabled:boolean;response
     {!!response?.groupProbabilities.length&&<ul className="mt-2 border-t border-slate-100 pt-2 space-y-1">{response.groupProbabilities.map(g=><li key={g.key} className="flex justify-between gap-2"><span>{g.name}</span><span>%{g.probability}</span></li>)}</ul>}
   </section>;
 }
-export function TechnicianHandoffNotice({onClose}:{onClose:()=>void}){
+export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;response:ServiceResponse|null}){
+  const [busy,setBusy]=useState(false),[error,setError]=useState<string|null>(null),[requestId,setRequestId]=useState<string|null>(null);
+  const createRequest=async()=>{
+    if(busy||requestId)return;
+    if(!response?.conversationToken){setError('Talep oluşturmak için tamamlanmış bir hizmet değerlendirmesi gerekli.');return;}
+    setBusy(true);setError(null);
+    try{
+      const reply=await fetch('/api/operations/requests',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({conversationToken:response.conversationToken}),
+      });
+      const body=await reply.json().catch(()=>({})) as {id?:string;error?:string};
+      if(!reply.ok||!body.id)throw new Error(body.error||'Talep oluşturulamadı.');
+      setRequestId(body.id);
+    }catch(e){setError(e instanceof Error?e.message:'Talep oluşturulamadı.');}
+    finally{setBusy(false);}
+  };
   return <div className="fixed inset-0 bg-black/65 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <section role="dialog" aria-modal="true" aria-label="Usta çağır" className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button type="button" aria-label="Kapat" onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"><X className="w-5 h-5" /></button>
       <div className="w-10 h-10 bg-orange-100 text-[#EE6C13] rounded-2xl flex items-center justify-center mx-auto mb-2"><Wrench className="w-5 h-5" /></div>
       <h3 className="text-center text-base font-black text-slate-900">Usta çağır</h3>
-      <p className="text-xs text-slate-500 mt-3 leading-relaxed">Usta yönlendirmesi şu anda kullanılamıyor. Daha sonra tekrar deneyebilirsiniz.</p>
-      <button type="button" onClick={onClose} className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-4">Tamam</button>
+      {requestId?<>
+        <p className="text-sm text-emerald-700 mt-3 leading-relaxed text-center font-semibold">Talebiniz oluşturuldu.</p>
+        <a href={`/musteri/taleplerim/${requestId}`} className="mt-4 block w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-center text-xs font-bold text-white">Talebi görüntüle</a>
+      </>:<>
+        <p className="text-xs text-slate-500 mt-3 leading-relaxed">Kayıtlı varsayılan adresiniz kullanılarak gerçek hizmet talebi oluşturulacak. Aynı değerlendirme tekrar gönderilirse ikinci bir talep açılmaz.</p>
+        {error&&<p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold text-red-700">{error}</p>}
+        <button type="button" disabled={busy} onClick={()=>void createRequest()} className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white py-2.5 rounded-xl font-bold text-xs mt-4">{busy?'Talep oluşturuluyor…':'Talebi oluştur'}</button>
+        <button type="button" onClick={onClose} className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-2">Vazgeç</button>
+      </>}
     </section>
   </div>;
 }

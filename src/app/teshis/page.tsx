@@ -98,7 +98,7 @@ export default function TeshisPage() {
             <h1><TeknikOBrand size="compact" /></h1>
             <p className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-              AI Teşhis · Canlı Analiz Sistemi
+              AI TeÅŸhis Â· CanlÄ± Analiz Sistemi
             </p>
           </div>
         </div>
@@ -109,11 +109,11 @@ export default function TeshisPage() {
           className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5 disabled:opacity-50"
         >
           <Wrench className="w-3.5 h-3.5" />
-          <span>Usta Çağır</span>
+          <span>Usta Ã‡aÄŸÄ±r</span>
         </button>
       </header>
 
-      {/* CHAT VE ANALİZ ALANI */}
+      {/* CHAT VE ANALÄ°Z ALANI */}
       <div ref={messageScrollRef} onScroll={() => {
         const area = messageScrollRef.current;
         if (!area || area.clientHeight !== scrollMetricsRef.current.height) return;
@@ -177,13 +177,13 @@ export default function TeshisPage() {
         {response?.resultState==='painting_color_catalog'&&
           <PaintingColorCatalog disabled={isAnalyzing} onSelect={color=>void submit(`DYO renk kodu: ${color.colorCode}`)} />}
 
-        {/* YANIT BEKLENİYOR */}
+        {/* YANIT BEKLENÄ°YOR */}
         {isAnalyzing && (
           <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-center gap-3 animate-pulse">
             <div className="w-6 h-6 border-2 border-[#EE6C13] border-t-transparent rounded-full animate-spin"></div>
             <div>
-              <p className="text-xs font-bold text-slate-800">Yanıtınız değerlendiriliyor…</p>
-              <p className="text-[10px] text-slate-500">Lütfen bekleyin.</p>
+              <p className="text-xs font-bold text-slate-800">YanÄ±tÄ±nÄ±z deÄŸerlendiriliyorâ€¦</p>
+              <p className="text-[10px] text-slate-500">LÃ¼tfen bekleyin.</p>
             </div>
           </div>
         )}
@@ -192,7 +192,7 @@ export default function TeshisPage() {
         <DiagnosisDebug response={response} />
       </div>
 
-      {isTechnicianDialogOpen && <TechnicianHandoffNotice onClose={() => setIsTechnicianDialogOpen(false)} />}
+      {isTechnicianDialogOpen && <TechnicianHandoffNotice response={response} onClose={() => setIsTechnicianDialogOpen(false)} />}
 
       {/* ALT MESAJ YAZMA BAR */}
       <form
@@ -203,7 +203,7 @@ export default function TeshisPage() {
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          placeholder="Ek detay yazın veya soru sorun..."
+          placeholder="Ek detay yazÄ±n veya soru sorun..."
           className="min-w-0 flex-1 min-h-12 bg-slate-100 text-base text-slate-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#EE6C13]"
         />
         <button
