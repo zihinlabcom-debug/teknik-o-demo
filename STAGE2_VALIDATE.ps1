@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference='Stop'
+$ErrorActionPreference='Stop'
 Set-Location 'C:\Users\ibetu\teknik-o-demo'
 $container='tekniko-operation-pg'
 $db='tekniko_operation_test'
@@ -31,6 +31,3 @@ $targets=@(
 )
 RunCmd 'Stage 2 scoped diff check' { git diff --check -- $targets }
 Write-Host 'STAGE 2 REAL SERVICE REQUEST LOCAL GATE: PASS' -ForegroundColor Green
-
-
-
