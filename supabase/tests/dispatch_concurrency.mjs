@@ -5,7 +5,8 @@ import {execFile,spawn} from 'node:child_process';
 import {promisify} from 'node:util';
 
 const execFileAsync=promisify(execFile);
-const container='tekniko-operation-pg';
+const container=process.argv[2]||'tekniko-operation-pg';
+assert.ok(['tekniko-operation-pg','tekniko-stage15-price-pg'].includes(container),'disposable container only');
 const db='tekniko_operation_test';
 const psqlArgs=['exec',container,'psql','-X','-q','-t','-A','-v','ON_ERROR_STOP=1','-U','postgres','-d',db];
 async function query(sql){
@@ -32,7 +33,8 @@ async function holdLock(sql){
 
 assert.equal(await query('select current_database()'),db,'local database guard');
 const ids={customer:randomUUID(),a:randomUUID(),b:randomUUID(),capacity:randomUUID(),
-  request:randomUUID(),race:randomUUID(),first:randomUUID(),second:randomUUID(),
+  request:randomUUID(),quote:randomUUID(),existingDispatch:randomUUID(),
+  race:randomUUID(),first:randomUUID(),second:randomUUID(),
   keyRace1:randomUUID(),keyRace2:randomUUID()};
 const uuid=(key)=>`'${ids[key]}'`;
 await query(`
@@ -60,17 +62,34 @@ await query(`
     from public.service_categories c cross join public.customer_addresses a
     where c.code='boiler' and a.customer_id=${uuid('customer')}
     order by a.id limit 1;
-  insert into public.service_dispatches(id,service_request_id,status) values
-    (${uuid('race')},${uuid('request')},'broadcasting'),
-    (${uuid('first')},${uuid('request')},'broadcasting'),
-    (${uuid('second')},${uuid('request')},'broadcasting');
+
+  insert into public.service_quotes(
+    id,service_request_id,version,status,currency,subtotal,service_fee,total_amount,breakdown,offered_at
+  ) values (
+    ${uuid('quote')},${uuid('request')},1,'offered','TRY',100.00,15.00,115.00,'{}'::jsonb,now()
+  );
+
+  set role service_role;
+  select public.accept_service_quote(${uuid('quote')},${uuid('customer')});
+  reset role;
+
+  insert into public.service_dispatches(id,service_request_id,quote_id,status) values
+    (${uuid('existingDispatch')},${uuid('request')},${uuid('quote')},'accepted'),
+    (${uuid('race')},${uuid('request')},${uuid('quote')},'broadcasting'),
+    (${uuid('first')},${uuid('request')},${uuid('quote')},'broadcasting'),
+    (${uuid('second')},${uuid('request')},${uuid('quote')},'broadcasting');
+
   insert into public.service_dispatch_candidates(dispatch_id,technician_id,status) values
     (${uuid('race')},${uuid('a')},'offered'),
     (${uuid('race')},${uuid('b')},'offered'),
     (${uuid('first')},${uuid('capacity')},'offered'),
     (${uuid('second')},${uuid('capacity')},'offered');
-  insert into public.service_jobs(service_request_id,technician_id,status)
-    values (${uuid('request')},${uuid('capacity')},'assigned');
+
+  insert into public.service_jobs(
+    service_request_id,dispatch_id,accepted_quote_id,technician_id,status
+  ) values (
+    ${uuid('request')},${uuid('existingDispatch')},${uuid('quote')},${uuid('capacity')},'assigned'
+  );
 `);
 
 const dispatchLock=await holdLock(`select id from public.service_dispatches where id=${uuid('race')} for update`);
@@ -102,9 +121,9 @@ assert.equal(technicianLock.exitCode,0);
 console.log('PASS: concurrent capacity accept: active job count remains two');
 
 await query(`
-  insert into public.service_dispatches(id,service_request_id,status) values
-    (${uuid('keyRace1')},${uuid('request')},'broadcasting'),
-    (${uuid('keyRace2')},${uuid('request')},'broadcasting');
+  insert into public.service_dispatches(id,service_request_id,quote_id,status) values
+    (${uuid('keyRace1')},${uuid('request')},${uuid('quote')},'broadcasting'),
+    (${uuid('keyRace2')},${uuid('request')},${uuid('quote')},'broadcasting');
   insert into public.service_dispatch_candidates(dispatch_id,technician_id,status) values
     (${uuid('keyRace1')},${uuid('a')},'offered'),
     (${uuid('keyRace2')},${uuid('b')},'offered');

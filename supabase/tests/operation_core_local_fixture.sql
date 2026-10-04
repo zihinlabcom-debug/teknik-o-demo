@@ -1,15 +1,26 @@
--- Disposable PostgreSQL only. Never run against a linked Supabase project.
+﻿-- Disposable PostgreSQL only. Never run against a linked Supabase project.
 \set ON_ERROR_STOP on
 do $$ begin
   if current_database() <> 'tekniko_operation_test' then
     raise exception 'Refusing operation fixture outside disposable test database';
   end if;
 end $$;
-create role anon nologin;
-create role authenticated nologin;
-create role service_role nologin bypassrls;
+do $$ begin
+  if not exists (select 1 from pg_roles where rolname='anon') then
+    create role anon nologin;
+  end if;
+  if not exists (select 1 from pg_roles where rolname='authenticated') then
+    create role authenticated nologin;
+  end if;
+  if not exists (select 1 from pg_roles where rolname='service_role') then
+    create role service_role nologin bypassrls;
+  end if;
+end $$;
 create schema auth;
 create table auth.users (id uuid primary key);
+create function auth.uid() returns uuid language sql stable as $$
+  select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid
+$$;
 create table public.users (
   id uuid primary key references auth.users(id), name text not null,
   role text not null, is_active boolean not null default true
@@ -64,6 +75,14 @@ create table public.official_error_codes_raw (
 );
 create function public.set_updated_at() returns trigger language plpgsql set search_path='' as $$
 begin new.updated_at := now(); return new; end $$;
+create function public.is_app_admin() returns boolean language sql stable security definer
+set search_path='' as $$
+  select exists (select 1 from public.users
+    where id=(select auth.uid()) and role='admin' and is_active)
+$$;
+grant usage on schema auth to authenticated;
+grant execute on function auth.uid() to authenticated;
+grant select on public.service_requests,public.diagnostic_logs to authenticated;
 do $$ declare t text; begin
   foreach t in array array['users','customer_profiles','technician_profiles','customer_addresses',
     'service_requests','diagnostic_logs','official_error_codes_raw','cities','districts',
@@ -73,7 +92,7 @@ do $$ declare t text; begin
 end $$;
 insert into public.service_categories(code,name) values
   ('boiler','Kombi'),('painting','Boya'),('cleaning','Temizlik'),
-  ('upholstery_carpet','Koltuk & Halı Yıkama');
+  ('upholstery_carpet','Koltuk & HalÄ± YÄ±kama');
 insert into public.official_error_codes_raw(brand,official_model,error_code)
   select 'Vaillant','fixture','F.28' from generate_series(1,1422);
 -- Existing request, including nullable legacy fields, must survive both migrations.

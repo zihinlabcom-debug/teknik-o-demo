@@ -50,8 +50,9 @@ insert into public.service_requests(id,customer_id,category_id,address_id)
 
 -- 1-3: versions, duplicate and nonnegative price checks.
 insert into public.service_quotes(id,service_request_id,version,status,subtotal,total_amount)
- values (pg_temp.test_id('quote1'),pg_temp.test_id('request1'),1,'accepted',100,115),
+ values (pg_temp.test_id('quote1'),pg_temp.test_id('request1'),1,'offered',100,115),
         (pg_temp.test_id('quote2'),pg_temp.test_id('request1'),2,'offered',120,138);
+select public.accept_service_quote(pg_temp.test_id('quote1'),pg_temp.test_id('customer'));
 do $$ begin
   perform pg_temp.assert_ok((select count(*)=2 from public.service_quotes where service_request_id=pg_temp.test_id('request1')),'quote versions');
   begin
@@ -70,7 +71,7 @@ end $$;
 --       request/dispatch/quote consistency and repeat job history.
 insert into public.service_dispatches(id,service_request_id,quote_id,status) values
  (pg_temp.test_id('dispatch1'),pg_temp.test_id('request1'),pg_temp.test_id('quote1'),'broadcasting'),
- (pg_temp.test_id('dispatch2'),pg_temp.test_id('request1'),pg_temp.test_id('quote2'),'broadcasting'),
+ (pg_temp.test_id('dispatch2'),pg_temp.test_id('request1'),null,'broadcasting'),
  (pg_temp.test_id('dispatch3'),pg_temp.test_id('request2'),null,'broadcasting'),
  (pg_temp.test_id('dispatch4'),pg_temp.test_id('request2'),null,'broadcasting'),
  (pg_temp.test_id('dispatch5'),pg_temp.test_id('request2'),null,'broadcasting'),
@@ -97,7 +98,9 @@ do $$ begin
     insert into public.service_jobs(service_request_id,dispatch_id,technician_id,status)
       values(pg_temp.test_id('request2'),pg_temp.test_id('dispatch1'),pg_temp.test_id('tech1'),'completed');
     raise exception 'Mismatched job/request accepted';
-  exception when foreign_key_violation then null; end;
+  exception when raise_exception then
+    if sqlerrm <> 'Job must use its dispatch accepted-price reference' then raise; end if;
+  end;
   begin
     insert into public.service_dispatches(service_request_id,quote_id,status)
       values(pg_temp.test_id('request2'),pg_temp.test_id('quote1'),'pending');
