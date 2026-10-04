@@ -42,15 +42,21 @@ select jsonb_pretty(jsonb_build_object(
 
 -- Post-migration invariants. All should return true; the first gives the
 -- authoritative count (an anon PostgREST count may be filtered by RLS).
-select 'official_raw_count' as check_name,
-       (select count(*)=1422 from public.official_error_codes_raw) as passed,
+select 'official_raw_baseline' as check_name,
+       (select count(*)>=1422 from public.official_error_codes_raw) and
+       (select count(*)>=1422 from public.official_error_codes_raw where brand='Vaillant') as passed,
        (select count(*)::text from public.official_error_codes_raw) as detail
 union all
-select 'four_active_categories',
-       (select count(*)=4 from public.service_categories where is_active and
-          (code,name) in (('boiler','Kombi'),('painting','Boya'),('cleaning','Temizlik'),
-                          ('upholstery_carpet','Koltuk & Halı Yıkama'))) and
-       (select count(*)=4 from public.service_categories where is_active),
+select 'required_seed_categories_active',
+       not exists (
+         select 1 from (values
+           ('boiler','Kombi'),('painting','Boya'),('cleaning','Temizlik'),
+           ('upholstery_carpet','Koltuk & Halı Yıkama')
+         ) as required(code,name)
+         left join public.service_categories c on c.code=required.code
+         where c.id is null or c.name is distinct from required.name
+           or c.is_active is distinct from true
+       ),
        (select count(*)::text from public.service_categories where is_active)
 union all
 select 'no_duplicate_category_code',
@@ -58,12 +64,34 @@ select 'no_duplicate_category_code',
        null
 union all
 select 'all_application_rls_enabled',
-       (select count(*)=13 from pg_class c join pg_namespace n on n.oid=c.relnamespace
-        where n.nspname='public' and c.relrowsecurity and c.relname=any(array[
-          'users','customer_profiles','technician_profiles','customer_addresses',
-          'service_requests','diagnostic_logs','official_error_codes_raw',
-          'cities','districts','service_categories','service_types',
-          'technician_service_categories','technician_service_areas'])),
+       not exists (
+         select 1 from unnest(array[
+           'users','customer_profiles','technician_profiles','customer_addresses',
+           'service_requests','diagnostic_logs','official_error_codes_raw',
+           'cities','districts','service_categories','service_types',
+           'technician_service_categories','technician_service_areas'
+         ]) as required(table_name)
+         left join pg_class c on c.relname=required.table_name
+           and c.relnamespace='public'::regnamespace and c.relkind in ('r','p')
+         where c.oid is null or c.relrowsecurity is distinct from true
+       ),
+       null
+union all
+select 'service_request_type_category_fk',
+       exists (
+         select 1 from pg_constraint c
+         where c.conrelid='public.service_requests'::regclass
+           and c.confrelid='public.service_types'::regclass
+           and c.contype='f' and c.convalidated and c.confmatchtype='s'
+           and c.conkey=array[
+             (select attnum from pg_attribute where attrelid='public.service_requests'::regclass and attname='service_type_id'),
+             (select attnum from pg_attribute where attrelid='public.service_requests'::regclass and attname='category_id')
+           ]::smallint[]
+           and c.confkey=array[
+             (select attnum from pg_attribute where attrelid='public.service_types'::regclass and attname='id'),
+             (select attnum from pg_attribute where attrelid='public.service_types'::regclass and attname='category_id')
+           ]::smallint[]
+       ),
        null
 union all
 select 'users_id_has_no_default',

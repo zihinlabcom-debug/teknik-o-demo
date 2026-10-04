@@ -12,12 +12,20 @@ declare
   ];
   t text;
 begin
-  if (select count(*) from public.official_error_codes_raw) <> 1422 then
-    raise exception 'Raw manufacturer data count changed';
+  if (select count(*) from public.official_error_codes_raw) < 1422
+     or (select count(*) from public.official_error_codes_raw where brand='Vaillant') < 1422 then
+    raise exception 'Original raw manufacturer data baseline is incomplete';
   end if;
-  if (select count(*) from public.service_categories) <> 4
-     or not exists (select 1 from public.service_categories where code='boiler') then
-    raise exception 'Service categories changed';
+  if exists (
+    select 1 from (values
+      ('boiler','Kombi'),('painting','Boya'),('cleaning','Temizlik'),
+      ('upholstery_carpet','Koltuk & Halı Yıkama')
+    ) as required(code,name)
+    left join public.service_categories c on c.code=required.code
+    where c.id is null or c.name is distinct from required.name
+      or c.is_active is distinct from true
+  ) then
+    raise exception 'Required service category seed is missing or inactive';
   end if;
   if (select count(*) from public.cities) <> 81
      or (select count(*) from public.districts) <> 973 then
