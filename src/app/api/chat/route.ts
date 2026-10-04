@@ -1,10 +1,16 @@
 import { NextResponse } from 'next/server';
 import { normalizeHistory } from '@/lib/diagnosis';
 import { diagnoseService } from '@/lib/service-conversation';
+import { currentAccount } from '@/lib/account-supabase';
 
 export const maxDuration = 180;
 
 export async function POST(req: Request) {
+  const account = await currentAccount();
+  if (!account) {
+    return NextResponse.json({ error: 'Bu işlem için aktif oturum gerekli.' },
+      { status: 401, headers: { 'Cache-Control': 'no-store' } });
+  }
   let body;
   try { body = await req.json(); } catch {
     return NextResponse.json({ error: 'Geçerli JSON gönderilmelidir.' }, { status: 400 });

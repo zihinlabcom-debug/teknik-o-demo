@@ -6,6 +6,7 @@ import {decodeConversationState} from '../src/lib/service-conversation.ts';
 import {servicePricePresentation} from '../src/lib/service-presentation.ts';
 
 registerHooks({resolve(specifier,context,next){
+ if(specifier==='@/lib/account-supabase')return next(new URL('./helpers/account-supabase-authenticated.mjs',import.meta.url).href,context);
  if(specifier.startsWith('@/'))return next(new URL('../src/'+specifier.slice(2)+'.ts',import.meta.url).href,context);
  if(specifier==='next/server')return next('next/server.js',context);
  return next(specifier,context);
