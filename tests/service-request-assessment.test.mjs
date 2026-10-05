@@ -117,7 +117,7 @@ test('boiler snapshot records structured answers and identity without transient 
 });
 
 test('migration stores snapshot atomically, keeps legacy NULL and idempotent insert, and blocks updates',()=>{
- const sql=readFileSync(new URL('../supabase/migrations/20261005021708_service_request_assessment_snapshot.sql',import.meta.url),'utf8');
+ const sql=readFileSync(new URL('../supabase/migrations/20261005025943_service_request_assessment_snapshot.sql',import.meta.url),'utf8');
  assert.match(sql,/add column if not exists assessment_snapshot jsonb/);
  assert.match(sql,/assessment_snapshot is null/);
  assert.match(sql,/before update on public\.service_requests/);
