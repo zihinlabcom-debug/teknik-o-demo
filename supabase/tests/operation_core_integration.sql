@@ -26,7 +26,8 @@ insert into public.customer_addresses(customer_id,city_id,district_id)
   select pg_temp.test_id('customer'),c.id,d.id from public.cities c join public.districts d on d.city_id=c.id limit 1;
 insert into public.technician_profiles(user_id,approval_status,is_available) values
  (pg_temp.test_id('tech1'),'approved',true),(pg_temp.test_id('tech2'),'approved',true),
- (pg_temp.test_id('tech3'),'pending',true);
+ (pg_temp.test_id('tech3'),'pending',true)
+on conflict (user_id) do update set approval_status=excluded.approval_status,is_available=excluded.is_available;
 insert into public.technician_service_areas(technician_id,city_id,district_id)
   select pg_temp.test_id('tech1'),c.id,null from public.cities c limit 1;
 insert into public.technician_service_areas(technician_id,city_id,district_id)

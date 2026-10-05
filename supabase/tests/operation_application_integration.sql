@@ -12,7 +12,8 @@ insert into auth.users(id) select v from stage15_ids where k in ('customer','tec
 insert into public.users(id,name,role,is_active) values
  (pg_temp.id('customer'),'CUSTOMER','customer',true),(pg_temp.id('tech'),'TECH','technician',true),(pg_temp.id('othertech'),'OTHER','technician',true),(pg_temp.id('admin'),'ADMIN','admin',true);
 insert into public.customer_profiles(user_id) values(pg_temp.id('customer'));
-insert into public.technician_profiles(user_id,approval_status,is_available) values(pg_temp.id('tech'),'approved',true),(pg_temp.id('othertech'),'approved',true);
+insert into public.technician_profiles(user_id,approval_status,is_available) values(pg_temp.id('tech'),'approved',true),(pg_temp.id('othertech'),'approved',true)
+on conflict (user_id) do update set approval_status=excluded.approval_status,is_available=excluded.is_available;
 insert into public.cities default values;
 insert into public.districts(city_id) select id from public.cities order by id desc limit 1;
 insert into public.customer_addresses(customer_id,city_id,district_id) select pg_temp.id('customer'),c.id,d.id from public.cities c join public.districts d on d.city_id=c.id order by c.id desc limit 1;

@@ -30,7 +30,8 @@ insert into public.customer_addresses(customer_id,city_id,district_id)
   select pg_temp.test_id('customer'),c.id,d.id from public.cities c
   join public.districts d on d.city_id=c.id order by c.id desc,d.id desc limit 1;
 insert into public.technician_profiles(user_id,approval_status,is_available)
-  values(pg_temp.test_id('technician'),'approved',true);
+  values(pg_temp.test_id('technician'),'approved',true)
+  on conflict (user_id) do update set approval_status=excluded.approval_status,is_available=excluded.is_available;
 insert into public.technician_service_areas(technician_id,city_id,district_id)
   select pg_temp.test_id('technician'),id,null from public.cities order by id desc limit 1;
 insert into public.technician_service_categories(technician_id,category_id)

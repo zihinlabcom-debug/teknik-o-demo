@@ -28,6 +28,7 @@ test('customer panel routes render empty operations and a safe request detail',a
 
 test('provider routes render empty jobs, field actions and disabled extra-cost fields',async()=>{
  const home=await render('usta');
+ for(const field of ['Usta profilim','approved','Müsaitliği kapat','Boya','Bursa / Nilüfer'])assert.ok(home.includes(field),field);
  assert.ok(home.includes('Henüz size gösterilen yeni iş bulunmuyor.'));
  assert.ok(home.includes('Henüz aktif işiniz bulunmuyor.'));
  const offered=await render('usta/yeni-isler');
@@ -62,7 +63,7 @@ test('admin routes render real operation shells without invented records or metr
  const customers=await render('admin/musteriler');
  for(const field of ['Telefon','E-posta','Şehir','İlçe','Adres','Hesap durumu','Toplam talep','Tamamlanan iş','Tekrar kullanım','TEST / GERÇEK'])assert.ok(customers.includes(field));
  const providers=await render('admin/ustalar');
- for(const field of ['Kategori','Bölge','Aktif / müsait','Gösterilen iş','Kabul edilen'])assert.ok(providers.includes(field));
+ for(const field of ['TEST USTA','pending','Pasif','Kategoriler','Hizmet alanları','Boya','Bursa','Nilüfer','Onayla','Pasifleştir'])assert.ok(providers.includes(field),field);
  const extra=await render('admin/ek-maliyet');
  for(const field of ['İstenen fark','Fotoğraf kanıtı','Durum'])assert.ok(extra.includes(field));
  const kpi=await render('admin/pilot-kpi');

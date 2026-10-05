@@ -5,6 +5,7 @@ import ts from 'typescript';
 registerHooks({
  resolve(specifier,context,next){
   if(specifier==='@/lib/operation-server')return {url:new URL('./operation-server-test-double.mjs',import.meta.url).href,shortCircuit:true};
+  if(specifier==='@/lib/technician-management')return {url:new URL('./technician-management-test-double.mjs',import.meta.url).href,shortCircuit:true};
   if(['next/image','next/link'].includes(specifier))return {url:'test:'+specifier,shortCircuit:true};
   if(specifier==='next/navigation')return {url:'test:next/navigation',shortCircuit:true};
   let target;

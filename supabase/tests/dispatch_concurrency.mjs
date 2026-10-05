@@ -50,7 +50,8 @@ await query(`
   insert into public.customer_addresses(customer_id,city_id,district_id)
     select ${uuid('customer')},c.id,d.id from public.cities c join public.districts d on d.city_id=c.id order by c.id desc,d.id desc limit 1;
   insert into public.technician_profiles(user_id,approval_status,is_available) values
-    (${uuid('a')},'approved',true),(${uuid('b')},'approved',true),(${uuid('capacity')},'approved',true);
+    (${uuid('a')},'approved',true),(${uuid('b')},'approved',true),(${uuid('capacity')},'approved',true)
+    on conflict (user_id) do update set approval_status=excluded.approval_status,is_available=excluded.is_available;
   insert into public.technician_service_areas(technician_id,city_id,district_id)
     select x.id,c.id,null from (values (${uuid('a')}::uuid),(${uuid('b')}::uuid),(${uuid('capacity')}::uuid)) x(id)
     cross join lateral (select id from public.cities order by id desc limit 1) c;
