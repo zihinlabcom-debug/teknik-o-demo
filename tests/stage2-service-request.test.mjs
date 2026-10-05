@@ -1,4 +1,4 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const read=p=>fs.readFileSync(new URL(`../${p}`,import.meta.url),'utf8');
@@ -26,11 +26,11 @@ test('Stage 2 request API derives request data from signed conversation state',(
   assert.doesNotMatch(route,/SUPABASE_SERVICE_ROLE_KEY/);
 });
 
-test('Usta Ã§aÄŸÄ±r dialog sends only signed conversation token',()=>{
+test('Usta ├ğa─ş─▒r dialog sends only signed conversation token',()=>{
   const ui=read('src/components/service-result.tsx');
   assert.match(ui,/\/api\/operations\/requests/);
   assert.match(ui,/conversationToken:response\.conversationToken/);
-  assert.match(ui,/Talebiniz oluÅŸturuldu/);
+  assert.match(ui,/Talebiniz olu┼şturuldu/);
   assert.doesNotMatch(ui,/requestKey:`conversation:/);
-  assert.doesNotMatch(ui,/Usta yÃ¶nlendirmesi ÅŸu anda kullanÄ±lamÄ±yor/);
+  assert.doesNotMatch(ui,/Usta y├Ânlendirmesi ┼şu anda kullan─▒lam─▒yor/);
 });
