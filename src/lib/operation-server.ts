@@ -4,6 +4,7 @@ import {adminSupabase,currentAccount} from '@/lib/account-supabase';
 import {decodeConversationState} from '@/lib/service-conversation';
 import {serviceRequestSummary} from '@/lib/service-request-summary';
 import {serviceRequestAssessment} from '@/lib/service-request-assessment';
+import {acceptedMaximumPrice} from '@/lib/service-request-accepted-price';
 
 type Role='customer'|'technician'|'admin';
 type DbError={message?:string}|null;
@@ -22,7 +23,8 @@ function requireId(value:string){if(!uuid.test(value))throw new OperationError('
 function failDb(error:DbError,context:string):never{
   const raw=error?.message??'';
   if(/capacity reached/i.test(raw))throw new OperationError('capacity_reached',409,'Ustanın aktif iş kapasitesi dolu.');
-  if(/closed for acceptance|already accepted|another quote/i.test(raw))throw new OperationError('conflict',409,'Kayıt artık kabul edilebilir durumda değil.');
+  if(/closed for acceptance|already accepted|another quote|existing quote requires review|existing accepted price mismatch|existing request assessment mismatch/i.test(raw))
+    throw new OperationError('conflict',409,'Kayıt artık kabul edilebilir durumda değil.');
   if(/not available|invalid job status|terminal job|not available to/i.test(raw))throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');
   if(/not found/i.test(raw))throw new OperationError('not_found',404,'Kayıt bulunamadı.');
   throw new OperationError('operation_failed',500,`${context} tamamlanamadı.`);
@@ -57,6 +59,9 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const {issueTitle,problemDescription}=serviceRequestSummary(conversation);
   const assessmentSnapshot=serviceRequestAssessment(conversation);
   if(!assessmentSnapshot)throw new OperationError('assessment_required',409,'Hizmet değerlendirmesi henüz tamamlanmadı.');
+  const acceptedPrice=acceptedMaximumPrice(conversation);
+  if((final.resultState==='priced'||final.isReadyForPrice===true)&&!acceptedPrice)
+    throw new OperationError('pricing_unavailable',409,'Doğrulanmış maksimum fiyat bulunamadı.');
 
   const {data:addresses,error:addressError}=await db.from('customer_addresses')
     .select('id,is_default,created_at').eq('customer_id',account.id).order('is_default',{ascending:false}).order('created_at',{ascending:true}).limit(10);
@@ -64,13 +69,18 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const defaultAddress=(addresses??[]).find(a=>a.is_default)??((addresses??[]).length===1?addresses![0]:null);
   if(!defaultAddress)throw new OperationError('address_required',409,'Hizmet talebi için kayıtlı bir varsayılan adres gerekli.');
 
-  const {data,error}=await db.rpc('create_service_request',{
+  const args={
     p_customer_id:account.id,p_category_code:categoryCode,p_address_id:defaultAddress.id,
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
     p_assessment_snapshot:assessmentSnapshot,
-  });
+  };
+  const {data,error}=acceptedPrice?await db.rpc('create_priced_service_request',{
+    ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
+    p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
+    p_breakdown:acceptedPrice.breakdown,
+  }):await db.rpc('create_service_request',args);
   if(error)failDb(error,'Hizmet talebi');
-  return {id:data as string};
+  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY'}:{id:data as string};
 }
 export async function acceptCustomerQuote(quoteId:string){
   requireId(quoteId); const account=await requireRole('customer'); const db=adminSupabase();

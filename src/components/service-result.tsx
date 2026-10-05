@@ -79,6 +79,7 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
         <a href={`/musteri/taleplerim/${requestId}`} className="mt-4 block w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-center text-xs font-bold text-white">Talebi görüntüle</a>
       </>:<>
         <p className="text-xs text-slate-500 mt-3 leading-relaxed">Kayıtlı varsayılan adresiniz kullanılarak gerçek hizmet talebi oluşturulacak. Aynı değerlendirme tekrar gönderilirse ikinci bir talep açılmaz.</p>
+        {response?.isReadyForPrice&&response.estimatedPrice&&<p className="mt-2 text-xs font-semibold text-slate-700">Talebi oluşturduğunuzda gösterilen {response.estimatedPrice} maksimum fiyatı kabul etmiş olursunuz.</p>}
         {error&&<p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold text-red-700">{error}</p>}
         <button type="button" disabled={busy} onClick={()=>void createRequest()} className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white py-2.5 rounded-xl font-bold text-xs mt-4">{busy?'Talep oluşturuluyor…':'Talebi oluştur'}</button>
         <button type="button" onClick={onClose} className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-2">Vazgeç</button>
