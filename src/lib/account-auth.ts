@@ -5,6 +5,10 @@ export function isAccountRole(value:unknown):value is AccountRole {
   return value==='customer'||value==='technician'||value==='admin';
 }
 
+export function acceptsAccountRole(actual:unknown,expected:AccountRole){
+  return isAccountRole(actual)&&actual===expected;
+}
+
 export function accountDestination(role:AccountRole) {
   return role==='customer'?'/hizmetler':role==='technician'?'/usta':'/admin';
 }
@@ -20,9 +24,10 @@ export function requiredRole(pathname:string):AccountRole|null {
 export function authorizePath(pathname:string,account:Account|null):{allowed:true}|{allowed:false;redirect:string} {
   const required=requiredRole(pathname);
   if(!required)return {allowed:true};
-  if(!account)return {allowed:false,redirect:'/giris'};
-  if(!account.is_active||!isAccountRole(account.role))return {allowed:false,redirect:'/giris?error=account'};
-  if(account.role!==required)return {allowed:false,redirect:accountDestination(account.role)};
+  const login=required==='customer'?'/giris':required==='technician'?'/giris-usta':'/giris-admin';
+  if(!account)return {allowed:false,redirect:login};
+  if(!account.is_active||!isAccountRole(account.role))return {allowed:false,redirect:`${login}?error=account`};
+  if(account.role!==required)return {allowed:false,redirect:login};
   return {allowed:true};
 }
 

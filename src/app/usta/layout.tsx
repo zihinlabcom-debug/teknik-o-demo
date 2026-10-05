@@ -12,6 +12,6 @@ const links=[
 
 export default async function ProviderLayout({children}:{children:ReactNode}){
   const account=await currentAccount();
-  if(account?.role!=='technician')redirect(account?'/'+(account.role==='admin'?'admin':'hizmetler'):'/giris');
+  if(account?.role!=='technician')redirect('/giris-usta');
   return <OperationPanelShell area="Usta paneli" subtitle="Operasyon alanı" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
 }

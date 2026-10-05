@@ -32,31 +32,33 @@ async function holdLock(sql){
 }
 
 assert.equal(await query('select current_database()'),db,'local database guard');
-const ids={customer:randomUUID(),a:randomUUID(),b:randomUUID(),capacity:randomUUID(),
+const ids={customer:randomUUID(),a:randomUUID(),b:randomUUID(),capacity:randomUUID(),pending:randomUUID(),
   request:randomUUID(),quote:randomUUID(),existingDispatch:randomUUID(),
-  race:randomUUID(),first:randomUUID(),second:randomUUID(),
+  race:randomUUID(),first:randomUUID(),second:randomUUID(),pendingDispatch:randomUUID(),
   keyRace1:randomUUID(),keyRace2:randomUUID()};
 const uuid=(key)=>`'${ids[key]}'`;
 await query(`
-  insert into auth.users(id) values (${uuid('customer')}),(${uuid('a')}),(${uuid('b')}),(${uuid('capacity')});
+  insert into auth.users(id) values (${uuid('customer')}),(${uuid('a')}),(${uuid('b')}),(${uuid('capacity')}),(${uuid('pending')});
   insert into public.users(id,name,role) values
     (${uuid('customer')},'TEST CUSTOMER','customer'),
     (${uuid('a')},'TEST A','technician'),
     (${uuid('b')},'TEST B','technician'),
-    (${uuid('capacity')},'TEST CAPACITY','technician');
+    (${uuid('capacity')},'TEST CAPACITY','technician'),
+    (${uuid('pending')},'TEST PENDING','technician');
   insert into public.customer_profiles(user_id) values (${uuid('customer')});
   insert into public.cities default values;
   insert into public.districts(city_id) select id from public.cities order by id desc limit 1;
   insert into public.customer_addresses(customer_id,city_id,district_id)
     select ${uuid('customer')},c.id,d.id from public.cities c join public.districts d on d.city_id=c.id order by c.id desc,d.id desc limit 1;
   insert into public.technician_profiles(user_id,approval_status,is_available) values
-    (${uuid('a')},'approved',true),(${uuid('b')},'approved',true),(${uuid('capacity')},'approved',true)
+    (${uuid('a')},'approved',true),(${uuid('b')},'approved',true),(${uuid('capacity')},'approved',true),
+    (${uuid('pending')},'pending',false)
     on conflict (user_id) do update set approval_status=excluded.approval_status,is_available=excluded.is_available;
   insert into public.technician_service_areas(technician_id,city_id,district_id)
-    select x.id,c.id,null from (values (${uuid('a')}::uuid),(${uuid('b')}::uuid),(${uuid('capacity')}::uuid)) x(id)
+    select x.id,c.id,null from (values (${uuid('a')}::uuid),(${uuid('b')}::uuid),(${uuid('capacity')}::uuid),(${uuid('pending')}::uuid)) x(id)
     cross join lateral (select id from public.cities order by id desc limit 1) c;
   insert into public.technician_service_categories(technician_id,category_id)
-    select x.id,c.id from (values (${uuid('a')}::uuid),(${uuid('b')}::uuid),(${uuid('capacity')}::uuid)) x(id)
+    select x.id,c.id from (values (${uuid('a')}::uuid),(${uuid('b')}::uuid),(${uuid('capacity')}::uuid),(${uuid('pending')}::uuid)) x(id)
     cross join public.service_categories c where c.code='boiler';
   insert into public.service_requests(id,customer_id,category_id,address_id)
     select ${uuid('request')},${uuid('customer')},c.id,a.id
@@ -78,13 +80,15 @@ await query(`
     (${uuid('existingDispatch')},${uuid('request')},${uuid('quote')},'accepted'),
     (${uuid('race')},${uuid('request')},${uuid('quote')},'broadcasting'),
     (${uuid('first')},${uuid('request')},${uuid('quote')},'broadcasting'),
-    (${uuid('second')},${uuid('request')},${uuid('quote')},'broadcasting');
+    (${uuid('second')},${uuid('request')},${uuid('quote')},'broadcasting'),
+    (${uuid('pendingDispatch')},${uuid('request')},${uuid('quote')},'broadcasting');
 
   insert into public.service_dispatch_candidates(dispatch_id,technician_id,status) values
     (${uuid('race')},${uuid('a')},'offered'),
     (${uuid('race')},${uuid('b')},'offered'),
     (${uuid('first')},${uuid('capacity')},'offered'),
-    (${uuid('second')},${uuid('capacity')},'offered');
+    (${uuid('second')},${uuid('capacity')},'offered'),
+    (${uuid('pendingDispatch')},${uuid('pending')},'offered');
 
   insert into public.service_jobs(
     service_request_id,dispatch_id,accepted_quote_id,technician_id,status
@@ -92,6 +96,12 @@ await query(`
     ${uuid('request')},${uuid('existingDispatch')},${uuid('quote')},${uuid('capacity')},'assigned'
   );
 `);
+
+const pendingAttempt=await outcome(`set role service_role; select public.accept_service_dispatch(${uuid('pendingDispatch')},${uuid('pending')},'pending-${ids.pendingDispatch}')`);
+assert.equal(pendingAttempt.ok,false,'pending technician cannot accept an offered dispatch');
+assert.match(pendingAttempt.error,/Technician is not approved/);
+assert.equal(await query(`select count(*) from public.service_jobs where dispatch_id=${uuid('pendingDispatch')}`),'0');
+console.log('PASS: pending technician cannot accept dispatch');
 
 const dispatchLock=await holdLock(`select id from public.service_dispatches where id=${uuid('race')} for update`);
 const race=await Promise.all([

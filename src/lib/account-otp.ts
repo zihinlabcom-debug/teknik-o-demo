@@ -1,5 +1,5 @@
 import {adminSupabase,serverSupabase} from './account-supabase';
-import {accountDestination,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment} from './account-auth';
+import {acceptsAccountRole,accountDestination,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment,type AccountRole} from './account-auth';
 
 type Mode='signup'|'login';
 type OtpResult={ok:true;delivery:'sms'|'test';redirect?:string}|{ok:false;error:string};
@@ -11,10 +11,10 @@ async function knownAccount(phone:string){
   const db=adminSupabase();
   const variants=phoneLookupVariants(phone);
   if(!variants.length)return null;
-  const {data,error}=await db.from('users').select('id,email,is_test,is_active').in('phone',variants).limit(2);
+  const {data,error}=await db.from('users').select('id,email,role,is_test,is_active').in('phone',variants).limit(2);
   if(error)throw new Error('Account lookup failed');
   if(data?.length!==1||data[0].is_active!==true)return null;
-  return data[0] as {id:string;email:string|null;is_test:boolean;is_active:true};
+  return data[0] as {id:string;email:string|null;role:AccountRole;is_test:boolean;is_active:true};
 }
 
 async function testAccount(phone:string){
@@ -22,14 +22,23 @@ async function testAccount(phone:string){
   return account?.is_test===true&&account.email?account as typeof account & {email:string;is_test:true}:null;
 }
 
-export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string}):Promise<OtpResult>{
+export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string;
+  expectedRole?:AccountRole;allowProvisionalCustomer?:boolean}):Promise<OtpResult>{
   const phone=normalizePhone(input.phone);
+  const expectedRole=input.expectedRole??'customer';
   if(!phone)return {ok:false,error:'Geçerli bir cep telefonu numarası girin.'};
   if(input.mode!=='signup'&&input.mode!=='login')return {ok:false,error:'Geçersiz işlem.'};
+  if(input.mode==='signup'&&expectedRole==='admin')return {ok:false,error:'Bu uygulamada kayıt yapılamaz.'};
   if(input.mode==='signup'&&(!input.fullName?.trim()||input.fullName.trim().length>200))return {ok:false,error:'Ad soyad girin.'};
   try{
-    const account=input.mode==='login'||testOtpEnvironment(environment())?await knownAccount(phone):null;
+    const account=await knownAccount(phone);
     if(input.mode==='login'&&!account)return {ok:false,error:'Hesap bulunamadı veya doğrulama başlatılamadı.'};
+    const provisionalRetry=input.mode==='signup'&&expectedRole==='technician'&&
+      input.allowProvisionalCustomer===true&&account?.role==='customer';
+    if(account&&!acceptsAccountRole(account.role,expectedRole)&&!provisionalRetry)
+      return {ok:false,error:'Bu hesap bu uygulamada kullanılamaz.'};
+    if(input.mode==='signup'&&expectedRole==='technician'&&account&&!provisionalRetry)
+      return {ok:false,error:'Bu telefonla kayıtlı bir hesap bulunuyor. Usta girişini kullanın.'};
     if(testOtpEnvironment(environment())&&account?.is_test&&account.email)return {ok:true,delivery:'test'};
     const db=await serverSupabase();
     const {error}=await db.auth.signInWithOtp({phone,options:{
@@ -41,8 +50,10 @@ export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string}
   }catch{return {ok:false,error:'Doğrulama hizmetine şu anda ulaşılamıyor.'};}
 }
 
-export async function verifyOtp(input:{phone:string;token:string}):Promise<OtpResult>{
+export async function verifyOtp(input:{phone:string;token:string;expectedRole?:AccountRole;
+  onVerified?:(userId:string)=>Promise<void>}):Promise<OtpResult>{
   const phone=normalizePhone(input.phone);
+  const expectedRole=input.expectedRole??'customer';
   const token=input.token.trim();
   if(!phone||!/^\d{4,10}$/.test(token))return {ok:false,error:'Geçerli bir doğrulama kodu girin.'};
   try{
@@ -66,10 +77,15 @@ export async function verifyOtp(input:{phone:string;token:string}):Promise<OtpRe
       if(error||!data.user)return {ok:false,error:'Doğrulama kodu geçersiz veya süresi dolmuş.'};
       userId=data.user.id;
     }
+    if(input.onVerified){
+      try{await input.onVerified(userId);}
+      catch{await db.auth.signOut();return {ok:false,error:'Başvuru tamamlanamadı. Lütfen tekrar deneyin.'};}
+    }
     const {data:profile,error:profileError}=await db.from('users').select('role,is_active').eq('id',userId).maybeSingle();
-    if(profileError||!profile||profile.is_active!==true||!['customer','technician','admin'].includes(profile.role)){
+    if(profileError||!profile||profile.is_active!==true||!acceptsAccountRole(profile.role,expectedRole)){
       await db.auth.signOut();
-      return {ok:false,error:'Hesap profili doğrulanamadı. Destek ile iletişime geçin.'};
+      return {ok:false,error:profile&&profile.role!==expectedRole?'Bu hesap bu uygulamada kullanılamaz.':
+        'Hesap profili doğrulanamadı. Destek ile iletişime geçin.'};
     }
     return {ok:true,delivery:'sms',redirect:accountDestination(profile.role)};
   }catch{return {ok:false,error:'Doğrulama hizmetine şu anda ulaşılamıyor.'};}

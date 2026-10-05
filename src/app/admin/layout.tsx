@@ -18,6 +18,6 @@ const links=[
 
 export default async function AdminLayout({children}:{children:ReactNode}){
   const account=await currentAccount();
-  if(account?.role!=='admin')redirect(account?'/'+(account.role==='technician'?'usta':'hizmetler'):'/giris');
+  if(account?.role!=='admin')redirect('/giris-admin');
   return <OperationPanelShell area="Yönetim paneli" subtitle="Veri entegrasyonu bekleniyor" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
 }

@@ -8,6 +8,6 @@ const links=[{href:'/musteri',label:'Müşteri paneli'},{href:'/musteri/talepler
 
 export default async function CustomerPanelLayout({children}:{children:ReactNode}){
   const account=await currentAccount();
-  if(account?.role!=='customer')redirect(account?'/'+(account.role==='admin'?'admin':'usta'):'/giris');
+  if(account?.role!=='customer')redirect('/giris');
   return <CustomerShell><PanelSubNav links={links}/>{children}</CustomerShell>;
 }

@@ -9,7 +9,8 @@ const admin={id:'a',role:'admin',is_test:true,is_active:true};
 
 test('protected routes require a canonical active role',()=>{
   for(const path of ['/admin','/usta','/musteri','/dashboard','/hizmetler','/kategoriler'])
-    assert.deepEqual(authorizePath(path,null),{allowed:false,redirect:'/giris'});
+    assert.deepEqual(authorizePath(path,null),{allowed:false,redirect:
+      path==='/admin'?'/giris-admin':path==='/usta'?'/giris-usta':'/giris'});
   assert.equal(authorizePath('/admin',customer).allowed,false);
   assert.equal(authorizePath('/usta',customer).allowed,false);
   assert.equal(authorizePath('/usta',technician).allowed,true);

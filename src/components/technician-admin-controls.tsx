@@ -35,6 +35,7 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
     type="button" disabled={busy} onClick={()=>void change(action,extra)}
     className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 disabled:opacity-50">{label}</button>;
   return <div className="mt-4 space-y-4 border-t border-slate-100 pt-4 text-sm">
+    <p className="text-slate-600">Ustanın beyan ettiği kategori ve hizmet alanlarını gerektiğinde burada yönetebilirsiniz.</p>
     <div className="flex flex-wrap gap-2" aria-label="Usta onay ve aktiflik işlemleri">
       {approvalStatus!=='approved'&&button('Onayla','approve')}
       {approvalStatus!=='rejected'&&button('Reddet','reject')}
