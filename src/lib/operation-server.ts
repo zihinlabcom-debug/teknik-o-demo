@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {adminSupabase,currentAccount} from '@/lib/account-supabase';
 import {decodeConversationState} from '@/lib/service-conversation';
 import {serviceRequestSummary} from '@/lib/service-request-summary';
+import {serviceRequestAssessment} from '@/lib/service-request-assessment';
 
 type Role='customer'|'technician'|'admin';
 type DbError={message?:string}|null;
@@ -54,6 +55,8 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const requestKey=`conversation:${fingerprint}`;
   const pricingReference=`conversation-sha256:${fingerprint}`;
   const {issueTitle,problemDescription}=serviceRequestSummary(conversation);
+  const assessmentSnapshot=serviceRequestAssessment(conversation);
+  if(!assessmentSnapshot)throw new OperationError('assessment_required',409,'Hizmet değerlendirmesi henüz tamamlanmadı.');
 
   const {data:addresses,error:addressError}=await db.from('customer_addresses')
     .select('id,is_default,created_at').eq('customer_id',account.id).order('is_default',{ascending:false}).order('created_at',{ascending:true}).limit(10);
@@ -64,6 +67,7 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const {data,error}=await db.rpc('create_service_request',{
     p_customer_id:account.id,p_category_code:categoryCode,p_address_id:defaultAddress.id,
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
+    p_assessment_snapshot:assessmentSnapshot,
   });
   if(error)failDb(error,'Hizmet talebi');
   return {id:data as string};
@@ -176,7 +180,7 @@ export async function adminRequestList(){
 
 export async function adminRequestDetail(id:string){
   requireId(id); await requireRole('admin'); const db=adminSupabase();
-  const {data:request,error}=await db.from('service_requests').select('id,customer_id,category_id,status,created_at').eq('id',id).maybeSingle();
+  const {data:request,error}=await db.from('service_requests').select('id,customer_id,category_id,status,created_at,problem_description,assessment_snapshot').eq('id',id).maybeSingle();
   if(error)failDb(error,'Talep detayı'); if(!request)throw new OperationError('not_found',404,'Talep bulunamadı.');
   const [{data:customer},{data:category},{data:dispatches},{data:jobs},{data:quotes},{data:events}]=await Promise.all([
     request.customer_id?db.from('users').select('id,name,is_test').eq('id',request.customer_id).maybeSingle():Promise.resolve({data:null}),

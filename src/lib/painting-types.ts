@@ -5,7 +5,7 @@ export type RepairStatus='none'|'wide_putty'|'serious_plaster_damage';
 export type ColorTone='light'|'dark';
 export interface PaintingFields {
   scopeType?:ScopeType;netAreaM2?:number;paintedRoomCount?:number;furnished?:boolean;
-  ceilingHeightM?:number;paintWalls?:boolean;paintCeiling?:boolean;
+  ceilingHeightM?:number;ceilingHeightMode?:'standard'|'custom';paintWalls?:boolean;paintCeiling?:boolean;
   surfaceType?:Extract<PaintingSurface,'old_painted'|'new_plaster'|'satin_plaster_drywall'>;
   repairStatus?:RepairStatus;extraPuttyM2?:number;
   oldColorTone?:ColorTone;newColorTone?:ColorTone;paintType?:PaintingType;

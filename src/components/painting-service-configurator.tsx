@@ -1,5 +1,6 @@
 'use client';
 
+import {useState} from 'react';
 import type {DyoColor} from '@/lib/painting-color-catalog-dyo';
 import type {PaintingFields,RepairStatus,ScopeType,ColorTone} from '@/lib/painting-types';
 import type {PaintingType} from '@/lib/painting-price-data';
@@ -76,7 +77,8 @@ export function paintingSelectionSteps(selection:PaintingSelection):PaintingSubm
     {answer:`${selection.netAreaM2.trim()} m²`,expectedDelta:1},
     {answer:String(selection.paintedRoomCount),expectedDelta:1},
     {answer:selection.furnished?'Eşyalı':'Boş',expectedDelta:1},
-    {answer:`${height.toString().replace('.',',')} metre`,expectedDelta:1},
+    {answer:selection.ceilingHeightMode==='standard'?'Standart — 2,50 m':
+      `${height.toString().replace('.',',')} metre`,expectedDelta:1},
     {answer:choiceLabel(PAINTING_UI_OPTIONS.surfaces,selection.surfaces)!,expectedDelta:1},
   ];
   if(selection.surfaces==='ceiling')return steps;
@@ -109,20 +111,21 @@ export function paintingSelectionSteps(selection:PaintingSelection):PaintingSubm
 }
 
 export function PaintingServiceConfigurator({selection,onChange,serviceOptions,onSelectService,onCalculate,
-  onSelectColorSource,onConfirmColor,onChangeColor,ready,busy,finished,fieldsLocked=false,awaitingColorConfirmation=false,
+  onSelectColorSource,onSelectDyoColor,onChangeColor,ready,busy,finished,fieldsLocked=false,
   awaitingCatalogColor=false,allowFinalColorEdit=false,unavailableText,resultExplanation,result,
   onRequestTechnician,onReject,errorText}:{
   selection:PaintingSelection;onChange:(next:PaintingSelection)=>void;serviceOptions:string[];
   onSelectService:(label:string)=>void;onCalculate:(steps:PaintingSubmissionStep[])=>void;
-  onSelectColorSource:(source:ColorSource)=>void;onConfirmColor:()=>void;onChangeColor:()=>void;
+  onSelectColorSource:(source:ColorSource)=>void;onSelectDyoColor:(color:DyoColor)=>void;onChangeColor:()=>void;
   ready:boolean;busy:boolean;finished:boolean;fieldsLocked?:boolean;
-  awaitingColorConfirmation?:boolean;awaitingCatalogColor?:boolean;allowFinalColorEdit?:boolean;
+  awaitingCatalogColor?:boolean;allowFinalColorEdit?:boolean;
   unavailableText?:string|null;resultExplanation?:string|null;result:ServicePricePresentation|null;
   onRequestTechnician:()=>void;onReject:()=>void;errorText?:string|null;
 }){
+  const [catalogOpen,setCatalogOpen]=useState(false);
   const steps=paintingSelectionSteps(selection);
   const fieldDisabled=busy||finished||fieldsLocked;
-  const colorDisabled=busy||finished||awaitingColorConfirmation;
+  const colorDisabled=busy;
   const colorInputDisabled=fieldDisabled&&!allowFinalColorEdit;
   const walls=selection.surfaces!==null&&selection.surfaces!=='ceiling';
   const stopForReview=selection.repairStatus==='serious_plaster_damage';
@@ -175,7 +178,7 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
     action={<div className="min-w-0 space-y-2">
       {selection.serviceType==='Duvar Boyama'&&!steps&&<p role="status" className="text-sm font-medium text-slate-600">Fiyat için gerekli alanları tamamlayın.</p>}
       {errorText&&<p role="alert" className="text-sm font-medium text-red-700">{errorText}</p>}
-      {selection.serviceType==='Duvar Boyama'&&!awaitingColorConfirmation&&<button type="button"
+      {selection.serviceType==='Duvar Boyama'&&<button type="button"
         disabled={!steps||!ready||busy||finished} onClick={()=>{if(steps)onCalculate(steps);}}
         className="min-h-12 w-full rounded-xl bg-[#EE6C13] px-5 py-3 text-base font-bold text-white shadow-md shadow-orange-500/15 disabled:cursor-not-allowed disabled:opacity-50">
         {busy?'Hesaplanıyor…':'Fiyatı Hesapla'}</button>}
@@ -274,18 +277,25 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
           <div className="flex min-w-0 flex-wrap gap-2">
             <button type="button" disabled={colorDisabled||fieldsLocked&&!awaitingCatalogColor&&!allowFinalColorEdit}
               aria-pressed={selection.colorSelectionSource==='dyo_catalog'}
-              onClick={()=>onSelectColorSource('dyo_catalog')}
+              onClick={()=>{onSelectColorSource('dyo_catalog');setCatalogOpen(true);}}
               className={card(selection.colorSelectionSource==='dyo_catalog')}>DYO katalogdan seç</button>
             <button type="button" disabled={colorDisabled||fieldsLocked&&!awaitingCatalogColor&&!allowFinalColorEdit}
               aria-pressed={selection.colorSelectionSource==='manual'}
-              onClick={()=>onSelectColorSource('manual')}
+              onClick={()=>{onSelectColorSource('manual');setCatalogOpen(false);}}
               className={card(selection.colorSelectionSource==='manual')}>Marka / renk kodunu manuel gir</button>
           </div>
         </fieldset>
         {selection.colorSelectionSource==='dyo_catalog'&&<div className="min-w-0">
-          <PaintingColorCatalog expanded disabled={colorDisabled} onSelect={color=>set('selectedDyoColor',color)} />
-          {selection.selectedDyoColor&&<p className="text-sm font-semibold text-slate-800">
-            Seçilen renk: DYO — {selection.selectedDyoColor.colorName??'Adlandırılmamış'} — {selection.selectedDyoColor.colorCode}</p>}
+          {selection.selectedDyoColor&&<button type="button" disabled={colorDisabled}
+            aria-label="Seçili DYO rengini değiştir" aria-expanded={catalogOpen}
+            onClick={()=>{if(finished)onChangeColor();setCatalogOpen(true);}}
+            className="flex min-h-12 w-full items-center gap-3 rounded-xl border border-orange-300 bg-white p-3 text-left text-sm font-semibold text-slate-800">
+            <span className="size-8 shrink-0 rounded-md border border-slate-300"
+              style={{backgroundColor:selection.selectedDyoColor.previewHex}} aria-hidden="true" />
+            Seçilen renk: DYO — {selection.selectedDyoColor.colorName??'Adlandırılmamış'} — {selection.selectedDyoColor.colorCode}
+          </button>}
+          {(!selection.selectedDyoColor||catalogOpen)&&<PaintingColorCatalog expanded disabled={colorDisabled}
+            onSelect={color=>{onSelectDyoColor(color);setCatalogOpen(false);}} />}
         </div>}
         {selection.colorSelectionSource==='manual'&&<div className="grid gap-4 sm:grid-cols-2">
           <label className="min-w-0 text-sm font-semibold">Marka
@@ -299,13 +309,6 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
               className="mt-2 min-h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-3 text-base font-normal text-slate-900" />
           </label>
         </div>}
-        {awaitingColorConfirmation&&<fieldset className="rounded-xl border border-orange-200 bg-orange-50 p-3">
-          <legend className="px-1 text-sm font-semibold">Bu renkle devam edelim mi?</legend>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={busy} onClick={onConfirmColor} className={card(false)}>Evet, devam et</button>
-            <button type="button" disabled={busy} onClick={onChangeColor} className={card(false)}>Rengi değiştir</button>
-          </div>
-        </fieldset>}
       </div>
     </section>}
   </ServiceConfiguratorShell>;

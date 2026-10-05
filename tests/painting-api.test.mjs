@@ -83,7 +83,7 @@ test('category confirmation carries a prior floor-area observation into the pain
   assert.match(third.aiText,/Boya işi komple ev için mi/);
  }finally{if(secret===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;else process.env.DIAGNOSIS_STATE_SECRET=secret;}
 });
-test('both API routes validate DYO catalog codes and carry the confirmed source color into the unchanged quote',async()=>{
+test('both API routes validate DYO catalog codes and accept one-click selection into the unchanged quote',async()=>{
  const secret=process.env.DIAGNOSIS_STATE_SECRET,originalFetch=globalThis.fetch;
  process.env.DIAGNOSIS_STATE_SECRET='painting-dyo-api-secret';
  let networkCalls=0;globalThis.fetch=async()=>{networkCalls++;throw Error('Catalog must be offline');};
@@ -105,13 +105,12 @@ test('both API routes validate DYO catalog codes and carry the confirmed source 
    assert.equal(decodePaintingState(result.stateToken).fields.colorCode,undefined);
    result=await post(route,{message:'DYO renk kodu: 6269',conversationToken:result.conversationToken,
     colorName:'SAHTE',previewHex:'#000000'});
-   assert.equal(result.resultState,'painting_color_confirmation');
-   assert.match(result.aiText,/DYO — DENİZ ATI — 6269/);
+   assert.equal(result.resultState,'priced');
    const fields=decodePaintingState(result.stateToken).fields;
    assert.equal(fields.paintBrand,'DYO');assert.equal(fields.colorCode,'6269');
    assert.equal(fields.colorName,'DENİZ ATI');assert.equal(fields.colorSelectionSource,'dyo_catalog');
-   result=await post(route,{message:'Bu renkle devam et',conversationToken:result.conversationToken});
-   assert.equal(result.resultState,'priced');assert.equal(result.estimatedPrice,'46.011,34 TL');
+   assert.equal(result.estimatedPrice,'46.011,34 TL');
+   assert.ok(!result.options.includes('Bu renkle devam et'));
   }
   assert.equal(networkCalls,0);
  }finally{globalThis.fetch=originalFetch;

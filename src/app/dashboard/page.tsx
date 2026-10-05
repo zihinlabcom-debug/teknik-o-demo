@@ -232,7 +232,7 @@ function DashboardContent() {
         response?.resultState==='painting_manual_review';
       const valid=response&&response!==paintingQueue.fromResponse&&response.category==='painting'&&
         response.answeredSystemQuestions===expected&&
-        (terminal||step.kind==='dyo_code'&&response.resultState==='painting_color_confirmation'||
+        (terminal||step.kind==='dyo_code'&&response.resultState==='painting_question'||
           step.kind==='catalog_choice'&&response.resultState==='painting_color_catalog'||
           step.kind==='manual_choice'&&response.resultState==='painting_question'||
           !step.kind&&response.resultState==='painting_question');
@@ -241,7 +241,7 @@ function DashboardContent() {
         setPaintingQueue(null);
         return;
       }
-      if(terminal||response.resultState==='painting_color_confirmation'){
+      if(terminal){
         setPaintingQueue(null);
         return;
       }
@@ -321,7 +321,13 @@ function DashboardContent() {
             if((response?.resultState==='painting_color_catalog'||
               (response?.resultState==='painting_question'&&(response.answeredSystemQuestions??0)>0))&&
               paintingSelection.colorSelectionSource!==source)
-              void submit(source==='manual'?'Marka ve renk kodunu kendim yazacaÄŸÄ±m':'DYO renk kataloÄŸundan seÃ§');
+              void submit(source==='manual'?'Marka ve renk kodunu kendim yazacağım':'DYO renk kataloğundan seç');
+          }}
+          onSelectDyoColor={color=>{
+            if(isAnalyzing||paintingQueue)return;
+            setPaintingSelection(current=>({...current,selectedDyoColor:color}));
+            if(response?.resultState==='painting_color_catalog')
+              void submit(`DYO renk kodu: ${color.colorCode}`);
           }}
           onCalculate={steps=>{
             if(paintingQueue||isAnalyzing)return;
@@ -337,16 +343,13 @@ function DashboardContent() {
             }
             setPaintingQueue({steps,next:0,sent:false,fromResponse:null});
           }}
-          onConfirmColor={()=>{if(!isAnalyzing)void submit('Bu renkle devam et');}}
           onChangeColor={()=>{
             if(isAnalyzing)return;
-            setPaintingSelection(current=>({...current,selectedDyoColor:null}));
-            void submit('Rengi deÄŸiÅŸtir');
+            void submit('Rengi değiştir');
           }}
           ready={response?.resultState==='painting_question'||response?.resultState==='painting_color_catalog'}
           busy={isAnalyzing||paintingQueue!==null}
           fieldsLocked={(response?.answeredSystemQuestions??0)>0}
-          awaitingColorConfirmation={response?.resultState==='painting_color_confirmation'}
           awaitingCatalogColor={response?.resultState==='painting_color_catalog'}
           allowFinalColorEdit={response?.resultState==='painting_question'&&
             (response.answeredSystemQuestions??0)>0&&paintingSelection.colorSelectionSource==='manual'}

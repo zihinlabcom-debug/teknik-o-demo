@@ -19,7 +19,7 @@ RunSql 'supabase/migrations/20261004000006_operational_event_history.sql'
 RunSql 'supabase/migrations/20261004000007_operation_lifecycle_guard.sql'
 RunSql 'supabase/migrations/20261004000008_operation_access_hardening.sql'
 RunSql 'supabase/migrations/20261004231649_service_request_creation.sql'
-RunSql 'supabase/migrations/20261005000002_stage2_service_role_reads.sql'
+RunSql 'supabase/migrations/20261005012645_stage2_service_role_reads.sql'
 RunSql 'supabase/verify_service_request_creation.sql'
 RunSql 'supabase/tests/service_request_creation_integration.sql'
 RunCmd 'npm test' { npm.cmd test }
@@ -28,7 +28,7 @@ RunCmd 'npm build --webpack' { npm.cmd run build -- --webpack }
 $targets=@(
  'src/lib/operation-server.ts','src/components/service-result.tsx','src/app/dashboard/page.tsx','src/app/teshis/page.tsx',
  'src/app/api/operations/requests/route.ts','supabase/migrations/20261004231649_service_request_creation.sql',
- 'supabase/migrations/20261005000002_stage2_service_role_reads.sql','supabase/verify_service_request_creation.sql','supabase/tests/service_request_creation_integration.sql','tests/stage2-service-request.test.mjs'
+ 'supabase/migrations/20261005012645_stage2_service_role_reads.sql','supabase/verify_service_request_creation.sql','supabase/tests/service_request_creation_integration.sql','tests/stage2-service-request.test.mjs'
 )
 RunCmd 'Stage 2 scoped diff check' { git diff --check -- $targets }
 Write-Host 'STAGE 2 REAL SERVICE REQUEST LOCAL GATE: PASS' -ForegroundColor Green

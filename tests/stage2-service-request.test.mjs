@@ -41,7 +41,7 @@ test('Usta çağır dialog sends only signed conversation token',()=>{
 });
 
 test('Stage 2 server-role read migration grants only required request reads',()=>{
-  const sql=read('supabase/migrations/20261005000002_stage2_service_role_reads.sql');
+  const sql=read('supabase/migrations/20261005012645_stage2_service_role_reads.sql');
   assert.match(sql,/grant select on public\.customer_addresses to service_role/);
   assert.match(sql,/grant select on public\.service_requests to service_role/);
   assert.match(sql,/grant select on public\.service_categories to service_role/);
@@ -51,6 +51,6 @@ test('Stage 2 server-role read migration grants only required request reads',()=
 test('Stage 2 validation script uses applied migration names',()=>{
   const script=read('STAGE2_VALIDATE.ps1');
   assert.match(script,/20261004231649_service_request_creation\.sql/);
-  assert.match(script,/20261005000002_stage2_service_role_reads\.sql/);
+  assert.match(script,/20261005012645_stage2_service_role_reads\.sql/);
   assert.doesNotMatch(script,/20261005000001_service_request_creation\.sql/);
 });

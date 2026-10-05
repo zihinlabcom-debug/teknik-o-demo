@@ -185,7 +185,14 @@ function apply(state:PaintingState,key:PaintingQuestionKey,message:string,pendin
   case 'netAreaM2':{const v=numberFrom(message,'area',pending);if(v!==null){fields.netAreaM2=v;return true;}return false;}
   case 'paintedRoomCount':{const v=numberFrom(message,'rooms',pending);if(v!==null){fields.paintedRoomCount=v;return true;}return false;}
   case 'furnished':{const v=parseFurnished(message);if(v!==null){fields.furnished=v;return true;}return false;}
-  case 'ceilingHeightM':{const v=numberFrom(message,'height',pending);if(v!==null){fields.ceilingHeightM=v;return true;}return false;}
+  case 'ceilingHeightM':{
+   if(/^Standart\s*[—–-]\s*2,50\s*m$/iu.test(message.trim())){
+    fields.ceilingHeightM=2.5;fields.ceilingHeightMode='standard';return true;
+   }
+   const v=numberFrom(message,'height',pending);
+   if(v!==null){fields.ceilingHeightM=v;fields.ceilingHeightMode='custom';return true;}
+   return false;
+  }
   case 'surfaces':{const v=parseSurfaces(message,pending);if(v){Object.assign(fields,v);return true;}return false;}
   case 'surfaceType':{const v=parseSurface(message);if(v){fields.surfaceType=v;return true;}return false;}
   case 'repairStatus':{const v=parseRepair(message);if(v){fields.repairStatus=v;return true;}return false;}
@@ -207,7 +214,7 @@ function apply(state:PaintingState,key:PaintingQuestionKey,message:string,pendin
     const selected=code?findDyoWallColor(code):undefined;
     if(!selected)return false;
     fields.paintBrand='DYO';fields.colorCode=selected.colorCode;fields.colorName=selected.colorName;
-    state.stage='confirming_color';return true;
+    return true;
    }
    const parsed=parseBrandColor(message,fields);Object.assign(fields,parsed);
    const complete=!!fields.paintBrand?.trim()&&!!fields.colorCode?.trim();
@@ -271,21 +278,15 @@ function prompt(key:PaintingQuestionKey,fields:PaintingFields){
 export async function diagnosePainting(message:string,history:DiagnosisMessage[],token?:unknown){
  const state=decodePaintingState(token)??{version:1 as const,fields:{},currentQuestionKey:null,answeredQuestionKeys:[],
   answeredSystemQuestions:0,stage:'collecting' as const} satisfies PaintingState;
- let handledConfirmation=false;
- if(state.stage==='priced'&&state.fields.colorSelectionSource==='dyo_catalog'&&
+ let handledColorChange=false;
+ if((state.stage==='priced'||state.stage==='confirming_color')&&state.fields.colorSelectionSource==='dyo_catalog'&&
    message.trim()===CHANGE_DYO_COLOR_OPTION){
   state.stage='collecting';state.fields.colorCode=undefined;state.fields.colorName=undefined;
-  state.currentQuestionKey='brandColor';handledConfirmation=true;
+  state.currentQuestionKey='brandColor';handledColorChange=true;
  }
- if(state.stage==='confirming_color'){
-  handledConfirmation=true;
-  if(message.trim()===CONFIRM_DYO_COLOR_OPTION)state.stage='collecting';
-  else if(message.trim()===CHANGE_DYO_COLOR_OPTION){
-   state.stage='collecting';state.fields.colorCode=undefined;state.fields.colorName=undefined;
-   state.currentQuestionKey='brandColor';
-  }
- }
- if(state.stage==='collecting'&&!handledConfirmation){
+ // Previously signed confirmation states can continue without another click.
+ if(state.stage==='confirming_color')state.stage='collecting';
+ if(state.stage==='collecting'&&!handledColorChange&&message.trim()!==CONFIRM_DYO_COLOR_OPTION){
   if(state.currentQuestionKey){
    if(apply(state,state.currentQuestionKey,message,true)){
     if(!state.answeredQuestionKeys.includes(state.currentQuestionKey)){
@@ -306,14 +307,6 @@ export async function diagnosePainting(message:string,history:DiagnosisMessage[]
    options:[],stateToken:encode(state),resultState:'painting_manual_review',isReadyForPrice:false,
    paintingQuote:null,answeredSystemQuestions:state.answeredSystemQuestions,questionCount:state.answeredSystemQuestions,
    assessmentComplete:true,estimatedPrice:null};
- }
- if(state.stage==='confirming_color'){
-  const name=state.fields.colorName?`${state.fields.colorName} — `:'';
-  return {aiText:`Seçtiğiniz renk: DYO — ${name}${state.fields.colorCode}. Bu renkle devam edelim mi?`,
-   options:[CONFIRM_DYO_COLOR_OPTION,CHANGE_DYO_COLOR_OPTION],stateToken:encode(state),
-   resultState:'painting_color_confirmation',isReadyForPrice:false,paintingQuote:null,
-   answeredSystemQuestions:state.answeredSystemQuestions,questionCount:state.answeredSystemQuestions+1,
-   assessmentComplete:false,estimatedPrice:null};
  }
  if(question==='brandColor'&&state.fields.colorSelectionSource==='dyo_catalog'){
   state.currentQuestionKey=question;

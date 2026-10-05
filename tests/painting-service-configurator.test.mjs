@@ -2,6 +2,7 @@ import './helpers/register-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createElement} from 'react';
+import {readFileSync} from 'node:fs';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {DYO_READY_COLORS} from '../src/lib/painting-color-catalog-dyo.ts';
 import {diagnosePainting,decodePaintingState,availablePaintingTypes} from '../src/lib/painting-engine.ts';
@@ -15,7 +16,7 @@ const complete={...EMPTY_PAINTING_SELECTION,serviceType:'Duvar Boyama',scopeType
  paintType:'silicone_matte',colorSelectionSource:'manual',paintBrand:'Filli Boya',colorCode:'Rezene 190'};
 const render=(selection=EMPTY_PAINTING_SELECTION,overrides={})=>renderToStaticMarkup(createElement(PaintingServiceConfigurator,{
  selection,onChange(){},serviceOptions:['Duvar Boyama','Mobilya Boyama','Dış Cephe Boyama'],
- onSelectService(){},onSelectColorSource(){},onCalculate(){},onConfirmColor(){},onChangeColor(){},
+ onSelectService(){},onSelectColorSource(){},onSelectDyoColor(){},onCalculate(){},onChangeColor(){},
  ready:true,busy:false,finished:false,result:null,onRequestTechnician(){},onReject(){},...overrides,
 }));
 const calculate=html=>html.match(/<button[^>]*>(?:Fiyatı Hesapla|Hesaplanıyor…)<\/button>/)?.[0]??'';
@@ -64,8 +65,9 @@ test('painting form renders scope, area, room count, furnishing, height, wall su
 
 test('standard ceiling height sends 2.5; custom height opens a decimal field and sends 3.1',async()=>{
  const standard=paintingSelectionSteps(complete);
- assert.equal(standard[4].answer,'2,5 metre');
+ assert.equal(standard[4].answer,'Standart — 2,50 m');
  assert.equal((await run(complete)).fields.ceilingHeightM,2.5);
+ assert.equal((await run(complete)).fields.ceilingHeightMode,'standard');
  const custom={...complete,ceilingHeightMode:'custom',customCeilingHeight:'3,10'};
  const html=render(custom);
  assert.ok(html.includes('Tavan yüksekliğini belirtiniz'));
@@ -73,10 +75,11 @@ test('standard ceiling height sends 2.5; custom height opens a decimal field and
  assert.ok(html.includes('inputMode="decimal"'));
  assert.equal(paintingSelectionSteps(custom)[4].answer,'3,1 metre');
  assert.equal((await run(custom)).fields.ceilingHeightM,3.1);
+ assert.equal((await run(custom)).fields.ceilingHeightMode,'custom');
  assert.equal(paintingSelectionSteps({...custom,customCeilingHeight:''}),null);
  assert.ok(calculate(render({...custom,customCeilingHeight:''})).includes('disabled=""'));
  assert.equal(paintingSelectionSteps({...complete,ceilingHeightMode:'custom',customCeilingHeight:''}),null);
- assert.equal(paintingSelectionSteps({...custom,ceilingHeightMode:'standard'})[4].answer,'2,5 metre');
+ assert.equal(paintingSelectionSteps({...custom,ceilingHeightMode:'standard'})[4].answer,'Standart — 2,50 m');
 });
 
 test('only-ceiling stops before wall questions; wide putty is conditional; serious damage stays manual review',async()=>{
@@ -98,35 +101,53 @@ test('only-ceiling stops before wall questions; wide putty is conditional; serio
  assert.equal(result.result.estimatedPrice,null);
 });
 
-test('manual brand/code and DYO catalog follow the existing confirmation and pricing transitions',async()=>{
+test('manual brand/code and DYO selection price without a second confirmation',async()=>{
  const manual=await run(complete);
  assert.equal(manual.result.resultState,'priced');
  assert.equal(manual.fields.paintBrand,'Filli Boya');
  assert.equal(manual.fields.colorCode,'Rezene 190');
  const dyo={...complete,colorSelectionSource:'dyo_catalog',selectedDyoColor:DYO_READY_COLORS[0]};
  const html=render(dyo);
- assert.ok(html.includes('DYO renk kataloğu'));
- assert.ok(html.includes('Renk adı veya kodu ara'));
- assert.ok(!html.includes('max-h-64'));
+ assert.ok(html.includes('Seçili DYO rengini değiştir'));
+ assert.ok(!html.includes('Renk adı veya kodu ara'));
+ assert.ok(render({...dyo,selectedDyoColor:null}).includes('Renk adı veya kodu ara'));
  const choice=paintingSelectionSteps(dyo).at(-2);
  assert.deepEqual(choice,{answer:'DYO renk kataloğundan seç',expectedDelta:0,kind:'catalog_choice'});
  const selected=await run(dyo);
  assert.equal(selected.trace.at(-2).resultState,'painting_color_catalog');
- assert.equal(selected.result.resultState,'painting_color_confirmation');
+ assert.equal(selected.result.resultState,'priced');
  assert.equal(selected.fields.paintBrand,'DYO');
  assert.equal(selected.fields.colorCode,dyo.selectedDyoColor.colorCode);
- const confirmed=await diagnoseWithToken('Bu renkle devam et',selected.result.stateToken);
- assert.equal(confirmed.resultState,'priced');
- const confirmationHtml=render(dyo,{awaitingColorConfirmation:true});
- assert.ok(confirmationHtml.includes('Bu renkle devam edelim mi?'));
- assert.ok(confirmationHtml.includes('Evet, devam et'));
- assert.ok(confirmationHtml.includes('Rengi değiştir'));
+ assert.ok(!html.includes('Bu renkle devam edelim mi?'));
+ const changed=await diagnoseWithToken('Rengi değiştir',selected.result.stateToken);
+ assert.equal(changed.resultState,'painting_color_catalog');
+ const newColor=await diagnoseWithToken('DYO renk kodu: 6269',changed.stateToken);
+ assert.equal(newColor.resultState,'priced');
+ const fields=decodeWithTestSecret(newColor.stateToken).fields;
+ assert.equal(fields.colorCode,'6269');
+ assert.equal(fields.netAreaM2,100);
+});
+
+test('dashboard sends the accepted DYO change and catalog labels to the server',()=>{
+ const source=readFileSync(new URL('../src/app/dashboard/page.tsx',import.meta.url),'utf8');
+ assert.ok(source.includes("void submit('Rengi değiştir')"));
+ assert.ok(source.includes("'DYO renk kataloğundan seç'"));
+ assert.ok(source.includes('onSelectDyoColor={color=>'));
+ assert.ok(!source.includes('onConfirmColor='));
 });
 
 async function diagnoseWithToken(answer,token){
  const original=process.env.DIAGNOSIS_STATE_SECRET;
  process.env.DIAGNOSIS_STATE_SECRET='painting-form-offline-test-secret';
  try{return await diagnosePainting(answer,[],token);}finally{
+  if(original===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;
+  else process.env.DIAGNOSIS_STATE_SECRET=original;
+ }
+}
+function decodeWithTestSecret(token){
+ const original=process.env.DIAGNOSIS_STATE_SECRET;
+ process.env.DIAGNOSIS_STATE_SECRET='painting-form-offline-test-secret';
+ try{return decodePaintingState(token);}finally{
   if(original===undefined)delete process.env.DIAGNOSIS_STATE_SECRET;
   else process.env.DIAGNOSIS_STATE_SECRET=original;
  }

@@ -1,6 +1,7 @@
 import './helpers/register-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {createHmac} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {existsSync,mkdtempSync,readFileSync,rmdirSync,unlinkSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
@@ -11,7 +12,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import {DYO_READY_COLORS,DYO_WALL_COLORS,DYO_SOURCE_RECORD_COUNT,DYO_METADATA_READY_COUNT,
  DYO_METADATA_PENDING_COUNT,DYO_MISSING_PREVIEW_COUNT,DYO_PREVIEW_WARNING,
  findDyoWallColor,isDyoInteriorColor,searchDyoWallColors} from '../src/lib/painting-color-catalog-dyo.ts';
-import {diagnosePainting,decodePaintingState,CHANGE_DYO_COLOR_OPTION,CONFIRM_DYO_COLOR_OPTION,
+import {diagnosePainting,decodePaintingState,CHANGE_DYO_COLOR_OPTION,
  DYO_CATALOG_OPTION,MANUAL_COLOR_OPTION,calculatePaintingPrice} from '../src/lib/painting-engine.ts';
 const {PaintingColorCatalog}=await import('../src/components/painting-color-catalog.tsx');
 
@@ -102,7 +103,7 @@ test('brand/color question offers catalog or manual entry; other manual brands s
  }
 }));
 
-test('catalog selection validates source code, confirms, changes color and keeps the price mathematics identical',()=>signed(async()=>{
+test('catalog selection validates source code, changes color without confirmation and keeps price mathematics',()=>signed(async()=>{
  const initial=await brandQuestion();
  const catalog=await diagnosePainting(DYO_CATALOG_OPTION,[],initial.stateToken);
  assert.equal(catalog.resultState,'painting_color_catalog');
@@ -113,9 +114,8 @@ test('catalog selection validates source code, confirms, changes color and keeps
  assert.equal(invalid.resultState,'painting_color_catalog');
  assert.equal(decodePaintingState(invalid.stateToken).fields.colorCode,undefined);
  const selected=await diagnosePainting('DYO renk kodu: 6269',[],invalid.stateToken);
- assert.equal(selected.resultState,'painting_color_confirmation');assert.equal(selected.isReadyForPrice,false);
- assert.match(selected.aiText,/DYO — DENİZ ATI — 6269/);
- assert.deepEqual(selected.options,[CONFIRM_DYO_COLOR_OPTION,CHANGE_DYO_COLOR_OPTION]);
+ assert.equal(selected.resultState,'priced');assert.equal(selected.isReadyForPrice,true);
+ assert.ok(!selected.options.includes('Bu renkle devam et'));
  const fields=decodePaintingState(selected.stateToken).fields;
  assert.equal(fields.paintBrand,'DYO');assert.equal(fields.colorCode,'6269');
  assert.equal(fields.colorName,'DENİZ ATI');assert.equal(fields.colorSelectionSource,'dyo_catalog');
@@ -124,12 +124,11 @@ test('catalog selection validates source code, confirms, changes color and keeps
  assert.equal(decodePaintingState(change.stateToken).fields.colorCode,undefined);
  assert.equal(change.answeredSystemQuestions,selected.answeredSystemQuestions);
  const nameless=await diagnosePainting('DYO renk kodu: 0390',[],change.stateToken);
- assert.match(nameless.aiText,/DYO — 0390/);
+ assert.equal(nameless.resultState,'priced');
  assert.equal(decodePaintingState(nameless.stateToken).fields.colorName,null);
  assert.equal(nameless.answeredSystemQuestions,selected.answeredSystemQuestions);
  const changeAgain=await diagnosePainting(CHANGE_DYO_COLOR_OPTION,[],nameless.stateToken);
- const finalSelection=await diagnosePainting('DYO renk kodu: 6269',[],changeAgain.stateToken);
- const priced=await diagnosePainting(CONFIRM_DYO_COLOR_OPTION,[],finalSelection.stateToken);
+ const priced=await diagnosePainting('DYO renk kodu: 6269',[],changeAgain.stateToken);
  assert.equal(priced.resultState,'priced');assert.equal(priced.estimatedPrice,'46.011,34 TL');
  assert.equal(priced.paintingQuote.finalPrice,46011.34);
  const priceFields=decodePaintingState(priced.stateToken).fields;
@@ -138,4 +137,23 @@ test('catalog selection validates source code, confirms, changes color and keeps
  assert.equal(afterPriceChange.resultState,'painting_color_catalog');
  assert.equal(afterPriceChange.isReadyForPrice,false);
  assert.equal(afterPriceChange.answeredSystemQuestions,priced.answeredSystemQuestions);
+}));
+
+test('a color choice with another missing prerequisite asks that question before pricing',()=>signed(async()=>{
+ const initial=await brandQuestion();
+ const catalog=await diagnosePainting(DYO_CATALOG_OPTION,[],initial.stateToken);
+ const state=decodePaintingState(catalog.stateToken);
+ delete state.fields.oldColorTone;
+ const body=Buffer.from(JSON.stringify({state,expires:Date.now()+60000})).toString('base64url');
+ const mac=createHmac('sha256',process.env.DIAGNOSIS_STATE_SECRET)
+  .update('painting-v1:'+body).digest('base64url');
+ const incomplete=`painting.${body}.${mac}`;
+ const selected=await diagnosePainting('DYO renk kodu: 6269',[],incomplete);
+ assert.equal(selected.resultState,'painting_question');
+ assert.equal(selected.isReadyForPrice,false);
+ assert.equal(selected.paintingQuote,null);
+ assert.equal(decodePaintingState(selected.stateToken).fields.colorCode,'6269');
+ assert.equal(decodePaintingState(selected.stateToken).currentQuestionKey,'oldColorTone');
+ const completed=await diagnosePainting('Koyu',[],selected.stateToken);
+ assert.equal(completed.resultState,'priced');
 }));
