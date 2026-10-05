@@ -1,7 +1,7 @@
-import test from 'node:test';
+﻿import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {authorizePath,normalizePhone,testOtpAllowed,testOtpEnvironment,accountDestination} from '../src/lib/account-auth.ts';
+import {authorizePath,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment,accountDestination} from '../src/lib/account-auth.ts';
 
 const customer={id:'c',role:'customer',is_test:false,is_active:true};
 const technician={id:'t',role:'technician',is_test:true,is_active:true};
@@ -26,6 +26,10 @@ test('Turkish phone normalization accepts equivalent safe formats',()=>{
   assert.equal(normalizePhone('05XX XXX XX XX'),null);
   assert.equal(normalizePhone('0532 123 45 67'),'+905321234567');
   assert.equal(normalizePhone('+90 532 123 45 67'),'+905321234567');
+  assert.equal(normalizePhone('5321234567'),'+905321234567');
+  assert.deepEqual(phoneLookupVariants('5321234567'),[
+    '+905321234567','905321234567','05321234567','5321234567'
+  ]);
 });
 
 test('fixed OTP works only for enabled test accounts outside production',()=>{

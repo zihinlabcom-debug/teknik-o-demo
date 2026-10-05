@@ -1,4 +1,4 @@
-export type AccountRole = 'customer' | 'technician' | 'admin';
+﻿export type AccountRole = 'customer' | 'technician' | 'admin';
 export type Account = {id:string; role:AccountRole; is_test:boolean; is_active:boolean};
 
 export function isAccountRole(value:unknown):value is AccountRole {
@@ -30,6 +30,13 @@ export function normalizePhone(value:string):string|null {
   const digits=value.replace(/\D/g,'');
   const local=digits.startsWith('90')&&digits.length===12?digits.slice(2):digits.startsWith('0')&&digits.length===11?digits.slice(1):digits;
   return /^5\d{9}$/.test(local)?`+90${local}`:null;
+}
+
+export function phoneLookupVariants(value:string):string[] {
+  const canonical=normalizePhone(value);
+  if(!canonical)return [];
+  const local=canonical.slice(3);
+  return [canonical,canonical.slice(1),`0${local}`,local];
 }
 
 export function testOtpEnvironment(input:{nodeEnv:string|undefined;vercelEnv:string|undefined;appEnv:string|undefined;enabled:string|undefined}):boolean {
