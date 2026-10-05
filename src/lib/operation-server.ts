@@ -2,6 +2,7 @@ import 'server-only';
 import {createHash} from 'node:crypto';
 import {adminSupabase,currentAccount} from '@/lib/account-supabase';
 import {decodeConversationState} from '@/lib/service-conversation';
+import {serviceRequestSummary} from '@/lib/service-request-summary';
 
 type Role='customer'|'technician'|'admin';
 type DbError={message?:string}|null;
@@ -52,8 +53,7 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const fingerprint=createHash('sha256').update(token).digest('hex');
   const requestKey=`conversation:${fingerprint}`;
   const pricingReference=`conversation-sha256:${fingerprint}`;
-  const issueTitle=final.faultTitle?.trim()||'Hizmet talebi';
-  const problemDescription=final.faultTitle?.trim()||null;
+  const {issueTitle,problemDescription}=serviceRequestSummary(conversation);
 
   const {data:addresses,error:addressError}=await db.from('customer_addresses')
     .select('id,is_default,created_at').eq('customer_id',account.id).order('is_default',{ascending:false}).order('created_at',{ascending:true}).limit(10);

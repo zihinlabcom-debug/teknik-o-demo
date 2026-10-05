@@ -17,11 +17,14 @@ test('Stage 2 request API derives request data from signed conversation state',(
   const server=read('src/lib/operation-server.ts');
   assert.match(route,/conversationToken/);
   assert.doesNotMatch(route,/body\.category|body\.requestKey|body\.pricingReference/);
+  assert.doesNotMatch(route,/body\.(?:issueTitle|problemDescription|title|description)/);
   assert.match(server,/decodeConversationState/);
   assert.match(server,/conversation\?\.customerId!==account\.id/);
   assert.match(server,/conversation_owner_mismatch/);
   assert.match(server,/createHash\('sha256'\)/);
   assert.match(server,/conversation-sha256:/);
+  assert.match(server,/serviceRequestSummary\(conversation\)/);
+  assert.doesNotMatch(server,/input\.(?:issueTitle|problemDescription|title|description)/);
   assert.match(server,/currentAccount|requireRole/);
   assert.match(server,/create_service_request/);
   assert.match(server,/customer_addresses/);
