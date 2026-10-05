@@ -25,6 +25,7 @@ export async function POST(req: Request) {
     return NextResponse.json(await diagnoseService(message, history, body.stateToken, {
       category: body.category, categorySelected: body.categorySelected === true,
       conversationToken: body.conversationToken, turnId: body.turnId,
+      customerId: account.id,
     }), { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     console.error('AI teşhis hatası:', error);

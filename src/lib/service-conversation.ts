@@ -19,7 +19,7 @@ const paintingServices=[
 const selectedPaintingService=(message:string):PaintingServiceType|null=>
   paintingServices.find(service=>service.label.toLocaleLowerCase('tr-TR')===message.trim().toLocaleLowerCase('tr-TR'))?.type??null;
 export interface CategoryConversationState {
-  version:1; category:ServiceCategory|null; boilerStateToken:string|null; paintingStateToken?:string|null;
+  version:1; customerId?:string|null; category:ServiceCategory|null; boilerStateToken:string|null; paintingStateToken?:string|null;
   paintingServiceType?:PaintingServiceType|null;
   cleaningState?:CleaningState|null;
   categoryState:ServiceResponse['categoryState']; answeredQuestionKeys:string[]; pendingQuestionKey:string|null;
@@ -40,7 +40,10 @@ export function decodeConversationState(token:unknown):CategoryConversationState
   const received=Buffer.from(mac??'','base64url');
   if(received.length!==expected.length||!timingSafeEqual(received,expected))throw Error('Invalid service conversation signature');
   const parsed=JSON.parse(Buffer.from(body,'base64url').toString()),state=parsed.state;
-  if(parsed.expires<Date.now()||state?.version!==1||state.category!==null&&!isServiceCategory(state.category)||
+  if(parsed.expires<Date.now()||state?.version!==1||
+      state.customerId!==undefined&&state.customerId!==null&&
+        (typeof state.customerId!=='string'||state.customerId.length<1||state.customerId.length>128)||
+      state.category!==null&&!isServiceCategory(state.category)||
       state.paintingServiceType!==undefined&&state.paintingServiceType!==null&&
         !paintingServices.some(service=>service.type===state.paintingServiceType)||
       state.cleaningState!==undefined&&state.cleaningState!==null&&
@@ -54,8 +57,8 @@ export function decodeConversationState(token:unknown):CategoryConversationState
     throw Error('Invalid pending category history');
   return state;
 }
-function emptyConversation(category:ServiceCategory|null):CategoryConversationState {
-  return {version:1,category,boilerStateToken:null,paintingStateToken:null,paintingServiceType:null,cleaningState:null,
+function emptyConversation(category:ServiceCategory|null,customerId:string|null=null):CategoryConversationState {
+  return {version:1,customerId,category,boilerStateToken:null,paintingStateToken:null,paintingServiceType:null,cleaningState:null,
     categoryState:null,answeredQuestionKeys:[],pendingQuestionKey:null,lastTurnId:null,lastResponse:null};
 }
 const emptyReply = ():Omit<ServiceResponse,'conversationToken'> => ({
@@ -73,9 +76,12 @@ function mergeCategoryHistory(saved:DiagnosisMessage[],history:DiagnosisMessage[
 
 export async function diagnoseService(message:string,history:DiagnosisMessage[],legacyToken?:unknown,options:{
   category?:unknown; categorySelected?:boolean; conversationToken?:unknown; turnId?:unknown;
-  boiler?:CategoryEngine; painting?:CategoryEngine;
+  customerId?:string; boiler?:CategoryEngine; painting?:CategoryEngine;
 }={}):Promise<ServiceResponse> {
   let previous=decodeConversationState(options.conversationToken);
+  const customerId=typeof options.customerId==='string'&&options.customerId.length<=128?options.customerId:null;
+  if(options.customerId!==undefined&&!customerId)throw Error('Invalid conversation owner');
+  if(previous&&customerId&&previous.customerId!==customerId)throw Error('Conversation owner mismatch');
   const supplied=isServiceCategory(options.category)?options.category:null,detected=inspectServiceCategory(message);
   // Backwards compatibility for existing boiler clients, without letting their
   // token leak into a selected non-boiler category.
@@ -83,7 +89,7 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
       (!supplied||supplied==='boiler')&&!detected.unsupported&&!detected.categories.some(c=>c!=='boiler')){
     const child=decodeBoilerState(legacyToken);
     if(child){
-      previous=emptyConversation('boiler');previous.boilerStateToken=legacyToken;
+      previous=emptyConversation('boiler',customerId);previous.boilerStateToken=legacyToken;
       const pending=!child.finished&&child.totalAskedQuestions>0;
       previous.pendingQuestionKey=pending?`${child.sessionId}:${child.totalAskedQuestions}`:null;
       previous.answeredQuestionKeys=Array.from({length:Math.max(0,child.totalAskedQuestions-(pending?1:0))},(_,i)=>'legacy-'+i);
@@ -104,7 +110,8 @@ export async function diagnoseService(message:string,history:DiagnosisMessage[],
     options.categorySelected===true&&supplied==='painting';
   const restartedCleaning=(category==='cleaning'||category==='sofa_cleaning'||category==='carpet_cleaning')&&previous?.category===category&&
     options.categorySelected===true&&supplied===category;
-  const state=changed||restartedPainting||restartedCleaning?emptyConversation(category):previous??emptyConversation(category);
+  const ownerId=previous?.customerId??customerId;
+  const state=changed||restartedPainting||restartedCleaning?emptyConversation(category,ownerId):previous??emptyConversation(category,ownerId);
   state.category=category;
   const turnId=typeof options.turnId==='string'&&options.turnId.length<=128?options.turnId:null;
   if(!changed&&turnId&&previous?.lastTurnId===turnId&&previous.lastResponse)

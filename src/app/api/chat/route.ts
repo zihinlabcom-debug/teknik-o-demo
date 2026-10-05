@@ -26,6 +26,7 @@ export async function POST(req: Request) {
     const result = await diagnoseService(message, history, body.stateToken, {
       category: body.category, categorySelected: body.categorySelected === true,
       conversationToken: body.conversationToken, turnId: body.turnId,
+      customerId: account.id,
     });
     return NextResponse.json({
       ...result,

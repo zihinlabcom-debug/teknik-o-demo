@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ACTIVE_SERVICE_CATEGORIES,classifyServiceCategory} from '../src/lib/service-categories.ts';
-import {diagnoseService,decodeConversationState} from '../src/lib/service-conversation.ts';
-import {encodeBoilerState,decodeBoilerState} from '../src/lib/boiler-diagnosis.ts';
+import './register-typescript.mjs';
+const {ACTIVE_SERVICE_CATEGORIES,classifyServiceCategory}=await import('../src/lib/service-categories.ts');
+const {diagnoseService,decodeConversationState}=await import('../src/lib/service-conversation.ts');
+const {encodeBoilerState,decodeBoilerState}=await import('../src/lib/boiler-diagnosis.ts');
 
 async function signed(run){
  const saved=process.env.DIAGNOSIS_STATE_SECRET;process.env.DIAGNOSIS_STATE_SECRET='service-routing-offline-secret';
@@ -171,4 +172,22 @@ test('debug input cannot alter routing, weights, pricing or progress; final tech
  const debug=await diagnoseService('Kombi arızası',[],null,{boiler:terminal,debug:true});
  assert.equal(normal.aiText,'');assert.equal(debug.aiText,'');assert.equal(normal.resultState,'uncertain_price');
  assert.deepEqual(normal.candidateProbabilities,debug.candidateProbabilities);assert.equal(normal.visualProgress,debug.visualProgress);
+}));
+
+test('signed conversation state is bound to its customer',()=>signed(async()=>{
+ const first=await diagnoseService('Yardım istiyorum',[],null,{customerId:'customer-a'});
+ const state=decodeConversationState(first.conversationToken);
+ assert.equal(state.customerId,'customer-a');
+ await assert.rejects(
+  ()=>diagnoseService('Devam',[],null,{conversationToken:first.conversationToken,customerId:'customer-b'}),
+  /Conversation owner mismatch/
+ );
+ const same=await diagnoseService('Devam',[],null,{conversationToken:first.conversationToken,customerId:'customer-a'});
+ assert.equal(decodeConversationState(same.conversationToken).customerId,'customer-a');
+ const changed=await diagnoseService('Evimi taşıyacağım',[],null,{conversationToken:same.conversationToken,customerId:'customer-a'});
+ assert.equal(decodeConversationState(changed.conversationToken).customerId,'customer-a');
+ await assert.rejects(
+  ()=>diagnoseService('Devam',[],null,{conversationToken:changed.conversationToken,customerId:'customer-b'}),
+  /Conversation owner mismatch/
+ );
 }));
