@@ -1,38 +1,14 @@
 import 'server-only';
 import {createHash} from 'node:crypto';
-import {adminSupabase,currentAccount} from '@/lib/account-supabase';
+import {adminSupabase} from '@/lib/account-supabase';
 import {decodeConversationState} from '@/lib/service-conversation';
 import {serviceRequestSummary} from '@/lib/service-request-summary';
 import {serviceRequestAssessment} from '@/lib/service-request-assessment';
 import {acceptedMaximumPrice} from '@/lib/service-request-accepted-price';
-
-type Role='customer'|'technician'|'admin';
-type DbError={message?:string}|null;
-const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-export class OperationError extends Error{
-  constructor(public code:string,public status:number,message:string){super(message);}
-}
-async function requireRole(role:Role){
-  const account=await currentAccount();
-  if(!account)throw new OperationError('unauthenticated',401,'Aktif oturum gerekli.');
-  if(account.role!==role)throw new OperationError('forbidden',403,'Bu işlem için yetkiniz yok.');
-  return account;
-}
-function requireId(value:string){if(!uuid.test(value))throw new OperationError('invalid_id',400,'Geçersiz kayıt kimliği.');}
-function failDb(error:DbError,context:string):never{
-  const raw=error?.message??'';
-  if(/capacity reached/i.test(raw))throw new OperationError('capacity_reached',409,'Ustanın aktif iş kapasitesi dolu.');
-  if(/closed for acceptance|already accepted|another quote|existing quote requires review|existing accepted price mismatch|existing request assessment mismatch/i.test(raw))
-    throw new OperationError('conflict',409,'Kayıt artık kabul edilebilir durumda değil.');
-  if(/not available|invalid job status|terminal job|not available to/i.test(raw))throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');
-  if(/not found/i.test(raw))throw new OperationError('not_found',404,'Kayıt bulunamadı.');
-  throw new OperationError('operation_failed',500,`${context} tamamlanamadı.`);
-}
-export function operationErrorResponse(error:unknown){
-  if(error instanceof OperationError)return {status:error.status,body:{error:error.message,code:error.code}};
-  return {status:500,body:{error:'İşlem tamamlanamadı.',code:'operation_failed'}};
-}
+import {OperationError} from '@/lib/operation-error';
+import {requireRole,requireId,failDb} from '@/lib/operation-guard';
+export {OperationError,operationErrorResponse} from '@/lib/operation-error';
+export {adminRequestList,adminRequestDetail} from '@/lib/admin-request-read';
 
 export async function createCustomerServiceRequest(input:{conversationToken:string}){
   const account=await requireRole('customer'); const db=adminSupabase();
@@ -172,33 +148,4 @@ export async function technicianJobDetail(id:string){
   if(req?.category_id)category=(await db.from('service_categories').select('name').eq('id',req.category_id).maybeSingle()).data;
   if(req?.address_id)address=(await db.from('customer_addresses').select('address_line,label,city_id,district_id').eq('id',req.address_id).maybeSingle()).data;
   return {...job,request:req,quote,category,address,appointments:appointments??[]};
-}
-
-export async function adminRequestList(){
-  await requireRole('admin'); const db=adminSupabase();
-  const {data,error}=await db.from('service_requests').select('id,customer_id,category_id,status,created_at').order('created_at',{ascending:false}).limit(200);
-  if(error)failDb(error,'Admin talepleri');
-  const userIds=[...new Set((data??[]).map(r=>r.customer_id).filter(Boolean))], categoryIds=[...new Set((data??[]).map(r=>r.category_id).filter(Boolean))], requestIds=(data??[]).map(r=>r.id);
-  const [{data:users},{data:cats},{data:quotes},{data:jobs}]=await Promise.all([
-    userIds.length?db.from('users').select('id,name,is_test').in('id',userIds):Promise.resolve({data:[]}),
-    categoryIds.length?db.from('service_categories').select('id,name').in('id',categoryIds):Promise.resolve({data:[]}),
-    requestIds.length?db.from('service_quotes').select('service_request_id,status,total_amount,currency').in('service_request_id',requestIds).eq('status','accepted'):Promise.resolve({data:[]}),
-    requestIds.length?db.from('service_jobs').select('service_request_id,technician_id,status').in('service_request_id',requestIds):Promise.resolve({data:[]}),
-  ]);
-  return (data??[]).map(r=>({...r,customer:(users??[]).find(u=>u.id===r.customer_id)??null,category:(cats??[]).find(c=>c.id===r.category_id)??null,quote:(quotes??[]).find(q=>q.service_request_id===r.id)??null,job:(jobs??[]).find(j=>j.service_request_id===r.id)??null}));
-}
-
-export async function adminRequestDetail(id:string){
-  requireId(id); await requireRole('admin'); const db=adminSupabase();
-  const {data:request,error}=await db.from('service_requests').select('id,customer_id,category_id,status,created_at,problem_description,assessment_snapshot').eq('id',id).maybeSingle();
-  if(error)failDb(error,'Talep detayı'); if(!request)throw new OperationError('not_found',404,'Talep bulunamadı.');
-  const [{data:customer},{data:category},{data:dispatches},{data:jobs},{data:quotes},{data:events}]=await Promise.all([
-    request.customer_id?db.from('users').select('id,name,is_test').eq('id',request.customer_id).maybeSingle():Promise.resolve({data:null}),
-    request.category_id?db.from('service_categories').select('id,name').eq('id',request.category_id).maybeSingle():Promise.resolve({data:null}),
-    db.from('service_dispatches').select('id,status,quote_id,created_at,closed_at').eq('service_request_id',id).order('created_at',{ascending:false}),
-    db.from('service_jobs').select('id,status,technician_id,assigned_at,started_at,completed_at,cancelled_at,accepted_quote_id').eq('service_request_id',id).order('created_at',{ascending:false}),
-    db.from('service_quotes').select('id,status,version,total_amount,currency,offered_at,accepted_at').eq('service_request_id',id).order('version',{ascending:false}),
-    db.from('operational_events').select('id,event_type,occurred_at').eq('service_request_id',id).order('occurred_at',{ascending:false}).limit(100),
-  ]);
-  return {...request,customer,category,dispatches:dispatches??[],jobs:jobs??[],quotes:quotes??[],events:events??[]};
 }

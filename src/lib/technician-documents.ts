@@ -1,7 +1,8 @@
 import 'server-only';
 import {randomUUID} from 'node:crypto';
 import {adminSupabase,currentAccount} from './account-supabase';
-import {OperationError} from './operation-server';
+import {OperationError} from './operation-error';
+export {technicianDocumentLink} from './admin-technician-document-link';
 
 const bucket='technician-documents';
 const maxBytes=5*1024*1024;
@@ -45,19 +46,4 @@ export async function uploadTechnicianDocument(file:File,categoryId:string){
     throw new OperationError('metadata_failed',503,'Belge kaydı oluşturulamadı. Yeniden deneyin.');
   }
   return {id:data.id,status:'pending'};
-}
-
-export async function technicianDocumentLink(documentId:string){
-  const account=await currentAccount();
-  if(!account)throw new OperationError('unauthenticated',401,'Aktif oturum gerekli.');
-  if(!uuid.test(documentId))throw new OperationError('invalid_document',400,'Geçersiz belge.');
-  const db=adminSupabase();
-  const {data,error}=await db.from('technician_documents')
-    .select('technician_id,storage_path').eq('id',documentId).maybeSingle();
-  if(error||!data?.storage_path)throw new OperationError('not_found',404,'Belge bulunamadı.');
-  if(account.role!=='admin'&&(account.role!=='technician'||account.id!==data.technician_id))
-    throw new OperationError('forbidden',403,'Belgeye erişim izniniz yok.');
-  const {data:link,error:linkError}=await db.storage.from(bucket).createSignedUrl(data.storage_path,60);
-  if(linkError||!link?.signedUrl)throw new OperationError('unavailable',503,'Belge şu anda açılamıyor.');
-  return link.signedUrl;
 }

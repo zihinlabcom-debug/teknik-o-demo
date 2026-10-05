@@ -1,7 +1,7 @@
 import {createClient} from '@supabase/supabase-js';
 import {createServerClient} from '@supabase/ssr';
 import {cookies} from 'next/headers';
-import {isAccountRole,type Account} from './account-auth';
+import {isAccountRole,type Account} from './account-role';
 import {adminSessionCookie,validAdminSession} from './admin-session';
 
 export function publicSupabaseConfig(){

@@ -1,9 +1,6 @@
-export type AccountRole = 'customer' | 'technician' | 'admin';
-export type Account = {id:string; role:AccountRole; is_test:boolean; is_active:boolean};
-
-export function isAccountRole(value:unknown):value is AccountRole {
-  return value==='customer'||value==='technician'||value==='admin';
-}
+import {isAccountRole,type AccountRole,type Account} from './account-role';
+export {isAccountRole};
+export type {AccountRole,Account};
 
 export function acceptsAccountRole(actual:unknown,expected:AccountRole){
   return isAccountRole(actual)&&actual===expected;
