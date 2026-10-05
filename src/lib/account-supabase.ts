@@ -2,6 +2,7 @@ import {createClient} from '@supabase/supabase-js';
 import {createServerClient} from '@supabase/ssr';
 import {cookies} from 'next/headers';
 import {isAccountRole,type Account} from './account-auth';
+import {adminSessionCookie,validAdminSession} from './admin-session';
 
 export function publicSupabaseConfig(){
   const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -10,10 +11,11 @@ export function publicSupabaseConfig(){
   return {url,key};
 }
 
-export async function serverSupabase({writeCookies=false}:{writeCookies?:boolean}={}){
+export async function serverSupabase({writeCookies=false,adminSession=false}:{writeCookies?:boolean;adminSession?:boolean}={}){
   const {url,key}=publicSupabaseConfig();
   const store=await cookies();
-  return createServerClient(url,key,{cookies:{
+  return createServerClient(url,key,{...(adminSession?{cookieOptions:{httpOnly:true,
+    secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/'}}:{}),cookies:{
     getAll(){return store.getAll();},
     setAll(values){
       if(writeCookies){values.forEach(({name,value,options})=>store.set(name,value,options));return;}
@@ -37,6 +39,11 @@ export async function currentAccount(){
     if(userError||!user)return null;
     const {data,error}=await db.from('users').select('id,role,is_test,is_active').eq('id',user.id).maybeSingle();
     if(error||!data||!isAccountRole(data.role)||data.is_active!==true||typeof data.is_test!=='boolean')return null;
+    if(data.role==='admin'){
+      const marker=(await cookies()).get(adminSessionCookie)?.value;
+      const {data:{session}}=await db.auth.getSession();
+      if(!validAdminSession(marker,user.id,session?.access_token))return null;
+    }
     return data as Account;
   }catch{return null;}
 }

@@ -1,7 +1,17 @@
-import {PanelHeading,PanelTable} from '@/components/operation-panel';
+export const dynamic='force-dynamic';
 
-export default function AdminCategories(){
-  return <><PanelHeading title="Kategori yönetimi" description="Kategori durumu ve pilot kapsamı ileride bu alandan yönetilecek. Mevcut kategori kuralları burada değiştirilmez."/>
-    <PanelTable title="Kategori kayıtları" columns={['Kategori adı','Aktif / pasif','Pilot / test durumu']}
-      empty="Kategori yönetimi için veri bağlantısı henüz etkin değil."/></>;
+import {PanelHeading,PanelCard,EmptyPanelState} from '@/components/operation-panel';
+import {AdminCategoryDocumentControls} from '@/components/admin-category-document-controls';
+import {adminCategoryCatalog} from '@/lib/technician-management';
+
+export default async function AdminCategories(){
+  const categories=await adminCategoryCatalog();
+  return <><PanelHeading title="Kategori yönetimi" description="Hizmet kategorilerinin belge gereksinimini yönetin."/>
+    <PanelCard title="Kategori kayıtları">{!categories.length?<EmptyPanelState>Kategori kaydı bulunmuyor.</EmptyPanelState>
+      :<div className="space-y-3">{categories.map(category=><div key={category.id}
+        className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 text-sm">
+        <div><strong>{category.name}</strong> <span className="text-slate-500">({category.code})</span>
+          <span className="ml-2">{category.is_active?'Aktif':'Pasif'} · Belge {category.requires_document?'zorunlu':'isteğe bağlı'}</span></div>
+        <AdminCategoryDocumentControls id={category.id} requiresDocument={category.requires_document}/>
+      </div>)}</div>}</PanelCard></>;
 }

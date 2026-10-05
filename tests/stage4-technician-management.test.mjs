@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {calls,setAccount,setResponse} from './helpers/technician-management-db-double.mjs';
-const {adminChangeTechnician,setOwnTechnicianAvailability}=await import('../src/lib/technician-management.ts');
+const {adminChangeTechnician,adminChangeTechnicianCategory,setOwnTechnicianAvailability}=await import('../src/lib/technician-management.ts');
 
 const adminId='10000000-0000-4000-8000-000000000001';
 const technicianId='20000000-0000-4000-8000-000000000002';
@@ -30,6 +30,20 @@ test('customer and technician cannot invoke admin mutation',async()=>{
       error=>error.status===403);
   }
   assert.equal(calls.length,0);
+});
+
+test('category approval binds configured actor and cannot be called by customer or technician',async()=>{
+  calls.length=0;setAccount(account(adminId,'admin'));setResponse({data:true,error:null});
+  assert.deepEqual(await adminChangeTechnicianCategory(technicianId,categoryId,'approve'),{changed:true});
+  assert.deepEqual(calls[0],{name:'admin_change_technician_category',args:{
+    p_actor_id:adminId,p_technician_id:technicianId,p_category_id:categoryId,p_action:'approve',
+  }});
+  for(const role of ['customer','technician']){
+    setAccount(account(technicianId,role));
+    await assert.rejects(adminChangeTechnicianCategory(technicianId,categoryId,'approve'),
+      error=>error.status===403);
+  }
+  assert.equal(calls.length,1);
 });
 
 test('availability changes only authenticated technician own ID and is not a client target',async()=>{

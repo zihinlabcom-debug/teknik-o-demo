@@ -2,7 +2,7 @@
 \set ON_ERROR_STOP on
 begin;
 do $$ begin
-  if current_database()<>'tekniko_operation_test' then
+  if current_database() not in ('tekniko_operation_test','tekniko_stage4_final_test') then
     raise exception 'Refusing Stage 4 test outside disposable local database';
   end if;
 end $$;

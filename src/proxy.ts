@@ -2,6 +2,7 @@ import {createServerClient} from '@supabase/ssr';
 import {NextResponse,type NextRequest} from 'next/server';
 import {authorizePath,isAccountRole,requiredRole} from '@/lib/account-auth';
 import {appSurface,surfaceAllowsPath,surfaceHome} from '@/lib/app-surface';
+import {adminSessionCookie,validAdminSession} from '@/lib/admin-session';
 
 export async function proxy(request:NextRequest){
   const surface=appSurface();
@@ -16,12 +17,16 @@ export async function proxy(request:NextRequest){
   if(!url||!key)return requiredRole(path)?NextResponse.redirect(new URL(surfaceHome(surface),request.url)):
     NextResponse.next({request});
   let response=NextResponse.next({request});
-  const db=createServerClient(url,key,{cookies:{
+  const adminSession=surface==='admin'||path==='/giris-admin'||path.startsWith('/admin/')||
+    path==='/admin'||path.startsWith('/api/admin/')||path.startsWith('/api/auth/admin/');
+  const db=createServerClient(url,key,{...(adminSession?{cookieOptions:{httpOnly:true,
+    secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/'}}:{}),cookies:{
     getAll(){return request.cookies.getAll();},
     setAll(values){
       values.forEach(({name,value})=>request.cookies.set(name,value));
       response=NextResponse.next({request});
-      values.forEach(({name,value,options})=>response.cookies.set(name,value,options));
+      values.forEach(({name,value,options})=>response.cookies.set(name,value,
+        adminSession?{...options,httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'strict'}:options));
     },
   }});
   try{
@@ -30,6 +35,11 @@ export async function proxy(request:NextRequest){
     if(user&&!userError){
       const {data,error}=await db.from('users').select('id,role,is_test,is_active').eq('id',user.id).maybeSingle();
       if(!error&&data&&isAccountRole(data.role)&&typeof data.is_test==='boolean'&&typeof data.is_active==='boolean')account=data;
+    }
+    if(account?.role==='admin'){
+      const {data:{session}}=await db.auth.getSession();
+      if(!validAdminSession(request.cookies.get(adminSessionCookie)?.value,user!.id,
+        session?.access_token))account=null;
     }
     const decision=authorizePath(path,account);
     if(!decision.allowed){

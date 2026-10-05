@@ -26,9 +26,9 @@ export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string;
   expectedRole?:AccountRole;allowProvisionalCustomer?:boolean}):Promise<OtpResult>{
   const phone=normalizePhone(input.phone);
   const expectedRole=input.expectedRole??'customer';
+  if(expectedRole==='admin')return {ok:false,error:'Bu giriş yöntemi kullanılamıyor.'};
   if(!phone)return {ok:false,error:'Geçerli bir cep telefonu numarası girin.'};
   if(input.mode!=='signup'&&input.mode!=='login')return {ok:false,error:'Geçersiz işlem.'};
-  if(input.mode==='signup'&&expectedRole==='admin')return {ok:false,error:'Bu uygulamada kayıt yapılamaz.'};
   if(input.mode==='signup'&&(!input.fullName?.trim()||input.fullName.trim().length>200))return {ok:false,error:'Ad soyad girin.'};
   try{
     const account=await knownAccount(phone);
@@ -54,6 +54,7 @@ export async function verifyOtp(input:{phone:string;token:string;expectedRole?:A
   onVerified?:(userId:string)=>Promise<void>}):Promise<OtpResult>{
   const phone=normalizePhone(input.phone);
   const expectedRole=input.expectedRole??'customer';
+  if(expectedRole==='admin')return {ok:false,error:'Bu giriş yöntemi kullanılamıyor.'};
   const token=input.token.trim();
   if(!phone||!/^\d{4,10}$/.test(token))return {ok:false,error:'Geçerli bir doğrulama kodu girin.'};
   try{

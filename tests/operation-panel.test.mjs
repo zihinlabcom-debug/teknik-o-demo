@@ -71,7 +71,7 @@ test('admin routes render real operation shells without invented records or metr
  assert.ok(kpi.includes('Pilot verileri toplandığında burada görüntülenecek.'));
  assert.ok(!kpi.includes('125.000'));
  const categories=await render('admin/kategoriler');
- assert.ok(categories.includes('Aktif / pasif'));
+ assert.ok(categories.includes('Belge isteğe bağlı'));
  const settings=await render('admin/ayarlar');
  assert.ok(settings.includes('Minimum ücretler'));
  assert.ok(settings.includes('Bölge ayarları'));

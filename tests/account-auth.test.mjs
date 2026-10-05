@@ -64,6 +64,6 @@ test('session establishment and logout require writable SSR cookies',()=>{
   const otp=readFileSync(new URL('../src/lib/account-otp.ts',import.meta.url),'utf8');
   const logout=readFileSync(new URL('../src/app/api/auth/logout/route.ts',import.meta.url),'utf8');
   assert.match(otp,/verifyOtp[\s\S]*serverSupabase\(\{writeCookies:true\}\)/);
-  assert.match(logout,/serverSupabase\(\{writeCookies:true\}\)/);
+  assert.match(logout,/serverSupabase\(\{writeCookies:true,[\s\S]*adminSession:appSurface\(\)==='admin'/);
   assert.match(logout,/if\(error\)return NextResponse\.json/);
 });

@@ -40,28 +40,33 @@ declare
   v_city bigint:=(select id from public.cities where name='TEST Onboarding Şehri');
   v_district bigint:=(select id from public.districts where name='TEST İlçe');
   v_other bigint:=(select id from public.districts where name='TEST Farklı İlçe');
+  v_address_city bigint:=(select id from public.cities where name='TEST Farklı Şehir');
   v_failed boolean;
 begin
   if not public.complete_technician_registration(v_new,'+905000000701','TEST Usta',null,
-    array[v_category,v_category],v_city,array[v_district,v_district]) then
+    array[v_category,v_category],v_city,array[v_district,v_district],v_address_city,v_other,
+    'TEST Mahallesi 10 numara') then
     raise exception 'Fresh signup must complete';
   end if;
   if (select role from public.users where id=v_new)<>'technician'
     or (select approval_status from public.technician_profiles where user_id=v_new)<>'pending'
     or (select is_available from public.technician_profiles where user_id=v_new)
     or (select count(*) from public.technician_service_categories where technician_id=v_new)<>1
-    or (select count(*) from public.technician_service_areas where technician_id=v_new)<>1 then
+    or (select count(*) from public.technician_service_areas where technician_id=v_new)<>1
+    or (select address_line from public.technician_profiles where user_id=v_new)<>'TEST Mahallesi 10 numara'
+    or (select address_city_id from public.technician_profiles where user_id=v_new)<>v_address_city
+    or (select city_id from public.technician_service_areas where technician_id=v_new limit 1)<>v_city then
     raise exception 'Signup did not create the canonical profile/selections';
   end if;
   if public.complete_technician_registration(v_new,'+905000000701','TEST Usta',null,
-    array[v_category],v_city,array[v_district]) then
+    array[v_category],v_city,array[v_district],v_address_city,v_other,'TEST Mahallesi 10 numara') then
     raise exception 'Retry must be idempotent';
   end if;
 
   v_failed:=false;
   begin
     perform public.complete_technician_registration(v_bad_category,'+905000000702','TEST Usta',null,
-      array[v_inactive],v_city,array[v_district]);
+      array[v_inactive],v_city,array[v_district],v_city,v_district,'TEST Mahallesi 10 numara');
   exception when others then v_failed:=true; end;
   if not v_failed or (select role from public.users where id=v_bad_category)<>'customer'
     or exists(select 1 from public.technician_profiles where user_id=v_bad_category) then
@@ -71,7 +76,7 @@ begin
   v_failed:=false;
   begin
     perform public.complete_technician_registration(v_bad_district,'+905000000703','TEST Usta',null,
-      array[v_category],v_city,array[v_other]);
+      array[v_category],v_city,array[v_other],v_city,v_district,'TEST Mahallesi 10 numara');
   exception when others then v_failed:=true; end;
   if not v_failed or (select role from public.users where id=v_bad_district)<>'customer'
     or exists(select 1 from public.technician_profiles where user_id=v_bad_district) then
@@ -81,16 +86,26 @@ begin
   v_failed:=false;
   begin
     perform public.complete_technician_registration(v_bad_city,'+905000000704','TEST Usta',null,
-      array[v_category],-1,array[v_district]);
+      array[v_category],-1,array[v_district],v_city,v_district,'TEST Mahallesi 10 numara');
   exception when others then v_failed:=true; end;
   if not v_failed or (select role from public.users where id=v_bad_city)<>'customer'
     or exists(select 1 from public.technician_profiles where user_id=v_bad_city) then
     raise exception 'Invalid city must roll back';
   end if;
 
-  if has_function_privilege('anon','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[])','EXECUTE')
-    or has_function_privilege('authenticated','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[])','EXECUTE')
-    or not has_function_privilege('service_role','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[])','EXECUTE')
+  v_failed:=false;
+  begin
+    perform public.complete_technician_registration(v_bad_city,'+905000000704','TEST Usta',null,
+      array[v_category],v_city,array[v_district],v_address_city,v_district,'TEST Mahallesi 10 numara');
+  exception when others then v_failed:=true; end;
+  if not v_failed or (select role from public.users where id=v_bad_city)<>'customer' then
+    raise exception 'Address district/city mismatch must roll back';
+  end if;
+
+  if has_function_privilege('anon','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[],bigint,bigint,text)','EXECUTE')
+    or has_function_privilege('authenticated','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[],bigint,bigint,text)','EXECUTE')
+    or not has_function_privilege('service_role','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[],bigint,bigint,text)','EXECUTE')
+    or has_function_privilege('service_role','public.complete_technician_registration(uuid,text,text,text,uuid[],bigint,bigint[])','EXECUTE')
     or has_column_privilege('authenticated','public.users','role','UPDATE') then
     raise exception 'Provisioning privilege boundary broken';
   end if;

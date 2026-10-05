@@ -1,3 +1,3 @@
-import {AccountLoginForm} from '@/components/account-login-form';
+import {AdminPasswordLoginForm} from '@/components/admin-password-login-form';
 
-export default function AdminGirisPage(){return <AccountLoginForm role="admin"/>;}
+export default function AdminGirisPage(){return <AdminPasswordLoginForm/>;}

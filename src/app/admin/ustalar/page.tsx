@@ -16,6 +16,7 @@ export default async function AdminProviders(){
           <span className="text-sm text-slate-600">Onay: {technician.profile?.approval_status??'Profil eksik'}</span>
           <span className="text-sm text-slate-600">{technician.profile?.is_available?'Müsait':'Müsait değil'}</span>
         </div>
+        {technician.profile?.address_line&&<p className="mt-2 text-sm text-slate-700">Kayıt adresi: {cities.find(c=>c.id===technician.profile?.address_city_id)?.name??'İl'} / {districts.find(d=>d.id===technician.profile?.address_district_id)?.name??'İlçe'} — {technician.profile.address_line}</p>}
         {technician.profile?<TechnicianAdminControls technicianId={technician.id}
           approvalStatus={technician.profile.approval_status} isActive={technician.is_active}
           categories={categories} cities={cities} districts={districts}

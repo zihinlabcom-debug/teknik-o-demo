@@ -2,12 +2,12 @@
 import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
-type Category={id:string;name:string;is_active:boolean};
+type Category={id:string;name:string;is_active:boolean;requires_document:boolean};
 type City={id:number;name:string;is_active:boolean};
 type District={id:number;city_id:number;name:string;is_active:boolean};
-type Assignment={category_id:string};
+type Assignment={category_id:string;approval_status:string};
 type Area={city_id:number;district_id:number|null};
-type Document={id:string;document_type:string;status:string};
+type Document={id:string;category_id:string|null;document_type:string;status:string;original_file_name:string|null};
 
 export function TechnicianAdminControls({technicianId,approvalStatus,isActive,categories,cities,districts,
   assignments,areas,documents}:{technicianId:string;approvalStatus:string;isActive:boolean;
@@ -31,6 +31,18 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
     }catch(cause){setError(cause instanceof Error?cause.message:'Usta işlemi tamamlanamadı.');}
     finally{setBusy(false);}
   }
+  async function changeCategory(categoryId:string,action:'approve'|'reject'){
+    setBusy(true);setError('');
+    try{
+      const response=await fetch(`/api/admin/technicians/${technicianId}/categories/${categoryId}`,{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action}),
+      });
+      const body=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(body.error||'Kategori onayı tamamlanamadı.');
+      router.refresh();
+    }catch(cause){setError(cause instanceof Error?cause.message:'Kategori onayı tamamlanamadı.');}
+    finally{setBusy(false);}
+  }
   const button=(label:string,action:string,extra:Record<string,unknown>={})=><button
     type="button" disabled={busy} onClick={()=>void change(action,extra)}
     className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 disabled:opacity-50">{label}</button>;
@@ -46,7 +58,12 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
     <div>
       <p className="font-semibold">Kategoriler</p>
       <div className="mt-2 flex flex-wrap gap-2">{assignments.map(a=><span key={a.category_id} className="rounded-lg bg-slate-50 px-2 py-1">
-        {categories.find(c=>c.id===a.category_id)?.name??'Kategori'}{' '}
+        {categories.find(c=>c.id===a.category_id)?.name??'Kategori'} — {a.approval_status}
+        {categories.find(c=>c.id===a.category_id)?.requires_document?' · belge gerekli':''}{' '}
+        {a.approval_status!=='approved'&&<button type="button" disabled={busy} onClick={()=>void changeCategory(a.category_id,'approve')}
+          className="rounded-lg border px-2 py-1 text-xs">Kategori onayla</button>}{' '}
+        {a.approval_status!=='rejected'&&<button type="button" disabled={busy} onClick={()=>void changeCategory(a.category_id,'reject')}
+          className="rounded-lg border px-2 py-1 text-xs">Kategori reddet</button>}{' '}
         {button('Kaldır','category_remove',{categoryId:a.category_id})}</span>)}</div>
       <div className="mt-2 flex flex-wrap gap-2"><select aria-label="Eklenecek kategori" value={categoryId}
         onChange={event=>setCategoryId(event.target.value)} className="rounded-lg border p-2 text-sm">
@@ -70,8 +87,9 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
         onClick={()=>void change('area_add',{cityId:Number(cityId),districtId:districtId?Number(districtId):undefined})}
         className="rounded-lg bg-[#D97724] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Alan ekle</button></div>
     </div>
-    {documents.length>0&&<div><p className="font-semibold">Belge metadata durumu</p>{documents.map(d=><div key={d.id}
-      className="mt-2 flex flex-wrap items-center gap-2"><span>{d.document_type}: {d.status}</span>
+    {documents.length>0&&<div><p className="font-semibold">Yüklenen belgeler</p>{documents.map(d=><div key={d.id}
+      className="mt-2 flex flex-wrap items-center gap-2"><span>{d.original_file_name??d.document_type} · {categories.find(c=>c.id===d.category_id)?.name??'Kategori belirtilmemiş'} · {d.status}</span>
+      <a href={`/api/admin/documents/${d.id}`} target="_blank" rel="noopener noreferrer" className="underline">Görüntüle</a>
       {d.status!=='verified'&&button('Doğrula','document_verify',{documentId:d.id})}
       {d.status!=='rejected'&&button('Reddet','document_reject',{documentId:d.id})}</div>)}</div>}
     {error&&<p role="alert" className="text-sm font-semibold text-red-700">{error}</p>}
