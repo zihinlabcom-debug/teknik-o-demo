@@ -26,11 +26,11 @@ test('Stage 2 request API derives request data from signed conversation state',(
   assert.doesNotMatch(route,/SUPABASE_SERVICE_ROLE_KEY/);
 });
 
-test('Usta ├ğa─ş─▒r dialog sends only signed conversation token',()=>{
+test('Usta çağır dialog sends only signed conversation token',()=>{
   const ui=read('src/components/service-result.tsx');
   assert.match(ui,/\/api\/operations\/requests/);
   assert.match(ui,/conversationToken:response\.conversationToken/);
-  assert.match(ui,/Talebiniz olu┼şturuldu/);
+  assert.match(ui,/Talebiniz oluşturuldu/);
   assert.doesNotMatch(ui,/requestKey:`conversation:/);
-  assert.doesNotMatch(ui,/Usta y├Ânlendirmesi ┼şu anda kullan─▒lam─▒yor/);
+  assert.doesNotMatch(ui,/Usta yönlendirmesi şu anda kullanılamıyor/);
 });
