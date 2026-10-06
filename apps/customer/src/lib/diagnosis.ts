@@ -151,11 +151,13 @@ export async function diagnose(message:string,history:DiagnosisMessage[],stateTo
     try {
       return await run(false, 0);
     } catch (error) {
+      console.error('[boiler-data-debug] first attempt:', error instanceof Error ? error.message : 'non-Error');
       if (!accessError(error)) throw error;
       const budgetFloor = Math.max(oldState?.totalAskedQuestions ?? 0, countAskedQuestions(history));
       try {
         return await run(true, budgetFloor);
       } catch (retryError) {
+        console.error('[boiler-data-debug] retry attempt:', retryError instanceof Error ? retryError.message : 'non-Error');
         if (!accessError(retryError)) throw retryError;
         return {
           aiText:'Teknik veri hizmetine şu anda ulaşılamıyor. Bilgilerinizi yeniden sormadan usta yönlendirmesi isteyebilirsiniz.',
