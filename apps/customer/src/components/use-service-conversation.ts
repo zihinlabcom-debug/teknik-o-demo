@@ -25,7 +25,7 @@ export function useServiceConversation(endpoint='/api/diagnose'){
     setMessages([]);setInput('');setCategory(null);setResponse(null);setResultDismissed(false);
   };
   const submit=useCallback(async(text:string,selectedCategory?:ServiceCategory)=>{
-    if(!text.trim()||busy.current)return;
+    if(!text.trim()||busy.current)return null;
     busy.current=true;setIsAnalyzing(true);setResultDismissed(false);
     const detected=classifyServiceCategory(text,current.current.category);
     const nextCategory=selectedCategory??detected??current.current.category;
@@ -51,9 +51,11 @@ export function useServiceConversation(endpoint='/api/diagnose'){
         id:crypto.randomUUID(),sender:'ai',text:data.aiText,options:data.options,time:new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}),
       }]:keep;
       setMessages(current.current.messages);
+      return data;
     }catch{
       current.current.messages=[...current.current.messages,{id:crypto.randomUUID(),sender:'ai',text:'Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.',time:new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'})}];
       setMessages(current.current.messages);
+      return null;
     }finally{busy.current=false;setIsAnalyzing(false);}
   },[endpoint]);
   return {messages,input,setInput,isAnalyzing,category,response,submit,reset,resultDismissed,dismissResult:()=>setResultDismissed(true)};
