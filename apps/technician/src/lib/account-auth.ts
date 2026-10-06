@@ -1,0 +1,59 @@
+import {isAccountRole,type AccountRole,type Account} from './account-role';
+export {isAccountRole};
+export type {AccountRole,Account};
+
+export function acceptsAccountRole(actual:unknown,expected:AccountRole){
+  return isAccountRole(actual)&&actual===expected;
+}
+
+export function accountDestination(role:AccountRole) {
+  return role==='customer'?'/hizmetler':role==='technician'?'/usta':'/admin';
+}
+
+export function requiredRole(pathname:string):AccountRole|null {
+  if(pathname==='/admin'||pathname.startsWith('/admin/'))return 'admin';
+  if(pathname==='/usta'||pathname.startsWith('/usta/'))return 'technician';
+  if(pathname==='/musteri'||pathname.startsWith('/musteri/')||
+     ['/hizmetler','/kategoriler','/dashboard','/iletisim','/teshis'].some(path=>pathname===path||pathname.startsWith(`${path}/`)))return 'customer';
+  return null;
+}
+
+export function authorizePath(pathname:string,account:Account|null):{allowed:true}|{allowed:false;redirect:string} {
+  const required=requiredRole(pathname);
+  if(!required)return {allowed:true};
+  const login=required==='customer'?'/giris':required==='technician'?'/giris-usta':'/giris-admin';
+  if(!account)return {allowed:false,redirect:login};
+  if(!account.is_active||!isAccountRole(account.role))return {allowed:false,redirect:`${login}?error=account`};
+  if(account.role!==required)return {allowed:false,redirect:login};
+  return {allowed:true};
+}
+
+export function normalizePhone(value:string):string|null {
+  const digits=value.replace(/\D/g,'');
+  const local=digits.startsWith('90')&&digits.length===12?digits.slice(2):digits.startsWith('0')&&digits.length===11?digits.slice(1):digits;
+  return /^5\d{9}$/.test(local)?`+90${local}`:null;
+}
+
+export function phoneLookupVariants(value:string):string[] {
+  const canonical=normalizePhone(value);
+  if(!canonical)return [];
+  const local=canonical.slice(3);
+  return [canonical,canonical.slice(1),`0${local}`,local];
+}
+
+export function testOtpEnvironment(input:{nodeEnv:string|undefined;vercelEnv:string|undefined;appEnv:string|undefined;enabled:string|undefined}):boolean {
+  return input.enabled==='true'&&input.vercelEnv!=='production'&&
+    (input.nodeEnv==='development'||input.nodeEnv==='test'||
+      (input.appEnv==='staging'&&input.vercelEnv==='preview'));
+}
+
+export function testOtpAllowed(input:{nodeEnv:string|undefined;vercelEnv:string|undefined;appEnv:string|undefined;enabled:string|undefined;configuredCode:string|undefined;submittedCode:string;isTest:boolean}):boolean {
+  if(!testOtpEnvironment(input)||!input.isTest)return false;
+  const expected=input.configuredCode;
+  if(!expected||!/^\d{6}$/.test(expected)||!/^\d{6}$/.test(input.submittedCode))return false;
+  // Compare without disclosing the configured code or accepting prefixes.
+  if(expected.length!==input.submittedCode.length)return false;
+  let difference=0;
+  for(let i=0;i<expected.length;i++)difference|=expected.charCodeAt(i)^input.submittedCode.charCodeAt(i);
+  return difference===0;
+}
