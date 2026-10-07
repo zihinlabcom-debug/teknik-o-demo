@@ -38,7 +38,7 @@ test('provider routes render empty jobs, field actions and disabled extra-cost f
  assert.ok(active.includes('Atanan / işlemde'));
  assert.ok(active.includes('Henüz aktif işiniz bulunmuyor.'));
  const detail=await render('usta/is/[id]');
- for(const field of ['Müşteri ve hizmet','Hizmet','Durum','Adres','Fiyat','Saha adımları','İşi başlat','Randevu','Ek maliyet talebi'])assert.ok(detail.includes(field),field);
+ for(const field of ['Müşteri ve hizmet','Hizmet','Durum','Adres','Fiyat','Saha adımları','Randevu','Ek maliyet talebi'])assert.ok(detail.includes(field),field);
  assert.ok(detail.includes('Henüz randevu yok.'));
  const extra=await render('usta/ek-maliyet');
  for(const field of ['Gerekçe','Talep edilen fark','Ek işlem açıklaması','Fotoğraf kanıtı'])assert.ok(extra.includes(field));

@@ -61,13 +61,8 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
       <PanelCard title="Saha adımları">
         <div className="flex gap-3">
-          {d.status==='assigned'&&
-            <OperationActionButton
-              endpoint={`/api/operations/jobs/${d.id}/start`}
-              label="İşi başlat"
-            />}
 
-          {d.status==='in_progress'&&
+          {(d.status==='in_progress'||(d.status==='assigned'&&(requestMode==='immediate'||(requestMode==='scheduled'&&Boolean(activeAppointment)))))&&
             <OperationActionButton
               endpoint={`/api/operations/jobs/${d.id}/complete`}
               label="İşi tamamla"
