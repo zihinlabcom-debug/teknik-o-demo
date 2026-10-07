@@ -50,6 +50,89 @@ export async function completeTechnicianJob(jobId:string){
   return {id:data};
 }
 
+type AppointmentDbError={message?:string}|null;
+
+function failAppointmentDb(error:AppointmentDbError):never{
+  const raw=error?.message??'';
+
+  if(/Technician is not assigned to this job/i.test(raw))
+    throw new OperationError('forbidden',403,'Bu iş size atanmış değil.');
+
+  if(/Technician account is not active/i.test(raw))
+    throw new OperationError('invalid_state',409,'Usta hesabı aktif değil.');
+
+  if(/Active appointment already exists for this job/i.test(raw))
+    throw new OperationError('appointment_exists',409,'Bu iş için zaten aktif bir randevu var.');
+
+  if(/Appointment scheduling window has expired/i.test(raw))
+    throw new OperationError('appointment_window_expired',409,'Randevu belirleme süresi doldu.');
+
+  if(/Appointment cannot start in the past/i.test(raw))
+    throw new OperationError('invalid_appointment_time',409,'Randevu geçmiş bir saate verilemez.');
+
+  if(/Appointment cannot start after 20:00/i.test(raw))
+    throw new OperationError('invalid_appointment_time',409,'Randevu başlangıcı 20:00 sonrasında olamaz.');
+
+  if(/Appointment date must match requested service date/i.test(raw))
+    throw new OperationError('appointment_date_locked',409,'Randevu tarihi müşterinin seçtiği tarihle aynı olmalıdır.');
+
+  if(/Immediate appointment must be within 24 hours of assignment/i.test(raw))
+    throw new OperationError('appointment_out_of_window',409,'Hemen talebinde randevu atamadan sonraki 24 saat içinde olmalıdır.');
+
+  if(/Job is not available for appointment scheduling/i.test(raw))
+    throw new OperationError('invalid_state',409,'İş randevu oluşturulabilecek durumda değil.');
+
+  if(/Immediate request cannot contain a requested service date|Invalid requested service mode/i.test(raw))
+    throw new OperationError('invalid_state',409,'Hizmet talebinin randevu bilgileri geçerli değil.');
+
+  if(/Job not found|Service request not found/i.test(raw))
+    throw new OperationError('not_found',404,'Kayıt bulunamadı.');
+
+  failDb(error,'Randevu oluşturma');
+}
+
+function normalizeAppointmentStart(value:unknown){
+  if(
+    typeof value!=='string'
+    || value.length>64
+    || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})$/.test(value)
+  ){
+    throw new OperationError(
+      'invalid_appointment_time',
+      400,
+      'Geçerli bir randevu tarihi ve saati gerekli.'
+    );
+  }
+
+  const parsed=new Date(value);
+
+  if(Number.isNaN(parsed.getTime())){
+    throw new OperationError(
+      'invalid_appointment_time',
+      400,
+      'Geçerli bir randevu tarihi ve saati gerekli.'
+    );
+  }
+
+  return parsed.toISOString();
+}
+
+export async function createTechnicianAppointment(jobId:string,startsAt:unknown){
+  requireId(jobId);
+  const account=await requireRole('technician');
+  const normalizedStart=normalizeAppointmentStart(startsAt);
+  const db=adminSupabase();
+
+  const {data,error}=await db.rpc('create_service_appointment',{
+    p_job_id:jobId,
+    p_technician_id:account.id,
+    p_starts_at:normalizedStart,
+  });
+
+  if(error)failAppointmentDb(error);
+
+  return {id:data};
+}
 export async function technicianOffers(){
   const account=await requireRole('technician');
   const db=adminSupabase();
