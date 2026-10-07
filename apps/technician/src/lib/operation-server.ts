@@ -181,6 +181,39 @@ export async function technicianOffers(){
     .filter(x=>x.quote?.status==='accepted');
 }
 
+const ACTIVE_APPOINTMENT_STATUSES=new Set(['scheduled','confirmed']);
+const APPOINTMENT_SCHEDULING_WINDOW_MS=60*60*1000;
+const ISTANBUL_DATE_FORMATTER=new Intl.DateTimeFormat('en-US',{
+  timeZone:'Europe/Istanbul',
+  year:'numeric',
+  month:'2-digit',
+  day:'2-digit',
+});
+
+function hasActiveAppointment(appointments:Array<{status:string}>){
+  return appointments.some(appointment=>ACTIVE_APPOINTMENT_STATUSES.has(appointment.status));
+}
+
+function appointmentSchedulingExpired(
+  job:{status:string;assigned_at:string|null},
+  appointments:Array<{status:string}>
+){
+  if(job.status!=='assigned'||hasActiveAppointment(appointments))return false;
+
+  const assignedAt=Date.parse(job.assigned_at??'');
+  return Number.isFinite(assignedAt)&&Date.now()>assignedAt+APPOINTMENT_SCHEDULING_WINDOW_MS;
+}
+
+function istanbulToday(){
+  const parts=Object.fromEntries(
+    ISTANBUL_DATE_FORMATTER.formatToParts(new Date())
+      .filter(part=>part.type!=='literal')
+      .map(part=>[part.type,part.value])
+  );
+
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
 export async function technicianActiveJobs(){
   const account=await requireRole('technician');
   const db=adminSupabase();
@@ -198,17 +231,33 @@ export async function technicianActiveJobs(){
     .map(j=>j.accepted_quote_id)
     .filter(Boolean);
 
-  const {data:quotes}=quoteIds.length
-    ?await db
-      .from('service_quotes')
-      .select('id,total_amount,currency')
-      .in('id',quoteIds)
-    :{data:[]};
+  const jobIds=(data??[]).map(job=>job.id);
 
-  return (data??[]).map(j=>({
-    ...j,
-    quote:(quotes??[]).find(q=>q.id===j.accepted_quote_id)??null,
-  }));
+  const [{data:quotes},{data:appointments}]=await Promise.all([
+    quoteIds.length
+      ?db.from('service_quotes')
+        .select('id,total_amount,currency')
+        .in('id',quoteIds)
+      :Promise.resolve({data:[]}),
+
+    jobIds.length
+      ?db.from('service_appointments')
+        .select('job_id,status')
+        .in('job_id',jobIds)
+        .in('status',['scheduled','confirmed'])
+      :Promise.resolve({data:[]}),
+  ]);
+
+  return (data??[]).map(j=>{
+    const jobAppointments=(appointments??[]).filter(appointment=>appointment.job_id===j.id);
+
+    return {
+      ...j,
+      quote:(quotes??[]).find(q=>q.id===j.accepted_quote_id)??null,
+      has_active_appointment:hasActiveAppointment(jobAppointments),
+      appointment_scheduling_expired:appointmentSchedulingExpired(j,jobAppointments),
+    };
+  });
 }
 
 export async function technicianJobDetail(id:string){
@@ -262,12 +311,20 @@ export async function technicianJobDetail(id:string){
       .maybeSingle()).data;
   }
 
+  const jobAppointments=appointments??[];
+  const requestedDate=req?.requested_service_date??null;
+
   return {
     ...job,
     request:req,
     quote,
     category,
     address,
-    appointments:appointments??[],
+    appointments:jobAppointments,
+    has_active_appointment:hasActiveAppointment(jobAppointments),
+    appointment_scheduling_expired:appointmentSchedulingExpired(job,jobAppointments),
+    scheduled_service_date_reached:
+      typeof requestedDate==='string'
+      && requestedDate<=istanbulToday(),
   };
 }

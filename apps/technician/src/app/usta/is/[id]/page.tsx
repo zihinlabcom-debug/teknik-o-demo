@@ -26,7 +26,23 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
   const canCreateAppointment=
     d.status==='assigned'
-    && !activeAppointment;
+    && !activeAppointment
+    && !d.appointment_scheduling_expired;
+
+  const scheduledCompletionReady=
+    requestMode==='scheduled'
+    && Boolean(activeAppointment)
+    && d.scheduled_service_date_reached;
+
+  const canComplete=
+    (d.status==='in_progress'&&(requestMode!=='scheduled'||scheduledCompletionReady))
+    ||(
+      d.status==='assigned'
+      &&(
+        (requestMode==='immediate'&&!d.appointment_scheduling_expired)
+        ||scheduledCompletionReady
+      )
+    );
 
   return <>
     <PanelHeading
@@ -44,7 +60,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
           <div>
             <dt className="font-bold">Durum</dt>
-            <dd>{d.status}</dd>
+            <dd>{d.appointment_scheduling_expired?'Randevu süresi doldu':d.status}</dd>
           </div>
 
           <div>
@@ -60,14 +76,26 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
       </PanelCard>
 
       <PanelCard title="Saha adımları">
-        <div className="flex gap-3">
-
-          {(d.status==='in_progress'||(d.status==='assigned'&&(requestMode==='immediate'||(requestMode==='scheduled'&&Boolean(activeAppointment)))))&&
+        <div className="flex flex-wrap gap-3">
+          {canComplete&&
             <OperationActionButton
               endpoint={`/api/operations/jobs/${d.id}/complete`}
               label="İşi tamamla"
               confirmText="İş tamamlandı olarak işaretlensin mi?"
             />}
+
+          {d.status==='assigned'&&d.appointment_scheduling_expired&&
+            <p role="status" className="text-sm font-semibold text-amber-800">
+              Randevu belirleme süresi doldu. Bu iş için artık işlem yapılamaz.
+            </p>}
+
+          {d.status==='assigned'
+            && requestMode==='scheduled'
+            && Boolean(activeAppointment)
+            && !d.scheduled_service_date_reached
+            && <p role="status" className="text-sm text-slate-600">
+              İş, müşterinin seçtiği hizmet tarihinden önce tamamlanamaz.
+            </p>}
 
           {['completed','cancelled'].includes(d.status)&&
             <p className="text-sm text-slate-600">

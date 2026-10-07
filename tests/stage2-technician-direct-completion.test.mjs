@@ -11,7 +11,7 @@ test('technician UI has no start action and exposes completion for the new flow'
   assert.doesNotMatch(page,/İşi başlat/);
   assert.match(page,/\/complete/);
   assert.match(page,/requestMode==='immediate'/);
-  assert.match(page,/requestMode==='scheduled'&&Boolean\(activeAppointment\)/);
+  assert.match(page,/requestMode==='scheduled'[\s\S]{0,120}Boolean\(activeAppointment\)[\s\S]{0,120}d\.scheduled_service_date_reached/);
 });
 
 test('direct completion migration enforces scheduled day and appointment rules',()=>{
