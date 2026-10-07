@@ -15,7 +15,7 @@ test('technician UI has no start action and exposes completion for the new flow'
 });
 
 test('direct completion migration enforces scheduled day and appointment rules',()=>{
-  const sql=read('supabase/migrations/20261007094734_allow_direct_job_completion.sql');
+  const sql=read('supabase/migrations/20261007073033_allow_direct_job_completion.sql');
 
   assert.match(sql,/old\.status = 'assigned'[\s\S]*'in_progress', 'completed', 'cancelled'/);
   assert.match(sql,/requested_service_mode, requested_service_date/);
@@ -28,7 +28,7 @@ test('direct completion migration enforces scheduled day and appointment rules',
 });
 
 test('immediate completion does not require an appointment and completion closes any active appointment',()=>{
-  const sql=read('supabase/migrations/20261007094734_allow_direct_job_completion.sql');
+  const sql=read('supabase/migrations/20261007073033_allow_direct_job_completion.sql');
 
   assert.match(sql,/request_mode = 'immediate'/);
   assert.doesNotMatch(sql,/request_mode = 'immediate'[\s\S]{0,300}requires an active appointment/i);
@@ -38,7 +38,7 @@ test('immediate completion does not require an appointment and completion closes
 });
 
 test('completion RPC remains service-role only',()=>{
-  const sql=read('supabase/migrations/20261007094734_allow_direct_job_completion.sql');
+  const sql=read('supabase/migrations/20261007073033_allow_direct_job_completion.sql');
 
   assert.match(sql,/revoke all on function public\.complete_service_job\(uuid, uuid\)[\s\S]*from public, anon, authenticated/i);
   assert.match(sql,/grant execute on function public\.complete_service_job\(uuid, uuid\)[\s\S]*to service_role/i);
