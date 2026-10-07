@@ -10,7 +10,26 @@ import {requireRole,requireId,failDb} from '@/lib/operation-guard';
 export {OperationError,operationErrorResponse} from '@/lib/operation-error';
 export {adminRequestList,adminRequestDetail} from '@/lib/admin-request-read';
 
-export async function createCustomerServiceRequest(input:{conversationToken:string}){
+type RequestedServiceMode='immediate'|'scheduled';
+const DATE_SELECTABLE_CATEGORIES=new Set<string>(['painting','cleaning','sofa_cleaning','carpet_cleaning']);
+const ISTANBUL_DATE_FORMATTER=new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'});
+function istanbulCalendarDate(offsetDays:number){
+  const parts=Object.fromEntries(ISTANBUL_DATE_FORMATTER.formatToParts(new Date())
+    .filter(part=>part.type!=='literal').map(part=>[part.type,part.value]));
+  return new Date(Date.UTC(Number(parts.year),Number(parts.month)-1,Number(parts.day)+offsetDays)).toISOString().slice(0,10);
+}
+function isStrictIsoDate(value:string){
+  const match=/^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if(!match)return false;
+  const date=new Date(Date.UTC(Number(match[1]),Number(match[2])-1,Number(match[3])));
+  return date.getUTCFullYear()===Number(match[1])&&date.getUTCMonth()===Number(match[2])-1&&date.getUTCDate()===Number(match[3]);
+}
+
+export async function createCustomerServiceRequest(input:{
+  conversationToken:string;
+  requestedServiceMode?:RequestedServiceMode;
+  requestedServiceDate?:string|null;
+}){
   const account=await requireRole('customer'); const db=adminSupabase();
   const token=input.conversationToken.trim();
   if(!token||token.length>250000)throw new OperationError('invalid_conversation',400,'Geçersiz hizmet değerlendirmesi.');
@@ -28,6 +47,21 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const categoryMap:Record<string,string>={boiler:'boiler',painting:'painting',cleaning:'cleaning',sofa_cleaning:'upholstery_carpet',carpet_cleaning:'upholstery_carpet'};
   const categoryCode=categoryMap[category];
   if(!categoryCode)throw new OperationError('category_unavailable',409,'Bu hizmet kategorisi henüz talep oluşturmaya açık değil.');
+
+  const requestedServiceMode=input.requestedServiceMode??'immediate';
+  const requestedServiceDate=(input.requestedServiceDate??'').trim()||null;
+  if(requestedServiceMode!=='immediate'&&requestedServiceMode!=='scheduled')
+    throw new OperationError('invalid_service_mode',400,'Geçersiz hizmet zamanı seçimi.');
+
+  if(requestedServiceMode==='scheduled'){
+    if(!DATE_SELECTABLE_CATEGORIES.has(category))
+      throw new OperationError('scheduled_service_unavailable',409,'Bu hizmet için tarih seçilemez.');
+    const minDate=istanbulCalendarDate(1),maxDate=istanbulCalendarDate(7);
+    if(!requestedServiceDate||!isStrictIsoDate(requestedServiceDate)||requestedServiceDate<minDate||requestedServiceDate>maxDate)
+      throw new OperationError('invalid_service_date',400,'Hizmet tarihi yarından başlayarak en fazla 7 gün sonrası için seçilebilir.');
+  }else if(requestedServiceDate){
+    throw new OperationError('invalid_service_date',400,'Hemen talebinde hizmet tarihi gönderilemez.');
+  }
 
   const fingerprint=createHash('sha256').update(token).digest('hex');
   const requestKey=`conversation:${fingerprint}`;
@@ -48,13 +82,15 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
   const args={
     p_customer_id:account.id,p_category_code:categoryCode,p_address_id:defaultAddress.id,
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
-    p_assessment_snapshot:assessmentSnapshot,
+    p_assessment_snapshot:assessmentSnapshot,p_requested_service_mode:requestedServiceMode,p_requested_service_date:requestedServiceDate,
   };
   const {data,error}=acceptedPrice?await db.rpc('create_priced_service_request',{
     ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
     p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
     p_breakdown:acceptedPrice.breakdown,
   }):await db.rpc('create_service_request',args);
+  if(error&&/existing request schedule mismatch/i.test(error.message??''))
+    throw new OperationError('request_schedule_conflict',409,'Bu değerlendirme için daha önce farklı bir zaman tercihiyle talep oluşturuldu.');
   if(error)failDb(error,'Hizmet talebi');
   return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY'}:{id:data as string};
 }

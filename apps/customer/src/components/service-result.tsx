@@ -52,16 +52,37 @@ export function DiagnosisDebugPanel({enabled,response}:{enabled:boolean;response
     {!!response?.groupProbabilities.length&&<ul className="mt-2 border-t border-slate-100 pt-2 space-y-1">{response.groupProbabilities.map(g=><li key={g.key} className="flex justify-between gap-2"><span>{g.name}</span><span>%{g.probability}</span></li>)}</ul>}
   </section>;
 }
+const SCHEDULED_SERVICE_CATEGORIES=new Set(['painting','cleaning','sofa_cleaning','carpet_cleaning']);
+const ISTANBUL_DATE_FORMATTER=new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'});
+function istanbulServiceDate(offsetDays:number){
+  const parts=Object.fromEntries(ISTANBUL_DATE_FORMATTER.formatToParts(new Date())
+    .filter(part=>part.type!=='literal').map(part=>[part.type,part.value]));
+  return new Date(Date.UTC(Number(parts.year),Number(parts.month)-1,Number(parts.day)+offsetDays)).toISOString().slice(0,10);
+}
 export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;response:ServiceResponse|null}){
   const [busy,setBusy]=useState(false),[error,setError]=useState<string|null>(null),[requestId,setRequestId]=useState<string|null>(null);
+  const [requestedServiceMode,setRequestedServiceMode]=useState<'immediate'|'scheduled'>('immediate');
+  const [requestedServiceDate,setRequestedServiceDate]=useState('');
+  const canSelectDate=!!response?.category&&SCHEDULED_SERVICE_CATEGORIES.has(response.category);
+  const minServiceDate=istanbulServiceDate(1),maxServiceDate=istanbulServiceDate(7);
   const createRequest=async()=>{
     if(busy||requestId)return;
     if(!response?.conversationToken){setError('Talep oluşturmak için tamamlanmış bir hizmet değerlendirmesi gerekli.');return;}
+    const serviceMode=canSelectDate?requestedServiceMode:'immediate';
+    const serviceDate=serviceMode==='scheduled'?requestedServiceDate:'';
+    if(serviceMode==='scheduled'&&(!serviceDate||serviceDate<minServiceDate||serviceDate>maxServiceDate)){
+      setError('Hizmet tarihi yarından başlayarak en fazla 7 gün sonrası için seçilebilir.');
+      return;
+    }
     setBusy(true);setError(null);
     try{
       const reply=await fetch('/api/operations/requests',{
         method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({conversationToken:response.conversationToken}),
+        body:JSON.stringify({
+          conversationToken:response.conversationToken,
+          requestedServiceMode:serviceMode,
+          requestedServiceDate:serviceMode==='scheduled'?serviceDate:null,
+        }),
       });
       const body=await reply.json().catch(()=>({})) as {id?:string;error?:string};
       if(!reply.ok||!body.id)throw new Error(body.error||'Talep oluşturulamadı.');
@@ -80,8 +101,30 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
       </>:<>
         <p className="text-xs text-slate-500 mt-3 leading-relaxed">Kayıtlı varsayılan adresiniz kullanılarak gerçek hizmet talebi oluşturulacak. Aynı değerlendirme tekrar gönderilirse ikinci bir talep açılmaz.</p>
         {response?.isReadyForPrice&&response.estimatedPrice&&<p className="mt-2 text-xs font-semibold text-slate-700">Talebi oluşturduğunuzda gösterilen {response.estimatedPrice} maksimum fiyatı kabul etmiş olursunuz.</p>}
+        {canSelectDate?<fieldset className="mt-4">
+          <legend className="text-xs font-bold text-slate-800">Hizmeti ne zaman istiyorsunuz?</legend>
+          <div className="mt-2 grid grid-cols-2 gap-2">
+            <button type="button" aria-pressed={requestedServiceMode==='immediate'} disabled={busy}
+              onClick={()=>{setRequestedServiceMode('immediate');setRequestedServiceDate('');setError(null);}}
+              className={`min-h-11 rounded-xl border px-3 py-2 text-xs font-bold ${requestedServiceMode==='immediate'?'border-emerald-600 bg-emerald-50 text-emerald-700':'border-slate-300 bg-white text-slate-700'}`}>
+              Hemen
+            </button>
+            <button type="button" aria-pressed={requestedServiceMode==='scheduled'} disabled={busy}
+              onClick={()=>{setRequestedServiceMode('scheduled');setError(null);}}
+              className={`min-h-11 rounded-xl border px-3 py-2 text-xs font-bold ${requestedServiceMode==='scheduled'?'border-[#EE6C13] bg-orange-50 text-[#C6520D]':'border-slate-300 bg-white text-slate-700'}`}>
+              Tarih seç
+            </button>
+          </div>
+          {requestedServiceMode==='scheduled'&&<label className="mt-3 block text-xs font-semibold text-slate-700">
+            <span className="mb-1.5 block">Hizmet tarihi</span>
+            <input type="date" value={requestedServiceDate} min={minServiceDate} max={maxServiceDate} disabled={busy}
+              onChange={event=>{setRequestedServiceDate(event.target.value);setError(null);}}
+              className="min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none focus:border-[#EE6C13]" />
+            <span className="mt-1.5 block text-[11px] font-normal leading-4 text-slate-500">Yarından başlayarak en fazla 7 gün sonrası seçilebilir.</span>
+          </label>}
+        </fieldset>:<p className="mt-4 rounded-xl bg-slate-50 p-3 text-xs font-semibold text-slate-600">Bu hizmet için talep Hemen olarak oluşturulur.</p>}
         {error&&<p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold text-red-700">{error}</p>}
-        <button type="button" disabled={busy} onClick={()=>void createRequest()} className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white py-2.5 rounded-xl font-bold text-xs mt-4">{busy?'Talep oluşturuluyor…':'Talebi oluştur'}</button>
+        <button type="button" disabled={busy||(canSelectDate&&requestedServiceMode==='scheduled'&&!requestedServiceDate)} onClick={()=>void createRequest()} className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white py-2.5 rounded-xl font-bold text-xs mt-4">{busy?'Talep oluşturuluyor…':'Talebi oluştur'}</button>
         <button type="button" onClick={onClose} className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-2">Vazgeç</button>
       </>}
     </section>
