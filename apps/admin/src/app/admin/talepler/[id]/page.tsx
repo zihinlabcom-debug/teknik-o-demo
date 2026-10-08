@@ -2,8 +2,9 @@ export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
 import {EmptyPanelState,PanelCard,PanelHeading,RecordTypeBadge} from '@/components/operation-panel';
-import {adminRequestDetail,OperationError} from '@/lib/operation-server';
+import {adminRequestDetail,adminManualAssignmentCandidates,OperationError} from '@/lib/operation-server';
 import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
+import {ManualAssignmentPanel} from '@/components/manual-assignment-panel';
 
 function exclusionReason(reason:string){
   if(reason==='appointment_timeout')return 'Randevu süresi doldu';
@@ -15,6 +16,16 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
   const {id}=await params; let d;
   try{d=await adminRequestDetail(id);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
   const assessmentRows=assessmentDetailRows(d.assessment_snapshot);
+  const latestCycle=d.cycles[0];
+  const canManualAssign=
+    latestCycle?.status==='exhausted' &&
+    latestCycle.current_round===3 &&
+    !d.cycles.some(c=>c.status==='active') &&
+    !d.jobs.some(j=>j.status==='assigned'||j.status==='in_progress') &&
+    d.quotes.some(q=>q.id===latestCycle.quote_id&&q.status==='accepted');
+  const candidates=canManualAssign
+    ?await adminManualAssignmentCandidates(id)
+    :[];
   return <><PanelHeading title="Talep detayı" description="Talep, fiyat, dağıtım döngüsü ve gerçek iş özeti."/><div className="space-y-4">
     <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
     <PanelCard title="Talep özeti"><p className="whitespace-pre-wrap text-sm text-slate-700">{d.problem_description||'Özet bulunmuyor.'}</p></PanelCard>
@@ -38,6 +49,13 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
       <p><b>{x.id.slice(0,8)}</b> · {x.status} · {x.technician?.name||x.technician_id?.slice(0,8)||'Usta yok'}</p>
       {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {a.status} · {new Date(a.starts_at).toLocaleString('tr-TR')}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
     </div>)}</div>:<EmptyPanelState>Job yok.</EmptyPanelState>}</PanelCard>
+
+    {canManualAssign&&<PanelCard title="Manuel usta ataması">
+      <p className="mb-3 text-sm text-slate-600">
+        Otomatik dağıtımın üç turu tamamlandı. Uygun ustalardan birini doğrudan atayabilirsiniz.
+      </p>
+      <ManualAssignmentPanel requestId={id} candidates={candidates}/>
+    </PanelCard>}
 
     <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReason(x.reason)} · {new Date(x.created_at).toLocaleString('tr-TR')}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
 

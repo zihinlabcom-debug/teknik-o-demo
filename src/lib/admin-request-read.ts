@@ -38,7 +38,7 @@ export async function adminRequestDetail(id:string){
     db.from('service_jobs').select('id,status,technician_id,assigned_at,started_at,completed_at,cancelled_at,accepted_quote_id').eq('service_request_id',id).order('created_at',{ascending:false}),
     db.from('service_quotes').select('id,status,version,total_amount,currency,offered_at,accepted_at').eq('service_request_id',id).order('version',{ascending:false}),
     db.from('operational_events').select('id,event_type,occurred_at').eq('service_request_id',id).order('occurred_at',{ascending:false}).limit(100),
-    db.from('service_distribution_cycles').select('id,status,current_round,next_round_at,source_job_id,started_at,closed_at').eq('service_request_id',id).order('started_at',{ascending:false}),
+    db.from('service_distribution_cycles').select('id,quote_id,status,current_round,next_round_at,source_job_id,started_at,closed_at').eq('service_request_id',id).order('started_at',{ascending:false}),
     db.from('service_request_technician_exclusions').select('technician_id,reason,source_job_id,created_at').eq('service_request_id',id).order('created_at',{ascending:false}),
   ]);
 
