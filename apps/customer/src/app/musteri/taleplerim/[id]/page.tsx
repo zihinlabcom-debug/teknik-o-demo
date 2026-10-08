@@ -13,9 +13,11 @@ export default async function CustomerRequestDetail({params}:{params:Promise<{id
   const technicianFallback=
     d.operation_status.code==='redistributing'
       ?'Yeniden atanıyor'
-      :d.operation_status.code==='distribution_exhausted'
+      :d.operation_status.code==='technician_unavailable'
         ?'Usta bulunamadı'
-        :'Henüz atanmadı';
+        :d.operation_status.code==='admin_review'
+          ?'Atama bekleniyor'
+          :'Henüz atanmadı';
 
   return <><PanelHeading title="Talep detayı" description="Talep, fiyat ve atama durumunuz."/><div className="space-y-4">
     <PanelCard title="Talep bilgileri"><dl className="grid gap-3 sm:grid-cols-2"><div><dt className="font-bold">Hizmet</dt><dd>{d.category_name}</dd></div><div><dt className="font-bold">Durum</dt><dd>{d.operation_status.label}</dd></div><div><dt className="font-bold">Oluşturulma</dt><dd>{new Date(d.created_at).toLocaleString('tr-TR')}</dd></div><div><dt className="font-bold">Adres</dt><dd>{d.address?.address_line||d.address?.label||'—'}</dd></div><div><dt className="font-bold">Usta</dt><dd>{d.technician?.name||technicianFallback}</dd></div><div><dt className="font-bold">Fiyat</dt><dd>{accepted?`${accepted.total_amount} ${accepted.currency}`:offered?`${offered.total_amount} ${offered.currency}`:'—'}</dd></div></dl></PanelCard>

@@ -11,6 +11,16 @@ export type AdminManualAssignmentCandidate={
   active_job_count:number;
 };
 
+export async function adminManualAssignmentReady(serviceRequestId:string){
+  requireId(serviceRequestId);
+  await requireRole('admin');
+  const {data,error}=await adminSupabase().rpc('admin_manual_assignment_ready',{
+    p_request_id:serviceRequestId,
+  });
+  if(error)throw new OperationError('manual_assignment_unavailable',409,'Manuel atama durumu doğrulanamadı.');
+  return data===true;
+}
+
 export async function adminManualAssignmentCandidates(serviceRequestId:string){
   requireId(serviceRequestId);
   const account=await requireRole('admin');

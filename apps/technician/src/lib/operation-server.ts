@@ -277,7 +277,7 @@ export async function technicianJobDetail(id:string){
 
   const [{data:req},{data:quote},{data:appointments}]=await Promise.all([
     db.from('service_requests')
-      .select('id,category_id,address_id,requested_service_mode,requested_service_date')
+      .select('id,category_id,address_id,status,requested_service_mode,requested_service_date')
       .eq('id',job.service_request_id)
       .maybeSingle(),
 

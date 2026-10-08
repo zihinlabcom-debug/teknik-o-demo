@@ -9,7 +9,7 @@ test('technician job detail loads customer scheduling mode and date',()=>{
 
   assert.match(
     server,
-    /select\('id,category_id,address_id,requested_service_mode,requested_service_date'\)/
+    /select\('id,category_id,address_id,status,requested_service_mode,requested_service_date'\)/
   );
 });
 

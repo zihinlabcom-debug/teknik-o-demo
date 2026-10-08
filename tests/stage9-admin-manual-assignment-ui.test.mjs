@@ -4,7 +4,8 @@ import fs from 'node:fs';
 
 const read=path=>fs.readFileSync(new URL(`../${path}`,import.meta.url),'utf8');
 
-const sql=read('supabase/migrations/20261008123000_stage9_admin_manual_assignment_candidates.sql');
+const sql=read('supabase/migrations/20261008135114_stage9_admin_manual_assignment_candidates.sql');
+const boundary=read('supabase/migrations/20261008150736_stage9_final_assignment_boundary.sql');
 const server=read('src/lib/admin-manual-assignment.ts');
 const facade=read('apps/admin/src/lib/operation-server.ts');
 const route=read('apps/admin/src/app/api/admin/requests/[id]/manual-assignment/route.ts');
@@ -27,10 +28,12 @@ test('candidate RPC checks active admin identity',()=>{
   assert.match(sql,/v_admin_active is distinct from true/i);
 });
 
-test('candidate RPC requires completed three-round distribution',()=>{
-  assert.match(sql,/c\.status='active'/i);
-  assert.match(sql,/v_cycle\.status<>'exhausted'/i);
-  assert.match(sql,/v_cycle\.current_round<>3/i);
+test('candidate RPC uses shared final-stage eligibility after exhaustion or second timeout',()=>{
+  assert.match(boundary,/create or replace function public\.admin_manual_assignment_ready/i);
+  assert.match(boundary,/v_cycle\.status='exhausted' and v_cycle\.current_round=3/i);
+  assert.match(boundary,/v_cycle\.status='accepted'/i);
+  assert.match(boundary,/automatic_appointment_timeout_count\(p_request_id\)=2/i);
+  assert.match(boundary,/not public\.admin_manual_assignment_ready\(p_service_request_id\)/i);
 });
 
 test('candidate RPC rejects requests with active jobs',()=>{
@@ -116,10 +119,7 @@ test('admin request detail reads quote identity for latest cycle',()=>{
   assert.match(readSource,/service_distribution_cycles'\)\.select\('id,quote_id,/);
 });
 test('manual assignment panel opens only after eligible distribution',()=>{
-  assert.match(page,/latestCycle\?\.status==='exhausted'/);
-  assert.match(page,/latestCycle\.current_round===3/);
-  assert.match(page,/!d\.cycles\.some\(c=>c\.status==='active'\)/);
-  assert.match(page,/!d\.jobs\.some\(j=>j\.status==='assigned'\|\|j\.status==='in_progress'\)/);
-  assert.match(page,/d\.quotes\.some\(q=>q\.id===latestCycle\.quote_id&&q\.status==='accepted'\)/);
+  assert.match(page,/adminManualAssignmentReady\(id\)/);
+  assert.match(page,/d\.status!=='technician_unavailable'/);
   assert.match(page,/<ManualAssignmentPanel requestId=\{id\} candidates=\{candidates\}/);
 });

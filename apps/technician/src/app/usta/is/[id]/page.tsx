@@ -60,7 +60,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
           <div>
             <dt className="font-bold">Durum</dt>
-            <dd>{d.appointment_scheduling_expired?'Randevu süresi doldu':d.status}</dd>
+            <dd>{d.request?.status==='technician_unavailable'?'Usta bulunamadı':d.appointment_scheduling_expired?'Randevu süresi doldu':d.status}</dd>
           </div>
 
           <div>

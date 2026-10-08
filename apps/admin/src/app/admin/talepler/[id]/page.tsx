@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
 import {EmptyPanelState,PanelCard,PanelHeading,RecordTypeBadge} from '@/components/operation-panel';
-import {adminRequestDetail,adminManualAssignmentCandidates,OperationError} from '@/lib/operation-server';
+import {adminRequestDetail,adminManualAssignmentReady,adminManualAssignmentCandidates,OperationError} from '@/lib/operation-server';
 import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
 import {ManualAssignmentPanel} from '@/components/manual-assignment-panel';
 
@@ -16,18 +16,12 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
   const {id}=await params; let d;
   try{d=await adminRequestDetail(id);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
   const assessmentRows=assessmentDetailRows(d.assessment_snapshot);
-  const latestCycle=d.cycles[0];
-  const canManualAssign=
-    latestCycle?.status==='exhausted' &&
-    latestCycle.current_round===3 &&
-    !d.cycles.some(c=>c.status==='active') &&
-    !d.jobs.some(j=>j.status==='assigned'||j.status==='in_progress') &&
-    d.quotes.some(q=>q.id===latestCycle.quote_id&&q.status==='accepted');
+  const canManualAssign=d.status!=='technician_unavailable'&&await adminManualAssignmentReady(id);
   const candidates=canManualAssign
     ?await adminManualAssignmentCandidates(id)
     :[];
   return <><PanelHeading title="Talep detayı" description="Talep, fiyat, dağıtım döngüsü ve gerçek iş özeti."/><div className="space-y-4">
-    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
+    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status==='technician_unavailable'?'Usta bulunamadı':d.status}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
     <PanelCard title="Talep özeti"><p className="whitespace-pre-wrap text-sm text-slate-700">{d.problem_description||'Özet bulunmuyor.'}</p></PanelCard>
     <PanelCard title="Değerlendirme detayları">{assessmentRows.length?<dl className="space-y-2 text-sm">
       {assessmentRows.map((row,index)=><div key={`${row.label}-${index}`} className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
@@ -52,7 +46,7 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
 
     {canManualAssign&&<PanelCard title="Manuel usta ataması">
       <p className="mb-3 text-sm text-slate-600">
-        Otomatik dağıtımın üç turu tamamlandı. Uygun ustalardan birini doğrudan atayabilirsiniz.
+        Otomatik dağıtım tamamlandı. Uygun ustalardan birini doğrudan atayabilirsiniz.
       </p>
       <ManualAssignmentPanel requestId={id} candidates={candidates}/>
     </PanelCard>}
