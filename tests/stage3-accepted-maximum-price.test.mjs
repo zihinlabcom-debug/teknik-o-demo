@@ -72,7 +72,7 @@ test('request endpoint accepts only a signed conversation token, never a client 
 });
 
 test('forward migration creates an atomic service-role-only accepted quote path',()=>{
-  const sql=readFileSync(new URL('../supabase/migrations/20261005102459_stage3_accepted_maximum_price.sql',import.meta.url),'utf8');
+  const sql=readFileSync(new URL('../supabase/migrations/20261005122856_stage3_accepted_maximum_price.sql',import.meta.url),'utf8');
   assert.match(sql,/public\.create_service_request\(/);
   assert.match(sql,/public\.accept_service_quote\(/);
   assert.match(sql,/where r\.id=v_request_id for update/);

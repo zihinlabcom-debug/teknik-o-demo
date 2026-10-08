@@ -77,7 +77,7 @@ test('technician signup token binds the selected fields to a phone and expires',
 test('browser cannot supply role or bypass the server-side technician provisioning contract',()=>{
   const request=readFileSync(new URL('../src/app/api/auth/technician/otp/request/route.ts',import.meta.url),'utf8');
   const verify=readFileSync(new URL('../src/app/api/auth/technician/otp/verify/route.ts',import.meta.url),'utf8');
-  const sql=readFileSync(new URL('../supabase/migrations/20261005155144_technician_signup_onboarding.sql',import.meta.url),'utf8');
+  const sql=readFileSync(new URL('../supabase/migrations/20261005165245_technician_signup_onboarding.sql',import.meta.url),'utf8');
   assert.match(request,/expectedRole:'technician'/);
   assert.doesNotMatch(request,/role:body\.role|is_test:body\.is_test/);
   assert.match(verify,/openTechnicianApplication/);
