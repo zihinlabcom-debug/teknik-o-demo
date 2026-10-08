@@ -145,7 +145,7 @@ function customerOperationStatus(
   }
 
   if(cycle?.status==='exhausted')
-    return {code:'distribution_exhausted' as const,label:'Åu anda uygun usta bulunamadı.'};
+    return {code:'distribution_exhausted' as const,label:'Şu anda uygun usta bulunamadı.'};
 
   if(requestStatus==='cancelled')
     return {code:'cancelled' as const,label:'Talep iptal edildi'};

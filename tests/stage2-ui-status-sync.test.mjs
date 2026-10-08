@@ -12,7 +12,7 @@ test('customer status follows job and distribution-cycle truth instead of stale 
   assert.match(server,/service_distribution_cycles/);
   assert.match(server,/job\.status==='assigned'\|\|job\.status==='in_progress'/);
   assert.ok(server.includes('Teklifiniz tekrar dağıtımda.'));
-  assert.ok(server.includes('Åu anda uygun usta bulunamadı.'));
+  assert.ok(server.includes('Şu anda uygun usta bulunamadı.'));
   assert.match(server,/operation_status=customerOperationStatus/);
   assert.match(list,/r\.operation_status\.label/);
   assert.match(detail,/d\.operation_status\.label/);
