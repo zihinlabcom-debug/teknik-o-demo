@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const read=path=>fs.readFileSync(new URL(`../${path}`,import.meta.url),'utf8');
-const migration=read('supabase/migrations/20261008020500_start_initial_distribution_on_request_creation.sql');
+const migration=read('supabase/migrations/20261008000451_start_initial_distribution_on_request_creation.sql');
 
 test('priced request creation starts initial distribution after accepting the shown price',()=>{
   assert.match(migration,/perform public\.accept_service_quote\(v_quote\.id,p_customer_id\);[\s\S]*perform public\.start_service_distribution_cycle\(\s*v_request_id,\s*v_quote\.id,\s*null\s*\);/);
