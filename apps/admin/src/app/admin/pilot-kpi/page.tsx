@@ -1,18 +1,6 @@
-import {EmptyPanelState,PanelCard,PanelHeading} from '@/components/operation-panel';
+export const dynamic='force-dynamic';
+import {PanelCard,PanelHeading,EmptyPanelState} from '@/components/operation-panel';
+import {adminKpi} from '@/lib/stage10-server';
 
-const kpis=[
-  'Toplam hizmet talebi','Tamamlanan işler','Talep → tamamlanma oranı','Benzersiz müşteri',
-  'Tekrar kullanan müşteri oranı','Ortalama sipariş tutarı','GMV','Teknik-O geliri',
-  'İş başı Teknik-O geliri','İş başı katkı kârı','Usta kabul oranı','Ortalama usta kabul süresi',
-  'Usta tamamlanma oranı','Ortalama iş tamamlanma süresi','İptal oranı',
-  'Ek maliyet talep oranı','Kategori bazında talep / işlem hacmi',
-] as const;
-
-export default function AdminPilotKpi(){
-  return <><PanelHeading title="Pilot / KPI" description="Pilot dönem metrikleri yalnız gerçek operasyon verileri bağlandığında hesaplanacak."/>
-    <div className="mb-5"><EmptyPanelState>Pilot verileri toplandığında burada görüntülenecek.</EmptyPanelState></div>
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{kpis.map(kpi=><PanelCard key={kpi} title={kpi}>
-      <p className="text-sm text-slate-500">Veri entegrasyonu bekleniyor</p>
-    </PanelCard>)}</div>
-  </>;
-}
+const labels:Record<string,string>={openedRequests:'Açılan talepler',completedServices:'Tamamlanan hizmetler',cancelledServices:'İptaller',serviceVolume:'Hizmet hacmi',assignments:'Usta atamaları',complaints:'Şikâyetler',warrantyClaims:'Garanti başvuruları',customerRatings:'Müşteri değerlendirmeleri'};
+export default async function AdminPilotKpi({searchParams}:{searchParams:Promise<{period?:string;anchor?:string}>}){const p=await searchParams;const period=p.period==='yearly'?'yearly':'monthly';const anchor=/^\d{4}-\d{2}-\d{2}$/.test(p.anchor??'')?p.anchor!:new Date().toISOString().slice(0,10);const data=await adminKpi(period,anchor);return <><PanelHeading title="Pilot / KPI" description="Gerçek operasyon kayıtlarından aylık ve yıllık performans. Hizmet hacmi, kabul edilmiş teklif ve ek maliyet toplamıdır; şirket geliri veya net kâr değildir."/><form className="mb-5 flex flex-wrap gap-2"><select name="period" defaultValue={period} className="rounded-xl border border-slate-300 bg-white p-3"><option value="monthly">Aylık</option><option value="yearly">Yıllık</option></select><input type="date" name="anchor" defaultValue={anchor} className="rounded-xl border border-slate-300 bg-white p-3"/><button className="rounded-xl bg-[#D97724] px-4 py-2 text-sm font-bold text-white">Göster</button></form><div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{Object.entries(data.general).filter(([key])=>key in labels).map(([key,value])=><PanelCard key={key} title={labels[key]}><p className="text-2xl font-black">{value===null?'Veri yok':String(value)}</p></PanelCard>)}</div><div className="mt-5"><PanelCard title="Usta bazında performans">{data.technicians.length?<><p className="mb-3 text-xs text-slate-500">Tamamlama oranı aynı dönemde atanıp tamamlanan işleri; kabul oranı aynı dönemde sunulup yanıtlanan teklifleri esas alır.</p><div className="overflow-x-auto"><table className="w-full min-w-max text-left text-sm"><thead><tr>{['Usta','Atama','Tamamlanan','Tamamlama %','Teklif','Kabul %','Şikâyet','Garanti'].map(x=><th key={x} className="border-b p-2">{x}</th>)}</tr></thead><tbody>{data.technicians.map((t,index)=><tr key={String(t.technicianId??index)}>{[t.technicianName,t.assignments,t.completed,t.completionRate??'—',t.offers,t.acceptanceRate??'—',t.complaints,t.warrantyCorrections].map((v,i)=><td key={i} className="border-b p-2">{String(v??'—')}</td>)}</tr>)}</tbody></table></div></>:<EmptyPanelState>Bu dönem için usta performans verisi yok.</EmptyPanelState>}</PanelCard></div></>}

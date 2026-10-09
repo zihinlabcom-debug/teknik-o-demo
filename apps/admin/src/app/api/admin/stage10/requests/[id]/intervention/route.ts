@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {adminInterveneRequest} from '@/lib/stage10-server';import {operationErrorResponse} from '@/lib/operation-server';import {parseStage10Json} from '@/lib/stage10-http';
+export async function POST(request:Request,{params}:{params:Promise<{id:string}>}){try{const {id}=await params;const body=await parseStage10Json(request);return NextResponse.json(await adminInterveneRequest(id,body));}catch(error){const r=operationErrorResponse(error);return NextResponse.json(r.body,{status:r.status});}}

@@ -1,0 +1,5 @@
+export const dynamic='force-dynamic';
+import {PanelCard,PanelHeading,EmptyPanelState} from '@/components/operation-panel';
+import {CaseApplicationForm} from '@/components/stage10-customer-forms';
+import {customerStage10Overview} from '@/lib/stage10-server';
+export default async function Complaints(){const data=await customerStage10Overview();return <><PanelHeading title="Şikâyet" description="İlişkili hizmetiniz için şikâyet başvurusu oluşturun ve durumunu izleyin."/><div className="grid gap-4 lg:grid-cols-2"><PanelCard title="Yeni şikâyet"><CaseApplicationForm kind="complaint" requests={data.requests}/></PanelCard><PanelCard title="Başvuru geçmişi">{data.complaints.length?data.complaints.map(item=><p key={item.id} className="border-b border-slate-100 py-3 text-sm">Talep {item.service_request_id.slice(0,8)} · {new Date(item.created_at).toLocaleDateString('tr-TR')} · {item.status==='resolved'?'Sonuçlandı':'İnceleniyor'}</p>):<EmptyPanelState>Henüz şikâyet başvurunuz yok.</EmptyPanelState>}</PanelCard></div></>}

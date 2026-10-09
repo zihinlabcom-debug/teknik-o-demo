@@ -5,6 +5,8 @@ import {EmptyPanelState,PanelCard,PanelHeading,RecordTypeBadge} from '@/componen
 import {adminRequestDetail,adminManualAssignmentReady,adminManualAssignmentCandidates,OperationError} from '@/lib/operation-server';
 import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
 import {ManualAssignmentPanel} from '@/components/manual-assignment-panel';
+import {Stage10OperationIntervention} from '@/components/stage10-operation-intervention';
+import {adminOperationContract} from '@/lib/stage10-server';
 
 function exclusionReason(reason:string){
   if(reason==='appointment_timeout')return 'Randevu süresi doldu';
@@ -14,14 +16,14 @@ function exclusionReason(reason:string){
 
 export default async function AdminRequestDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params; let d;
-  try{d=await adminRequestDetail(id);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
+  let contract;try{[d,contract]=await Promise.all([adminRequestDetail(id),adminOperationContract(id)]);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
   const assessmentRows=assessmentDetailRows(d.assessment_snapshot);
   const canManualAssign=d.status!=='technician_unavailable'&&await adminManualAssignmentReady(id);
   const candidates=canManualAssign
     ?await adminManualAssignmentCandidates(id)
     :[];
   return <><PanelHeading title="Talep detayı" description="Talep, fiyat, dağıtım döngüsü ve gerçek iş özeti."/><div className="space-y-4">
-    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status==='technician_unavailable'?'Usta bulunamadı':d.status}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
+    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status==='technician_unavailable'?'Usta bulunamadı':d.status}</span><span><b>Operasyon:</b> {contract.stage}</span><span><b>Atama kaynağı:</b> {contract.assignmentSource??'—'}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
     <PanelCard title="Talep özeti"><p className="whitespace-pre-wrap text-sm text-slate-700">{d.problem_description||'Özet bulunmuyor.'}</p></PanelCard>
     <PanelCard title="Değerlendirme detayları">{assessmentRows.length?<dl className="space-y-2 text-sm">
       {assessmentRows.map((row,index)=><div key={`${row.label}-${index}`} className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
@@ -50,6 +52,8 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
       </p>
       <ManualAssignmentPanel requestId={id} candidates={candidates}/>
     </PanelCard>}
+
+    <PanelCard title="Operasyon müdahalesi"><p className="mb-3 text-sm text-slate-600">Yönetim yetkisi yalnız hizmet iptali ve mevcut ustayı değiştirme işlemleriyle sınırlıdır.</p><Stage10OperationIntervention requestId={id} currentJobId={contract.currentJobId as string|null} closed={contract.terminal}/></PanelCard>
 
     <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReason(x.reason)} · {new Date(x.created_at).toLocaleString('tr-TR')}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
 

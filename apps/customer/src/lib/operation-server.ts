@@ -230,7 +230,7 @@ export async function customerRequestDetail(id:string){
     job,
     technician,
     appointments,
-    events:events??[],
+    events:(events??[]).filter(event=>!event.event_type.startsWith('complaint.')),
     distribution_cycle:cycle,
     operation_status,
   };

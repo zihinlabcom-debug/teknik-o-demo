@@ -1,7 +1,6 @@
-import {PanelHeading,PanelTable} from '@/components/operation-panel';
+export const dynamic='force-dynamic';
+import {PanelHeading,PanelCard,EmptyPanelState} from '@/components/operation-panel';
+import {AdditionalCostAdminAction} from '@/components/stage10-admin-actions';
+import {adminStage10Overview} from '@/lib/stage10-server';
 
-export default function AdminExtraCosts(){
-  return <><PanelHeading title="Ek maliyet talepleri" description="Ek maliyet inceleme kuyruğu ileride buradan yönetilecek; karar verme henüz etkin değil."/>
-    <PanelTable title="İnceleme kuyruğu" columns={['İş / talep','Usta','Gerekçe','İstenen fark','Fotoğraf kanıtı','Durum']}
-      empty="Henüz incelemeyi bekleyen ek maliyet talebi bulunmuyor."/></>;
-}
+export default async function AdminExtraCosts(){const data=await adminStage10Overview();return <><PanelHeading title="Ek maliyet talepleri" description="Usta talebi, admin incelemesi ve müşteri kararını tek akışta yönetin."/><PanelCard title="İnceleme kuyruğu">{data.costs.length?data.costs.map(c=><div key={c.id} className="border-b border-slate-100 py-4 text-sm"><p className="font-bold">Talep {c.service_request_id.slice(0,8)} · {c.requested_amount} TRY · {c.status}</p>{c.final_total!==null&&<p className="mt-1 font-semibold">Kabul sonrası toplam: {c.final_total} TRY</p>}<p className="mt-1 text-slate-600">{c.reason}</p>{data.evidence.filter(e=>e.additional_cost_request_id===c.id).map(e=><a key={e.id} href={`/api/admin/stage10/evidence/${e.id}`} className="mr-3 mt-2 inline-block font-bold text-[#B75D17]">{e.original_file_name}</a>)}{['pending_admin','customer_rejected'].includes(c.status)&&<AdditionalCostAdminAction id={c.id} status={c.status} version={c.version}/>}</div>):<EmptyPanelState>Henüz ek maliyet talebi bulunmuyor.</EmptyPanelState>}</PanelCard></>}

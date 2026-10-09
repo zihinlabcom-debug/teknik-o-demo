@@ -1,0 +1,5 @@
+export const dynamic='force-dynamic';
+import {PanelCard,PanelHeading,EmptyPanelState} from '@/components/operation-panel';
+import {AdditionalCostDecision} from '@/components/stage10-customer-forms';
+import {customerStage10Overview} from '@/lib/stage10-server';
+export default async function AdditionalCosts(){const data=await customerStage10Overview();return <><PanelHeading title="Ek maliyetler" description="Admin incelemesinden geçen ek maliyet taleplerini değerlendirin."/><PanelCard title="Ek maliyet talepleri">{data.additionalCosts.length?data.additionalCosts.map(item=><div key={item.id} className="border-b border-slate-100 py-4 text-sm"><p className="font-bold">Talep {item.service_request_id.slice(0,8)} · {item.requested_amount} TRY</p>{item.final_total!==null&&<p className="mt-1 font-semibold">Kabul sonrası toplam: {item.final_total} TRY</p>}<p className="mt-1 text-slate-600">{item.reason}</p><p className="mt-1">Durum: {item.status}</p>{item.status==='pending_customer'&&<AdditionalCostDecision id={item.id} version={item.version}/>}</div>):<EmptyPanelState>Ek maliyet talebi bulunmuyor.</EmptyPanelState>}</PanelCard></>}

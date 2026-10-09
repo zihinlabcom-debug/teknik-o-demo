@@ -10,6 +10,8 @@ const links=[
   {href:'/admin/musteriler',label:'Müşteriler'},
   {href:'/admin/ustalar',label:'Ustalar'},
   {href:'/admin/ek-maliyet',label:'Ek maliyet talepleri'},
+  {href:'/admin/sikayetler',label:'Şikâyetler'},
+  {href:'/admin/garanti',label:'Garanti'},
   {href:'/admin/pilot-kpi',label:'Pilot / KPI'},
   {href:'/admin/kategoriler',label:'Kategori yönetimi'},
   {href:'/admin/ayarlar',label:'Sistem ayarları'},

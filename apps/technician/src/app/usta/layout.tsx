@@ -8,6 +8,8 @@ const links=[
   {href:'/usta/yeni-isler',label:'Yeni işler'},
   {href:'/usta/aktif-isler',label:'Aktif işler'},
   {href:'/usta/ek-maliyet',label:'Ek maliyet talebi'},
+  {href:'/usta/sikayetler',label:'Şikâyet'},
+  {href:'/usta/garanti-duzeltmeleri',label:'Garanti düzeltmeleri'},
 ] as const;
 
 export default async function ProviderLayout({children}:{children:ReactNode}){

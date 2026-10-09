@@ -1,17 +1,21 @@
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
-import {EmptyPanelState,ExtraCostPlaceholder,PanelCard,PanelHeading} from '@/components/operation-panel';
+import Link from 'next/link';
+import {EmptyPanelState,PanelCard,PanelHeading} from '@/components/operation-panel';
 import {OperationActionButton} from '@/components/operation-action-button';
 import {TechnicianAppointmentForm} from '@/components/technician-appointment-form';
 import {OperationError,technicianJobDetail} from '@/lib/operation-server';
+import {technicianOperationContract} from '@/lib/stage10-server';
 
 export default async function ProviderJobDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params;
   let d;
+  let contract;
 
   try{
     d=await technicianJobDetail(id);
+    contract=await technicianOperationContract(d.service_request_id);
   }catch(error){
     if(error instanceof OperationError&&error.status===404)notFound();
     throw error;
@@ -62,6 +66,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
             <dt className="font-bold">Durum</dt>
             <dd>{d.request?.status==='technician_unavailable'?'Usta bulunamadı':d.appointment_scheduling_expired?'Randevu süresi doldu':d.status}</dd>
           </div>
+          <div><dt className="font-bold">Operasyon aşaması</dt><dd>{contract.stage}</dd></div>
 
           <div>
             <dt className="font-bold">Adres</dt>
@@ -70,7 +75,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
           <div>
             <dt className="font-bold">Fiyat</dt>
-            <dd>{d.quote?`${d.quote.total_amount} ${d.quote.currency}`:'—'}</dd>
+            <dd>{contract.effectiveTotal!==null?`${contract.effectiveTotal} ${contract.currency}`:'—'}</dd>
           </div>
         </dl>
       </PanelCard>
@@ -144,7 +149,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
         </div>
       </PanelCard>
 
-      <ExtraCostPlaceholder/>
+      <PanelCard title="Ek maliyet talebi"><p className="mb-3 text-sm text-slate-600">Randevu oluşturulduktan sonra, hizmet kapanmadan önce gerekçeli talep oluşturabilirsiniz.</p><Link href="/usta/ek-maliyet" className="inline-flex rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white">Ek maliyet talebine git</Link></PanelCard>
     </div>
   </>;
 }

@@ -1,0 +1,2 @@
+import {caseEvidenceDownload,caseEvidenceResponse} from '@/lib/case-evidence';import {operationErrorResponse} from '@/lib/operation-server';import {NextResponse} from 'next/server';
+export async function GET(_:Request,{params}:{params:Promise<{id:string}>}){try{const {id}=await params;return caseEvidenceResponse(await caseEvidenceDownload(id,['customer']));}catch(error){const r=operationErrorResponse(error);return NextResponse.json(r.body,{status:r.status});}}
