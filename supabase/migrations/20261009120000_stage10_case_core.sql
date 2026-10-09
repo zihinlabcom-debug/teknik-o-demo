@@ -247,7 +247,7 @@ do $$ declare t text; begin
     'account_sanctions','account_sanction_corrections','service_warranty_claims','warranty_correction_assignments','service_case_evidence'
   ] loop
     execute format('alter table public.%I enable row level security',t);
-    execute format('revoke all on public.%I from public,anon,authenticated',t);
+    execute format('revoke all on public.%I from public,anon,authenticated,service_role',t);
     execute format('grant select,insert,update on public.%I to service_role',t);
   end loop;
 end $$;
