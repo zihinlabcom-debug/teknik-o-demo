@@ -1,5 +1,4 @@
 'use client';
-import {beginUiAction,endUiAction} from '@/lib/use-ui-action';
 
 import {useState,type FormEvent} from 'react';
 import {useRouter} from 'next/navigation';
@@ -63,9 +62,6 @@ export function TechnicianAppointmentForm({
       :date;
 
   async function submit(event:FormEvent<HTMLFormElement>){
-if(!beginUiAction(setPending))return;
-try {
-
     event.preventDefault();
     setError('');
 
@@ -92,7 +88,7 @@ try {
       const response=await fetch(
         `/api/operations/jobs/${jobId}/appointment`,
         {
-          signal:AbortSignal.timeout(30000),method:'POST',
+          method:'POST',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify({startsAt}),
         }
@@ -118,12 +114,9 @@ try {
     }finally{
       setPending(false);
     }
+  }
 
-}catch {setError('Bağlantı kurulamadı. İşlem durumunu kontrol edip yeniden deneyin.');}
-finally {endUiAction(setPending);setPending(false);}
-}
-
-  return <form onSubmit={submit} className="rounded-xl border border-slate-200 bg-[#F8F6F3] p-4">
+  return <form onSubmit={submit} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
     <div className="grid gap-4 sm:grid-cols-2">
       {mode==='scheduled'
         ?<div>
@@ -170,7 +163,7 @@ finally {endUiAction(setPending);setPending(false);}
       <button
         type="submit"
         disabled={pending}
-        className="rounded-xl bg-[#B95236] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
+        className="rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending?'Kaydediliyor…':'Randevuyu belirle'}
       </button>
