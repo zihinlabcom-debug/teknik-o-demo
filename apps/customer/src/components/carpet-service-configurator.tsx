@@ -32,7 +32,7 @@ export function CarpetServiceConfigurator({selection,onQuantityChange,onAreaChan
     description="Ürünleri ve adetlerini seçin. Halı ve perdelerin her biri için ayrı m² ölçüsü girin."
     summary={<section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" aria-label="Sipariş özeti">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-base font-bold text-[#0B1727]">Sipariş özeti</h2>
+        <h2 className="text-base font-bold text-[#111827]">Sipariş özeti</h2>
         <span className="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-bold text-[#C6520D]">{totalCount} ürün</span>
       </div>
       {selected.length===0?<p className="mt-3 text-sm text-slate-500">Henüz ürün seçilmedi.</p>:
@@ -63,11 +63,11 @@ export function CarpetServiceConfigurator({selection,onQuantityChange,onAreaChan
     result={<><MinimumOrderNotice message={minimumOrderMessage??null} />
       <ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} /></>}>
     {groups.map(group=><section key={group.name} className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label={group.name}>
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">{group.name}</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">{group.name}</h2>
       <div className="grid min-w-0 gap-3 xl:grid-cols-2">
         {group.products.map(product=>{
           const item=selection[product.key]??{quantity:0,areas:[]};
-          return <div key={product.key} className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-3">
+          return <div key={product.key} className="min-w-0 rounded-xl border border-slate-200 bg-[#F8F6F3] p-3">
             <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
                 <h3 className="break-words text-sm font-bold text-slate-800">{product.label}</h3>

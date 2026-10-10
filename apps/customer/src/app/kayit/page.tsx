@@ -5,16 +5,16 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import {RegistrationHeader} from '@/components/registration-header';
-import { 
-  User, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Building2, 
-  Navigation, 
-  ArrowRight, 
-  CheckCircle2, 
-  ArrowLeft 
+import {
+  User,
+  Phone,
+  Mail,
+  MapPin,
+  Building2,
+  Navigation,
+  ArrowRight,
+  CheckCircle2,
+  ArrowLeft
 } from 'lucide-react';
 
 export default function KayitPage() {
@@ -57,7 +57,7 @@ export default function KayitPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     // İl değiştiğinde ilçeyi sıfırla
     if (name === 'city') {
       const cityId = value ? Number(value) : null;
@@ -116,11 +116,11 @@ export default function KayitPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col justify-center items-center p-4 font-sans my-6">
+    <div className="min-h-screen bg-[#F8F6F3] text-slate-800 flex flex-col justify-center items-center p-4 font-sans my-6">
       {/* Geri Dön Linki */}
       <div className="w-full max-w-md mb-4">
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 transition-colors font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -129,7 +129,7 @@ export default function KayitPage() {
       </div>
 
       <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl border border-slate-100">
-        
+
         <RegistrationHeader />
 
         {authStep === 'form' ? (
@@ -146,7 +146,7 @@ export default function KayitPage() {
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Ahmet Yılmaz"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724]"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236]"
                 />
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function KayitPage() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="05XX XXX XX XX"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724]"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236]"
                 />
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function KayitPage() {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="ahmet@example.com"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724]"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236]"
                 />
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function KayitPage() {
                   name="city"
                   value={formData.city}
                   onChange={handleInputChange}
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724] appearance-none text-slate-700 cursor-pointer"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236] appearance-none text-slate-700 cursor-pointer"
                 >
                   <option value="">İl Seçiniz</option>
                   {cities.map((city) => (
@@ -215,7 +215,7 @@ export default function KayitPage() {
                   value={formData.district}
                   onChange={handleInputChange}
                   disabled={!formData.city}
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724] appearance-none text-slate-700 disabled:bg-slate-100 disabled:cursor-not-allowed cursor-pointer"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236] appearance-none text-slate-700 disabled:bg-slate-100 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <option value="">
                     {formData.city ? 'İlçe Seçiniz' : 'Önce İl Seçiniz'}
@@ -241,7 +241,7 @@ export default function KayitPage() {
                   value={formData.address}
                   onChange={handleInputChange}
                   placeholder="Mahalle, Sokak, Bina No..."
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724] resize-none"
+                  className="w-full pl-9 pr-3 py-2 bg-[#F8F6F3] border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#B95236] resize-none"
                 />
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function KayitPage() {
             <button
               type="submit"
               disabled={busy}
-              className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm mt-3"
+              className="w-full bg-[#B95236] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm mt-3"
             >
               <span>Doğrulama Kodu Gönder</span>
               <ArrowRight className="w-4 h-4" />
@@ -280,7 +280,7 @@ export default function KayitPage() {
                   value={digit}
                   onChange={(e) => handleOtpChange(index, e.target.value)}
                   onKeyDown={(e) => handleOtpKeyDown(index, e)}
-                  className="w-12 h-12 text-center text-xl font-bold rounded-xl border-2 border-slate-200 focus:border-[#D97724] focus:outline-none bg-slate-50 text-slate-900"
+                  className="w-12 h-12 text-center text-xl font-bold rounded-xl border-2 border-slate-200 focus:border-[#B95236] focus:outline-none bg-[#F8F6F3] text-slate-900"
                 />
               ))}
             </div>
@@ -289,7 +289,7 @@ export default function KayitPage() {
               <button
                 onClick={handleVerifyOtp}
                 disabled={busy}
-                className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md text-sm"
+                className="w-full bg-[#B95236] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md text-sm"
               >
                 Kayıt Oluştur ve Giriş Yap
               </button>

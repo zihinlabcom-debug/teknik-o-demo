@@ -23,5 +23,5 @@ export default async function AdminLayout({children}:{children:ReactNode}){
   await connection();
   const account=await currentAccount();
   if(account?.role!=='admin')redirect('/giris-admin');
-  return <OperationPanelShell area="Yönetim paneli" subtitle="Veri entegrasyonu bekleniyor" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
+  return <OperationPanelShell area="Yönetim paneli" subtitle="Talepler, incelemeler ve hizmet yönetimi" links={links} isTest={account.is_test}>{children}</OperationPanelShell>;
 }

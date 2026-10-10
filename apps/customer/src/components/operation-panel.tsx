@@ -1,36 +1,19 @@
+import {PanelNavigation} from './panel-navigation';
 import type {ReactNode} from 'react';
 import Link from 'next/link';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 export type PanelLink={href:string;label:string};
 
-export function OperationPanelShell({area,subtitle,links,children,isTest}:{
-  area:string;subtitle:string;links:readonly PanelLink[];children:ReactNode;isTest?:boolean;
-}){
-  return <div className="min-h-screen bg-slate-50 text-[#0B1727]">
-    <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col lg:flex-row">
-      <aside className="shrink-0 border-b border-slate-200 bg-white px-4 py-5 lg:w-64 lg:border-b-0 lg:border-r lg:px-5 lg:py-8" aria-label={`${area} menüsü`}>
-        <Link href={links[0]?.href??'/'} className="inline-flex max-w-full items-center"><TeknikOBrand size="compact"/></Link>
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-[#D97724]">{area}</p>
-        <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
-        {typeof isTest==='boolean'&&<div className="mt-3"><RecordTypeBadge kind={isTest?'TEST':'GERÇEK'}/></div>}
-        <nav aria-label={`${area} navigasyonu`} className="mt-5 flex max-w-full gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
-          {links.map(link=><Link key={link.href} href={link.href}
-            className="shrink-0 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-orange-50 hover:text-[#B75D17] lg:shrink">
-            {link.label}
-          </Link>)}
-        </nav>
-        <form action="/api/auth/logout" method="post" className="mt-5"><button type="submit" className="text-sm font-semibold text-slate-600 hover:text-[#B75D17]">Çıkış Yap</button></form>
-      </aside>
-      <main className="min-w-0 flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-10">{children}</main>
-    </div>
-  </div>;
+export function OperationPanelShell({area,subtitle,links,children,isTest}:{area:string;subtitle:string;links:readonly PanelLink[];children:ReactNode;isTest?:boolean}){
+ const priority=area==='Usta paneli'?['/usta','/usta/yeni-isler','/usta/aktif-isler','/usta/garanti-duzeltmeleri']:['/admin','/admin/talepler','/admin/ustalar','/admin/sikayetler'];
+ const primary=priority.map(href=>links.find(x=>x.href===href)).filter((x):x is PanelLink=>Boolean(x));
+ return <PanelNavigation area={area} links={links} primary={primary} isTest={isTest}><p className="mb-5 text-sm text-[#667085]">{subtitle}</p>{children}</PanelNavigation>;
 }
 
 export function PanelSubNav({links}:{links:readonly PanelLink[]}){
   return <nav aria-label="Müşteri paneli navigasyonu" className="mb-7 flex max-w-full gap-2 overflow-x-auto pb-1">
     {links.map(link=><Link key={link.href} href={link.href}
-      className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-[#D97724] hover:text-[#B75D17]">{link.label}</Link>)}
+      className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-[#B95236] hover:text-[#A8422B]">{link.label}</Link>)}
   </nav>;
 }
 
@@ -46,13 +29,13 @@ export function PanelCard({title,children}:{title:string;children:ReactNode}){
 }
 
 export function EmptyPanelState({children}:{children:ReactNode}){
-  return <p role="status" className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm leading-6 text-slate-600">{children}</p>;
+  return <p role="status" className="rounded-xl border border-dashed border-slate-300 bg-[#F8F6F3] p-5 text-sm leading-6 text-slate-600">{children}</p>;
 }
 
 export function PanelTable({title,columns,empty}:{title:string;columns:readonly string[];empty:string}){
   return <PanelCard title={title}>
     <div className="max-w-full overflow-x-auto rounded-xl border border-slate-200">
-      <table className="w-full min-w-max text-left text-sm"><thead className="bg-slate-50"><tr>
+      <table className="w-full min-w-max text-left text-sm"><thead className="bg-[#F8F6F3]"><tr>
         {columns.map(column=><th key={column} scope="col" className="whitespace-nowrap border-b border-slate-200 px-4 py-3 font-semibold text-slate-700">{column}</th>)}
       </tr></thead><tbody/></table>
     </div>
@@ -61,7 +44,7 @@ export function PanelTable({title,columns,empty}:{title:string;columns:readonly 
 }
 
 export function FieldOutline({labels}:{labels:readonly string[]}){
-  return <dl className="grid gap-3 sm:grid-cols-2">{labels.map(label=><div key={label} className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-3">
+  return <dl className="grid gap-3 sm:grid-cols-2">{labels.map(label=><div key={label} className="min-w-0 rounded-xl border border-slate-200 bg-[#F8F6F3] p-3">
     <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</dt>
     <dd className="mt-1 text-sm text-slate-600">Veri bağlantısı bekleniyor</dd>
   </div>)}</dl>;
@@ -79,10 +62,10 @@ export function ExtraCostPlaceholder(){
   return <PanelCard title="Ek maliyet talebi">
     <p className="mb-4 text-sm text-slate-600">Bu alan veri ve iş akışı entegrasyonunu bekliyor; henüz talep gönderilemez.</p>
     <fieldset disabled className="grid gap-4 sm:grid-cols-2">
-      <label className="text-sm font-semibold">Gerekçe<input className="mt-1 block w-full rounded-xl border border-slate-300 bg-slate-50 p-3" placeholder="Gerekçe"/></label>
-      <label className="text-sm font-semibold">Talep edilen fark<input className="mt-1 block w-full rounded-xl border border-slate-300 bg-slate-50 p-3" placeholder="Tutar"/></label>
-      <label className="text-sm font-semibold sm:col-span-2">Ek işlem açıklaması<textarea className="mt-1 block w-full rounded-xl border border-slate-300 bg-slate-50 p-3" placeholder="Açıklama"/></label>
-      <label className="text-sm font-semibold sm:col-span-2">Fotoğraf kanıtı<input type="file" className="mt-1 block w-full rounded-xl border border-slate-300 bg-slate-50 p-3"/></label>
+      <label className="text-sm font-semibold">Gerekçe<input className="mt-1 block w-full rounded-xl border border-slate-300 bg-[#F8F6F3] p-3" placeholder="Gerekçe"/></label>
+      <label className="text-sm font-semibold">Talep edilen fark<input className="mt-1 block w-full rounded-xl border border-slate-300 bg-[#F8F6F3] p-3" placeholder="Tutar"/></label>
+      <label className="text-sm font-semibold sm:col-span-2">Ek işlem açıklaması<textarea className="mt-1 block w-full rounded-xl border border-slate-300 bg-[#F8F6F3] p-3" placeholder="Açıklama"/></label>
+      <label className="text-sm font-semibold sm:col-span-2">Fotoğraf kanıtı<input type="file" className="mt-1 block w-full rounded-xl border border-slate-300 bg-[#F8F6F3] p-3"/></label>
     </fieldset>
   </PanelCard>;
 }

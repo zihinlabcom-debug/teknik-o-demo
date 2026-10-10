@@ -172,7 +172,9 @@ test('three surfaces expose the required Stage 10 sections',()=>{
   const customerLayout=read('apps/customer/src/app/musteri/layout.tsx');
   const techLayout=read('apps/technician/src/app/usta/layout.tsx');
   const adminLayout=read('apps/admin/src/app/admin/layout.tsx');
-  for(const label of ['Ek maliyetler','Şikâyet','Garanti Talebi'])assert.match(customerLayout,new RegExp(label));
+  assert.match(customerLayout, /<CustomerShell/);
+  const customerNavigation=read('apps/customer/src/components/customer-shell.tsx');
+  for(const label of ['Ek maliyetler','Şikâyet','Garanti Talebi'])assert.match(customerNavigation,new RegExp(label));
   for(const label of ['Ek maliyet talebi','Şikâyet','Garanti düzeltmeleri'])assert.match(techLayout,new RegExp(label));
   for(const label of ['Ek maliyet talepleri','Şikâyetler','Garanti','Pilot / KPI'])assert.match(adminLayout,new RegExp(label));
 });

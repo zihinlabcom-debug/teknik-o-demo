@@ -54,7 +54,7 @@ export function ApartmentServiceConfigurator({selection,onChange,onCalculate,rea
   return <ServiceConfiguratorShell title="Apartman Temizliği"
     description="Apartman bilgilerini doldurun. Fiyat, tüm alanlar tamamlandıktan sonra mevcut hizmet motorunda hesaplanır."
     summary={<section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" aria-label="Hizmet özeti">
-      <h2 className="text-base font-bold text-[#0B1727]">Hizmet özeti</h2>
+      <h2 className="text-base font-bold text-[#111827]">Hizmet özeti</h2>
       <dl className="mt-3 space-y-3 text-sm text-slate-700">
         {[
           ['Kat sayısı',selection.floors||'—'],['Daire sayısı',selection.apartments||'—'],
@@ -78,7 +78,7 @@ export function ApartmentServiceConfigurator({selection,onChange,onCalculate,rea
     </div>}
     result={<ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} />}>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Apartman bilgileri">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Apartman bilgileri</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Apartman bilgileri</h2>
       <div className="grid min-w-0 gap-5 sm:grid-cols-2">
         <label className="min-w-0 text-sm font-semibold text-slate-800">
           <span className="mb-2 block">Apartman kaç katlı?</span>

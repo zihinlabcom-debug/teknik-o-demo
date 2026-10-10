@@ -19,8 +19,8 @@ export async function ownTechnicianProfile(){
     db.from('technician_documents').select('id,category_id,status,original_file_name').eq('technician_id',account.id),
   ]);
   check(profileError,'Usta profili');check(categoryError,'Usta kategorileri');
-  check(areaError,'Hizmet alanlarÄ±');check(catalogError,'Kategoriler');
-  check(cityError,'Åehirler');check(districtError,'Ä°lÃ§eler');check(documentsError,'Belgeler');
+  check(areaError,'Hizmet alanları');check(catalogError,'Kategoriler');
+  check(cityError,'Şehirler');check(districtError,'İlçeler');check(documentsError,'Belgeler');
   return {isActive:account.is_active,profile,
     categories:(assignments??[]).map(a=>{
       const category=(categories??[]).find(c=>c.id===a.category_id);
@@ -30,7 +30,7 @@ export async function ownTechnicianProfile(){
         hasVerifiedDocument:(documents??[]).some(d=>d.category_id===a.category_id&&d.status==='verified')};
     }),documents:documents??[],
     areas:(areas??[]).map(a=>{
-      const city=(cities??[]).find(c=>c.id===a.city_id)?.name??'Åehir';
+      const city=(cities??[]).find(c=>c.id===a.city_id)?.name??'Şehir';
       const district=a.district_id?(districts??[]).find(d=>d.id===a.district_id)?.name:null;
       return district?`${city} / ${district}`:city;
     })};
@@ -38,11 +38,11 @@ export async function ownTechnicianProfile(){
 
 export async function setOwnTechnicianAvailability(isAvailable:boolean){
   const account=await requireAccount('technician');
-  if(typeof isAvailable!=='boolean')throw new OperationError('invalid_input',400,'GeÃ§ersiz mÃ¼saitlik deÄŸeri.');
+  if(typeof isAvailable!=='boolean')throw new OperationError('invalid_input',400,'Geçersiz müsaitlik değeri.');
   const {data,error}=await adminSupabase().rpc('set_technician_availability',{
     p_actor_id:account.id,p_is_available:isAvailable,
   });
-  if(error)throw new OperationError('availability_unavailable',409,'MÃ¼saitlik yalnÄ±z onaylÄ± ve aktif usta iÃ§in deÄŸiÅŸtirilebilir.');
+  if(error)throw new OperationError('availability_unavailable',409,'Müsaitlik yalnız onaylı ve aktif usta için değiştirilebilir.');
   return {changed:data===true};
 }
 

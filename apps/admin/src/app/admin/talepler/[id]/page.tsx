@@ -1,3 +1,4 @@
+import {statusLabel,eventLabel} from '@/lib/ui-labels';
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
@@ -23,28 +24,28 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
     ?await adminManualAssignmentCandidates(id)
     :[];
   return <><PanelHeading title="Talep detayı" description="Talep, fiyat, dağıtım döngüsü ve gerçek iş özeti."/><div className="space-y-4">
-    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {d.status==='technician_unavailable'?'Usta bulunamadı':d.status}</span><span><b>Operasyon:</b> {contract.stage}</span><span><b>Atama kaynağı:</b> {contract.assignmentSource??'—'}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
+    <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {statusLabel(d.status)}</span><span><b>Operasyon:</b> {statusLabel(contract.stage)}</span><span><b>Atama kaynağı:</b> {statusLabel(contract.assignmentSource)}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
     <PanelCard title="Talep özeti"><p className="whitespace-pre-wrap text-sm text-slate-700">{d.problem_description||'Özet bulunmuyor.'}</p></PanelCard>
     <PanelCard title="Değerlendirme detayları">{assessmentRows.length?<dl className="space-y-2 text-sm">
       {assessmentRows.map((row,index)=><div key={`${row.label}-${index}`} className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
         <dt className="font-semibold text-slate-700">{row.label}:</dt><dd className="text-slate-900">{row.value}</dd>
       </div>)}
     </dl>:<EmptyPanelState>Yapılandırılmış değerlendirme bulunmuyor.</EmptyPanelState>}</PanelCard>
-    <PanelCard title="Fiyatlar">{d.quotes.length?d.quotes.map(q=><p key={q.id} className="text-sm">v{q.version} · {q.status} · {q.total_amount} {q.currency}</p>):<EmptyPanelState>Fiyat yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Fiyatlar">{d.quotes.length?d.quotes.map(q=><p key={q.id} className="text-sm">v{q.version} · {statusLabel(q.status)} · {q.total_amount} {q.currency}</p>):<EmptyPanelState>Fiyat yok.</EmptyPanelState>}</PanelCard>
 
     <PanelCard title="Dağıtım döngüleri">{d.cycles.length?<div className="space-y-3">{d.cycles.map(c=><div key={c.id} className="rounded-xl border border-slate-200 p-3 text-sm">
-      <p><b>{c.id.slice(0,8)}</b> · {c.status} · Tur {c.current_round}/3</p>
+      <p><b>{c.id.slice(0,8)}</b> · {statusLabel(c.status)} · Tur {c.current_round}/3</p>
       <p className="mt-1 text-slate-600">Başlangıç: {new Date(c.started_at).toLocaleString('tr-TR')}</p>
       {c.next_round_at&&<p className="text-slate-600">Sonraki tur: {new Date(c.next_round_at).toLocaleString('tr-TR')}</p>}
       {c.source_job_id&&<p className="text-slate-600">Yeniden dağıtım kaynağı iş: {c.source_job_id.slice(0,8)}</p>}
     </div>)}</div>:<EmptyPanelState>Dağıtım döngüsü yok.</EmptyPanelState>}</PanelCard>
 
-    <PanelCard title="Dağıtım">{d.dispatches.length?<div className="space-y-2">{d.dispatches.map(x=><p key={x.id} className="text-sm">{x.id.slice(0,8)} · {x.round_no?`Tur ${x.round_no} · `:''}{x.status}{x.expires_at?` · Son: ${new Date(x.expires_at).toLocaleString('tr-TR')}`:''}</p>)}</div>:<EmptyPanelState>Dispatch yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Dağıtım">{d.dispatches.length?<div className="space-y-2">{d.dispatches.map(x=><p key={x.id} className="text-sm">{x.id.slice(0,8)} · {x.round_no?`Tur ${x.round_no} · `:''}{statusLabel(x.status)}{x.expires_at?` · Son: ${new Date(x.expires_at).toLocaleString('tr-TR')}`:''}</p>)}</div>:<EmptyPanelState>Dağıtım kaydı yok.</EmptyPanelState>}</PanelCard>
 
     <PanelCard title="İşler ve randevular">{d.jobs.length?<div className="space-y-3">{d.jobs.map(x=><div key={x.id} className="rounded-xl border border-slate-200 p-3 text-sm">
-      <p><b>{x.id.slice(0,8)}</b> · {x.status} · {x.technician?.name||x.technician_id?.slice(0,8)||'Usta yok'}</p>
-      {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {a.status} · {new Date(a.starts_at).toLocaleString('tr-TR')}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
-    </div>)}</div>:<EmptyPanelState>Job yok.</EmptyPanelState>}</PanelCard>
+      <p><b>{x.id.slice(0,8)}</b> · {statusLabel(x.status)} · {x.technician?.name||x.technician_id?.slice(0,8)||'Usta yok'}</p>
+      {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {statusLabel(a.status)} · {new Date(a.starts_at).toLocaleString('tr-TR')}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
+    </div>)}</div>:<EmptyPanelState>İş kaydı yok.</EmptyPanelState>}</PanelCard>
 
     {canManualAssign&&<PanelCard title="Manuel usta ataması">
       <p className="mb-3 text-sm text-slate-600">
@@ -57,6 +58,6 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
 
     <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReason(x.reason)} · {new Date(x.created_at).toLocaleString('tr-TR')}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
 
-    <PanelCard title="Olay geçmişi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {e.event_type}</p>):<EmptyPanelState>Olay yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Olay geçmişi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {eventLabel(e.event_type)}</p>):<EmptyPanelState>Olay yok.</EmptyPanelState>}</PanelCard>
   </div></>;
 }

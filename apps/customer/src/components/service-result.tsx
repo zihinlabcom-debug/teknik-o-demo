@@ -1,4 +1,5 @@
 'use client';
+import {beginUiAction,endUiAction} from '@/lib/use-ui-action';
 import {useState} from 'react';
 import {Wrench,X} from 'lucide-react';
 import {visualProgress,type ServicePricePresentation,type ServiceResponse} from '../lib/service-presentation';
@@ -66,6 +67,9 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
   const canSelectDate=!!response?.category&&SCHEDULED_SERVICE_CATEGORIES.has(response.category);
   const minServiceDate=istanbulServiceDate(1),maxServiceDate=istanbulServiceDate(7);
   const createRequest=async()=>{
+if(!beginUiAction(setBusy))return;
+try {
+
     if(busy||requestId)return;
     if(!response?.conversationToken){setError('Talep oluşturmak için tamamlanmış bir hizmet değerlendirmesi gerekli.');return;}
     const serviceMode=canSelectDate?requestedServiceMode:'immediate';
@@ -76,7 +80,7 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
     }
     setBusy(true);setError(null);
     try{
-      const reply=await fetch('/api/operations/requests',{
+      const reply=await fetch('/api/operations/requests',{signal:AbortSignal.timeout(30000),
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
           conversationToken:response.conversationToken,
@@ -89,7 +93,10 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
       setRequestId(body.id);
     }catch(e){setError(e instanceof Error?e.message:'Talep oluşturulamadı.');}
     finally{setBusy(false);}
-  };
+
+}catch {setError('Bağlantı kurulamadı. İşlem durumunu kontrol edip yeniden deneyin.');}
+finally {endUiAction(setBusy);setBusy(false);}
+};
   return <div className="fixed inset-0 bg-black/65 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <section role="dialog" aria-modal="true" aria-label="Usta çağır" className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button type="button" aria-label="Kapat" onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"><X className="w-5 h-5" /></button>
@@ -122,10 +129,10 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
               className="min-h-11 w-full rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none focus:border-[#EE6C13]" />
             <span className="mt-1.5 block text-[11px] font-normal leading-4 text-slate-500">Yarından başlayarak en fazla 7 gün sonrası seçilebilir.</span>
           </label>}
-        </fieldset>:<p className="mt-4 rounded-xl bg-slate-50 p-3 text-xs font-semibold text-slate-600">Bu hizmet için talep Hemen olarak oluşturulur.</p>}
+        </fieldset>:<p className="mt-4 rounded-xl bg-[#F8F6F3] p-3 text-xs font-semibold text-slate-600">Bu hizmet için talep Hemen olarak oluşturulur.</p>}
         {error&&<p role="alert" className="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold text-red-700">{error}</p>}
         <button type="button" disabled={busy||(canSelectDate&&requestedServiceMode==='scheduled'&&!requestedServiceDate)} onClick={()=>void createRequest()} className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white py-2.5 rounded-xl font-bold text-xs mt-4">{busy?'Talep oluşturuluyor…':'Talebi oluştur'}</button>
-        <button type="button" onClick={onClose} className="w-full bg-[#0B1727] text-white py-2.5 rounded-xl font-bold text-xs mt-2">Vazgeç</button>
+        <button type="button" onClick={onClose} className="w-full bg-[#111827] text-white py-2.5 rounded-xl font-bold text-xs mt-2">Vazgeç</button>
       </>}
     </section>
   </div>;

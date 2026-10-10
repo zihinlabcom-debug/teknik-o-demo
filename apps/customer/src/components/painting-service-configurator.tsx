@@ -166,7 +166,7 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
   return <ServiceConfiguratorShell title="Boya"
     description="Hizmet bilgilerini seçin, maliyetini öğrenin."
     summary={<section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" aria-label="Hizmet özeti">
-      <h2 className="text-base font-bold text-[#0B1727]">Hizmet özeti</h2>
+      <h2 className="text-base font-bold text-[#111827]">Hizmet özeti</h2>
       <dl className="mt-3 space-y-3 text-sm text-slate-700">{summary.map(([label,value])=>
         <div key={label} className="flex min-w-0 justify-between gap-3 border-t border-slate-100 pt-3 first:border-0 first:pt-0">
           <dt className="min-w-0 break-words">{label}</dt><dd className="max-w-[55%] break-words text-right font-semibold">{value}</dd>
@@ -188,7 +188,7 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
       <ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} />
     </div>}>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Hizmet Kapsamı">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Hizmet Kapsamı</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Hizmet Kapsamı</h2>
       <fieldset className="min-w-0"><legend className="mb-2 text-sm font-semibold">Hangi boya hizmetine ihtiyacınız var?</legend>
         <div className="grid gap-2 sm:grid-cols-3">{serviceOptions.map(label=><button key={label} type="button"
           disabled={busy||finished||selection.serviceType!==null} aria-pressed={selection.serviceType===label}
@@ -240,7 +240,7 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
       </div>}
     </section>
     {selection.serviceType==='Duvar Boyama'&&<section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Boyanacak Alan">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Boyanacak Alan</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Boyanacak Alan</h2>
       <fieldset><legend className="mb-2 text-sm font-semibold">Duvarlar mı, tavan mı, yoksa ikisi birden mi boyanacak?</legend>
         {choices(PAINTING_UI_OPTIONS.surfaces,selection.surfaces,value=>set('surfaces',value))}</fieldset>
       {walls&&<div className="mt-5 space-y-5">
@@ -262,7 +262,7 @@ export function PaintingServiceConfigurator({selection,onChange,serviceOptions,o
     </section>}
     {selection.serviceType==='Duvar Boyama'&&walls&&!stopForReview&&<section
       className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Renk ve Boya">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Renk ve Boya</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Renk ve Boya</h2>
       <div className="space-y-5">
         <fieldset><legend className="mb-2 text-sm font-semibold">Duvarların mevcut rengi açık ton mu, koyu ton mu?</legend>
           {choices(PAINTING_UI_OPTIONS.tone,selection.oldColorTone,value=>set('oldColorTone',value))}</fieldset>

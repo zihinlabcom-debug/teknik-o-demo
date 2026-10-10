@@ -1,4 +1,7 @@
 'use client';
+import {beginUiAction,endUiAction} from '@/lib/use-ui-action';
+import {statusLabel} from '@/lib/ui-labels';
+
 import {useRouter} from 'next/navigation';
 import {useState} from 'react';
 
@@ -20,6 +23,9 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState('');
   async function change(action:string,extra:Record<string,unknown>={}){
+if(!beginUiAction(setBusy))return;
+try {
+
     setBusy(true);setError('');
     try{
       const response=await fetch(`/api/admin/technicians/${technicianId}`,{
@@ -30,8 +36,14 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
       router.refresh();
     }catch(cause){setError(cause instanceof Error?cause.message:'Usta işlemi tamamlanamadı.');}
     finally{setBusy(false);}
-  }
+
+}catch {setError('Bağlantı kurulamadı. İşlem durumunu kontrol edip yeniden deneyin.');}
+finally {endUiAction(setBusy);setBusy(false);}
+}
   async function changeCategory(categoryId:string,action:'approve'|'reject'){
+if(!beginUiAction(setBusy))return;
+try {
+
     setBusy(true);setError('');
     try{
       const response=await fetch(`/api/admin/technicians/${technicianId}/categories/${categoryId}`,{
@@ -42,7 +54,10 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
       router.refresh();
     }catch(cause){setError(cause instanceof Error?cause.message:'Kategori onayı tamamlanamadı.');}
     finally{setBusy(false);}
-  }
+
+}catch {setError('Bağlantı kurulamadı. İşlem durumunu kontrol edip yeniden deneyin.');}
+finally {endUiAction(setBusy);setBusy(false);}
+}
   const button=(label:string,action:string,extra:Record<string,unknown>={})=><button
     type="button" disabled={busy} onClick={()=>void change(action,extra)}
     className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 disabled:opacity-50">{label}</button>;
@@ -57,8 +72,8 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
     </div>
     <div>
       <p className="font-semibold">Kategoriler</p>
-      <div className="mt-2 flex flex-wrap gap-2">{assignments.map(a=><span key={a.category_id} className="rounded-lg bg-slate-50 px-2 py-1">
-        {categories.find(c=>c.id===a.category_id)?.name??'Kategori'} — {a.approval_status}
+      <div className="mt-2 flex flex-wrap gap-2">{assignments.map(a=><span key={a.category_id} className="rounded-lg bg-[#F8F6F3] px-2 py-1">
+        {categories.find(c=>c.id===a.category_id)?.name??'Kategori'} — {statusLabel(a.approval_status)}
         {categories.find(c=>c.id===a.category_id)?.requires_document?' · belge gerekli':''}{' '}
         {a.approval_status!=='approved'&&<button type="button" disabled={busy} onClick={()=>void changeCategory(a.category_id,'approve')}
           className="rounded-lg border px-2 py-1 text-xs">Kategori onayla</button>}{' '}
@@ -69,12 +84,12 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
         onChange={event=>setCategoryId(event.target.value)} className="rounded-lg border p-2 text-sm">
         <option value="">Kategori seçin</option>{categories.filter(c=>c.is_active).map(c=><option key={c.id} value={c.id}>{c.name}</option>)}
       </select><button type="button" disabled={busy||!categoryId} onClick={()=>void change('category_add',{categoryId})}
-        className="rounded-lg bg-[#D97724] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Kategori ekle</button></div>
+        className="rounded-lg bg-[#B95236] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Kategori ekle</button></div>
     </div>
     <div>
       <p className="font-semibold">Hizmet alanları</p>
       <div className="mt-2 flex flex-wrap gap-2">{areas.map(a=><span key={`${a.city_id}:${a.district_id??'all'}`}
-        className="rounded-lg bg-slate-50 px-2 py-1">
+        className="rounded-lg bg-[#F8F6F3] px-2 py-1">
         {cities.find(c=>c.id===a.city_id)?.name??'Şehir'}{a.district_id?` / ${districts.find(d=>d.id===a.district_id)?.name??'İlçe'}`:' / tüm ilçeler'}{' '}
         {button('Kaldır','area_remove',{cityId:a.city_id,districtId:a.district_id??undefined})}</span>)}</div>
       <div className="mt-2 flex flex-wrap gap-2"><select aria-label="Eklenecek şehir" value={cityId}
@@ -85,10 +100,10 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
         {districts.filter(d=>d.is_active&&String(d.city_id)===cityId).map(d=><option key={d.id} value={d.id}>{d.name}</option>)}
       </select><button type="button" disabled={busy||!cityId}
         onClick={()=>void change('area_add',{cityId:Number(cityId),districtId:districtId?Number(districtId):undefined})}
-        className="rounded-lg bg-[#D97724] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Alan ekle</button></div>
+        className="rounded-lg bg-[#B95236] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Alan ekle</button></div>
     </div>
     {documents.length>0&&<div><p className="font-semibold">Yüklenen belgeler</p>{documents.map(d=><div key={d.id}
-      className="mt-2 flex flex-wrap items-center gap-2"><span>{d.original_file_name??d.document_type} · {categories.find(c=>c.id===d.category_id)?.name??'Kategori belirtilmemiş'} · {d.status}</span>
+      className="mt-2 flex flex-wrap items-center gap-2"><span>{d.original_file_name??d.document_type} · {categories.find(c=>c.id===d.category_id)?.name??'Kategori belirtilmemiş'} · {statusLabel(d.status)}</span>
       <a href={`/api/admin/documents/${d.id}`} target="_blank" rel="noopener noreferrer" className="underline">Görüntüle</a>
       {d.status!=='verified'&&button('Doğrula','document_verify',{documentId:d.id})}
       {d.status!=='rejected'&&button('Reddet','document_reject',{documentId:d.id})}</div>)}</div>}

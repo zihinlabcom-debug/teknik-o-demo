@@ -20,7 +20,7 @@ export function AdminPasswordLoginForm(){
     }catch{setNotice('Giriş bilgileri geçersiz.');}
     finally{setBusy(false);}
   }
-  return <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 font-sans text-[#0B1727]">
+  return <main className="flex min-h-screen items-center justify-center bg-[#F8F6F3] px-4 py-8 font-sans text-[#111827]">
     <div className="w-full max-w-md rounded-3xl border border-slate-100 bg-white p-6 shadow-xl sm:p-8">
       <header className="text-center"><h1><TeknikOBrand size="standard"/></h1>
         <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Yönetim Girişi</p>
@@ -30,8 +30,8 @@ export function AdminPasswordLoginForm(){
         <label htmlFor="admin-password" className="block text-sm font-semibold text-slate-800">Yönetici parolası</label>
         <input id="admin-password" type="password" autoComplete="current-password" required
           value={password} onChange={event=>setPassword(event.target.value)}
-          className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-[#D97724] focus:outline-none"/>
-        <button type="submit" disabled={busy} className="mt-4 w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white shadow-sm disabled:opacity-50">Giriş Yap</button>
+          className="mt-2 w-full rounded-xl border border-slate-300 bg-[#F8F6F3] px-4 py-3 text-base text-slate-900 focus:border-[#B95236] focus:outline-none"/>
+        <button type="submit" disabled={busy} className="mt-4 w-full rounded-xl bg-[#B95236] px-4 py-3 font-bold text-white shadow-sm disabled:opacity-50">Giriş Yap</button>
       </form>
       {notice&&<p role="alert" className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-3 text-sm text-orange-900">{notice}</p>}
     </div>

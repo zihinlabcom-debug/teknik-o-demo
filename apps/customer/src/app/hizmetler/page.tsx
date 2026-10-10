@@ -1,26 +1,14 @@
 import Link from 'next/link';
-import {ArrowRight, House} from 'lucide-react';
+import {ArrowRight,Flame,Paintbrush,House,Truck,Sofa,RectangleHorizontal,ShieldCheck} from 'lucide-react';
 import {CustomerShell} from '@/components/customer-shell';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
-
-export default function ServiceHomePage(){
-  return <CustomerShell>
-    <section className="relative rounded-[2rem] bg-[#D97724]/[0.06] px-6 py-10 md:px-10 md:py-14" aria-labelledby="home-heading">
-      <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
-        <div className="min-w-0 max-w-xl">
-          <div className="mb-7 sm:hidden"><TeknikOBrand size="standard"/></div>
-          <div className="mb-7 hidden sm:block"><TeknikOBrand size="showcase"/></div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#D97724] sm:text-xs">Teknik hizmetin akıllı platformu</p>
-          <h1 id="home-heading" className="mt-4 text-[clamp(2rem,7.5vw,4.4rem)] font-black leading-[1.06] tracking-[-0.05em]">İhtiyacını yaz,<br/><span className="text-[#D97724]">maliyetini öğren.</span></h1>
-          <p className="mt-4 text-base font-bold md:text-lg">Sürpriz yok, doğru hizmet var.</p>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600 md:text-base">İhtiyacın olan hizmeti seç, detayları paylaş, maliyetini öğren ve güvenle hizmet al.</p>
-          <Link href="/kategoriler" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#D97724] px-5 py-3 text-sm font-bold text-white shadow-md shadow-[#D97724]/20 transition hover:brightness-95">Kategorileri incele <ArrowRight className="size-4" aria-hidden="true"/></Link>
-        </div>
-        <div className="flex size-40 shrink-0 items-center justify-center rounded-[2rem] border border-[#D97724]/10 bg-white shadow-xl lg:size-60" aria-hidden="true"><TeknikOBrand size="showcase" showWordmark={false}/></div>
-      </div>
-    </section>
-    <section className="relative mt-10 rounded-[1.5rem] border border-slate-200 p-6 md:p-8" aria-labelledby="service-heading">
-      <div className="flex items-center gap-4"><span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[#D97724]/10 text-[#D97724]"><House className="size-6" aria-hidden="true"/></span><div><h2 id="service-heading" className="text-xl font-black">Hizmete kolayca ulaş</h2><p className="mt-1 text-sm text-slate-600">Kategoriler sayfasından hizmetini seçerek mevcut sohbet akışına geçebilirsin.</p></div></div>
-    </section>
-  </CustomerShell>;
-}
+import {ACTIVE_SERVICE_CATEGORIES} from '@/lib/service-categories';
+const icons={boiler:Flame,painting:Paintbrush,cleaning:House,moving:Truck,sofa_cleaning:Sofa,carpet_cleaning:RectangleHorizontal};
+export default function ServiceHomePage(){return <CustomerShell>
+ <header className="mb-6"><p className="text-sm text-[#667085]">Teknik-O’ya hoş geldiniz</p><h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">Eviniz için doğru hizmet.</h1></header>
+ <section className="relative overflow-hidden rounded-[28px] bg-[#FEC640] p-6 sm:p-9" aria-labelledby="home-heading">
+  <div className="relative z-10 max-w-xl"><p className="text-xs font-semibold uppercase tracking-widest text-[#51330b]">İhtiyacınızdan çözüme</p><h2 id="home-heading" className="mt-3 max-w-md text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">Hizmetinizi seçin,<br/>gerisini birlikte planlayalım.</h2><p className="mt-3 max-w-md text-sm leading-6 text-[#51330b]">İhtiyacınızı paylaşın, maliyetini öğrenin ve talebinizi güvenle takip edin.</p><Link href="/kategoriler" className="to-primary mt-5 inline-flex items-center gap-3">Hizmetleri keşfet <ArrowRight size={18} aria-hidden="true"/></Link></div>
+  <div aria-hidden="true" className="pointer-events-none absolute -bottom-14 -right-14 size-60 rounded-full border-[35px] border-white/20"/>
+ </section>
+ <section className="mt-8" aria-labelledby="categories-heading"><div className="mb-4 flex items-center justify-between gap-3"><h2 id="categories-heading" className="text-lg font-bold">Hizmet kategorileri</h2><Link href="/kategoriler" className="text-sm font-semibold text-[#A8422B]">Tümünü gör</Link></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3">{ACTIVE_SERVICE_CATEGORIES.map((item,i)=>{const Icon=icons[item.id];return <Link key={item.id} href={`/dashboard?category=${item.id}`} className="flex min-h-28 flex-col items-center justify-center gap-3 rounded-3xl border border-[#E5E4E9] bg-white p-4 text-center font-semibold shadow-sm hover:bg-[#FFF5DD]"><span className={`grid size-12 place-items-center rounded-2xl ${i%2?'bg-[#fae9e2] text-[#A8422B]':'bg-[#FFF5DD] text-[#805300]'}`}><Icon size={26} aria-hidden="true"/></span><span className="text-sm">{item.label}</span></Link>})}</div></section>
+ <section className="mt-7 flex items-start gap-4 rounded-3xl border border-[#E5E4E9] bg-white p-5"><ShieldCheck className="shrink-0 text-[#A8422B]" aria-hidden="true"/><div><h2 className="font-bold">Talepleriniz bir arada</h2><p className="mt-1 text-sm leading-6 text-[#667085]">Hizmet durumunu ve bekleyen işlemlerinizi panelinizden izleyin.</p><Link href="/musteri/taleplerim" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#A8422B]">Taleplerime git <ArrowRight size={16} aria-hidden="true"/></Link></div></section>
+ </CustomerShell>;}

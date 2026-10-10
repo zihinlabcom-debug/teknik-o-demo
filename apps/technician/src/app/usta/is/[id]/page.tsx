@@ -1,3 +1,4 @@
+import {statusLabel,moneyLabel} from '@/lib/ui-labels';
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
@@ -64,9 +65,9 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
           <div>
             <dt className="font-bold">Durum</dt>
-            <dd>{d.request?.status==='technician_unavailable'?'Usta bulunamadı':d.appointment_scheduling_expired?'Randevu süresi doldu':d.status}</dd>
+            <dd>{d.request?.status==='technician_unavailable'?'Usta bulunamadı':d.appointment_scheduling_expired?'Randevu süresi doldu':statusLabel(d.status)}</dd>
           </div>
-          <div><dt className="font-bold">Operasyon aşaması</dt><dd>{contract.stage}</dd></div>
+          <div><dt className="font-bold">Operasyon aşaması</dt><dd>{statusLabel(contract.stage)}</dd></div>
 
           <div>
             <dt className="font-bold">Adres</dt>
@@ -75,7 +76,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
 
           <div>
             <dt className="font-bold">Fiyat</dt>
-            <dd>{contract.effectiveTotal!==null?`${contract.effectiveTotal} ${contract.currency}`:'—'}</dd>
+            <dd>{contract.effectiveTotal!==null?moneyLabel(contract.effectiveTotal,contract.currency):'—'}</dd>
           </div>
         </dl>
       </PanelCard>
@@ -115,7 +116,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
             ?<div className="space-y-2">
               {d.appointments.map(appointment=>
                 <p key={appointment.id} className="text-sm">
-                  {appointment.status} — {new Date(appointment.starts_at).toLocaleString('tr-TR')}
+                  {statusLabel(appointment.status)} — {new Date(appointment.starts_at).toLocaleString('tr-TR')}
                 </p>
               )}
             </div>
@@ -149,7 +150,7 @@ export default async function ProviderJobDetail({params}:{params:Promise<{id:str
         </div>
       </PanelCard>
 
-      <PanelCard title="Ek maliyet talebi"><p className="mb-3 text-sm text-slate-600">Randevu oluşturulduktan sonra, hizmet kapanmadan önce gerekçeli talep oluşturabilirsiniz.</p><Link href="/usta/ek-maliyet" className="inline-flex rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white">Ek maliyet talebine git</Link></PanelCard>
+      <PanelCard title="Ek maliyet talebi"><p className="mb-3 text-sm text-slate-600">Randevu oluşturulduktan sonra, hizmet kapanmadan önce gerekçeli talep oluşturabilirsiniz.</p><Link href="/usta/ek-maliyet" className="inline-flex rounded-xl bg-[#B95236] px-4 py-2.5 text-sm font-bold text-white">Ek maliyet talebine git</Link></PanelCard>
     </div>
   </>;
 }
