@@ -86,8 +86,8 @@ export default function TeshisPage() {
   const handleSendMessage = (e:React.FormEvent) => {e.preventDefault();void submit(inputText);};
 
   return (
-    <div style={visualViewportHeight ? {height:visualViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
-      
+    <div style={visualViewportHeight ? {height:visualViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[940px] bg-[#F8F6F3] flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
+
       {/* HEADER */}
       <header className="shrink-0 bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export default function TeshisPage() {
           </div>
         </div>
 
-        <button 
+        <button
           onClick={() => setIsTechnicianDialogOpen(true)}
           disabled={!resultCard || isAnalyzing}
           className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5 disabled:opacity-50"
@@ -125,7 +125,7 @@ export default function TeshisPage() {
         followLatestRef.current = distanceFromBottom <= 96;
         scrollMetricsRef.current = {height:area.clientHeight, distanceFromBottom};
       }} className="min-w-0 min-h-0 flex-1 p-3 sm:p-5 lg:p-8 overflow-y-auto overscroll-contain space-y-4">
-        
+
         <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />
 
         {messages.map((msg) => (
@@ -148,7 +148,7 @@ export default function TeshisPage() {
             <div
               className={`min-w-0 max-w-[calc(100%-3rem)] sm:max-w-[88%] break-words [overflow-wrap:anywhere] rounded-2xl p-3.5 text-sm sm:text-base leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-[#0B1727] text-white rounded-tr-none'
+                  ? 'bg-[#111827] text-white rounded-tr-none'
                   : 'bg-white border border-slate-200 text-slate-800 rounded-tl-none shadow-sm'
               }`}
             >

@@ -294,9 +294,9 @@ function DashboardContent() {
     const lastMessage=chatHistory.at(-1);
     const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
       lastMessage.text:null;
-    return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
+    return <div className="min-h-dvh w-full bg-[#F8F6F3] font-sans text-slate-900">
       <div className="mx-auto w-full max-w-[1240px] min-w-0 px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
-        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#D97724]">
+        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#B95236]">
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
         <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
@@ -417,19 +417,19 @@ function DashboardContent() {
   }
 
   return (
-    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
-      
+    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[940px] bg-[#F8F6F3] flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
+
       {/* İÇERİK ALANI */}
       <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-6 pb-6 justify-between'}`}>
-        <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]`}>
+        <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#B95236]`}>
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
-        
+
         {/* LOGO VE SLOGAN ALANI */}
         <div className={`${chatViewport ? 'hidden' : 'flex'} flex-col items-center text-center`}>
           <TeknikOBrand size="standard" className="mb-4" />
 
-          <h1 className="text-2xl font-black text-[#0B1727] tracking-tight leading-tight">
+          <h1 className="text-2xl font-black text-[#111827] tracking-tight leading-tight">
             Sürpriz fiyat yok<br />
             sorunu yaz <span className="text-[#EE6C13]">fiyatını al.</span>
           </h1>
@@ -444,7 +444,7 @@ function DashboardContent() {
 
         {/* CANLI SOHBET ALANI */}
         <div className={`min-w-0 bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] p-3 sm:p-5 shadow-md transition-colors flex flex-col ${chatViewport ? 'flex-1 min-h-0 rounded-none' : 'h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] rounded-3xl'}`}>
-          
+
           <div ref={messageScrollRef} onScroll={() => {
             const area = messageScrollRef.current;
             if (!area || area.clientHeight !== scrollMetricsRef.current.height) return;
@@ -486,7 +486,7 @@ function DashboardContent() {
                       ref={msg.id === lastAssistantId ? lastAssistantRef : undefined}
                       className={`min-w-0 break-words [overflow-wrap:anywhere] p-3 sm:p-3.5 rounded-2xl leading-relaxed text-sm sm:text-base ${
                         msg.sender === 'user'
-                          ? 'bg-[#0B1727] text-white rounded-tr-none'
+                          ? 'bg-[#111827] text-white rounded-tr-none'
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
                       }`}
                     >
@@ -549,14 +549,14 @@ function DashboardContent() {
                 }
               }}
               placeholder="Mesajınızı veya cevabınızı yazın..."
-              className="h-16 w-full min-w-0 rounded-xl border-2 border-slate-300 bg-slate-50 p-3 text-base text-slate-900 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 focus:bg-white resize-none leading-relaxed transition-colors"
+              className="h-16 w-full min-w-0 rounded-xl border-2 border-slate-300 bg-[#F8F6F3] p-3 text-base text-slate-900 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100 focus:bg-white resize-none leading-relaxed transition-colors"
             />
 
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              onChange={handleFileUpload} 
-              className="hidden" 
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileUpload}
+              className="hidden"
               accept="image/*,.pdf"
             />
 

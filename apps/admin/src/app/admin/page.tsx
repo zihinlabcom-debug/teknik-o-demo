@@ -13,7 +13,7 @@ export default function AdminPanel(){
     <p role="note" className="mb-6 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-orange-900">Veri entegrasyonu bekleniyor. Bu sayfada örnek kayıt veya hesaplanmış metrik gösterilmiyor.</p>
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{cards.map(card=><PanelCard key={card.title} title={card.title}>
       <EmptyPanelState>Henüz görüntülenecek operasyon verisi bulunmuyor.</EmptyPanelState>
-      <Link href={card.href} className="mt-3 inline-block text-sm font-bold text-[#B75D17]">Taleplere git →</Link>
+      <Link href={card.href} className="mt-3 inline-block text-sm font-bold text-[#A8422B]">Taleplere git →</Link>
     </PanelCard>)}</div>
   </>;
 }

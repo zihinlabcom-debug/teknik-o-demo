@@ -86,7 +86,7 @@ export function HomeCleaningServiceConfigurator({selection,onChange,onCalculate,
   return <ServiceConfiguratorShell title="Ev Temizliği"
     description="Ev bilgilerini ve istediğiniz ek işleri seçin. Fiyat, mevcut hizmet motorunda hesaplanır."
     summary={<section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" aria-label="Hizmet özeti">
-      <h2 className="text-base font-bold text-[#0B1727]">Hizmet özeti</h2>
+      <h2 className="text-base font-bold text-[#111827]">Hizmet özeti</h2>
       <dl className="mt-3 space-y-3 text-sm text-slate-700">
         {summary.map(([label,value])=><div key={label} className="flex min-w-0 justify-between gap-3 border-t border-slate-100 pt-3 first:border-0 first:pt-0">
           <dt className="min-w-0 break-words">{label}</dt><dd className="max-w-[55%] break-words text-right font-semibold">{value}</dd>
@@ -106,7 +106,7 @@ export function HomeCleaningServiceConfigurator({selection,onChange,onCalculate,
     </div>}
     result={<ServiceResultCard result={result} onRequestTechnician={onRequestTechnician} onReject={onReject} />}>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Ev Bilgileri">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Ev Bilgileri</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Ev Bilgileri</h2>
       <div className="grid min-w-0 gap-5 sm:grid-cols-2">
         <label className="min-w-0 text-sm font-semibold text-slate-800">
           <span className="mb-2 block">Eviniz kaç metrekare?</span>
@@ -133,7 +133,7 @@ export function HomeCleaningServiceConfigurator({selection,onChange,onCalculate,
       </div>
     </section>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Ek Hizmetler">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Ek Hizmetler</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Ek Hizmetler</h2>
       <fieldset className="min-w-0">
         <legend className="mb-2 text-sm font-semibold text-slate-800">Hangi ek işleri istersiniz?</legend>
         <div className="grid min-w-0 gap-2 sm:grid-cols-2 xl:grid-cols-3">
@@ -156,7 +156,7 @@ export function HomeCleaningServiceConfigurator({selection,onChange,onCalculate,
       </fieldset>
     </section>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Malzeme ve Ekipman">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Malzeme ve Ekipman</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Malzeme ve Ekipman</h2>
       <div className="grid min-w-0 gap-5 sm:grid-cols-2">
         <fieldset className="min-w-0"><legend className="mb-2 text-sm font-semibold text-slate-800">Temizlik malzemeleri evde mevcut mu?</legend>
           <div className="flex flex-wrap gap-2">{yesNo('materialsAvailable',true,'Temizlik malzemesi')}{yesNo('materialsAvailable',false,'Temizlik malzemesi')}</div></fieldset>
@@ -165,7 +165,7 @@ export function HomeCleaningServiceConfigurator({selection,onChange,onCalculate,
       </div>
     </section>
     <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5" aria-label="Süre Tercihi">
-      <h2 className="mb-4 text-lg font-bold text-[#0B1727]">Süre Tercihi</h2>
+      <h2 className="mb-4 text-lg font-bold text-[#111827]">Süre Tercihi</h2>
       <fieldset className="min-w-0"><legend className="mb-2 text-sm font-semibold text-slate-800">Tamamlanma süresi tercihiniz nedir?</legend>
         <div className="flex min-w-0 flex-wrap gap-2">{durationOptions.map(option=><button key={option} type="button"
           aria-pressed={selection.duration===option} disabled={inputDisabled} onClick={()=>set('duration',option)}

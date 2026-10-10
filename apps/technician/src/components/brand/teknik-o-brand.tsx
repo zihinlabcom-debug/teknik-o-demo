@@ -16,8 +16,8 @@ export function TeknikOBrand({size='standard',onDark=false,showWordmark=true,cla
     <span className="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white">
       <Image src="/logo-icon.png" alt="" width={Math.round(style.mark*648/691)} height={style.mark} className="object-contain" priority={size==='hero'||size==='showcase'} />
     </span>
-    {showWordmark&&<span className={`${style.text} font-black leading-none tracking-[-0.055em] ${onDark?'text-white':'text-[#0B1727]'} ${wordmarkClassName}`}>
-      TEKNİK-<span className="text-[#D97724]">O</span>
+    {showWordmark&&<span className={`${style.text} font-black leading-none tracking-[-0.055em] ${onDark?'text-white':'text-[#111827]'} ${wordmarkClassName}`}>
+      TEKNİK-<span className="text-[#9c6100]">O</span>
     </span>}
   </span>;
 }
