@@ -40,10 +40,15 @@ test('Supabase session cookie options are explicit and serialize safely',()=>{
   }
 });
 
-test('disposable Supabase config is excluded and has no embedded provider secret',async()=>{
-  const config=await read('supabase/config.toml');
+test('disposable Supabase config stays excluded and is secret-free when locally present',async()=>{
   const ignore=await read('supabase/.gitignore');
   assert.match(ignore,/^config\.toml$/m);
+  let config=null;
+  try{config=await read('supabase/config.toml');}
+  catch(error){
+    if(error?.code!=='ENOENT')throw error;
+  }
+  if(config===null)return;
   assert.match(config,/\[db\.migrations\][\s\S]*?enabled = false/);
   assert.match(config,/auth_token\s*=\s*"env\(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN\)"/);
   assert.doesNotMatch(config,/auth_token\s*=\s*"local-test-token"/);
