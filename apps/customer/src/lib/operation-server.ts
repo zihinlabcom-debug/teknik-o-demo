@@ -75,7 +75,9 @@ export async function createCustomerServiceRequest(input:{
     throw new OperationError('pricing_unavailable',409,'Doğrulanmış maksimum fiyat bulunamadı.');
 
   const {data:addresses,error:addressError}=await db.from('customer_addresses')
-    .select('id,is_default,created_at').eq('customer_id',account.id).order('is_default',{ascending:false}).order('created_at',{ascending:true}).limit(10);
+    .select('id,is_default,created_at').eq('customer_id',account.id)
+    .is('profile_archived_at',null).order('is_default',{ascending:false})
+    .order('created_at',{ascending:true}).limit(3);
   if(addressError)failDb(addressError,'Adres kontrolü');
   const defaultAddress=(addresses??[]).find(a=>a.is_default)??((addresses??[]).length===1?addresses![0]:null);
   if(!defaultAddress)throw new OperationError('address_required',409,'Hizmet talebi için kayıtlı bir varsayılan adres gerekli.');

@@ -1,5 +1,6 @@
 ﻿import {createServerClient} from '@supabase/ssr';
 import {NextResponse,type NextRequest} from 'next/server';
+import {accountSessionCookieOptions} from '@/lib/account-cookie-options';
 
 function isCustomerPath(path:string){
   return path==='/' ||
@@ -48,13 +49,15 @@ export async function proxy(request:NextRequest){
     return NextResponse.redirect(new URL('/giris',request.url));
 
   let response=NextResponse.next({request});
+  response.headers.set('Cache-Control','private, no-store');
 
-  const db=createServerClient(url,key,{
+  const db=createServerClient(url,key,{cookieOptions:accountSessionCookieOptions(),
     cookies:{
       getAll(){return request.cookies.getAll();},
       setAll(values){
         values.forEach(({name,value})=>request.cookies.set(name,value));
         response=NextResponse.next({request});
+        response.headers.set('Cache-Control','private, no-store');
         values.forEach(({name,value,options})=>response.cookies.set(name,value,options));
       },
     },

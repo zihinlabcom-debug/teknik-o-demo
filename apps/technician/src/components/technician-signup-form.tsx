@@ -15,6 +15,8 @@ export function TechnicianSignupForm({categories,cities,districts}:{
   const [fullName,setFullName]=useState('');
   const [phone,setPhone]=useState('');
   const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  const [passwordConfirmation,setPasswordConfirmation]=useState('');
   const [categoryIds,setCategoryIds]=useState<string[]>([]);
   const [cityId,setCityId]=useState<number|null>(null);
   const [districtIds,setDistrictIds]=useState<number[]>([]);
@@ -54,6 +56,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
     let failed=false;
     for(const item of items.filter(document=>!document.uploaded)){
       const payload=new FormData();payload.set('file',item.file);payload.set('categoryId',item.categoryId);
+      payload.set('currentPassword',password);
       try{
         const response=await fetch('/api/technician/documents',{method:'POST',body:payload});
         const result=await response.json();
@@ -69,11 +72,16 @@ export function TechnicianSignupForm({categories,cities,districts}:{
     try{
       const response=await fetch('/api/auth/technician/otp/request',{
         method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({mode:'signup',fullName,phone,email,categoryIds,cityId,districtIds,
+        body:JSON.stringify({mode:'signup',fullName,phone,email,password,categoryIds,cityId,districtIds,
           addressCityId,addressDistrictId,addressLine}),
       });
       const result=await response.json();
       if(!response.ok){setNotice(result.error||'Başvuru başlatılamadı.');return;}
+      if(result.requiresOtp===false){
+        if(documents.length){setStep('documents');await uploadDocuments(documents);}
+        else setStep('complete');
+        return;
+      }
       setStep('otp');
       setNotice(result.delivery==='test'?'Yapılandırılmış test kodunu girin. SMS gönderilmedi.':'SMS doğrulama kodunu girin.');
     }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
@@ -111,6 +119,15 @@ export function TechnicianSignupForm({categories,cities,districts}:{
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
         <label className="block text-sm font-semibold">E-posta (isteğe bağlı)
           <input type="email" value={email} onChange={e=>setEmail(e.target.value)}
+            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
+        <label className="block text-sm font-semibold">Şifre
+          <input required type="password" minLength={10} maxLength={128} autoComplete="new-password"
+            value={password} onChange={e=>setPassword(e.target.value)}
+            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/>
+          <span className="mt-1 block text-xs font-normal text-slate-600">En az 10 karakter; büyük harf, küçük harf ve rakam içermeli.</span></label>
+        <label className="block text-sm font-semibold">Şifre tekrar
+          <input required type="password" minLength={10} maxLength={128} autoComplete="new-password"
+            value={passwordConfirmation} onChange={e=>setPasswordConfirmation(e.target.value)}
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
         <fieldset><legend className="text-sm font-semibold">Hizmet kategorileri (bir veya daha fazla)</legend>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">{categories.map(category=><label key={category.id}
@@ -164,8 +181,8 @@ export function TechnicianSignupForm({categories,cities,districts}:{
               {categories.filter(c=>categoryIds.includes(c.id)).map(c=><option key={c.id} value={c.id}>{c.name}</option>)}
             </select><button type="button" onClick={()=>setDocuments(current=>current.filter(doc=>doc.id!==item.id))}>Kaldır</button>
           </div>)}</div>
-        <button type="submit" disabled={busy||!categoryIds.length||!districtIds.length||!addressDistrictId||documents.some(item=>!item.categoryId||!categoryIds.includes(item.categoryId))}
-          className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">SMS Kodu Gönder</button>
+        <button type="submit" disabled={busy||password!==passwordConfirmation||!categoryIds.length||!districtIds.length||!addressDistrictId||documents.some(item=>!item.categoryId||!categoryIds.includes(item.categoryId))}
+          className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">Hesap Oluştur</button>
         <p className="text-center text-sm text-slate-600">Hesabınız var mı? <Link href="/giris-usta" className="font-bold text-[#A64D12] underline">Usta Girişi</Link></p>
       </form>}
 

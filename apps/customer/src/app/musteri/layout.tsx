@@ -8,6 +8,7 @@ const links=[
   {href:'/musteri',label:'Müşteri paneli'},{href:'/musteri/taleplerim',label:'Taleplerim'},
   {href:'/musteri/ek-maliyet',label:'Ek maliyetler'},{href:'/musteri/sikayetler',label:'Şikâyet'},
   {href:'/musteri/garanti',label:'Garanti Talebi'},
+  {href:'/musteri/profil',label:'Profilim'},
 ] as const;
 
 export default async function CustomerPanelLayout({children}:{children:ReactNode}){

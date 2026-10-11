@@ -1,5 +1,6 @@
 import {createServerClient} from '@supabase/ssr';
 import {NextResponse,type NextRequest} from 'next/server';
+import {accountSessionCookieOptions} from '@/lib/account-cookie-options';
 
 export async function proxy(request:NextRequest){
   const path=request.nextUrl.pathname;
@@ -30,8 +31,9 @@ export async function proxy(request:NextRequest){
   if(!url||!key)return deny(503);
 
   let response=NextResponse.next({request});
+  response.headers.set('Cache-Control','private, no-store');
 
-  const db=createServerClient(url,key,{
+  const db=createServerClient(url,key,{cookieOptions:accountSessionCookieOptions(),
     cookies:{
       getAll(){
         return request.cookies.getAll();
@@ -42,6 +44,7 @@ export async function proxy(request:NextRequest){
         );
 
         response=NextResponse.next({request});
+        response.headers.set('Cache-Control','private, no-store');
 
         values.forEach(({name,value,options})=>
           response.cookies.set(name,value,options)

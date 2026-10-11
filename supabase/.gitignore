@@ -1,0 +1,12 @@
+# Supabase
+.branches
+.temp
+
+# dotenvx
+.env.keys
+.env.local
+.env.*.local
+
+# Disposable Auth/Profile security harness only. Hosted migration/deployment
+# commands must use the repository's reviewed production configuration.
+config.toml

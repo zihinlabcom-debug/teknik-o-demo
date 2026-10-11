@@ -3,6 +3,7 @@ import {createServerClient} from '@supabase/ssr';
 import {cookies} from 'next/headers';
 import {isAccountRole,type Account} from './account-role';
 import {adminSessionCookie,validAdminSession} from './admin-session';
+import {accountSessionCookieOptions} from './account-cookie-options';
 
 export function publicSupabaseConfig(){
   const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -14,8 +15,9 @@ export function publicSupabaseConfig(){
 export async function serverSupabase({writeCookies=false,adminSession=false}:{writeCookies?:boolean;adminSession?:boolean}={}){
   const {url,key}=publicSupabaseConfig();
   const store=await cookies();
-  return createServerClient(url,key,{...(adminSession?{cookieOptions:{httpOnly:true,
-    secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/'}}:{}),cookies:{
+  return createServerClient(url,key,{cookieOptions:adminSession?{httpOnly:true,
+    secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/'}:
+    accountSessionCookieOptions(),cookies:{
     getAll(){return store.getAll();},
     setAll(values){
       if(writeCookies){values.forEach(({name,value,options})=>store.set(name,value,options));return;}
