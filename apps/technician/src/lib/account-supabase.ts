@@ -2,6 +2,7 @@ import {createClient} from '@supabase/supabase-js';
 import {createServerClient} from '@supabase/ssr';
 import {cookies} from 'next/headers';
 import {isAccountRole,type Account} from './account-role';
+import {accountSessionCookieOptions} from './account-cookie-options';
 
 export function publicSupabaseConfig(){
   const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -14,7 +15,7 @@ export async function serverSupabase({writeCookies=false}:{writeCookies?:boolean
   const {url,key}=publicSupabaseConfig();
   const store=await cookies();
 
-  return createServerClient(url,key,{cookies:{
+  return createServerClient(url,key,{cookieOptions:accountSessionCookieOptions(),cookies:{
     getAll(){return store.getAll();},
     setAll(values){
       if(writeCookies){

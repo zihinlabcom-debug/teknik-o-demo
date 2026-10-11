@@ -3,13 +3,14 @@
 import {type ReactNode} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import {House, LayoutGrid, Mail, ClipboardList} from 'lucide-react';
+import {House, LayoutGrid, Mail, ClipboardList, UserRound} from 'lucide-react';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 const navigation=[
   {href:'/hizmetler',label:'Ana Sayfa',icon:House},
   {href:'/kategoriler',label:'Kategoriler',icon:LayoutGrid},
   {href:'/musteri',label:'Panelim',icon:ClipboardList},
+  {href:'/musteri/profil',label:'Profilim',icon:UserRound},
   {href:'/iletisim',label:'İletişim',icon:Mail},
 ] as const;
 
