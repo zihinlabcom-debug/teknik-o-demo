@@ -6,6 +6,7 @@ import {serviceRequestSummary} from '@/lib/service-request-summary';
 import {serviceRequestAssessment} from '@/lib/service-request-assessment';
 import {acceptedMaximumPrice} from '@/lib/service-request-accepted-price';
 import {OperationError} from '@/lib/operation-error';
+import {isSandboxPendingRequestMode} from '@/lib/finance/sandbox-contract';
 import {requireRole,requireId,failDb} from '@/lib/operation-guard';
 export {OperationError,operationErrorResponse} from '@/lib/operation-error';
 export {adminRequestList,adminRequestDetail} from '@/lib/admin-request-read';
@@ -84,7 +85,15 @@ export async function createCustomerServiceRequest(input:{
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
     p_assessment_snapshot:assessmentSnapshot,p_requested_service_mode:requestedServiceMode,p_requested_service_date:requestedServiceDate,
   };
-  const {data,error}=acceptedPrice?await db.rpc('create_priced_service_request',{
+  // Fail closed on invalid test configuration; legacy path is unchanged when disabled.
+  const sandboxFinance=Boolean(acceptedPrice)&&isSandboxPendingRequestMode(process.env);
+  if(sandboxFinance&&account.is_test!==true)
+    throw new OperationError('finance_lab_test_only',403,'Bu ödeme testi yalnızca test hesabında kullanılabilir.');
+  const {data,error}=acceptedPrice&&sandboxFinance?await db.rpc('create_payment_pending_service_request_v2',{
+    ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
+    p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
+    p_breakdown:acceptedPrice.breakdown,p_payment_idempotency_key:`pending:${fingerprint}`,
+  }):acceptedPrice?await db.rpc('create_priced_service_request',{
     ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
     p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
     p_breakdown:acceptedPrice.breakdown,
@@ -92,7 +101,7 @@ export async function createCustomerServiceRequest(input:{
   if(error&&/existing request schedule mismatch/i.test(error.message??''))
     throw new OperationError('request_schedule_conflict',409,'Bu değerlendirme için daha önce farklı bir zaman tercihiyle talep oluşturuldu.');
   if(error)failDb(error,'Hizmet talebi');
-  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY'}:{id:data as string};
+  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY';paymentIntentId?:string;paymentStatus?:string;distributionStarted?:boolean}:{id:data as string};
 }
 export async function acceptCustomerQuote(quoteId:string){
   requireId(quoteId); const account=await requireRole('customer'); const db=adminSupabase();

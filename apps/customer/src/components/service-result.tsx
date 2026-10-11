@@ -1,6 +1,7 @@
 'use client';
 import {useState} from 'react';
 import {Wrench,X} from 'lucide-react';
+import {Stage12SandboxPayment} from './stage12-sandbox-payment';
 import {visualProgress,type ServicePricePresentation,type ServiceResponse} from '../lib/service-presentation';
 export function DiagnosisProgress({answeredSystemQuestions,isAnalyzing,resultState}:{answeredSystemQuestions:number;isAnalyzing:boolean;resultState:string}){
   const progress=visualProgress(answeredSystemQuestions);
@@ -63,6 +64,7 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
   const [busy,setBusy]=useState(false),[error,setError]=useState<string|null>(null),[requestId,setRequestId]=useState<string|null>(null);
   const [requestedServiceMode,setRequestedServiceMode]=useState<'immediate'|'scheduled'>('immediate');
   const [requestedServiceDate,setRequestedServiceDate]=useState('');
+  const [paymentIntentId,setPaymentIntentId]=useState<string|null>(null);
   const canSelectDate=!!response?.category&&SCHEDULED_SERVICE_CATEGORIES.has(response.category);
   const minServiceDate=istanbulServiceDate(1),maxServiceDate=istanbulServiceDate(7);
   const createRequest=async()=>{
@@ -84,8 +86,9 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
           requestedServiceDate:serviceMode==='scheduled'?serviceDate:null,
         }),
       });
-      const body=await reply.json().catch(()=>({})) as {id?:string;error?:string};
+      const body=await reply.json().catch(()=>({})) as {id?:string;error?:string;paymentIntentId?:string;paymentStatus?:string};
       if(!reply.ok||!body.id)throw new Error(body.error||'Talep oluşturulamadı.');
+      if(body.paymentIntentId&&body.paymentStatus) setPaymentIntentId(body.paymentIntentId);
       setRequestId(body.id);
     }catch(e){setError(e instanceof Error?e.message:'Talep oluşturulamadı.');}
     finally{setBusy(false);}
@@ -96,7 +99,8 @@ export function TechnicianHandoffNotice({onClose,response}:{onClose:()=>void;res
       <div className="w-10 h-10 bg-orange-100 text-[#EE6C13] rounded-2xl flex items-center justify-center mx-auto mb-2"><Wrench className="w-5 h-5" /></div>
       <h3 className="text-center text-base font-black text-slate-900">Usta çağır</h3>
       {requestId?<>
-        <p className="text-sm text-emerald-700 mt-3 leading-relaxed text-center font-semibold">Talebiniz oluşturuldu.</p>
+        <p className="text-sm text-emerald-700 mt-3 leading-relaxed text-center font-semibold">{paymentIntentId?'Talebiniz oluşturuldu, test provizyonu bekleniyor.':'Talebiniz oluşturuldu.'}</p>
+        {paymentIntentId&&<Stage12SandboxPayment intentId={paymentIntentId}/>}
         <a href={`/musteri/taleplerim/${requestId}`} className="mt-4 block w-full rounded-xl bg-emerald-600 px-4 py-2.5 text-center text-xs font-bold text-white">Talebi görüntüle</a>
       </>:<>
         <p className="text-xs text-slate-500 mt-3 leading-relaxed">Kayıtlı varsayılan adresiniz kullanılarak gerçek hizmet talebi oluşturulacak. Aynı değerlendirme tekrar gönderilirse ikinci bir talep açılmaz.</p>
