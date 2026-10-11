@@ -45,10 +45,20 @@ export async function authorizeAndReleaseFakePayment(input: FakeAuthInput) {
   });
   if (releaseError) {
     // Authorization already succeeded. No second authorization/charge, require reconciliation.
+    const {error:issueError}=await db.rpc('finance_record_reconciliation_issue',{
+      p_request_id:request.id,p_intent_id:intent.id,p_code:'distribution_release_failed',
+      p_detail:{source:'customer_api'},
+    });
+    if(issueError)failDb(issueError,'Finans mutabakat kaydı');
     return {intentId:intent.id,paymentStatus:'authorized',distributionStarted:false,
       reconciliationRequired:true};
   }
   if (!release || release.distributionStarted !== true || release.requestId !== request.id) {
+    const {error:issueError}=await db.rpc('finance_record_reconciliation_issue',{
+      p_request_id:request.id,p_intent_id:intent.id,p_code:'distribution_release_unconfirmed',
+      p_detail:{source:'customer_api'},
+    });
+    if(issueError)failDb(issueError,'Finans mutabakat kaydı');
     return {intentId:intent.id,paymentStatus:'authorized',distributionStarted:false,
       reconciliationRequired:true};
   }

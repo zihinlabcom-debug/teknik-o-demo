@@ -40,6 +40,9 @@ export function parseFakeAuthorization(body: unknown): FakeAuthInput {
   if (!body || typeof body !== 'object' || Array.isArray(body))
     throw new FinanceInputError('invalid_body', 400, 'Geçersiz ödeme test isteği.');
   const o = body as Record<string,unknown>;
+  const keys=Object.keys(o);
+  if(keys.length!==3||keys.some(key=>!['intentId','idempotencyKey','approve'].includes(key)))
+    throw new FinanceInputError('invalid_body',400,'Geçersiz ödeme test parametreleri.');
   if (typeof o.intentId !== 'string' || !sandboxUUID.test(o.intentId) ||
       typeof o.idempotencyKey !== 'string' || !/^[a-zA-Z0-9:_-]{8,128}$/.test(o.idempotencyKey) ||
       typeof o.approve !== 'boolean')

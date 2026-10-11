@@ -138,7 +138,8 @@ function customerOperationStatus(
   job:{status:string}|null,
   cycle:{status:string;source_job_id:string|null}|null,
   hasAcceptedQuote:boolean,
-  manualReviewRequired:boolean
+  manualReviewRequired:boolean,
+  paymentStatus:string|null
 ){
   if(requestStatus==='technician_unavailable')
     return {code:'technician_unavailable' as const,label:'Usta bulunamadı'};
@@ -165,6 +166,21 @@ function customerOperationStatus(
   if(cycle?.status==='exhausted'||(cycle?.status==='accepted'&&manualReviewRequired))
     return {code:'admin_review' as const,label:'Talebiniz inceleniyor'};
 
+  if(paymentStatus==='pending_authorization')
+    return {code:'payment_pending' as const,label:'Ödeme provizyonu bekleniyor'};
+
+  if(paymentStatus==='authorization_failed')
+    return {code:'payment_failed' as const,label:'Ödeme provizyonu başarısız'};
+
+  if(paymentStatus==='authorized'||paymentStatus==='requires_review')
+    return {code:'payment_reconciliation' as const,label:'Ödeme onaylandı, dağıtım doğrulanıyor'};
+
+  if(paymentStatus==='capture_failed')
+    return {code:'payment_reconciliation' as const,label:'Tahsilat sonucu doğrulanıyor'};
+
+  if(paymentStatus==='voided'||paymentStatus==='cancelled'||paymentStatus==='refunded')
+    return {code:'payment_closed' as const,label:'Ödeme işlemi kapatıldı'};
+
   if(hasAcceptedQuote)
     return {code:'distributing' as const,label:'Usta aranıyor'};
 
@@ -173,16 +189,18 @@ function customerOperationStatus(
 
 export async function customerRequestList(){
   const account=await requireRole('customer'); const db=adminSupabase();
-  const {data:requests,error}=await db.from('service_requests').select('id,status,created_at,category_id').eq('customer_id',account.id).order('created_at',{ascending:false});
+  const {data:requests,error}=await db.from('service_requests').select('id,status,created_at,category_id,finance_gate_required').eq('customer_id',account.id).order('created_at',{ascending:false});
   if(error)failDb(error,'Talep listesi');
   const ids=(requests??[]).map(r=>r.id), categoryIds=[...new Set((requests??[]).map(r=>r.category_id).filter(Boolean))];
-  const [{data:quotes},{data:cats},{data:jobs},{data:cycles},{data:manualEvents,error:manualEventError}]=await Promise.all([
+  const [{data:quotes},{data:cats},{data:jobs},{data:cycles},{data:payments,error:paymentError},{data:manualEvents,error:manualEventError}]=await Promise.all([
     ids.length?db.from('service_quotes').select('service_request_id,status,total_amount,currency,version,accepted_at,offered_at').in('service_request_id',ids):Promise.resolve({data:[]}),
     categoryIds.length?db.from('service_categories').select('id,name').in('id',categoryIds):Promise.resolve({data:[]}),
     ids.length?db.from('service_jobs').select('id,service_request_id,status,technician_id,assigned_at,completed_at,cancelled_at').in('service_request_id',ids).order('created_at',{ascending:false}):Promise.resolve({data:[]}),
     ids.length?db.from('service_distribution_cycles').select('id,service_request_id,status,current_round,source_job_id,started_at,closed_at').in('service_request_id',ids).order('started_at',{ascending:false}):Promise.resolve({data:[]}),
+    ids.length?db.from('finance_payment_intents').select('service_request_id,status,updated_at').in('service_request_id',ids).eq('purpose','initial').order('updated_at',{ascending:false}):Promise.resolve({data:[],error:null}),
     ids.length?db.from('operational_events').select('service_request_id').in('service_request_id',ids).eq('event_type','distribution.manual_assignment_required'):Promise.resolve({data:[],error:null}),
   ]);
+  if(paymentError)failDb(paymentError,'Ödeme durumu');
   if(manualEventError)failDb(manualEventError,'Talep atama durumu');
   const manualReviewRequests=new Set((manualEvents??[]).map(e=>e.service_request_id));
   const catMap=new Map((cats??[]).map(c=>[c.id,c.name]));
@@ -193,12 +211,14 @@ export async function customerRequestList(){
     const requestJobs=(jobs??[]).filter(job=>job.service_request_id===r.id);
     const job=currentCustomerJob(requestJobs);
     const cycle=(cycles??[]).find(item=>item.service_request_id===r.id)??null;
-    const operation_status=customerOperationStatus(r.status,job,cycle,Boolean(accepted),manualReviewRequests.has(r.id));
+    const payment=(payments??[]).find(item=>item.service_request_id===r.id)??null;
+    const operation_status=customerOperationStatus(r.status,job,cycle,Boolean(accepted),manualReviewRequests.has(r.id),payment?.status??null);
 
     return {
       ...r,
       category_name:r.category_id?catMap.get(r.category_id)??'Hizmet':'Hizmet',
       price,
+      payment_status:payment?.status??null,
       operation_status,
     };
   });
@@ -206,23 +226,25 @@ export async function customerRequestList(){
 
 export async function customerRequestDetail(id:string){
   requireId(id); const account=await requireRole('customer'); const db=adminSupabase();
-  const {data:r,error}=await db.from('service_requests').select('id,status,created_at,category_id,address_id,customer_id').eq('id',id).eq('customer_id',account.id).maybeSingle();
+  const {data:r,error}=await db.from('service_requests').select('id,status,created_at,category_id,address_id,customer_id,finance_gate_required').eq('id',id).eq('customer_id',account.id).maybeSingle();
   if(error)failDb(error,'Talep detayı'); if(!r)throw new OperationError('not_found',404,'Talep bulunamadı.');
-  const [{data:quotes},{data:jobs},{data:cycles},{data:category},{data:address},{data:events},{data:manualEvents,error:manualEventError}]=await Promise.all([
+  const [{data:quotes},{data:jobs},{data:cycles},{data:category},{data:address},{data:events},{data:payment,error:paymentError},{data:manualEvents,error:manualEventError}]=await Promise.all([
     db.from('service_quotes').select('id,status,total_amount,currency,version,accepted_at,offered_at,expires_at').eq('service_request_id',id).order('version',{ascending:false}),
     db.from('service_jobs').select('id,status,technician_id,assigned_at,started_at,completed_at,cancelled_at').eq('service_request_id',id).order('created_at',{ascending:false}),
     db.from('service_distribution_cycles').select('id,status,current_round,source_job_id,started_at,closed_at').eq('service_request_id',id).order('started_at',{ascending:false}),
     r.category_id?db.from('service_categories').select('name').eq('id',r.category_id).maybeSingle():Promise.resolve({data:null}),
     r.address_id?db.from('customer_addresses').select('address_line,label,city_id,district_id').eq('id',r.address_id).maybeSingle():Promise.resolve({data:null}),
     db.from('operational_events').select('id,event_type,occurred_at').eq('service_request_id',id).order('occurred_at',{ascending:false}).limit(30),
+    db.from('finance_payment_intents').select('id,status,amount,currency,authorized_amount,captured_amount,refunded_amount,updated_at').eq('service_request_id',id).eq('purpose','initial').maybeSingle(),
     db.from('operational_events').select('id').eq('service_request_id',id).eq('event_type','distribution.manual_assignment_required').limit(1),
   ]);
 
   const job=currentCustomerJob(jobs??[]);
   const cycle=cycles?.[0]??null;
   const accepted=(quotes??[]).find(quote=>quote.status==='accepted')??null;
+  if(paymentError)failDb(paymentError,'Ödeme durumu');
   if(manualEventError)failDb(manualEventError,'Talep atama durumu');
-  const operation_status=customerOperationStatus(r.status,job,cycle,Boolean(accepted),Boolean(manualEvents?.length));
+  const operation_status=customerOperationStatus(r.status,job,cycle,Boolean(accepted),Boolean(manualEvents?.length),payment?.status??null);
 
   let technician=null;
   if(job?.technician_id){
@@ -242,6 +264,7 @@ export async function customerRequestDetail(id:string){
     technician,
     appointments,
     events:(events??[]).filter(event=>!event.event_type.startsWith('complaint.')),
+    payment:payment??null,
     distribution_cycle:cycle,
     operation_status,
   };
