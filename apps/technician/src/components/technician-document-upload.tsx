@@ -4,12 +4,14 @@ import {useState,type FormEvent} from 'react';
 
 export function TechnicianDocumentUpload({categories}:{categories:{id:string;name:string}[]}){
   const router=useRouter();const [categoryId,setCategoryId]=useState('');
+  const [currentPassword,setCurrentPassword]=useState('');
   const [files,setFiles]=useState<File[]>([]);const [busy,setBusy]=useState(false);const [notice,setNotice]=useState('');
   async function upload(event:FormEvent){
     event.preventDefault();setBusy(true);setNotice('');
     const failed:File[]=[];
     for(const file of files){
       const body=new FormData();body.set('categoryId',categoryId);body.set('file',file);
+      body.set('currentPassword',currentPassword);
       try{
         const response=await fetch('/api/technician/documents',{method:'POST',body});
         if(!response.ok)throw new Error('Bir belge yüklenemedi. Yeniden deneyebilirsiniz.');
@@ -29,7 +31,12 @@ export function TechnicianDocumentUpload({categories}:{categories:{id:string;nam
       setFiles(selected);setNotice('');
     }}
       className="block w-full" aria-label="Belge dosyaları"/>
-    <button type="submit" disabled={busy||!categoryId||!files.length}
+    <label className="block font-semibold">Mevcut şifre
+      <input type="password" required autoComplete="current-password" value={currentPassword}
+        onChange={event=>setCurrentPassword(event.target.value)}
+        className="mt-1 w-full rounded-lg border border-slate-300 p-2"/>
+    </label>
+    <button type="submit" disabled={busy||!categoryId||!files.length||!currentPassword}
       className="rounded-lg bg-[#D97724] px-3 py-2 font-bold text-white disabled:opacity-50">Belgeleri yükle</button>
     {notice&&<p role="status">{notice}</p>}
   </form>;

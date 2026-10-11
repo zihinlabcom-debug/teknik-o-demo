@@ -12,7 +12,7 @@ export async function adminTechnicianOverview(){
   const db=adminSupabase();
   const [{data:users,error:usersError},{data:categories,error:categoriesError},
     {data:cities,error:citiesError},{data:districts,error:districtsError}]=await Promise.all([
-    db.from('users').select('id,name,is_active,is_test,created_at').eq('role','technician').order('created_at',{ascending:false}).limit(200),
+    db.from('users').select('id,name,phone,email,is_active,is_test,created_at').eq('role','technician').order('created_at',{ascending:false}).limit(200),
     db.from('service_categories').select('id,code,name,is_active,requires_document').order('name'),
     db.from('cities').select('id,name,is_active').order('name'),
     db.from('districts').select('id,city_id,name,is_active').order('name'),
@@ -23,19 +23,22 @@ export async function adminTechnicianOverview(){
   if(!ids.length)return {technicians:[],categories:categories??[],cities:cities??[],districts:districts??[]};
   const [{data:profiles,error:profilesError},{data:assignedCategories,error:assignedCategoriesError},
     {data:areas,error:areasError},{data:documents,error:documentsError}]=await Promise.all([
-    db.from('technician_profiles').select('user_id,approval_status,is_available,address_city_id,address_district_id,address_line').in('user_id',ids),
+    db.from('technician_profiles').select('user_id,approval_status,is_available,address_city_id,address_district_id,address_line,avatar_path').in('user_id',ids),
     db.from('technician_service_categories').select('technician_id,category_id,approval_status').in('technician_id',ids),
     db.from('technician_service_areas').select('technician_id,city_id,district_id').in('technician_id',ids),
     db.from('technician_documents').select('id,technician_id,category_id,document_type,status,original_file_name').in('technician_id',ids),
   ]);
   check(profilesError,'Usta profilleri');check(assignedCategoriesError,'Usta kategorileri');
   check(areasError,'Hizmet alanları');check(documentsError,'Usta belgeleri');
-  return {technicians:(users??[]).map(user=>({
-    ...user,profile:(profiles??[]).find(p=>p.user_id===user.id)??null,
+  const technicians=await Promise.all((users??[]).map(async user=>{
+    const profile=(profiles??[]).find(p=>p.user_id===user.id)??null;
+    const avatar=profile?.avatar_path?await db.storage.from('profile-avatars').createSignedUrl(profile.avatar_path,600):null;
+    return {...user,avatarUrl:avatar?.data?.signedUrl??null,profile,
     categories:(assignedCategories??[]).filter(c=>c.technician_id===user.id),
     areas:(areas??[]).filter(a=>a.technician_id===user.id),
     documents:(documents??[]).filter(d=>d.technician_id===user.id),
-  })),categories:categories??[],cities:cities??[],districts:districts??[]};
+  };}));
+  return {technicians,categories:categories??[],cities:cities??[],districts:districts??[]};
 }
 
 export async function adminChangeTechnicianCategory(technicianId:string,categoryId:string,action:'approve'|'reject'){

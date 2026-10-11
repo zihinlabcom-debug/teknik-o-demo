@@ -12,6 +12,7 @@ import {
   MapPin, 
   Building2, 
   Navigation, 
+  LockKeyhole,
   ArrowRight, 
   CheckCircle2, 
   ArrowLeft 
@@ -27,6 +28,8 @@ export default function KayitPage() {
     fullName: '',
     phone: '',
     email: '',
+    password: '',
+    passwordConfirmation: '',
     city: '',
     district: '',
     address: ''
@@ -70,15 +73,23 @@ export default function KayitPage() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phone) {
-      alert('Lütfen zorunlu alanları (Ad Soyad ve Telefon) doldurunuz.');
+    if (!formData.fullName || !formData.phone || !formData.city || !formData.district || !formData.address) {
+      setNotice('Lütfen tüm zorunlu alanları doldurun.');
+      return;
+    }
+    if(formData.password!==formData.passwordConfirmation){
+      setNotice('Şifreler eşleşmiyor.');
       return;
     }
     setBusy(true);setNotice('');
     try{
-      const response=await fetch('/api/auth/otp/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:formData.phone,fullName:formData.fullName,mode:'signup'})});
+      const response=await fetch('/api/auth/password/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        phone:formData.phone,fullName:formData.fullName,email:formData.email,password:formData.password,
+        cityId:Number(formData.city),districtId:Number(formData.district),addressLine:formData.address,
+      })});
       const result=await response.json();
       if(!response.ok){setNotice(result.error||'Doğrulama başlatılamadı.');return;}
+      if(result.requiresOtp===false){router.replace(result.redirect||'/hizmetler');router.refresh();return;}
       setAuthStep('otp');
       if(result.delivery==='test')setNotice('Test hesabı için yapılandırılmış test kodunu girin. SMS gönderilmedi.');
     }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
@@ -151,6 +162,27 @@ export default function KayitPage() {
               </div>
             </div>
 
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Şifre *</label>
+              <div className="relative">
+                <LockKeyhole className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+                <input type="password" name="password" required minLength={10} maxLength={128}
+                  autoComplete="new-password" value={formData.password} onChange={handleInputChange}
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724]" />
+              </div>
+              <p className="mt-1 text-xs text-slate-500">En az 10 karakter; büyük harf, küçük harf ve rakam.</p>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Şifre tekrar *</label>
+              <div className="relative">
+                <LockKeyhole className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+                <input type="password" name="passwordConfirmation" required minLength={10} maxLength={128}
+                  autoComplete="new-password" value={formData.passwordConfirmation} onChange={handleInputChange}
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724]" />
+              </div>
+            </div>
+
             {/* 2. Telefon Numarası */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">Telefon Numarası *</label>
@@ -186,11 +218,12 @@ export default function KayitPage() {
 
             {/* 4. İl (Katalogdan Seçim) */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">İl</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">İl *</label>
               <div className="relative">
                 <Building2 className="w-4 h-4 absolute left-3 top-3 text-slate-400 z-10" />
                 <select
                   name="city"
+                  required
                   value={formData.city}
                   onChange={handleInputChange}
                   className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-[#D97724] appearance-none text-slate-700 cursor-pointer"
@@ -207,11 +240,12 @@ export default function KayitPage() {
 
             {/* 5. İlçe (İle Göre Dinamik Katalog) */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">İlçe</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">İlçe *</label>
               <div className="relative">
                 <Navigation className="w-4 h-4 absolute left-3 top-3 text-slate-400 z-10" />
                 <select
                   name="district"
+                  required
                   value={formData.district}
                   onChange={handleInputChange}
                   disabled={!formData.city}
@@ -232,11 +266,13 @@ export default function KayitPage() {
 
             {/* 6. Açık Adres */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Açık Adres</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Açık Adres *</label>
               <div className="relative">
                 <MapPin className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
                 <textarea
                   name="address"
+                  required
+                  minLength={10}
                   rows={2}
                   value={formData.address}
                   onChange={handleInputChange}
@@ -251,10 +287,10 @@ export default function KayitPage() {
               disabled={busy}
               className="w-full bg-[#D97724] hover:bg-[#c3671c] text-white font-semibold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm mt-3"
             >
-              <span>Doğrulama Kodu Gönder</span>
+              <span>Hesap Oluştur</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <p className="text-xs leading-5 text-slate-500">Bu aşamada hesap için adınız ve telefonunuz kaydedilir. E-posta ve adres bilgileriniz henüz kaydedilmez.</p>
+            <p className="text-xs leading-5 text-slate-500">Telefon doğrulamasından sonra profil ve adres bilgileriniz güvenli biçimde kaydedilir.</p>
           </form>
         ) : (
           <div className="space-y-5 text-center">
