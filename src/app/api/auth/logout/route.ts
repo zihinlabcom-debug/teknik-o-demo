@@ -10,6 +10,7 @@ export async function POST(request:Request){
     if(error)return NextResponse.json({error:'Oturum kapatılamadı. Lütfen tekrar deneyin.'},{status:503});
     const response=NextResponse.redirect(new URL(appSurface()==='customer'||appSurface()==='all'?'/giris':surfaceHome(appSurface()),request.url),{status:303});
     response.cookies.delete(adminSessionCookie);
+    response.cookies.delete('tekniko-admin-password-session');
     return response;
   }catch{return NextResponse.json({error:'Oturum kapatılamadı. Lütfen tekrar deneyin.'},{status:503});}
 }

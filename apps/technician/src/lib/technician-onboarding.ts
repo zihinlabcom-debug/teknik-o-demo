@@ -3,7 +3,7 @@ import {createHmac,timingSafeEqual} from 'node:crypto';
 import {adminSupabase} from './account-supabase';
 import {normalizePhone} from './account-auth';
 
-export type TechnicianApplication={phone:string;fullName:string;email:string|null;
+export type TechnicianApplication={phone:string;fullName:string;email:string;
   categoryIds:string[];cityId:number;districtIds:number[];
   addressCityId:number;addressDistrictId:number;addressLine:string;issuedAt:number};
 
@@ -16,12 +16,12 @@ export function parseTechnicianApplication(value:unknown):TechnicianApplication|
   const data=value as Record<string,unknown>;
   const phone=typeof data.phone==='string'?normalizePhone(data.phone):null;
   const fullName=typeof data.fullName==='string'?data.fullName.trim():'';
-  const rawEmail=typeof data.email==='string'?data.email.trim():'';
+  const rawEmail=typeof data.email==='string'?data.email.trim().toLowerCase():'';
   const categories=Array.isArray(data.categoryIds)?data.categoryIds:null;
   const districts=Array.isArray(data.districtIds)?data.districtIds:null;
   const addressLine=typeof data.addressLine==='string'?data.addressLine.trim():'';
   if(!phone||fullName.length<2||fullName.length>200||rawEmail.length>320||
-    (rawEmail&&!email.test(rawEmail))||!categories||!districts||
+    !email.test(rawEmail)||!categories||!districts||
     categories.length<1||categories.length>30||districts.length<1||districts.length>100||
     !Number.isSafeInteger(data.cityId)||Number(data.cityId)<=0||
     !Number.isSafeInteger(data.addressCityId)||Number(data.addressCityId)<=0||
@@ -29,7 +29,7 @@ export function parseTechnicianApplication(value:unknown):TechnicianApplication|
     addressLine.length<10||addressLine.length>500||
     !categories.every(id=>typeof id==='string'&&uuid.test(id))||
     !districts.every(id=>Number.isSafeInteger(id)&&id>0))return null;
-  return {phone,fullName,email:rawEmail||null,categoryIds:[...new Set(categories)].sort(),
+  return {phone,fullName,email:rawEmail,categoryIds:[...new Set(categories)].sort(),
     cityId:Number(data.cityId),districtIds:[...new Set(districts)].sort((a,b)=>a-b),
     addressCityId:Number(data.addressCityId),addressDistrictId:Number(data.addressDistrictId),
     addressLine,issuedAt:Date.now()};

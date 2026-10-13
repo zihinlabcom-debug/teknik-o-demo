@@ -4,14 +4,14 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {acceptsAccountRole,authorizePath} from '../src/lib/account-auth.ts';
 import {appSurface,surfaceAllowsPath,surfaceHome} from '../src/lib/app-surface.ts';
-import {setFakeAccount,changeFakeRole,fakeStats} from './helpers/account-surface-db-double.mjs';
+import {setFakeAccount,fakeStats} from './helpers/account-surface-db-double.mjs';
 
 const {requestOtp,verifyOtp}=await import('../src/lib/account-otp.ts');
 const {parseTechnicianApplication,sealTechnicianApplication,openTechnicianApplication}=
   await import('../src/lib/technician-onboarding.ts');
 const phone='5000000701';
 
-test('customer/technician OTP combinations enforce exact role; admin OTP is disabled',async()=>{
+test('legacy SMS is disabled for every role without provider calls',async()=>{
   const roles=['customer','technician','admin'];
   for(const expectedRole of ['customer','technician']){
     for(const actualRole of roles){
@@ -20,10 +20,10 @@ test('customer/technician OTP combinations enforce exact role; admin OTP is disa
       const accepted=actualRole===expectedRole;
       assert.equal(acceptsAccountRole(actualRole,expectedRole),accepted);
       const requested=await requestOtp({phone,mode:'login',expectedRole});
-      assert.equal(requested.ok,accepted,`${expectedRole}/${actualRole} request`);
+      assert.equal(requested.ok,false,`${expectedRole}/${actualRole} request`);
       const verified=await verifyOtp({phone,token:'123456',expectedRole});
-      assert.equal(verified.ok,accepted,`${expectedRole}/${actualRole} verify`);
-      if(!accepted)assert.ok(fakeStats().signOutCount>=1);
+      assert.equal(verified.ok,false,`${expectedRole}/${actualRole} verify`);
+      assert.equal(fakeStats().otpRequests,0);
     }
   }
   assert.equal((await requestOtp({phone,mode:'login',expectedRole:'admin'})).ok,false);
@@ -78,38 +78,36 @@ test('browser cannot supply role or bypass the server-side technician provisioni
   const request=readFileSync(new URL('../src/app/api/auth/technician/otp/request/route.ts',import.meta.url),'utf8');
   const verify=readFileSync(new URL('../src/app/api/auth/technician/otp/verify/route.ts',import.meta.url),'utf8');
   const sql=readFileSync(new URL('../supabase/migrations/20261005165245_technician_signup_onboarding.sql',import.meta.url),'utf8');
-  assert.match(request,/expectedRole:'technician'/);
+  assert.match(request,/status:410/);
   assert.doesNotMatch(request,/role:body\.role|is_test:body\.is_test/);
-  assert.match(verify,/openTechnicianApplication/);
-  assert.match(verify,/onVerified/);
+  assert.match(verify,/status:410/);
+  assert.doesNotMatch(verify,/verifyOtp\(/);
   assert.match(sql,/security definer set search_path=''/);
   assert.match(sql,/revoke all on function public\.complete_technician_registration/);
   assert.match(sql,/grant execute on function public\.complete_technician_registration[\s\S]*to service_role/);
 });
 
-test('a fresh verified signup can become technician, but customer signup stays customer',async()=>{
-  setFakeAccount({id:'00000000-0000-4000-8000-000000000701',email:null,
-    role:'customer',is_test:false,is_active:true});
-  const customer=await verifyOtp({phone,token:'123456',expectedRole:'customer'});
-  assert.equal(customer.ok,true);
-  assert.equal(fakeStats().signOutCount,0);
-  const technician=await verifyOtp({phone,token:'123456',expectedRole:'technician',
-    onVerified:async()=>changeFakeRole('technician')});
-  assert.equal(technician.ok,true);
+test('legacy verification never calls a profile-completion callback',async()=>{
+  setFakeAccount({id:'00000000-0000-4000-8000-000000000701',email:null,role:'customer',is_test:false,is_active:true});
+  let called=false;
+  for(const expectedRole of ['customer','technician']){
+    const result=await verifyOtp({phone,token:'123456',expectedRole,onVerified:async()=>{called=true;}});
+    assert.equal(result.ok,false);
+  }
+  assert.equal(called,false);
+  assert.equal(fakeStats().otpRequests,0);
 });
 
-test('technician SMS can be retried only with server-authorized provisional intent',async()=>{
-  setFakeAccount({id:'00000000-0000-4000-8000-000000000701',email:null,
-    role:'customer',is_test:false,is_active:true});
-  const ordinary=await requestOtp({phone,mode:'signup',fullName:'TEST Usta',expectedRole:'technician'});
-  assert.equal(ordinary.ok,false);
-  const retry=await requestOtp({phone,mode:'signup',fullName:'TEST Usta',
-    expectedRole:'technician',allowProvisionalCustomer:true});
-  assert.equal(retry.ok,true);
-  assert.equal(fakeStats().otpRequests,1);
+test('provisional signup intent cannot re-enable SMS',async()=>{
+  setFakeAccount({id:'00000000-0000-4000-8000-000000000701',email:null,role:'customer',is_test:false,is_active:true});
+  for(const allowProvisionalCustomer of [false,true]){
+    const result=await requestOtp({phone,mode:'signup',fullName:'TEST Usta',expectedRole:'technician',allowProvisionalCustomer});
+    assert.equal(result.ok,false);
+  }
+  assert.equal(fakeStats().otpRequests,0);
 });
 
-test('customer/technician retain login design and admin has password-only entry',()=>{
+test('customer/technician retain login design and admin has personal email password entry',()=>{
   const component=readFileSync(new URL('../src/components/account-login-form.tsx',import.meta.url),'utf8');
   const customer=readFileSync(new URL('../src/app/giris/page.tsx',import.meta.url),'utf8');
   const technician=readFileSync(new URL('../src/app/giris-usta/page.tsx',import.meta.url),'utf8');
@@ -119,7 +117,9 @@ test('customer/technician retain login design and admin has password-only entry'
   assert.match(technician,/role="technician"/);
   assert.match(admin,/AdminPasswordLoginForm/);
   const adminPassword=readFileSync(new URL('../src/components/admin-password-login-form.tsx',import.meta.url),'utf8');
-  assert.match(adminPassword,/type="password"/);
+  assert.match(adminPassword,/type="email"/);
+  assert.match(adminPassword,/type=\{visible\?'text':'password'\}/);
+  assert.match(adminPassword,/autoComplete="current-password"/);
   assert.doesNotMatch(adminPassword,/type="tel"|SMS Kodu/);
   assert.equal(surfaceAllowsPath('/kayit','technician'),false);
   assert.equal(surfaceAllowsPath('/kayit-usta','customer'),false);

@@ -14,7 +14,7 @@ async function postProfile(body:Record<string,unknown>){
 export function CustomerProfileForm({profile}:{profile:CustomerProfileData}){
   const router=useRouter();
   const [name,setName]=useState(profile.name);
-  const [email,setEmail]=useState(profile.email);
+  const [email]=useState(profile.email);
   const [addresses,setAddresses]=useState<ProfileAddress[]>(profile.addresses);
   const [currentPassword,setCurrentPassword]=useState('');
   const [newPhone,setNewPhone]=useState('');
@@ -58,7 +58,7 @@ export function CustomerProfileForm({profile}:{profile:CustomerProfileData}){
       <h2 className="text-lg font-black">Kişisel bilgiler ve adresler</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-semibold">Ad soyad<input required minLength={2} maxLength={200} value={name} onChange={e=>setName(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>
-        <label className="text-sm font-semibold">E-posta<input type="email" maxLength={320} value={email} onChange={e=>setEmail(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>
+        <label className="text-sm font-semibold">E-posta<input type="email" maxLength={320} value={email} readOnly className="mt-2 w-full rounded-xl border p-3"/></label>
       </div>
       {addresses.map((address,index)=>{
         const available=profile.districts.filter(item=>item.cityId===address.cityId);
@@ -82,14 +82,14 @@ export function CustomerProfileForm({profile}:{profile:CustomerProfileData}){
         <h2 className="text-lg font-black">Telefonu değiştir</h2>
         <label className="mt-4 block text-sm">Yeni telefon<input value={newPhone} onChange={e=>setNewPhone(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
         <label className="mt-3 block text-sm">Mevcut şifre<input type="password" value={currentPassword} onChange={e=>setCurrentPassword(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
-        <button disabled={busy} onClick={()=>void run(()=>postProfile({action:'phone-start',phone:newPhone,currentPassword}),'Yeni telefonunuza doğrulama kodu gönderildi.')} className="mt-3 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">Kod gönder</button>
+        <button disabled={busy} onClick={()=>void run(()=>Promise.reject(new Error('Telefon değişikliği SMS doğrulaması yeniden açılana kadar kullanılamıyor.')),'Yeni telefonunuza doğrulama kodu gönderildi.')} className="mt-3 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">Kod gönder</button>
         <label className="mt-4 block text-sm">SMS kodu<input value={phoneToken} onChange={e=>setPhoneToken(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
-        <button disabled={busy} onClick={()=>void run(()=>postProfile({action:'phone-confirm',phone:newPhone,token:phoneToken}),'Telefon numaranız güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Telefonu doğrula</button>
+        <button disabled={busy} onClick={()=>void run(()=>Promise.reject(new Error('Telefon doğrulaması şu anda kapalı.')),'Telefon numaranız güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Telefonu doğrula</button>
       </div>
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-black">Şifreyi değiştir</h2>
-        <button disabled={busy} onClick={()=>void run(()=>postProfile({action:'password-start'}),'Telefonunuza güvenlik kodu gönderildi.')} className="mt-4 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">SMS kodu gönder</button>
-        <label className="mt-4 block text-sm">SMS kodu<input value={passwordToken} onChange={e=>setPasswordToken(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
+        <button disabled={busy} onClick={()=>void run(()=>postProfile({action:'password-start'}),'E-posta adresinize güvenlik kodu gönderildi.')} className="mt-4 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">E-posta kodu gönder</button>
+        <label className="mt-4 block text-sm">E-posta kodu<input value={passwordToken} onChange={e=>setPasswordToken(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
         <label className="mt-3 block text-sm">Yeni şifre<input type="password" minLength={10} maxLength={128} value={newPassword} onChange={e=>setNewPassword(e.target.value)} className="mt-1 w-full rounded-xl border p-3"/></label>
         <button disabled={busy} onClick={()=>void run(()=>postProfile({action:'password-confirm',token:passwordToken,password:newPassword}),'Şifreniz güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Şifreyi kaydet</button>
       </div>

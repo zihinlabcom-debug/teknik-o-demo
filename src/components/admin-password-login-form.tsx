@@ -1,23 +1,24 @@
 'use client';
 
 import {useState,type FormEvent} from 'react';
+import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 export function AdminPasswordLoginForm(){
   const router=useRouter();
-  const [password,setPassword]=useState('');
-  const [notice,setNotice]=useState('');
-  const [busy,setBusy]=useState(false);
+  const [email,setEmail]=useState('');const [password,setPassword]=useState('');
+  const [visible,setVisible]=useState(false);
+  const [notice,setNotice]=useState('');const [busy,setBusy]=useState(false);
   async function login(event:FormEvent){
     event.preventDefault();setBusy(true);setNotice('');
     try{
       const response=await fetch('/api/auth/admin/password',{method:'POST',
-        headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
+        headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
       const result=await response.json();
-      if(!response.ok){setNotice('Giriş bilgileri geçersiz.');return;}
+      if(!response.ok){setNotice(result.error||'Giriş bilgileri geçersiz.');return;}
       setPassword('');router.replace(result.redirect);router.refresh();
-    }catch{setNotice('Giriş bilgileri geçersiz.');}
+    }catch{setNotice('Giriş hizmetine ulaşılamıyor.');}
     finally{setBusy(false);}
   }
   return <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 font-sans text-[#0B1727]">
@@ -25,15 +26,26 @@ export function AdminPasswordLoginForm(){
       <header className="text-center"><h1><TeknikOBrand size="standard"/></h1>
         <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Yönetim Girişi</p>
         <h2 className="mt-7 text-2xl font-extrabold tracking-tight">Tekrar hoş geldiniz</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Yönetici parolanızla giriş yapın.</p></header>
-      <form className="mt-8" onSubmit={login}>
-        <label htmlFor="admin-password" className="block text-sm font-semibold text-slate-800">Yönetici parolası</label>
-        <input id="admin-password" type="password" autoComplete="current-password" required
-          value={password} onChange={event=>setPassword(event.target.value)}
-          className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-[#D97724] focus:outline-none"/>
-        <button type="submit" disabled={busy} className="mt-4 w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white shadow-sm disabled:opacity-50">Giriş Yap</button>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Yetkili yönetici e-postanız ve kişisel şifrenizle giriş yapın.</p></header>
+      <form className="mt-8 space-y-4" onSubmit={login}>
+        <label className="block text-sm font-semibold text-slate-800">E-posta adresi
+          <input type="email" autoComplete="username" maxLength={254} required value={email}
+            onChange={event=>setEmail(event.target.value)}
+            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3"/>
+        </label>
+        <label className="block text-sm font-semibold text-slate-800">Şifre
+          <input type={visible?'text':'password'} autoComplete="current-password" maxLength={128} required value={password}
+            onChange={event=>setPassword(event.target.value)}
+            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3"/>
+        </label>
+        <button type="button" aria-pressed={visible} onClick={()=>setVisible(v=>!v)} className="text-sm underline">
+          {visible?'Şifreyi gizle':'Şifreyi göster'}</button>
+        <button type="submit" disabled={busy} className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">
+          Giriş Yap</button>
+        <Link href="/sifremi-unuttum-admin" className="block text-center text-sm font-semibold text-[#A64D12] underline">Şifremi unuttum</Link>
       </form>
       {notice&&<p role="alert" className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-3 text-sm text-orange-900">{notice}</p>}
+      <p className="mt-5 text-center text-xs text-slate-500">Yeni yönetici hesabı yalnızca yetkili yönetim işlemiyle tanımlanabilir.</p>
     </div>
   </main>;
 }

@@ -20,12 +20,14 @@ test('technician form keeps subtitle style and separates address from service mu
   assert.match(html,/multiple=""/);
 });
 
-test('admin entry is password-only while customer and technician retain OTP form',async()=>{
+test('admin entry uses personal email and password while root legacy customer form is unchanged',async()=>{
   const {default:Admin}=await import('../src/app/giris-admin/page.tsx');
   const {default:Customer}=await import('../src/app/giris/page.tsx');
   const admin=renderToStaticMarkup(createElement(Admin));
   const customer=renderToStaticMarkup(createElement(Customer));
-  assert.match(admin,/Yönetici parolası/);assert.match(admin,/Giriş Yap/);
+  assert.match(admin,/type="email"/);assert.match(admin,/type="password"/);
+  assert.match(admin,/autoComplete="current-password"/);assert.match(admin,/Giriş Yap/);
+  assert.match(admin,/Şifremi unuttum/);
   assert.doesNotMatch(admin,/Telefon Numarası|SMS Doğrulama Kodu/);
   assert.match(customer,/Telefon Numarası/);
 });

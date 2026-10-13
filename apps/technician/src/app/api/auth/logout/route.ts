@@ -1,3 +1,4 @@
+import {safeAuthOrigin} from '@/lib/email-auth-policy';
 import {NextResponse} from 'next/server';
 import {serverSupabase} from '@/lib/account-supabase';
 
@@ -14,7 +15,7 @@ export async function POST(request:Request){
     }
 
     return NextResponse.redirect(
-      new URL('/giris-usta',request.url),
+      new URL('/giris-usta',safeAuthOrigin(process.env.EMAIL_AUTH_ORIGIN)),
       {status:303}
     );
   }catch{

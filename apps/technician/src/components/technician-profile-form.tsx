@@ -29,7 +29,7 @@ export function TechnicianProfileForm({data}:Props){
   const router=useRouter();
   const serviceCity=Number(data.areas[0]?.city_id??0);
   const [name,setName]=useState(data.user.name);
-  const [email,setEmail]=useState(data.user.email??'');
+  const [email]=useState(data.user.email??'');
   const [addressCityId,setAddressCityId]=useState(Number(data.profile.address_city_id??0));
   const [addressDistrictId,setAddressDistrictId]=useState(Number(data.profile.address_district_id??0));
   const [addressLine,setAddressLine]=useState(data.profile.address_line??'');
@@ -76,7 +76,7 @@ export function TechnicianProfileForm({data}:Props){
       <h2 className="text-lg font-black">Kişisel bilgiler ve hizmet alanı</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-semibold">Ad soyad<input required minLength={2} maxLength={200} value={name} onChange={e=>setName(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>
-        <label className="text-sm font-semibold">E-posta<input type="email" maxLength={320} value={email} onChange={e=>setEmail(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>
+        <label className="text-sm font-semibold">E-posta<input type="email" maxLength={320} value={email} readOnly className="mt-2 w-full rounded-xl border p-3"/></label>
         <label className="text-sm font-semibold">Adres ili<select required value={addressCityId||''} onChange={e=>{setAddressCityId(Number(e.target.value));setAddressDistrictId(0);}} className="mt-2 w-full rounded-xl border p-3"><option value="">Seçin</option>{data.cities.map(city=><option key={city.id} value={city.id}>{city.name}</option>)}</select></label>
         <label className="text-sm font-semibold">Adres ilçesi<select required value={addressDistrictId||''} onChange={e=>setAddressDistrictId(Number(e.target.value))} className="mt-2 w-full rounded-xl border p-3"><option value="">Seçin</option>{availableAddressDistricts.map(d=><option key={d.id} value={d.id}>{d.name}</option>)}</select></label>
         <label className="text-sm font-semibold sm:col-span-2">Açık adres<textarea required minLength={10} maxLength={500} value={addressLine} onChange={e=>setAddressLine(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>
@@ -116,14 +116,14 @@ export function TechnicianProfileForm({data}:Props){
         <h2 className="text-lg font-black">Telefonu değiştir</h2>
         <input placeholder="Yeni telefon" value={newPhone} onChange={e=>setNewPhone(e.target.value)} className="mt-4 w-full rounded-xl border p-3"/>
         <input type="password" placeholder="Mevcut şifre" value={currentPassword} onChange={e=>setCurrentPassword(e.target.value)} className="mt-3 w-full rounded-xl border p-3"/>
-        <button onClick={()=>void run(()=>postProfile({action:'phone-start',phone:newPhone,currentPassword}),'Yeni telefonunuza kod gönderildi.')} className="mt-3 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">Kod gönder</button>
+        <button onClick={()=>void run(()=>Promise.reject(new Error('Telefon değişikliği SMS doğrulaması yeniden açılana kadar kullanılamıyor.')),'Yeni telefonunuza kod gönderildi.')} className="mt-3 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">Kod gönder</button>
         <input placeholder="SMS kodu" value={phoneToken} onChange={e=>setPhoneToken(e.target.value)} className="mt-4 w-full rounded-xl border p-3"/>
-        <button onClick={()=>void run(()=>postProfile({action:'phone-confirm',phone:newPhone,token:phoneToken}),'Telefon güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Doğrula</button>
+        <button onClick={()=>void run(()=>Promise.reject(new Error('Telefon doğrulaması şu anda kapalı.')),'Telefon güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Doğrula</button>
       </div>
       <div className="rounded-3xl border border-slate-200 bg-white p-6">
         <h2 className="text-lg font-black">Şifreyi değiştir</h2>
-        <button onClick={()=>void run(()=>postProfile({action:'password-start'}),'Telefonunuza güvenlik kodu gönderildi.')} className="mt-4 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">SMS kodu gönder</button>
-        <input placeholder="SMS kodu" value={passwordToken} onChange={e=>setPasswordToken(e.target.value)} className="mt-4 w-full rounded-xl border p-3"/>
+        <button onClick={()=>void run(()=>postProfile({action:'password-start'}),'E-posta adresinize güvenlik kodu gönderildi.')} className="mt-4 rounded-xl bg-slate-900 px-4 py-2 font-bold text-white">E-posta kodu gönder</button>
+        <input placeholder="E-posta kodu" value={passwordToken} onChange={e=>setPasswordToken(e.target.value)} className="mt-4 w-full rounded-xl border p-3"/>
         <input type="password" placeholder="Yeni şifre" minLength={10} value={newPassword} onChange={e=>setNewPassword(e.target.value)} className="mt-3 w-full rounded-xl border p-3"/>
         <button onClick={()=>void run(()=>postProfile({action:'password-confirm',token:passwordToken,password:newPassword}),'Şifreniz güncellendi.')} className="mt-3 rounded-xl bg-[#D97724] px-4 py-2 font-bold text-white">Şifreyi kaydet</button>
       </div>

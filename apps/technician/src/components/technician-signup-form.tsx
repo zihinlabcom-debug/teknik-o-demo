@@ -70,7 +70,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
   const requestCode=async(event:FormEvent)=>{
     event.preventDefault();setBusy(true);setNotice('');
     try{
-      const response=await fetch('/api/auth/technician/otp/request',{
+      const response=await fetch('/api/auth/email/signup',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({mode:'signup',fullName,phone,email,password,categoryIds,cityId,districtIds,
           addressCityId,addressDistrictId,addressLine}),
@@ -83,7 +83,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
         return;
       }
       setStep('otp');
-      setNotice(result.delivery==='test'?'Yapılandırılmış test kodunu girin. SMS gönderilmedi.':'SMS doğrulama kodunu girin.');
+      setNotice('E-posta adresinize gönderilen 6 haneli kodu girin.');
     }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
     finally{setBusy(false);}
   };
@@ -91,8 +91,8 @@ export function TechnicianSignupForm({categories,cities,districts}:{
   const verifyCode=async(event:FormEvent)=>{
     event.preventDefault();setBusy(true);setNotice('');
     try{
-      const response=await fetch('/api/auth/technician/otp/verify',{
-        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,token}),
+      const response=await fetch('/api/auth/email/verify',{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,token}),
       });
       const result=await response.json();
       if(!response.ok){setNotice(result.error||'Başvuru tamamlanamadı.');return;}
@@ -117,8 +117,8 @@ export function TechnicianSignupForm({categories,cities,districts}:{
         <label className="block text-sm font-semibold">Telefon
           <input required type="tel" autoComplete="tel" value={phone} onChange={e=>setPhone(e.target.value)}
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
-        <label className="block text-sm font-semibold">E-posta (isteğe bağlı)
-          <input type="email" value={email} onChange={e=>setEmail(e.target.value)}
+        <label className="block text-sm font-semibold">E-posta
+          <input required type="email" value={email} onChange={e=>setEmail(e.target.value)}
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
         <label className="block text-sm font-semibold">Şifre
           <input required type="password" minLength={10} maxLength={128} autoComplete="new-password"
@@ -186,8 +186,13 @@ export function TechnicianSignupForm({categories,cities,districts}:{
         <p className="text-center text-sm text-slate-600">Hesabınız var mı? <Link href="/giris-usta" className="font-bold text-[#A64D12] underline">Usta Girişi</Link></p>
       </form>}
 
+      {step==='otp'&&<button type="button" disabled={busy} onClick={async()=>{
+        setBusy(true);try{const response=await fetch('/api/auth/email/resend',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+          const result=await response.json();setNotice(result.message||result.error);
+        }catch{setNotice('Kod gönderilemedi.');}finally{setBusy(false);}
+      }} className="mt-4 text-sm underline">Kodu yeniden gönder</button>}
       {step==='otp'&&<form className="mt-8 space-y-4" onSubmit={verifyCode}>
-        <label className="block text-sm font-semibold">SMS Doğrulama Kodu
+        <label className="block text-sm font-semibold">E-posta Doğrulama Kodu
           <input required inputMode="numeric" autoComplete="one-time-code" value={token}
             onChange={e=>setToken(e.target.value)}
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>

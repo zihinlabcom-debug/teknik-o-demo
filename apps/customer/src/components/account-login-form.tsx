@@ -1,11 +1,12 @@
 'use client';
 
+import {EmailLoginForm} from './email-login-form';
 import {useState,type FormEvent} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
-export function AccountLoginForm({role}:{role:'customer'|'technician'|'admin'}){
+function LegacyAccountLoginForm({role}:{role:'customer'|'technician'|'admin'}){
   const router=useRouter();
   const otpEndpoint=role==='customer'?'/api/auth/otp':`/api/auth/${role}/otp`;
   const passwordEndpoint=role==='customer'?'/api/auth/password/login':'/api/auth/technician/password';
@@ -101,4 +102,8 @@ export function AccountLoginForm({role}:{role:'customer'|'technician'|'admin'}){
       </div>
     </div>
   </main>;
+}
+
+export function AccountLoginForm({role}:{role:'customer'|'technician'|'admin'}){
+ return role==='admin'?<LegacyAccountLoginForm role={role}/>:<EmailLoginForm role={role}/>;
 }

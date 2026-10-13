@@ -18,7 +18,9 @@ test('admin application owns only admin routes and no customer or technician OTP
   assert.ok(routes.includes('api/auth/logout/route.ts'));
   assert.ok(routes.includes('api/admin/documents/[id]/route.ts'));
   assert.ok(routes.every(file=>file==='page.tsx'||file.startsWith('admin/')||
-    file.startsWith('giris-admin/')||file.startsWith('api/admin/')||
+    file.startsWith('giris-admin/')||file.startsWith('sifremi-unuttum-admin/')||
+    file.startsWith('sifre-yenile-admin/')||file.startsWith('api/admin/')||
+    file.startsWith('api/auth/admin/recovery/')||
     file==='api/auth/admin/password/route.ts'||file==='api/auth/logout/route.ts'));
   assert.ok(!routes.some(file=>/(^|\/)(giris|giris-usta|musteri|usta)(\/|$)/.test(file)));
   assert.ok(!routes.some(file=>/otp|diagnos|operations\/requests|upload/i.test(file)));

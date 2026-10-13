@@ -1,2 +1,2 @@
 import 'server-only';
-export {adminSessionCookie,validAdminSession} from '../../../../src/lib/admin-session';
+export {adminSessionCookie,adminSessionHeader,validAdminSession} from '../../../../src/lib/admin-session';

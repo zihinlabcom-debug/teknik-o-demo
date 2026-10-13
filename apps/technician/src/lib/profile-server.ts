@@ -1,5 +1,5 @@
 import 'server-only';
-import {adminSupabase,currentAccount} from './account-supabase';
+import {adminSupabase,currentAccount,serverSupabase} from './account-supabase';
 import {verifyCurrentPassword} from './account-password';
 import {OperationError} from './operation-error';
 
@@ -38,6 +38,8 @@ export async function getTechnicianProfile(){
   ]);
   if(userError||profileError||areaError||categoryError||documentError||catalogError||cityError||districtError||!user||!profile)
     throw new OperationError('profile_unavailable',503,'Profil bilgileri yüklenemedi.');
+  const {data:{user:authUser}}=await (await serverSupabase()).auth.getUser();
+  user.email=authUser?.email??null;
   let avatarUrl:string|null=null;
   if(profile.avatar_path){
     const {data}=await db.storage.from(avatarBucket).createSignedUrl(profile.avatar_path,600);
@@ -54,7 +56,10 @@ export async function updateTechnicianProfile(input:unknown){
   if(!await verifyCurrentPassword(account.id,data.currentPassword))
     throw new OperationError('invalid_password',403,'Mevcut şifre hatalı.');
   const name=typeof data.name==='string'?data.name.trim():'';
-  const email=typeof data.email==='string'?data.email.trim():'';
+  const {data:{user:authUser}}=await (await serverSupabase()).auth.getUser();
+  const email=authUser?.email??'';
+  if(!authUser?.email_confirmed_at||(typeof data.email==='string'&&data.email.trim().toLowerCase()!==email.toLowerCase()))
+    throw new OperationError('email_change_disabled',400,'E-posta değişikliği bu ekrandan yapılamaz.');
   const addressLine=typeof data.addressLine==='string'?data.addressLine.trim():'';
   const serviceDistrictIds=Array.isArray(data.serviceDistrictIds)?data.serviceDistrictIds.map(Number):[];
   if(name.length<2||name.length>200||email.length>320||addressLine.length<10||addressLine.length>500||

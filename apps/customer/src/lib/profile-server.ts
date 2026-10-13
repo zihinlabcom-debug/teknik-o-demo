@@ -1,5 +1,5 @@
 import 'server-only';
-import {adminSupabase,currentAccount} from './account-supabase';
+import {adminSupabase,currentAccount,serverSupabase} from './account-supabase';
 import {OperationError} from './operation-error';
 
 const avatarBucket='profile-avatars';
@@ -43,6 +43,8 @@ export async function getCustomerProfile():Promise<CustomerProfileData>{
   ]);
   if(userError||profileError||addressError||cityError||districtError||!user)
     throw new OperationError('profile_unavailable',503,'Profil bilgileri yüklenemedi.');
+  const {data:{user:authUser}}=await (await serverSupabase()).auth.getUser();
+  user.email=authUser?.email??null;
   let avatarUrl:string|null=null;
   if(profile?.avatar_path){
     const {data}=await db.storage.from(avatarBucket).createSignedUrl(profile.avatar_path,600);
@@ -60,7 +62,10 @@ export async function updateCustomerProfile(input:unknown){
   if(!input||typeof input!=='object')throw new OperationError('invalid_profile',400,'Profil bilgilerini kontrol edin.');
   const data=input as Record<string,unknown>;
   const name=typeof data.name==='string'?data.name.trim():'';
-  const email=typeof data.email==='string'?data.email.trim():'';
+  const {data:{user:authUser}}=await (await serverSupabase()).auth.getUser();
+  const email=authUser?.email??'';
+  if(!authUser?.email_confirmed_at||(typeof data.email==='string'&&data.email.trim().toLowerCase()!==email.toLowerCase()))
+    throw new OperationError('email_change_disabled',400,'E-posta değişikliği bu ekrandan yapılamaz.');
   const addresses=Array.isArray(data.addresses)?data.addresses:[];
   if(name.length<2||name.length>200||email.length>320||addresses.length>3)
     throw new OperationError('invalid_profile',400,'Profil bilgilerini kontrol edin.');

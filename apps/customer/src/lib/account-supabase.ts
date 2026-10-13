@@ -46,6 +46,11 @@ export async function currentAccount(){
       const {data:{session}}=await db.auth.getSession();
       if(!validAdminSession(marker,user.id,session?.access_token))return null;
     }
+    if(data.role!=='admin'){
+      if(!user.email_confirmed_at||!user.email)return null;
+      const {data:ready,error:readyError}=await db.rpc('email_account_ready');
+      if(readyError||ready!==true)return null;
+    }
     return data as Account;
   }catch{return null;}
 }

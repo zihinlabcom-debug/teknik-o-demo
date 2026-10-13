@@ -3,7 +3,7 @@ import {createHmac,timingSafeEqual} from 'node:crypto';
 import {adminSupabase} from './account-supabase';
 import {normalizePhone} from './account-auth';
 
-export type CustomerApplication={phone:string;fullName:string;email:string|null;cityId:number;
+export type CustomerApplication={phone:string;fullName:string;email:string;cityId:number;
   districtId:number;addressLine:string;issuedAt:number};
 export const customerIntentCookie='tekniko-customer-registration';
 const emailPattern=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -13,13 +13,13 @@ export function parseCustomerApplication(value:unknown):CustomerApplication|null
   const data=value as Record<string,unknown>;
   const phone=typeof data.phone==='string'?normalizePhone(data.phone):null;
   const fullName=typeof data.fullName==='string'?data.fullName.trim():'';
-  const email=typeof data.email==='string'?data.email.trim():'';
+  const email=typeof data.email==='string'?data.email.trim().toLowerCase():'';
   const addressLine=typeof data.addressLine==='string'?data.addressLine.trim():'';
   if(!phone||fullName.length<2||fullName.length>200||email.length>320||
-    (email&&!emailPattern.test(email))||!Number.isSafeInteger(data.cityId)||Number(data.cityId)<=0||
+    !emailPattern.test(email)||!Number.isSafeInteger(data.cityId)||Number(data.cityId)<=0||
     !Number.isSafeInteger(data.districtId)||Number(data.districtId)<=0||
     addressLine.length<10||addressLine.length>500)return null;
-  return {phone,fullName,email:email||null,cityId:Number(data.cityId),districtId:Number(data.districtId),
+  return {phone,fullName,email,cityId:Number(data.cityId),districtId:Number(data.districtId),
     addressLine,issuedAt:Date.now()};
 }
 

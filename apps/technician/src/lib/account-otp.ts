@@ -1,3 +1,4 @@
+import {smsAuthEnabled,smsDisabledMessage} from './email-auth-policy';
 import {adminSupabase,serverSupabase} from './account-supabase';
 import {acceptsAccountRole,accountDestination,normalizePhone,phoneLookupVariants,testOtpAllowed,testOtpEnvironment,type AccountRole} from './account-auth';
 
@@ -24,6 +25,7 @@ async function testAccount(phone:string){
 
 export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string;
   expectedRole?:AccountRole;allowProvisionalCustomer?:boolean}):Promise<OtpResult>{
+  if(!smsAuthEnabled())return {ok:false,error:smsDisabledMessage};
   const phone=normalizePhone(input.phone);
   const expectedRole=input.expectedRole??'customer';
   if(expectedRole==='admin')return {ok:false,error:'Bu giriş yöntemi kullanılamıyor.'};
@@ -52,6 +54,7 @@ export async function requestOtp(input:{phone:string;mode:Mode;fullName?:string;
 
 export async function verifyOtp(input:{phone:string;token:string;expectedRole?:AccountRole;
   onVerified?:(userId:string)=>Promise<void>}):Promise<OtpResult>{
+  if(!smsAuthEnabled())return {ok:false,error:smsDisabledMessage};
   const phone=normalizePhone(input.phone);
   const expectedRole=input.expectedRole??'customer';
   if(expectedRole==='admin')return {ok:false,error:'Bu giriş yöntemi kullanılamıyor.'};

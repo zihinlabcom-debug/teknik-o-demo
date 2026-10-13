@@ -1,3 +1,4 @@
+import {normalizeEmail,smsAuthEnabled,smsDisabledMessage} from './email-auth-policy';
 import 'server-only';
 import {createClient} from '@supabase/supabase-js';
 import {accountDestination,acceptsAccountRole,normalizePhone,type AccountRole} from './account-auth';
@@ -11,25 +12,21 @@ export function validPassword(value:unknown):value is string{
     /[a-z]/.test(value)&&/[A-Z]/.test(value)&&/[0-9]/.test(value);
 }
 
-export async function loginWithPassword(phoneInput:unknown,password:unknown,expectedRole:AccountRole):Promise<AuthResult>{
-  const phone=typeof phoneInput==='string'?normalizePhone(phoneInput):null;
-  if(!phone||typeof password!=='string'||password.length>128)
-    return {ok:false,error:'Telefon numarası veya şifre hatalı.'};
-  try{
-    const db=await serverSupabase({writeCookies:true});
-    const {data,error}=await db.auth.signInWithPassword({phone,password});
-    if(error||!data.user)return {ok:false,error:'Telefon numarası veya şifre hatalı.'};
-    const {data:account,error:accountError}=await db.from('users')
-      .select('role,is_active').eq('id',data.user.id).maybeSingle();
-    if(accountError||!account||account.is_active!==true||!acceptsAccountRole(account.role,expectedRole)){
-      await db.auth.signOut({scope:'local'});
-      return {ok:false,error:'Bu hesap bu uygulamada kullanılamaz.'};
-    }
-    return {ok:true,redirect:accountDestination(expectedRole)};
-  }catch{return {ok:false,error:'Giriş hizmetine şu anda ulaşılamıyor.'};}
+export async function loginWithPassword(emailInput:unknown,password:unknown,expectedRole:AccountRole):Promise<AuthResult>{
+  const email=normalizeEmail(emailInput);
+  if(!email||typeof password!=='string'||password.length>128)return {ok:false,error:'E-posta veya şifre hatalı.'};
+  const db=await serverSupabase({writeCookies:true});
+  const {data,error}=await db.auth.signInWithPassword({email,password});
+  if(error||!data.user)return {ok:false,error:'E-posta veya şifre hatalı.'};
+  const account=await currentAccount();
+  if(!account||!acceptsAccountRole(account.role,expectedRole)){
+    await db.auth.signOut({scope:'local'});return {ok:false,error:'Bu uygulamaya erişilemiyor.'};
+  }
+  return {ok:true,redirect:accountDestination(expectedRole)};
 }
 
 export async function signUpWithPassword(input:{phone:unknown;password:unknown;fullName:unknown}):Promise<SignupResult>{
+  if(!smsAuthEnabled())return {ok:false,error:smsDisabledMessage};
   const phone=typeof input.phone==='string'?normalizePhone(input.phone):null;
   const fullName=typeof input.fullName==='string'?input.fullName.trim():'';
   if(!phone||fullName.length<2||fullName.length>200||!validPassword(input.password))
@@ -49,15 +46,18 @@ export async function verifyCurrentPassword(userId:string,password:unknown){
   if(typeof password!=='string'||password.length>128)return false;
   const admin=adminSupabase();
   const {data:authAccount,error}=await admin.auth.admin.getUserById(userId);
-  const phone=authAccount.user?.phone?normalizePhone(authAccount.user.phone):null;
-  if(error||!phone)return false;
+  const email=normalizeEmail(authAccount.user?.email);
+  if(error||!email||!authAccount.user?.email_confirmed_at)return false;
   const {url,key}=publicSupabaseConfig();
   const verifier=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
-  const {data,error:loginError}=await verifier.auth.signInWithPassword({phone,password});
-  return !loginError&&data.user?.id===userId;
+  const {data,error:loginError}=await verifier.auth.signInWithPassword({email,password});
+  const valid=!loginError&&data.user?.id===userId;
+  if(data.session)await verifier.auth.signOut({scope:'local'});
+  return valid;
 }
 
 export async function beginPhoneChange(newPhoneInput:unknown,currentPassword:unknown,expectedRole:AccountRole){
+  if(!smsAuthEnabled())return {ok:false as const,error:'Telefon değişikliği SMS doğrulaması yeniden açılana kadar kullanılamıyor.'};
   const account=await currentAccount();
   const newPhone=typeof newPhoneInput==='string'?normalizePhone(newPhoneInput):null;
   if(!account||account.role!==expectedRole)return {ok:false as const,error:'Aktif oturum gerekli.'};
@@ -69,6 +69,7 @@ export async function beginPhoneChange(newPhoneInput:unknown,currentPassword:unk
 }
 
 export async function confirmPhoneChange(newPhoneInput:unknown,tokenInput:unknown,expectedRole:AccountRole){
+  if(!smsAuthEnabled())return {ok:false as const,error:'Telefon değişikliği SMS doğrulaması yeniden açılana kadar kullanılamıyor.'};
   const account=await currentAccount();
   const phone=typeof newPhoneInput==='string'?normalizePhone(newPhoneInput):null;
   const token=typeof tokenInput==='string'?tokenInput.trim():'';
@@ -91,7 +92,7 @@ export async function beginPasswordChange(expectedRole:AccountRole){
   const account=await currentAccount();
   if(!account||account.role!==expectedRole)return {ok:false as const,error:'Aktif oturum gerekli.'};
   const {error}=await (await serverSupabase({writeCookies:true})).auth.reauthenticate();
-  return error?{ok:false as const,error:'SMS doğrulaması başlatılamadı.'}:{ok:true as const};
+  return error?{ok:false as const,error:'E-posta doğrulaması başlatılamadı.'}:{ok:true as const};
 }
 
 export async function confirmPasswordChange(password:unknown,nonceInput:unknown,expectedRole:AccountRole){

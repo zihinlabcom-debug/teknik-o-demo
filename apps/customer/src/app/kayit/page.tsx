@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
 import {RegistrationHeader} from '@/components/registration-header';
 import { 
   User, 
@@ -39,8 +38,12 @@ export default function KayitPage() {
   const [busy,setBusy]=useState(false);
   useEffect(() => {
     const loadCities = async () => {
-      const { data, error } = await supabase.from('cities').select('id,name').eq('is_active', true).order('plate_code');
-      if (!error && data) setCities(data);
+      try{
+        const response=await fetch('/api/auth/email/catalog');
+        const result=await response.json();
+        if(!response.ok)throw new Error('Catalog unavailable');
+        setCities(result.items);
+      }catch{setNotice('İl seçenekleri yüklenemedi. Lütfen sayfayı yenileyin.');}
     };
     loadCities();
   }, []);
@@ -51,8 +54,12 @@ export default function KayitPage() {
         setDistricts([]);
         return;
       }
-      const { data, error } = await supabase.from('districts').select('id,city_id,name').eq('city_id', selectedCityId).eq('is_active', true).order('name');
-      if (!error && data) setDistricts(data);
+      try{
+        const response=await fetch('/api/auth/email/catalog?cityId='+selectedCityId);
+        const result=await response.json();
+        if(!response.ok)throw new Error('Catalog unavailable');
+        setDistricts(result.items);
+      }catch{setNotice('İlçe seçenekleri yüklenemedi. Lütfen tekrar seçin.');}
     };
     loadDistricts();
   }, [selectedCityId]);
@@ -83,7 +90,7 @@ export default function KayitPage() {
     }
     setBusy(true);setNotice('');
     try{
-      const response=await fetch('/api/auth/password/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      const response=await fetch('/api/auth/email/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
         phone:formData.phone,fullName:formData.fullName,email:formData.email,password:formData.password,
         cityId:Number(formData.city),districtId:Number(formData.district),addressLine:formData.address,
       })});
@@ -91,7 +98,7 @@ export default function KayitPage() {
       if(!response.ok){setNotice(result.error||'Doğrulama başlatılamadı.');return;}
       if(result.requiresOtp===false){router.replace(result.redirect||'/hizmetler');router.refresh();return;}
       setAuthStep('otp');
-      if(result.delivery==='test')setNotice('Test hesabı için yapılandırılmış test kodunu girin. SMS gönderilmedi.');
+      setNotice('E-posta adresinize gönderilen 6 haneli kodu girin.');
     }catch{setNotice('Doğrulama hizmetine ulaşılamıyor.');}
     finally{setBusy(false);}
   };
@@ -118,7 +125,7 @@ export default function KayitPage() {
   const handleVerifyOtp = async () => {
     setBusy(true);setNotice('');
     try{
-      const response=await fetch('/api/auth/otp/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:formData.phone,token:otpCode.join('')})});
+      const response=await fetch('/api/auth/email/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:formData.email,token:otpCode.join('')})});
       const result=await response.json();
       if(!response.ok){setNotice(result.error||'Kod doğrulanamadı.');return;}
       router.replace(result.redirect||'/hizmetler');router.refresh();
@@ -202,12 +209,13 @@ export default function KayitPage() {
 
             {/* 3. E-mail Adresi */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">E-mail Adresi</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">E-posta Adresi *</label>
               <div className="relative">
                 <Mail className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
                 <input
                   type="email"
                   name="email"
+                  required
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="ahmet@example.com"
@@ -290,7 +298,7 @@ export default function KayitPage() {
               <span>Hesap Oluştur</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <p className="text-xs leading-5 text-slate-500">Telefon doğrulamasından sonra profil ve adres bilgileriniz güvenli biçimde kaydedilir.</p>
+            <p className="text-xs leading-5 text-slate-500">E-posta doğrulamasından sonra profil ve adres bilgileriniz güvenli biçimde kaydedilir.</p>
           </form>
         ) : (
           <div className="space-y-5 text-center">
@@ -300,7 +308,7 @@ export default function KayitPage() {
             <div>
               <h3 className="text-xl font-bold text-slate-900">Doğrulama Kodu</h3>
               <p className="text-xs text-slate-500 mt-1">
-                <span className="font-semibold text-slate-700">{formData.phone}</span> için doğrulama kodunu giriniz.
+                <span className="font-semibold text-slate-700">{formData.email}</span> için e-posta doğrulama kodunu giriniz.
               </p>
             </div>
 
@@ -329,6 +337,12 @@ export default function KayitPage() {
               >
                 Kayıt Oluştur ve Giriş Yap
               </button>
+              <button type="button" disabled={busy} onClick={async()=>{
+                setBusy(true);
+                try{const response=await fetch('/api/auth/email/resend',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:formData.email})});
+                  const result=await response.json();setNotice(result.message||result.error);}
+                catch{setNotice('Kod gönderilemedi.');}finally{setBusy(false);}
+              }} className="block mx-auto text-sm underline">Kodu yeniden gönder</button>
               <button
                 onClick={() => setAuthStep('form')}
                 className="text-xs text-slate-500 hover:text-slate-700 block mx-auto underline"

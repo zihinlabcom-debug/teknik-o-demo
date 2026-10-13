@@ -2,7 +2,7 @@ import {createServerClient} from '@supabase/ssr';
 import {NextResponse,type NextRequest} from 'next/server';
 import {authorizePath,isAccountRole,requiredRole} from '@/lib/account-auth';
 import {appSurface,surfaceAllowsPath,surfaceHome} from '@/lib/app-surface';
-import {adminSessionCookie,validAdminSession} from '@/lib/admin-session';
+import {adminSessionCookie,adminSessionHeader,validAdminSession} from '@/lib/admin-session';
 
 export async function proxy(request:NextRequest){
   const surface=appSurface();
@@ -19,7 +19,8 @@ export async function proxy(request:NextRequest){
   let response=NextResponse.next({request});
   const adminSession=surface==='admin'||path==='/giris-admin'||path.startsWith('/admin/')||
     path==='/admin'||path.startsWith('/api/admin/')||path.startsWith('/api/auth/admin/');
-  const db=createServerClient(url,key,{...(adminSession?{cookieOptions:{httpOnly:true,
+  const marker=request.cookies.get(adminSessionCookie)?.value;
+  const db=createServerClient(url,key,{global:{headers:marker?{[adminSessionHeader]:marker}:{}},...(adminSession?{cookieOptions:{httpOnly:true,
     secure:process.env.NODE_ENV==='production',sameSite:'strict' as const,path:'/'}}:{}),cookies:{
     getAll(){return request.cookies.getAll();},
     setAll(values){
@@ -37,9 +38,14 @@ export async function proxy(request:NextRequest){
       if(!error&&data&&isAccountRole(data.role)&&typeof data.is_test==='boolean'&&typeof data.is_active==='boolean')account=data;
     }
     if(account?.role==='admin'){
+      if(!user?.email_confirmed_at||!user.email)account=null;
       const {data:{session}}=await db.auth.getSession();
       if(!validAdminSession(request.cookies.get(adminSessionCookie)?.value,user!.id,
         session?.access_token))account=null;
+      if(account){
+        const {data:authorized,error:authorizationError}=await db.rpc('is_app_admin');
+        if(authorizationError||authorized!==true)account=null;
+      }
     }
     const decision=authorizePath(path,account);
     if(!decision.allowed){

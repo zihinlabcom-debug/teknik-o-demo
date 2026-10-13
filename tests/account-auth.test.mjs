@@ -56,7 +56,8 @@ test('signup trigger fixes customer and real-account flags regardless of metadat
 
 test('auth routes forward only identity fields; role and is_test are never client inputs',()=>{
   const route=readFileSync(new URL('../src/app/api/auth/otp/request/route.ts',import.meta.url),'utf8');
-  assert.match(route,/requestOtp\(\{phone:body\.phone,mode:body\.mode,fullName:/);
+  assert.match(route,/status:410/);
+  assert.doesNotMatch(route,/requestOtp\(/);
   assert.doesNotMatch(route,/role:body\.role|is_test:body\.is_test/);
 });
 

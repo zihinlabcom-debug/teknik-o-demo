@@ -1,3 +1,4 @@
+import {safeAuthOrigin} from '@/lib/email-auth-policy';
 import {createServerClient} from '@supabase/ssr';
 import {NextResponse,type NextRequest} from 'next/server';
 import {accountSessionCookieOptions} from '@/lib/account-cookie-options';
@@ -23,7 +24,7 @@ export async function proxy(request:NextRequest){
         {error:'Bu işlem için yetkiniz yok.'},
         {status,headers:{'Cache-Control':'no-store'}}
       )
-      :NextResponse.redirect(new URL('/giris-usta',request.url));
+      :NextResponse.redirect(new URL('/giris-usta',safeAuthOrigin(process.env.EMAIL_AUTH_ORIGIN)));
 
   const url=process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -72,6 +73,9 @@ export async function proxy(request:NextRequest){
     if(data.role!=='technician'||data.is_active!==true)
       return deny(403);
 
+    if(!user.email_confirmed_at||!user.email)return deny(403);
+    const {data:ready,error:readyError}=await db.rpc('email_account_ready');
+    if(readyError||ready!==true)return deny(403);
     return response;
   }catch{
     return deny(503);
