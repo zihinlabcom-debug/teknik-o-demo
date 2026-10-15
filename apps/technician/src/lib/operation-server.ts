@@ -2,6 +2,7 @@ import 'server-only';
 import {adminSupabase} from '@/lib/account-supabase';
 import {OperationError} from '@/lib/operation-error';
 import {requireRole,requireId,failDb} from '@/lib/operation-guard';
+import {captureCompletedIyzicoJob,prepareIyzicoJobCompletion} from '@/lib/finance/iyzico-job-capture';
 
 export {OperationError,operationErrorResponse} from '@/lib/operation-error';
 
@@ -36,20 +37,19 @@ export async function startTechnicianJob(jobId:string){
   return {id:data};
 }
 
-export async function completeTechnicianJob(jobId:string){
+export async function completeTechnicianJob(jobId:string,ip='127.0.0.1'){
   requireId(jobId);
   const account=await requireRole('technician');
   const db=adminSupabase();
-
+  const iyzico=await prepareIyzicoJobCompletion(db,jobId,account.id);
   const {data,error}=await db.rpc('complete_service_job',{
     p_job_id:jobId,
     p_technician_id:account.id,
   });
-
   if(error)failDb(error,'İş tamamlama');
-  return {id:data};
+  const payment=iyzico?await captureCompletedIyzicoJob(db,iyzico,jobId,ip):null;
+  return {id:data,...(payment?{payment}: {})};
 }
-
 type AppointmentDbError={message?:string}|null;
 
 function failAppointmentDb(error:AppointmentDbError):never{

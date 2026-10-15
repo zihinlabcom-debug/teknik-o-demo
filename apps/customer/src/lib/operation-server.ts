@@ -7,6 +7,7 @@ import {serviceRequestAssessment} from '@/lib/service-request-assessment';
 import {acceptedMaximumPrice} from '@/lib/service-request-accepted-price';
 import {OperationError} from '@/lib/operation-error';
 import {isSandboxPendingRequestMode} from '@/lib/finance/sandbox-contract';
+import {isIyzicoSandboxPendingRequestMode} from '@/lib/finance/iyzico/iyzico-stage12-contract';
 import {requireRole,requireId,failDb} from '@/lib/operation-guard';
 export {OperationError,operationErrorResponse} from '@/lib/operation-error';
 export {adminRequestList,adminRequestDetail} from '@/lib/admin-request-read';
@@ -89,21 +90,27 @@ export async function createCustomerServiceRequest(input:{
   };
   // Fail closed on invalid test configuration; legacy path is unchanged when disabled.
   const sandboxFinance=Boolean(acceptedPrice)&&isSandboxPendingRequestMode(process.env);
-  if(sandboxFinance&&account.is_test!==true)
+  const iyzicoFinance=Boolean(acceptedPrice)&&isIyzicoSandboxPendingRequestMode(process.env);
+  if(sandboxFinance&&iyzicoFinance)
+    throw new OperationError('finance_provider_conflict',503,'Finans test sağlayıcısı yapılandırması geçersiz.');
+  if((sandboxFinance||iyzicoFinance)&&account.is_test!==true)
     throw new OperationError('finance_lab_test_only',403,'Bu ödeme testi yalnızca test hesabında kullanılabilir.');
-  const {data,error}=acceptedPrice&&sandboxFinance?await db.rpc('create_payment_pending_service_request_v2',{
+  const financeArgs=acceptedPrice?{
     ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
     p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
     p_breakdown:acceptedPrice.breakdown,p_payment_idempotency_key:`pending:${fingerprint}`,
-  }):acceptedPrice?await db.rpc('create_priced_service_request',{
-    ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
-    p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
-    p_breakdown:acceptedPrice.breakdown,
-  }):await db.rpc('create_service_request',args);
+  }:null;
+  const {data,error}=acceptedPrice&&sandboxFinance?await db.rpc('create_payment_pending_service_request_v2',financeArgs!):
+    acceptedPrice&&iyzicoFinance?await db.rpc('create_iyzico_payment_pending_service_request_v3',financeArgs!):
+    acceptedPrice?await db.rpc('create_priced_service_request',{
+      ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
+      p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
+      p_breakdown:acceptedPrice.breakdown,
+    }):await db.rpc('create_service_request',args);
   if(error&&/existing request schedule mismatch/i.test(error.message??''))
     throw new OperationError('request_schedule_conflict',409,'Bu değerlendirme için daha önce farklı bir zaman tercihiyle talep oluşturuldu.');
   if(error)failDb(error,'Hizmet talebi');
-  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY';paymentIntentId?:string;paymentStatus?:string;distributionStarted?:boolean}:{id:data as string};
+  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY';paymentIntentId?:string;paymentStatus?:string;paymentProvider?:'fake'|'iyzico';distributionStarted?:boolean}:{id:data as string};
 }
 export async function acceptCustomerQuote(quoteId:string){
   requireId(quoteId); const account=await requireRole('customer'); const db=adminSupabase();
