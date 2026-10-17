@@ -13,21 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TEKNİK-O",
-  description: "Teknik Servis Çağrı ve Takip Platformu",
-  applicationName: "TEKNİK-O",
+  title: "HizmetPey",
+  description: "Ev hizmetlerini güvenle planlama ve takip platformu",
+  applicationName: "HizmetPey",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "TEKNİK-O",
+    title: "HizmetPey",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

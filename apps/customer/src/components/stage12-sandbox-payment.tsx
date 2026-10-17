@@ -57,14 +57,14 @@ export function Stage12SandboxPayment({intentId}:{intentId:string}){
     }finally{setBusy(false);}
   }
 
-  return <section aria-label="Stage 12 test ödemesi" className="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3">
-    <p className="text-xs font-black text-amber-950">Yalnızca test — gerçek para çekilmez</p>
+  return <section aria-label="Stage 12 test ödemesi" className="mt-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 shadow-sm">
+    <p className="text-[10px] font-black uppercase tracking-[0.14em] text-amber-950">Sandbox · Yalnızca test — gerçek para çekilmez</p>
     <p className="mt-1 text-xs text-amber-900">Usta dağıtımı için sahte ön provizyonu deneyebilirsiniz.</p>
     {(phase==='pending'||phase==='declined')&&<div className="mt-3 grid grid-cols-2 gap-2">
-      <button type="button" disabled={busy} onClick={()=>void decide(true)} className="rounded-xl bg-emerald-700 px-3 py-2 text-xs font-bold text-white disabled:opacity-50">
+      <button type="button" disabled={busy} onClick={()=>void decide(true)} className="min-h-11 rounded-xl bg-[#C86B32] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">
         {busy?'İşleniyor…':'Test onayla'}
       </button>
-      <button type="button" disabled={busy} onClick={()=>void decide(false)} className="rounded-xl border border-red-500 px-3 py-2 text-xs font-bold text-red-800 disabled:opacity-50">
+      <button type="button" disabled={busy} onClick={()=>void decide(false)} className="min-h-11 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 disabled:opacity-50">
         Test reddet
       </button>
     </div>}

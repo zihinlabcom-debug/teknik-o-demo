@@ -25,5 +25,6 @@ export default async function CustomerRequestDetail({params}:{params:Promise<{id
     {offered&&!accepted&&<PanelCard title="Fiyat teklifi"><p className="mb-4 text-sm">{offered.total_amount} {offered.currency}</p><OperationActionButton endpoint={`/api/operations/quotes/${offered.id}/accept`} label="Teklifi kabul et" confirmText="Bu fiyat teklifini kabul ediyor musunuz?"/></PanelCard>}
     <PanelCard title="Randevu">{d.appointments.length?d.appointments.map(a=><p key={a.id} className="text-sm">{a.status} — {new Date(a.starts_at).toLocaleString('tr-TR')}</p>):<EmptyPanelState>Henüz randevu yok.</EmptyPanelState>}</PanelCard>
     <PanelCard title="Durum zaman çizelgesi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {e.event_type}</p>):<EmptyPanelState>Henüz olay kaydı yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="İptal ve iade bilgisi"><p className="text-sm leading-6 text-slate-600">Çevrimiçi iptal ve iade işlemleri henüz bu ekrandan başlatılamıyor. Mevcut talebinizle ilgili bilgi için Destek Merkezi üzerinden iletişim kanalını kullanabilirsiniz.</p></PanelCard>
   </div></>;
 }

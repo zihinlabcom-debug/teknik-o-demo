@@ -21,14 +21,14 @@ export function DiagnosisProgress({answeredSystemQuestions,isAnalyzing,resultSta
 }
 export function ServiceResultCard({result,onRequestTechnician,onReject}:{result:ServicePricePresentation|null;onRequestTechnician:()=>void;onReject:()=>void}){
   if(!result)return null;
-  return <section aria-label="Servis fiyatı" className="mt-4 bg-white rounded-2xl border-2 border-[#EE6C13] shadow-lg p-4 space-y-3">
-    <h3 className="text-sm font-bold text-slate-900">{result.title}</h3>
-    {result.amount?<p className="text-lg font-black text-[#EE6C13]">{result.amount}</p>:result.lines.length?
+  return <section aria-label="Servis fiyatı" className="mt-4 space-y-3 rounded-[22px] border-2 border-[#C86B32] bg-white p-4 shadow-[0_14px_34px_rgba(200,107,50,0.14)]">
+    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#B85F2A]">Fiyat değerlendirmesi</p><h3 className="text-sm font-bold text-[#082B4C]">{result.title}</h3>
+    {result.amount?<p className="text-xl font-black text-[#B85F2A]">{result.amount}</p>:result.lines.length?
       <dl className="space-y-1 text-xs text-slate-700">{result.lines.map(line=><div key={line.label} className="flex justify-between gap-3"><dt>{line.label}</dt><dd className="font-semibold">{line.value}</dd></div>)}</dl>:
       <p className="text-lg font-black text-slate-700">Belirsiz</p>}
     <div className="grid grid-cols-2 gap-2">
-      <button type="button" onClick={onRequestTechnician} className="bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-2 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95"><Wrench className="w-3.5 h-3.5" />Usta çağır</button>
-      <button type="button" onClick={onReject} className="bg-red-600 hover:bg-red-700 text-white py-2.5 px-2 rounded-xl font-bold text-xs transition-all active:scale-95">Talebi reddet</button>
+      <button type="button" onClick={onRequestTechnician} className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[#C86B32] px-2 py-2.5 text-xs font-bold text-white transition hover:bg-[#B85F2A] active:scale-95"><Wrench className="w-3.5 h-3.5" />Talep oluştur</button>
+      <button type="button" onClick={onReject} className="min-h-11 rounded-xl border border-slate-300 bg-white px-2 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-slate-50 active:scale-95">Vazgeç</button>
     </div>
   </section>;
 }

@@ -1,62 +1,39 @@
-'use client';
-
-import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
-import {ACTIVE_SERVICE_CATEGORIES,type ServiceCategory} from '@/lib/service-categories';
+import {ArrowRight,Clock3,ShieldCheck,Sparkles} from 'lucide-react';
+import {HizmetPeyBrand} from '@/components/brand/hizmetpey-brand';
 
-const images={
-  boiler:'/service-categories/boiler.jpg',
-  painting:'/service-categories/painting.jpg',
-  cleaning:'/service-categories/cleaning.jpg',
-  moving:'/service-categories/moving.jpg',
-  sofa_cleaning:'/service-categories/sofa-extraction.jpg',
-  carpet_cleaning:'/service-categories/carpet-extraction.jpg',
-};
-const categories=ACTIVE_SERVICE_CATEGORIES.map(category=>({
-  id:category.id,name:category.label,image:images[category.id],
-}));
+const services=[
+  {name:'Kombi',image:'/service-categories/boiler.jpg'},
+  {name:'Boya',image:'/service-categories/painting.jpg'},
+  {name:'Temizlik',image:'/service-categories/cleaning.jpg'},
+] as const;
 
 export default function LandingPage(){
-  const [selectedCategory,setSelectedCategory]=useState<ServiceCategory|null>(null);
+  return <main className="min-h-screen bg-[#E7ECF2] px-3 py-3 text-[#17263B] sm:px-5 sm:py-6">
+    <div className="relative mx-auto min-h-[calc(100vh-1.5rem)] max-w-[430px] overflow-hidden rounded-[30px] bg-[#F8FAFC] shadow-[0_24px_70px_rgba(8,43,76,0.18)] sm:min-h-[calc(100vh-3rem)]">
+      <section className="relative isolate overflow-hidden bg-[#082B4C] px-5 pb-10 pt-6 text-white">
+        <Image src="/service-categories/painting.jpg" alt="" fill sizes="430px" className="-z-20 object-cover opacity-35" priority/>
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(150deg,rgba(5,35,63,0.99)_8%,rgba(8,43,76,0.92)_62%,rgba(8,43,76,0.68)_100%)]"/>
+        <HizmetPeyBrand size="hero"/>
+        <p className="mt-10 text-[11px] font-bold uppercase tracking-[0.18em] text-[#F0A270]">Hizmette netlik</p>
+        <h1 className="mt-3 text-[34px] font-bold leading-[1.07] tracking-[-0.04em]">Sürprizlere değil,<br/>hizmete yer var.</h1>
+        <p className="mt-4 max-w-[320px] text-[15px] font-medium leading-6 text-white/85">Ne ödeyeceğini bil, hizmetini al.</p>
+        <Link href="/kayit" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-2xl bg-[#C86B32] px-5 text-sm font-bold text-white shadow-lg shadow-black/15 transition hover:bg-[#B85F2A]">Hemen Başla <ArrowRight className="size-4" aria-hidden="true"/></Link>
+      </section>
 
-  return <main className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-white px-6 py-8 font-sans text-[#0B1727] shadow-xl">
-    <header className="mt-2 flex flex-col items-center text-center">
-      <h1><TeknikOBrand size="hero" /></h1>
-      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">Teknik hizmetin akıllı platformu</p>
-    </header>
-
-    <section className="mt-10 text-center" aria-label="Teknik-O hakkında">
-      <h2 className="mx-auto max-w-sm text-[2rem] font-black leading-[1.12] tracking-tight sm:text-[2.35rem]">
-        Ev hizmetlerinin <span className="text-[#C65F16]">maliyetini</span> öğrenin.
-      </h2>
-      <p className="mx-auto mt-4 max-w-sm text-[0.95rem] font-medium leading-6 text-slate-700">
-        İhtiyacınız olan hizmeti seçin, maliyetini hemen öğrenin ve güvenle hizmet alın.
-      </p>
-    </section>
-
-    <section className="mt-9" aria-label="Hizmet kategorileri">
-      <div className="grid grid-cols-3 gap-3">
-        {categories.map(category=><button key={category.id} type="button"
-          aria-pressed={selectedCategory===category.id}
-          onClick={()=>setSelectedCategory(category.id)}
-          className={`flex min-w-0 flex-col items-center rounded-2xl border bg-white p-2 pb-3 text-center shadow-sm transition hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D97724] ${selectedCategory===category.id?'border-[#D97724] ring-2 ring-[#D97724]':'border-slate-100'}`}>
-          <span className="relative mb-2 aspect-square w-full overflow-hidden rounded-xl bg-slate-100">
-            <Image src={category.image} alt={`${category.name} hizmeti`} fill sizes="(max-width: 448px) 30vw, 130px" className="object-cover" />
-          </span>
-          <span className="flex min-h-8 items-center text-xs font-bold leading-tight">{category.name}</span>
-        </button>)}
-      </div>
-    </section>
-
-    <nav aria-label="Hesap işlemleri" className="mt-auto grid grid-cols-2 gap-3 pt-10">
-      <Link href="/kayit" className="flex min-h-12 items-center justify-center rounded-2xl bg-[#D97724] px-3 py-3 text-center text-sm font-bold text-white shadow-md transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D97724]">
-        Kayıt Ol
-      </Link>
-      <Link href="/giris" className="flex min-h-12 items-center justify-center rounded-2xl border-2 border-[#D97724] bg-white px-3 py-3 text-center text-sm font-bold text-[#A64D12] transition hover:bg-orange-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D97724]">
-        Giriş Yap
-      </Link>
-    </nav>
+      <section className="px-5 py-6" aria-labelledby="services-heading">
+        <div className="flex items-end justify-between gap-3"><div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#B85F2A]">Popüler hizmetler</p><h2 id="services-heading" className="mt-1 text-xl font-bold text-[#082B4C]">İhtiyacını seç</h2></div><Link href="/giris" className="text-xs font-bold text-[#2463AA]">Giriş Yap</Link></div>
+        <div className="mt-4 grid grid-cols-3 gap-2.5">
+          {services.map(service=><article key={service.name} className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"><div className="relative aspect-square"><Image src={service.image} alt="" fill sizes="130px" className="object-cover"/></div><p className="px-2 py-3 text-center text-xs font-bold text-[#082B4C]">{service.name}</p></article>)}
+        </div>
+        <div className="mt-5 grid gap-2.5" aria-label="HizmetPey avantajları">
+          <p className="flex items-center gap-3 rounded-2xl bg-white p-3 text-xs font-semibold shadow-sm"><ShieldCheck className="size-5 text-[#C86B32]" aria-hidden="true"/> Doğrulanmış hizmet akışı</p>
+          <p className="flex items-center gap-3 rounded-2xl bg-white p-3 text-xs font-semibold shadow-sm"><Clock3 className="size-5 text-[#C86B32]" aria-hidden="true"/> Hızlı değerlendirme ve takip</p>
+          <p className="flex items-center gap-3 rounded-2xl bg-white p-3 text-xs font-semibold shadow-sm"><Sparkles className="size-5 text-[#C86B32]" aria-hidden="true"/> Açık fiyat ve sade deneyim</p>
+        </div>
+        <nav className="mt-6 grid grid-cols-2 gap-3" aria-label="Hesap işlemleri"><Link href="/kayit" className="flex min-h-12 items-center justify-center rounded-2xl bg-[#C86B32] px-3 text-sm font-bold text-white">Kayıt Ol</Link><Link href="/giris" className="flex min-h-12 items-center justify-center rounded-2xl border-2 border-[#C86B32] bg-white px-3 text-sm font-bold text-[#A65326]">Giriş Yap</Link></nav>
+      </section>
+    </div>
   </main>;
 }

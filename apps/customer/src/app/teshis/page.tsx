@@ -3,7 +3,7 @@
 import React, {useState, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import Link from 'next/link';
 import {ArrowLeft, Send, Bot, User, Wrench} from 'lucide-react';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {HizmetPeyBrand} from '@/components/brand/hizmetpey-brand';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
@@ -95,7 +95,7 @@ export default function TeshisPage() {
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <h1><TeknikOBrand size="compact" /></h1>
+            <h1><HizmetPeyBrand size="compact" /></h1>
             <p className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
               AI Teşhis · Canlı Analiz Sistemi
@@ -139,7 +139,7 @@ export default function TeshisPage() {
               className={`w-8 h-8 rounded-full flex items-center justify-center text-xs shrink-0 ${
                 msg.sender === 'user'
                   ? 'bg-slate-800 text-white'
-                  : 'bg-orange-100 text-[#EE6C13]'
+                  : 'bg-orange-100 text-[#C86B32]'
               }`}
             >
               {msg.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -148,7 +148,7 @@ export default function TeshisPage() {
             <div
               className={`min-w-0 max-w-[calc(100%-3rem)] sm:max-w-[88%] break-words [overflow-wrap:anywhere] rounded-2xl p-3.5 text-sm sm:text-base leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-[#0B1727] text-white rounded-tr-none'
+                  ? 'bg-[#082B4C] text-white rounded-tr-none'
                   : 'bg-white border border-slate-200 text-slate-800 rounded-tl-none shadow-sm'
               }`}
             >
@@ -160,7 +160,7 @@ export default function TeshisPage() {
               {(response?.category==='painting'||response?.category==='cleaning')&&msg.sender==='ai'&&msg.options&&msg.options.length>0&&
                 <div className="mt-2 flex min-w-0 flex-wrap gap-2">
                   {msg.options.map(option=><button key={option} type="button" onClick={()=>void submit(option)}
-                    className="min-h-11 min-w-0 break-words rounded-xl border border-orange-200 bg-orange-50 px-3 py-2 text-sm font-semibold text-[#EE6C13]">
+                    className="min-h-11 min-w-0 break-words rounded-xl border border-orange-200 bg-orange-50 px-3 py-2 text-sm font-semibold text-[#C86B32]">
                     {option}
                   </button>)}
                 </div>}
@@ -180,7 +180,7 @@ export default function TeshisPage() {
         {/* YANIT BEKLENİYOR */}
         {isAnalyzing && (
           <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 flex items-center gap-3 animate-pulse">
-            <div className="w-6 h-6 border-2 border-[#EE6C13] border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-6 h-6 border-2 border-[#C86B32] border-t-transparent rounded-full animate-spin"></div>
             <div>
               <p className="text-xs font-bold text-slate-800">Yanıtınız değerlendiriliyor…</p>
               <p className="text-[10px] text-slate-500">Lütfen bekleyin.</p>
@@ -204,12 +204,12 @@ export default function TeshisPage() {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Ek detay yazın veya soru sorun..."
-          className="min-w-0 flex-1 min-h-12 bg-slate-100 text-base text-slate-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#EE6C13]"
+          className="min-w-0 flex-1 min-h-12 bg-slate-100 text-base text-slate-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C86B32]"
         />
         <button
           type="submit"
           disabled={isAnalyzing}
-          className="size-12 bg-[#EE6C13] hover:bg-[#d85e0e] text-white rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all active:scale-95 disabled:opacity-50"
+          className="size-12 bg-[#C86B32] hover:bg-[#B85F2A] text-white rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all active:scale-95 disabled:opacity-50"
         >
           <Send className="w-4 h-4" />
         </button>

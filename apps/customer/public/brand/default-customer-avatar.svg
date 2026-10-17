@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title description">
+  <title id="title">Varsayılan müşteri avatarı</title>
+  <desc id="description">Lacivert ve bakır tonlarında genel amaçlı profil illüstrasyonu</desc>
+  <defs>
+    <linearGradient id="background" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFF6FA"/>
+      <stop offset="1" stop-color="#BFD1DD"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="44" y1="82" x2="85" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123E61"/>
+      <stop offset="1" stop-color="#062A4B"/>
+    </linearGradient>
+    <radialGradient id="face" cx="0" cy="0" r="1" gradientTransform="translate(52 49) rotate(48) scale(51 44)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4C5A1"/>
+      <stop offset="1" stop-color="#D59670"/>
+    </radialGradient>
+    <clipPath id="circle"><circle cx="64" cy="64" r="62"/></clipPath>
+  </defs>
+  <g clip-path="url(#circle)">
+    <rect width="128" height="128" fill="url(#background)"/>
+    <circle cx="104" cy="24" r="33" fill="#C86B32" opacity=".16"/>
+    <circle cx="22" cy="112" r="38" fill="#FFFFFF" opacity=".34"/>
+    <path d="M22 132c1-27 18-44 42-44s41 17 42 44H22Z" fill="url(#shirt)"/>
+    <path d="M49 83h30v19c-8 8-22 8-30 0V83Z" fill="#D99C76"/>
+    <ellipse cx="64" cy="58" rx="31" ry="36" fill="url(#face)"/>
+    <path d="M35 52c0-24 14-38 33-38 17 0 29 10 31 28-7-2-13-7-17-14-9 10-24 16-47 17v7Z" fill="#173047"/>
+    <path d="M36 47c-1 6 0 14 2 20l5-14c15-1 30-7 40-17 3 7 8 12 15 15l-1-11c-3-17-15-26-29-26-18 0-31 13-32 33Z" fill="#203A50"/>
+    <ellipse cx="51" cy="60" rx="2.5" ry="3" fill="#243343"/>
+    <ellipse cx="77" cy="60" rx="2.5" ry="3" fill="#243343"/>
+    <path d="M57 75c4 3 10 3 14 0" fill="none" stroke="#9A5F4B" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M54 52c-4-2-8-1-11 1M74 52c4-2 8-1 11 1" fill="none" stroke="#5C3E37" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M63 60c-1 5-2 8-1 10 2 1 4 1 6 0" fill="none" stroke="#B8735A" stroke-width="2.3" stroke-linecap="round"/>
+    <path d="M44 91c5 8 12 12 20 12s15-4 20-12c11 7 20 20 22 41H22c2-21 11-34 22-41Z" fill="url(#shirt)"/>
+    <path d="M49 91c3 8 8 12 15 12s12-4 15-12l6 4c-5 11-12 17-21 17s-16-6-21-17l6-4Z" fill="#FFFFFF" opacity=".92"/>
+  </g>
+  <circle cx="64" cy="64" r="62" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+</svg>

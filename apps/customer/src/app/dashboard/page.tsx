@@ -17,7 +17,7 @@ import {ApartmentServiceConfigurator,EMPTY_APARTMENT_SELECTION,type ApartmentSel
 import {HomeCleaningServiceConfigurator,EMPTY_HOME_CLEANING_SELECTION,type HomeCleaningSelection} from '@/components/home-cleaning-service-configurator';
 import {PaintingServiceConfigurator,EMPTY_PAINTING_SELECTION,type PaintingSelection,type PaintingSubmissionStep} from '@/components/painting-service-configurator';
 import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {HizmetPeyBrand} from '@/components/brand/hizmetpey-brand';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
@@ -62,7 +62,7 @@ function DashboardContent() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const selectedCategoryStarted = useRef(false);
-  const navigationReady=isServiceCategory(requested);
+  const navigationReady=isServiceCategory(requested)&&requested!=='moving';
   const resultCard = !resultDismissed && response ? servicePricePresentation(response) : null;
   useEffect(()=>{
     if(!response)return;
@@ -86,7 +86,7 @@ function DashboardContent() {
     programmaticScrollTimerRef.current = window.setTimeout(() => { programmaticScrollRef.current = false; }, 100);
   }, []);
   useEffect(()=>{
-    if(!isServiceCategory(requested))router.replace('/hizmetler');
+    if(!isServiceCategory(requested)||requested==='moving')router.replace('/kategoriler');
   },[requested,router]);
   useLayoutEffect(() => {
     const area = messageScrollRef.current;
@@ -296,10 +296,10 @@ function DashboardContent() {
       lastMessage.text:null;
     return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
       <div className="mx-auto w-full max-w-[1240px] min-w-0 px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
-        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#D97724]">
+        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#C86B32]">
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
-        <div className="mb-6 flex justify-center"><TeknikOBrand size="standard" /></div>
+        <div className="mb-6 flex justify-center"><HizmetPeyBrand size="standard" /></div>
         {configurator==='painting'?<PaintingServiceConfigurator selection={paintingSelection}
           onChange={setPaintingSelection}
           serviceOptions={response?.resultState==='painting_service_selection'?response.options:paintingServiceOptions}
@@ -421,17 +421,17 @@ function DashboardContent() {
       
       {/* İÇERİK ALANI */}
       <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-6 pb-6 justify-between'}`}>
-        <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#D97724]`}>
+        <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#C86B32]`}>
           <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
         </Link>
         
         {/* LOGO VE SLOGAN ALANI */}
         <div className={`${chatViewport ? 'hidden' : 'flex'} flex-col items-center text-center`}>
-          <TeknikOBrand size="standard" className="mb-4" />
+          <HizmetPeyBrand size="standard" className="mb-4" />
 
-          <h1 className="text-2xl font-black text-[#0B1727] tracking-tight leading-tight">
+          <h1 className="text-2xl font-black text-[#082B4C] tracking-tight leading-tight">
             Sürpriz fiyat yok<br />
-            sorunu yaz <span className="text-[#EE6C13]">fiyatını al.</span>
+            sorunu yaz <span className="text-[#C86B32]">fiyatını al.</span>
           </h1>
 
           <p className="mt-1 text-xs text-slate-500 font-medium max-w-xs leading-relaxed">
@@ -443,7 +443,7 @@ function DashboardContent() {
         {!chatViewport && <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />}
 
         {/* CANLI SOHBET ALANI */}
-        <div className={`min-w-0 bg-white border-2 border-slate-200 focus-within:border-[#EE6C13] p-3 sm:p-5 shadow-md transition-colors flex flex-col ${chatViewport ? 'flex-1 min-h-0 rounded-none' : 'h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] rounded-3xl'}`}>
+        <div className={`min-w-0 bg-white border-2 border-slate-200 focus-within:border-[#C86B32] p-3 sm:p-5 shadow-md transition-colors flex flex-col ${chatViewport ? 'flex-1 min-h-0 rounded-none' : 'h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] rounded-3xl'}`}>
           
           <div ref={messageScrollRef} onScroll={() => {
             const area = messageScrollRef.current;
@@ -476,7 +476,7 @@ function DashboardContent() {
                       className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px] ${
                         msg.sender === 'user'
                           ? 'bg-slate-800 text-white'
-                          : 'bg-orange-100 text-[#EE6C13]'
+                          : 'bg-orange-100 text-[#C86B32]'
                       }`}
                     >
                       {msg.sender === 'user' ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
@@ -486,7 +486,7 @@ function DashboardContent() {
                       ref={msg.id === lastAssistantId ? lastAssistantRef : undefined}
                       className={`min-w-0 break-words [overflow-wrap:anywhere] p-3 sm:p-3.5 rounded-2xl leading-relaxed text-sm sm:text-base ${
                         msg.sender === 'user'
-                          ? 'bg-[#0B1727] text-white rounded-tr-none'
+                          ? 'bg-[#082B4C] text-white rounded-tr-none'
                           : 'bg-slate-100 text-slate-800 rounded-tl-none'
                       }`}
                     >
@@ -502,7 +502,7 @@ function DashboardContent() {
                           key={i}
                           type="button"
                           onClick={() => handleOptionClick(opt)}
-                          className="min-h-11 min-w-0 break-words bg-orange-50 hover:bg-orange-100 border border-orange-200 text-[#EE6C13] text-sm font-semibold px-3 py-2 rounded-xl transition-all active:scale-95"
+                          className="min-h-11 min-w-0 break-words bg-orange-50 hover:bg-orange-100 border border-orange-200 text-[#C86B32] text-sm font-semibold px-3 py-2 rounded-xl transition-all active:scale-95"
                         >
                           {opt}
                         </button>
@@ -515,7 +515,7 @@ function DashboardContent() {
 
             {isAnalyzing && (
               <div className="flex items-center gap-2 text-slate-400 text-[11px] animate-pulse">
-                <Bot className="w-4 h-4 text-[#EE6C13]" />
+                <Bot className="w-4 h-4 text-[#C86B32]" />
                 <span>Yanıtınız değerlendiriliyor…</span>
               </div>
             )}
@@ -567,7 +567,7 @@ function DashboardContent() {
                   onClick={() => fileInputRef.current?.click()}
                   className="flex min-h-11 items-center gap-1 whitespace-nowrap text-sm font-semibold text-slate-500 hover:text-slate-700 transition-colors"
                 >
-                  <Paperclip className="w-3.5 h-3.5 text-[#EE6C13]" />
+                  <Paperclip className="w-3.5 h-3.5 text-[#C86B32]" />
                   <span>Dosya / Foto</span>
                 </button>
 
@@ -586,7 +586,7 @@ function DashboardContent() {
               <button
                 type="submit"
                 disabled={isAnalyzing}
-                  className="flex min-h-11 shrink-0 items-center gap-1.5 bg-[#EE6C13] hover:bg-[#d85e0e] text-white px-5 py-2 rounded-xl font-bold text-sm shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
+                  className="flex min-h-11 shrink-0 items-center gap-1.5 bg-[#C86B32] hover:bg-[#B85F2A] text-white px-5 py-2 rounded-xl font-bold text-sm shadow-md shadow-orange-500/20 transition-all active:scale-95 disabled:opacity-50"
               >
                 <span>Gönder</span>
                 <Send className="w-3.5 h-3.5" />
@@ -601,7 +601,7 @@ function DashboardContent() {
         {/* ÜÇLÜ GÜVENİLİRLİK ÖZELLİKLERİ KARTLARI */}
         <div className={`${chatViewport ? 'hidden' : 'grid'} grid-cols-3 gap-2 bg-white border border-slate-100 rounded-2xl p-2.5 my-4 shadow-sm text-center`}>
           <div className="flex flex-col items-center gap-1 px-1">
-            <div className="text-[#EE6C13]">
+            <div className="text-[#C86B32]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <span className="text-[10px] font-bold text-slate-800 leading-tight">
@@ -610,7 +610,7 @@ function DashboardContent() {
           </div>
 
           <div className="flex flex-col items-center gap-1 px-1 border-x border-slate-100">
-            <div className="text-[#EE6C13]">
+            <div className="text-[#C86B32]">
               <Tag className="w-5 h-5" />
             </div>
             <span className="text-[10px] font-bold text-slate-800 leading-tight">
@@ -619,7 +619,7 @@ function DashboardContent() {
           </div>
 
           <div className="flex flex-col items-center gap-1 px-1">
-            <div className="text-[#EE6C13]">
+            <div className="text-[#C86B32]">
               <Lock className="w-5 h-5" />
             </div>
             <span className="text-[10px] font-bold text-slate-800 leading-tight">
@@ -632,7 +632,7 @@ function DashboardContent() {
         <div className={chatViewport ? 'hidden' : undefined}>
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-xs font-bold text-slate-900">Popüler Hizmetler</h3>
-            <button type="button" className="text-[11px] font-semibold text-[#EE6C13] flex items-center gap-0.5 hover:underline">
+            <button type="button" className="text-[11px] font-semibold text-[#C86B32] flex items-center gap-0.5 hover:underline">
               Tümünü Gör <ChevronRight className="w-3 h-3" />
             </button>
           </div>
@@ -647,17 +647,17 @@ function DashboardContent() {
       {/* FOOTER */}
       <footer className={`${chatViewport ? 'hidden' : 'flex'} bg-[#0A182E] text-white py-3 px-6 rounded-t-3xl items-center justify-between text-xs font-semibold shrink-0`}>
         <div className="flex items-center gap-1.5">
-          <ShieldCheck className="w-4 h-4 text-[#EE6C13]" />
+          <ShieldCheck className="w-4 h-4 text-[#C86B32]" />
           <span>Güvenli</span>
         </div>
         <span className="text-slate-600">|</span>
         <div className="flex items-center gap-1.5">
-          <Zap className="w-4 h-4 text-[#EE6C13]" />
+          <Zap className="w-4 h-4 text-[#C86B32]" />
           <span>Hızlı</span>
         </div>
         <span className="text-slate-600">|</span>
         <div className="flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4 text-[#EE6C13]" />
+          <Sparkles className="w-4 h-4 text-[#C86B32]" />
           <span>Şeffaf</span>
         </div>
       </footer>

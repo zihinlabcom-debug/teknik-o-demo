@@ -28,25 +28,25 @@ export function OperationPanelShell({area,subtitle,links,children,isTest}:{
 }
 
 export function PanelSubNav({links}:{links:readonly PanelLink[]}){
-  return <nav aria-label="Müşteri paneli navigasyonu" className="mb-7 flex max-w-full gap-2 overflow-x-auto pb-1">
+  return <nav aria-label="Müşteri paneli navigasyonu" className="mb-6 flex max-w-full gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
     {links.map(link=><Link key={link.href} href={link.href}
-      className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-[#D97724] hover:text-[#B75D17]">{link.label}</Link>)}
+      className="shrink-0 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-bold text-slate-600 shadow-sm transition hover:border-[#C86B32]/50 hover:text-[#A65326]">{link.label}</Link>)}
   </nav>;
 }
 
 export function PanelHeading({title,description}:{title:string;description:string}){
-  return <header className="mb-7"><h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>
-    <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{description}</p></header>;
+  return <header className="mb-6"><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B85F2A]">HizmetPey</p><h1 className="mt-1 text-[28px] font-bold leading-tight tracking-[-0.035em] text-[#082B4C]">{title}</h1>
+    <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></header>;
 }
 
 export function PanelCard({title,children}:{title:string;children:ReactNode}){
-  return <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6" aria-label={title}>
-    <h2 className="text-lg font-bold">{title}</h2><div className="mt-4">{children}</div>
+  return <section className="min-w-0 rounded-[22px] border border-slate-200 bg-white p-4 shadow-[0_10px_28px_rgba(8,43,76,0.06)]" aria-label={title}>
+    <h2 className="text-base font-bold text-[#082B4C]">{title}</h2><div className="mt-4">{children}</div>
   </section>;
 }
 
 export function EmptyPanelState({children}:{children:ReactNode}){
-  return <p role="status" className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm leading-6 text-slate-600">{children}</p>;
+  return <p role="status" className="rounded-2xl border border-dashed border-slate-300 bg-[#F7F9FC] p-4 text-sm leading-6 text-slate-600">{children}</p>;
 }
 
 export function PanelTable({title,columns,empty}:{title:string;columns:readonly string[];empty:string}){
