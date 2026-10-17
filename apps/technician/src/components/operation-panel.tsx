@@ -25,9 +25,13 @@ export function PanelHeading({title,description}:{title:string;description:strin
   return <TechnicianPageHero title={title} description={description}/>;
 }
 
-export function PanelCard({title,children}:{title:string;children:ReactNode}){
+export function PanelCard({title,children,headerAction}:{title:string;children:ReactNode;headerAction?:ReactNode}){
   return <section className="mb-4 min-w-0 rounded-2xl border border-[#DEE5ED] bg-white p-4 shadow-[0_8px_24px_rgba(8,43,76,0.06)]" aria-label={title}>
-    <h2 className="text-[18px] font-extrabold tracking-[-0.02em] text-[#082B4C]">{title}</h2><div className="mt-4">{children}</div>
+    <div className="flex items-start justify-between gap-3">
+      <h2 className="min-w-0 text-[18px] font-extrabold tracking-[-0.02em] text-[#082B4C]">{title}</h2>
+      {headerAction}
+    </div>
+    <div className="mt-4">{children}</div>
   </section>;
 }
 
