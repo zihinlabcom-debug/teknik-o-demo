@@ -2,7 +2,7 @@
 
 import {useEffect,useRef,useState,type FormEvent} from 'react';
 import Link from 'next/link';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {TechnicianAuthShell} from '@/components/technician-auth-shell';
 
 type Category={id:string;name:string};
 type City={id:number;name:string};
@@ -102,13 +102,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
     finally{setBusy(false);}
   };
 
-  return <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 font-sans text-[#0B1727]">
-    <div className="w-full max-w-lg rounded-3xl border border-slate-100 bg-white p-6 shadow-xl sm:p-8">
-      <header className="text-center"><h1><TeknikOBrand size="standard"/></h1>
-        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Usta Başvurusu</p>
-        <h2 className="mt-7 text-2xl font-extrabold">Teknik-O Usta</h2>
-        <p className="mt-2 text-sm text-slate-600">Emeğinizi koruyor, işinizi güvence altına alıyoruz.</p>
-      </header>
+  return <TechnicianAuthShell wide eyebrow="USTA BAŞVURUSU" title="HizmetPey Usta" description="Hizmet alanlarınızı belirleyin, başvurunuzu tamamlayın ve onay sürecini takip edin.">
 
       {step==='form'&&<form className="mt-8 space-y-5" onSubmit={requestCode}>
         <label className="block text-sm font-semibold">Ad Soyad
@@ -167,10 +161,10 @@ export function TechnicianSignupForm({categories,cities,districts}:{
               <input type="checkbox" checked={districtIds.includes(district.id)}
                 onChange={e=>setDistrictIds(current=>e.target.checked?[...current,district.id]:current.filter(id=>id!==district.id))}/>
               {district.name}</label>)}</div>
-            <button type="button" onClick={()=>setDistrictMenuOpen(false)} className="mt-2 rounded-lg bg-[#D97724] px-3 py-2 text-sm font-semibold text-white">Seçimi tamamla</button>
+            <button type="button" onClick={()=>setDistrictMenuOpen(false)} className="mt-2 rounded-lg bg-[#C86B32] px-3 py-2 text-sm font-semibold text-white">Seçimi tamamla</button>
           </div>}</div>
         <div><label htmlFor="qualification-documents" className="text-sm font-semibold">Mesleki yeterlilik / ustalık belgeleri</label>
-          <p className="mt-1 text-sm text-slate-600">Mesleğinizle ilgili sertifika veya belgeniz varsa yükleyiniz. Bazı hizmet alanlarında belge zorunlu olabilir. Gerekli durumlarda Teknik-O ekibi sizden ek belge talep edebilir.</p>
+          <p className="mt-1 text-sm text-slate-600">Mesleğinizle ilgili sertifika veya belgeniz varsa yükleyiniz. Bazı hizmet alanlarında belge zorunlu olabilir. Gerekli durumlarda HizmetPey ekibi sizden ek belge talep edebilir.</p>
           <input id="qualification-documents" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
             onChange={e=>{selectDocuments(e.target.files);e.target.value='';}} className="mt-2 block w-full text-sm"/>
           {documents.map(item=><div key={item.id} className="mt-2 flex items-center gap-2 text-sm">
@@ -182,7 +176,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
             </select><button type="button" onClick={()=>setDocuments(current=>current.filter(doc=>doc.id!==item.id))}>Kaldır</button>
           </div>)}</div>
         <button type="submit" disabled={busy||password!==passwordConfirmation||!categoryIds.length||!districtIds.length||!addressDistrictId||documents.some(item=>!item.categoryId||!categoryIds.includes(item.categoryId))}
-          className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">Hesap Oluştur</button>
+          className="w-full rounded-xl bg-[#C86B32] px-4 py-3 font-bold text-white shadow-sm disabled:opacity-50">Hesap Oluştur</button>
         <p className="text-center text-sm text-slate-600">Hesabınız var mı? <Link href="/giris-usta" className="font-bold text-[#A64D12] underline">Usta Girişi</Link></p>
       </form>}
 
@@ -196,7 +190,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
           <input required inputMode="numeric" autoComplete="one-time-code" value={token}
             onChange={e=>setToken(e.target.value)}
             className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-base"/></label>
-        <button type="submit" disabled={busy} className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white">Kayıt Oluştur</button>
+        <button type="submit" disabled={busy} className="w-full rounded-xl bg-[#C86B32] px-4 py-3 font-bold text-white">Kayıt Oluştur</button>
         <button type="button" onClick={()=>{setStep('form');setToken('');}} className="w-full text-sm text-slate-600">Bilgileri Düzenle</button>
       </form>}
 
@@ -204,16 +198,15 @@ export function TechnicianSignupForm({categories,cities,districts}:{
         <p className="font-bold">Usta hesabınız oluşturuldu. Belgeleriniz yükleniyor.</p>
         {documents.map(item=><p key={item.id}>{item.file.name}: {item.uploaded?'Yüklendi':'Yüklenmeyi bekliyor'}</p>)}
         <button type="button" disabled={busy} onClick={()=>{setBusy(true);void uploadDocuments(documents).finally(()=>setBusy(false));}}
-          className="rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">Yüklemeyi yeniden dene</button>
+          className="rounded-xl bg-[#C86B32] px-4 py-3 font-bold text-white disabled:opacity-50">Yüklemeyi yeniden dene</button>
         <Link href="/usta" className="ml-3 underline">Daha sonra usta panelinden yükle</Link>
       </div>}
 
       {step==='complete'&&<div className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-sm text-emerald-900">
         <p className="font-bold">Başvurunuz alındı. Admin onayı bekleniyor.</p>
         <p className="mt-2">Kategorilerinizi ve hizmet alanlarınızı usta panelinde görebilirsiniz.</p>
-        <Link href="/usta" className="mt-4 inline-block rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white">Usta paneline git</Link>
+        <Link href="/usta" className="mt-4 inline-block rounded-xl bg-[#C86B32] px-4 py-3 font-bold text-white">Usta paneline git</Link>
       </div>}
       {notice&&<p role="status" className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-3 text-sm text-orange-900">{notice}</p>}
-    </div>
-  </main>;
+  </TechnicianAuthShell>;
 }

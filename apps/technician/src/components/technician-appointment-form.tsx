@@ -116,7 +116,7 @@ export function TechnicianAppointmentForm({
     }
   }
 
-  return <form onSubmit={submit} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+  return <form onSubmit={submit} className="rounded-2xl border border-[#D8E1EB] bg-[#F7F9FC] p-4">
     <div className="grid gap-4 sm:grid-cols-2">
       {mode==='scheduled'
         ?<div>
@@ -163,7 +163,7 @@ export function TechnicianAppointmentForm({
       <button
         type="submit"
         disabled={pending}
-        className="rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-xl bg-[#C86B32] px-4 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending?'Kaydediliyor…':'Randevuyu belirle'}
       </button>

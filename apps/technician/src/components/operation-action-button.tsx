@@ -15,8 +15,8 @@ export function OperationActionButton({endpoint,label,confirmText}:{endpoint:str
     }catch(error){setError(error instanceof Error?error.message:'İşlem tamamlanamadı.');}
     finally{setPending(false);}
   }
-  return <div className="inline-flex flex-col items-start gap-1">
-    <button type="button" disabled={pending} onClick={run} className="rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60">{pending?'İşleniyor…':label}</button>
+  return <div className="flex w-full flex-col items-start gap-2">
+    <button type="button" disabled={pending} onClick={run} className="w-full rounded-xl bg-[#C86B32] px-4 py-3 text-sm font-bold text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-60">{pending?'İşleniyor…':label}</button>
     {error&&<p role="alert" className="text-xs font-semibold text-red-700">{error}</p>}
   </div>;
 }

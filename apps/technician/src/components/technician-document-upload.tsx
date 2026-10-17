@@ -20,7 +20,7 @@ export function TechnicianDocumentUpload({categories}:{categories:{id:string;nam
     setFiles(failed);setNotice(failed.length?'Bazı belgeler yüklenemedi. Kalanları yeniden deneyin.':'Belgeler inceleme için yüklendi.');
     setBusy(false);router.refresh();
   }
-  return <form onSubmit={upload} className="mt-4 space-y-2 border-t border-slate-200 pt-4 text-sm">
+  return <form onSubmit={upload} className="mt-4 space-y-3 rounded-xl border border-[#D8E1EB] bg-[#F7F9FC] p-3 text-sm">
     <p className="font-semibold">Mesleki yeterlilik / ustalık belgesi yükle</p>
     <select required value={categoryId} onChange={event=>setCategoryId(event.target.value)}
       className="w-full rounded-lg border border-slate-300 p-2"><option value="">Belgenin kategorisi</option>
@@ -37,7 +37,7 @@ export function TechnicianDocumentUpload({categories}:{categories:{id:string;nam
         className="mt-1 w-full rounded-lg border border-slate-300 p-2"/>
     </label>
     <button type="submit" disabled={busy||!categoryId||!files.length||!currentPassword}
-      className="rounded-lg bg-[#D97724] px-3 py-2 font-bold text-white disabled:opacity-50">Belgeleri yükle</button>
+      className="w-full rounded-xl bg-[#C86B32] px-3 py-3 font-bold text-white disabled:opacity-50">Belgeleri yükle</button>
     {notice&&<p role="status">{notice}</p>}
   </form>;
 }

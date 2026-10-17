@@ -18,7 +18,7 @@ export function TechnicianAvailabilityToggle({isAvailable}:{isAvailable:boolean}
     finally{setBusy(false);}
   }
   return <div className="mt-3"><button type="button" disabled={busy} onClick={()=>void toggle()}
-    className="rounded-xl bg-[#D97724] px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50">
+    className="w-full rounded-xl bg-[#C86B32] px-4 py-3 text-sm font-bold text-white disabled:opacity-50">
     {busy?'İşleniyor…':isAvailable?'Müsaitliği kapat':'Müsaitliği aç'}</button>
     {error&&<p role="alert" className="mt-2 text-sm font-semibold text-red-700">{error}</p>}</div>;
 }
