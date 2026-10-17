@@ -3,7 +3,7 @@
 import React, {useState, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import Link from 'next/link';
 import {ArrowLeft, Send, Bot, User, Wrench} from 'lucide-react';
-import {HizmetPeyBrand} from '@/components/brand/hizmetpey-brand';
+import {CustomerMobileHeader,CustomerBottomNavigation,ServiceBanner} from '@/components/customer-mobile-chrome';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
 import {PaintingColorCatalog} from '@/components/painting-color-catalog';
@@ -86,32 +86,12 @@ export default function TeshisPage() {
   const handleSendMessage = (e:React.FormEvent) => {e.preventDefault();void submit(inputText);};
 
   return (
-    <div style={visualViewportHeight ? {height:visualViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
+    <div style={visualViewportHeight ? {height:visualViewportHeight} : undefined} className="h-dvh min-h-0 w-full max-w-[430px] bg-slate-50 flex flex-col overflow-hidden mx-auto relative shadow-2xl font-sans text-slate-900">
       
       {/* HEADER */}
-      <header className="shrink-0 bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Link href="/dashboard" className="p-1.5 text-slate-500 hover:text-slate-800 rounded-lg">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
-          <div>
-            <h1><HizmetPeyBrand size="compact" /></h1>
-            <p className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-              AI Teşhis · Canlı Analiz Sistemi
-            </p>
-          </div>
-        </div>
+      <CustomerMobileHeader backHref="/kategoriler"/>
+      <div className="shrink-0 px-3 pt-3"><ServiceBanner title="Kombi Yardımı" description="Sorununuzu yazın, ön bilgilendirme alın." image="/service-categories/boiler.jpg"/></div>
 
-        <button 
-          onClick={() => setIsTechnicianDialogOpen(true)}
-          disabled={!resultCard || isAnalyzing}
-          className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5 disabled:opacity-50"
-        >
-          <Wrench className="w-3.5 h-3.5" />
-          <span>Usta Çağır</span>
-        </button>
-      </header>
 
       {/* CHAT VE ANALİZ ALANI */}
       <div ref={messageScrollRef} onScroll={() => {
@@ -194,10 +174,11 @@ export default function TeshisPage() {
 
       {isTechnicianDialogOpen && <TechnicianHandoffNotice response={response} onClose={() => setIsTechnicianDialogOpen(false)} />}
 
+      <CustomerBottomNavigation/>
       {/* ALT MESAJ YAZMA BAR */}
       <form
         onSubmit={handleSendMessage}
-        className="shrink-0 w-full bg-white border-t-2 border-slate-300 p-3 sm:p-4 flex min-w-0 items-center gap-2"
+        className="mb-20 shrink-0 w-full bg-white border-t-2 border-slate-300 p-3 sm:p-4 flex min-w-0 items-center gap-2"
       >
         <input
           type="text"

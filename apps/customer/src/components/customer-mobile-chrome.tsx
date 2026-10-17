@@ -1,0 +1,21 @@
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import {ArrowLeft,Bell,ChevronDown,Home,Grid2X2,ClipboardList,Headphones,UserRound} from 'lucide-react';
+
+export function CustomerMobileHeader({backHref,avatarUrl}:{backHref?:string;avatarUrl?:string|null}){
+ return <header className="flex min-h-[76px] items-center justify-between gap-2 bg-[#062A4B] px-3 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] text-white">
+  <div className="flex min-w-0 items-center gap-1">{backHref&&<Link href={backHref} aria-label="Geri dön" className="grid size-9 shrink-0 place-items-center"><ArrowLeft className="size-5"/></Link>}
+  <Link href="/hizmetler" aria-label="HizmetPey ana sayfa" className="flex min-w-0 items-center gap-1.5"><span className="relative size-10 shrink-0 overflow-hidden rounded-xl bg-white"><Image src="/brand/hizmetpey-resmi.png" alt="" width={84} height={84} className="absolute -left-[22px] -top-[16px] size-[84px] max-w-none"/></span><span className="text-[21px] font-extrabold tracking-[-0.045em]">Hizmet<span className="text-[#E38245]">Pey</span></span></Link></div>
+  <div className="flex shrink-0 items-center gap-1"><button disabled aria-label="Bildirimler kullanılamıyor" className="grid size-10 place-items-center text-white/75"><Bell className="size-6"/></button><details className="relative"><summary aria-label="Profil menüsü" className="flex cursor-pointer list-none items-center gap-0.5"><img src={avatarUrl||'/brand/default-customer-avatar.svg'} alt="Profil" className="size-10 rounded-full border-2 border-white object-cover"/><ChevronDown className="size-4"/></summary><div className="absolute right-0 top-12 z-40 w-40 rounded-2xl bg-white p-2 text-sm text-[#082B4C] shadow-xl"><Link href="/musteri/profil" className="block p-3">Profilim</Link><form action="/api/auth/logout" method="post"><button className="w-full p-3 text-left">Çıkış Yap</button></form></div></details></div>
+ </header>;
+}
+const tabs=[{href:'/hizmetler',label:'Ana Sayfa',icon:Home},{href:'/kategoriler',label:'Hizmetler',icon:Grid2X2},{href:'/musteri/taleplerim',label:'Taleplerim',icon:ClipboardList},{href:'/musteri/destek',label:'Destek',icon:Headphones},{href:'/musteri/profil',label:'Profil',icon:UserRound}];
+export function CustomerBottomNavigation(){
+ const path=usePathname();const active=path==='/hizmetler'?0:path==='/kategoriler'||path==='/dashboard'||path==='/temizlik'?1:path.startsWith('/musteri/taleplerim')||path==='/musteri'?2:path.startsWith('/musteri/profil')?4:3;
+ return <nav aria-label="Müşteri alt menüsü" className="fixed inset-x-0 bottom-0 z-40 mx-auto grid w-full max-w-[430px] grid-cols-5 border-t border-slate-200 bg-white/95 px-1 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-lg backdrop-blur">{tabs.map(({href,label,icon:Icon},i)=><Link key={href} href={href} aria-current={i===active?'page':undefined} className={`flex min-h-14 min-w-0 flex-col items-center justify-center gap-1 text-[10px] font-semibold ${i===active?'text-[#C86B32]':'text-[#738198]'}`}><Icon className="size-[22px]" strokeWidth={i===active?2.5:2}/><span>{label}</span></Link>)}</nav>;
+}
+export function ServiceBanner({title,description,image}:{title:string;description:string;image:string}){
+ return <section className="relative mb-5 min-h-[152px] overflow-hidden rounded-[22px] bg-[#062A4B] p-5 text-white"><Image src={image} alt="" fill sizes="402px" className="object-cover"/><div className="absolute inset-0 bg-gradient-to-r from-[#031D34] via-[#062A4B]/85 to-transparent"/><div className="relative max-w-[85%]"><h1 className="text-[27px] font-bold leading-tight tracking-tight">{title}</h1><p className="mt-2 text-sm leading-6 text-white/85">{description}</p></div></section>;
+}

@@ -13,5 +13,5 @@ const links=[
 export default async function CustomerPanelLayout({children}:{children:ReactNode}){
   const account=await currentAccount();
   if(account?.role!=='customer')redirect('/giris');
-  return <CustomerShell><PanelSubNav links={links}/>{children}</CustomerShell>;
+  return <CustomerShell>{children}</CustomerShell>;
 }

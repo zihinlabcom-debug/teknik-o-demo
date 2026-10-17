@@ -53,7 +53,7 @@ const bannerSlides=[
     imageAlt:'Ev temizliği hizmeti',
     title:'Temizlik için teklif al',
     description:'Eviniz için uygun hizmet akışını kolayca oluşturun.',
-    href:'/dashboard?category=cleaning',
+    href:'/temizlik',
   },
 ] as const;
 
@@ -147,7 +147,7 @@ export function CustomerHomeExplorer({categories}:{categories:readonly CategoryC
             <span className="min-w-0 flex-1 text-left"><span className="block text-[10px] font-extrabold leading-[13px] text-[#10203A] sm:text-xs">{item.label}</span>{item.available?null:<span className="mt-0.5 block text-[9px] font-bold text-[#9A6013]">Yakında</span>}</span>
             {item.available?<ChevronRight className="size-3 shrink-0 text-slate-400 sm:size-3.5" aria-hidden="true"/>:null}
           </>;
-          return item.available?<Link key={item.id} href={`/dashboard?category=${item.id}`} className="flex min-h-[68px] items-center gap-1 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-[0_4px_14px_rgba(8,43,76,0.05)] transition hover:border-[#C86B32]/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C86B32] sm:min-h-[72px] sm:gap-1.5 sm:p-2">{content}</Link>:
+          return item.available?<Link key={item.id} href={item.id==='cleaning'?'/temizlik':`/dashboard?category=${item.id}`} className="flex min-h-[68px] items-center gap-1 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-[0_4px_14px_rgba(8,43,76,0.05)] transition hover:border-[#C86B32]/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C86B32] sm:min-h-[72px] sm:gap-1.5 sm:p-2">{content}</Link>:
             <div key={item.id} aria-label={`${item.label} yakında`} className="flex min-h-[68px] items-center gap-1 rounded-2xl border border-slate-200 bg-slate-50 p-1.5 opacity-80 sm:min-h-[72px] sm:gap-1.5 sm:p-2">{content}</div>;
         })}
       </div>:<p role="status" className="mt-3 rounded-2xl border border-dashed border-slate-300 bg-white p-4 text-sm text-slate-600">Aramanızla eşleşen hizmet bulunamadı.</p>}

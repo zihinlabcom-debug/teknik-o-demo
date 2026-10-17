@@ -3,6 +3,7 @@ import {ChevronRight,FileWarning,Headphones,Mail,ShieldCheck} from 'lucide-react
 import {PanelHeading} from '@/components/operation-panel';
 
 const supportLinks=[
+  {href:'/musteri/ek-maliyet',title:'Ek Maliyet',description:'Mevcut ek maliyet taleplerini incele ve karar ver.',icon:FileWarning},
   {href:'/musteri/sikayetler',title:'Şikâyetler',description:'Bir hizmetle ilgili başvuru oluştur ve geçmişini izle.',icon:FileWarning},
   {href:'/musteri/garanti',title:'Garanti',description:'Tamamlanan hizmetlerin garanti başvurularını yönet.',icon:ShieldCheck},
   {href:'/iletisim',title:'İletişim',description:'HizmetPey iletişim bilgilerine ve destek kanallarına ulaş.',icon:Mail},

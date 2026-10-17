@@ -21,6 +21,7 @@ export default function CategoriesPage(){
   const [upcomingSelection,setUpcomingSelection]=useState<{name:string}|null>(null);
   const openUpcoming=(item:InactiveServiceCategory|{name:string})=>setUpcomingSelection({name:item.name});
   const openActive=(id:ServiceCategory)=>{
+    if(id==='cleaning'){router.push('/temizlik');return;}
     if(id==='moving'){openUpcoming({name:'Nakliye'});return;}
     try {localStorage.setItem('tekniko_service_category',id);} catch {/* Storage may be disabled. */}
     router.push(`/dashboard?category=${id}`);

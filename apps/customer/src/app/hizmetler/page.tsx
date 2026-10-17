@@ -1,3 +1,4 @@
+import {CustomerMobileHeader,CustomerBottomNavigation} from '@/components/customer-mobile-chrome';
 import Image from 'next/image';
 import Link from 'next/link';
 import {Bell,ChevronDown,ChevronRight,ClipboardList,Clock3,Home,MapPin,MessageCircleQuestion,ShieldCheck,UserRound} from 'lucide-react';
@@ -53,29 +54,7 @@ export default async function ServiceHomePage(){
         <Image src="/service-categories/painting.jpg" alt="" fill sizes="430px" className="-z-20 object-cover opacity-[0.16] blur-[1px]" priority/>
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,rgba(3,29,52,0.98),rgba(6,42,75,0.91)_58%,rgba(6,42,75,0.62)),radial-gradient(circle_at_88%_20%,rgba(200,107,50,0.30),transparent_32%)]"/>
 
-        <div className="flex items-center justify-between gap-3 max-[359px]:gap-1">
-          <Link href="/hizmetler" className="flex min-h-12 items-center gap-2 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white max-[359px]:gap-1.5" aria-label="HizmetPey ana sayfası">
-            <span className="relative size-11 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm" aria-hidden="true">
-              <Image src="/brand/hizmetpey-resmi.png" alt="" width={92} height={92} className="absolute left-[-24px] top-[-17px] size-[92px] max-w-none" priority/>
-            </span>
-            <span className="text-[25px] font-extrabold tracking-[-0.045em] text-white max-[359px]:text-[21px]">Hizmet<span className="text-[#E38245]">Pey</span></span>
-          </Link>
-
-          <div className="flex items-center gap-2 max-[359px]:gap-1">
-            <button type="button" disabled className="grid size-11 cursor-default place-items-center rounded-full border border-white/15 bg-white/[0.08] text-white/90 max-[359px]:size-10" aria-label="Bildirimler kullanılamıyor" title="Bildirimler kullanılamıyor"><Bell className="size-6 max-[359px]:size-[22px]" strokeWidth={2.2} aria-hidden="true"/></button>
-            <details className="relative">
-              <summary className="flex min-h-12 cursor-pointer list-none items-center gap-1 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white max-[359px]:gap-0.5" aria-label="Profil menüsünü aç">
-                {profile.avatarUrl?<img src={profile.avatarUrl} alt="Profil fotoğrafı" className="size-11 rounded-full border-2 border-white object-cover shadow-sm max-[359px]:size-10"/>:<Image src="/brand/default-customer-avatar.svg" alt="Varsayılan profil görseli" width={44} height={44} className="size-11 rounded-full shadow-sm max-[359px]:size-10"/>}
-                <ChevronDown className="size-[18px] max-[359px]:size-4" strokeWidth={2.25} aria-hidden="true"/>
-              </summary>
-              <div className="absolute right-0 top-12 z-30 w-44 rounded-2xl border border-slate-200 bg-white p-2 text-sm text-[#17263B] shadow-xl">
-                <Link href="/musteri/profil" className="flex min-h-11 items-center rounded-xl px-3 font-semibold hover:bg-slate-50">Profilim</Link>
-                <form action="/api/auth/logout" method="post"><button type="submit" className="min-h-11 w-full rounded-xl px-3 text-left font-semibold text-slate-600 hover:bg-slate-50">Çıkış Yap</button></form>
-              </div>
-            </details>
-          </div>
-        </div>
-
+        <CustomerMobileHeader avatarUrl={profile.avatarUrl}/>
         <div className="mt-3.5">
           <h1 id="welcome-heading" className="text-[28px] font-extrabold leading-tight tracking-[-0.035em]">Merhaba{firstName?`, ${firstName}`:''} <span aria-hidden="true">👋</span></h1>
           <p className="mt-1.5 flex items-center gap-1.5 text-[14px] font-medium text-white/85"><MapPin className="size-[18px] shrink-0 text-white" aria-hidden="true"/>{location}</p>
@@ -114,11 +93,8 @@ export default async function ServiceHomePage(){
         </section>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-[430px] border-t border-slate-200 bg-white/95 px-2 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 shadow-[0_-8px_24px_rgba(8,43,76,0.08)] backdrop-blur" aria-label="Müşteri alt menüsü">
-        <div className="grid grid-cols-4">
-          {bottomNavigation.map(({href,label,icon:Icon},index)=><Link key={href} href={href} aria-current={index===0?'page':undefined} className={`flex min-h-[58px] flex-col items-center justify-center gap-1 px-1 text-[10px] font-bold transition focus-visible:rounded-xl focus-visible:outline-2 focus-visible:outline-[#C86B32] ${index===0?'text-[#C86B32]':'text-[#738198] hover:text-[#082B4C]'}`}><Icon className="size-[22px]" strokeWidth={index===0?2.5:2} fill={index===0?'currentColor':'none'} aria-hidden="true"/>{label}</Link>)}
-        </div>
-      </nav>
+      <CustomerBottomNavigation/>
+
     </div>
   </main>;
 }

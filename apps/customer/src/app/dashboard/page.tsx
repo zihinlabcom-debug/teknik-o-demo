@@ -1,9 +1,8 @@
 'use client';
 
 import React, {Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
-import Link from 'next/link';
 import {useRouter,useSearchParams} from 'next/navigation';
-import {ArrowLeft, Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
+import {Paperclip, Send, Sparkles, ShieldCheck, Tag, Lock, ChevronRight, Zap, Bot, User, RefreshCw} from 'lucide-react';
 import {ServiceCategoryCards} from '@/components/service-category-cards';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';
@@ -17,7 +16,7 @@ import {ApartmentServiceConfigurator,EMPTY_APARTMENT_SELECTION,type ApartmentSel
 import {HomeCleaningServiceConfigurator,EMPTY_HOME_CLEANING_SELECTION,type HomeCleaningSelection} from '@/components/home-cleaning-service-configurator';
 import {PaintingServiceConfigurator,EMPTY_PAINTING_SELECTION,type PaintingSelection,type PaintingSubmissionStep} from '@/components/painting-service-configurator';
 import {changeUpholsteryQuantity} from '@/components/cleaning-input-selector';
-import {HizmetPeyBrand} from '@/components/brand/hizmetpey-brand';
+import {CustomerMobileHeader,CustomerBottomNavigation,ServiceBanner} from '@/components/customer-mobile-chrome';
 import {useServiceConversation} from '@/components/use-service-conversation';
 import {isServiceCategory,serviceCategoryLabel, type ServiceCategory} from '@/lib/service-categories';
 import {servicePricePresentation} from '@/lib/service-presentation';
@@ -31,7 +30,10 @@ export default function CustomerDashboard() {
 
 function DashboardContent() {
   const router=useRouter();
-  const requested=useSearchParams().get('category');
+  const search=useSearchParams();
+  const requested=search.get('category');
+  const cleaningKind=search.get('kind');
+  const cleaningSeeded=useRef(false);
   const {messages:chatHistory, input:problemDescription, setInput:setProblemDescription, isAnalyzing,
     response, category, submit, reset, resultDismissed, dismissResult} = useServiceConversation();
   const [isTechnicianDialogOpen, setIsTechnicianDialogOpen] = useState(false);
@@ -170,6 +172,13 @@ function DashboardContent() {
     selectedCategoryStarted.current=true;
     void submit(`${serviceCategoryLabel(requested)} hizmeti için yardım istiyorum.`,requested);
   },[navigationReady,requested,submit]);
+  useEffect(()=>{
+    if(requested!=='cleaning'||response?.resultState!=='cleaning_service_selection'||cleaningSeeded.current)return;
+    const service=CLEANING_SERVICES.find(item=>item.type===cleaningKind&&(item.type==='home_cleaning'||item.type==='apartment_cleaning'));
+    if(!service)return;
+    cleaningSeeded.current=true;
+    void submit(service.label);
+  },[requested,cleaningKind,response?.resultState,submit]);
   // Advance form answers only after each signed backend response has been checked.
   /* eslint-disable react-hooks/set-state-in-effect -- Queue transitions here follow external API responses, not derived render state. */
   useEffect(()=>{
@@ -273,6 +282,7 @@ function DashboardContent() {
     handleSubmit(undefined,text);
   };
   const handleCategoryClick = (selected:ServiceCategory) => {
+    if(selected==='cleaning'){router.push('/temizlik');return;}
     setIsTechnicianDialogOpen(false);
     setSelectedCleaningConfigurator(null);
     void submit(`${serviceCategoryLabel(selected)} hizmeti için yardım istiyorum.`, selected);
@@ -288,18 +298,15 @@ function DashboardContent() {
   const configurator=requested==='painting'||category==='painting'?'painting':
     requested==='carpet_cleaning'||category==='carpet_cleaning'||selectedCleaningConfigurator==='carpet_cleaning'?'carpet_cleaning':
     requested==='sofa_cleaning'||category==='sofa_cleaning'||selectedCleaningConfigurator==='upholstery_cleaning'?'upholstery_cleaning':
-      selectedCleaningConfigurator==='apartment_cleaning'?'apartment_cleaning':
-        selectedCleaningConfigurator==='home_cleaning'?'home_cleaning':null;
+      selectedCleaningConfigurator==='apartment_cleaning'||requested==='cleaning'&&cleaningKind==='apartment_cleaning'?'apartment_cleaning':
+        selectedCleaningConfigurator==='home_cleaning'||requested==='cleaning'&&cleaningKind==='home_cleaning'?'home_cleaning':null;
   if(configurator){
     const lastMessage=chatHistory.at(-1);
     const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
       lastMessage.text:null;
     return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
-      <div className="mx-auto w-full max-w-[1240px] min-w-0 px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
-        <Link href="/kategoriler" className="mb-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-[#C86B32]">
-          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
-        </Link>
-        <div className="mb-6 flex justify-center"><HizmetPeyBrand size="standard" /></div>
+      <div className="mx-auto w-full max-w-[430px] min-w-0 px-3 pb-[calc(7rem+env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
+        <CustomerMobileHeader backHref="/kategoriler"/>
         {configurator==='painting'?<PaintingServiceConfigurator selection={paintingSelection}
           onChange={setPaintingSelection}
           serviceOptions={response?.resultState==='painting_service_selection'?response.options:paintingServiceOptions}
@@ -412,34 +419,18 @@ function DashboardContent() {
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
           errorText={homeSubmitError??connectionError} />}
       </div>
+      <CustomerBottomNavigation/>
       {isTechnicianDialogOpen&&<TechnicianHandoffNotice response={response} onClose={()=>setIsTechnicianDialogOpen(false)} />}
     </div>;
   }
 
   return (
-    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[940px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
+    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[430px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
       
+      {!chatViewport&&<CustomerBottomNavigation/>}
       {/* İÇERİK ALANI */}
-      <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-6 pb-6 justify-between'}`}>
-        <Link href="/kategoriler" className={`${chatViewport ? 'hidden' : 'mb-4 inline-flex'} items-center gap-1.5 self-start text-xs font-semibold text-slate-500 hover:text-[#C86B32]`}>
-          <ArrowLeft className="size-4" aria-hidden="true" /> Kategorilere dön
-        </Link>
-        
-        {/* LOGO VE SLOGAN ALANI */}
-        <div className={`${chatViewport ? 'hidden' : 'flex'} flex-col items-center text-center`}>
-          <HizmetPeyBrand size="standard" className="mb-4" />
-
-          <h1 className="text-2xl font-black text-[#082B4C] tracking-tight leading-tight">
-            Sürpriz fiyat yok<br />
-            sorunu yaz <span className="text-[#C86B32]">fiyatını al.</span>
-          </h1>
-
-          <p className="mt-1 text-xs text-slate-500 font-medium max-w-xs leading-relaxed">
-            Alacağın hizmetin ücretini hemen öğren.<br />
-            Sürpriz fiyatlarla belirsizlikle uğraşma.
-          </p>
-        </div>
-
+      <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-0 pb-24 justify-between'}`}>
+        {!chatViewport&&<><CustomerMobileHeader backHref="/kategoriler"/><ServiceBanner title="Kombi Yardımı" description="Sorununuzu yazın, ön bilgilendirme alın." image="/service-categories/boiler.jpg"/></>}
         {!chatViewport && <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />}
 
         {/* CANLI SOHBET ALANI */}

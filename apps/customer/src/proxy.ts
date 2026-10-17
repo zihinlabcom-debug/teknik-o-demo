@@ -4,6 +4,7 @@ import {NextResponse,type NextRequest} from 'next/server';
 import {accountSessionCookieOptions} from '@/lib/account-cookie-options';
 
 function isCustomerPath(path:string){
+  if(path==='/temizlik')return true;
   return path==='/' ||
     path==='/giris' ||
     path==='/kayit' || path==='/sifremi-unuttum' || path==='/sifre-yenile' ||
@@ -17,6 +18,7 @@ function isCustomerPath(path:string){
 }
 
 function isProtectedCustomerPath(path:string){
+  if(path==='/temizlik')return true;
   return path==='/musteri' ||
     path.startsWith('/musteri/') ||
     path==='/hizmetler' ||
