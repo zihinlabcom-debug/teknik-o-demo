@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
+import {useState} from 'react';
 import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
 
 type IconName='home'|'briefcase'|'activity'|'support'|'profile'|'bell'|'back';
@@ -44,6 +45,26 @@ function backHref(path:string){
 export function TechnicianMobileHeader({isTest}:{isTest:boolean}){
   const path=usePathname();
   const back=backHref(path);
+  const [logoutBusy,setLogoutBusy]=useState(false);
+  const [logoutError,setLogoutError]=useState('');
+
+  async function handleLogout(){
+    if(logoutBusy)return;
+    setLogoutBusy(true);
+    setLogoutError('');
+    try{
+      const response=await fetch('/api/auth/logout',{method:'POST',credentials:'same-origin',redirect:'manual'});
+      if(!response.ok&&response.type!=='opaqueredirect'){
+        const payload=await response.json().catch(()=>null) as {error?:string}|null;
+        throw new Error(payload?.error??'Çıkış yapılamadı. Lütfen tekrar deneyin.');
+      }
+      window.location.replace('/giris-usta');
+    }catch(error){
+      setLogoutError(error instanceof Error?error.message:'Çıkış yapılamadı. Lütfen tekrar deneyin.');
+      setLogoutBusy(false);
+    }
+  }
+
   return <header className="bg-[#082B4C] px-3 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] text-white">
     <div className="flex min-h-14 items-center justify-between gap-2">
       <div className="flex min-w-0 items-center gap-1">
@@ -56,9 +77,12 @@ export function TechnicianMobileHeader({isTest}:{isTest:boolean}){
         <Link href="/usta/profil" aria-label="Usta profilim" className="grid size-10 place-items-center rounded-full border-2 border-white/80 bg-white/10"><OutlineIcon name="profile" className="size-5"/></Link>
       </div>
     </div>
-    <div className="flex items-center justify-between border-t border-white/10 pt-2 text-[11px] font-semibold text-white/70">
-      <span>Usta uygulaması</span><span>{isTest?'Test hesabı':'Usta hesabı'}</span>
+    <div className="flex items-center justify-end border-t border-white/10 pt-2">
+      <button type="button" onClick={handleLogout} disabled={logoutBusy} className="min-h-11 rounded-xl border border-white/25 bg-white/10 px-4 text-sm font-bold text-white transition hover:bg-white/15 disabled:cursor-wait disabled:opacity-70">
+        {logoutBusy?'Çıkış yapılıyor…':'Çıkış Yap'}
+      </button>
     </div>
+    {logoutError&&<p role="alert" className="mt-2 text-right text-xs font-semibold text-red-200">{logoutError}</p>}
   </header>;
 }
 

@@ -13,7 +13,7 @@ export default async function ProviderPanel(){
   const profile=details.profile;
   const missingDocuments=details.categories.filter(category=>category.requiresDocument&&!category.hasVerifiedDocument);
 
-  return <><PanelHeading title="Usta ana sayfası" description="Yeni tekliflerinizi, aktif işlerinizi ve hesap uygunluğunuzu tek ekrandan takip edin."/>
+  return <><PanelHeading title="Ana Sayfa" description="Yeni tekliflerinizi, aktif işlerinizi ve hesap uygunluğunuzu tek ekrandan takip edin."/>
     <section aria-label="İş özeti" className="mb-4 grid grid-cols-2 gap-3">
       <Link href="/usta/yeni-isler" className="rounded-2xl bg-[#C86B32] p-4 text-white shadow-[0_8px_20px_rgba(200,107,50,0.2)]">
         <span className="text-3xl font-extrabold">{offers.length}</span><span className="mt-1 block text-xs font-bold text-white/85">Yeni iş teklifi</span>

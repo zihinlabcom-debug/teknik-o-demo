@@ -2,7 +2,7 @@ import {safeAuthOrigin} from '@/lib/email-auth-policy';
 import {NextResponse} from 'next/server';
 import {serverSupabase} from '@/lib/account-supabase';
 
-export async function POST(request:Request){
+export async function POST(){
   try{
     const db=await serverSupabase({writeCookies:true});
     const {error}=await db.auth.signOut();
