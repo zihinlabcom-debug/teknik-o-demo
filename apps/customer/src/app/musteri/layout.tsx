@@ -1,14 +1,7 @@
 import type {ReactNode} from 'react';
 import {CustomerShell} from '@/components/customer-shell';
-import {PanelSubNav} from '@/components/operation-panel';
 import {currentAccount} from '@/lib/account-supabase';
 import {redirect} from 'next/navigation';
-
-const links=[
-  {href:'/musteri',label:'Özet'},{href:'/musteri/taleplerim',label:'Taleplerim'},
-  {href:'/musteri/ek-maliyet',label:'Ek maliyet'},{href:'/musteri/destek',label:'Destek'},
-  {href:'/musteri/profil',label:'Profilim'},
-] as const;
 
 export default async function CustomerPanelLayout({children}:{children:ReactNode}){
   const account=await currentAccount();

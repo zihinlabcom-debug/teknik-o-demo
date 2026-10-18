@@ -170,10 +170,16 @@ test('admin intervention RPC uses idempotency and optimistic current-job binding
 
 test('three surfaces expose the required Stage 10 sections',()=>{
   const customerLayout=read('apps/customer/src/app/musteri/layout.tsx');
+  const customerSupport=read('apps/customer/src/app/musteri/destek/page.tsx');
   const techLayout=read('apps/technician/src/app/usta/layout.tsx');
+  const techSupport=read('apps/technician/src/app/usta/destek/page.tsx');
   const adminLayout=read('apps/admin/src/app/admin/layout.tsx');
-  for(const label of ['Ek maliyetler','Şikâyet','Garanti Talebi'])assert.match(customerLayout,new RegExp(label));
-  for(const label of ['Ek maliyet talebi','Şikâyet','Garanti düzeltmeleri'])assert.match(techLayout,new RegExp(label));
+  assert.match(customerLayout,/currentAccount/);assert.match(customerLayout,/redirect\('\/giris'\)/);
+  for(const [label,href] of [['Ek Maliyet','/musteri/ek-maliyet'],['Şikâyetler','/musteri/sikayetler'],['Garanti','/musteri/garanti']]){
+    assert.match(customerSupport,new RegExp(label));assert.match(customerSupport,new RegExp(href.replaceAll('/','\\/')));
+  }
+  assert.match(techLayout,/currentAccount/);assert.match(techLayout,/redirect\('\/giris-usta'\)/);
+  for(const label of ['Ek maliyet','Şikâyet','Garanti düzeltmeleri'])assert.match(techSupport,new RegExp(label));
   for(const label of ['Ek maliyet talepleri','Şikâyetler','Garanti','Pilot / KPI'])assert.match(adminLayout,new RegExp(label));
 });
 

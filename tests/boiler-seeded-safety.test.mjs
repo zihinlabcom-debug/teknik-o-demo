@@ -81,15 +81,21 @@ test('reconstructed yes to a seeded safety question also stops diagnosis', async
 test('offline six-candidate Vaillant F.28 starts with a question and never prices below 75', async () => {
   const old=process.env.OPENAI_API_KEY;process.env.OPENAI_API_KEY='offline-test-secret';
   try {
-    const report=JSON.parse(readFileSync(new URL('../test-results/stage3-question-seed-report.json',import.meta.url),'utf8'));
-    const spot=report.spot_checks.find(item=>item.brand==='Vaillant' && item.code==='F.28');
-    assert.equal(spot.candidates.length,6);
+    const fixtureData=JSON.parse(readFileSync(new URL('./fixtures/stage3-question-backfill.json',import.meta.url),'utf8'));
+    const sourceCandidates=fixtureData.candidates.filter(candidate=>
+      candidate.id.startsWith('vaillant_ecotec_intro_f28_')&&candidate.error_code==='F.28');
+    const sourceIds=new Set(sourceCandidates.map(candidate=>candidate.id));
+    const sourceEffects=fixtureData.effects.filter(effect=>sourceIds.has(effect.candidate_id));
+    assert.equal(sourceCandidates.length,6);
     const {repository,ai}=fixture();
-    const candidates=spot.candidates.map((name,index)=>({ id:String(index),candidate_name:name,
-      verification_status:'verified',is_active:true,family_id:'family',official_model_id:null,error_code:'F.28' }));
+    const candidates=sourceCandidates.map((candidate,index)=>({ id:String(index),candidate_name:candidate.candidate_name,
+      verification_status:candidate.verification_status,is_active:candidate.is_active,
+      family_id:'family',official_model_id:null,error_code:candidate.error_code,sourceId:candidate.id }));
     repository.getCandidates=async()=>candidates;
-    repository.getEffects=async()=>spot.effects.map(entry=>({ question_id:'gas',
-      candidate_id:String(spot.candidates.indexOf(entry.candidate)),answer_key:entry.answer,effect:entry.effect }));
+    repository.getEffects=async()=>sourceEffects.filter(effect=>effect.question_id==='gas_other_appliance').map(effect=>({
+      question_id:'gas',candidate_id:String(sourceCandidates.findIndex(candidate=>candidate.id===effect.candidate_id)),
+      answer_key:effect.answer_key,effect:effect.effect,
+    }));
     const initial='Vaillant ecoTEC intro VUW 18/24 AS/1-1 kombim F.28 hatası veriyor.';
     const first=await diagnoseBoiler(initial,[],null,repository,ai);
     assert.equal(first.resultState,'diagnosing');

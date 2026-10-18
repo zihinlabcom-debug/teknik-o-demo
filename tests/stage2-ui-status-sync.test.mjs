@@ -37,8 +37,9 @@ test('technician UI blocks stale actions after the one-hour appointment deadline
   assert.match(server,/APPOINTMENT_SCHEDULING_WINDOW_MS=60\*60\*1000/);
   assert.match(server,/Date\.now\(\)>assignedAt\+APPOINTMENT_SCHEDULING_WINDOW_MS/);
   assert.match(server,/appointment_scheduling_expired/);
-  assert.match(active,/Randevu süresi doldu/);
-  assert.match(detail,/!d\.appointment_scheduling_expired/);
+  assert.match(active,/appointment_scheduling_expired\?'Süresi doldu'/);
+  assert.match(detail,/const canCreateAppointment=d\.status==='assigned'&&!activeAppointment&&!d\.appointment_scheduling_expired/);
+  assert.match(detail,/requestMode==='immediate'&&!d\.appointment_scheduling_expired/);
   assert.ok(detail.includes('Bu iş için artık işlem yapılamaz.'));
 });
 
@@ -48,10 +49,10 @@ test('scheduled completion waits for both active appointment and selected servic
 
   assert.match(server,/scheduled_service_date_reached/);
   assert.match(server,/requestedDate<=istanbulToday\(\)/);
-  assert.match(detail,/requestMode==='scheduled'/);
-  assert.match(detail,/Boolean\(activeAppointment\)/);
-  assert.match(detail,/d\.scheduled_service_date_reached/);
-  assert.ok(detail.includes('müşterinin seçtiği hizmet tarihinden önce tamamlanamaz'));
+  assert.match(detail,/const scheduledCompletionReady=requestMode==='scheduled'&&Boolean\(activeAppointment\)&&d\.scheduled_service_date_reached/);
+  assert.match(detail,/const canComplete=.*scheduledCompletionReady/);
+  assert.match(detail,/!d\.scheduled_service_date_reached/);
+  assert.ok(detail.includes('müşterinin seçtiği hizmet tarihinden önce başlatılamaz veya tamamlanamaz'));
 });
 
 test('admin request detail exposes distribution cycles, rounds, appointments and exclusions without mutation actions',()=>{

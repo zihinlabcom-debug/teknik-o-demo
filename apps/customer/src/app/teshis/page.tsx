@@ -1,8 +1,7 @@
 'use client';
 
 import React, {useState, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
-import Link from 'next/link';
-import {ArrowLeft, Send, Bot, User, Wrench} from 'lucide-react';
+import {Send, Bot, User} from 'lucide-react';
 import {CustomerMobileHeader,CustomerBottomNavigation,ServiceBanner} from '@/components/customer-mobile-chrome';
 import {DiagnosisProgress, ServiceResultCard, TechnicianHandoffNotice} from '@/components/service-result';
 import {DiagnosisDebug} from '@/components/diagnosis-debug';

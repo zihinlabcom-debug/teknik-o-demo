@@ -1,7 +1,7 @@
 import {CustomerMobileHeader,CustomerBottomNavigation} from '@/components/customer-mobile-chrome';
 import Image from 'next/image';
 import Link from 'next/link';
-import {Bell,ChevronDown,ChevronRight,ClipboardList,Clock3,Home,MapPin,MessageCircleQuestion,ShieldCheck,UserRound} from 'lucide-react';
+import {ChevronRight,Clock3,MapPin,ShieldCheck} from 'lucide-react';
 import {CustomerHomeExplorer} from '@/components/customer-home-explorer';
 import {ACTIVE_SERVICE_CATEGORIES} from '@/lib/service-categories';
 import {getCustomerProfile} from '@/lib/profile-server';
@@ -27,13 +27,6 @@ const dateFormatter=new Intl.DateTimeFormat('tr-TR',{
   hour:'2-digit',
   minute:'2-digit',
 });
-
-const bottomNavigation=[
-  {href:'/hizmetler',label:'Ana Sayfa',icon:Home},
-  {href:'/musteri/taleplerim',label:'Taleplerim',icon:ClipboardList},
-  {href:'/iletisim',label:'Destek',icon:MessageCircleQuestion},
-  {href:'/musteri/profil',label:'Profil',icon:UserRound},
-] as const;
 
 export default async function ServiceHomePage(){
   const [profile,requests]=await Promise.all([getCustomerProfile(),customerRequestList()]);

@@ -1,9 +1,170 @@
 'use client';
-import {useState} from 'react';import {useRouter} from 'next/navigation';
-function useSubmit(){const router=useRouter();const [busy,setBusy]=useState(false);const [message,setMessage]=useState('');return {busy,message,async send(url:string,body:Record<string,unknown>){setBusy(true);setMessage('');const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json().catch(()=>({}));setBusy(false);setMessage(r.ok?'İşlem kaydedildi.':data.error??'İşlem tamamlanamadı.');if(r.ok)router.refresh();}}}
-export function AdditionalCostAdminAction({id,status,version}:{id:string;status:string;version:number}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/additional-costs/${id}`,{action:String(form.get('action')),reason:String(form.get('reason')),version})} className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto]"><input name="reason" required minLength={10} maxLength={1000} placeholder="Gerekçe" className="rounded-xl border border-slate-300 p-2"/><select name="action" className="rounded-xl border border-slate-300 p-2">{status==='pending_admin'?<><option value="approve">Admin onayı</option><option value="reject">Admin reddi</option></>:<><option value="continue">Önceki kapsamla devam</option><option value="cancel">Hizmeti iptal et</option></>}</select><button disabled={s.busy} className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white sm:col-span-2">Kararı kaydet</button>{s.message&&<p role="status" className="text-sm sm:col-span-2">{s.message}</p>}</form>}
-export function ComplaintAdminAction({id,version}:{id:string;version:number}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{action:'decide',finalCategory:String(form.get('finalCategory')),decision:String(form.get('decision')),reason:String(form.get('reason')),subjectUserId:String(form.get('subjectUserId')||''),sanctionEndsAt:String(form.get('sanctionEndsAt')||''),version})} className="mt-3 grid gap-2"><input name="finalCategory" required minLength={2} maxLength={100} placeholder="Nihai kategori" className="rounded-xl border border-slate-300 p-2"/><select name="decision" className="rounded-xl border border-slate-300 p-2"><option value="no_action">İşlem yok</option><option value="warning">Uyarı</option><option value="restrict_new_operations">Yeni işlemleri kısıtla</option><option value="temporary_suspension">Geçici askıya al</option><option value="permanent_closure">Kalıcı hesap kapatma</option><option value="finance_review">Finansal/iade incelemesi</option></select><input name="subjectUserId" placeholder="Yaptırım uygulanacak kullanıcı ID (işlem yoksa boş)" className="rounded-xl border border-slate-300 p-2"/><input name="sanctionEndsAt" type="datetime-local" className="rounded-xl border border-slate-300 p-2"/><textarea name="reason" required minLength={20} maxLength={2000} placeholder="Gerekçeli nihai karar" className="rounded-xl border border-slate-300 p-2"/><button disabled={s.busy} className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Sonuçlandır</button>{s.message&&<p role="status" className="text-sm">{s.message}</p>}</form>}
-export function ComplaintInfoRequest({id}:{id:string}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{action:'request_info',message:String(form.get('message'))})} className="mt-3 flex flex-wrap gap-2"><input name="message" required minLength={10} maxLength={1000} placeholder="Ek bilgi talebi" className="min-w-64 flex-1 rounded-xl border border-slate-300 p-2"/><button disabled={s.busy} className="rounded-xl border border-[#C86B32] bg-white px-4 py-2 text-sm font-bold text-[#A94D18]">Bilgi iste</button>{s.message&&<p role="status" className="w-full text-sm">{s.message}</p>}</form>}
-export function ComplaintDecisionCorrection({id}:{id:string}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{action:'correct',correctionText:String(form.get('correctionText')),revokeSanction:form.get('revokeSanction')==='on'})} className="mt-3 grid gap-2"><textarea name="correctionText" required minLength={20} maxLength={2000} placeholder="Değiştirilemez karara eklenecek düzeltme kaydı" className="rounded-xl border border-slate-300 p-2"/><label className="flex items-center gap-2 text-sm"><input name="revokeSanction" type="checkbox"/> Bağlı yaptırımı ayrı kayıtla sona erdir</label><button disabled={s.busy} className="rounded-xl border border-[#C86B32] bg-white px-4 py-2 text-sm font-bold text-[#A94D18]">Düzeltme kaydı ekle</button>{s.message&&<p role="status" className="text-sm">{s.message}</p>}</form>}
-export function WarrantyAdminAction({id,version}:{id:string;version:number}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/warranty/${id}`,{action:'decide',accept:String(form.get('decision'))==='accept',customerReason:String(form.get('customerReason')),internalReason:String(form.get('internalReason')),version})} className="mt-3 grid gap-2"><select name="decision" className="rounded-xl border border-slate-300 p-2"><option value="accept">Kabul</option><option value="reject">Ret</option></select><input name="customerReason" required minLength={10} maxLength={1000} placeholder="Müşteriye gösterilecek kısa gerekçe" className="rounded-xl border border-slate-300 p-2"/><textarea name="internalReason" required minLength={10} maxLength={2000} placeholder="İç değerlendirme" className="rounded-xl border border-slate-300 p-2"/><button disabled={s.busy} className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Kararı kaydet</button>{s.message&&<p role="status" className="text-sm">{s.message}</p>}</form>}
-export function WarrantyAssignmentAction({id,version}:{id:string;version:number}){const s=useSubmit();return <form action={form=>s.send(`/api/admin/stage10/warranty/${id}`,{action:'assign',technicianId:String(form.get('technicianId')),version})} className="mt-3 flex flex-wrap gap-2"><input name="technicianId" required placeholder="Usta kullanıcı ID" className="min-w-64 flex-1 rounded-xl border border-slate-300 p-2"/><button disabled={s.busy} className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Düzeltme ata</button>{s.message&&<p role="status" className="w-full text-sm">{s.message}</p>}</form>}
+
+import {useId,useState} from 'react';
+import {useRouter} from 'next/navigation';
+
+function useSubmit(){
+  const router=useRouter();
+  const [busy,setBusy]=useState(false);
+  const [feedback,setFeedback]=useState<{text:string;error:boolean}|null>(null);
+  return {
+    busy,
+    feedback,
+    async send(url:string,body:Record<string,unknown>){
+      setBusy(true);
+      setFeedback(null);
+      try{
+        const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+        const data=await response.json().catch(()=>({}));
+        setFeedback({text:response.ok?'İşlem kaydedildi.':data.error??'İşlem tamamlanamadı.',error:!response.ok});
+        if(response.ok)router.refresh();
+      }catch{
+        setFeedback({text:'İşlem tamamlanamadı.',error:true});
+      }finally{
+        setBusy(false);
+      }
+    },
+  };
+}
+
+function Feedback({value,className=''}:{value:{text:string;error:boolean}|null;className?:string}){
+  if(!value)return null;
+  return <p role={value.error?'alert':'status'} className={`text-sm ${value.error?'text-red-700':'text-emerald-700'} ${className}`}>{value.text}</p>;
+}
+
+export function AdditionalCostAdminAction({id,status,version}:{id:string;status:string;version:number}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/additional-costs/${id}`,{
+    action:String(form.get('action')),reason:String(form.get('reason')),version,
+  })} aria-busy={s.busy} className="mt-3">
+    <fieldset disabled={s.busy} className="grid gap-3 sm:grid-cols-2">
+      <legend className="sr-only">Ek maliyet kararı</legend>
+      <label htmlFor={`${fieldId}-reason`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Gerekçe <span className="text-[#A94D18]">(zorunlu)</span>
+        <input id={`${fieldId}-reason`} name="reason" required minLength={10} maxLength={1000} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <label htmlFor={`${fieldId}-action`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Karar
+        <select id={`${fieldId}-action`} name="action" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900">
+          {status==='pending_admin'?<><option value="approve">Admin onayı</option><option value="reject">Admin reddi</option></>:<><option value="continue">Önceki kapsamla devam</option><option value="cancel">Hizmeti iptal et</option></>}
+        </select>
+      </label>
+      <button type="submit" className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white sm:col-span-2">Kararı kaydet</button>
+    </fieldset>
+    <Feedback value={s.feedback} className="mt-3"/>
+  </form>;
+}
+
+export function ComplaintAdminAction({id,version}:{id:string;version:number}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{
+    action:'decide',finalCategory:String(form.get('finalCategory')),decision:String(form.get('decision')),
+    reason:String(form.get('reason')),subjectUserId:String(form.get('subjectUserId')||''),
+    sanctionEndsAt:String(form.get('sanctionEndsAt')||''),version,
+  })} aria-busy={s.busy} className="mt-3">
+    <fieldset disabled={s.busy} className="grid gap-3">
+      <legend className="sr-only">Şikâyet kararı</legend>
+      <label htmlFor={`${fieldId}-category`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Nihai kategori <span className="text-[#A94D18]">(zorunlu)</span>
+        <input id={`${fieldId}-category`} name="finalCategory" required minLength={2} maxLength={100} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <label htmlFor={`${fieldId}-decision`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Karar
+        <select id={`${fieldId}-decision`} name="decision" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900">
+          <option value="no_action">İşlem yok</option><option value="warning">Uyarı</option><option value="restrict_new_operations">Yeni işlemleri kısıtla</option><option value="temporary_suspension">Geçici askıya al</option><option value="permanent_closure">Kalıcı hesap kapatma</option><option value="finance_review">Finansal/iade incelemesi</option>
+        </select>
+      </label>
+      <label htmlFor={`${fieldId}-subject`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Yaptırım uygulanacak kullanıcı kimliği <span className="font-normal text-slate-500">(işlem yoksa boş)</span>
+        <input id={`${fieldId}-subject`} name="subjectUserId" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <label htmlFor={`${fieldId}-ends`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Yaptırım bitiş zamanı <span className="font-normal text-slate-500">(isteğe bağlı)</span>
+        <input id={`${fieldId}-ends`} name="sanctionEndsAt" type="datetime-local" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <label htmlFor={`${fieldId}-reason`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Gerekçeli nihai karar <span className="text-[#A94D18]">(zorunlu)</span>
+        <textarea id={`${fieldId}-reason`} name="reason" required minLength={20} maxLength={2000} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <button type="submit" className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Sonuçlandır</button>
+    </fieldset>
+    <Feedback value={s.feedback} className="mt-3"/>
+  </form>;
+}
+
+export function ComplaintInfoRequest({id}:{id:string}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{
+    action:'request_info',message:String(form.get('message')),
+  })} aria-busy={s.busy} className="mt-3 flex flex-wrap items-end gap-2">
+    <label htmlFor={`${fieldId}-message`} className="grid min-w-64 flex-1 gap-1 text-sm font-semibold text-slate-700">
+      Ek bilgi talebi <span className="text-[#A94D18]">(zorunlu)</span>
+      <input id={`${fieldId}-message`} name="message" required minLength={10} maxLength={1000} disabled={s.busy} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+    </label>
+    <button type="submit" disabled={s.busy} className="rounded-xl border border-[#C86B32] bg-white px-4 py-2 text-sm font-bold text-[#A94D18]">Bilgi iste</button>
+    <Feedback value={s.feedback} className="w-full"/>
+  </form>;
+}
+
+export function ComplaintDecisionCorrection({id}:{id:string}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{
+    action:'correct',correctionText:String(form.get('correctionText')),revokeSanction:form.get('revokeSanction')==='on',
+  })} aria-busy={s.busy} className="mt-3 grid gap-3">
+    <label htmlFor={`${fieldId}-correction`} className="grid gap-1 text-sm font-semibold text-slate-700">
+      Karar düzeltme kaydı <span className="text-[#A94D18]">(zorunlu)</span>
+      <textarea id={`${fieldId}-correction`} name="correctionText" required minLength={20} maxLength={2000} disabled={s.busy} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+    </label>
+    <label htmlFor={`${fieldId}-revoke`} className="flex items-center gap-2 text-sm">
+      <input id={`${fieldId}-revoke`} name="revokeSanction" type="checkbox" disabled={s.busy}/> Bağlı yaptırımı ayrı kayıtla sona erdir
+    </label>
+    <button type="submit" disabled={s.busy} className="rounded-xl border border-[#C86B32] bg-white px-4 py-2 text-sm font-bold text-[#A94D18]">Düzeltme kaydı ekle</button>
+    <Feedback value={s.feedback}/>
+  </form>;
+}
+
+export function WarrantyAdminAction({id,version}:{id:string;version:number}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/warranty/${id}`,{
+    action:'decide',accept:String(form.get('decision'))==='accept',customerReason:String(form.get('customerReason')),
+    internalReason:String(form.get('internalReason')),version,
+  })} aria-busy={s.busy} className="mt-3">
+    <fieldset disabled={s.busy} className="grid gap-3">
+      <legend className="sr-only">Garanti kararı</legend>
+      <label htmlFor={`${fieldId}-decision`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Karar
+        <select id={`${fieldId}-decision`} name="decision" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"><option value="accept">Kabul</option><option value="reject">Ret</option></select>
+      </label>
+      <label htmlFor={`${fieldId}-customer-reason`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        Müşteriye gösterilecek kısa gerekçe <span className="text-[#A94D18]">(zorunlu)</span>
+        <input id={`${fieldId}-customer-reason`} name="customerReason" required minLength={10} maxLength={1000} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <label htmlFor={`${fieldId}-internal-reason`} className="grid gap-1 text-sm font-semibold text-slate-700">
+        İç değerlendirme <span className="text-[#A94D18]">(zorunlu)</span>
+        <textarea id={`${fieldId}-internal-reason`} name="internalReason" required minLength={10} maxLength={2000} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+      </label>
+      <button type="submit" className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Kararı kaydet</button>
+    </fieldset>
+    <Feedback value={s.feedback} className="mt-3"/>
+  </form>;
+}
+
+export function WarrantyAssignmentAction({id,version}:{id:string;version:number}){
+  const s=useSubmit();
+  const fieldId=useId();
+  return <form action={form=>s.send(`/api/admin/stage10/warranty/${id}`,{
+    action:'assign',technicianId:String(form.get('technicianId')),version,
+  })} aria-busy={s.busy} className="mt-3 flex flex-wrap items-end gap-2">
+    <label htmlFor={`${fieldId}-technician`} className="grid min-w-64 flex-1 gap-1 text-sm font-semibold text-slate-700">
+      Usta kullanıcı kimliği <span className="text-[#A94D18]">(zorunlu)</span>
+      <input id={`${fieldId}-technician`} name="technicianId" required disabled={s.busy} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
+    </label>
+    <button type="submit" disabled={s.busy} className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Düzeltme ata</button>
+    <Feedback value={s.feedback} className="w-full"/>
+  </form>;
+}

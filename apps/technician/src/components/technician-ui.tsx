@@ -5,11 +5,18 @@ const labels:Record<string,string>={
   assigned:'Atandı',in_progress:'İşlemde',completed:'Tamamlandı',cancelled:'İptal edildi',
   scheduled:'Planlandı',confirmed:'Onaylandı',approved:'Onaylandı',rejected:'Reddedildi',
   resolved:'Sonuçlandı',declined:'Reddedildi',under_review:'İnceleniyor',submitted:'İnceleniyor',
+  draft:'Taslak',expired:'Süresi doldu',withdrawn:'Geri çekildi',rescheduled:'Yeniden planlandı',
+  suspended:'Askıya alındı',pending_document:'Belge bekleniyor',verified:'Doğrulandı',active:'Aktif',
+  exhausted:'Usta bulunamadı',distributing:'Ustalara iletiliyor',admin_intervention:'Yönetim incelemesi gerekli',
+  request_open:'Talep açık',technician_unavailable:'Usta bulunamadı',pending_admin:'Yönetim onayı bekleniyor',
+  customer_accepted:'Müşteri kabul etti',customer_rejected:'Müşteri reddetti',
+  admin_continue:'Önceki kapsamla devam',admin_cancelled:'Yönetim tarafından iptal edildi',
+  correction_pending:'Düzeltme bekleniyor',correction_assigned:'Düzeltme atandı',corrected:'Düzeltildi',
 };
 
 export function statusLabel(value:string|null|undefined){
   if(!value)return 'Durum belirtilmedi';
-  return labels[value]??value;
+  return labels[value]??'Bilinmeyen durum';
 }
 
 export function formatMoney(amount:number|string|null|undefined,currency='TRY'){

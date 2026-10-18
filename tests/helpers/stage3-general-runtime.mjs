@@ -1,11 +1,17 @@
-import {readFileSync,existsSync} from 'node:fs';
+import {readFileSync} from 'node:fs';
 import {withCopaRepository} from './copa-stage3-runtime.mjs';
 export function generalData(){
- const final=new URL('../../test-results/stage3-general/knowledge-after.json',import.meta.url);
- const p=JSON.parse(readFileSync(existsSync(final)?final:new URL('../../test-results/stage3-general/knowledge-candidates-after.json',import.meta.url),'utf8'));
- return {families:p.boiler_model_families,models:p.boiler_official_models,aliases:p.boiler_model_aliases,
-   raw:p.official_error_codes_raw,candidates:p.boiler_fault_candidates,
-   questions:p.boiler_diagnostic_questions,effects:p.boiler_question_effects};
+ const fixture=new URL('../fixtures/free-text-relevance.json',import.meta.url);
+ const p=JSON.parse(readFileSync(fixture,'utf8'));
+ const copa=JSON.parse(readFileSync(new URL('../fixtures/copa-stage3.json',import.meta.url),'utf8'));
+ const merge=(primary,additional)=>{
+  const seen=new Set(primary.map(item=>item.id??JSON.stringify(item)));
+  return [...primary,...additional.filter(item=>!seen.has(item.id??JSON.stringify(item)))];
+ };
+ return {families:merge(p.families,copa.families),models:merge(p.models,copa.models),
+   aliases:merge(p.aliases,copa.aliases),raw:merge(p.raw,copa.raw),
+   candidates:merge(p.candidates,copa.candidates),questions:merge(p.questions,copa.questions),
+   effects:merge(p.effects,copa.effects)};
 }
 export const withGeneralRepository=(run,options={})=>withCopaRepository(run,{...options,data:generalData()});
 export const generalAI=identity=>({
