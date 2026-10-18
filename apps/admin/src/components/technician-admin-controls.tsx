@@ -69,7 +69,7 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
         onChange={event=>setCategoryId(event.target.value)} className="rounded-lg border p-2 text-sm">
         <option value="">Kategori seçin</option>{categories.filter(c=>c.is_active).map(c=><option key={c.id} value={c.id}>{c.name}</option>)}
       </select><button type="button" disabled={busy||!categoryId} onClick={()=>void change('category_add',{categoryId})}
-        className="rounded-lg bg-[#D97724] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Kategori ekle</button></div>
+        className="rounded-lg bg-[#C86B32] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Kategori ekle</button></div>
     </div>
     <div>
       <p className="font-semibold">Hizmet alanları</p>
@@ -85,7 +85,7 @@ export function TechnicianAdminControls({technicianId,approvalStatus,isActive,ca
         {districts.filter(d=>d.is_active&&String(d.city_id)===cityId).map(d=><option key={d.id} value={d.id}>{d.name}</option>)}
       </select><button type="button" disabled={busy||!cityId}
         onClick={()=>void change('area_add',{cityId:Number(cityId),districtId:districtId?Number(districtId):undefined})}
-        className="rounded-lg bg-[#D97724] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Alan ekle</button></div>
+        className="rounded-lg bg-[#C86B32] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Alan ekle</button></div>
     </div>
     {documents.length>0&&<div><p className="font-semibold">Yüklenen belgeler</p>{documents.map(d=><div key={d.id}
       className="mt-2 flex flex-wrap items-center gap-2"><span>{d.original_file_name??d.document_type} · {categories.find(c=>c.id===d.category_id)?.name??'Kategori belirtilmemiş'} · {d.status}</span>

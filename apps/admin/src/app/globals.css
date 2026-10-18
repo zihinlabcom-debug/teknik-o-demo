@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+:root{--background:#F4F7FB;--foreground:#17263B;--navy:#082B4C;--copper:#C86B32;color-scheme:light;}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+*{box-sizing:border-box;}
+html{background:#E8EEF5;}
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-manrope),"Segoe UI",Arial,sans-serif;}
+button,a,input,select,textarea{touch-action:manipulation;}
+button,a{min-height:40px;}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(200,107,50,.25);outline-offset:2px;}
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]),textarea,select{min-height:44px;border-color:#CBD5E1;background:#fff;color:#17263B;}
+input[type="checkbox"],input[type="radio"]{accent-color:#C86B32;}
+::placeholder{color:#8A98AA;}
+.admin-shell table{border-collapse:separate;border-spacing:0;}
+.admin-shell thead{background:#F8FAFC;color:#52627A;}
+.admin-shell th{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+.admin-shell tbody tr{transition:background-color .15s ease;}
+.admin-shell tbody tr:hover{background:#F8FAFC;}
+.admin-shell tbody tr:last-child td{border-bottom:0;}
+.admin-shell form button:not([class*="bg-"]){transition:background-color .15s ease,color .15s ease,border-color .15s ease;}
 
 @media (max-width: 767px) {
   input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]),

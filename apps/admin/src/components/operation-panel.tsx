@@ -1,52 +1,35 @@
 import type {ReactNode} from 'react';
 import Link from 'next/link';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {AdminDashboardShell,type AdminNavLink} from '@/components/admin-dashboard-shell';
 
-export type PanelLink={href:string;label:string};
+export type PanelLink=AdminNavLink;
 
-export function OperationPanelShell({area,subtitle,links,children,isTest}:{
+export function OperationPanelShell({links,children,isTest}:{
   area:string;subtitle:string;links:readonly PanelLink[];children:ReactNode;isTest?:boolean;
 }){
-  return <div className="min-h-screen bg-slate-50 text-[#0B1727]">
-    <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col lg:flex-row">
-      <aside className="shrink-0 border-b border-slate-200 bg-white px-4 py-5 lg:w-64 lg:border-b-0 lg:border-r lg:px-5 lg:py-8" aria-label={`${area} menüsü`}>
-        <Link href={links[0]?.href??'/'} className="inline-flex max-w-full items-center"><TeknikOBrand size="compact"/></Link>
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-[#D97724]">{area}</p>
-        <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
-        {typeof isTest==='boolean'&&<div className="mt-3"><RecordTypeBadge kind={isTest?'TEST':'GERÇEK'}/></div>}
-        <nav aria-label={`${area} navigasyonu`} className="mt-5 flex max-w-full gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
-          {links.map(link=><Link key={link.href} href={link.href}
-            className="shrink-0 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-orange-50 hover:text-[#B75D17] lg:shrink">
-            {link.label}
-          </Link>)}
-        </nav>
-        <form action="/api/auth/logout" method="post" className="mt-5"><button type="submit" className="text-sm font-semibold text-slate-600 hover:text-[#B75D17]">Çıkış Yap</button></form>
-      </aside>
-      <main className="min-w-0 flex-1 px-4 py-7 sm:px-6 lg:px-10 lg:py-10">{children}</main>
-    </div>
-  </div>;
+  return <AdminDashboardShell links={links} isTest={isTest}>{children}</AdminDashboardShell>;
 }
 
-export function PanelSubNav({links}:{links:readonly PanelLink[]}){
+export function PanelSubNav({links}:{links:readonly Omit<PanelLink,'group'>[]}){
   return <nav aria-label="Müşteri paneli navigasyonu" className="mb-7 flex max-w-full gap-2 overflow-x-auto pb-1">
     {links.map(link=><Link key={link.href} href={link.href}
-      className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-[#D97724] hover:text-[#B75D17]">{link.label}</Link>)}
+      className="shrink-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:border-[#C86B32] hover:text-[#A94D18]">{link.label}</Link>)}
   </nav>;
 }
 
 export function PanelHeading({title,description}:{title:string;description:string}){
-  return <header className="mb-7"><h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>
-    <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{description}</p></header>;
+  return <header className="mb-6"><p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#C86B32]">Yönetim / {title}</p><h1 className="mt-2 text-2xl font-extrabold tracking-[-0.035em] text-[#082B4C] sm:text-[30px]">{title}</h1>
+    <p className="mt-2 max-w-3xl text-sm leading-6 text-[#617086]">{description}</p></header>;
 }
 
 export function PanelCard({title,children}:{title:string;children:ReactNode}){
-  return <section className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6" aria-label={title}>
-    <h2 className="text-lg font-bold">{title}</h2><div className="mt-4">{children}</div>
+  return <section className="min-w-0 rounded-2xl border border-[#E2E8F0] bg-white p-4 shadow-[0_8px_28px_rgba(15,42,68,0.055)] sm:p-5" aria-label={title}>
+    <div className="flex items-center gap-3"><span aria-hidden="true" className="h-6 w-1 rounded-full bg-[#C86B32]"/><h2 className="text-[17px] font-extrabold tracking-[-0.02em] text-[#082B4C]">{title}</h2></div><div className="mt-4">{children}</div>
   </section>;
 }
 
 export function EmptyPanelState({children}:{children:ReactNode}){
-  return <p role="status" className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm leading-6 text-slate-600">{children}</p>;
+  return <p role="status" className="rounded-xl border border-dashed border-[#C8D4E0] bg-[#F8FAFC] p-5 text-sm leading-6 text-[#617086]">{children}</p>;
 }
 
 export function PanelTable({title,columns,empty}:{title:string;columns:readonly string[];empty:string}){

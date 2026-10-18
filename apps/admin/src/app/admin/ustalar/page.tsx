@@ -11,7 +11,7 @@ export default async function AdminProviders(){
       :<div className="space-y-4">{technicians.map(technician=><section key={technician.id}
         className="rounded-xl border border-slate-200 p-4" aria-label={`${technician.name} usta kaydı`}>
         <div className="flex flex-wrap items-center gap-3">{technician.avatarUrl?<img src={technician.avatarUrl} alt="" className="size-12 rounded-full object-cover"/>:
-          <div className="grid size-12 place-items-center rounded-full bg-orange-100 font-black text-[#D97724]">{technician.name.slice(0,1).toLocaleUpperCase('tr-TR')}</div>}
+          <div className="grid size-12 place-items-center rounded-full bg-orange-100 font-black text-[#C86B32]">{technician.name.slice(0,1).toLocaleUpperCase('tr-TR')}</div>}
           <div><h3 className="font-bold">{technician.name}</h3><p className="text-sm text-slate-600">{technician.phone??'Telefon yok'} · {technician.email??'E-posta yok'}</p></div>
           <RecordTypeBadge kind={technician.is_test?'TEST':'GERÇEK'}/>
           <span className="text-sm text-slate-600">{technician.is_active?'Aktif':'Pasif'}</span>

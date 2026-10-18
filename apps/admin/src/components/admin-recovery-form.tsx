@@ -2,6 +2,7 @@
 import {useEffect,useRef,useState,type FormEvent} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
+import {AdminAuthShell} from '@/components/admin-auth-shell';
 
 export function AdminRecoveryForm({reset}:{reset:boolean}){
   const router=useRouter();
@@ -41,9 +42,9 @@ export function AdminRecoveryForm({reset}:{reset:boolean}){
     }catch{setMessage('İşlem tamamlanamadı. Daha sonra tekrar deneyin.');}
     finally{setBusy(false);}
   }
-  return <main className="flex min-h-screen items-center justify-center bg-slate-50 p-4">
-    <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
-      <h1 className="text-2xl font-bold">{reset?'Yeni yönetici şifresi':'Yönetici şifremi unuttum'}</h1>
+  return <AdminAuthShell eyebrow={reset?'Şifre Güvenliği':'Hesap Kurtarma'} title={reset?'Yeni şifrenizi güvenle belirleyin':'Yönetim hesabınıza yeniden erişin'} description="Yalnız önceden yetkilendirilmiş yönetici hesapları bu güvenli akışı kullanabilir.">
+    <div className="mx-auto w-full max-w-md">
+      <h1 className="text-2xl font-extrabold tracking-[-0.03em] text-[#082B4C]">{reset?'Yeni yönetici şifresi':'Yönetici şifremi unuttum'}</h1>
       <p className="mt-3 text-sm text-slate-600">Yalnız önceden yetkilendirilmiş yönetici hesapları erişebilir.</p>
       <form onSubmit={submit} className="mt-6 space-y-4">
         {!reset?<label className="block">E-posta adresi
@@ -59,11 +60,11 @@ export function AdminRecoveryForm({reset}:{reset:boolean}){
             className="mt-2 w-full rounded-xl border p-3"/></label>
         </>}
         <button type="submit" disabled={busy||(reset&&!verified)}
-          className="w-full rounded-xl bg-[#D97724] p-3 font-bold text-white disabled:opacity-50">
+          className="w-full rounded-xl bg-[#C86B32] p-3 font-bold text-white shadow-[0_8px_18px_rgba(200,107,50,0.22)] disabled:opacity-50">
           {reset?'Şifreyi güncelle':'Sıfırlama iletisi gönder'}</button>
       </form>
       {message&&<p role="status" className="mt-4 text-sm">{message}</p>}
       <Link href="/giris-admin" className="mt-6 block text-sm underline">Giriş ekranına dön</Link>
     </div>
-  </main>;
+  </AdminAuthShell>;
 }

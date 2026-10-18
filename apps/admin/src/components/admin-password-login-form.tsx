@@ -3,7 +3,7 @@
 import {useState,type FormEvent} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import {TeknikOBrand} from '@/components/brand/teknik-o-brand';
+import {AdminAuthShell} from '@/components/admin-auth-shell';
 
 export function AdminPasswordLoginForm(){
   const router=useRouter();
@@ -21,12 +21,10 @@ export function AdminPasswordLoginForm(){
     }catch{setNotice('Giriş hizmetine ulaşılamıyor.');}
     finally{setBusy(false);}
   }
-  return <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 font-sans text-[#0B1727]">
-    <div className="w-full max-w-md rounded-3xl border border-slate-100 bg-white p-6 shadow-xl sm:p-8">
-      <header className="text-center"><h1><TeknikOBrand size="standard"/></h1>
-        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">Yönetim Girişi</p>
-        <h2 className="mt-7 text-2xl font-extrabold tracking-tight">Tekrar hoş geldiniz</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Yetkili yönetici e-postanız ve kişisel şifrenizle giriş yapın.</p></header>
+  return <AdminAuthShell eyebrow="Yönetim Girişi" title="Operasyonunuzu güvenle yönetin" description="Hizmet talepleri, usta süreçleri ve yönetim kayıtlarına yalnız yetkili hesabınızla erişin.">
+    <div className="mx-auto w-full max-w-md">
+      <h2 className="text-2xl font-extrabold tracking-[-0.03em] text-[#082B4C]">Tekrar hoş geldiniz</h2>
+      <p className="mt-2 text-sm leading-6 text-slate-600">Yetkili yönetici e-postanız ve kişisel şifrenizle giriş yapın.</p>
       <form className="mt-8 space-y-4" onSubmit={login}>
         <label className="block text-sm font-semibold text-slate-800">E-posta adresi
           <input type="email" autoComplete="username" maxLength={254} required value={email}
@@ -40,12 +38,12 @@ export function AdminPasswordLoginForm(){
         </label>
         <button type="button" aria-pressed={visible} onClick={()=>setVisible(v=>!v)} className="text-sm underline">
           {visible?'Şifreyi gizle':'Şifreyi göster'}</button>
-        <button type="submit" disabled={busy} className="w-full rounded-xl bg-[#D97724] px-4 py-3 font-bold text-white disabled:opacity-50">
-          Giriş Yap</button>
+        <button type="submit" disabled={busy} className="w-full rounded-xl bg-[#C86B32] px-4 py-3 font-bold text-white shadow-[0_8px_18px_rgba(200,107,50,0.22)] disabled:opacity-50">
+          {busy?'Giriş yapılıyor…':'Giriş Yap'}</button>
         <Link href="/sifremi-unuttum-admin" className="block text-center text-sm font-semibold text-[#A64D12] underline">Şifremi unuttum</Link>
       </form>
       {notice&&<p role="alert" className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-3 text-sm text-orange-900">{notice}</p>}
       <p className="mt-5 text-center text-xs text-slate-500">Yeni yönetici hesabı yalnızca yetkili yönetim işlemiyle tanımlanabilir.</p>
     </div>
-  </main>;
+  </AdminAuthShell>;
 }

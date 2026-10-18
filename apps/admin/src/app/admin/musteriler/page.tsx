@@ -10,7 +10,7 @@ export default async function AdminCustomers(){
       <div className="space-y-4">{customers.map(customer=><section key={customer.id} className="rounded-xl border border-slate-200 p-4">
         <div className="flex flex-wrap items-center gap-3">
           {customer.avatarUrl?<img src={customer.avatarUrl} alt="" className="size-12 rounded-full object-cover"/>:
-            <div className="grid size-12 place-items-center rounded-full bg-orange-100 font-black text-[#D97724]">{customer.name.slice(0,1).toLocaleUpperCase('tr-TR')}</div>}
+            <div className="grid size-12 place-items-center rounded-full bg-orange-100 font-black text-[#C86B32]">{customer.name.slice(0,1).toLocaleUpperCase('tr-TR')}</div>}
           <div><h3 className="font-bold">{customer.name}</h3><p className="text-sm text-slate-600">{customer.phone??'Telefon yok'} · {customer.email??'E-posta yok'}</p></div>
           <RecordTypeBadge kind={customer.is_test?'TEST':'GERÇEK'}/>
           <span className="text-sm text-slate-600">{customer.is_active?'Aktif':'Pasif'}</span>
