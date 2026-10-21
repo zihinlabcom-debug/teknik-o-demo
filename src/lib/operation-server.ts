@@ -5,6 +5,7 @@ import {decodeConversationState} from '@/lib/service-conversation';
 import {serviceRequestSummary} from '@/lib/service-request-summary';
 import {serviceRequestAssessment} from '@/lib/service-request-assessment';
 import {acceptedMaximumPrice} from '@/lib/service-request-accepted-price';
+import {createIyzicoPendingRequest} from './iyzico-request-finance';
 import {OperationError} from '@/lib/operation-error';
 import {requireRole,requireId,failDb} from '@/lib/operation-guard';
 export {OperationError,operationErrorResponse} from '@/lib/operation-error';
@@ -52,6 +53,11 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
     p_assessment_snapshot:assessmentSnapshot,
   };
+  if(acceptedPrice){
+    const pending=await createIyzicoPendingRequest({rpc:(name,params)=>db.rpc(name,params),
+      accountId:account.id,isTest:account.is_test===true,price:acceptedPrice,args,fingerprint});
+    if(pending)return pending;
+  }
   const {data,error}=acceptedPrice?await db.rpc('create_priced_service_request',{
     ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
     p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
