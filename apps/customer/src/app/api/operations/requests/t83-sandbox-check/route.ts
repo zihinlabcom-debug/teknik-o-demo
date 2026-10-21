@@ -19,7 +19,6 @@ export async function POST(request: Request) {
   if (
     process.env.APP_ENV !== 'staging' ||
     process.env.VERCEL_ENV !== 'preview' ||
-    process.env.APP_SURFACE !== 'customer' ||
     process.env.NEXT_PUBLIC_SUPABASE_URL !==
       'https://ygrvtndujbmeatexjdej.supabase.co' ||
     process.env.IYZICO_BASE_URL !==
