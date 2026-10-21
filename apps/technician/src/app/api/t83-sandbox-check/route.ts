@@ -1,8 +1,8 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
-import { parseIyzicoSandboxConfig } from '../../../../../../../customer/src/lib/finance/iyzico/iyzico-config-contract';
-import { createIyzicoAuthorization } from '../../../../../../../customer/src/lib/finance/iyzico/iyzico-signature';
+import { parseIyzicoSandboxConfig } from '../../../../../customer/src/lib/finance/iyzico/iyzico-config-contract';
+import { createIyzicoAuthorization } from '../../../../../customer/src/lib/finance/iyzico/iyzico-signature';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
