@@ -1,4 +1,5 @@
 const statusLabels={
+  created:'Oluşturuldu',
   draft:'Taslak',offered:'Teklif edildi',accepted:'Kabul edildi',rejected:'Reddedildi',expired:'Süresi doldu',
   cancelled:'İptal edildi',pending:'Bekliyor',broadcasting:'Ustalara iletiliyor',declined:'Reddedildi',
   withdrawn:'Geri çekildi',assigned:'Atandı',in_progress:'İşlemde',completed:'Tamamlandı',
@@ -31,6 +32,8 @@ const eventLabels={
   'job.cancelled':'İş iptal edildi',
   'job.appointment_timeout':'Randevu belirleme süresi doldu',
   'appointment.rescheduled':'Randevu yeniden planlandı',
+  'appointment.scheduled':'Randevu oluşturuldu',
+  'appointment.completed':'Randevu tamamlandı',
   'request.technician_unavailable':'Uygun usta bulunamadı',
   'admin.manual_assignment':'Yönetici usta atadı',
   'admin.service_cancelled':'Yönetici hizmeti iptal etti',
@@ -48,6 +51,8 @@ const eventLabels={
   'finance.authorized':'Ödeme provizyonu alındı',
   'finance.payment_pending':'Ödeme bekleniyor',
   'finance.captured':'Ödeme tahsil edildi',
+  'finance.iyzico_capture_succeeded':'Ödeme tahsil edildi',
+  'finance.iyzico_authorize_succeeded':'Ödeme provizyonu başarılı',
   'finance.voided':'Ödeme provizyonu iptal edildi',
   'finance.refunded':'Ödeme iade edildi',
 } as const satisfies Record<string,string>;
@@ -75,4 +80,16 @@ export function operationEventLabel(value:string|null|undefined){
 export function exclusionReasonLabel(value:string|null|undefined){
   if(!value)return 'Dışlama nedeni belirtilmedi';
   return exclusionReasonLabels[value as keyof typeof exclusionReasonLabels]??'Tanımlanmamış dışlama nedeni';
+}
+
+const operationDateTimeFormatter=new Intl.DateTimeFormat('tr-TR',{
+  timeZone:'Europe/Istanbul',
+  year:'numeric',month:'2-digit',day:'2-digit',
+  hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23',
+});
+
+export function formatOperationDateTime(value:string|null|undefined){
+  if(!value)return '—';
+  const date=new Date(value);
+  return Number.isNaN(date.getTime())?'—':operationDateTimeFormatter.format(date);
 }

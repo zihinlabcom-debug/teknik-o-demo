@@ -7,7 +7,7 @@ import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
 import {ManualAssignmentPanel} from '@/components/manual-assignment-panel';
 import {Stage10OperationIntervention} from '@/components/stage10-operation-intervention';
 import {adminOperationContract} from '@/lib/stage10-server';
-import {assignmentSourceLabel,exclusionReasonLabel,operationEventLabel,operationStatusLabel} from '@/lib/operation-presentation';
+import {assignmentSourceLabel,exclusionReasonLabel,formatOperationDateTime,operationEventLabel,operationStatusLabel} from '@/lib/operation-presentation';
 
 export default async function AdminRequestDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params; let d;
@@ -29,16 +29,16 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
 
     <PanelCard title="Dağıtım döngüleri">{d.cycles.length?<div className="space-y-3">{d.cycles.map(c=><div key={c.id} className="rounded-xl border border-slate-200 p-3 text-sm">
       <p><b>{c.id.slice(0,8)}</b> · {operationStatusLabel(c.status)} · Tur {c.current_round}/3</p>
-      <p className="mt-1 text-slate-600">Başlangıç: {new Date(c.started_at).toLocaleString('tr-TR')}</p>
-      {c.next_round_at&&<p className="text-slate-600">Sonraki tur: {new Date(c.next_round_at).toLocaleString('tr-TR')}</p>}
+      <p className="mt-1 text-slate-600">Başlangıç: {formatOperationDateTime(c.started_at)}</p>
+      {c.next_round_at&&<p className="text-slate-600">Sonraki tur: {formatOperationDateTime(c.next_round_at)}</p>}
       {c.source_job_id&&<p className="text-slate-600">Yeniden dağıtım kaynağı iş: {c.source_job_id.slice(0,8)}</p>}
     </div>)}</div>:<EmptyPanelState>Dağıtım döngüsü yok.</EmptyPanelState>}</PanelCard>
 
-    <PanelCard title="Dağıtım">{d.dispatches.length?<div className="space-y-2">{d.dispatches.map(x=><p key={x.id} className="text-sm">{x.id.slice(0,8)} · {x.round_no?`Tur ${x.round_no} · `:''}{operationStatusLabel(x.status)}{x.expires_at?` · Son: ${new Date(x.expires_at).toLocaleString('tr-TR')}`:''}</p>)}</div>:<EmptyPanelState>Dağıtım kaydı yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Dağıtım">{d.dispatches.length?<div className="space-y-2">{d.dispatches.map(x=><p key={x.id} className="text-sm">{x.id.slice(0,8)} · {x.round_no?`Tur ${x.round_no} · `:''}{operationStatusLabel(x.status)}{x.expires_at?` · Son: ${formatOperationDateTime(x.expires_at)}`:''}</p>)}</div>:<EmptyPanelState>Dağıtım kaydı yok.</EmptyPanelState>}</PanelCard>
 
     <PanelCard title="İşler ve randevular">{d.jobs.length?<div className="space-y-3">{d.jobs.map(x=><div key={x.id} className="rounded-xl border border-slate-200 p-3 text-sm">
       <p><b>{x.id.slice(0,8)}</b> · {operationStatusLabel(x.status)} · {x.technician?.name||x.technician_id?.slice(0,8)||'Usta yok'}</p>
-      {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {operationStatusLabel(a.status)} · {new Date(a.starts_at).toLocaleString('tr-TR')}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
+      {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {operationStatusLabel(a.status)} · {formatOperationDateTime(a.starts_at)}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
     </div>)}</div>:<EmptyPanelState>Job yok.</EmptyPanelState>}</PanelCard>
 
     {canManualAssign&&<PanelCard title="Manuel usta ataması">
@@ -50,8 +50,8 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
 
     <PanelCard title="Operasyon müdahalesi"><p className="mb-3 text-sm text-slate-600">Yönetim yetkisi yalnız hizmet iptali ve mevcut ustayı değiştirme işlemleriyle sınırlıdır.</p><Stage10OperationIntervention requestId={id} currentJobId={contract.currentJobId as string|null} closed={contract.terminal}/></PanelCard>
 
-    <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReasonLabel(x.reason)} · {new Date(x.created_at).toLocaleString('tr-TR')}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReasonLabel(x.reason)} · {formatOperationDateTime(x.created_at)}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
 
-    <PanelCard title="Olay geçmişi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {operationEventLabel(e.event_type)}</p>):<EmptyPanelState>Olay yok.</EmptyPanelState>}</PanelCard>
+    <PanelCard title="Olay geçmişi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{formatOperationDateTime(e.occurred_at)} · {operationEventLabel(e.event_type)}</p>):<EmptyPanelState>Olay yok.</EmptyPanelState>}</PanelCard>
   </div></>;
 }

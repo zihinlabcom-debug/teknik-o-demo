@@ -1,9 +1,102 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {assignmentSourceLabel,operationEventLabel,operationStatusLabel} from '../apps/admin/src/lib/operation-presentation.ts';
+import vm from 'node:vm';
+import ts from 'typescript';
+import {createElement} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import * as jsxRuntime from 'react/jsx-runtime';
+import * as presentation from '../apps/admin/src/lib/operation-presentation.ts';
+const {assignmentSourceLabel,operationEventLabel,operationStatusLabel,formatOperationDateTime}=presentation;
 
 const read=path=>fs.readFileSync(new URL(`../${path}`,import.meta.url),'utf8');
+
+test('created request status stays distinct from operation and job completion',()=>{
+  assert.equal(operationStatusLabel('created'),'Oluşturuldu');
+  assert.equal(operationStatusLabel('completed'),'Tamamlandı');
+  assert.equal(operationStatusLabel('unexpected_created'),'Bilinmeyen durum');
+});
+
+test('scheduled, completed and verified authorization events have their exact meanings',()=>{
+  assert.equal(operationEventLabel('appointment.scheduled'),'Randevu oluşturuldu');
+  assert.equal(operationEventLabel('appointment.completed'),'Randevu tamamlandı');
+  assert.equal(operationEventLabel('finance.iyzico_authorize_succeeded'),'Ödeme provizyonu başarılı');
+  assert.equal(operationEventLabel('finance.iyzico_capture_succeeded'),'Ödeme tahsil edildi');
+});
+
+test('unrecognized appointment and authorization outcomes retain the safe fallback',()=>{
+  for(const event of ['appointment.unknown','finance.iyzico_authorize_declined','finance.iyzico_authorize_unknown','finance.iyzico_authorize_succeeded_extra']){
+    assert.equal(operationEventLabel(event),'Tanımlanmamış teknik olay',event);
+  }
+});
+
+test('Istanbul display preserves instants across UTC day boundaries and host timezones',()=>{
+  const originalTZ=process.env.TZ;
+  try{
+    for(const zone of ['UTC','America/New_York','Asia/Tokyo']){
+      process.env.TZ=zone;
+      assert.equal(formatOperationDateTime('2026-10-22T00:58:50.432Z'),'22.10.2026 03:58:50');
+      assert.equal(formatOperationDateTime('2026-10-22T03:58:50.432+03:00'),'22.10.2026 03:58:50');
+      assert.equal(formatOperationDateTime('2026-12-31T22:30:00Z'),'01.01.2027 01:30:00');
+      assert.equal(formatOperationDateTime('2026-06-01T00:00:00Z'),'01.06.2026 03:00:00');
+    }
+  }finally{if(originalTZ===undefined)delete process.env.TZ;else process.env.TZ=originalTZ;}
+});
+
+test('missing and invalid timestamps cannot masquerade as actual appointment times',()=>{
+  for(const value of [null,undefined,'','invalid-time'])assert.equal(formatOperationDateTime(value),'—');
+});
+
+test('actual admin detail renders created separately and all six timestamp fields in Istanbul',async()=>{
+  const d={status:'created',customer:{name:'TEST',is_test:true},category:{name:'Temizlik'},quotes:[],
+    cycles:[{id:'cycle',status:'accepted',current_round:1,started_at:'2026-10-22T00:41:00Z',next_round_at:'2026-10-22T00:46:00Z'}],
+    dispatches:[{id:'dispatch',status:'accepted',round_no:1,expires_at:'2026-10-22T00:48:00Z'}],
+    jobs:[{id:'job',status:'completed',appointments:[{id:'appointment',status:'completed',starts_at:'2026-10-22T00:58:00Z'}]}],
+    exclusions:[{technician_id:'excluded',reason:'declined',created_at:'2026-10-22T00:25:00Z'}],
+    events:[{id:'capture',event_type:'finance.iyzico_capture_succeeded',occurred_at:'2026-10-22T00:58:50Z'}]};
+  const before=structuredClone(d),exports={};
+  const panels={PanelCard:({title,children})=>createElement('section',{'aria-label':title},children),PanelHeading:()=>null,RecordTypeBadge:()=>null,EmptyPanelState:({children})=>createElement('p',null,children)};
+  const modules={
+    'react/jsx-runtime':jsxRuntime,'next/navigation':{notFound(){throw Error('UNEXPECTED_NOT_FOUND');}},
+    '@/components/operation-panel':panels,'@/lib/operation-presentation':presentation,
+    '@/lib/operation-server':{adminRequestDetail:async()=>d,adminManualAssignmentReady:async()=>false,adminManualAssignmentCandidates:async()=>{throw Error('UNEXPECTED_OPERATION');},OperationError:class extends Error{}},
+    '@/lib/stage10-server':{adminOperationContract:async()=>({stage:'completed',assignmentSource:'automatic',terminal:true,currentJobId:'job'})},
+    '@/lib/service-request-assessment-display':{assessmentDetailRows:()=>[]},
+    '@/components/manual-assignment-panel':{ManualAssignmentPanel:()=>null},
+    '@/components/stage10-operation-intervention':{Stage10OperationIntervention:()=>null},
+  };
+  const code=ts.transpileModule(read('apps/admin/src/app/admin/talepler/[id]/page.tsx'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;
+  vm.runInNewContext(code,{exports,require:name=>{if(!(name in modules))throw Error('UNEXPECTED_IMPORT');return modules[name];}});
+  const html=renderToStaticMarkup(await exports.default({params:Promise.resolve({id:'request'})}));
+  const text=html.replace(/<[^>]*>/g,'').replace(/\s+/g,' ');
+  assert.match(text,/Durum: Oluşturuldu/);assert.match(text,/Operasyon: Tamamlandı/);
+  for(const time of ['03:41:00','03:46:00','03:48:00','03:58:00','03:25:00','03:58:50'])assert.ok(text.includes('22.10.2026 '+time),time);
+  assert.ok(text.includes('Ödeme tahsil edildi'));assert.deepEqual(d,before);
+});
+
+test('verified iyzico capture success has the collection label without changing its event code',()=>{
+  assert.equal(operationEventLabel('finance.iyzico_capture_succeeded'),'Ödeme tahsil edildi');
+  assert.equal(operationEventLabel('finance.captured'),'Ödeme tahsil edildi');
+});
+
+test('existing finance event meanings remain distinct and unchanged',()=>{
+  for(const [event,label] of Object.entries({
+    'finance.authorization_failed':'Ödeme provizyonu başarısız',
+    'finance.authorized':'Ödeme provizyonu alındı',
+    'finance.payment_pending':'Ödeme bekleniyor',
+    'finance.voided':'Ödeme provizyonu iptal edildi',
+    'finance.refunded':'Ödeme iade edildi',
+  }))assert.equal(operationEventLabel(event),label,event);
+});
+
+test('other provider outcomes and unknown capture-like events never imply a successful collection',()=>{
+  for(const event of [
+    'finance.iyzico_capture_declined','finance.iyzico_capture_unknown','finance.iyzico_capture_in_flight',
+    'finance.iyzico_authorize_succeeded','finance.iyzico_cancel_succeeded','finance.iyzico_refund_succeeded',
+    'finance.iyzico_capture_succeeded_extra','unexpected.capture_succeeded',null,undefined,
+  ])assert.notEqual(operationEventLabel(event),'Ödeme tahsil edildi',String(event));
+  assert.equal(operationEventLabel('finance.iyzico_capture_declined'),'Tanımlanmamış teknik olay');
+});
 
 test('admin and technician operation statuses have controlled Turkish presentation',()=>{
   const technician=read('apps/technician/src/components/technician-ui.tsx');
