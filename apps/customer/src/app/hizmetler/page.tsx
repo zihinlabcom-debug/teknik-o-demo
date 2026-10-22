@@ -42,13 +42,13 @@ export default async function ServiceHomePage(){
   });
 
   return <main className="min-h-screen bg-[#E7ECF2] font-sans text-[#12213A]">
-    <div className="relative mx-auto min-h-screen max-w-[430px] overflow-x-hidden bg-[#F8FAFC] pb-24 shadow-[0_0_48px_rgba(8,43,76,0.16)] sm:border-x sm:border-slate-200">
-      <section className="relative isolate overflow-hidden bg-[#062A4B] px-4 pb-11 pt-4 text-white" aria-labelledby="welcome-heading">
+    <div className="relative mx-auto min-h-screen max-w-[430px] overflow-x-hidden bg-[#F8FAFC] pb-24 shadow-[0_0_48px_rgba(8,43,76,0.16)] sm:border-x sm:border-slate-200 md:max-w-none lg:pl-64 lg:pb-8">
+      <section className="relative isolate overflow-hidden bg-[#062A4B] px-4 pb-11 pt-4 text-white lg:px-0 lg:pt-0" aria-labelledby="welcome-heading">
         <Image src="/service-categories/painting.jpg" alt="" fill sizes="430px" className="-z-20 object-cover opacity-[0.16] blur-[1px]" priority/>
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,rgba(3,29,52,0.98),rgba(6,42,75,0.91)_58%,rgba(6,42,75,0.62)),radial-gradient(circle_at_88%_20%,rgba(200,107,50,0.30),transparent_32%)]"/>
 
-        <CustomerMobileHeader avatarUrl={profile.avatarUrl}/>
-        <div className="mt-3.5">
+        <CustomerMobileHeader avatarUrl={profile.avatarUrl} responsive integrated/>
+        <div className="mt-3.5 lg:px-8">
           <h1 id="welcome-heading" className="text-[28px] font-extrabold leading-tight tracking-[-0.035em]">Merhaba{firstName?`, ${firstName}`:''} <span aria-hidden="true">👋</span></h1>
           <p className="mt-1.5 flex items-center gap-1.5 text-[14px] font-medium text-white/85"><MapPin className="size-[18px] shrink-0 text-white" aria-hidden="true"/>{location}</p>
         </div>
@@ -59,9 +59,11 @@ export default async function ServiceHomePage(){
 
         <section className="mt-6" aria-labelledby="featured-heading">
           <SectionHeading id="featured-heading" title="Öne Çıkan Hizmetler" href="/kategoriler"/>
-          <div className="mt-3 grid grid-cols-2 gap-2.5">
+          <div className="mt-3 grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-4">
             <FeaturedService href="/dashboard?category=painting" image="/service-categories/painting.jpg" title="Boya Badana" description="Evinizi yenileyin, uzman ustalarla çalışın."/>
             <FeaturedService href="/dashboard?category=boiler" image="/service-categories/boiler.jpg" title="Kombi Bakım" description="Kombi ihtiyacınız için güvenli akışı başlatın."/>
+            <div className="hidden md:block"><FeaturedService href="/temizlik" image="/service-categories/cleaning.jpg" title="Temizlik" description="İhtiyacınıza uygun temizlik hizmetini seçin."/></div>
+            <div className="hidden xl:block"><FeaturedService href="/dashboard?category=sofa_cleaning" image="/service-categories/sofa-extraction.jpg" title="Koltuk / Yatak Yıkama" description="Koltuk ve yatak yıkama hizmetini inceleyin."/></div>
           </div>
         </section>
 
@@ -86,7 +88,7 @@ export default async function ServiceHomePage(){
         </section>
       </div>
 
-      <CustomerBottomNavigation/>
+      <CustomerBottomNavigation responsive/>
 
     </div>
   </main>;
@@ -98,7 +100,7 @@ function SectionHeading({id,title,href}:{id:string;title:string;href:string}){
 
 function FeaturedService({href,image,title,description}:{href:string;image:string;title:string;description:string}){
   return <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_5px_18px_rgba(8,43,76,0.06)]">
-    <div className="relative aspect-[16/9] overflow-hidden"><Image src={image} alt="" fill sizes="(max-width: 430px) 50vw, 199px" className="object-cover"/></div>
+    <div className="relative aspect-[16/9] overflow-hidden"><Image src={image} alt="" fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover"/></div>
     <div className="p-3"><h3 className="truncate text-[16px] font-extrabold tracking-[-0.02em] text-[#0A2240]">{title}</h3><p className="mt-1 line-clamp-2 min-h-9 text-[11px] leading-[18px] text-slate-600">{description}</p>
       <Link href={href} className="mt-2.5 flex min-h-10 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D47A43] to-[#B85F2A] px-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#082B4C]">Teklif Al <ChevronRight className="size-4" aria-hidden="true"/></Link>
     </div>

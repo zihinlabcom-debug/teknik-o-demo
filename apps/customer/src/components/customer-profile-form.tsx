@@ -47,7 +47,7 @@ export function CustomerProfileForm({profile}:{profile:CustomerProfileData}){
         void run(async()=>{const response=await fetch('/api/customer/profile/avatar',{method:'POST',body:form});const result=await response.json();if(!response.ok)throw new Error(result.error);},'Profil görseliniz güncellendi.');
       }}>
         <label className="text-sm font-semibold">Profil görseli
-          <input name="file" type="file" required accept="image/jpeg,image/png,image/webp" className="mt-2 block text-sm"/>
+          <input name="file" type="file" required accept="image/jpeg,image/png,image/webp" className="mt-2 block text-sm lg:w-full lg:min-w-0 lg:rounded-xl lg:border lg:border-[#CAD5E1] lg:bg-white lg:p-3 lg:text-[#17263B] lg:file:mr-3 lg:file:cursor-pointer lg:file:rounded-lg lg:file:border-0 lg:file:bg-[#082B4C] lg:file:px-4 lg:file:py-2 lg:file:font-semibold lg:file:text-white"/>
         </label>
         <button disabled={busy} className="rounded-xl bg-[#C86B32] px-4 py-2 font-bold text-white disabled:opacity-50">Yükle</button>
       </form>

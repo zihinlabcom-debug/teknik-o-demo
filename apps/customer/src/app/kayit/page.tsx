@@ -162,7 +162,7 @@ export default function KayitPage(){
     }
   }
 
-  return <AuthVisualShell wide title={authStep==='form'?'Kayıt Ol':'E-posta Doğrulama'} description={authStep==='form'?'Dakikalar içinde hesabını oluştur, ihtiyaçlarını paylaş ve güvenilir hizmete ulaş.':'Hesabını tamamlamak için e-posta adresine gönderilen kodu gir.'}>
+  return <AuthVisualShell wide fullScreen title={authStep==='form'?'Kayıt Ol':'E-posta Doğrulama'} description={authStep==='form'?'Dakikalar içinde hesabını oluştur, ihtiyaçlarını paylaş ve güvenilir hizmete ulaş.':'Hesabını tamamlamak için e-posta adresine gönderilen kodu gir.'}>
     {authStep==='form'?<form className="space-y-5" onSubmit={handleFormSubmit}>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field icon={User} label="Ad Soyad" name="fullName" value={formData.fullName} onChange={handleInputChange} autoComplete="name" placeholder="Adınız ve soyadınız"/>

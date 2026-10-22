@@ -17,7 +17,7 @@ export function EmailLoginForm({role}:{role:'customer'|'technician'}){
    router.replace(result.redirect);router.refresh();
   }catch{setNotice('Giriş hizmetine ulaşılamıyor.');}finally{setBusy(false);}
  }
- return <TechnicianAuthShell eyebrow={role==='technician'?'USTA GİRİŞİ':'HESAP GİRİŞİ'} title="Tekrar hoş geldiniz" description="E-posta adresiniz ve şifrenizle hesabınıza güvenli biçimde giriş yapın.">
+ return <TechnicianAuthShell responsive={role==='technician'} eyebrow={role==='technician'?'USTA GİRİŞİ':'HESAP GİRİŞİ'} title="Tekrar hoş geldiniz" description="E-posta adresiniz ve şifrenizle hesabınıza güvenli biçimde giriş yapın.">
     {role==='customer'&&<Link href="/" className="mb-4 inline-flex text-sm font-semibold text-slate-600">← Ana sayfaya dön</Link>}
     <form className="mt-8 space-y-4" onSubmit={submit}>
      <label className="block text-sm font-semibold">E-posta adresi

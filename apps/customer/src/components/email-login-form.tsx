@@ -66,7 +66,7 @@ export function EmailLoginForm({role}:{role:'customer'|'technician'}){
     </main>;
   }
 
-  return <AuthVisualShell title="Tekrar hoş geldin" description="Taleplerini takip etmek ve hizmetlerini yönetmek için hesabına giriş yap.">
+  return <AuthVisualShell fullScreen={role==='customer'} title="Tekrar hoş geldin" description="Taleplerini takip etmek ve hizmetlerini yönetmek için hesabına giriş yap.">
     <form className="space-y-4" onSubmit={submit}>
       <label htmlFor="customer-login-email" className="block text-[13px] font-bold text-[#17263B]">E-posta
         <span className="relative mt-2 block">

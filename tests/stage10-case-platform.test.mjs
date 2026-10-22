@@ -179,7 +179,17 @@ test('three surfaces expose the required Stage 10 sections',()=>{
     assert.match(customerSupport,new RegExp(label));assert.match(customerSupport,new RegExp(href.replaceAll('/','\\/')));
   }
   assert.match(techLayout,/currentAccount/);assert.match(techLayout,/redirect\('\/giris-usta'\)/);
-  for(const label of ['Ek maliyet','Şikâyet','Garanti düzeltmeleri'])assert.match(techSupport,new RegExp(label));
+  const techNavigation=read('apps/technician/src/components/technician-mobile-chrome.tsx');
+  assert.match(techSupport,/import \{TechnicianSupportNavigation\} from '@\/components\/technician-mobile-chrome'/);
+  assert.match(techSupport,/<TechnicianSupportNavigation\/>/);
+  assert.match(read('apps/technician/src/components/operation-panel.tsx'),/<TechnicianDesktopNavigation\/>/);
+  for(const [label,href] of [['Ek maliyet','/usta/ek-maliyet'],['Şikâyet ve başvuru','/usta/sikayetler'],['Garanti düzeltmeleri','/usta/garanti-duzeltmeleri']]){
+    assert.ok(techNavigation.includes("href:'"+href+"',label:'"+label+"'"));
+    assert.ok(fs.existsSync(new URL('../apps/technician/src/app'+href+'/page.tsx',import.meta.url)));
+  }
+  assert.match(techNavigation,/const desktopTabs=\[\.\.\.tabs\.slice\(0,4\),\.\.\.supportLinks/);
+  assert.match(techNavigation,/export function TechnicianSupportNavigation/);
+  assert.match(techNavigation,/supportLinks\.map/);
   for(const label of ['Ek maliyet talepleri','Şikâyetler','Garanti','Pilot / KPI'])assert.match(adminLayout,new RegExp(label));
 });
 

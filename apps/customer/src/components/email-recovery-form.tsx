@@ -32,7 +32,7 @@ export function EmailRecoveryForm({reset,role}:{reset:boolean;role:'customer'|'t
    else setNotice(data.message);
   }catch{setNotice('İşlem tamamlanamadı. Daha sonra tekrar deneyin.');}finally{setBusy(false);}
  }
- return <AuthVisualShell title={reset?'Yeni şifreni belirle':'Şifreni mi unuttun?'} description={reset?'Hesabın için güçlü ve yalnızca sana ait yeni bir şifre oluştur.':'E-posta adresini yaz; şifre yenileme bağlantısını güvenli biçimde gönderelim.'}>
+ return <AuthVisualShell fullScreen={role==='customer'&&!reset} title={reset?'Yeni şifreni belirle':'Şifreni mi unuttun?'} description={reset?'Hesabın için güçlü ve yalnızca sana ait yeni bir şifre oluştur.':'E-posta adresini yaz; şifre yenileme bağlantısını güvenli biçimde gönderelim.'}>
   <div className="mb-5 grid size-12 place-items-center rounded-2xl bg-[#C86B32]/10 text-[#B85F2A]">{reset?<KeyRound className="size-6" aria-hidden="true"/>:<Mail className="size-6" aria-hidden="true"/>}</div>
   <form onSubmit={submit} className="space-y-4">
    {!reset?<label className="block text-sm font-semibold text-[#17263B]">E-posta adresi<input type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} className="mt-2 min-h-12 w-full rounded-2xl border border-slate-300 bg-white px-4 text-base outline-none transition focus:border-[#C86B32] focus:ring-2 focus:ring-[#C86B32]/15" placeholder="ornek@eposta.com"/></label>:<>

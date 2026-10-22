@@ -1,15 +1,16 @@
 import type {ReactNode} from 'react';
 import Link from 'next/link';
-import {TechnicianBottomNavigation,TechnicianMobileHeader} from '@/components/technician-mobile-chrome';
+import {TechnicianBottomNavigation,TechnicianDesktopNavigation,TechnicianMobileHeader} from '@/components/technician-mobile-chrome';
 import {TechnicianPageHero} from '@/components/technician-ui';
 
 export type PanelLink={href:string;label:string};
 
 export function OperationPanelShell({children,isTest=false}:{children:ReactNode;isTest?:boolean}){
   return <div className="min-h-screen bg-[#EAF0F6] text-[#17263B]">
-    <div className="mx-auto min-h-screen w-full max-w-[430px] overflow-x-hidden bg-[#F5F7FA] shadow-[0_0_42px_rgba(8,43,76,0.12)]">
+    <div className="mx-auto min-h-screen w-full max-w-[430px] overflow-x-hidden md:max-w-none lg:pl-64 bg-[#F5F7FA] shadow-[0_0_42px_rgba(8,43,76,0.12)]">
+      <TechnicianDesktopNavigation/>
       <TechnicianMobileHeader isTest={isTest}/>
-      <main className="min-w-0 px-3 pb-28 pt-4 sm:px-4">{children}</main>
+      <main className="min-w-0 px-3 pb-28 pt-4 sm:px-4 md:px-6 md:pt-6 lg:mx-auto lg:w-full lg:max-w-[1440px] lg:px-8 lg:pb-8 lg:pt-8">{children}</main>
       <TechnicianBottomNavigation/>
     </div>
   </div>;

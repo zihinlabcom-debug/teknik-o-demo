@@ -102,7 +102,7 @@ export function TechnicianSignupForm({categories,cities,districts}:{
     finally{setBusy(false);}
   };
 
-  return <TechnicianAuthShell wide eyebrow="USTA BAŞVURUSU" title="HizmetPey Usta" description="Hizmet alanlarınızı belirleyin, başvurunuzu tamamlayın ve onay sürecini takip edin.">
+  return <TechnicianAuthShell wide responsive desktopScroll eyebrow="USTA BAŞVURUSU" title="HizmetPey Usta" description="Hizmet alanlarınızı belirleyin, başvurunuzu tamamlayın ve onay sürecini takip edin.">
 
       {step==='form'&&<form className="mt-8 space-y-5" onSubmit={requestCode}>
         <label className="block text-sm font-semibold">Ad Soyad

@@ -31,7 +31,7 @@ export function EmailRecoveryForm({reset,role}:{reset:boolean;role:'customer'|'t
    else setNotice(data.message);
   }catch{setNotice('İşlem tamamlanamadı. Daha sonra tekrar deneyin.');}finally{setBusy(false);}
  }
- return <TechnicianAuthShell eyebrow="HESAP GÜVENLİĞİ" title={reset?'Yeni şifre belirle':'Şifremi unuttum'} description={reset?'Yeni şifrenizi güvenli biçimde oluşturun.':'Şifre sıfırlama bağlantısını kayıtlı e-posta adresinize gönderelim.'}>
+ return <TechnicianAuthShell responsive={role==='technician'&&!reset} eyebrow="HESAP GÜVENLİĞİ" title={reset?'Yeni şifre belirle':'Şifremi unuttum'} description={reset?'Yeni şifrenizi güvenli biçimde oluşturun.':'Şifre sıfırlama bağlantısını kayıtlı e-posta adresinize gönderelim.'}>
    <form onSubmit={submit} className="mt-6 space-y-4">
     {!reset?<label className="block">E-posta adresi<input type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} className="mt-2 w-full rounded-xl border p-3"/></label>:<>
      <p className="text-sm">En az 10 karakter; büyük harf, küçük harf ve rakam.</p>
