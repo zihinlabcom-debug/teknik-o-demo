@@ -1,6 +1,7 @@
 import {createClient} from '@supabase/supabase-js';
 import {createServerClient} from '@supabase/ssr';
 import {cookies} from 'next/headers';
+import {cache} from 'react';
 import {isAccountRole,type Account} from './account-role';
 import {adminSessionCookie,adminSessionHeader,validAdminSession} from './admin-session';
 
@@ -34,7 +35,9 @@ export function adminSupabase(){
   return createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
 }
 
-export async function currentAccount(){
+// React shares this verification only within one Server Component render.
+// Outside a render (for example a Route Handler), cache calls it afresh.
+const readCurrentAccount=cache(async function readCurrentAccount(){
   try{
     const db=await serverSupabase();
     const {data:{user},error:userError}=await db.auth.getUser();
@@ -56,4 +59,8 @@ export async function currentAccount(){
     }
     return data as Account;
   }catch{return null;}
+});
+
+export async function currentAccount(){
+  return readCurrentAccount();
 }

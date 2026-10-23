@@ -1,0 +1,25 @@
+{
+  "description": "Frozen pre-optimization source fixtures; test runtime requires neither Git nor historical objects.",
+  "provenanceCommit": "8d9823d9b1de9bd3339bb1877551f2dd7364bc4a",
+  "panels": {
+    "technician": {
+      "source": "apps/technician/src/lib/account-supabase.ts",
+      "sha256": "87c09998308ceb61483f4d8ad4e0df88e42a62e8581a0408edcb989c6f72c33d",
+      "file": "technician-account-supabase.before.txt",
+      "originalWorkingTreeSha256": "c3a2f2d76c4b0483dd64e2d9966506995cb3763e8af893efd88cbcf0fd742e58"
+    },
+    "customer": {
+      "source": "apps/customer/src/lib/account-supabase.ts",
+      "sha256": "22a1d2db91efe846704005c722e33bf25fec6bc5d0b1bdd9c00d441cf8998ff8",
+      "file": "customer-account-supabase.before.txt",
+      "originalWorkingTreeSha256": "2ae74267f0f72d51b5b85d9e86c983eb0a3ebb901d533ed3fe606f1b9e1ee4ff"
+    },
+    "admin": {
+      "source": "src/lib/account-supabase.ts",
+      "sha256": "cf5600635168617eb7bdb6d3ab6b810ad3179b8f395ecd7cf9e4680d9c2002f7",
+      "file": "admin-account-supabase.before.txt",
+      "originalWorkingTreeSha256": "9db56d2cd00ee6f875a16828bed34e77cbbd11c90abaf00055e946bdf29b78ab"
+    }
+  },
+  "hashNormalization": "UTF-8 source with CRLF converted to LF"
+}
