@@ -5,11 +5,11 @@ export function ServiceConfiguratorShell({title,description,children,summary,act
   title:string;description:string;children:ReactNode;summary:ReactNode;action:ReactNode;result:ReactNode;
 }){
   return <main className="w-full min-w-0 text-[#17263B]">
-    <ServiceBanner title={title} description={description} image={title==='Boya'?'/service-categories/painting.jpg':title.includes('Koltuk')?'/service-categories/sofa-extraction.jpg':'/service-categories/cleaning.jpg'}/>
+    <ServiceBanner title={title} description={description} image={title==='Boya'?'/service-categories/painting.jpg':title.includes('Koltuk')?'/service-categories/sofa-extraction.jpg':'/service-categories/cleaning.jpg'} responsive/>
 
-    <div className="grid min-w-0 gap-5">
+    <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:items-start">
       <div className="min-w-0 space-y-5">{children}</div>
-      <aside className="min-w-0 space-y-4 lg:sticky lg:top-6" aria-label="Sipariş özeti ve sonuç">
+      <aside className="min-w-0 space-y-4 lg:sticky lg:top-6 lg:self-start" aria-label="Sipariş özeti ve sonuç">
         <details className="lg:hidden">
           <summary className="min-h-12 cursor-pointer rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-[#082B4C] shadow-sm">Sipariş özetini göster</summary>
           <div className="mt-2">{summary}</div>

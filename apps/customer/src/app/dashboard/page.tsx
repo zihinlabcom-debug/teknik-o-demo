@@ -304,9 +304,10 @@ function DashboardContent() {
     const lastMessage=chatHistory.at(-1);
     const connectionError=lastMessage?.sender==='ai'&&lastMessage.text==='Bağlantı sırasında bir hata oluştu. Lütfen tekrar deneyin.'?
       lastMessage.text:null;
-    return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900">
-      <div className="mx-auto w-full max-w-[430px] min-w-0 px-3 pb-[calc(7rem+env(safe-area-inset-bottom))] pt-5 sm:px-6 lg:px-8">
-        <CustomerMobileHeader backHref="/kategoriler"/>
+    return <div className="min-h-dvh w-full bg-slate-50 font-sans text-slate-900 lg:pl-64">
+      <div className="hidden lg:block"><CustomerMobileHeader backHref="/kategoriler" responsive/></div>
+      <div className="mx-auto w-full max-w-[430px] min-w-0 px-3 pb-[calc(7rem+env(safe-area-inset-bottom))] pt-5 sm:px-6 md:max-w-none md:pb-8 lg:max-w-[1440px] lg:px-8 lg:pt-8">
+        <div className="lg:hidden"><CustomerMobileHeader backHref="/kategoriler"/></div>
         {configurator==='painting'?<PaintingServiceConfigurator selection={paintingSelection}
           onChange={setPaintingSelection}
           serviceOptions={response?.resultState==='painting_service_selection'?response.options:paintingServiceOptions}
@@ -419,22 +420,23 @@ function DashboardContent() {
           result={resultCard} onRequestTechnician={()=>setIsTechnicianDialogOpen(true)} onReject={dismissResult}
           errorText={homeSubmitError??connectionError} />}
       </div>
-      <CustomerBottomNavigation/>
+      <CustomerBottomNavigation responsive/>
       {isTechnicianDialogOpen&&<TechnicianHandoffNotice response={response} onClose={()=>setIsTechnicianDialogOpen(false)} />}
     </div>;
   }
 
   return (
-    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[430px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto'}`}>
+    <div style={chatViewport ? {height:chatViewport.height, top:chatViewport.top} : undefined} className={`h-dvh min-h-0 w-full max-w-[430px] bg-slate-50 flex flex-col mx-auto shadow-2xl font-sans text-slate-900 overscroll-contain md:h-auto md:min-h-dvh md:max-w-none lg:pl-64 ${chatViewport ? 'fixed inset-x-0 z-50 overflow-hidden' : 'relative overflow-y-auto md:overflow-visible'}`}>
       
-      {!chatViewport&&<CustomerBottomNavigation/>}
+      <div className="hidden lg:block"><CustomerMobileHeader backHref="/kategoriler" responsive/></div>
+      {!chatViewport&&<CustomerBottomNavigation responsive/>}
       {/* İÇERİK ALANI */}
-      <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-0 pb-24 justify-between'}`}>
-        {!chatViewport&&<><CustomerMobileHeader backHref="/kategoriler"/><ServiceBanner title="Kombi Yardımı" description="Sorununuzu yazın, ön bilgilendirme alın." image="/service-categories/boiler.jpg"/></>}
+      <div className={`min-w-0 flex-1 flex flex-col ${chatViewport ? 'min-h-0 p-0' : 'px-3 sm:px-5 lg:px-8 pt-0 pb-24 justify-between md:mx-auto md:w-full md:px-6 md:pb-8 lg:max-w-[1440px] lg:pt-8'}`}>
+        {!chatViewport&&<><div className="lg:hidden"><CustomerMobileHeader backHref="/kategoriler"/></div><ServiceBanner title="Kombi Yardımı" description="Sorununuzu yazın, ön bilgilendirme alın." image="/service-categories/boiler.jpg" responsive/></>}
         {!chatViewport && <DiagnosisProgress answeredSystemQuestions={response?.answeredSystemQuestions ?? 0} isAnalyzing={isAnalyzing} resultState={response?.resultState ?? 'diagnosing'} />}
 
         {/* CANLI SOHBET ALANI */}
-        <div className={`min-w-0 bg-white border-2 border-slate-200 focus-within:border-[#C86B32] p-3 sm:p-5 shadow-md transition-colors flex flex-col ${chatViewport ? 'flex-1 min-h-0 rounded-none' : 'h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] rounded-3xl'}`}>
+        <div className={`min-w-0 bg-white border-2 border-slate-200 focus-within:border-[#C86B32] p-3 sm:p-5 shadow-md transition-colors flex flex-col ${requested==='boiler'||category==='boiler'?'lg:mx-auto lg:w-[70%]':''} ${chatViewport ? 'flex-1 min-h-0 rounded-none' : 'h-[min(54dvh,560px)] min-h-[330px] max-[360px]:min-h-[370px] rounded-3xl md:h-[min(68dvh,760px)] md:min-h-[420px]'}`}>
           
           <div ref={messageScrollRef} onScroll={() => {
             const area = messageScrollRef.current;
@@ -459,7 +461,7 @@ function DashboardContent() {
                   className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                 >
                   <div
-                    className={`flex min-w-0 items-start gap-2 max-w-full sm:max-w-[90%] ${
+                    className={`flex min-w-0 items-start gap-2 max-w-full sm:max-w-[90%] lg:max-w-[min(85%,72ch)] ${
                       msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'
                     }`}
                   >
