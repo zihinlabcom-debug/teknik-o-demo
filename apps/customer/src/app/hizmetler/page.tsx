@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {ChevronRight,Clock3,MapPin,ShieldCheck} from 'lucide-react';
 import {CustomerHomeExplorer} from '@/components/customer-home-explorer';
 import {ACTIVE_SERVICE_CATEGORIES} from '@/lib/service-categories';
-import {getCustomerProfile} from '@/lib/profile-server';
+import {getCustomerHomeSummary} from '@/lib/customer-home-read';
 import {customerRequestList} from '@/lib/operation-server';
 
 export const dynamic='force-dynamic';
@@ -29,11 +29,8 @@ const dateFormatter=new Intl.DateTimeFormat('tr-TR',{
 });
 
 export default async function ServiceHomePage(){
-  const [profile,requests]=await Promise.all([getCustomerProfile(),customerRequestList()]);
-  const firstAddress=profile.addresses[0]??null;
-  const city=firstAddress?profile.cities.find(item=>item.id===firstAddress.cityId)?.name:null;
-  const district=firstAddress?profile.districts.find(item=>item.id===firstAddress.districtId)?.name:null;
-  const location=[city,district].filter(Boolean).join(', ')||'Konum bilgisi eklenmemiş';
+  const [profile,requests]=await Promise.all([getCustomerHomeSummary(),customerRequestList()]);
+  const location=profile.location;
   const firstName=profile.name.trim().split(/\s+/)[0]||'';
   const activeRequests=requests.filter(item=>!['completed','cancelled','technician_unavailable'].includes(item.status));
   const categories=categoryOrder.map(id=>{

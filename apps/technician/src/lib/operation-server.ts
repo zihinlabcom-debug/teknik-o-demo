@@ -292,24 +292,18 @@ export async function technicianJobDetail(id:string){
       .order('starts_at'),
   ]);
 
-  let category=null;
-  let address=null;
-
-  if(req?.category_id){
-    category=(await db
+  const [{data:category},{data:address}]=await Promise.all([
+    req?.category_id?db
       .from('service_categories')
       .select('name')
       .eq('id',req.category_id)
-      .maybeSingle()).data;
-  }
-
-  if(req?.address_id){
-    address=(await db
+      .maybeSingle():Promise.resolve({data:null}),
+    req?.address_id?db
       .from('customer_addresses')
       .select('address_line,label,city_id,district_id')
       .eq('id',req.address_id)
-      .maybeSingle()).data;
-  }
+      .maybeSingle():Promise.resolve({data:null}),
+  ]);
 
   const jobAppointments=appointments??[];
   const requestedDate=req?.requested_service_date??null;
