@@ -88,25 +88,22 @@ export async function createCustomerServiceRequest(input:{
     p_issue_title:issueTitle,p_problem_description:problemDescription,p_pricing_reference:pricingReference,p_request_key:requestKey,
     p_assessment_snapshot:assessmentSnapshot,p_requested_service_mode:requestedServiceMode,p_requested_service_date:requestedServiceDate,
   };
-  // Fail closed on invalid test configuration; legacy path is unchanged when disabled.
+  // New requests require the approved payment-pending flow; historical unfunded records are not adapted.
+  if(!acceptedPrice)throw new OperationError('pricing_unavailable',409,'Onaylanmış nihai fiyat gerekli.');
   const sandboxFinance=Boolean(acceptedPrice)&&isSandboxPendingRequestMode(process.env);
   const iyzicoFinance=Boolean(acceptedPrice)&&isIyzicoSandboxPendingRequestMode(process.env);
   if(sandboxFinance&&iyzicoFinance)
     throw new OperationError('finance_provider_conflict',503,'Finans test sağlayıcısı yapılandırması geçersiz.');
-  if((sandboxFinance||iyzicoFinance)&&account.is_test!==true)
+  if(!sandboxFinance&&!iyzicoFinance)throw new OperationError('payment_flow_required',503,'Onaylı ödeme akışı şu anda kullanılamıyor.');
+  if(account.is_test!==true)
     throw new OperationError('finance_lab_test_only',403,'Bu ödeme testi yalnızca test hesabında kullanılabilir.');
   const financeArgs=acceptedPrice?{
     ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
     p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
     p_breakdown:acceptedPrice.breakdown,p_payment_idempotency_key:`pending:${fingerprint}`,
   }:null;
-  const {data,error}=acceptedPrice&&sandboxFinance?await db.rpc('create_payment_pending_service_request_v2',financeArgs!):
-    acceptedPrice&&iyzicoFinance?await db.rpc('create_iyzico_payment_pending_service_request_v3',financeArgs!):
-    acceptedPrice?await db.rpc('create_priced_service_request',{
-      ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
-      p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
-      p_breakdown:acceptedPrice.breakdown,
-    }):await db.rpc('create_service_request',args);
+  const {data,error}=sandboxFinance?await db.rpc('create_payment_pending_service_request_v2',financeArgs!):
+    await db.rpc('create_iyzico_payment_pending_service_request_v3',financeArgs!);
   if(error&&/existing request schedule mismatch/i.test(error.message??''))
     throw new OperationError('request_schedule_conflict',409,'Bu değerlendirme için daha önce farklı bir zaman tercihiyle talep oluşturuldu.');
   if(error)failDb(error,'Hizmet talebi');

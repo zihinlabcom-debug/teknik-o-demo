@@ -35,7 +35,7 @@ type SafeFingerprintPayload=Readonly<{
   paymentId:string;
   paymentTransactionId:string;
   paymentConversationId:string;
-  reason:string;
+  reason:string;authorizationAmount?:string;
 }>;
 
 function safePayload(operation:FinanceProviderOperation,input:IyzicoManagedInput):SafeFingerprintPayload{
@@ -45,6 +45,7 @@ function safePayload(operation:FinanceProviderOperation,input:IyzicoManagedInput
   const refund=operation==='refund'?input as IyzicoRefundInput:undefined;
   const retrieve=operation==='retrieve'?input as IyzicoRetrieveInput:undefined;
   return {
+    ...('authorizationAmount' in input&&input.authorizationAmount?{authorizationAmount:input.authorizationAmount}:{}),
     version:'iyzico-operation-v1',operation,businessOperationKey:input.businessOperationKey,
     conversationId:input.conversationId,
     amount:input.amount,currency:input.currency,

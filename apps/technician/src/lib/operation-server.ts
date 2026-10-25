@@ -41,14 +41,14 @@ export async function completeTechnicianJob(jobId:string,ip='127.0.0.1'){
   requireId(jobId);
   const account=await requireRole('technician');
   const db=adminSupabase();
-  const iyzico=await prepareIyzicoJobCompletion(db,jobId,account.id);
+  // A technician report never captures money. Customer decision / timeout owns finalization.
+  void ip;
   const {data,error}=await db.rpc('complete_service_job',{
     p_job_id:jobId,
     p_technician_id:account.id,
   });
   if(error)failDb(error,'İş tamamlama');
-  const payment=iyzico?await captureCompletedIyzicoJob(db,iyzico,jobId,ip):null;
-  return {id:data,...(payment?{payment}: {})};
+  return {id:data,completion:'awaiting_customer' as const};
 }
 type AppointmentDbError={message?:string}|null;
 

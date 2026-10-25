@@ -56,8 +56,9 @@ test('server calls scheduling-aware RPC signatures and preserves schedule idempo
   const server=read('apps/customer/src/lib/operation-server.ts');
   assert.match(server,/p_requested_service_mode:requestedServiceMode/);
   assert.match(server,/p_requested_service_date:requestedServiceDate/);
-  assert.match(server,/db\.rpc\('create_priced_service_request'/);
-  assert.match(server,/db\.rpc\('create_service_request',args\)/);
+  assert.match(server,/db\.rpc\('create_iyzico_payment_pending_service_request_v3'/);
+  assert.match(server,/db\.rpc\('create_payment_pending_service_request_v2'/);
+  assert.doesNotMatch(server,/db\.rpc\('create_(?:priced_)?service_request'/);
   assert.match(server,/existing request schedule mismatch/i);
   assert.match(server,/request_schedule_conflict/);
 });

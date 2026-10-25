@@ -4,7 +4,7 @@ import {IyzicoOperationManager,type IyzicoManagedResult} from './iyzico-operatio
 import {
   stage12IyzicoOperationKeys,type IyzicoStage12Scope,
 } from './iyzico-stage12-contract';
-import type {TryAmount} from './iyzico-money';
+import {canonicalTryAmount,type TryAmount} from './iyzico-money';
 import type {IyzicoOperationStore} from './iyzico-operation-store';
 import type {
   IyzicoAddress,IyzicoAuthorizeInput,IyzicoBuyer,IyzicoCancelInput,IyzicoCaptureInput,
@@ -40,6 +40,8 @@ export type Stage12RefundPayload=Readonly<{
 }>;
 
 export interface IyzicoStage12RepositoryPort {
+  finalizationPartContext?(partId:string,customerId:string):Promise<{amount:string;jobId:string;intentId:string;key:string}>;
+  cancellationContext?(finalizationId:string,customerId:string):Promise<{amount:string;jobId:string;intentId:string}>;
   assertEnabled(env:Record<string,string|undefined>):Promise<void>;
   scope(intentId:string,customerId:string):Promise<IyzicoStage12Scope>;
   store(scope:IyzicoStage12Scope,jobId?:string):IyzicoOperationStore;
@@ -83,7 +85,7 @@ export class IyzicoStage12Server {
       return Object.freeze({result:managed.result,coreApplied:false,
         distributionStarted:false,reconciliationRequired:true});
     }
-    if(operation!=='authorize'||managed.result.outcome!=='succeeded')
+    if(operation!=='authorize'||managed.result.outcome!=='succeeded'||scope.purpose==='additional')
       return Object.freeze({result:managed.result,coreApplied:true,
         distributionStarted:false,reconciliationRequired:false});
     try{
@@ -129,6 +131,31 @@ export class IyzicoStage12Server {
     return this.settle(scope,'capture',managed);
   }
 
+  async captureCancellation(intentId:string,customerId:string,finalizationId:string,ip:string):Promise<IyzicoStage12Outcome>{
+    const scope=await this.context(intentId,customerId);
+    if(!scope.paymentId||!this.repository.cancellationContext)throw new Error('t100_cancellation_context_missing');
+    const context=await this.repository.cancellationContext(finalizationId,customerId);
+    const amount=canonicalTryAmount(context.amount);
+    if(context.intentId!==intentId||Number(amount)!==Math.min(100,Number(scope.amount))||!context.jobId)
+      throw new Error('t100_cancellation_context_mismatch');
+    const keys=stage12IyzicoOperationKeys(scope,'capture',finalizationId);
+    const manager=new IyzicoOperationManager(this.adapter,this.repository.store(scope,context.jobId));
+    const managed=await manager.capture({...keys,amount,authorizationAmount:scope.amount,currency:scope.currency,paymentId:scope.paymentId,
+      basketId:scope.basketId,ip});
+    return this.settle(scope,'capture',managed);
+  }
+
+  async capturePart(intentId:string,customerId:string,partId:string,ip:string):Promise<IyzicoStage12Outcome>{
+    const scope=await this.context(intentId,customerId);
+    if(!scope.paymentId||!this.repository.finalizationPartContext)throw new Error('t103_part_context_missing');
+    const part=await this.repository.finalizationPartContext(partId,customerId);
+    if(part.intentId!==intentId||part.key!==partId)throw new Error('t103_part_context_mismatch');
+    const amount=canonicalTryAmount(part.amount),keys=stage12IyzicoOperationKeys(scope,'capture',partId);
+    const manager=new IyzicoOperationManager(this.adapter,this.repository.store(scope,part.jobId));
+    const managed=await manager.capture({...keys,amount,authorizationAmount:scope.amount,currency:scope.currency,paymentId:scope.paymentId,basketId:scope.basketId,ip});
+    return this.settle(scope,'capture',managed);
+  }
+
   async cancel(
     intentId:string,customerId:string,payload:Stage12CancelPayload,
   ):Promise<IyzicoStage12Outcome>{
@@ -160,23 +187,30 @@ export class IyzicoStage12Server {
     return this.reconcile(intentId,customerId,operationId);
   }
 
-  async reconcile(
+  // Read-only provider evidence retrieval; no settlement or payment replay.
+  async reconcileEvidence(
     intentId:string,customerId:string,originalOperationId:string,
-  ):Promise<IyzicoStage12Outcome>{
+  ):Promise<IyzicoManagedResult>{
     const scope=await this.context(intentId,customerId);
     const store=this.repository.store(scope);
     const original=await store.get(originalOperationId);
     if(!original||original.state!=='unknown'||
         (original.operation!=='authorize'&&original.operation!=='capture'))
       throw new Error('iyzico_stage12_operation_not_reconcilable');
-    const keys=stage12IyzicoOperationKeys(scope,'retrieve',originalOperationId);
+    const partial=original.operation==='capture'&&original.money.amount!==scope.amount;
+    const keys=stage12IyzicoOperationKeys(scope,'retrieve',partial?originalOperationId+':price-v2':originalOperationId);
     const manager=new IyzicoOperationManager(this.adapter,store);
     const managed=await manager.reconcile(originalOperationId,{
-      ...keys,amount:original.money.amount,currency:original.money.currency,
+      ...keys,amount:original.money.amount,currency:original.money.currency,...(partial?{authorizationAmount:scope.amount}:{}),
       basketId:original.basketId??scope.basketId,
       ...(original.paymentId?{paymentId:original.paymentId}:
         {paymentConversationId:original.conversationId}),
     });
-    return this.settle(scope,original.operation,managed);
+    return managed;
+  }
+  async reconcile(intentId:string,customerId:string,originalOperationId:string):Promise<IyzicoStage12Outcome>{
+    const scope=await this.context(intentId,customerId);
+    const managed=await this.reconcileEvidence(intentId,customerId,originalOperationId);
+    return this.settle(scope,managed.result.operation,managed);
   }
 }

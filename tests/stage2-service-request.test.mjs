@@ -26,7 +26,8 @@ test('Stage 2 request API derives request data from signed conversation state',(
   assert.match(server,/serviceRequestSummary\(conversation\)/);
   assert.doesNotMatch(server,/input\.(?:issueTitle|problemDescription|title|description)/);
   assert.match(server,/currentAccount|requireRole/);
-  assert.match(server,/create_service_request/);
+  assert.match(server,/createIyzicoPendingRequest/);
+  assert.doesNotMatch(server,/db\.rpc\('create_service_request'/);
   assert.match(server,/customer_addresses/);
   assert.doesNotMatch(route,/SUPABASE_SERVICE_ROLE_KEY/);
 });

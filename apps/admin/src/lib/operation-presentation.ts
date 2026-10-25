@@ -18,6 +18,17 @@ const assignmentSourceLabels={
 } as const satisfies Record<string,string>;
 
 const eventLabels={
+  'completion.reported':'Müşteri tamamlama onayı bekleniyor',
+  'completion.customer_yes':'Müşteri tamamlanmayı onayladı',
+  'completion.customer_no':'Müşteri tamamlanmaya itiraz etti',
+  'completion.admin_distribute':'Admin ödeme sonuçlandırma kararı verdi',
+  'completion.admin_refund':'Admin tam iade kararı verdi',
+  'completion.preparation_blocked':'Sonuçlandırma hazırlığı inceleme bekliyor',
+  'cancellation.customer_pending':'Müşteri iptali finansal sonuç bekliyor',
+  'cancellation.review_opened':'İptal incelemesi açıldı',
+  'cancellation.technician_completed':'Usta atamasını iptal etti',
+  'distribution.technician_cancelled_restart':'Usta iptali sonrası dağıtım yeniden başladı',
+  'finance.t100_verified':'Finansal sonuç doğrulandı; dağıtım simülasyondur',
   'request.created':'Talep oluşturuldu',
   'quote.accepted':'Fiyat kabul edildi',
   'distribution.started':'Usta dağıtımı başladı',
@@ -58,6 +69,7 @@ const eventLabels={
 } as const satisfies Record<string,string>;
 
 const exclusionReasonLabels={
+  technician_cancelled:'Usta işi iptal etti',
   appointment_timeout:'Randevu süresi doldu',
   declined:'Teklifi reddetti',
 } as const satisfies Record<string,string>;

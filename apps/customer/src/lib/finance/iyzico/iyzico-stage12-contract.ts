@@ -16,6 +16,7 @@ export type IyzicoRuntimeStatus=Readonly<{
 
 export type IyzicoStage12Scope=Readonly<{
   intentId:string;
+  purpose?:'initial'|'additional';
   serviceRequestId:string;
   customerId:string;
   quoteId:string;

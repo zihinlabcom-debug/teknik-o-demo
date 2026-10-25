@@ -22,12 +22,12 @@ function fixture({testAccount=true,priced=true,gate=true,runtime={enabled:true,g
 }
 test('root real request route returns 201 with paymentIntentId and no distribution',async()=>{const x=fixture();const response=await x.post({conversationToken:'LOCAL-SIGNED-TOKEN',paymentIntentId:'untrusted',paymentIdempotencyKey:'untrusted',totalAmount:1});assert.equal(response.status,201);assert.deepEqual(await response.json(),x.result);assert.deepEqual(x.calls.map(c=>c.name),['finance_gate_required_for_customer','finance_iyzico_integration_status','create_iyzico_payment_pending_service_request_v3']);const args=x.calls[2].args;assert.equal(args.p_customer_id,ids.customer);assert.equal(args.p_total_amount,120);assert.equal(args.p_requested_service_mode,'immediate');assert.equal(args.p_requested_service_date,null);assert.equal(Object.keys(args).length,16);assert.match(args.p_payment_idempotency_key,/^pending:[a-f0-9]{64}$/);assert.notEqual(args.p_payment_idempotency_key,'untrusted');});
 test('retry keeps server-derived payment key and returned payment ID stable',async()=>{const x=fixture();const a=await x.create(),b=await x.create({paymentIdempotencyKey:'ignored'});assert.equal(a.paymentIntentId,b.paymentIntentId);const writes=x.calls.filter(c=>c.name.endsWith('_v3'));assert.equal(writes[0].args.p_payment_idempotency_key,writes[1].args.p_payment_idempotency_key);});
-for(const [name,options,env,expected] of [
+for(const [name,options,env] of [
  ['non-test customer',{testAccount:false},{},'create_priced_service_request'],
  ['unpriced request',{priced:false},{},'create_service_request'],
  ['disabled Sandbox',{}, {STAGE12_IYZICO_SANDBOX_ENABLED:'false'},'create_priced_service_request'],
  ['customer outside DB gate',{gate:false},{},'create_priced_service_request'],
-])test(name+' preserves legacy route',async()=>{Object.assign(process.env,env);const x=fixture(options);await x.create();assert.equal(x.calls.at(-1).name,expected);assert.ok(!x.calls.some(c=>c.name.endsWith('_v3')));});
+])test(name+' rejects unfunded creation without a legacy fallback',async()=>{Object.assign(process.env,env);const x=fixture(options);await assert.rejects(x.create,{code:'payment_flow_required'});assert.ok(!x.calls.some(c=>c.name.startsWith('create_')));});
 for(const [name,options,env] of [
  ['production environment',{}, {APP_ENV:'production'}],['production deployment',{}, {VERCEL_ENV:'production'}],['wrong Supabase project',{}, {NEXT_PUBLIC_SUPABASE_URL:'https://other.supabase.co'}],
  ['provider conflict',{}, {STAGE12_FAKE_FINANCE_ENABLED:'true'}],['gate lookup error',{gateError:true},{}],['nonboolean gate',{gate:null},{}],['runtime unavailable',{runtimeError:true},{}],['wrong runtime provider',{runtime:{enabled:true,gateMode:'test_only',provider:'fake',environment:'sandbox'}},{}],['all-customer mode',{runtime:{enabled:true,gateMode:'all',provider:'iyzico',environment:'sandbox'}},{}],

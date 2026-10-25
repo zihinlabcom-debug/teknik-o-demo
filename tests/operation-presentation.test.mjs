@@ -58,10 +58,13 @@ test('actual admin detail renders created separately and all six timestamp field
   const panels={PanelCard:({title,children})=>createElement('section',{'aria-label':title},children),PanelHeading:()=>null,RecordTypeBadge:()=>null,EmptyPanelState:({children})=>createElement('p',null,children)};
   const modules={
     'react/jsx-runtime':jsxRuntime,'next/navigation':{notFound(){throw Error('UNEXPECTED_NOT_FOUND');}},
+    '@/lib/t100-server':{adminT100State:async()=>({completion:null,review:null,finalization:null})},
+    '../../../../../../../src/components/t100-service-actions':{T100ServiceActions:()=>{throw Error('Unexpected lifecycle render in legacy timestamp fixture');}},
     '@/components/operation-panel':panels,'@/lib/operation-presentation':presentation,
     '@/lib/operation-server':{adminRequestDetail:async()=>d,adminManualAssignmentReady:async()=>false,adminManualAssignmentCandidates:async()=>{throw Error('UNEXPECTED_OPERATION');},OperationError:class extends Error{}},
     '@/lib/stage10-server':{adminOperationContract:async()=>({stage:'completed',assignmentSource:'automatic',terminal:true,currentJobId:'job'})},
     '@/lib/service-request-assessment-display':{assessmentDetailRows:()=>[]},
+    '@/components/t100-admin-finance-actions':{T100AdminFinanceActions:()=>{throw Error('UNEXPECTED_FINANCE_RECOVERY_FOR_COMPLETED_FIXTURE');}},
     '@/components/manual-assignment-panel':{ManualAssignmentPanel:()=>null},
     '@/components/stage10-operation-intervention':{Stage10OperationIntervention:()=>null},
   };

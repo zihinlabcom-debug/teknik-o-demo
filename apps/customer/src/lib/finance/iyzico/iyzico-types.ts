@@ -46,7 +46,7 @@ export type IyzicoAuthorizeInput=IyzicoOperationContext&Readonly<{
 }>;
 
 export type IyzicoCaptureInput=IyzicoOperationContext&Readonly<{
-  paymentId:string;basketId:string;ip:string;
+  paymentId:string;basketId:string;ip:string;authorizationAmount?:TryAmount;
 }>;
 export type IyzicoCancelInput=IyzicoOperationContext&Readonly<{
   paymentId:string;ip:string;reason?:'OTHER'|'FRAUD'|'BUYER_REQUEST'|'DOUBLE_PAYMENT';description?:string;
@@ -56,7 +56,7 @@ export type IyzicoRefundInput=IyzicoOperationContext&Readonly<{
   reason?:'OTHER'|'FRAUD'|'BUYER_REQUEST'|'DOUBLE_PAYMENT';description?:string;
 }>;
 export type IyzicoRetrieveInput=IyzicoOperationContext&Readonly<{
-  paymentId?:string;paymentConversationId?:string;basketId:string;
+  paymentId?:string;paymentConversationId?:string;basketId:string;authorizationAmount?:TryAmount;
 }>;
 
 export type IyzicoResponse=Record<string,unknown>;

@@ -47,7 +47,7 @@ export class IyzicoStage12Repository {
     if(raw.currency!=='TRY'||typeof raw.amount!=='string')
       throw new Error('iyzico_stage12_invalid_intent_context');
     return Object.freeze({
-      intentId:raw.intentId as string,serviceRequestId:raw.serviceRequestId as string,
+      purpose:raw.purpose==='additional'?'additional':'initial',intentId:raw.intentId as string,serviceRequestId:raw.serviceRequestId as string,
       customerId:raw.customerId as string,quoteId:raw.quoteId as string,
       amount:canonicalTryAmount(raw.amount),currency:'TRY',basketId:raw.basketId as string,
       intentStatus:raw.intentStatus as string,
@@ -61,6 +61,19 @@ export class IyzicoStage12Repository {
       customerId:scope.customerId,...(jobId?{jobId}:{}),
     };
     return new SupabaseIyzicoOperationStore(this.db,operationScope);
+  }
+
+  async finalizationPartContext(partId:string,customerId:string){
+    const raw=object(await rpc(this.db,'t103_part_context',{p_id:partId,p_customer_id:customerId}));
+    if(typeof raw.amount!=='string'||typeof raw.jobId!=='string'||typeof raw.intentId!=='string'||typeof raw.key!=='string')throw new Error('t103_invalid_part_context');
+    return {amount:raw.amount,jobId:raw.jobId,intentId:raw.intentId,key:raw.key};
+  }
+
+  async cancellationContext(finalizationId:string,customerId:string){
+    const raw=object(await rpc(this.db,'t100_cancellation_capture_context',{p_id:finalizationId,p_customer_id:customerId}));
+    if(typeof raw.amount!=='string'||typeof raw.jobId!=='string'||typeof raw.intentId!=='string')
+      throw new Error('t100_invalid_cancellation_context');
+    return {amount:raw.amount,jobId:raw.jobId,intentId:raw.intentId};
   }
 
   async apply(intentId:string,operationId:string):Promise<unknown>{

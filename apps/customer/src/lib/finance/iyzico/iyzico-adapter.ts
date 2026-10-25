@@ -35,6 +35,7 @@ function assertContext(input:IyzicoOperationContext):void{
 }
 export function assertIyzicoOperationInput(operation:FinanceProviderOperation,input:IyzicoInput):void{
   assertContext(input);
+  if('authorizationAmount' in input&&input.authorizationAmount!==undefined&&(!isCanonicalAmount(input.authorizationAmount)||tryAmountToMinorUnits(input.authorizationAmount)<tryAmountToMinorUnits(input.amount)))invalidInput();
   if(operation==='authorize'){
     const value=input as IyzicoAuthorizeInput;
     if(!validId(value.basketId)||!Array.isArray(value.basketItems)||value.basketItems.length!==1||
@@ -106,6 +107,7 @@ function paymentTransactionId(response:IyzicoResponse):string|undefined{
 
 type SignedOptions=Readonly<{
   expectedPaymentId?:string;
+  expectedPrice?:string;
   expectedBasketId?:string;
   expectedTransactionId?:string;
   requireTransactionId?:boolean;
@@ -157,7 +159,7 @@ export class IyzicoSandboxAdapter implements FinanceProviderAdapter<
       return unknown(operation,input,'transaction_reference_mismatch');
 
     try{
-      if(response.currency!==input.currency||canonicalTryAmount(String(response.price))!==input.amount)
+      if(response.currency!==input.currency||canonicalTryAmount(String(response.price))!==(options.expectedPrice??input.amount))
         return unknown(operation,input,'provider_amount_mismatch');
       if(options.requirePaidPrice&&canonicalTryAmount(String(response.paidPrice))!==input.amount)
         return unknown(operation,input,'provider_amount_mismatch');
@@ -230,7 +232,7 @@ export class IyzicoSandboxAdapter implements FinanceProviderAdapter<
   }
   capture(input:IyzicoCaptureInput){
     return this.safely('capture',input,()=>this.client.capture(input),response=>
-      this.normalizeSigned('capture',input,response,{expectedPaymentId:input.paymentId,
+      this.normalizeSigned('capture',input,response,{expectedPrice:input.authorizationAmount,expectedPaymentId:input.paymentId,
         expectedBasketId:input.basketId,requirePaidPrice:true,expectedPhase:'POST_AUTH'}));
   }
   cancel(input:IyzicoCancelInput){
@@ -243,7 +245,7 @@ export class IyzicoSandboxAdapter implements FinanceProviderAdapter<
   }
   retrieve(input:IyzicoRetrieveInput){
     return this.safely('retrieve',input,()=>this.client.retrieve(input),response=>
-      this.normalizeSigned('retrieve',input,response,{expectedPaymentId:input.paymentId,
+      this.normalizeSigned('retrieve',input,response,{expectedPrice:input.authorizationAmount,expectedPaymentId:input.paymentId,
         expectedBasketId:input.basketId,requirePaidPrice:true,requireFraudApproval:true,retrieve:true}));
   }
 }

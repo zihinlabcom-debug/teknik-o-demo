@@ -1,6 +1,9 @@
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
+import {T100AdminFinanceActions} from '@/components/t100-admin-finance-actions';
+import {adminT100State} from '@/lib/t100-server';
+import {T100ServiceActions} from '../../../../../../../src/components/t100-service-actions';
 import {EmptyPanelState,PanelCard,PanelHeading,RecordTypeBadge} from '@/components/operation-panel';
 import {adminRequestDetail,adminManualAssignmentReady,adminManualAssignmentCandidates,OperationError} from '@/lib/operation-server';
 import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
@@ -12,6 +15,7 @@ import {assignmentSourceLabel,exclusionReasonLabel,formatOperationDateTime,opera
 export default async function AdminRequestDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params; let d;
   let contract;try{[d,contract]=await Promise.all([adminRequestDetail(id),adminOperationContract(id)]);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
+  const lifecycle=await adminT100State(id);
   const assessmentRows=assessmentDetailRows(d.assessment_snapshot);
   const canManualAssign=d.status!=='technician_unavailable'&&await adminManualAssignmentReady(id);
   const candidates=canManualAssign
@@ -25,6 +29,8 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
         <dt className="font-semibold text-slate-700">{row.label}:</dt><dd className="text-slate-900">{row.value}</dd>
       </div>)}
     </dl>:<EmptyPanelState>Yapılandırılmış değerlendirme bulunmuyor.</EmptyPanelState>}</PanelCard>
+    {lifecycle.jobId&&lifecycle.finalization&&['unknown','blocked','failed'].includes(lifecycle.finalization.state)&&<T100AdminFinanceActions jobId={lifecycle.jobId} state={lifecycle.finalization.state}/>}
+    {(lifecycle.completion||lifecycle.review||lifecycle.finalization)&&<T100ServiceActions role="admin" requestId={id} initialState={lifecycle}/>}
     <PanelCard title="Fiyatlar">{d.quotes.length?d.quotes.map(q=><p key={q.id} className="text-sm">v{q.version} · {operationStatusLabel(q.status)} · {q.total_amount} {q.currency}</p>):<EmptyPanelState>Fiyat yok.</EmptyPanelState>}</PanelCard>
 
     <PanelCard title="Dağıtım döngüleri">{d.cycles.length?<div className="space-y-3">{d.cycles.map(c=><div key={c.id} className="rounded-xl border border-slate-200 p-3 text-sm">

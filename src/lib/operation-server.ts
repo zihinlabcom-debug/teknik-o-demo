@@ -58,13 +58,7 @@ export async function createCustomerServiceRequest(input:{conversationToken:stri
       accountId:account.id,isTest:account.is_test===true,price:acceptedPrice,args,fingerprint});
     if(pending)return pending;
   }
-  const {data,error}=acceptedPrice?await db.rpc('create_priced_service_request',{
-    ...args,p_currency:acceptedPrice.currency,p_subtotal:acceptedPrice.subtotal,
-    p_service_fee:acceptedPrice.serviceFee,p_total_amount:acceptedPrice.totalAmount,
-    p_breakdown:acceptedPrice.breakdown,
-  }):await db.rpc('create_service_request',args);
-  if(error)failDb(error,'Hizmet talebi');
-  return acceptedPrice?data as {id:string;quoteId:string;totalAmount:number;currency:'TRY'}:{id:data as string};
+  throw new OperationError('payment_flow_required',503,'Onaylı ödeme akışı şu anda kullanılamıyor.');
 }
 export async function acceptCustomerQuote(quoteId:string){
   requireId(quoteId); const account=await requireRole('customer'); const db=adminSupabase();

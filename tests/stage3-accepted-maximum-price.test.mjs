@@ -65,7 +65,9 @@ test('request endpoint accepts only a signed conversation token, never a client 
   assert.match(route,/conversationToken/);
   assert.doesNotMatch(route,/body\.(?:price|totalAmount|breakdown|serviceFee)/);
   assert.match(server,/acceptedMaximumPrice\(conversation\)/);
-  assert.match(server,/create_priced_service_request/);
+  assert.match(server,/price:acceptedPrice/);
+  assert.match(server,/payment_flow_required/);
+  assert.doesNotMatch(server,/db\.rpc\('create_priced_service_request'/);
   assert.doesNotMatch(server,/input\.(?:price|totalAmount|breakdown|serviceFee)/);
   assert.match(dialog,/maksimum fiyatı kabul etmiş olursunuz/);
   assert.match(detail,/offered&&!accepted/);

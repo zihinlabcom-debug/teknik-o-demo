@@ -1,4 +1,5 @@
 import 'server-only';
+import {customerT100State,customerT100Action} from '@/lib/t100-server';
 import {adminSupabase} from '@/lib/account-supabase';
 import {requireRole} from '@/lib/operation-guard';
 import {FinanceInputError} from '../sandbox-contract';
@@ -80,10 +81,16 @@ export async function reconcileIyzicoSandboxAuthorization(intentId:string){
   if(account.is_test!==true)throw new FinanceInputError('finance_lab_test_only',403,'Bu ödeme testi yalnızca test hesabında kullanılabilir.');
   return createIyzicoStage12Server().reconcileAuthorization(intentId,account.id);
 }
-export async function cancelIyzicoSandboxAuthorization(intentId:string,ip:string){
+export async function cancelIyzicoSandboxAuthorization(intentId:string,_ip:string){
   const account=await requireRole('customer');
   if(account.is_test!==true)throw new FinanceInputError('finance_lab_test_only',403,'Bu ödeme testi yalnızca test hesabında kullanılabilir.');
-  return createIyzicoStage12Server().cancel(intentId,account.id,{ip,reason:'BUYER_REQUEST',description:'Sandbox lifecycle test'});
+  const {data:intent,error}=await adminSupabase().from('finance_payment_intents')
+    .select('service_request_id,customer_id,provider,environment').eq('id',intentId).eq('customer_id',account.id).maybeSingle();
+  if(error||!intent||intent.provider!=='iyzico'||intent.environment!=='sandbox')throw new FinanceInputError('intent_not_found',404,'Sandbox ödeme niyeti bulunamadı.');
+  const current=await customerT100State(intent.service_request_id);
+  if(current.policy?.action!=='cancel')throw new FinanceInputError('cancellation_review_required',409,'Güncel iptal veya inceleme seçeneğini talep detayından kullanın.');
+  if(current.policy.feeMinor!==0)throw new FinanceInputError('cancellation_confirmation_required',409,'İptal bedelini talep detayında görüp açıkça onaylamanız gerekiyor.');
+  return customerT100Action(intent.service_request_id,{action:'cancel',version:current.policy.version,reason:'Müşterinin ödeme iptali isteği'});
 }
 export async function refundIyzicoSandboxPayment(intentId:string,ip:string){
   const account=await requireRole('customer');

@@ -1,6 +1,8 @@
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
+import {customerT100State} from '@/lib/t100-server';
+import {T100ServiceActions} from '@/components/t100-service-actions';
 import {EmptyPanelState,PanelCard,PanelHeading} from '@/components/operation-panel';
 import {OperationActionButton} from '@/components/operation-action-button';
 import {customerRequestDetail,OperationError} from '@/lib/operation-server';
@@ -9,6 +11,7 @@ import {customerOperationContract} from '@/lib/stage10-server';
 export default async function CustomerRequestDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params; let d;
   let contract;try{[d,contract]=await Promise.all([customerRequestDetail(id),customerOperationContract(id)]);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
+  const lifecycle=await customerT100State(id);
   const accepted=d.quotes.find(q=>q.status==='accepted');
   const offered=d.quotes.find(q=>q.status==='offered'&&(!q.expires_at||new Date(q.expires_at)>new Date()));
   const technicianFallback=
@@ -25,6 +28,6 @@ export default async function CustomerRequestDetail({params}:{params:Promise<{id
     {offered&&!accepted&&<PanelCard title="Fiyat teklifi"><p className="mb-4 text-sm">{offered.total_amount} {offered.currency}</p><OperationActionButton endpoint={`/api/operations/quotes/${offered.id}/accept`} label="Teklifi kabul et" confirmText="Bu fiyat teklifini kabul ediyor musunuz?"/></PanelCard>}
     <PanelCard title="Randevu">{d.appointments.length?d.appointments.map(a=><p key={a.id} className="text-sm">{a.status} — {new Date(a.starts_at).toLocaleString('tr-TR')}</p>):<EmptyPanelState>Henüz randevu yok.</EmptyPanelState>}</PanelCard>
     <PanelCard title="Durum zaman çizelgesi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{new Date(e.occurred_at).toLocaleString('tr-TR')} · {e.event_type}</p>):<EmptyPanelState>Henüz olay kaydı yok.</EmptyPanelState>}</PanelCard>
-    <PanelCard title="İptal ve iade bilgisi"><p className="text-sm leading-6 text-slate-600">Çevrimiçi iptal ve iade işlemleri henüz bu ekrandan başlatılamıyor. Mevcut talebinizle ilgili bilgi için Destek Merkezi üzerinden iletişim kanalını kullanabilirsiniz.</p></PanelCard>
+    <T100ServiceActions key={JSON.stringify(lifecycle)} role="customer" requestId={id} initialState={lifecycle}/>
   </div></>;
 }
