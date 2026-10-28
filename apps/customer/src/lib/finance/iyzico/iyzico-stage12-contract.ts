@@ -30,10 +30,13 @@ export type IyzicoStage12Scope=Readonly<{
 export function assertIyzicoStage12Environment(env:Record<string,string|undefined>):void{
   const previewOrLocalDev=env.VERCEL_ENV==='preview'||
     (env.VERCEL_ENV===undefined&&env.NODE_ENV==='development');
-  let host='';
-  try{host=new URL(env.NEXT_PUBLIC_SUPABASE_URL??'').hostname;}catch{}
+  let projectUrl:URL|undefined;
+  try{projectUrl=new URL(env.NEXT_PUBLIC_SUPABASE_URL??'');}catch{}
+  // Preserve the legacy Staging gate; the isolated test project has an exact HTTPS URL.
+  const approvedProject=projectUrl?.hostname==='ygrvtndujbmeatexjdej.supabase.co'||
+    projectUrl?.href==='https://ysbaycbflopdmzwfhhnc.supabase.co/';
   if(env.STAGE12_IYZICO_SANDBOX_ENABLED!=='true'||env.APP_ENV!=='staging'||
-      !previewOrLocalDev||host!=='ygrvtndujbmeatexjdej.supabase.co')
+      !previewOrLocalDev||!approvedProject)
     throw new IyzicoStage12Error('iyzico_stage12_disabled');
 }
 
