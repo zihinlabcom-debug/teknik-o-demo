@@ -29,6 +29,8 @@ function positiveInteger(value: string|undefined, fallback: number, min: number,
 }
 
 export function parseIyzicoSandboxConfig(env: Record<string,string|undefined>): IyzicoSandboxConfig {
+  if (env.T100_SIMULATION_ONLY === 'true')
+    throw new IyzicoError('iyzico_simulation_only','configuration',false,'Simülasyonda sağlayıcı erişimi kapalı.');
   let configured: URL;
   try { configured=new URL(env.IYZICO_BASE_URL || IYZICO_SANDBOX_ORIGIN); }
   catch { throw new IyzicoError('invalid_sandbox_origin','configuration',false,'iyzico Sandbox adresi geçersiz.'); }

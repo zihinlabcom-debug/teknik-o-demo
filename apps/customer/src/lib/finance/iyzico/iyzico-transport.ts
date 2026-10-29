@@ -63,6 +63,9 @@ export class IyzicoHttpTransport{
   ){}
 
   async post(path:string,payload:Record<string,unknown>):Promise<IyzicoTransportResponse>{
+    // Recheck before signing/fetching, including transports created before the flag changed.
+    if(process.env.T100_SIMULATION_ONLY==='true')
+      throw new IyzicoError('iyzico_simulation_only','configuration',false,'Simülasyonda sağlayıcı erişimi kapalı.');
     if(this.config.baseUrl!==IYZICO_SANDBOX_ORIGIN||!allowedPaths.has(path))
       throw new IyzicoError('sandbox_endpoint_denied','configuration',false,'İyzico Sandbox endpointi reddedildi.');
     const serializedRequest=JSON.stringify(payload);

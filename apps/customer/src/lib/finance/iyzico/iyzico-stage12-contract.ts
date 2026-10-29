@@ -28,6 +28,7 @@ export type IyzicoStage12Scope=Readonly<{
 }>;
 
 export function assertIyzicoStage12Environment(env:Record<string,string|undefined>):void{
+  if(env.T100_SIMULATION_ONLY==='true')throw new IyzicoStage12Error('iyzico_simulation_only');
   const previewOrLocalDev=env.VERCEL_ENV==='preview'||
     (env.VERCEL_ENV===undefined&&env.NODE_ENV==='development');
   let projectUrl:URL|undefined;

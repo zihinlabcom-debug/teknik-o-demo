@@ -20,10 +20,16 @@ export function assertSandboxEnabled(env: Record<string,string|undefined>): void
       !previewOrLocalDev) {
     throw new FinanceInputError('sandbox_disabled', 404, 'Finans test ortamı kapalı.');
   }
-  let host = '';
-  try {host = new URL(env.NEXT_PUBLIC_SUPABASE_URL || '').hostname;}
+  let project: URL;
+  try {project = new URL(env.NEXT_PUBLIC_SUPABASE_URL || '');}
   catch {throw new FinanceInputError('sandbox_project_mismatch', 503, 'Test ortamı doğrulanamadı.');}
-  if (host !== 'ygrvtndujbmeatexjdej.supabase.co')
+  const isolated = project.href === 'https://ysbaycbflopdmzwfhhnc.supabase.co/';
+  const simulationOnly = env.T100_SIMULATION_ONLY === 'true';
+  // The new TEST target is opt-in and mutually exclusive with provider execution.
+  if (simulationOnly && (!isolated || env.STAGE12_IYZICO_SANDBOX_ENABLED !== 'false' ||
+      env.T100_IYZICO_EXECUTION_ENABLED !== 'false'))
+    throw new FinanceInputError('sandbox_provider_conflict', 503, 'Simülasyon sağlayıcısı doğrulanamadı.');
+  if (!(isolated && simulationOnly) && project.hostname !== 'ygrvtndujbmeatexjdej.supabase.co')
     throw new FinanceInputError('sandbox_project_mismatch', 503, 'Test ortamı doğrulanamadı.');
 }
 
