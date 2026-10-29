@@ -25,7 +25,11 @@ export async function authorizeAndReleaseFakePayment(input: FakeAuthInput) {
   const {data:auth,error:authError} = await db.rpc('finance_fake_authorize',{
     p_intent_id:intent.id,p_idempotency_key:input.idempotencyKey,p_approved:input.approve,
   });
-  if (authError) failDb(authError,'Sahte provizyon');
+  if (authError) {
+    if(authError.message==='Authorization idempotency payload mismatch')
+      throw new OperationError('authorization_conflict',409,'Aynı ödeme işlemi farklı bir sonuçla tekrar gönderilemez.');
+    failDb(authError,'Sahte provizyon');
+  }
   const currentState = effectiveAuthorizationState(auth);
   // A replayed declined request can observe a later authorized intent.
   // Decline is never permission to distribute, even in that case.

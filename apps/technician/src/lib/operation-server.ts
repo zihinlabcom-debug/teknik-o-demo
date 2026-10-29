@@ -13,13 +13,33 @@ export async function acceptTechnicianDispatch(dispatchId:string){
 
   const key=`dispatch:${dispatchId}:${account.id}`;
 
+  const {data:dispatch,error:dispatchError}=await db.from('service_dispatches')
+    .select('service_request_id').eq('id',dispatchId).maybeSingle();
+  if(dispatchError)failDb(dispatchError,'Teklif kontrolü');
+  if(!dispatch)throw new OperationError('not_found',404,'Teklif bulunamadı.');
+  const {data:exclusion,error:exclusionError}=await db.from('service_request_technician_exclusions')
+    .select('service_request_id').eq('service_request_id',dispatch.service_request_id)
+    .eq('technician_id',account.id).maybeSingle();
+  if(exclusionError)failDb(exclusionError,'Teklif uygunluğu');
+  if(exclusion)throw new OperationError('technician_excluded',403,'İptal ettiğiniz talebi tekrar kabul edemezsiniz.');
+
   const {data,error}=await db.rpc('accept_service_dispatch',{
     p_dispatch_id:dispatchId,
     p_technician_id:account.id,
     p_idempotency_key:key,
   });
 
-  if(error)failDb(error,'İş kabulü');
+  if(error){
+    if(error.message==='Technician is excluded from this request')
+      throw new OperationError('technician_excluded',403,'İptal ettiğiniz talebi tekrar kabul edemezsiniz.');
+    failDb(error,'İş kabulü');
+  }
+  // An old idempotency entry can outlive cancellation; do not return it as an active acceptance.
+  const {data:accepted,error:acceptedError}=await db.from('service_jobs').select('status')
+    .eq('id',data).eq('technician_id',account.id).maybeSingle();
+  if(acceptedError)failDb(acceptedError,'Atama kontrolü');
+  if(!accepted||!['assigned','in_progress'].includes(accepted.status))
+    throw new OperationError('assignment_closed',409,'Bu atama artık aktif değil.');
   return {id:data};
 }
 
@@ -48,6 +68,13 @@ export async function completeTechnicianJob(jobId:string,ip='127.0.0.1'){
     p_technician_id:account.id,
   });
   if(error)failDb(error,'İş tamamlama');
+  const {data:job,error:jobError}=await db.from('service_jobs').select('status')
+    .eq('id',jobId).eq('technician_id',account.id).maybeSingle();
+  if(jobError)failDb(jobError,'İş durumu');
+  if(!job)throw new OperationError('not_found',404,'İş bulunamadı.');
+  if(job.status==='completed')return {id:data,completion:'completed' as const};
+  if(!['assigned','in_progress'].includes(job.status))
+    throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');
   return {id:data,completion:'awaiting_customer' as const};
 }
 type AppointmentDbError={message?:string}|null;
@@ -158,7 +185,7 @@ export async function technicianOffers(){
   const requestIds=(dispatches??[]).map(d=>d.service_request_id);
   const quoteIds=(dispatches??[]).map(d=>d.quote_id).filter(Boolean);
 
-  const [{data:reqs},{data:quotes}]=await Promise.all([
+  const [{data:reqs},{data:quotes},{data:exclusions,error:exclusionError}]=await Promise.all([
     requestIds.length
       ?db.from('service_requests')
         .select('id,category_id,address_id,created_at')
@@ -170,9 +197,17 @@ export async function technicianOffers(){
         .select('id,total_amount,currency,status')
         .in('id',quoteIds)
       :Promise.resolve({data:[]}),
+    requestIds.length
+      ?db.from('service_request_technician_exclusions').select('service_request_id')
+        .eq('technician_id',account.id).in('service_request_id',requestIds)
+      :Promise.resolve({data:[],error:null}),
   ]);
 
+  if(exclusionError)failDb(exclusionError,'Teklif uygunluğu');
+  const excludedRequests=new Set((exclusions??[]).map(item=>item.service_request_id));
+
   return (dispatches??[])
+    .filter(d=>!excludedRequests.has(d.service_request_id))
     .map(d=>({
       ...d,
       request:(reqs??[]).find(r=>r.id===d.service_request_id)??null,

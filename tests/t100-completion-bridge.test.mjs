@@ -5,12 +5,14 @@ import {makeReadFixture,withReadFixture} from './helpers/t88-read-db-double.mjs'
 const {completeTechnicianJob}=await import('../apps/technician/src/lib/operation-server.ts');
 const job='20000000-0000-4000-8000-000000000002',tech='10000000-0000-4000-8000-000000000001';
 test('technician completion only persists a report; no provider preparation or capture',async()=>{
- const f=makeReadFixture({account:{id:tech,role:'technician'}}),calls=[];
+ const f=makeReadFixture({account:{id:tech,role:'technician'},tables:{service_jobs:[{id:job,technician_id:tech,status:'in_progress'}]}}),calls=[];
  f.db.rpc=async(name,params)=>{calls.push({name,params});return {data:job,error:null};};
  const result=await withReadFixture(f,()=>completeTechnicianJob(job));
  assert.deepEqual(result,{id:job,completion:'awaiting_customer'});
  assert.deepEqual(calls,[{name:'complete_service_job',params:{p_job_id:job,p_technician_id:tech}}]);
- assert.equal(f.calls.length,0);
+ assert.equal(f.calls.length,1);
+ assert.equal(f.calls[0].table,'service_jobs');
+ assert.deepEqual(f.calls[0].filters,[['eq','id',job],['eq','technician_id',tech]]);
  const source=readFileSync(new URL('../apps/technician/src/lib/operation-server.ts',import.meta.url),'utf8');
  assert.doesNotMatch(source.slice(source.indexOf('export async function completeTechnicianJob'),source.indexOf('type AppointmentDbError')),/captureCompletedIyzicoJob|prepareIyzicoJobCompletion|\.capture\(/);
 });
