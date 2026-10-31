@@ -18,6 +18,7 @@ const assignmentSourceLabels={
 } as const satisfies Record<string,string>;
 
 const eventLabels={
+  'admin.finance_decision_recorded':'Admin kanıta bağlı finans kararı kaydetti',
   'completion.reported':'Müşteri tamamlama onayı bekleniyor',
   'completion.customer_yes':'Müşteri tamamlanmayı onayladı',
   'completion.customer_no':'Müşteri tamamlanmaya itiraz etti',
