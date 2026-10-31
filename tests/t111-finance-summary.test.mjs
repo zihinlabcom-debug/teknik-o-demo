@@ -1,0 +1,9 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {remainingAuthorizationLabel,financeLabel} from '../apps/admin/src/lib/t111-presentation.ts';
+const input=(status,authorized,captured,verified=false,uncertain=false)=>({request:{financial_uncertainty:uncertain},payments:[{status,authorized,captured}],finalization:{remainingAuthorizationVerified:verified}});
+test('full capture does not imply an unresolved residual authorization',()=>assert.equal(remainingAuthorizationLabel(input('captured',3960.29,3960.29)),'Kalan provizyon bulunmuyor'));
+test('voided authorization is closed even when the original hold amount is retained',()=>assert.equal(remainingAuthorizationLabel(input('voided',3960.29,0)),'Kalan provizyon bulunmuyor'));
+test('partial cancellation capture requires explicit remaining-hold verification',()=>{assert.equal(remainingAuthorizationLabel(input('captured',3960.29,100)),'Kalan provizyon henüz doğrulanmadı');assert.equal(remainingAuthorizationLabel(input('captured',3960.29,100,true)),'Kalan provizyonun kapatılması doğrulandı');});
+test('financial uncertainty overrides amount arithmetic and proof flags',()=>assert.equal(remainingAuthorizationLabel(input('requires_review',0,0,true,true)),'Belirsiz — finansal inceleme gerekli'));
+test('all payment parts contribute to residual detection',()=>{const x=input('captured',3000,3000);x.payments.push({status:'authorized',authorized:500,captured:0});assert.equal(remainingAuthorizationLabel(x),'Kalan provizyon henüz doğrulanmadı');});
+test('refunds cannot reopen a fully captured authorization and unknown labels remain safe',()=>{assert.equal(remainingAuthorizationLabel(input('refunded',3960.29,3960.29)),'Kalan provizyon bulunmuyor');assert.equal(financeLabel('requires_review'),'Belirsiz — finansal inceleme gerekli');assert.equal(financeLabel('unknown-success'),'Tanımlanmamış finans durumu');});
