@@ -55,7 +55,7 @@ test('scheduled completion waits for both active appointment and selected servic
   assert.ok(detail.includes('müşterinin seçtiği hizmet tarihinden önce başlatılamaz veya tamamlanamaz'));
 });
 
-test('admin request detail exposes distribution cycles, rounds, appointments and exclusions without mutation actions',()=>{
+test('admin investigation history preserves distribution and exclusions separately from current appointment',()=>{
   const readServer=read('src/lib/admin-request-read.ts');
   const page=read('apps/admin/src/app/admin/talepler/[id]/page.tsx');
 
@@ -63,8 +63,11 @@ test('admin request detail exposes distribution cycles, rounds, appointments and
   assert.match(readServer,/service_request_technician_exclusions/);
   assert.match(readServer,/distribution_cycle_id,round_no,expires_at/);
   assert.match(readServer,/service_appointments/);
-  assert.ok(page.includes('Dağıtım döngüleri'));
-  assert.ok(page.includes('İşler ve randevular'));
-  assert.ok(page.includes('Dışlanan ustalar'));
+  const history=read('apps/admin/src/app/admin/talepler/[id]/gecmis/page.tsx');
+  assert.ok(history.includes('Dağıtım döngüleri'));
+  assert.ok(page.includes('finance.request.appointment_at'));
+  assert.ok(history.includes('Dışlanan ustalar'));
+  assert.ok(!page.includes('Dışlanan ustalar'));
+  assert.doesNotMatch(history,/OperationActionButton|\/api\/operations\//);
   assert.doesNotMatch(page,/OperationActionButton|\/api\/operations\//);
 });

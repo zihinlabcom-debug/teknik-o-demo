@@ -1,7 +1,10 @@
+export const dynamic='force-dynamic';
+import {ownCaseInbox} from '@/lib/t111-case-server';
+import {CaseInbox} from '../../../../../../src/components/t111-case-inbox';
 import type {SVGProps} from 'react';
 import {TechnicianSupportNavigation} from '@/components/technician-mobile-chrome';
 
-export default function TechnicianSupportPage(){
+export default async function TechnicianSupportPage(){const inbox=await ownCaseInbox();
   return <><TechnicianSupportNavigation/>
     <header className="mb-6"><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B85F2A]">Destek</p><h1 id="contact-heading" className="mt-1 text-[28px] font-bold tracking-[-0.035em] text-[#082B4C]">İletişim</h1><p className="mt-2 text-sm leading-6 text-slate-600">HizmetPey ekibine ulaşabileceğin kanallar.</p></header>
     <section className="relative rounded-[22px] border border-slate-200 bg-white p-5 shadow-[0_10px_28px_rgba(8,43,76,0.06)]" aria-labelledby="contact-heading">
@@ -13,7 +16,7 @@ export default function TechnicianSupportPage(){
         <p className="flex items-start gap-3 rounded-xl bg-slate-50 p-4"><MapPin className="mt-0.5 size-5 shrink-0 text-[#C86B32]" aria-hidden="true"/><span><strong className="block">Adres</strong><span className="mt-1 block text-slate-700">Kurtuluş Mahallesi, 16. Sokak (510), No: 73<br/>Nilüfer / Bursa</span></span></p>
       </div>
     </section>
-    <HrApplicationForm/>
+    <CaseInbox {...inbox}/><HrApplicationForm/>
   </>;
 }
 

@@ -47,7 +47,7 @@ test('missing and invalid timestamps cannot masquerade as actual appointment tim
   for(const value of [null,undefined,'','invalid-time'])assert.equal(formatOperationDateTime(value),'—');
 });
 
-test('actual admin detail renders created separately and all six timestamp fields in Istanbul',async()=>{
+test('admin current detail and separate investigation history preserve status and all six Istanbul timestamps',async()=>{
   const d={status:'created',customer:{name:'TEST',is_test:true},category:{name:'Temizlik'},quotes:[],
     cycles:[{id:'cycle',status:'accepted',current_round:1,started_at:'2026-10-22T00:41:00Z',next_round_at:'2026-10-22T00:46:00Z'}],
     dispatches:[{id:'dispatch',status:'accepted',round_no:1,expires_at:'2026-10-22T00:48:00Z'}],
@@ -57,7 +57,9 @@ test('actual admin detail renders created separately and all six timestamp field
   const before=structuredClone(d),exports={};
   const panels={PanelCard:({title,children})=>createElement('section',{'aria-label':title},children),PanelHeading:()=>null,RecordTypeBadge:()=>null,EmptyPanelState:({children})=>createElement('p',null,children)};
   const modules={
-    'react/jsx-runtime':jsxRuntime,'next/navigation':{notFound(){throw Error('UNEXPECTED_NOT_FOUND');}},
+    'react/jsx-runtime':jsxRuntime,'next/link':{default:({children,href})=>createElement('a',{href},children)},'next/navigation':{notFound(){throw Error('UNEXPECTED_NOT_FOUND');}},
+    '@/lib/t111-admin-read':{adminFinancialDetail:async()=>({request:{technician_name:'TEST USTA',appointment_at:'2026-10-22T00:58:00Z',operation_status:'completed'}}),adminRequestHistory:async()=>({request:{id:'request'},jobs:[],offers:[],cancellations:[],cycles:[{id:'cycle',status:'accepted',round:1,startedAt:'2026-10-22T00:41:00Z',nextAt:'2026-10-22T00:46:00Z'}],dispatches:[{id:'dispatch',status:'accepted',round:1,expiresAt:'2026-10-22T00:48:00Z'}],exclusions:[{technician:'Excluded',reason:'declined',createdAt:'2026-10-22T00:25:00Z'}],events:[{id:'capture',type:'finance.iyzico_capture_succeeded',at:'2026-10-22T00:58:50Z',actor:'System'}]})},
+    '@/components/t111-admin-finance-summary':{AdminFinanceSummary:()=>createElement('div',null,'Finance summary')},
     '@/lib/t100-server':{adminT100State:async()=>({completion:null,review:null,finalization:null})},
     '../../../../../../../src/components/t100-service-actions':{T100ServiceActions:()=>{throw Error('Unexpected lifecycle render in legacy timestamp fixture');}},
     '@/components/operation-panel':panels,'@/lib/operation-presentation':presentation,
@@ -71,7 +73,11 @@ test('actual admin detail renders created separately and all six timestamp field
   const code=ts.transpileModule(read('apps/admin/src/app/admin/talepler/[id]/page.tsx'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;
   vm.runInNewContext(code,{exports,require:name=>{if(!(name in modules))throw Error('UNEXPECTED_IMPORT');return modules[name];}});
   const html=renderToStaticMarkup(await exports.default({params:Promise.resolve({id:'request'})}));
-  const text=html.replace(/<[^>]*>/g,'').replace(/\s+/g,' ');
+  const historyExports={};const historyCode=ts.transpileModule(read('apps/admin/src/app/admin/talepler/[id]/gecmis/page.tsx'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;
+  vm.runInNewContext(historyCode,{exports:historyExports,require:name=>{if(!(name in modules))throw Error('UNEXPECTED_HISTORY_IMPORT '+name);return modules[name];}});
+  const historyHtml=renderToStaticMarkup(await historyExports.default({params:Promise.resolve({id:'request'})}));
+  assert.ok(!html.includes('Excluded'));assert.ok(!html.includes('03:41:00'));assert.ok(html.includes('/admin/talepler/request/gecmis'));
+  const text=(html+historyHtml).replace(/<[^>]*>/g,'').replace(/\s+/g,' ');
   assert.match(text,/Durum: Oluşturuldu/);assert.match(text,/Operasyon: Tamamlandı/);
   for(const time of ['03:41:00','03:46:00','03:48:00','03:58:00','03:25:00','03:58:50'])assert.ok(text.includes('22.10.2026 '+time),time);
   assert.ok(text.includes('Ödeme tahsil edildi'));assert.deepEqual(d,before);
@@ -121,11 +127,10 @@ test('unknown technical codes are not presented as a valid or raw user-facing st
 test('admin request screens use presentation functions instead of interpolating raw operation codes',()=>{
   const list=read('apps/admin/src/app/admin/talepler/page.tsx');
   const detail=read('apps/admin/src/app/admin/talepler/[id]/page.tsx');
-  assert.match(list,/operationStatusLabel\(r\.status\)/);
-  for(const call of [
-    'operationStatusLabel(d.status)','operationStatusLabel(contract.stage)','assignmentSourceLabel(contract.assignmentSource)',
-    'operationStatusLabel(q.status)','operationStatusLabel(c.status)','operationStatusLabel(x.status)',
-    'operationStatusLabel(a.status)','operationEventLabel(e.event_type)',
-  ])assert.ok(detail.includes(call),call);
+  const history=read('apps/admin/src/app/admin/talepler/[id]/gecmis/page.tsx');
+  for(const field of ['request_status','operation_status'])assert.ok(list.includes('operationStatusLabel(r.'+field+')'));
+  for(const call of ['operationStatusLabel(d.status)','operationStatusLabel(contract.stage)','assignmentSourceLabel(contract.assignmentSource)','operationStatusLabel(q.status)'])assert.ok(detail.includes(call),call);
+  for(const call of ['operationStatusLabel(c.status)','operationStatusLabel(x.status)','operationStatusLabel(j.status)','operationEventLabel(e.type)'])assert.ok(history.includes(call),call);
+  assert.ok(history.includes('formatOperationDateTime(e.at)'));
   assert.doesNotMatch(detail,/\{e\.event_type\}/);
 });

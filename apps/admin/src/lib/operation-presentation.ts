@@ -5,7 +5,7 @@ const statusLabels={
   withdrawn:'Geri çekildi',assigned:'Atandı',in_progress:'İşlemde',completed:'Tamamlandı',
   scheduled:'Planlandı',confirmed:'Onaylandı',rescheduled:'Yeniden planlandı',active:'Aktif',
   exhausted:'Usta bulunamadı',technician_unavailable:'Usta bulunamadı',distributing:'Ustalara iletiliyor',
-  admin_intervention:'Yönetim incelemesi gerekli',request_open:'Talep açık',under_review:'İnceleniyor',
+  admin_intervention:'Yönetim incelemesi gerekli',request_open:'Talep açık',under_review:'İnceleniyor',awaiting_customer:'Müşteri tamamlama onayı bekleniyor',redistribution_pending:'Yeniden dağıtım bekleniyor',
   resolved:'Sonuçlandı',pending_admin:'Yönetim onayı bekleniyor',customer_accepted:'Müşteri kabul etti',
   customer_rejected:'Müşteri reddetti',admin_continue:'Önceki kapsamla devam',
   admin_cancelled:'Yönetim tarafından iptal edildi',correction_pending:'Düzeltme bekleniyor',

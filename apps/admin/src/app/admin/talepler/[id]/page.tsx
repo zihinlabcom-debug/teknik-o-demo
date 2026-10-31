@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import {adminFinancialDetail} from '@/lib/t111-admin-read';
+import {AdminFinanceSummary} from '@/components/t111-admin-finance-summary';
 export const dynamic = 'force-dynamic';
 
 import {notFound} from 'next/navigation';
@@ -10,19 +13,21 @@ import {assessmentDetailRows} from '@/lib/service-request-assessment-display';
 import {ManualAssignmentPanel} from '@/components/manual-assignment-panel';
 import {Stage10OperationIntervention} from '@/components/stage10-operation-intervention';
 import {adminOperationContract} from '@/lib/stage10-server';
-import {assignmentSourceLabel,exclusionReasonLabel,formatOperationDateTime,operationEventLabel,operationStatusLabel} from '@/lib/operation-presentation';
+import {assignmentSourceLabel,formatOperationDateTime,operationStatusLabel} from '@/lib/operation-presentation';
 
 export default async function AdminRequestDetail({params}:{params:Promise<{id:string}>}){
   const {id}=await params; let d;
   let contract;try{[d,contract]=await Promise.all([adminRequestDetail(id),adminOperationContract(id)]);}catch(error){if(error instanceof OperationError&&error.status===404)notFound(); throw error;}
-  const lifecycle=await adminT100State(id);
+  const [lifecycle,finance]=await Promise.all([adminT100State(id),adminFinancialDetail(id)]);
   const assessmentRows=assessmentDetailRows(d.assessment_snapshot);
   const canManualAssign=d.status!=='technician_unavailable'&&await adminManualAssignmentReady(id);
   const candidates=canManualAssign
     ?await adminManualAssignmentCandidates(id)
     :[];
-  return <><PanelHeading title="Talep detayı" description="Talep, fiyat, dağıtım döngüsü ve gerçek iş özeti."/><div className="space-y-4">
+  return <><PanelHeading title="Talep detayı" description="Güncel hizmet, sorumlu usta ve finans özeti."/><div className="space-y-4">
     <PanelCard title="Talep"><div className="flex flex-wrap gap-4 text-sm"><span><b>Müşteri:</b> {d.customer?.name||'—'}</span><span><b>Kategori:</b> {d.category?.name||'—'}</span><span><b>Durum:</b> {operationStatusLabel(d.status)}</span><span><b>Operasyon:</b> {operationStatusLabel(contract.stage)}</span><span><b>Atama kaynağı:</b> {assignmentSourceLabel(contract.assignmentSource)}</span><RecordTypeBadge kind={d.customer?.is_test?'TEST':'GERÇEK'}/></div></PanelCard>
+    <PanelCard title="Güncel hizmet"><p>Usta: {finance.request.technician_name??'Atama yok'}</p><p>Randevu: {formatOperationDateTime(finance.request.appointment_at)}</p><p>Operasyon: {operationStatusLabel(finance.request.operation_status)}</p><Link className="mt-3 inline-block font-bold text-[#A94D18]" href={'/admin/talepler/'+id+'/gecmis'}>Ayrıntılı operasyon geçmişi ve inceleme →</Link></PanelCard>
+    <AdminFinanceSummary data={finance}/>
     <PanelCard title="Talep özeti"><p className="whitespace-pre-wrap text-sm text-slate-700">{d.problem_description||'Özet bulunmuyor.'}</p></PanelCard>
     <PanelCard title="Değerlendirme detayları">{assessmentRows.length?<dl className="space-y-2 text-sm">
       {assessmentRows.map((row,index)=><div key={`${row.label}-${index}`} className="flex flex-wrap gap-2 border-b border-slate-100 pb-2">
@@ -33,20 +38,6 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
     {(lifecycle.completion||lifecycle.review||lifecycle.finalization)&&<T100ServiceActions role="admin" requestId={id} initialState={lifecycle}/>}
     <PanelCard title="Fiyatlar">{d.quotes.length?d.quotes.map(q=><p key={q.id} className="text-sm">v{q.version} · {operationStatusLabel(q.status)} · {q.total_amount} {q.currency}</p>):<EmptyPanelState>Fiyat yok.</EmptyPanelState>}</PanelCard>
 
-    <PanelCard title="Dağıtım döngüleri">{d.cycles.length?<div className="space-y-3">{d.cycles.map(c=><div key={c.id} className="rounded-xl border border-slate-200 p-3 text-sm">
-      <p><b>{c.id.slice(0,8)}</b> · {operationStatusLabel(c.status)} · Tur {c.current_round}/3</p>
-      <p className="mt-1 text-slate-600">Başlangıç: {formatOperationDateTime(c.started_at)}</p>
-      {c.next_round_at&&<p className="text-slate-600">Sonraki tur: {formatOperationDateTime(c.next_round_at)}</p>}
-      {c.source_job_id&&<p className="text-slate-600">Yeniden dağıtım kaynağı iş: {c.source_job_id.slice(0,8)}</p>}
-    </div>)}</div>:<EmptyPanelState>Dağıtım döngüsü yok.</EmptyPanelState>}</PanelCard>
-
-    <PanelCard title="Dağıtım">{d.dispatches.length?<div className="space-y-2">{d.dispatches.map(x=><p key={x.id} className="text-sm">{x.id.slice(0,8)} · {x.round_no?`Tur ${x.round_no} · `:''}{operationStatusLabel(x.status)}{x.expires_at?` · Son: ${formatOperationDateTime(x.expires_at)}`:''}</p>)}</div>:<EmptyPanelState>Dağıtım kaydı yok.</EmptyPanelState>}</PanelCard>
-
-    <PanelCard title="İşler ve randevular">{d.jobs.length?<div className="space-y-3">{d.jobs.map(x=><div key={x.id} className="rounded-xl border border-slate-200 p-3 text-sm">
-      <p><b>{x.id.slice(0,8)}</b> · {operationStatusLabel(x.status)} · {x.technician?.name||x.technician_id?.slice(0,8)||'Usta yok'}</p>
-      {x.appointments.length?<div className="mt-2 space-y-1 text-slate-600">{x.appointments.map(a=><p key={a.id}>Randevu: {operationStatusLabel(a.status)} · {formatOperationDateTime(a.starts_at)}</p>)}</div>:<p className="mt-2 text-slate-500">Randevu yok.</p>}
-    </div>)}</div>:<EmptyPanelState>Job yok.</EmptyPanelState>}</PanelCard>
-
     {canManualAssign&&<PanelCard title="Manuel usta ataması">
       <p className="mb-3 text-sm text-slate-600">
         Otomatik dağıtım tamamlandı. Uygun ustalardan birini doğrudan atayabilirsiniz.
@@ -56,8 +47,5 @@ export default async function AdminRequestDetail({params}:{params:Promise<{id:st
 
     <PanelCard title="Operasyon müdahalesi"><p className="mb-3 text-sm text-slate-600">Yönetim yetkisi yalnız hizmet iptali ve mevcut ustayı değiştirme işlemleriyle sınırlıdır.</p><Stage10OperationIntervention requestId={id} currentJobId={contract.currentJobId as string|null} closed={contract.terminal}/></PanelCard>
 
-    <PanelCard title="Dışlanan ustalar">{d.exclusions.length?<div className="space-y-2">{d.exclusions.map(x=><p key={`${x.technician_id}-${x.created_at}`} className="text-sm">{x.technician?.name||x.technician_id.slice(0,8)} · {exclusionReasonLabel(x.reason)} · {formatOperationDateTime(x.created_at)}</p>)}</div>:<EmptyPanelState>Dışlanan usta yok.</EmptyPanelState>}</PanelCard>
-
-    <PanelCard title="Olay geçmişi">{d.events.length?d.events.map(e=><p key={e.id} className="text-sm">{formatOperationDateTime(e.occurred_at)} · {operationEventLabel(e.event_type)}</p>):<EmptyPanelState>Olay yok.</EmptyPanelState>}</PanelCard>
   </div></>;
 }

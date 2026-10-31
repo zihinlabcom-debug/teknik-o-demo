@@ -9,7 +9,7 @@ export async function t100Rpc(db:T100Db,name:string,args:Record<string,unknown>)
   const m=error.message??'';
   if(/forbidden|owner mismatch/i.test(m))throw new T100Error(403,'forbidden','Bu hizmet işlemi için yetkiniz yok.');
   if(/not found|missing/i.test(m))throw new T100Error(404,'not_found','Hizmet kaydı bulunamadı.');
-  if(/T10[023]|conflict|reserved|not available|verified|authorization|review/i.test(m))
+  if(/T10[023]|T111|conflict|reserved|not available|verified|authorization|review/i.test(m))
    throw new T100Error(409,'state_changed','İşlem koşulları değişti veya inceleme gerekiyor. Güncel durumu kontrol edin.');
   throw new T100Error(503,'unavailable','Hizmet işlemi şu anda tamamlanamıyor.');
  }

@@ -3,7 +3,7 @@
 import {useId,useState} from 'react';
 import {useRouter} from 'next/navigation';
 
-function useSubmit(){
+function useSubmit(onSuccess?:()=>void){
   const router=useRouter();
   const [busy,setBusy]=useState(false);
   const [feedback,setFeedback]=useState<{text:string;error:boolean}|null>(null);
@@ -17,7 +17,7 @@ function useSubmit(){
         const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
         const data=await response.json().catch(()=>({}));
         setFeedback({text:response.ok?'İşlem kaydedildi.':data.error??'İşlem tamamlanamadı.',error:!response.ok});
-        if(response.ok)router.refresh();
+        if(response.ok){onSuccess?.();router.refresh();}
       }catch{
         setFeedback({text:'İşlem tamamlanamadı.',error:true});
       }finally{
@@ -58,9 +58,10 @@ export function AdditionalCostAdminAction({id,status,version}:{id:string;status:
 
 export function ComplaintAdminAction({id,version}:{id:string;version:number}){
   const s=useSubmit();
+  const [key]=useState(()=>crypto.randomUUID());
   const fieldId=useId();
   return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{
-    action:'decide',finalCategory:String(form.get('finalCategory')),decision:String(form.get('decision')),
+    key,customerMessage:String(form.get('customerMessage')),operationMessage:String(form.get('operationMessage')||''),action:'decide',finalCategory:String(form.get('finalCategory')),decision:String(form.get('decision')),
     reason:String(form.get('reason')),subjectUserId:String(form.get('subjectUserId')||''),
     sanctionEndsAt:String(form.get('sanctionEndsAt')||''),version,
   })} aria-busy={s.busy} className="mt-3">
@@ -73,7 +74,7 @@ export function ComplaintAdminAction({id,version}:{id:string;version:number}){
       <label htmlFor={`${fieldId}-decision`} className="grid gap-1 text-sm font-semibold text-slate-700">
         Karar
         <select id={`${fieldId}-decision`} name="decision" className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900">
-          <option value="no_action">İşlem yok</option><option value="warning">Uyarı</option><option value="restrict_new_operations">Yeni işlemleri kısıtla</option><option value="temporary_suspension">Geçici askıya al</option><option value="permanent_closure">Kalıcı hesap kapatma</option><option value="finance_review">Finansal/iade incelemesi</option>
+          <option value="no_action">İşlem yok</option><option value="warning">Uyarı</option><option value="restrict_new_operations">Yeni işlemleri kısıtla</option><option value="temporary_suspension">Geçici askıya al</option><option value="permanent_closure">Kalıcı hesap kapatma</option><option value="finance_review">Finansal inceleme ve çözüm</option>
         </select>
       </label>
       <label htmlFor={`${fieldId}-subject`} className="grid gap-1 text-sm font-semibold text-slate-700">
@@ -88,18 +89,21 @@ export function ComplaintAdminAction({id,version}:{id:string;version:number}){
         Gerekçeli nihai karar <span className="text-[#A94D18]">(zorunlu)</span>
         <textarea id={`${fieldId}-reason`} name="reason" required minLength={20} maxLength={2000} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>
       </label>
+      <label htmlFor={`${fieldId}-customer-result`} className="grid gap-1 text-sm font-semibold">Müşteriye açıklanacak gerekçeli sonuç<textarea id={`${fieldId}-customer-result`} name="customerMessage" required minLength={20} maxLength={2000} className="rounded-xl border p-2"/><span className="font-normal text-slate-500">İç notları ve gizli yaptırım ayrıntılarını bu alana yazmayın.</span></label>
+      <label htmlFor={`${fieldId}-operation-result`} className="grid gap-1 text-sm font-semibold">Ustayı doğrudan etkileyen operasyonel bildirim<textarea id={`${fieldId}-operation-result`} name="operationMessage" minLength={10} maxLength={1000} className="rounded-xl border p-2"/><span className="font-normal text-slate-500">Ustaya yaptırım uygulanıyorsa zorunlu. Şikâyet dosyası veya müşteri açıklaması paylaşılmaz.</span></label>
       <button type="submit" className="rounded-xl bg-[#C86B32] px-4 py-2 text-sm font-bold text-white">Sonuçlandır</button>
     </fieldset>
     <Feedback value={s.feedback} className="mt-3"/>
   </form>;
 }
 
-export function ComplaintInfoRequest({id}:{id:string}){
-  const s=useSubmit();
+export function ComplaintInfoRequest({id,version,recipients}:{id:string;version:number;recipients:Array<{id:string;name:string;role:string}>}){
+  const [key,setKey]=useState(()=>crypto.randomUUID());const s=useSubmit(()=>setKey(crypto.randomUUID()));
   const fieldId=useId();
   return <form action={form=>s.send(`/api/admin/stage10/complaints/${id}`,{
-    action:'request_info',message:String(form.get('message')),
+    action:'request_info',version,key,recipientId:String(form.get('recipientId')),message:String(form.get('message')),
   })} aria-busy={s.busy} className="mt-3 flex flex-wrap items-end gap-2">
+    <label htmlFor={`${fieldId}-recipient`} className="grid gap-1 text-sm font-semibold">Alıcı<select id={`${fieldId}-recipient`} name="recipientId" required disabled={s.busy} className="rounded-xl border p-2"><option value="">Alıcı seçin</option>{recipients.map(u=><option key={u.id} value={u.id}>{u.name} · {u.role==='customer'?'Müşteri':'Usta'}</option>)}</select></label>
     <label htmlFor={`${fieldId}-message`} className="grid min-w-64 flex-1 gap-1 text-sm font-semibold text-slate-700">
       Ek bilgi talebi <span className="text-[#A94D18]">(zorunlu)</span>
       <input id={`${fieldId}-message`} name="message" required minLength={10} maxLength={1000} disabled={s.busy} className="rounded-xl border border-slate-300 p-2 font-normal text-slate-900"/>

@@ -176,7 +176,10 @@ function customerOperationStatus(
   if(paymentStatus==='authorization_failed')
     return {code:'payment_failed' as const,label:'Ödeme provizyonu başarısız'};
 
-  if(paymentStatus==='authorized'||paymentStatus==='requires_review')
+  if(paymentStatus==='requires_review')
+    return {code:'payment_reconciliation' as const,label:'Ödeme sonucu belirsiz, finansal inceleme bekleniyor'};
+
+  if(paymentStatus==='authorized')
     return {code:'payment_reconciliation' as const,label:'Ödeme onaylandı, dağıtım doğrulanıyor'};
 
   if(paymentStatus==='capture_failed')

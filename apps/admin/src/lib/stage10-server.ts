@@ -6,7 +6,7 @@ import {complaintPageRange,finalizeComplaintPage} from './stage10-pagination';
 
 function valueText(value:unknown,min:number,max:number,label:string){if(typeof value!=='string'||value.trim().length<min||value.trim().length>max)throw new OperationError('invalid_input',400,`${label} ${min}-${max} karakter olmalıdır.`);return value.trim();}
 function version(value:unknown){const n=Number(value);if(!Number.isInteger(n)||n<1)throw new OperationError('invalid_version',400,'Geçersiz sürüm.');return n;}
-function failStage10Db(error:{message?:string}|null,context:string):never{const raw=error?.message??'';if(/active admin required|access denied|not related|not assigned/i.test(raw))throw new OperationError('forbidden',403,'Bu işlem için yetkiniz yok.');if(/not found/i.test(raw))throw new OperationError('not_found',404,'Kayıt bulunamadı.');if(/conflict|already|closed service|not open|must decline|cannot|required|not eligible/i.test(raw))throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');if(/^invalid /i.test(raw))throw new OperationError('invalid_input',400,'İstek bilgileri geçerli değil.');failDb(error,context);}
+function failStage10Db(error:{message?:string}|null,context:string):never{const raw=error?.message??'';if(/forbidden|active admin required|access denied|not related|not assigned/i.test(raw))throw new OperationError('forbidden',403,'Bu işlem için yetkiniz yok.');if(/not found/i.test(raw))throw new OperationError('not_found',404,'Kayıt bulunamadı.');if(/T111|conflict|already|closed service|not open|must decline|cannot|required|not eligible/i.test(raw))throw new OperationError('invalid_state',409,'İşlem mevcut durumda yapılamaz.');if(/^invalid /i.test(raw))throw new OperationError('invalid_input',400,'İstek bilgileri geçerli değil.');failDb(error,context);}
 
 export async function adminStage10Overview({openPage=1,resolvedPage=1}:{openPage?:number;resolvedPage?:number}={}){
   await requireRole('admin');const db=adminSupabase();
@@ -29,7 +29,21 @@ export async function adminStage10Overview({openPage=1,resolvedPage=1}:{openPage
   ]);
   for(const result of [complaintEvidence,warrantyEvidence,costEvidence])if(result.error)failDb(result.error,'Kanıt kayıtları');
   const evidence=[...(complaintEvidence.data??[]),...(warrantyEvidence.data??[]),...(costEvidence.data??[])];
-  return {costs:costResult.data??[],complaints:[...open.items,...resolved.items],openComplaints:open.items,resolvedComplaints:resolved.items,complaintPagination:{openPage,resolvedPage,openHasNext:open.hasNext,resolvedHasNext:resolved.hasNext},warranties:warrantyResult.data??[],corrections:correctionResult.data??[],evidence};
+  const requestIds=[...new Set([...open.items,...resolved.items].map(c=>c.service_request_id))];
+  const [requestParties,jobParties,questions]=await Promise.all([
+    requestIds.length?db.from('service_requests').select('id,customer_id').in('id',requestIds):Promise.resolve({data:[],error:null}),
+    requestIds.length?db.from('service_jobs').select('service_request_id,technician_id').in('service_request_id',requestIds):Promise.resolve({data:[],error:null}),
+    complaintIds.length?db.from('complaint_information_requests').select('id,complaint_id,recipient_user_id,message,created_at').in('complaint_id',complaintIds).order('created_at',{ascending:true}):Promise.resolve({data:[],error:null})]);
+  for(const result of [requestParties,jobParties,questions])if(result.error)failDb(result.error,'İnceleme iletişimi');
+  const partyIds=[...new Set([...(requestParties.data??[]).map(x=>x.customer_id),...(jobParties.data??[]).map(x=>x.technician_id)])];
+  const qIds=(questions.data??[]).map(q=>q.id);
+  const [parties,responses,resolutions]=await Promise.all([
+    partyIds.length?db.from('users').select('id,name,role,is_active').in('id',partyIds):Promise.resolve({data:[],error:null}),
+    qIds.length?db.from('t111_information_responses').select('question_id,response_text,created_at').in('question_id',qIds):Promise.resolve({data:[],error:null}),
+    complaintIds.length?db.from('t111_case_resolutions').select('complaint_id,customer_message,operation_message').in('complaint_id',complaintIds):Promise.resolve({data:[],error:null})]);
+  for(const result of [parties,responses,resolutions])if(result.error)failDb(result.error,'İnceleme yanıtları');
+  const recipients=(requestId:string)=> (parties.data??[]).filter(u=>u.is_active&&((requestParties.data??[]).some(p=>p.id===requestId&&p.customer_id===u.id)||(jobParties.data??[]).some(j=>j.service_request_id===requestId&&j.technician_id===u.id))).map(u=>({id:u.id,name:u.name,role:u.role}));
+  return {questions:questions.data??[],responses:responses.data??[],resolutions:resolutions.data??[],recipients,costs:costResult.data??[],complaints:[...open.items,...resolved.items],openComplaints:open.items,resolvedComplaints:resolved.items,complaintPagination:{openPage,resolvedPage,openHasNext:open.hasNext,resolvedHasNext:resolved.hasNext},warranties:warrantyResult.data??[],corrections:correctionResult.data??[],evidence};
 }
 
 export async function adminReviewAdditionalCost(id:string,input:{action:unknown;reason:unknown;version:unknown}){
@@ -44,12 +58,12 @@ export async function adminDecideComplaint(id:string,input:Record<string,unknown
   requireId(id);const account=await requireRole('admin');const finalCategory=valueText(input.finalCategory,2,100,'Kategori');const decision=String(input.decision);const reason=valueText(input.reason,20,2000,'Gerekçe');
   const subjectUserId=typeof input.subjectUserId==='string'&&input.subjectUserId?input.subjectUserId:null;if(subjectUserId)requireId(subjectUserId);
   let sanctionEndsAt:null|string=null;if(typeof input.sanctionEndsAt==='string'&&input.sanctionEndsAt){const parsed=new Date(input.sanctionEndsAt);if(Number.isNaN(parsed.getTime()))throw new OperationError('invalid_date',400,'Geçerli yaptırım bitiş tarihi gerekli.');sanctionEndsAt=parsed.toISOString();}
-  const {data,error}=await adminSupabase().rpc('stage10_admin_decide_complaint',{p_id:id,p_admin_id:account.id,p_final_category:finalCategory,p_decision:decision,p_reason:reason,p_subject_user_id:subjectUserId,p_sanction_ends_at:sanctionEndsAt,p_expected_version:version(input.version)});
+  const {data,error}=await adminSupabase().rpc('t111_close_complaint',{p_id:id,p_admin_id:account.id,p_category:finalCategory,p_decision:decision,p_reason:reason,p_subject_id:subjectUserId,p_ends_at:sanctionEndsAt,p_version:version(input.version),p_customer_message:valueText(input.customerMessage,20,2000,'Müşteriye sonuç açıklaması'),p_operation_message:typeof input.operationMessage==='string'&&input.operationMessage.trim()?valueText(input.operationMessage,10,1000,'Operasyon kararı'):null,p_key:valueText(input.key,8,128,'İşlem anahtarı')});
   if(error)failStage10Db(error,'Şikâyet kararı');return {id:data};
 }
 
-export async function adminRequestComplaintInfo(id:string,message:unknown){
-  requireId(id);const account=await requireRole('admin');const {data,error}=await adminSupabase().rpc('stage10_admin_request_complaint_info',{p_id:id,p_admin_id:account.id,p_message:valueText(message,10,1000,'Bilgi talebi')});if(error)failStage10Db(error,'Bilgi talebi');return {id:data};
+export async function adminRequestComplaintInfo(id:string,input:Record<string,unknown>){
+  requireId(id);const account=await requireRole('admin');const recipient=valueText(input.recipientId,36,36,'Alıcı');requireId(recipient);const {data,error}=await adminSupabase().rpc('t111_request_information',{p_id:id,p_admin_id:account.id,p_recipient_id:recipient,p_message:valueText(input.message,10,1000,'Bilgi talebi'),p_key:valueText(input.key,8,128,'İşlem anahtarı'),p_version:version(input.version)});if(error)failStage10Db(error,'Bilgi talebi');return {id:data};
 }
 
 export async function adminCorrectComplaintDecision(id:string,input:Record<string,unknown>){

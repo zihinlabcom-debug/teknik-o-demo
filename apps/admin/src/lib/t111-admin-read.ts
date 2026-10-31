@@ -1,0 +1,19 @@
+import 'server-only';
+import {adminSupabase} from './account-supabase';
+import {requireRole,requireId} from '../../../../src/lib/operation-guard';
+import {t100Rpc} from '../../../../src/lib/t100-rpc';
+export type AdminRequestRow={id:string;created_at:string;customer_id:string;customer_name:string;is_test:boolean;category_name:string|null;request_status:string;operation_status:string;payment_status:string;financial_uncertainty:boolean;city:string|null;district:string|null;total_amount:number|null;currency:string|null;job_id:string|null;job_status:string|null;technician_id:string|null;technician_name:string|null;appointment_at:string|null;appointment_status:string|null};
+export const filters=['all','unassigned','active','appointed','completed','cancelled','review','finance'] as const;
+export type ListFilter=typeof filters[number];
+export async function adminRequestPage(input:{cursor?:string;filter?:string;q?:string}={}){
+ const a=await requireRole('admin');let before=null,beforeId=null;
+ if(input.cursor){try{const c=JSON.parse(Buffer.from(input.cursor,'base64url').toString('utf8'));requireId(c.id);if(typeof c.at!=='string'||!Number.isFinite(Date.parse(c.at)))throw Error();before=c.at;beforeId=c.id;}catch{throw new Error('Geçersiz sayfa imleci.');}}
+ const filter=filters.includes(input.filter as ListFilter)?input.filter!:'all';
+ const result=await t100Rpc(adminSupabase(),'t111_admin_request_page',{p_admin_id:a.id,p_before:before,p_before_id:beforeId,p_filter:filter,p_query:(input.q??'').trim().slice(0,100)}) as {rows:AdminRequestRow[];next:{at:string;id:string}|null};
+ return {...result,nextCursor:result.next?Buffer.from(JSON.stringify(result.next)).toString('base64url'):null};
+}
+export async function adminSummary(){const a=await requireRole('admin');return await t100Rpc(adminSupabase(),'t111_admin_summary',{p_admin_id:a.id}) as Record<string,number>;}
+export type AdminFinancialDetail={request:AdminRequestRow;payments:Array<{id:string;purpose:string;provider:string;environment:string;status:string;amount:number;authorized:number;captured:number;refunded:number;currency:string}>;transactions:Array<{id:string;operation:string;status:string;amount:number;currency:string;at:string}>;ledger:Array<{id:number;transactionId:string;account:string;direction:string;amount:number;currency:string}>;simulation:null|{purpose:string;totalMinor:number;technicianMinor:number;platformMinor:number;mode:string;bankTransfer:boolean};finalization:null|{id:string;action:string;state:string;amount:number;remainingAuthorizationVerified:boolean};complaints:Array<{id:string;status:string;role:string}>};
+export type AdminHistory={request:AdminRequestRow;cycles:Array<{id:string;status:string;round:number;startedAt:string;nextAt:string|null}>;dispatches:Array<{id:string;status:string;round:number;expiresAt:string|null}>;exclusions:Array<{technician:string;reason:string;createdAt:string}>;jobs:Array<{id:string;technician:string;status:string;assignedAt:string;cancelledAt:string|null;source:string}>;offers:Array<{id:string;technician:string;status:string;round:number;offeredAt:string;respondedAt:string|null}>;cancellations:Array<{id:string;jobId:string;actor:string;role:string;reason:string;points:number;feeMinor:number;createdAt:string}>;events:Array<{id:string;type:string;actor:string|null;at:string}>};
+export async function adminFinancialDetail(id:string){requireId(id);const a=await requireRole('admin');return await t100Rpc(adminSupabase(),'t111_admin_request_detail',{p_admin_id:a.id,p_request_id:id,p_history:false}) as AdminFinancialDetail;}
+export async function adminRequestHistory(id:string){requireId(id);const a=await requireRole('admin');return await t100Rpc(adminSupabase(),'t111_admin_request_detail',{p_admin_id:a.id,p_request_id:id,p_history:true}) as AdminHistory;}
